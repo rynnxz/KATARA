@@ -1,0 +1,104 @@
+[
+  {
+    "id": "ms-deli:j:0001",
+    "course_id": "ms-deli",
+    "glyph": "چ",
+    "name": "ca",
+    "sound": "c",
+    "example_word_jawi": null,
+    "example_word_latin": "cakap",
+    "forms": {
+      "isolated": "چ",
+      "initial": null,
+      "medial": null,
+      "final": null
+    },
+    "connects_to_next": true,
+    "validation_status": "draft"
+  },
+  {
+    "id": "ms-deli:j:0002",
+    "course_id": "ms-deli",
+    "glyph": "ڠ",
+    "name": "nga",
+    "sound": "ng",
+    "example_word_jawi": null,
+    "example_word_latin": "bunga",
+    "forms": {
+      "isolated": "ڠ",
+      "initial": null,
+      "medial": null,
+      "final": null
+    },
+    "connects_to_next": true,
+    "validation_status": "draft"
+  },
+  {
+    "id": "ms-deli:j:0003",
+    "course_id": "ms-deli",
+    "glyph": "ڤ",
+    "name": "pa",
+    "sound": "p",
+    "example_word_jawi": null,
+    "example_word_latin": "pinggan",
+    "forms": {
+      "isolated": "ڤ",
+      "initial": null,
+      "medial": null,
+      "final": null
+    },
+    "connects_to_next": true,
+    "validation_status": "draft"
+  },
+  {
+    "id": "ms-deli:j:0004",
+    "course_id": "ms-deli",
+    "glyph": "ݢ",
+    "name": "ga",
+    "sound": "g",
+    "example_word_jawi": null,
+    "example_word_latin": "gulai",
+    "forms": {
+      "isolated": "ݢ",
+      "initial": null,
+      "medial": null,
+      "final": null
+    },
+    "connects_to_next": true,
+    "validation_status": "draft"
+  },
+  {
+    "id": "ms-deli:j:0005",
+    "course_id": "ms-deli",
+    "glyph": "ۏ",
+    "name": "va",
+    "sound": "v",
+    "example_word_jawi": null,
+    "example_word_latin": "vitamin",
+    "forms": {
+      "isolated": "ۏ",
+      "initial": null,
+      "medial": null,
+      "final": null
+    },
+    "connects_to_next": false,
+    "validation_status": "draft"
+  },
+  {
+    "id": "ms-deli:j:0006",
+    "course_id": "ms-deli",
+    "glyph": "ڽ",
+    "name": "nya",
+    "sound": "ny",
+    "example_word_jawi": null,
+    "example_word_latin": "nyamuk",
+    "forms": {
+      "isolated": "ڽ",
+      "initial": null,
+      "medial": null,
+      "final": null
+    },
+    "connects_to_next": true,
+    "validation_status": "draft"
+  }
+]

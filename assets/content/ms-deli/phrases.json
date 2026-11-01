@@ -1,0 +1,122 @@
+[
+  {
+    "id": "ms-deli:p:0001",
+    "course_id": "ms-deli",
+    "deli": "Ape kabar?",
+    "indonesia": "Apa kabar?",
+    "jawi": null,
+    "level": 1,
+    "unit_id": "ms-deli:u:0001",
+    "audio_path": null,
+    "cultural_note": null,
+    "validation_status": "draft"
+  },
+  {
+    "id": "ms-deli:p:0002",
+    "course_id": "ms-deli",
+    "deli": "Kabar baik.",
+    "indonesia": "Kabar baik.",
+    "jawi": null,
+    "level": 1,
+    "unit_id": "ms-deli:u:0001",
+    "audio_path": null,
+    "cultural_note": null,
+    "validation_status": "draft"
+  },
+  {
+    "id": "ms-deli:p:0003",
+    "course_id": "ms-deli",
+    "deli": "Jemput masuk.",
+    "indonesia": "Silakan masuk.",
+    "jawi": null,
+    "level": 1,
+    "unit_id": "ms-deli:u:0001",
+    "audio_path": null,
+    "cultural_note": null,
+    "validation_status": "draft"
+  },
+  {
+    "id": "ms-deli:p:0004",
+    "course_id": "ms-deli",
+    "deli": "Terime kasih.",
+    "indonesia": "Terima kasih.",
+    "jawi": null,
+    "level": 1,
+    "unit_id": "ms-deli:u:0001",
+    "audio_path": null,
+    "cultural_note": null,
+    "validation_status": "draft"
+  },
+  {
+    "id": "ms-deli:p:0005",
+    "course_id": "ms-deli",
+    "deli": "Minta maaf.",
+    "indonesia": "Mohon maaf.",
+    "jawi": null,
+    "level": 1,
+    "unit_id": "ms-deli:u:0001",
+    "audio_path": null,
+    "cultural_note": null,
+    "validation_status": "draft"
+  },
+  {
+    "id": "ms-deli:p:0006",
+    "course_id": "ms-deli",
+    "deli": "Selamat pagi.",
+    "indonesia": "Selamat pagi.",
+    "jawi": null,
+    "level": 1,
+    "unit_id": "ms-deli:u:0001",
+    "audio_path": null,
+    "cultural_note": null,
+    "validation_status": "draft"
+  },
+  {
+    "id": "ms-deli:p:0007",
+    "course_id": "ms-deli",
+    "deli": "Selamat petang.",
+    "indonesia": "Selamat sore.",
+    "jawi": null,
+    "level": 1,
+    "unit_id": "ms-deli:u:0001",
+    "audio_path": null,
+    "cultural_note": null,
+    "validation_status": "draft"
+  },
+  {
+    "id": "ms-deli:p:0008",
+    "course_id": "ms-deli",
+    "deli": "Jumpe lagi.",
+    "indonesia": "Sampai jumpa lagi.",
+    "jawi": null,
+    "level": 1,
+    "unit_id": "ms-deli:u:0001",
+    "audio_path": null,
+    "cultural_note": null,
+    "validation_status": "draft"
+  },
+  {
+    "id": "ms-deli:p:0009",
+    "course_id": "ms-deli",
+    "deli": "Nak ke mane?",
+    "indonesia": "Mau ke mana?",
+    "jawi": null,
+    "level": 1,
+    "unit_id": "ms-deli:u:0005",
+    "audio_path": null,
+    "cultural_note": "pola tanya sehari-hari; cek penutur",
+    "validation_status": "draft"
+  },
+  {
+    "id": "ms-deli:p:0010",
+    "course_id": "ms-deli",
+    "deli": "Sape name awak?",
+    "indonesia": "Siapa namamu?",
+    "jawi": null,
+    "level": 1,
+    "unit_id": "ms-deli:u:0005",
+    "audio_path": null,
+    "cultural_note": "cek kata ganti 'awak'",
+    "validation_status": "draft"
+  }
+]

@@ -1,0 +1,52 @@
+[
+  {
+    "id": "ms-deli:c:0001",
+    "course_id": "ms-deli",
+    "name": "Istana Maimun",
+    "unlock_after_unit_id": "ms-deli:u:0003",
+    "fact": null,
+    "image_path": null,
+    "article_id": "ms-deli:art:0002",
+    "validation_status": "draft"
+  },
+  {
+    "id": "ms-deli:c:0002",
+    "course_id": "ms-deli",
+    "name": "Meriam Puntung",
+    "unlock_after_unit_id": null,
+    "fact": null,
+    "image_path": null,
+    "article_id": null,
+    "validation_status": "draft"
+  },
+  {
+    "id": "ms-deli:c:0003",
+    "course_id": "ms-deli",
+    "name": "Tanjak",
+    "unlock_after_unit_id": null,
+    "fact": null,
+    "image_path": null,
+    "article_id": null,
+    "validation_status": "draft"
+  },
+  {
+    "id": "ms-deli:c:0004",
+    "course_id": "ms-deli",
+    "name": "Pulut Kuning",
+    "unlock_after_unit_id": "ms-deli:u:0004",
+    "fact": null,
+    "image_path": null,
+    "article_id": null,
+    "validation_status": "draft"
+  },
+  {
+    "id": "ms-deli:c:0005",
+    "course_id": "ms-deli",
+    "name": "Serampang Dua Belas",
+    "unlock_after_unit_id": null,
+    "fact": null,
+    "image_path": null,
+    "article_id": null,
+    "validation_status": "draft"
+  }
+]

@@ -1,0 +1,64 @@
+{
+  "achievements": [
+    {
+      "id": "a01",
+      "name": "Langkah Pertama",
+      "description": "Selesaikan pelajaran pertama",
+      "active_mvp": true
+    },
+    {
+      "id": "a02",
+      "name": "Api Kecil",
+      "description": "Streak 3 hari",
+      "active_mvp": true
+    },
+    {
+      "id": "a03",
+      "name": "Api Besar",
+      "description": "Streak 30 hari",
+      "active_mvp": true
+    },
+    {
+      "id": "a04",
+      "name": "Penyapa",
+      "description": "Pelajari 10 frasa sapaan",
+      "active_mvp": true
+    },
+    {
+      "id": "a05",
+      "name": "Tukang Tanya",
+      "description": "Kuasai semua kata tanya",
+      "active_mvp": true
+    },
+    {
+      "id": "a06",
+      "name": "Si Lemak",
+      "description": "Selesaikan unit makanan tanpa salah",
+      "active_mvp": true
+    },
+    {
+      "id": "a07",
+      "name": "Pembaca Jawi",
+      "description": "Baca 10 kata Jawi",
+      "active_mvp": false
+    },
+    {
+      "id": "a08",
+      "name": "Penjelajah Istana",
+      "description": "Kumpulkan semua kartu Istana & Masjid",
+      "active_mvp": false
+    },
+    {
+      "id": "a09",
+      "name": "Pantun Pertama",
+      "description": "Selesaikan pelajaran pantun",
+      "active_mvp": false
+    },
+    {
+      "id": "a10",
+      "name": "Sempurna",
+      "description": "1 pelajaran tanpa salah (10x)",
+      "active_mvp": false
+    }
+  ]
+}

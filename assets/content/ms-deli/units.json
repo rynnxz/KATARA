@@ -1,0 +1,781 @@
+[
+  {
+    "id": "ms-deli:u:0001",
+    "course_id": "ms-deli",
+    "title": "Salam & Sapa",
+    "theme": "sapaan",
+    "order": 1,
+    "level": 1,
+    "lessons": [
+      {
+        "id": "ms-deli:l:0001",
+        "unit_id": "ms-deli:u:0001",
+        "order": 1,
+        "kind": "vocab",
+        "item_refs": [
+          "ms-deli:w:0001",
+          "ms-deli:w:0002",
+          "ms-deli:w:0003",
+          "ms-deli:w:0004",
+          "ms-deli:w:0005",
+          "ms-deli:w:0006"
+        ],
+        "xp_reward": 15
+      },
+      {
+        "id": "ms-deli:l:0002",
+        "unit_id": "ms-deli:u:0001",
+        "order": 2,
+        "kind": "phrase",
+        "item_refs": [
+          "ms-deli:p:0001",
+          "ms-deli:p:0002",
+          "ms-deli:p:0003",
+          "ms-deli:p:0004",
+          "ms-deli:p:0005",
+          "ms-deli:p:0006",
+          "ms-deli:p:0007",
+          "ms-deli:p:0008",
+          "ms-deli:s:0006",
+          "ms-deli:s:0007"
+        ],
+        "xp_reward": 15
+      },
+      {
+        "id": "ms-deli:l:0003",
+        "unit_id": "ms-deli:u:0001",
+        "order": 3,
+        "kind": "dialogue",
+        "item_refs": [
+          "ms-deli:d:0001",
+          "ms-deli:p:0001",
+          "ms-deli:p:0002",
+          "ms-deli:p:0003",
+          "ms-deli:p:0004",
+          "ms-deli:p:0005",
+          "ms-deli:p:0006",
+          "ms-deli:p:0007",
+          "ms-deli:p:0008"
+        ],
+        "xp_reward": 15
+      },
+      {
+        "id": "ms-deli:l:0004",
+        "unit_id": "ms-deli:u:0001",
+        "order": 4,
+        "kind": "review",
+        "item_refs": [
+          "ms-deli:w:0001",
+          "ms-deli:w:0002",
+          "ms-deli:w:0003",
+          "ms-deli:w:0004",
+          "ms-deli:w:0005",
+          "ms-deli:w:0006",
+          "ms-deli:p:0001",
+          "ms-deli:p:0002",
+          "ms-deli:p:0003",
+          "ms-deli:p:0004",
+          "ms-deli:p:0005",
+          "ms-deli:p:0006",
+          "ms-deli:p:0007",
+          "ms-deli:p:0008",
+          "ms-deli:d:0001"
+        ],
+        "xp_reward": 10
+      },
+      {
+        "id": "ms-deli:l:0005",
+        "unit_id": "ms-deli:u:0001",
+        "order": 5,
+        "kind": "boss",
+        "item_refs": [
+          "ms-deli:w:0001",
+          "ms-deli:w:0002",
+          "ms-deli:w:0003",
+          "ms-deli:w:0004",
+          "ms-deli:w:0005",
+          "ms-deli:w:0006",
+          "ms-deli:p:0001",
+          "ms-deli:p:0002",
+          "ms-deli:p:0003",
+          "ms-deli:p:0004",
+          "ms-deli:p:0005",
+          "ms-deli:p:0006",
+          "ms-deli:p:0007",
+          "ms-deli:p:0008",
+          "ms-deli:d:0001"
+        ],
+        "xp_reward": 30
+      }
+    ]
+  },
+  {
+    "id": "ms-deli:u:0002",
+    "course_id": "ms-deli",
+    "title": "Angka Pertama",
+    "theme": "angka",
+    "order": 2,
+    "level": 1,
+    "lessons": [
+      {
+        "id": "ms-deli:l:0006",
+        "unit_id": "ms-deli:u:0002",
+        "order": 1,
+        "kind": "vocab",
+        "item_refs": [
+          "ms-deli:w:0007",
+          "ms-deli:w:0008",
+          "ms-deli:w:0009",
+          "ms-deli:w:0010",
+          "ms-deli:w:0011",
+          "ms-deli:w:0012",
+          "ms-deli:w:0013",
+          "ms-deli:w:0014",
+          "ms-deli:w:0015",
+          "ms-deli:w:0016",
+          "ms-deli:w:0017",
+          "ms-deli:w:0018"
+        ],
+        "xp_reward": 15
+      },
+      {
+        "id": "ms-deli:l:0007",
+        "unit_id": "ms-deli:u:0002",
+        "order": 2,
+        "kind": "phrase",
+        "item_refs": [
+          "ms-deli:w:0007",
+          "ms-deli:w:0008",
+          "ms-deli:w:0009",
+          "ms-deli:w:0010",
+          "ms-deli:w:0011",
+          "ms-deli:w:0012",
+          "ms-deli:w:0013",
+          "ms-deli:w:0014",
+          "ms-deli:w:0015",
+          "ms-deli:w:0016",
+          "ms-deli:w:0017",
+          "ms-deli:w:0018"
+        ],
+        "xp_reward": 15
+      },
+      {
+        "id": "ms-deli:l:0008",
+        "unit_id": "ms-deli:u:0002",
+        "order": 3,
+        "kind": "vocab",
+        "item_refs": [
+          "ms-deli:w:0007",
+          "ms-deli:w:0008",
+          "ms-deli:w:0009",
+          "ms-deli:w:0010",
+          "ms-deli:w:0011",
+          "ms-deli:w:0012",
+          "ms-deli:w:0013",
+          "ms-deli:w:0014",
+          "ms-deli:w:0015",
+          "ms-deli:w:0016",
+          "ms-deli:w:0017",
+          "ms-deli:w:0018"
+        ],
+        "xp_reward": 15
+      },
+      {
+        "id": "ms-deli:l:0009",
+        "unit_id": "ms-deli:u:0002",
+        "order": 4,
+        "kind": "review",
+        "item_refs": [
+          "ms-deli:w:0007",
+          "ms-deli:w:0008",
+          "ms-deli:w:0009",
+          "ms-deli:w:0010",
+          "ms-deli:w:0011",
+          "ms-deli:w:0012",
+          "ms-deli:w:0013",
+          "ms-deli:w:0014",
+          "ms-deli:w:0015",
+          "ms-deli:w:0016",
+          "ms-deli:w:0017",
+          "ms-deli:w:0018"
+        ],
+        "xp_reward": 10
+      },
+      {
+        "id": "ms-deli:l:0010",
+        "unit_id": "ms-deli:u:0002",
+        "order": 5,
+        "kind": "boss",
+        "item_refs": [
+          "ms-deli:w:0007",
+          "ms-deli:w:0008",
+          "ms-deli:w:0009",
+          "ms-deli:w:0010",
+          "ms-deli:w:0011",
+          "ms-deli:w:0012",
+          "ms-deli:w:0013",
+          "ms-deli:w:0014",
+          "ms-deli:w:0015",
+          "ms-deli:w:0016",
+          "ms-deli:w:0017",
+          "ms-deli:w:0018"
+        ],
+        "xp_reward": 30
+      }
+    ]
+  },
+  {
+    "id": "ms-deli:u:0003",
+    "course_id": "ms-deli",
+    "title": "Keluarga & Panggilan",
+    "theme": "keluarga",
+    "order": 3,
+    "level": 1,
+    "lessons": [
+      {
+        "id": "ms-deli:l:0011",
+        "unit_id": "ms-deli:u:0003",
+        "order": 1,
+        "kind": "vocab",
+        "item_refs": [
+          "ms-deli:w:0019",
+          "ms-deli:w:0020",
+          "ms-deli:w:0021",
+          "ms-deli:w:0022",
+          "ms-deli:w:0023",
+          "ms-deli:w:0024",
+          "ms-deli:w:0025",
+          "ms-deli:w:0026"
+        ],
+        "xp_reward": 15
+      },
+      {
+        "id": "ms-deli:l:0012",
+        "unit_id": "ms-deli:u:0003",
+        "order": 2,
+        "kind": "culture",
+        "item_refs": [
+          "ms-deli:w:0020",
+          "ms-deli:w:0019",
+          "ms-deli:w:0021",
+          "ms-deli:w:0022",
+          "ms-deli:w:0023",
+          "ms-deli:w:0024",
+          "ms-deli:j:0001",
+          "ms-deli:j:0002",
+          "ms-deli:j:0003"
+        ],
+        "xp_reward": 15
+      },
+      {
+        "id": "ms-deli:l:0013",
+        "unit_id": "ms-deli:u:0003",
+        "order": 3,
+        "kind": "phrase",
+        "item_refs": [
+          "ms-deli:s:0001",
+          "ms-deli:s:0002",
+          "ms-deli:s:0003",
+          "ms-deli:s:0004",
+          "ms-deli:s:0005",
+          "ms-deli:s:0006",
+          "ms-deli:s:0007",
+          "ms-deli:s:0008",
+          "ms-deli:s:0009",
+          "ms-deli:s:0010",
+          "ms-deli:w:0019",
+          "ms-deli:w:0020",
+          "ms-deli:w:0021",
+          "ms-deli:w:0022",
+          "ms-deli:w:0023",
+          "ms-deli:w:0024",
+          "ms-deli:w:0025",
+          "ms-deli:w:0026"
+        ],
+        "xp_reward": 15
+      },
+      {
+        "id": "ms-deli:l:0014",
+        "unit_id": "ms-deli:u:0003",
+        "order": 4,
+        "kind": "review",
+        "item_refs": [
+          "ms-deli:w:0019",
+          "ms-deli:w:0020",
+          "ms-deli:w:0021",
+          "ms-deli:w:0022",
+          "ms-deli:w:0023",
+          "ms-deli:w:0024",
+          "ms-deli:w:0025",
+          "ms-deli:w:0026"
+        ],
+        "xp_reward": 10
+      },
+      {
+        "id": "ms-deli:l:0015",
+        "unit_id": "ms-deli:u:0003",
+        "order": 5,
+        "kind": "boss",
+        "item_refs": [
+          "ms-deli:w:0019",
+          "ms-deli:w:0020",
+          "ms-deli:w:0021",
+          "ms-deli:w:0022",
+          "ms-deli:w:0023",
+          "ms-deli:w:0024",
+          "ms-deli:w:0025",
+          "ms-deli:w:0026"
+        ],
+        "xp_reward": 30
+      }
+    ]
+  },
+  {
+    "id": "ms-deli:u:0004",
+    "course_id": "ms-deli",
+    "title": "Di Meja Makan",
+    "theme": "makanan",
+    "order": 4,
+    "level": 1,
+    "lessons": [
+      {
+        "id": "ms-deli:l:0016",
+        "unit_id": "ms-deli:u:0004",
+        "order": 1,
+        "kind": "vocab",
+        "item_refs": [
+          "ms-deli:w:0027",
+          "ms-deli:w:0028",
+          "ms-deli:w:0029",
+          "ms-deli:w:0030",
+          "ms-deli:w:0031",
+          "ms-deli:w:0032",
+          "ms-deli:w:0033",
+          "ms-deli:w:0034",
+          "ms-deli:w:0035",
+          "ms-deli:w:0036"
+        ],
+        "xp_reward": 15
+      },
+      {
+        "id": "ms-deli:l:0017",
+        "unit_id": "ms-deli:u:0004",
+        "order": 2,
+        "kind": "vocab",
+        "item_refs": [
+          "ms-deli:w:0027",
+          "ms-deli:w:0028",
+          "ms-deli:w:0029",
+          "ms-deli:w:0030",
+          "ms-deli:w:0031",
+          "ms-deli:w:0032",
+          "ms-deli:w:0033",
+          "ms-deli:w:0034",
+          "ms-deli:w:0035",
+          "ms-deli:w:0036"
+        ],
+        "xp_reward": 15
+      },
+      {
+        "id": "ms-deli:l:0018",
+        "unit_id": "ms-deli:u:0004",
+        "order": 3,
+        "kind": "dialogue",
+        "item_refs": [
+          "ms-deli:w:0031",
+          "ms-deli:d:0002",
+          "ms-deli:w:0027",
+          "ms-deli:w:0028",
+          "ms-deli:w:0029",
+          "ms-deli:w:0030",
+          "ms-deli:w:0032"
+        ],
+        "xp_reward": 15
+      },
+      {
+        "id": "ms-deli:l:0019",
+        "unit_id": "ms-deli:u:0004",
+        "order": 4,
+        "kind": "review",
+        "item_refs": [
+          "ms-deli:w:0027",
+          "ms-deli:w:0028",
+          "ms-deli:w:0029",
+          "ms-deli:w:0030",
+          "ms-deli:w:0031",
+          "ms-deli:w:0032",
+          "ms-deli:w:0033",
+          "ms-deli:w:0034",
+          "ms-deli:w:0035",
+          "ms-deli:w:0036",
+          "ms-deli:d:0002"
+        ],
+        "xp_reward": 10
+      },
+      {
+        "id": "ms-deli:l:0020",
+        "unit_id": "ms-deli:u:0004",
+        "order": 5,
+        "kind": "boss",
+        "item_refs": [
+          "ms-deli:w:0027",
+          "ms-deli:w:0028",
+          "ms-deli:w:0029",
+          "ms-deli:w:0030",
+          "ms-deli:w:0031",
+          "ms-deli:w:0032",
+          "ms-deli:w:0033",
+          "ms-deli:w:0034",
+          "ms-deli:w:0035",
+          "ms-deli:w:0036",
+          "ms-deli:d:0002"
+        ],
+        "xp_reward": 30
+      }
+    ]
+  },
+  {
+    "id": "ms-deli:u:0005",
+    "course_id": "ms-deli",
+    "title": "Tanya Dasar",
+    "theme": "tanya",
+    "order": 5,
+    "level": 1,
+    "lessons": [
+      {
+        "id": "ms-deli:l:0021",
+        "unit_id": "ms-deli:u:0005",
+        "order": 1,
+        "kind": "vocab",
+        "item_refs": [
+          "ms-deli:w:0037",
+          "ms-deli:w:0038",
+          "ms-deli:w:0039",
+          "ms-deli:w:0040",
+          "ms-deli:w:0041",
+          "ms-deli:w:0042",
+          "ms-deli:w:0043"
+        ],
+        "xp_reward": 15
+      },
+      {
+        "id": "ms-deli:l:0022",
+        "unit_id": "ms-deli:u:0005",
+        "order": 2,
+        "kind": "phrase",
+        "item_refs": [
+          "ms-deli:w:0039",
+          "ms-deli:p:0009",
+          "ms-deli:p:0010",
+          "ms-deli:s:0001",
+          "ms-deli:s:0009"
+        ],
+        "xp_reward": 15
+      },
+      {
+        "id": "ms-deli:l:0023",
+        "unit_id": "ms-deli:u:0005",
+        "order": 3,
+        "kind": "dialogue",
+        "item_refs": [
+          "ms-deli:p:0009",
+          "ms-deli:p:0010"
+        ],
+        "xp_reward": 15
+      },
+      {
+        "id": "ms-deli:l:0024",
+        "unit_id": "ms-deli:u:0005",
+        "order": 4,
+        "kind": "review",
+        "item_refs": [
+          "ms-deli:w:0037",
+          "ms-deli:w:0038",
+          "ms-deli:w:0039",
+          "ms-deli:w:0040",
+          "ms-deli:w:0041",
+          "ms-deli:w:0042",
+          "ms-deli:w:0043",
+          "ms-deli:p:0009",
+          "ms-deli:p:0010"
+        ],
+        "xp_reward": 10
+      },
+      {
+        "id": "ms-deli:l:0025",
+        "unit_id": "ms-deli:u:0005",
+        "order": 5,
+        "kind": "boss",
+        "item_refs": [
+          "ms-deli:w:0037",
+          "ms-deli:w:0038",
+          "ms-deli:w:0039",
+          "ms-deli:w:0040",
+          "ms-deli:w:0041",
+          "ms-deli:w:0042",
+          "ms-deli:w:0043",
+          "ms-deli:p:0009",
+          "ms-deli:p:0010"
+        ],
+        "xp_reward": 30
+      }
+    ]
+  },
+  {
+    "id": "ms-deli:u:0006",
+    "course_id": "ms-deli",
+    "title": "Aktivitas Harian",
+    "theme": "aktivitas",
+    "order": 6,
+    "level": 2,
+    "lessons": [
+      {
+        "id": "ms-deli:l:0026",
+        "unit_id": "ms-deli:u:0006",
+        "order": 1,
+        "kind": "vocab",
+        "item_refs": [
+          "ms-deli:w:0044",
+          "ms-deli:w:0045",
+          "ms-deli:w:0046",
+          "ms-deli:w:0047",
+          "ms-deli:w:0048"
+        ],
+        "xp_reward": 15
+      },
+      {
+        "id": "ms-deli:l:0027",
+        "unit_id": "ms-deli:u:0006",
+        "order": 2,
+        "kind": "review",
+        "item_refs": [
+          "ms-deli:w:0044",
+          "ms-deli:w:0045",
+          "ms-deli:w:0046",
+          "ms-deli:w:0047",
+          "ms-deli:w:0048"
+        ],
+        "xp_reward": 10
+      },
+      {
+        "id": "ms-deli:l:0028",
+        "unit_id": "ms-deli:u:0006",
+        "order": 3,
+        "kind": "boss",
+        "item_refs": [
+          "ms-deli:w:0044",
+          "ms-deli:w:0045",
+          "ms-deli:w:0046",
+          "ms-deli:w:0047",
+          "ms-deli:w:0048"
+        ],
+        "xp_reward": 30
+      }
+    ]
+  },
+  {
+    "id": "ms-deli:u:0007",
+    "course_id": "ms-deli",
+    "title": "Waktu & Hari",
+    "theme": "waktu",
+    "order": 7,
+    "level": 2,
+    "lessons": [
+      {
+        "id": "ms-deli:l:0029",
+        "unit_id": "ms-deli:u:0007",
+        "order": 1,
+        "kind": "vocab",
+        "item_refs": [
+          "ms-deli:w:0049",
+          "ms-deli:w:0050",
+          "ms-deli:w:0051",
+          "ms-deli:w:0052",
+          "ms-deli:w:0053",
+          "ms-deli:w:0054"
+        ],
+        "xp_reward": 15
+      },
+      {
+        "id": "ms-deli:l:0030",
+        "unit_id": "ms-deli:u:0007",
+        "order": 2,
+        "kind": "review",
+        "item_refs": [
+          "ms-deli:w:0049",
+          "ms-deli:w:0050",
+          "ms-deli:w:0051",
+          "ms-deli:w:0052",
+          "ms-deli:w:0053",
+          "ms-deli:w:0054"
+        ],
+        "xp_reward": 10
+      },
+      {
+        "id": "ms-deli:l:0031",
+        "unit_id": "ms-deli:u:0007",
+        "order": 3,
+        "kind": "boss",
+        "item_refs": [
+          "ms-deli:w:0049",
+          "ms-deli:w:0050",
+          "ms-deli:w:0051",
+          "ms-deli:w:0052",
+          "ms-deli:w:0053",
+          "ms-deli:w:0054"
+        ],
+        "xp_reward": 30
+      }
+    ]
+  },
+  {
+    "id": "ms-deli:u:0008",
+    "course_id": "ms-deli",
+    "title": "Di Pekan",
+    "theme": "pekan",
+    "order": 8,
+    "level": 2,
+    "lessons": [
+      {
+        "id": "ms-deli:l:0032",
+        "unit_id": "ms-deli:u:0008",
+        "order": 1,
+        "kind": "vocab",
+        "item_refs": [
+          "ms-deli:w:0055",
+          "ms-deli:w:0056",
+          "ms-deli:w:0057"
+        ],
+        "xp_reward": 15
+      },
+      {
+        "id": "ms-deli:l:0033",
+        "unit_id": "ms-deli:u:0008",
+        "order": 2,
+        "kind": "review",
+        "item_refs": [
+          "ms-deli:w:0055",
+          "ms-deli:w:0056",
+          "ms-deli:w:0057"
+        ],
+        "xp_reward": 10
+      },
+      {
+        "id": "ms-deli:l:0034",
+        "unit_id": "ms-deli:u:0008",
+        "order": 3,
+        "kind": "boss",
+        "item_refs": [
+          "ms-deli:w:0055",
+          "ms-deli:w:0056",
+          "ms-deli:w:0057"
+        ],
+        "xp_reward": 30
+      }
+    ]
+  },
+  {
+    "id": "ms-deli:u:0009",
+    "course_id": "ms-deli",
+    "title": "Di Rumah",
+    "theme": "rumah",
+    "order": 9,
+    "level": 2,
+    "lessons": [
+      {
+        "id": "ms-deli:l:0035",
+        "unit_id": "ms-deli:u:0009",
+        "order": 1,
+        "kind": "vocab",
+        "item_refs": [
+          "ms-deli:w:0058",
+          "ms-deli:w:0059",
+          "ms-deli:w:0060",
+          "ms-deli:w:0061",
+          "ms-deli:w:0062",
+          "ms-deli:w:0063"
+        ],
+        "xp_reward": 15
+      },
+      {
+        "id": "ms-deli:l:0036",
+        "unit_id": "ms-deli:u:0009",
+        "order": 2,
+        "kind": "review",
+        "item_refs": [
+          "ms-deli:w:0058",
+          "ms-deli:w:0059",
+          "ms-deli:w:0060",
+          "ms-deli:w:0061",
+          "ms-deli:w:0062",
+          "ms-deli:w:0063"
+        ],
+        "xp_reward": 10
+      },
+      {
+        "id": "ms-deli:l:0037",
+        "unit_id": "ms-deli:u:0009",
+        "order": 3,
+        "kind": "boss",
+        "item_refs": [
+          "ms-deli:w:0058",
+          "ms-deli:w:0059",
+          "ms-deli:w:0060",
+          "ms-deli:w:0061",
+          "ms-deli:w:0062",
+          "ms-deli:w:0063"
+        ],
+        "xp_reward": 30
+      }
+    ]
+  },
+  {
+    "id": "ms-deli:u:0010",
+    "course_id": "ms-deli",
+    "title": "Perasaan Hati",
+    "theme": "perasaan",
+    "order": 10,
+    "level": 2,
+    "lessons": [
+      {
+        "id": "ms-deli:l:0038",
+        "unit_id": "ms-deli:u:0010",
+        "order": 1,
+        "kind": "vocab",
+        "item_refs": [
+          "ms-deli:w:0064",
+          "ms-deli:w:0065",
+          "ms-deli:w:0066",
+          "ms-deli:w:0067"
+        ],
+        "xp_reward": 15
+      },
+      {
+        "id": "ms-deli:l:0039",
+        "unit_id": "ms-deli:u:0010",
+        "order": 2,
+        "kind": "review",
+        "item_refs": [
+          "ms-deli:w:0064",
+          "ms-deli:w:0065",
+          "ms-deli:w:0066",
+          "ms-deli:w:0067"
+        ],
+        "xp_reward": 10
+      },
+      {
+        "id": "ms-deli:l:0040",
+        "unit_id": "ms-deli:u:0010",
+        "order": 3,
+        "kind": "boss",
+        "item_refs": [
+          "ms-deli:w:0064",
+          "ms-deli:w:0065",
+          "ms-deli:w:0066",
+          "ms-deli:w:0067"
+        ],
+        "xp_reward": 30
+      }
+    ]
+  }
+]

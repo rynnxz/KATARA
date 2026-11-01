@@ -1,0 +1,21 @@
+{
+  "schema_version": 1,
+  "courses": {
+    "ms-deli": {
+      "content_version": 1,
+      "checksum": "b699225f9bcda70c78e3a0c48fa52f49030579988e70bd6a875b185f2bcee142",
+      "counts": {
+        "words": 67,
+        "phrases": 10,
+        "sentences": 10,
+        "dialogues": 2,
+        "letters": 6,
+        "articles": 3,
+        "units": 10,
+        "lessons": 40,
+        "quiz_bank": 62,
+        "collection_cards": 5
+      }
+    }
+  }
+}

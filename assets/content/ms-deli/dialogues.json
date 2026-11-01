@@ -1,0 +1,70 @@
+[
+  {
+    "id": "ms-deli:d:0001",
+    "course_id": "ms-deli",
+    "title": "Menyapa tetangga",
+    "level": 1,
+    "unit_id": "ms-deli:u:0001",
+    "validation_status": "draft",
+    "lines": [
+      {
+        "order": 1,
+        "speaker": "Kak Ani",
+        "deli": "Ape kabar?",
+        "indonesia": "Apa kabar?"
+      },
+      {
+        "order": 2,
+        "speaker": "Pemain",
+        "deli": "Kabar baik, kak.",
+        "indonesia": "Kabar baik, kak."
+      },
+      {
+        "order": 3,
+        "speaker": "Kak Ani",
+        "deli": "Jemput masuk.",
+        "indonesia": "Silakan masuk."
+      },
+      {
+        "order": 4,
+        "speaker": "Pemain",
+        "deli": "Terime kasih, kak.",
+        "indonesia": "Terima kasih, kak."
+      }
+    ]
+  },
+  {
+    "id": "ms-deli:d:0002",
+    "course_id": "ms-deli",
+    "title": "Di meja makan",
+    "level": 1,
+    "unit_id": "ms-deli:u:0004",
+    "validation_status": "draft",
+    "lines": [
+      {
+        "order": 1,
+        "speaker": "Mak",
+        "deli": "Makan, dik.",
+        "indonesia": "Makan, dik."
+      },
+      {
+        "order": 2,
+        "speaker": "Pemain",
+        "deli": "Gulai ni lemak kali, mak.",
+        "indonesia": "Gulai ini gurih sekali, bu."
+      },
+      {
+        "order": 3,
+        "speaker": "Mak",
+        "deli": "Nak minum ape?",
+        "indonesia": "Mau minum apa?"
+      },
+      {
+        "order": 4,
+        "speaker": "Pemain",
+        "deli": "Air je, mak.",
+        "indonesia": "Air saja, bu."
+      }
+    ]
+  }
+]

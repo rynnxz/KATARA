@@ -1,0 +1,393 @@
+import 'dart:async';
+import 'package:drift/drift.dart';
+import 'package:drift/native.dart';
+import 'package:drift_flutter/drift_flutter.dart';
+
+/// Database SQLite lokal KATARA menggunakan `drift` (Bagian 6).
+/// Mencakup 15 tabel konten (6.1), 9 tabel progres (6.2), dan tabel `reports` (11.3).
+class AppDatabase extends GeneratedDatabase {
+  AppDatabase([QueryExecutor? executor])
+      : super(executor ?? driftDatabase(name: 'katara_db'));
+
+  factory AppDatabase.memory() => AppDatabase(NativeDatabase.memory());
+
+  final StreamController<String> _changeController =
+      StreamController<String>.broadcast();
+
+  Stream<String> get tableChanges => _changeController.stream;
+
+  void notifyTableChanged(String table) {
+    if (!_changeController.isClosed) {
+      _changeController.add(table);
+    }
+  }
+
+  @override
+  int get schemaVersion => 1;
+
+  @override
+  Iterable<TableInfo<Table, Object?>> get allTables => const [];
+
+  @override
+  MigrationStrategy get migration => MigrationStrategy(
+        onCreate: (m) async {
+          await _createAllTables();
+        },
+      );
+
+  Future<void> ensureInitialized() async {
+    await customSelect('SELECT 1').get();
+  }
+
+  Future<void> _createAllTables() async {
+    // 6.1 Tabel Konten (Read-only dari sisi aplikasi)
+    await customStatement('''
+      CREATE TABLE IF NOT EXISTS languages (
+        id TEXT PRIMARY KEY NOT NULL,
+        name TEXT NOT NULL,
+        tagline TEXT NOT NULL,
+        sort_order INTEGER NOT NULL DEFAULT 1
+      )
+    ''');
+
+    await customStatement('''
+      CREATE TABLE IF NOT EXISTS courses (
+        id TEXT PRIMARY KEY NOT NULL,
+        language_id TEXT NOT NULL,
+        name TEXT NOT NULL,
+        region_label TEXT NOT NULL,
+        status TEXT NOT NULL,
+        accent_hex TEXT NOT NULL,
+        content_version INTEGER NOT NULL DEFAULT 0,
+        has_jawi INTEGER NOT NULL DEFAULT 0
+      )
+    ''');
+
+    await customStatement('''
+      CREATE TABLE IF NOT EXISTS words (
+        id TEXT PRIMARY KEY NOT NULL,
+        course_id TEXT NOT NULL,
+        deli TEXT NOT NULL,
+        indonesia TEXT NOT NULL,
+        jawi TEXT,
+        category TEXT NOT NULL,
+        level INTEGER NOT NULL DEFAULT 1,
+        unit_id TEXT NOT NULL,
+        pos TEXT NOT NULL,
+        register TEXT NOT NULL,
+        raw_register TEXT NOT NULL DEFAULT 'deli',
+        notes TEXT,
+        audio_path TEXT,
+        image_path TEXT,
+        validation_status TEXT NOT NULL DEFAULT 'draft',
+        deprecated INTEGER NOT NULL DEFAULT 0
+      )
+    ''');
+
+    await customStatement('''
+      CREATE TABLE IF NOT EXISTS phrases (
+        id TEXT PRIMARY KEY NOT NULL,
+        course_id TEXT NOT NULL,
+        deli TEXT NOT NULL,
+        indonesia TEXT NOT NULL,
+        jawi TEXT,
+        level INTEGER NOT NULL DEFAULT 1,
+        unit_id TEXT NOT NULL,
+        audio_path TEXT,
+        cultural_note TEXT,
+        validation_status TEXT NOT NULL DEFAULT 'draft',
+        deprecated INTEGER NOT NULL DEFAULT 0
+      )
+    ''');
+
+    await customStatement('''
+      CREATE TABLE IF NOT EXISTS sentences (
+        id TEXT PRIMARY KEY NOT NULL,
+        course_id TEXT NOT NULL,
+        deli TEXT NOT NULL,
+        indonesia TEXT NOT NULL,
+        word_ids_json TEXT NOT NULL,
+        level INTEGER NOT NULL DEFAULT 1,
+        validation_status TEXT NOT NULL DEFAULT 'draft',
+        deprecated INTEGER NOT NULL DEFAULT 0
+      )
+    ''');
+
+    await customStatement('''
+      CREATE TABLE IF NOT EXISTS dialogues (
+        id TEXT PRIMARY KEY NOT NULL,
+        course_id TEXT NOT NULL,
+        title TEXT NOT NULL,
+        level INTEGER NOT NULL DEFAULT 1,
+        unit_id TEXT NOT NULL,
+        validation_status TEXT NOT NULL DEFAULT 'draft',
+        deprecated INTEGER NOT NULL DEFAULT 0
+      )
+    ''');
+
+    await customStatement('''
+      CREATE TABLE IF NOT EXISTS dialogue_lines (
+        id TEXT PRIMARY KEY NOT NULL,
+        course_id TEXT NOT NULL,
+        dialogue_id TEXT NOT NULL,
+        line_order INTEGER NOT NULL,
+        speaker TEXT NOT NULL,
+        deli TEXT NOT NULL,
+        indonesia TEXT NOT NULL
+      )
+    ''');
+
+    await customStatement('''
+      CREATE TABLE IF NOT EXISTS letters (
+        id TEXT PRIMARY KEY NOT NULL,
+        course_id TEXT NOT NULL,
+        glyph TEXT NOT NULL,
+        name TEXT NOT NULL,
+        sound TEXT NOT NULL,
+        example_word_jawi TEXT,
+        example_word_latin TEXT,
+        forms_json TEXT NOT NULL,
+        connects_to_next INTEGER NOT NULL DEFAULT 1,
+        validation_status TEXT NOT NULL DEFAULT 'draft',
+        deprecated INTEGER NOT NULL DEFAULT 0
+      )
+    ''');
+
+    await customStatement('''
+      CREATE TABLE IF NOT EXISTS articles (
+        id TEXT PRIMARY KEY NOT NULL,
+        course_id TEXT NOT NULL,
+        title TEXT NOT NULL,
+        body_markdown TEXT,
+        sources_json TEXT NOT NULL,
+        verification_notes TEXT,
+        status TEXT NOT NULL DEFAULT 'draft',
+        card_id TEXT,
+        unlock_after_unit_id TEXT,
+        deprecated INTEGER NOT NULL DEFAULT 0
+      )
+    ''');
+
+    await customStatement('''
+      CREATE TABLE IF NOT EXISTS units (
+        id TEXT PRIMARY KEY NOT NULL,
+        course_id TEXT NOT NULL,
+        title TEXT NOT NULL,
+        theme TEXT NOT NULL,
+        sort_order INTEGER NOT NULL,
+        level INTEGER NOT NULL DEFAULT 1,
+        deprecated INTEGER NOT NULL DEFAULT 0
+      )
+    ''');
+
+    await customStatement('''
+      CREATE TABLE IF NOT EXISTS lessons (
+        id TEXT PRIMARY KEY NOT NULL,
+        course_id TEXT NOT NULL,
+        unit_id TEXT NOT NULL,
+        sort_order INTEGER NOT NULL,
+        kind TEXT NOT NULL,
+        xp_reward INTEGER NOT NULL DEFAULT 15,
+        deprecated INTEGER NOT NULL DEFAULT 0
+      )
+    ''');
+
+    await customStatement('''
+      CREATE TABLE IF NOT EXISTS lesson_items (
+        course_id TEXT NOT NULL,
+        lesson_id TEXT NOT NULL,
+        item_id TEXT NOT NULL,
+        sort_order INTEGER NOT NULL,
+        PRIMARY KEY (lesson_id, item_id)
+      )
+    ''');
+
+    await customStatement('''
+      CREATE TABLE IF NOT EXISTS quiz_bank (
+        id TEXT PRIMARY KEY NOT NULL,
+        course_id TEXT NOT NULL,
+        lesson_id TEXT,
+        exercise_type TEXT NOT NULL,
+        prompt TEXT NOT NULL,
+        options_json TEXT NOT NULL,
+        correct_index INTEGER NOT NULL DEFAULT 0,
+        pairs_json TEXT,
+        correct_sentence TEXT,
+        ref_item_id TEXT,
+        topic TEXT NOT NULL,
+        validation_status TEXT NOT NULL DEFAULT 'draft',
+        needs_verification INTEGER NOT NULL DEFAULT 0,
+        deprecated INTEGER NOT NULL DEFAULT 0
+      )
+    ''');
+
+    await customStatement('''
+      CREATE TABLE IF NOT EXISTS collection_cards (
+        id TEXT PRIMARY KEY NOT NULL,
+        course_id TEXT NOT NULL,
+        name TEXT NOT NULL,
+        unlock_after_unit_id TEXT,
+        fact TEXT,
+        image_path TEXT,
+        article_id TEXT,
+        validation_status TEXT NOT NULL DEFAULT 'draft',
+        deprecated INTEGER NOT NULL DEFAULT 0
+      )
+    ''');
+
+    await customStatement('''
+      CREATE TABLE IF NOT EXISTS content_meta (
+        course_id TEXT PRIMARY KEY NOT NULL,
+        content_version INTEGER NOT NULL,
+        checksum TEXT NOT NULL,
+        updated_at TEXT NOT NULL
+      )
+    ''');
+
+    // 6.2 Tabel Progres Pengguna
+    await customStatement('''
+      CREATE TABLE IF NOT EXISTS user_stats (
+        id INTEGER PRIMARY KEY NOT NULL CHECK (id = 1),
+        xp_total INTEGER NOT NULL DEFAULT 0,
+        level INTEGER NOT NULL DEFAULT 1,
+        coins INTEGER NOT NULL DEFAULT 20,
+        hearts INTEGER NOT NULL DEFAULT 5,
+        hearts_updated_at TEXT NOT NULL,
+        streak_current INTEGER NOT NULL DEFAULT 0,
+        streak_best INTEGER NOT NULL DEFAULT 0,
+        last_active_date TEXT,
+        streak_freezes INTEGER NOT NULL DEFAULT 1,
+        daily_goal_minutes INTEGER NOT NULL DEFAULT 10,
+        active_course_id TEXT,
+        display_name TEXT NOT NULL DEFAULT 'Pelajar',
+        learning_goal TEXT NOT NULL DEFAULT 'budaya',
+        casual_mode INTEGER NOT NULL DEFAULT 0,
+        onboarding_completed INTEGER NOT NULL DEFAULT 0,
+        updated_at TEXT NOT NULL
+      )
+    ''');
+
+    await customStatement('''
+      CREATE TABLE IF NOT EXISTS course_progress (
+        course_id TEXT NOT NULL,
+        lesson_id TEXT NOT NULL,
+        stars INTEGER NOT NULL DEFAULT 0,
+        best_score INTEGER NOT NULL DEFAULT 0,
+        completed_at TEXT NOT NULL,
+        PRIMARY KEY (course_id, lesson_id)
+      )
+    ''');
+
+    await customStatement('''
+      CREATE TABLE IF NOT EXISTS word_mastery (
+        course_id TEXT NOT NULL,
+        item_id TEXT NOT NULL,
+        item_type TEXT NOT NULL,
+        strength INTEGER NOT NULL DEFAULT 0,
+        correct_count INTEGER NOT NULL DEFAULT 0,
+        wrong_count INTEGER NOT NULL DEFAULT 0,
+        last_seen_at TEXT NOT NULL,
+        next_review_at TEXT NOT NULL,
+        PRIMARY KEY (course_id, item_id)
+      )
+    ''');
+
+    await customStatement('''
+      CREATE TABLE IF NOT EXISTS daily_quests (
+        date TEXT NOT NULL,
+        quest_id TEXT NOT NULL,
+        progress INTEGER NOT NULL DEFAULT 0,
+        target INTEGER NOT NULL DEFAULT 1,
+        claimed INTEGER NOT NULL DEFAULT 0,
+        PRIMARY KEY (date, quest_id)
+      )
+    ''');
+
+    await customStatement('''
+      CREATE TABLE IF NOT EXISTS achievements_unlocked (
+        achievement_id TEXT PRIMARY KEY NOT NULL,
+        unlocked_at TEXT NOT NULL
+      )
+    ''');
+
+    await customStatement('''
+      CREATE TABLE IF NOT EXISTS collection_unlocked (
+        course_id TEXT NOT NULL,
+        card_id TEXT NOT NULL,
+        unlocked_at TEXT NOT NULL,
+        PRIMARY KEY (course_id, card_id)
+      )
+    ''');
+
+    await customStatement('''
+      CREATE TABLE IF NOT EXISTS inventory (
+        item_id TEXT PRIMARY KEY NOT NULL,
+        qty INTEGER NOT NULL DEFAULT 0
+      )
+    ''');
+
+    await customStatement('''
+      CREATE TABLE IF NOT EXISTS xp_log (
+        id INTEGER PRIMARY KEY AUTOINCREMENT,
+        date TEXT NOT NULL,
+        course_id TEXT NOT NULL,
+        amount INTEGER NOT NULL,
+        source TEXT NOT NULL
+      )
+    ''');
+
+    await customStatement('''
+      CREATE TABLE IF NOT EXISTS pending_sync (
+        id INTEGER PRIMARY KEY AUTOINCREMENT,
+        entity TEXT NOT NULL,
+        payload_json TEXT NOT NULL,
+        created_at TEXT NOT NULL
+      )
+    ''');
+
+    await customStatement('''
+      CREATE TABLE IF NOT EXISTS reports (
+        id INTEGER PRIMARY KEY AUTOINCREMENT,
+        course_id TEXT NOT NULL,
+        item_id TEXT NOT NULL,
+        item_type TEXT NOT NULL,
+        reason TEXT NOT NULL,
+        note TEXT,
+        created_at TEXT NOT NULL
+      )
+    ''');
+
+    // Index performa (Bagian 9)
+    await customStatement(
+      'CREATE INDEX IF NOT EXISTS idx_words_course_level ON words(course_id, level)',
+    );
+    await customStatement(
+      'CREATE INDEX IF NOT EXISTS idx_phrases_course_level ON phrases(course_id, level)',
+    );
+    await customStatement(
+      'CREATE INDEX IF NOT EXISTS idx_mastery_course_item ON word_mastery(course_id, item_id)',
+    );
+    await customStatement(
+      'CREATE INDEX IF NOT EXISTS idx_mastery_next_review ON word_mastery(next_review_at)',
+    );
+
+    final nowIso = DateTime.now().toIso8601String();
+    await customStatement(
+      '''
+      INSERT OR IGNORE INTO user_stats (
+        id, xp_total, level, coins, hearts, hearts_updated_at,
+        streak_current, streak_best, last_active_date, streak_freezes,
+        daily_goal_minutes, active_course_id, display_name, learning_goal,
+        casual_mode, onboarding_completed, updated_at
+      ) VALUES (1, 0, 1, 20, 5, ?, 0, 0, NULL, 1, 10, NULL, 'Pelajar', 'budaya', 0, 0, ?)
+      ''',
+      [nowIso, nowIso],
+    );
+  }
+
+  @override
+  Future<void> close() async {
+    await _changeController.close();
+    await super.close();
+  }
+}

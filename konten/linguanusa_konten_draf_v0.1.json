@@ -1,0 +1,2832 @@
+{
+  "meta": {
+    "proyek": "LinguaNusa",
+    "bahasa": "Melayu Deli",
+    "versi_konten": "0.1-draf",
+    "catatan": "Semua item berstatus 'draf'. Jawi, audio, gambar, isi artikel dan fakta kartu sengaja dikosongkan (null) sampai tersedia/terverifikasi. Item ragam 'deli_cek'/'baku_cek' wajib dicek penutur."
+  },
+  "config": {
+    "xp_level_formula": "xp_untuk_naik_ke_level_N = 50 * N (awal; diperlambat di level tinggi)",
+    "spaced_repetition": {
+      "interval_hari": [
+        1,
+        3,
+        7,
+        14,
+        30
+      ],
+      "jika_salah": "kembali ke interval 1 hari"
+    },
+    "nyawa": {
+      "level1_aktif": false,
+      "level2_aktif": true
+    },
+    "mvp_tanpa_audio": true,
+    "tipe_latihan_aktif_mvp": [
+      "pilihan_ganda",
+      "pasangkan",
+      "susun_kalimat",
+      "isi_kosong",
+      "ketik_terjemahan"
+    ],
+    "tipe_latihan_ditunda_sampai_audio_ada": [
+      "dengar_pilih",
+      "dengar_ketik"
+    ],
+    "aturan_urutan": "tipe latihan yang sama maksimal 2x berturut-turut; soal salah masuk antrean ulang di akhir pelajaran",
+    "gelar_pemain": [
+      {
+        "level": "1-4",
+        "gelar": "Perantau"
+      },
+      {
+        "level": "5-9",
+        "gelar": "Anak Pekan"
+      },
+      {
+        "level": "10-14",
+        "gelar": "Penutur Muda"
+      },
+      {
+        "level": "15-19",
+        "gelar": "Pandai Pantun"
+      },
+      {
+        "level": "20-29",
+        "gelar": "Orang Kaya"
+      },
+      {
+        "level": "30+",
+        "gelar": "Datuk / Tengku Bahasa"
+      }
+    ]
+  },
+  "units": [
+    {
+      "id": "u01",
+      "judul": "Salam & Sapa",
+      "tema": "sapaan",
+      "urutan": 1,
+      "level_min": 1,
+      "ikon": null
+    },
+    {
+      "id": "u02",
+      "judul": "Angka Pertama",
+      "tema": "angka",
+      "urutan": 2,
+      "level_min": 1,
+      "ikon": null
+    },
+    {
+      "id": "u03",
+      "judul": "Keluarga & Panggilan",
+      "tema": "keluarga",
+      "urutan": 3,
+      "level_min": 1,
+      "ikon": null
+    },
+    {
+      "id": "u04",
+      "judul": "Di Meja Makan",
+      "tema": "makanan",
+      "urutan": 4,
+      "level_min": 1,
+      "ikon": null
+    },
+    {
+      "id": "u05",
+      "judul": "Tanya Dasar",
+      "tema": "tanya",
+      "urutan": 5,
+      "level_min": 1,
+      "ikon": null
+    }
+  ],
+  "lessons": [
+    {
+      "id": "u01_l1",
+      "unit_id": "u01",
+      "tipe": "kosakata",
+      "urutan": 1,
+      "xp": 15
+    },
+    {
+      "id": "u01_l2",
+      "unit_id": "u01",
+      "tipe": "frasa",
+      "urutan": 2,
+      "xp": 15
+    },
+    {
+      "id": "u01_l3",
+      "unit_id": "u01",
+      "tipe": "dialog",
+      "urutan": 3,
+      "xp": 15
+    },
+    {
+      "id": "u01_l4",
+      "unit_id": "u01",
+      "tipe": "review",
+      "urutan": 4,
+      "xp": 10
+    },
+    {
+      "id": "u01_l5",
+      "unit_id": "u01",
+      "tipe": "boss",
+      "urutan": 5,
+      "xp": 30
+    },
+    {
+      "id": "u02_l1",
+      "unit_id": "u02",
+      "tipe": "kosakata",
+      "urutan": 1,
+      "xp": 15
+    },
+    {
+      "id": "u02_l2",
+      "unit_id": "u02",
+      "tipe": "frasa",
+      "urutan": 2,
+      "xp": 15
+    },
+    {
+      "id": "u02_l3",
+      "unit_id": "u02",
+      "tipe": "kosakata",
+      "urutan": 3,
+      "xp": 15
+    },
+    {
+      "id": "u02_l4",
+      "unit_id": "u02",
+      "tipe": "review",
+      "urutan": 4,
+      "xp": 10
+    },
+    {
+      "id": "u02_l5",
+      "unit_id": "u02",
+      "tipe": "boss",
+      "urutan": 5,
+      "xp": 30
+    },
+    {
+      "id": "u03_l1",
+      "unit_id": "u03",
+      "tipe": "kosakata",
+      "urutan": 1,
+      "xp": 15
+    },
+    {
+      "id": "u03_l2",
+      "unit_id": "u03",
+      "tipe": "budaya",
+      "urutan": 2,
+      "xp": 15
+    },
+    {
+      "id": "u03_l3",
+      "unit_id": "u03",
+      "tipe": "frasa",
+      "urutan": 3,
+      "xp": 15
+    },
+    {
+      "id": "u03_l4",
+      "unit_id": "u03",
+      "tipe": "review",
+      "urutan": 4,
+      "xp": 10
+    },
+    {
+      "id": "u03_l5",
+      "unit_id": "u03",
+      "tipe": "boss",
+      "urutan": 5,
+      "xp": 30
+    },
+    {
+      "id": "u04_l1",
+      "unit_id": "u04",
+      "tipe": "kosakata",
+      "urutan": 1,
+      "xp": 15
+    },
+    {
+      "id": "u04_l2",
+      "unit_id": "u04",
+      "tipe": "kosakata",
+      "urutan": 2,
+      "xp": 15
+    },
+    {
+      "id": "u04_l3",
+      "unit_id": "u04",
+      "tipe": "dialog",
+      "urutan": 3,
+      "xp": 15
+    },
+    {
+      "id": "u04_l4",
+      "unit_id": "u04",
+      "tipe": "review",
+      "urutan": 4,
+      "xp": 10
+    },
+    {
+      "id": "u04_l5",
+      "unit_id": "u04",
+      "tipe": "boss",
+      "urutan": 5,
+      "xp": 30
+    },
+    {
+      "id": "u05_l1",
+      "unit_id": "u05",
+      "tipe": "kosakata",
+      "urutan": 1,
+      "xp": 15
+    },
+    {
+      "id": "u05_l2",
+      "unit_id": "u05",
+      "tipe": "frasa",
+      "urutan": 2,
+      "xp": 15
+    },
+    {
+      "id": "u05_l3",
+      "unit_id": "u05",
+      "tipe": "dialog",
+      "urutan": 3,
+      "xp": 15
+    },
+    {
+      "id": "u05_l4",
+      "unit_id": "u05",
+      "tipe": "review",
+      "urutan": 4,
+      "xp": 10
+    },
+    {
+      "id": "u05_l5",
+      "unit_id": "u05",
+      "tipe": "boss",
+      "urutan": 5,
+      "xp": 30
+    }
+  ],
+  "words": [
+    {
+      "id": "w001",
+      "deli": "kabar",
+      "indonesia": "kabar",
+      "jawi": null,
+      "kategori": "sapaan",
+      "level": 1,
+      "unit_id": "u01",
+      "tipe": "benda",
+      "ragam": "deli",
+      "audio_path": null,
+      "image_path": null,
+      "status_validasi": "draf",
+      "catatan": null
+    },
+    {
+      "id": "w002",
+      "deli": "jemput",
+      "indonesia": "silakan / mengundang",
+      "jawi": null,
+      "kategori": "sapaan",
+      "level": 1,
+      "unit_id": "u01",
+      "tipe": "kerja",
+      "ragam": "deli",
+      "audio_path": null,
+      "image_path": null,
+      "status_validasi": "draf",
+      "catatan": null
+    },
+    {
+      "id": "w003",
+      "deli": "masuk",
+      "indonesia": "masuk",
+      "jawi": null,
+      "kategori": "sapaan",
+      "level": 1,
+      "unit_id": "u01",
+      "tipe": "kerja",
+      "ragam": "deli",
+      "audio_path": null,
+      "image_path": null,
+      "status_validasi": "draf",
+      "catatan": null
+    },
+    {
+      "id": "w004",
+      "deli": "terime",
+      "indonesia": "terima",
+      "jawi": null,
+      "kategori": "sapaan",
+      "level": 1,
+      "unit_id": "u01",
+      "tipe": "kerja",
+      "ragam": "deli",
+      "audio_path": null,
+      "image_path": null,
+      "status_validasi": "draf",
+      "catatan": null
+    },
+    {
+      "id": "w005",
+      "deli": "kasih",
+      "indonesia": "kasih",
+      "jawi": null,
+      "kategori": "sapaan",
+      "level": 1,
+      "unit_id": "u01",
+      "tipe": "benda",
+      "ragam": "deli",
+      "audio_path": null,
+      "image_path": null,
+      "status_validasi": "draf",
+      "catatan": null
+    },
+    {
+      "id": "w006",
+      "deli": "maaf",
+      "indonesia": "maaf",
+      "jawi": null,
+      "kategori": "sapaan",
+      "level": 1,
+      "unit_id": "u01",
+      "tipe": "benda",
+      "ragam": "deli",
+      "audio_path": null,
+      "image_path": null,
+      "status_validasi": "draf",
+      "catatan": null
+    },
+    {
+      "id": "w007",
+      "deli": "satu",
+      "indonesia": "satu",
+      "jawi": null,
+      "kategori": "angka",
+      "level": 1,
+      "unit_id": "u02",
+      "tipe": "angka",
+      "ragam": "deli",
+      "audio_path": null,
+      "image_path": null,
+      "status_validasi": "draf",
+      "catatan": null
+    },
+    {
+      "id": "w008",
+      "deli": "due",
+      "indonesia": "dua",
+      "jawi": null,
+      "kategori": "angka",
+      "level": 1,
+      "unit_id": "u02",
+      "tipe": "angka",
+      "ragam": "deli_cek",
+      "audio_path": null,
+      "image_path": null,
+      "status_validasi": "draf",
+      "catatan": "bentuk akhiran -e perlu dicek penutur"
+    },
+    {
+      "id": "w009",
+      "deli": "tige",
+      "indonesia": "tiga",
+      "jawi": null,
+      "kategori": "angka",
+      "level": 1,
+      "unit_id": "u02",
+      "tipe": "angka",
+      "ragam": "deli_cek",
+      "audio_path": null,
+      "image_path": null,
+      "status_validasi": "draf",
+      "catatan": "bentuk akhiran -e perlu dicek penutur"
+    },
+    {
+      "id": "w010",
+      "deli": "empat",
+      "indonesia": "empat",
+      "jawi": null,
+      "kategori": "angka",
+      "level": 1,
+      "unit_id": "u02",
+      "tipe": "angka",
+      "ragam": "deli",
+      "audio_path": null,
+      "image_path": null,
+      "status_validasi": "draf",
+      "catatan": null
+    },
+    {
+      "id": "w011",
+      "deli": "lime",
+      "indonesia": "lima",
+      "jawi": null,
+      "kategori": "angka",
+      "level": 1,
+      "unit_id": "u02",
+      "tipe": "angka",
+      "ragam": "deli_cek",
+      "audio_path": null,
+      "image_path": null,
+      "status_validasi": "draf",
+      "catatan": "bentuk akhiran -e perlu dicek penutur"
+    },
+    {
+      "id": "w012",
+      "deli": "enam",
+      "indonesia": "enam",
+      "jawi": null,
+      "kategori": "angka",
+      "level": 1,
+      "unit_id": "u02",
+      "tipe": "angka",
+      "ragam": "deli",
+      "audio_path": null,
+      "image_path": null,
+      "status_validasi": "draf",
+      "catatan": null
+    },
+    {
+      "id": "w013",
+      "deli": "tujuh",
+      "indonesia": "tujuh",
+      "jawi": null,
+      "kategori": "angka",
+      "level": 1,
+      "unit_id": "u02",
+      "tipe": "angka",
+      "ragam": "deli",
+      "audio_path": null,
+      "image_path": null,
+      "status_validasi": "draf",
+      "catatan": null
+    },
+    {
+      "id": "w014",
+      "deli": "lapan",
+      "indonesia": "delapan",
+      "jawi": null,
+      "kategori": "angka",
+      "level": 1,
+      "unit_id": "u02",
+      "tipe": "angka",
+      "ragam": "deli_cek",
+      "audio_path": null,
+      "image_path": null,
+      "status_validasi": "draf",
+      "catatan": "cek ejaan/lafal penutur (lapan / delapan)"
+    },
+    {
+      "id": "w015",
+      "deli": "sembilan",
+      "indonesia": "sembilan",
+      "jawi": null,
+      "kategori": "angka",
+      "level": 1,
+      "unit_id": "u02",
+      "tipe": "angka",
+      "ragam": "deli",
+      "audio_path": null,
+      "image_path": null,
+      "status_validasi": "draf",
+      "catatan": null
+    },
+    {
+      "id": "w016",
+      "deli": "sepuluh",
+      "indonesia": "sepuluh",
+      "jawi": null,
+      "kategori": "angka",
+      "level": 1,
+      "unit_id": "u02",
+      "tipe": "angka",
+      "ragam": "deli",
+      "audio_path": null,
+      "image_path": null,
+      "status_validasi": "draf",
+      "catatan": null
+    },
+    {
+      "id": "w017",
+      "deli": "seratus",
+      "indonesia": "seratus",
+      "jawi": null,
+      "kategori": "angka",
+      "level": 1,
+      "unit_id": "u02",
+      "tipe": "angka",
+      "ragam": "deli",
+      "audio_path": null,
+      "image_path": null,
+      "status_validasi": "draf",
+      "catatan": null
+    },
+    {
+      "id": "w018",
+      "deli": "ribu",
+      "indonesia": "ribu",
+      "jawi": null,
+      "kategori": "angka",
+      "level": 1,
+      "unit_id": "u02",
+      "tipe": "angka",
+      "ragam": "deli",
+      "audio_path": null,
+      "image_path": null,
+      "status_validasi": "draf",
+      "catatan": null
+    },
+    {
+      "id": "w019",
+      "deli": "mak",
+      "indonesia": "ibu",
+      "jawi": null,
+      "kategori": "keluarga",
+      "level": 1,
+      "unit_id": "u03",
+      "tipe": "benda",
+      "ragam": "deli",
+      "audio_path": null,
+      "image_path": null,
+      "status_validasi": "draf",
+      "catatan": null
+    },
+    {
+      "id": "w020",
+      "deli": "abah",
+      "indonesia": "ayah",
+      "jawi": null,
+      "kategori": "keluarga",
+      "level": 1,
+      "unit_id": "u03",
+      "tipe": "benda",
+      "ragam": "deli",
+      "audio_path": null,
+      "image_path": null,
+      "status_validasi": "draf",
+      "catatan": null
+    },
+    {
+      "id": "w021",
+      "deli": "abang",
+      "indonesia": "kakak laki-laki",
+      "jawi": null,
+      "kategori": "keluarga",
+      "level": 1,
+      "unit_id": "u03",
+      "tipe": "benda",
+      "ragam": "deli",
+      "audio_path": null,
+      "image_path": null,
+      "status_validasi": "draf",
+      "catatan": null
+    },
+    {
+      "id": "w022",
+      "deli": "kak",
+      "indonesia": "kakak perempuan",
+      "jawi": null,
+      "kategori": "keluarga",
+      "level": 1,
+      "unit_id": "u03",
+      "tipe": "benda",
+      "ragam": "deli",
+      "audio_path": null,
+      "image_path": null,
+      "status_validasi": "draf",
+      "catatan": null
+    },
+    {
+      "id": "w023",
+      "deli": "atok",
+      "indonesia": "kakek",
+      "jawi": null,
+      "kategori": "keluarga",
+      "level": 1,
+      "unit_id": "u03",
+      "tipe": "benda",
+      "ragam": "deli",
+      "audio_path": null,
+      "image_path": null,
+      "status_validasi": "draf",
+      "catatan": null
+    },
+    {
+      "id": "w024",
+      "deli": "tengku",
+      "indonesia": "gelar bangsawan Melayu",
+      "jawi": null,
+      "kategori": "keluarga",
+      "level": 1,
+      "unit_id": "u03",
+      "tipe": "benda",
+      "ragam": "deli_cek",
+      "audio_path": null,
+      "image_path": null,
+      "status_validasi": "draf",
+      "catatan": "istilah gelar: sampaikan dengan benar dan sopan"
+    },
+    {
+      "id": "w025",
+      "deli": "adik",
+      "indonesia": "adik",
+      "jawi": null,
+      "kategori": "keluarga",
+      "level": 1,
+      "unit_id": "u03",
+      "tipe": "benda",
+      "ragam": "deli",
+      "audio_path": null,
+      "image_path": null,
+      "status_validasi": "draf",
+      "catatan": null
+    },
+    {
+      "id": "w026",
+      "deli": "anak",
+      "indonesia": "anak",
+      "jawi": null,
+      "kategori": "keluarga",
+      "level": 1,
+      "unit_id": "u03",
+      "tipe": "benda",
+      "ragam": "deli",
+      "audio_path": null,
+      "image_path": null,
+      "status_validasi": "draf",
+      "catatan": null
+    },
+    {
+      "id": "w027",
+      "deli": "nasi",
+      "indonesia": "nasi",
+      "jawi": null,
+      "kategori": "makanan",
+      "level": 1,
+      "unit_id": "u04",
+      "tipe": "benda",
+      "ragam": "deli",
+      "audio_path": null,
+      "image_path": null,
+      "status_validasi": "draf",
+      "catatan": null
+    },
+    {
+      "id": "w028",
+      "deli": "lauk",
+      "indonesia": "lauk",
+      "jawi": null,
+      "kategori": "makanan",
+      "level": 1,
+      "unit_id": "u04",
+      "tipe": "benda",
+      "ragam": "deli",
+      "audio_path": null,
+      "image_path": null,
+      "status_validasi": "draf",
+      "catatan": null
+    },
+    {
+      "id": "w029",
+      "deli": "gulai",
+      "indonesia": "gulai",
+      "jawi": null,
+      "kategori": "makanan",
+      "level": 1,
+      "unit_id": "u04",
+      "tipe": "benda",
+      "ragam": "deli",
+      "audio_path": null,
+      "image_path": null,
+      "status_validasi": "draf",
+      "catatan": null
+    },
+    {
+      "id": "w030",
+      "deli": "pulut kuning",
+      "indonesia": "nasi ketan kuning",
+      "jawi": null,
+      "kategori": "makanan",
+      "level": 1,
+      "unit_id": "u04",
+      "tipe": "benda",
+      "ragam": "deli",
+      "audio_path": null,
+      "image_path": null,
+      "status_validasi": "draf",
+      "catatan": "kaitkan dengan kartu budaya"
+    },
+    {
+      "id": "w031",
+      "deli": "lemak",
+      "indonesia": "gurih (santan)",
+      "jawi": null,
+      "kategori": "makanan",
+      "level": 1,
+      "unit_id": "u04",
+      "tipe": "sifat",
+      "ragam": "deli_cek",
+      "audio_path": null,
+      "image_path": null,
+      "status_validasi": "draf",
+      "catatan": "cek makna 'lemak' dan frasa 'lemak kali'"
+    },
+    {
+      "id": "w032",
+      "deli": "sedap",
+      "indonesia": "enak",
+      "jawi": null,
+      "kategori": "makanan",
+      "level": 1,
+      "unit_id": "u04",
+      "tipe": "sifat",
+      "ragam": "deli",
+      "audio_path": null,
+      "image_path": null,
+      "status_validasi": "draf",
+      "catatan": null
+    },
+    {
+      "id": "w033",
+      "deli": "pedas",
+      "indonesia": "pedas",
+      "jawi": null,
+      "kategori": "makanan",
+      "level": 1,
+      "unit_id": "u04",
+      "tipe": "sifat",
+      "ragam": "deli",
+      "audio_path": null,
+      "image_path": null,
+      "status_validasi": "draf",
+      "catatan": null
+    },
+    {
+      "id": "w034",
+      "deli": "makan",
+      "indonesia": "makan",
+      "jawi": null,
+      "kategori": "makanan",
+      "level": 1,
+      "unit_id": "u04",
+      "tipe": "kerja",
+      "ragam": "deli",
+      "audio_path": null,
+      "image_path": null,
+      "status_validasi": "draf",
+      "catatan": null
+    },
+    {
+      "id": "w035",
+      "deli": "minum",
+      "indonesia": "minum",
+      "jawi": null,
+      "kategori": "makanan",
+      "level": 1,
+      "unit_id": "u04",
+      "tipe": "kerja",
+      "ragam": "deli",
+      "audio_path": null,
+      "image_path": null,
+      "status_validasi": "draf",
+      "catatan": null
+    },
+    {
+      "id": "w036",
+      "deli": "air",
+      "indonesia": "air",
+      "jawi": null,
+      "kategori": "makanan",
+      "level": 1,
+      "unit_id": "u04",
+      "tipe": "benda",
+      "ragam": "deli",
+      "audio_path": null,
+      "image_path": null,
+      "status_validasi": "draf",
+      "catatan": null
+    },
+    {
+      "id": "w037",
+      "deli": "ape",
+      "indonesia": "apa",
+      "jawi": null,
+      "kategori": "tanya",
+      "level": 1,
+      "unit_id": "u05",
+      "tipe": "tanya",
+      "ragam": "deli",
+      "audio_path": null,
+      "image_path": null,
+      "status_validasi": "draf",
+      "catatan": null
+    },
+    {
+      "id": "w038",
+      "deli": "mane",
+      "indonesia": "mana / di mana",
+      "jawi": null,
+      "kategori": "tanya",
+      "level": 1,
+      "unit_id": "u05",
+      "tipe": "tanya",
+      "ragam": "deli",
+      "audio_path": null,
+      "image_path": null,
+      "status_validasi": "draf",
+      "catatan": null
+    },
+    {
+      "id": "w039",
+      "deli": "sape",
+      "indonesia": "siapa",
+      "jawi": null,
+      "kategori": "tanya",
+      "level": 1,
+      "unit_id": "u05",
+      "tipe": "tanya",
+      "ragam": "deli",
+      "audio_path": null,
+      "image_path": null,
+      "status_validasi": "draf",
+      "catatan": null
+    },
+    {
+      "id": "w040",
+      "deli": "kenape",
+      "indonesia": "mengapa",
+      "jawi": null,
+      "kategori": "tanya",
+      "level": 1,
+      "unit_id": "u05",
+      "tipe": "tanya",
+      "ragam": "deli",
+      "audio_path": null,
+      "image_path": null,
+      "status_validasi": "draf",
+      "catatan": null
+    },
+    {
+      "id": "w041",
+      "deli": "macam mane",
+      "indonesia": "bagaimana",
+      "jawi": null,
+      "kategori": "tanya",
+      "level": 1,
+      "unit_id": "u05",
+      "tipe": "tanya",
+      "ragam": "deli",
+      "audio_path": null,
+      "image_path": null,
+      "status_validasi": "draf",
+      "catatan": null
+    },
+    {
+      "id": "w042",
+      "deli": "bile",
+      "indonesia": "kapan",
+      "jawi": null,
+      "kategori": "tanya",
+      "level": 1,
+      "unit_id": "u05",
+      "tipe": "tanya",
+      "ragam": "deli_cek",
+      "audio_path": null,
+      "image_path": null,
+      "status_validasi": "draf",
+      "catatan": null
+    },
+    {
+      "id": "w043",
+      "deli": "berape",
+      "indonesia": "berapa",
+      "jawi": null,
+      "kategori": "tanya",
+      "level": 1,
+      "unit_id": "u05",
+      "tipe": "tanya",
+      "ragam": "deli",
+      "audio_path": null,
+      "image_path": null,
+      "status_validasi": "draf",
+      "catatan": null
+    },
+    {
+      "id": "w044",
+      "deli": "kerje",
+      "indonesia": "kerja",
+      "jawi": null,
+      "kategori": "aktivitas",
+      "level": 2,
+      "unit_id": "u06",
+      "tipe": "kerja",
+      "ragam": "deli",
+      "audio_path": null,
+      "image_path": null,
+      "status_validasi": "draf",
+      "catatan": null
+    },
+    {
+      "id": "w045",
+      "deli": "belajar",
+      "indonesia": "belajar",
+      "jawi": null,
+      "kategori": "aktivitas",
+      "level": 2,
+      "unit_id": "u06",
+      "tipe": "kerja",
+      "ragam": "deli",
+      "audio_path": null,
+      "image_path": null,
+      "status_validasi": "draf",
+      "catatan": null
+    },
+    {
+      "id": "w046",
+      "deli": "masak",
+      "indonesia": "masak",
+      "jawi": null,
+      "kategori": "aktivitas",
+      "level": 2,
+      "unit_id": "u06",
+      "tipe": "kerja",
+      "ragam": "deli",
+      "audio_path": null,
+      "image_path": null,
+      "status_validasi": "draf",
+      "catatan": null
+    },
+    {
+      "id": "w047",
+      "deli": "pegi",
+      "indonesia": "pergi",
+      "jawi": null,
+      "kategori": "aktivitas",
+      "level": 2,
+      "unit_id": "u06",
+      "tipe": "kerja",
+      "ragam": "deli",
+      "audio_path": null,
+      "image_path": null,
+      "status_validasi": "draf",
+      "catatan": null
+    },
+    {
+      "id": "w048",
+      "deli": "balik",
+      "indonesia": "pulang",
+      "jawi": null,
+      "kategori": "aktivitas",
+      "level": 2,
+      "unit_id": "u06",
+      "tipe": "kerja",
+      "ragam": "deli",
+      "audio_path": null,
+      "image_path": null,
+      "status_validasi": "draf",
+      "catatan": null
+    },
+    {
+      "id": "w049",
+      "deli": "pagi",
+      "indonesia": "pagi",
+      "jawi": null,
+      "kategori": "waktu",
+      "level": 2,
+      "unit_id": "u07",
+      "tipe": "waktu",
+      "ragam": "deli",
+      "audio_path": null,
+      "image_path": null,
+      "status_validasi": "draf",
+      "catatan": null
+    },
+    {
+      "id": "w050",
+      "deli": "petang",
+      "indonesia": "sore",
+      "jawi": null,
+      "kategori": "waktu",
+      "level": 2,
+      "unit_id": "u07",
+      "tipe": "waktu",
+      "ragam": "deli",
+      "audio_path": null,
+      "image_path": null,
+      "status_validasi": "draf",
+      "catatan": null
+    },
+    {
+      "id": "w051",
+      "deli": "esok",
+      "indonesia": "besok",
+      "jawi": null,
+      "kategori": "waktu",
+      "level": 2,
+      "unit_id": "u07",
+      "tipe": "waktu",
+      "ragam": "deli",
+      "audio_path": null,
+      "image_path": null,
+      "status_validasi": "draf",
+      "catatan": null
+    },
+    {
+      "id": "w052",
+      "deli": "Isnin",
+      "indonesia": "Senin",
+      "jawi": null,
+      "kategori": "waktu",
+      "level": 2,
+      "unit_id": "u07",
+      "tipe": "waktu",
+      "ragam": "baku_cek",
+      "audio_path": null,
+      "image_path": null,
+      "status_validasi": "draf",
+      "catatan": "ragam baku; cek pemakaian sehari-hari"
+    },
+    {
+      "id": "w053",
+      "deli": "Khamis",
+      "indonesia": "Kamis",
+      "jawi": null,
+      "kategori": "waktu",
+      "level": 2,
+      "unit_id": "u07",
+      "tipe": "waktu",
+      "ragam": "baku_cek",
+      "audio_path": null,
+      "image_path": null,
+      "status_validasi": "draf",
+      "catatan": "ragam baku; cek pemakaian sehari-hari"
+    },
+    {
+      "id": "w054",
+      "deli": "Ahad",
+      "indonesia": "Minggu",
+      "jawi": null,
+      "kategori": "waktu",
+      "level": 2,
+      "unit_id": "u07",
+      "tipe": "waktu",
+      "ragam": "baku_cek",
+      "audio_path": null,
+      "image_path": null,
+      "status_validasi": "draf",
+      "catatan": null
+    },
+    {
+      "id": "w055",
+      "deli": "beli",
+      "indonesia": "beli",
+      "jawi": null,
+      "kategori": "pekan",
+      "level": 2,
+      "unit_id": "u08",
+      "tipe": "kerja",
+      "ragam": "deli",
+      "audio_path": null,
+      "image_path": null,
+      "status_validasi": "draf",
+      "catatan": null
+    },
+    {
+      "id": "w056",
+      "deli": "jual",
+      "indonesia": "jual",
+      "jawi": null,
+      "kategori": "pekan",
+      "level": 2,
+      "unit_id": "u08",
+      "tipe": "kerja",
+      "ragam": "deli",
+      "audio_path": null,
+      "image_path": null,
+      "status_validasi": "draf",
+      "catatan": null
+    },
+    {
+      "id": "w057",
+      "deli": "bayar",
+      "indonesia": "bayar",
+      "jawi": null,
+      "kategori": "pekan",
+      "level": 2,
+      "unit_id": "u08",
+      "tipe": "kerja",
+      "ragam": "deli",
+      "audio_path": null,
+      "image_path": null,
+      "status_validasi": "draf",
+      "catatan": null
+    },
+    {
+      "id": "w058",
+      "deli": "rumah",
+      "indonesia": "rumah",
+      "jawi": null,
+      "kategori": "rumah",
+      "level": 2,
+      "unit_id": "u09",
+      "tipe": "benda",
+      "ragam": "deli",
+      "audio_path": null,
+      "image_path": null,
+      "status_validasi": "draf",
+      "catatan": null
+    },
+    {
+      "id": "w059",
+      "deli": "bilik",
+      "indonesia": "kamar",
+      "jawi": null,
+      "kategori": "rumah",
+      "level": 2,
+      "unit_id": "u09",
+      "tipe": "benda",
+      "ragam": "baku_cek",
+      "audio_path": null,
+      "image_path": null,
+      "status_validasi": "draf",
+      "catatan": "ragam baku; cek pemakaian sehari-hari"
+    },
+    {
+      "id": "w060",
+      "deli": "tingkap",
+      "indonesia": "jendela",
+      "jawi": null,
+      "kategori": "rumah",
+      "level": 2,
+      "unit_id": "u09",
+      "tipe": "benda",
+      "ragam": "baku_cek",
+      "audio_path": null,
+      "image_path": null,
+      "status_validasi": "draf",
+      "catatan": "ragam baku; cek pemakaian sehari-hari"
+    },
+    {
+      "id": "w061",
+      "deli": "pinggan",
+      "indonesia": "piring",
+      "jawi": null,
+      "kategori": "rumah",
+      "level": 2,
+      "unit_id": "u09",
+      "tipe": "benda",
+      "ragam": "deli",
+      "audio_path": null,
+      "image_path": null,
+      "status_validasi": "draf",
+      "catatan": null
+    },
+    {
+      "id": "w062",
+      "deli": "seluar",
+      "indonesia": "celana",
+      "jawi": null,
+      "kategori": "rumah",
+      "level": 2,
+      "unit_id": "u09",
+      "tipe": "benda",
+      "ragam": "baku_cek",
+      "audio_path": null,
+      "image_path": null,
+      "status_validasi": "draf",
+      "catatan": "ragam baku; cek pemakaian sehari-hari"
+    },
+    {
+      "id": "w063",
+      "deli": "kasut",
+      "indonesia": "sepatu",
+      "jawi": null,
+      "kategori": "rumah",
+      "level": 2,
+      "unit_id": "u09",
+      "tipe": "benda",
+      "ragam": "baku_cek",
+      "audio_path": null,
+      "image_path": null,
+      "status_validasi": "draf",
+      "catatan": "ragam baku; cek pemakaian sehari-hari"
+    },
+    {
+      "id": "w064",
+      "deli": "gembire",
+      "indonesia": "gembira",
+      "jawi": null,
+      "kategori": "perasaan",
+      "level": 2,
+      "unit_id": "u10",
+      "tipe": "sifat",
+      "ragam": "deli",
+      "audio_path": null,
+      "image_path": null,
+      "status_validasi": "draf",
+      "catatan": null
+    },
+    {
+      "id": "w065",
+      "deli": "penat",
+      "indonesia": "lelah",
+      "jawi": null,
+      "kategori": "perasaan",
+      "level": 2,
+      "unit_id": "u10",
+      "tipe": "sifat",
+      "ragam": "deli",
+      "audio_path": null,
+      "image_path": null,
+      "status_validasi": "draf",
+      "catatan": null
+    },
+    {
+      "id": "w066",
+      "deli": "takut",
+      "indonesia": "takut",
+      "jawi": null,
+      "kategori": "perasaan",
+      "level": 2,
+      "unit_id": "u10",
+      "tipe": "sifat",
+      "ragam": "deli",
+      "audio_path": null,
+      "image_path": null,
+      "status_validasi": "draf",
+      "catatan": null
+    },
+    {
+      "id": "w067",
+      "deli": "malu",
+      "indonesia": "malu",
+      "jawi": null,
+      "kategori": "perasaan",
+      "level": 2,
+      "unit_id": "u10",
+      "tipe": "sifat",
+      "ragam": "deli",
+      "audio_path": null,
+      "image_path": null,
+      "status_validasi": "draf",
+      "catatan": null
+    }
+  ],
+  "phrases": [
+    {
+      "id": "p001",
+      "deli": "Ape kabar?",
+      "indonesia": "Apa kabar?",
+      "jawi": null,
+      "level": 1,
+      "unit_id": "u01",
+      "audio_path": null,
+      "catatan_budaya": null,
+      "status_validasi": "draf",
+      "catatan": null
+    },
+    {
+      "id": "p002",
+      "deli": "Kabar baik.",
+      "indonesia": "Kabar baik.",
+      "jawi": null,
+      "level": 1,
+      "unit_id": "u01",
+      "audio_path": null,
+      "catatan_budaya": null,
+      "status_validasi": "draf",
+      "catatan": null
+    },
+    {
+      "id": "p003",
+      "deli": "Jemput masuk.",
+      "indonesia": "Silakan masuk.",
+      "jawi": null,
+      "level": 1,
+      "unit_id": "u01",
+      "audio_path": null,
+      "catatan_budaya": null,
+      "status_validasi": "draf",
+      "catatan": null
+    },
+    {
+      "id": "p004",
+      "deli": "Terime kasih.",
+      "indonesia": "Terima kasih.",
+      "jawi": null,
+      "level": 1,
+      "unit_id": "u01",
+      "audio_path": null,
+      "catatan_budaya": null,
+      "status_validasi": "draf",
+      "catatan": null
+    },
+    {
+      "id": "p005",
+      "deli": "Minta maaf.",
+      "indonesia": "Mohon maaf.",
+      "jawi": null,
+      "level": 1,
+      "unit_id": "u01",
+      "audio_path": null,
+      "catatan_budaya": null,
+      "status_validasi": "draf",
+      "catatan": null
+    },
+    {
+      "id": "p006",
+      "deli": "Selamat pagi.",
+      "indonesia": "Selamat pagi.",
+      "jawi": null,
+      "level": 1,
+      "unit_id": "u01",
+      "audio_path": null,
+      "catatan_budaya": null,
+      "status_validasi": "draf",
+      "catatan": null
+    },
+    {
+      "id": "p007",
+      "deli": "Selamat petang.",
+      "indonesia": "Selamat sore.",
+      "jawi": null,
+      "level": 1,
+      "unit_id": "u01",
+      "audio_path": null,
+      "catatan_budaya": null,
+      "status_validasi": "draf",
+      "catatan": null
+    },
+    {
+      "id": "p008",
+      "deli": "Jumpe lagi.",
+      "indonesia": "Sampai jumpa lagi.",
+      "jawi": null,
+      "level": 1,
+      "unit_id": "u01",
+      "audio_path": null,
+      "catatan_budaya": null,
+      "status_validasi": "draf",
+      "catatan": null
+    },
+    {
+      "id": "p009",
+      "deli": "Nak ke mane?",
+      "indonesia": "Mau ke mana?",
+      "jawi": null,
+      "level": 1,
+      "unit_id": "u05",
+      "audio_path": null,
+      "catatan_budaya": null,
+      "status_validasi": "draf",
+      "catatan": "pola tanya sehari-hari; cek penutur"
+    },
+    {
+      "id": "p010",
+      "deli": "Sape name awak?",
+      "indonesia": "Siapa namamu?",
+      "jawi": null,
+      "level": 1,
+      "unit_id": "u05",
+      "audio_path": null,
+      "catatan_budaya": null,
+      "status_validasi": "draf",
+      "catatan": "cek kata ganti 'awak'"
+    }
+  ],
+  "sentences": [
+    {
+      "id": "s001",
+      "deli": "Nak ke mane, bang?",
+      "indonesia": "Mau ke mana, bang?",
+      "word_ids": [
+        "w038",
+        "w021"
+      ],
+      "level": 1,
+      "status_validasi": "draf"
+    },
+    {
+      "id": "s002",
+      "deli": "Mak masak gulai.",
+      "indonesia": "Ibu memasak gulai.",
+      "word_ids": [
+        "w019",
+        "w046",
+        "w029"
+      ],
+      "level": 2,
+      "status_validasi": "draf"
+    },
+    {
+      "id": "s003",
+      "deli": "Gulai ni lemak kali.",
+      "indonesia": "Gulai ini gurih sekali.",
+      "word_ids": [
+        "w029",
+        "w031"
+      ],
+      "level": 1,
+      "status_validasi": "draf"
+    },
+    {
+      "id": "s004",
+      "deli": "Nasi ni sedap.",
+      "indonesia": "Nasi ini enak.",
+      "word_ids": [
+        "w027",
+        "w032"
+      ],
+      "level": 1,
+      "status_validasi": "draf"
+    },
+    {
+      "id": "s005",
+      "deli": "Abah pegi kerje.",
+      "indonesia": "Ayah pergi kerja.",
+      "word_ids": [
+        "w020",
+        "w047",
+        "w044"
+      ],
+      "level": 2,
+      "status_validasi": "draf"
+    },
+    {
+      "id": "s006",
+      "deli": "Terime kasih, kak.",
+      "indonesia": "Terima kasih, kak.",
+      "word_ids": [
+        "w004",
+        "w005",
+        "w022"
+      ],
+      "level": 1,
+      "status_validasi": "draf"
+    },
+    {
+      "id": "s007",
+      "deli": "Jemput masuk, tengku.",
+      "indonesia": "Silakan masuk, tengku.",
+      "word_ids": [
+        "w002",
+        "w003",
+        "w024"
+      ],
+      "level": 1,
+      "status_validasi": "draf"
+    },
+    {
+      "id": "s008",
+      "deli": "Atok minum air.",
+      "indonesia": "Kakek minum air.",
+      "word_ids": [
+        "w023",
+        "w035",
+        "w036"
+      ],
+      "level": 1,
+      "status_validasi": "draf"
+    },
+    {
+      "id": "s009",
+      "deli": "Berape ni?",
+      "indonesia": "Berapa ini?",
+      "word_ids": [
+        "w043"
+      ],
+      "level": 1,
+      "status_validasi": "draf"
+    },
+    {
+      "id": "s010",
+      "deli": "Adik makan nasi.",
+      "indonesia": "Adik makan nasi.",
+      "word_ids": [
+        "w025",
+        "w034",
+        "w027"
+      ],
+      "level": 1,
+      "status_validasi": "draf"
+    }
+  ],
+  "dialogues": [
+    {
+      "id": "d001",
+      "judul": "Menyapa tetangga",
+      "level": 1,
+      "unit_id": "u01",
+      "status_validasi": "draf",
+      "lines": [
+        {
+          "urutan": 1,
+          "speaker": "Kak Ani",
+          "deli": "Ape kabar?",
+          "indonesia": "Apa kabar?"
+        },
+        {
+          "urutan": 2,
+          "speaker": "Pemain",
+          "deli": "Kabar baik, kak.",
+          "indonesia": "Kabar baik, kak."
+        },
+        {
+          "urutan": 3,
+          "speaker": "Kak Ani",
+          "deli": "Jemput masuk.",
+          "indonesia": "Silakan masuk."
+        },
+        {
+          "urutan": 4,
+          "speaker": "Pemain",
+          "deli": "Terime kasih, kak.",
+          "indonesia": "Terima kasih, kak."
+        }
+      ]
+    },
+    {
+      "id": "d002",
+      "judul": "Di meja makan",
+      "level": 1,
+      "unit_id": "u04",
+      "status_validasi": "draf",
+      "lines": [
+        {
+          "urutan": 1,
+          "speaker": "Mak",
+          "deli": "Makan, dik.",
+          "indonesia": "Makan, dik."
+        },
+        {
+          "urutan": 2,
+          "speaker": "Pemain",
+          "deli": "Gulai ni lemak kali, mak.",
+          "indonesia": "Gulai ini gurih sekali, bu."
+        },
+        {
+          "urutan": 3,
+          "speaker": "Mak",
+          "deli": "Nak minum ape?",
+          "indonesia": "Mau minum apa?"
+        },
+        {
+          "urutan": 4,
+          "speaker": "Pemain",
+          "deli": "Air je, mak.",
+          "indonesia": "Air saja, bu."
+        }
+      ]
+    }
+  ],
+  "letters": [
+    {
+      "id": "j01",
+      "huruf": "چ",
+      "nama": "ca",
+      "bunyi": "c",
+      "contoh_kata_latin": "cakap",
+      "bisa_disambung": true,
+      "bentuk_awal_tengah_akhir": null,
+      "status_validasi": "draf"
+    },
+    {
+      "id": "j02",
+      "huruf": "ڠ",
+      "nama": "nga",
+      "bunyi": "ng",
+      "contoh_kata_latin": "bunga",
+      "bisa_disambung": true,
+      "bentuk_awal_tengah_akhir": null,
+      "status_validasi": "draf"
+    },
+    {
+      "id": "j03",
+      "huruf": "ڤ",
+      "nama": "pa",
+      "bunyi": "p",
+      "contoh_kata_latin": "pinggan",
+      "bisa_disambung": true,
+      "bentuk_awal_tengah_akhir": null,
+      "status_validasi": "draf"
+    },
+    {
+      "id": "j04",
+      "huruf": "ݢ",
+      "nama": "ga",
+      "bunyi": "g",
+      "contoh_kata_latin": "gulai",
+      "bisa_disambung": true,
+      "bentuk_awal_tengah_akhir": null,
+      "status_validasi": "draf"
+    },
+    {
+      "id": "j05",
+      "huruf": "ۏ",
+      "nama": "va",
+      "bunyi": "v",
+      "contoh_kata_latin": "vitamin",
+      "bisa_disambung": false,
+      "bentuk_awal_tengah_akhir": null,
+      "status_validasi": "draf"
+    },
+    {
+      "id": "j06",
+      "huruf": "ڽ",
+      "nama": "nya",
+      "bunyi": "ny",
+      "contoh_kata_latin": "nyamuk",
+      "bisa_disambung": true,
+      "bentuk_awal_tengah_akhir": null,
+      "status_validasi": "draf"
+    }
+  ],
+  "exercises": [
+    {
+      "id": "x001",
+      "lesson_id": "u01_l1",
+      "tipe": "pilihan_ganda",
+      "prompt": "Apa arti \"kabar\"?",
+      "jawaban_benar": "kabar",
+      "pengecoh": [
+        "terima",
+        "masuk",
+        "kasih"
+      ],
+      "ref_item": "w001"
+    },
+    {
+      "id": "x002",
+      "lesson_id": "u01_l1",
+      "tipe": "pilihan_ganda",
+      "prompt": "Apa arti \"jemput\"?",
+      "jawaban_benar": "silakan / mengundang",
+      "pengecoh": [
+        "kabar",
+        "maaf",
+        "terima"
+      ],
+      "ref_item": "w002"
+    },
+    {
+      "id": "x003",
+      "lesson_id": "u01_l1",
+      "tipe": "pilihan_ganda",
+      "prompt": "Apa arti \"masuk\"?",
+      "jawaban_benar": "masuk",
+      "pengecoh": [
+        "kabar",
+        "terima",
+        "kasih"
+      ],
+      "ref_item": "w003"
+    },
+    {
+      "id": "x004",
+      "lesson_id": "u01_l1",
+      "tipe": "pilihan_ganda",
+      "prompt": "Apa arti \"terime\"?",
+      "jawaban_benar": "terima",
+      "pengecoh": [
+        "kabar",
+        "silakan / mengundang",
+        "maaf"
+      ],
+      "ref_item": "w004"
+    },
+    {
+      "id": "x005",
+      "lesson_id": "u01_l1",
+      "tipe": "pilihan_ganda",
+      "prompt": "Apa arti \"kasih\"?",
+      "jawaban_benar": "kasih",
+      "pengecoh": [
+        "kabar",
+        "terima",
+        "silakan / mengundang"
+      ],
+      "ref_item": "w005"
+    },
+    {
+      "id": "x006",
+      "lesson_id": "u01_l1",
+      "tipe": "pilihan_ganda",
+      "prompt": "Apa arti \"maaf\"?",
+      "jawaban_benar": "maaf",
+      "pengecoh": [
+        "kabar",
+        "silakan / mengundang",
+        "kasih"
+      ],
+      "ref_item": "w006"
+    },
+    {
+      "id": "x007",
+      "lesson_id": "u02_l1",
+      "tipe": "pilihan_ganda",
+      "prompt": "Apa arti \"satu\"?",
+      "jawaban_benar": "satu",
+      "pengecoh": [
+        "sepuluh",
+        "delapan",
+        "dua"
+      ],
+      "ref_item": "w007"
+    },
+    {
+      "id": "x008",
+      "lesson_id": "u02_l1",
+      "tipe": "pilihan_ganda",
+      "prompt": "Apa arti \"due\"?",
+      "jawaban_benar": "dua",
+      "pengecoh": [
+        "seratus",
+        "tiga",
+        "lima"
+      ],
+      "ref_item": "w008"
+    },
+    {
+      "id": "x009",
+      "lesson_id": "u02_l1",
+      "tipe": "pilihan_ganda",
+      "prompt": "Apa arti \"tige\"?",
+      "jawaban_benar": "tiga",
+      "pengecoh": [
+        "ribu",
+        "seratus",
+        "satu"
+      ],
+      "ref_item": "w009"
+    },
+    {
+      "id": "x010",
+      "lesson_id": "u02_l1",
+      "tipe": "pilihan_ganda",
+      "prompt": "Apa arti \"empat\"?",
+      "jawaban_benar": "empat",
+      "pengecoh": [
+        "seratus",
+        "ribu",
+        "delapan"
+      ],
+      "ref_item": "w010"
+    },
+    {
+      "id": "x011",
+      "lesson_id": "u02_l1",
+      "tipe": "pilihan_ganda",
+      "prompt": "Apa arti \"lime\"?",
+      "jawaban_benar": "lima",
+      "pengecoh": [
+        "satu",
+        "empat",
+        "ribu"
+      ],
+      "ref_item": "w011"
+    },
+    {
+      "id": "x012",
+      "lesson_id": "u02_l1",
+      "tipe": "pilihan_ganda",
+      "prompt": "Apa arti \"enam\"?",
+      "jawaban_benar": "enam",
+      "pengecoh": [
+        "sepuluh",
+        "tiga",
+        "lima"
+      ],
+      "ref_item": "w012"
+    },
+    {
+      "id": "x013",
+      "lesson_id": "u02_l1",
+      "tipe": "pilihan_ganda",
+      "prompt": "Apa arti \"tujuh\"?",
+      "jawaban_benar": "tujuh",
+      "pengecoh": [
+        "delapan",
+        "tiga",
+        "sepuluh"
+      ],
+      "ref_item": "w013"
+    },
+    {
+      "id": "x014",
+      "lesson_id": "u02_l1",
+      "tipe": "pilihan_ganda",
+      "prompt": "Apa arti \"lapan\"?",
+      "jawaban_benar": "delapan",
+      "pengecoh": [
+        "dua",
+        "seratus",
+        "lima"
+      ],
+      "ref_item": "w014"
+    },
+    {
+      "id": "x015",
+      "lesson_id": "u02_l1",
+      "tipe": "pilihan_ganda",
+      "prompt": "Apa arti \"sembilan\"?",
+      "jawaban_benar": "sembilan",
+      "pengecoh": [
+        "sepuluh",
+        "tiga",
+        "dua"
+      ],
+      "ref_item": "w015"
+    },
+    {
+      "id": "x016",
+      "lesson_id": "u02_l1",
+      "tipe": "pilihan_ganda",
+      "prompt": "Apa arti \"sepuluh\"?",
+      "jawaban_benar": "sepuluh",
+      "pengecoh": [
+        "seratus",
+        "ribu",
+        "empat"
+      ],
+      "ref_item": "w016"
+    },
+    {
+      "id": "x017",
+      "lesson_id": "u02_l1",
+      "tipe": "pilihan_ganda",
+      "prompt": "Apa arti \"seratus\"?",
+      "jawaban_benar": "seratus",
+      "pengecoh": [
+        "enam",
+        "dua",
+        "sembilan"
+      ],
+      "ref_item": "w017"
+    },
+    {
+      "id": "x018",
+      "lesson_id": "u02_l1",
+      "tipe": "pilihan_ganda",
+      "prompt": "Apa arti \"ribu\"?",
+      "jawaban_benar": "ribu",
+      "pengecoh": [
+        "dua",
+        "sepuluh",
+        "satu"
+      ],
+      "ref_item": "w018"
+    },
+    {
+      "id": "x019",
+      "lesson_id": "u03_l1",
+      "tipe": "pilihan_ganda",
+      "prompt": "Apa arti \"mak\"?",
+      "jawaban_benar": "ibu",
+      "pengecoh": [
+        "gelar bangsawan Melayu",
+        "kakak laki-laki",
+        "kakek"
+      ],
+      "ref_item": "w019"
+    },
+    {
+      "id": "x020",
+      "lesson_id": "u03_l1",
+      "tipe": "pilihan_ganda",
+      "prompt": "Apa arti \"abah\"?",
+      "jawaban_benar": "ayah",
+      "pengecoh": [
+        "adik",
+        "gelar bangsawan Melayu",
+        "kakek"
+      ],
+      "ref_item": "w020"
+    },
+    {
+      "id": "x021",
+      "lesson_id": "u03_l1",
+      "tipe": "pilihan_ganda",
+      "prompt": "Apa arti \"abang\"?",
+      "jawaban_benar": "kakak laki-laki",
+      "pengecoh": [
+        "anak",
+        "kakak perempuan",
+        "kakek"
+      ],
+      "ref_item": "w021"
+    },
+    {
+      "id": "x022",
+      "lesson_id": "u03_l1",
+      "tipe": "pilihan_ganda",
+      "prompt": "Apa arti \"kak\"?",
+      "jawaban_benar": "kakak perempuan",
+      "pengecoh": [
+        "gelar bangsawan Melayu",
+        "kakek",
+        "kakak laki-laki"
+      ],
+      "ref_item": "w022"
+    },
+    {
+      "id": "x023",
+      "lesson_id": "u03_l1",
+      "tipe": "pilihan_ganda",
+      "prompt": "Apa arti \"atok\"?",
+      "jawaban_benar": "kakek",
+      "pengecoh": [
+        "kakak laki-laki",
+        "ayah",
+        "adik"
+      ],
+      "ref_item": "w023"
+    },
+    {
+      "id": "x024",
+      "lesson_id": "u03_l1",
+      "tipe": "pilihan_ganda",
+      "prompt": "Apa arti \"tengku\"?",
+      "jawaban_benar": "gelar bangsawan Melayu",
+      "pengecoh": [
+        "adik",
+        "ayah",
+        "ibu"
+      ],
+      "ref_item": "w024"
+    },
+    {
+      "id": "x025",
+      "lesson_id": "u03_l1",
+      "tipe": "pilihan_ganda",
+      "prompt": "Apa arti \"adik\"?",
+      "jawaban_benar": "adik",
+      "pengecoh": [
+        "kakek",
+        "kakak laki-laki",
+        "anak"
+      ],
+      "ref_item": "w025"
+    },
+    {
+      "id": "x026",
+      "lesson_id": "u03_l1",
+      "tipe": "pilihan_ganda",
+      "prompt": "Apa arti \"anak\"?",
+      "jawaban_benar": "anak",
+      "pengecoh": [
+        "kakak perempuan",
+        "kakak laki-laki",
+        "adik"
+      ],
+      "ref_item": "w026"
+    },
+    {
+      "id": "x027",
+      "lesson_id": "u04_l1",
+      "tipe": "pilihan_ganda",
+      "prompt": "Apa arti \"nasi\"?",
+      "jawaban_benar": "nasi",
+      "pengecoh": [
+        "enak",
+        "gulai",
+        "lauk"
+      ],
+      "ref_item": "w027"
+    },
+    {
+      "id": "x028",
+      "lesson_id": "u04_l1",
+      "tipe": "pilihan_ganda",
+      "prompt": "Apa arti \"lauk\"?",
+      "jawaban_benar": "lauk",
+      "pengecoh": [
+        "air",
+        "makan",
+        "gulai"
+      ],
+      "ref_item": "w028"
+    },
+    {
+      "id": "x029",
+      "lesson_id": "u04_l1",
+      "tipe": "pilihan_ganda",
+      "prompt": "Apa arti \"gulai\"?",
+      "jawaban_benar": "gulai",
+      "pengecoh": [
+        "pedas",
+        "nasi ketan kuning",
+        "gurih (santan)"
+      ],
+      "ref_item": "w029"
+    },
+    {
+      "id": "x030",
+      "lesson_id": "u04_l1",
+      "tipe": "pilihan_ganda",
+      "prompt": "Apa arti \"pulut kuning\"?",
+      "jawaban_benar": "nasi ketan kuning",
+      "pengecoh": [
+        "makan",
+        "nasi",
+        "pedas"
+      ],
+      "ref_item": "w030"
+    },
+    {
+      "id": "x031",
+      "lesson_id": "u04_l1",
+      "tipe": "pilihan_ganda",
+      "prompt": "Apa arti \"lemak\"?",
+      "jawaban_benar": "gurih (santan)",
+      "pengecoh": [
+        "lauk",
+        "pedas",
+        "gulai"
+      ],
+      "ref_item": "w031"
+    },
+    {
+      "id": "x032",
+      "lesson_id": "u04_l1",
+      "tipe": "pilihan_ganda",
+      "prompt": "Apa arti \"sedap\"?",
+      "jawaban_benar": "enak",
+      "pengecoh": [
+        "pedas",
+        "minum",
+        "gurih (santan)"
+      ],
+      "ref_item": "w032"
+    },
+    {
+      "id": "x033",
+      "lesson_id": "u04_l1",
+      "tipe": "pilihan_ganda",
+      "prompt": "Apa arti \"pedas\"?",
+      "jawaban_benar": "pedas",
+      "pengecoh": [
+        "minum",
+        "lauk",
+        "makan"
+      ],
+      "ref_item": "w033"
+    },
+    {
+      "id": "x034",
+      "lesson_id": "u04_l1",
+      "tipe": "pilihan_ganda",
+      "prompt": "Apa arti \"makan\"?",
+      "jawaban_benar": "makan",
+      "pengecoh": [
+        "lauk",
+        "gurih (santan)",
+        "nasi ketan kuning"
+      ],
+      "ref_item": "w034"
+    },
+    {
+      "id": "x035",
+      "lesson_id": "u04_l1",
+      "tipe": "pilihan_ganda",
+      "prompt": "Apa arti \"minum\"?",
+      "jawaban_benar": "minum",
+      "pengecoh": [
+        "lauk",
+        "nasi",
+        "enak"
+      ],
+      "ref_item": "w035"
+    },
+    {
+      "id": "x036",
+      "lesson_id": "u04_l1",
+      "tipe": "pilihan_ganda",
+      "prompt": "Apa arti \"air\"?",
+      "jawaban_benar": "air",
+      "pengecoh": [
+        "gurih (santan)",
+        "makan",
+        "gulai"
+      ],
+      "ref_item": "w036"
+    },
+    {
+      "id": "x037",
+      "lesson_id": "u05_l1",
+      "tipe": "pilihan_ganda",
+      "prompt": "Apa arti \"ape\"?",
+      "jawaban_benar": "apa",
+      "pengecoh": [
+        "berapa",
+        "bagaimana",
+        "mengapa"
+      ],
+      "ref_item": "w037"
+    },
+    {
+      "id": "x038",
+      "lesson_id": "u05_l1",
+      "tipe": "pilihan_ganda",
+      "prompt": "Apa arti \"mane\"?",
+      "jawaban_benar": "mana / di mana",
+      "pengecoh": [
+        "apa",
+        "bagaimana",
+        "mengapa"
+      ],
+      "ref_item": "w038"
+    },
+    {
+      "id": "x039",
+      "lesson_id": "u05_l1",
+      "tipe": "pilihan_ganda",
+      "prompt": "Apa arti \"sape\"?",
+      "jawaban_benar": "siapa",
+      "pengecoh": [
+        "mana / di mana",
+        "kapan",
+        "apa"
+      ],
+      "ref_item": "w039"
+    },
+    {
+      "id": "x040",
+      "lesson_id": "u05_l1",
+      "tipe": "pilihan_ganda",
+      "prompt": "Apa arti \"kenape\"?",
+      "jawaban_benar": "mengapa",
+      "pengecoh": [
+        "bagaimana",
+        "apa",
+        "mana / di mana"
+      ],
+      "ref_item": "w040"
+    },
+    {
+      "id": "x041",
+      "lesson_id": "u05_l1",
+      "tipe": "pilihan_ganda",
+      "prompt": "Apa arti \"macam mane\"?",
+      "jawaban_benar": "bagaimana",
+      "pengecoh": [
+        "siapa",
+        "mana / di mana",
+        "kapan"
+      ],
+      "ref_item": "w041"
+    },
+    {
+      "id": "x042",
+      "lesson_id": "u05_l1",
+      "tipe": "pilihan_ganda",
+      "prompt": "Apa arti \"bile\"?",
+      "jawaban_benar": "kapan",
+      "pengecoh": [
+        "mengapa",
+        "berapa",
+        "bagaimana"
+      ],
+      "ref_item": "w042"
+    },
+    {
+      "id": "x043",
+      "lesson_id": "u05_l1",
+      "tipe": "pilihan_ganda",
+      "prompt": "Apa arti \"berape\"?",
+      "jawaban_benar": "berapa",
+      "pengecoh": [
+        "apa",
+        "mana / di mana",
+        "mengapa"
+      ],
+      "ref_item": "w043"
+    },
+    {
+      "id": "x044",
+      "lesson_id": "u01_l1",
+      "tipe": "pasangkan",
+      "prompt": "Pasangkan Deli dengan Indonesia",
+      "jawaban_benar": [
+        [
+          "kabar",
+          "kabar"
+        ],
+        [
+          "jemput",
+          "silakan / mengundang"
+        ],
+        [
+          "masuk",
+          "masuk"
+        ],
+        [
+          "terime",
+          "terima"
+        ]
+      ],
+      "pengecoh": [],
+      "ref_item": [
+        "w001",
+        "w002",
+        "w003",
+        "w004"
+      ]
+    },
+    {
+      "id": "x045",
+      "lesson_id": "u02_l1",
+      "tipe": "pasangkan",
+      "prompt": "Pasangkan Deli dengan Indonesia",
+      "jawaban_benar": [
+        [
+          "satu",
+          "satu"
+        ],
+        [
+          "due",
+          "dua"
+        ],
+        [
+          "tige",
+          "tiga"
+        ],
+        [
+          "empat",
+          "empat"
+        ]
+      ],
+      "pengecoh": [],
+      "ref_item": [
+        "w007",
+        "w008",
+        "w009",
+        "w010"
+      ]
+    },
+    {
+      "id": "x046",
+      "lesson_id": "u03_l1",
+      "tipe": "pasangkan",
+      "prompt": "Pasangkan Deli dengan Indonesia",
+      "jawaban_benar": [
+        [
+          "mak",
+          "ibu"
+        ],
+        [
+          "abah",
+          "ayah"
+        ],
+        [
+          "abang",
+          "kakak laki-laki"
+        ],
+        [
+          "kak",
+          "kakak perempuan"
+        ]
+      ],
+      "pengecoh": [],
+      "ref_item": [
+        "w019",
+        "w020",
+        "w021",
+        "w022"
+      ]
+    },
+    {
+      "id": "x047",
+      "lesson_id": "u04_l1",
+      "tipe": "pasangkan",
+      "prompt": "Pasangkan Deli dengan Indonesia",
+      "jawaban_benar": [
+        [
+          "nasi",
+          "nasi"
+        ],
+        [
+          "lauk",
+          "lauk"
+        ],
+        [
+          "gulai",
+          "gulai"
+        ],
+        [
+          "pulut kuning",
+          "nasi ketan kuning"
+        ]
+      ],
+      "pengecoh": [],
+      "ref_item": [
+        "w027",
+        "w028",
+        "w029",
+        "w030"
+      ]
+    },
+    {
+      "id": "x048",
+      "lesson_id": "u05_l1",
+      "tipe": "pasangkan",
+      "prompt": "Pasangkan Deli dengan Indonesia",
+      "jawaban_benar": [
+        [
+          "ape",
+          "apa"
+        ],
+        [
+          "mane",
+          "mana / di mana"
+        ],
+        [
+          "sape",
+          "siapa"
+        ],
+        [
+          "kenape",
+          "mengapa"
+        ]
+      ],
+      "pengecoh": [],
+      "ref_item": [
+        "w037",
+        "w038",
+        "w039",
+        "w040"
+      ]
+    },
+    {
+      "id": "x049",
+      "lesson_id": "u03_l3",
+      "tipe": "susun_kalimat",
+      "prompt": "Susun: \"Mau ke mana, bang?\"",
+      "jawaban_benar": "Nak ke mane, bang?",
+      "pengecoh": [
+        "yang"
+      ],
+      "ref_item": "s001",
+      "potongan": [
+        "mane",
+        "ke",
+        "Nak",
+        "bang",
+        "yang"
+      ]
+    },
+    {
+      "id": "x050",
+      "lesson_id": "u03_l3",
+      "tipe": "susun_kalimat",
+      "prompt": "Susun: \"Ibu memasak gulai.\"",
+      "jawaban_benar": "Mak masak gulai.",
+      "pengecoh": [
+        "yang"
+      ],
+      "ref_item": "s002",
+      "potongan": [
+        "yang",
+        "gulai",
+        "Mak",
+        "masak"
+      ]
+    },
+    {
+      "id": "x051",
+      "lesson_id": "u03_l3",
+      "tipe": "susun_kalimat",
+      "prompt": "Susun: \"Gulai ini gurih sekali.\"",
+      "jawaban_benar": "Gulai ni lemak kali.",
+      "pengecoh": [
+        "yang"
+      ],
+      "ref_item": "s003",
+      "potongan": [
+        "yang",
+        "ni",
+        "lemak",
+        "Gulai",
+        "kali"
+      ]
+    },
+    {
+      "id": "x052",
+      "lesson_id": "u03_l3",
+      "tipe": "susun_kalimat",
+      "prompt": "Susun: \"Nasi ini enak.\"",
+      "jawaban_benar": "Nasi ni sedap.",
+      "pengecoh": [
+        "yang"
+      ],
+      "ref_item": "s004",
+      "potongan": [
+        "yang",
+        "ni",
+        "sedap",
+        "Nasi"
+      ]
+    },
+    {
+      "id": "x053",
+      "lesson_id": "u03_l3",
+      "tipe": "susun_kalimat",
+      "prompt": "Susun: \"Ayah pergi kerja.\"",
+      "jawaban_benar": "Abah pegi kerje.",
+      "pengecoh": [
+        "yang"
+      ],
+      "ref_item": "s005",
+      "potongan": [
+        "yang",
+        "kerje",
+        "Abah",
+        "pegi"
+      ]
+    },
+    {
+      "id": "x054",
+      "lesson_id": "u03_l3",
+      "tipe": "susun_kalimat",
+      "prompt": "Susun: \"Terima kasih, kak.\"",
+      "jawaban_benar": "Terime kasih, kak.",
+      "pengecoh": [
+        "yang"
+      ],
+      "ref_item": "s006",
+      "potongan": [
+        "kak",
+        "yang",
+        "Terime",
+        "kasih"
+      ]
+    },
+    {
+      "id": "x055",
+      "lesson_id": "u03_l3",
+      "tipe": "susun_kalimat",
+      "prompt": "Susun: \"Silakan masuk, tengku.\"",
+      "jawaban_benar": "Jemput masuk, tengku.",
+      "pengecoh": [
+        "yang"
+      ],
+      "ref_item": "s007",
+      "potongan": [
+        "Jemput",
+        "yang",
+        "masuk",
+        "tengku"
+      ]
+    },
+    {
+      "id": "x056",
+      "lesson_id": "u03_l3",
+      "tipe": "susun_kalimat",
+      "prompt": "Susun: \"Kakek minum air.\"",
+      "jawaban_benar": "Atok minum air.",
+      "pengecoh": [
+        "yang"
+      ],
+      "ref_item": "s008",
+      "potongan": [
+        "air",
+        "minum",
+        "yang",
+        "Atok"
+      ]
+    },
+    {
+      "id": "x057",
+      "lesson_id": "u03_l3",
+      "tipe": "susun_kalimat",
+      "prompt": "Susun: \"Berapa ini?\"",
+      "jawaban_benar": "Berape ni?",
+      "pengecoh": [
+        "yang"
+      ],
+      "ref_item": "s009",
+      "potongan": [
+        "ni",
+        "Berape",
+        "yang"
+      ]
+    },
+    {
+      "id": "x058",
+      "lesson_id": "u03_l3",
+      "tipe": "susun_kalimat",
+      "prompt": "Susun: \"Adik makan nasi.\"",
+      "jawaban_benar": "Adik makan nasi.",
+      "pengecoh": [
+        "yang"
+      ],
+      "ref_item": "s010",
+      "potongan": [
+        "yang",
+        "makan",
+        "Adik",
+        "nasi"
+      ]
+    },
+    {
+      "id": "x059",
+      "lesson_id": "u05_l1",
+      "tipe": "isi_kosong",
+      "prompt": "Nak ke ___ ?",
+      "jawaban_benar": "mane",
+      "pengecoh": [
+        "ape",
+        "sape",
+        "kenape"
+      ],
+      "ref_item": "w038"
+    },
+    {
+      "id": "x060",
+      "lesson_id": "u05_l2",
+      "tipe": "isi_kosong",
+      "prompt": "___ name awak?",
+      "jawaban_benar": "Sape",
+      "pengecoh": [
+        "Ape",
+        "Mane",
+        "Bile"
+      ],
+      "ref_item": "w039"
+    },
+    {
+      "id": "x061",
+      "lesson_id": "u04_l3",
+      "tipe": "isi_kosong",
+      "prompt": "Gulai ni ___ kali.",
+      "jawaban_benar": "lemak",
+      "pengecoh": [
+        "pedas",
+        "air",
+        "nasi"
+      ],
+      "ref_item": "w031"
+    },
+    {
+      "id": "x062",
+      "lesson_id": "u03_l2",
+      "tipe": "isi_kosong",
+      "prompt": "___ pegi kerje. (ayah)",
+      "jawaban_benar": "Abah",
+      "pengecoh": [
+        "Mak",
+        "Kak",
+        "Adik"
+      ],
+      "ref_item": "w020"
+    }
+  ],
+  "achievements": [
+    {
+      "id": "a01",
+      "nama": "Langkah Pertama",
+      "syarat": "Selesaikan pelajaran pertama",
+      "aktif_mvp": true
+    },
+    {
+      "id": "a02",
+      "nama": "Api Kecil",
+      "syarat": "Streak 3 hari",
+      "aktif_mvp": true
+    },
+    {
+      "id": "a03",
+      "nama": "Api Besar",
+      "syarat": "Streak 30 hari",
+      "aktif_mvp": true
+    },
+    {
+      "id": "a04",
+      "nama": "Penyapa",
+      "syarat": "Pelajari 10 frasa sapaan",
+      "aktif_mvp": true
+    },
+    {
+      "id": "a05",
+      "nama": "Tukang Tanya",
+      "syarat": "Kuasai semua kata tanya",
+      "aktif_mvp": true
+    },
+    {
+      "id": "a06",
+      "nama": "Si Lemak",
+      "syarat": "Selesaikan unit makanan tanpa salah",
+      "aktif_mvp": true
+    },
+    {
+      "id": "a07",
+      "nama": "Pembaca Jawi",
+      "syarat": "Baca 10 kata Jawi",
+      "aktif_mvp": false
+    },
+    {
+      "id": "a08",
+      "nama": "Penjelajah Istana",
+      "syarat": "Kumpulkan semua kartu Istana & Masjid",
+      "aktif_mvp": false
+    },
+    {
+      "id": "a09",
+      "nama": "Pantun Pertama",
+      "syarat": "Selesaikan pelajaran pantun",
+      "aktif_mvp": false
+    },
+    {
+      "id": "a10",
+      "nama": "Sempurna",
+      "syarat": "1 pelajaran tanpa salah (10x)",
+      "aktif_mvp": false
+    }
+  ],
+  "quests": [
+    {
+      "id": "q01",
+      "tipe": "harian",
+      "teks": "Selesaikan 2 pelajaran",
+      "target": 2,
+      "metrik": "lessons_done",
+      "hadiah_koin": 10
+    },
+    {
+      "id": "q02",
+      "tipe": "harian",
+      "teks": "Dapatkan 50 XP",
+      "target": 50,
+      "metrik": "xp_today",
+      "hadiah_koin": 10
+    },
+    {
+      "id": "q03",
+      "tipe": "harian",
+      "teks": "Jawab 10 soal benar berturut-turut",
+      "target": 10,
+      "metrik": "correct_streak",
+      "hadiah_koin": 15
+    },
+    {
+      "id": "q04",
+      "tipe": "harian",
+      "teks": "Latihan 1 huruf Jawi",
+      "target": 1,
+      "metrik": "jawi_practiced",
+      "hadiah_koin": 10
+    },
+    {
+      "id": "q05",
+      "tipe": "harian",
+      "teks": "Baca 1 artikel budaya",
+      "target": 1,
+      "metrik": "articles_read",
+      "hadiah_koin": 10
+    },
+    {
+      "id": "q06",
+      "tipe": "mingguan",
+      "teks": "Selesaikan 1 unit",
+      "target": 1,
+      "metrik": "units_done",
+      "hadiah_koin": 40
+    },
+    {
+      "id": "q07",
+      "tipe": "mingguan",
+      "teks": "Kumpulkan 3 kartu budaya",
+      "target": 3,
+      "metrik": "cards_collected",
+      "hadiah_koin": 40
+    }
+  ],
+  "shop_items": [
+    {
+      "id": "i01",
+      "nama": "Streak freeze",
+      "jenis": "pelindung",
+      "harga_koin": null
+    },
+    {
+      "id": "i02",
+      "nama": "Isi nyawa",
+      "jenis": "konsumsi",
+      "harga_koin": null
+    },
+    {
+      "id": "i03",
+      "nama": "Pakaian maskot: tanjak",
+      "jenis": "kosmetik",
+      "harga_koin": null
+    },
+    {
+      "id": "i04",
+      "nama": "Pakaian maskot: baju teluk belanga",
+      "jenis": "kosmetik",
+      "harga_koin": null
+    },
+    {
+      "id": "i05",
+      "nama": "Tema warna app",
+      "jenis": "kosmetik",
+      "harga_koin": null
+    },
+    {
+      "id": "i06",
+      "nama": "Bingkai profil",
+      "jenis": "kosmetik",
+      "harga_koin": null
+    }
+  ],
+  "collection_cards": [
+    {
+      "id": "c01",
+      "nama": "Istana Maimun",
+      "unit_pembuka": "u03",
+      "fakta": null,
+      "gambar": null,
+      "artikel_id": "art02",
+      "status_validasi": "draf"
+    },
+    {
+      "id": "c02",
+      "nama": "Meriam Puntung",
+      "unit_pembuka": null,
+      "fakta": null,
+      "gambar": null,
+      "artikel_id": null,
+      "status_validasi": "draf"
+    },
+    {
+      "id": "c03",
+      "nama": "Tanjak",
+      "unit_pembuka": null,
+      "fakta": null,
+      "gambar": null,
+      "artikel_id": null,
+      "status_validasi": "draf"
+    },
+    {
+      "id": "c04",
+      "nama": "Pulut Kuning",
+      "unit_pembuka": "u04",
+      "fakta": null,
+      "gambar": null,
+      "artikel_id": null,
+      "status_validasi": "draf"
+    },
+    {
+      "id": "c05",
+      "nama": "Serampang Dua Belas",
+      "unit_pembuka": null,
+      "fakta": null,
+      "gambar": null,
+      "artikel_id": null,
+      "status_validasi": "draf"
+    }
+  ],
+  "articles": [
+    {
+      "id": "art01",
+      "judul": "Putri Hijau",
+      "isi": null,
+      "sumber": null,
+      "status_verifikasi": "belum_ditulis",
+      "foto": null,
+      "kartu_koleksi_id": null
+    },
+    {
+      "id": "art02",
+      "judul": "Istana Maimun",
+      "isi": null,
+      "sumber": null,
+      "status_verifikasi": "belum_ditulis",
+      "foto": null,
+      "kartu_koleksi_id": "c01"
+    },
+    {
+      "id": "art03",
+      "judul": "Guru Patimpus",
+      "isi": null,
+      "sumber": null,
+      "status_verifikasi": "belum_ditulis",
+      "foto": null,
+      "kartu_koleksi_id": null
+    }
+  ]
+}

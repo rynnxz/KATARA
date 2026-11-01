@@ -1,0 +1,1244 @@
+[
+  {
+    "id": "ms-deli:q:0001",
+    "course_id": "ms-deli",
+    "lesson_id": "ms-deli:l:0001",
+    "exercise_type": "mcq_translate",
+    "prompt": "Apa arti \"kabar\"?",
+    "options": [
+      "kabar",
+      "terima",
+      "masuk",
+      "kasih"
+    ],
+    "correct_index": 0,
+    "ref_item_id": "ms-deli:w:0001",
+    "topic": "pilihan_ganda",
+    "validation_status": "draft",
+    "needs_verification": false
+  },
+  {
+    "id": "ms-deli:q:0002",
+    "course_id": "ms-deli",
+    "lesson_id": "ms-deli:l:0001",
+    "exercise_type": "mcq_translate",
+    "prompt": "Apa arti \"jemput\"?",
+    "options": [
+      "silakan / mengundang",
+      "kabar",
+      "maaf",
+      "terima"
+    ],
+    "correct_index": 0,
+    "ref_item_id": "ms-deli:w:0002",
+    "topic": "pilihan_ganda",
+    "validation_status": "draft",
+    "needs_verification": false
+  },
+  {
+    "id": "ms-deli:q:0003",
+    "course_id": "ms-deli",
+    "lesson_id": "ms-deli:l:0001",
+    "exercise_type": "mcq_translate",
+    "prompt": "Apa arti \"masuk\"?",
+    "options": [
+      "masuk",
+      "kabar",
+      "terima",
+      "kasih"
+    ],
+    "correct_index": 0,
+    "ref_item_id": "ms-deli:w:0003",
+    "topic": "pilihan_ganda",
+    "validation_status": "draft",
+    "needs_verification": false
+  },
+  {
+    "id": "ms-deli:q:0004",
+    "course_id": "ms-deli",
+    "lesson_id": "ms-deli:l:0001",
+    "exercise_type": "mcq_translate",
+    "prompt": "Apa arti \"terime\"?",
+    "options": [
+      "terima",
+      "kabar",
+      "silakan / mengundang",
+      "maaf"
+    ],
+    "correct_index": 0,
+    "ref_item_id": "ms-deli:w:0004",
+    "topic": "pilihan_ganda",
+    "validation_status": "draft",
+    "needs_verification": false
+  },
+  {
+    "id": "ms-deli:q:0005",
+    "course_id": "ms-deli",
+    "lesson_id": "ms-deli:l:0001",
+    "exercise_type": "mcq_translate",
+    "prompt": "Apa arti \"kasih\"?",
+    "options": [
+      "kasih",
+      "kabar",
+      "terima",
+      "silakan / mengundang"
+    ],
+    "correct_index": 0,
+    "ref_item_id": "ms-deli:w:0005",
+    "topic": "pilihan_ganda",
+    "validation_status": "draft",
+    "needs_verification": false
+  },
+  {
+    "id": "ms-deli:q:0006",
+    "course_id": "ms-deli",
+    "lesson_id": "ms-deli:l:0001",
+    "exercise_type": "mcq_translate",
+    "prompt": "Apa arti \"maaf\"?",
+    "options": [
+      "maaf",
+      "kabar",
+      "silakan / mengundang",
+      "kasih"
+    ],
+    "correct_index": 0,
+    "ref_item_id": "ms-deli:w:0006",
+    "topic": "pilihan_ganda",
+    "validation_status": "draft",
+    "needs_verification": false
+  },
+  {
+    "id": "ms-deli:q:0007",
+    "course_id": "ms-deli",
+    "lesson_id": "ms-deli:l:0006",
+    "exercise_type": "mcq_translate",
+    "prompt": "Apa arti \"satu\"?",
+    "options": [
+      "satu",
+      "sepuluh",
+      "delapan",
+      "dua"
+    ],
+    "correct_index": 0,
+    "ref_item_id": "ms-deli:w:0007",
+    "topic": "pilihan_ganda",
+    "validation_status": "draft",
+    "needs_verification": false
+  },
+  {
+    "id": "ms-deli:q:0008",
+    "course_id": "ms-deli",
+    "lesson_id": "ms-deli:l:0006",
+    "exercise_type": "mcq_translate",
+    "prompt": "Apa arti \"due\"?",
+    "options": [
+      "dua",
+      "seratus",
+      "tiga",
+      "lima"
+    ],
+    "correct_index": 0,
+    "ref_item_id": "ms-deli:w:0008",
+    "topic": "pilihan_ganda",
+    "validation_status": "draft",
+    "needs_verification": false
+  },
+  {
+    "id": "ms-deli:q:0009",
+    "course_id": "ms-deli",
+    "lesson_id": "ms-deli:l:0006",
+    "exercise_type": "mcq_translate",
+    "prompt": "Apa arti \"tige\"?",
+    "options": [
+      "tiga",
+      "ribu",
+      "seratus",
+      "satu"
+    ],
+    "correct_index": 0,
+    "ref_item_id": "ms-deli:w:0009",
+    "topic": "pilihan_ganda",
+    "validation_status": "draft",
+    "needs_verification": false
+  },
+  {
+    "id": "ms-deli:q:0010",
+    "course_id": "ms-deli",
+    "lesson_id": "ms-deli:l:0006",
+    "exercise_type": "mcq_translate",
+    "prompt": "Apa arti \"empat\"?",
+    "options": [
+      "empat",
+      "seratus",
+      "ribu",
+      "delapan"
+    ],
+    "correct_index": 0,
+    "ref_item_id": "ms-deli:w:0010",
+    "topic": "pilihan_ganda",
+    "validation_status": "draft",
+    "needs_verification": false
+  },
+  {
+    "id": "ms-deli:q:0011",
+    "course_id": "ms-deli",
+    "lesson_id": "ms-deli:l:0006",
+    "exercise_type": "mcq_translate",
+    "prompt": "Apa arti \"lime\"?",
+    "options": [
+      "lima",
+      "satu",
+      "empat",
+      "ribu"
+    ],
+    "correct_index": 0,
+    "ref_item_id": "ms-deli:w:0011",
+    "topic": "pilihan_ganda",
+    "validation_status": "draft",
+    "needs_verification": false
+  },
+  {
+    "id": "ms-deli:q:0012",
+    "course_id": "ms-deli",
+    "lesson_id": "ms-deli:l:0006",
+    "exercise_type": "mcq_translate",
+    "prompt": "Apa arti \"enam\"?",
+    "options": [
+      "enam",
+      "sepuluh",
+      "tiga",
+      "lima"
+    ],
+    "correct_index": 0,
+    "ref_item_id": "ms-deli:w:0012",
+    "topic": "pilihan_ganda",
+    "validation_status": "draft",
+    "needs_verification": false
+  },
+  {
+    "id": "ms-deli:q:0013",
+    "course_id": "ms-deli",
+    "lesson_id": "ms-deli:l:0006",
+    "exercise_type": "mcq_translate",
+    "prompt": "Apa arti \"tujuh\"?",
+    "options": [
+      "tujuh",
+      "delapan",
+      "tiga",
+      "sepuluh"
+    ],
+    "correct_index": 0,
+    "ref_item_id": "ms-deli:w:0013",
+    "topic": "pilihan_ganda",
+    "validation_status": "draft",
+    "needs_verification": false
+  },
+  {
+    "id": "ms-deli:q:0014",
+    "course_id": "ms-deli",
+    "lesson_id": "ms-deli:l:0006",
+    "exercise_type": "mcq_translate",
+    "prompt": "Apa arti \"lapan\"?",
+    "options": [
+      "delapan",
+      "dua",
+      "seratus",
+      "lima"
+    ],
+    "correct_index": 0,
+    "ref_item_id": "ms-deli:w:0014",
+    "topic": "pilihan_ganda",
+    "validation_status": "draft",
+    "needs_verification": false
+  },
+  {
+    "id": "ms-deli:q:0015",
+    "course_id": "ms-deli",
+    "lesson_id": "ms-deli:l:0006",
+    "exercise_type": "mcq_translate",
+    "prompt": "Apa arti \"sembilan\"?",
+    "options": [
+      "sembilan",
+      "sepuluh",
+      "tiga",
+      "dua"
+    ],
+    "correct_index": 0,
+    "ref_item_id": "ms-deli:w:0015",
+    "topic": "pilihan_ganda",
+    "validation_status": "draft",
+    "needs_verification": false
+  },
+  {
+    "id": "ms-deli:q:0016",
+    "course_id": "ms-deli",
+    "lesson_id": "ms-deli:l:0006",
+    "exercise_type": "mcq_translate",
+    "prompt": "Apa arti \"sepuluh\"?",
+    "options": [
+      "sepuluh",
+      "seratus",
+      "ribu",
+      "empat"
+    ],
+    "correct_index": 0,
+    "ref_item_id": "ms-deli:w:0016",
+    "topic": "pilihan_ganda",
+    "validation_status": "draft",
+    "needs_verification": false
+  },
+  {
+    "id": "ms-deli:q:0017",
+    "course_id": "ms-deli",
+    "lesson_id": "ms-deli:l:0006",
+    "exercise_type": "mcq_translate",
+    "prompt": "Apa arti \"seratus\"?",
+    "options": [
+      "seratus",
+      "enam",
+      "dua",
+      "sembilan"
+    ],
+    "correct_index": 0,
+    "ref_item_id": "ms-deli:w:0017",
+    "topic": "pilihan_ganda",
+    "validation_status": "draft",
+    "needs_verification": false
+  },
+  {
+    "id": "ms-deli:q:0018",
+    "course_id": "ms-deli",
+    "lesson_id": "ms-deli:l:0006",
+    "exercise_type": "mcq_translate",
+    "prompt": "Apa arti \"ribu\"?",
+    "options": [
+      "ribu",
+      "dua",
+      "sepuluh",
+      "satu"
+    ],
+    "correct_index": 0,
+    "ref_item_id": "ms-deli:w:0018",
+    "topic": "pilihan_ganda",
+    "validation_status": "draft",
+    "needs_verification": false
+  },
+  {
+    "id": "ms-deli:q:0019",
+    "course_id": "ms-deli",
+    "lesson_id": "ms-deli:l:0011",
+    "exercise_type": "mcq_translate",
+    "prompt": "Apa arti \"mak\"?",
+    "options": [
+      "ibu",
+      "gelar bangsawan Melayu",
+      "kakak laki-laki",
+      "kakek"
+    ],
+    "correct_index": 0,
+    "ref_item_id": "ms-deli:w:0019",
+    "topic": "pilihan_ganda",
+    "validation_status": "draft",
+    "needs_verification": false
+  },
+  {
+    "id": "ms-deli:q:0020",
+    "course_id": "ms-deli",
+    "lesson_id": "ms-deli:l:0011",
+    "exercise_type": "mcq_translate",
+    "prompt": "Apa arti \"abah\"?",
+    "options": [
+      "ayah",
+      "adik",
+      "gelar bangsawan Melayu",
+      "kakek"
+    ],
+    "correct_index": 0,
+    "ref_item_id": "ms-deli:w:0020",
+    "topic": "pilihan_ganda",
+    "validation_status": "draft",
+    "needs_verification": false
+  },
+  {
+    "id": "ms-deli:q:0021",
+    "course_id": "ms-deli",
+    "lesson_id": "ms-deli:l:0011",
+    "exercise_type": "mcq_translate",
+    "prompt": "Apa arti \"abang\"?",
+    "options": [
+      "kakak laki-laki",
+      "anak",
+      "kakak perempuan",
+      "kakek"
+    ],
+    "correct_index": 0,
+    "ref_item_id": "ms-deli:w:0021",
+    "topic": "pilihan_ganda",
+    "validation_status": "draft",
+    "needs_verification": false
+  },
+  {
+    "id": "ms-deli:q:0022",
+    "course_id": "ms-deli",
+    "lesson_id": "ms-deli:l:0011",
+    "exercise_type": "mcq_translate",
+    "prompt": "Apa arti \"kak\"?",
+    "options": [
+      "kakak perempuan",
+      "gelar bangsawan Melayu",
+      "kakek",
+      "kakak laki-laki"
+    ],
+    "correct_index": 0,
+    "ref_item_id": "ms-deli:w:0022",
+    "topic": "pilihan_ganda",
+    "validation_status": "draft",
+    "needs_verification": false
+  },
+  {
+    "id": "ms-deli:q:0023",
+    "course_id": "ms-deli",
+    "lesson_id": "ms-deli:l:0011",
+    "exercise_type": "mcq_translate",
+    "prompt": "Apa arti \"atok\"?",
+    "options": [
+      "kakek",
+      "kakak laki-laki",
+      "ayah",
+      "adik"
+    ],
+    "correct_index": 0,
+    "ref_item_id": "ms-deli:w:0023",
+    "topic": "pilihan_ganda",
+    "validation_status": "draft",
+    "needs_verification": false
+  },
+  {
+    "id": "ms-deli:q:0024",
+    "course_id": "ms-deli",
+    "lesson_id": "ms-deli:l:0011",
+    "exercise_type": "mcq_translate",
+    "prompt": "Apa arti \"tengku\"?",
+    "options": [
+      "gelar bangsawan Melayu",
+      "adik",
+      "ayah",
+      "ibu"
+    ],
+    "correct_index": 0,
+    "ref_item_id": "ms-deli:w:0024",
+    "topic": "pilihan_ganda",
+    "validation_status": "draft",
+    "needs_verification": false
+  },
+  {
+    "id": "ms-deli:q:0025",
+    "course_id": "ms-deli",
+    "lesson_id": "ms-deli:l:0011",
+    "exercise_type": "mcq_translate",
+    "prompt": "Apa arti \"adik\"?",
+    "options": [
+      "adik",
+      "kakek",
+      "kakak laki-laki",
+      "anak"
+    ],
+    "correct_index": 0,
+    "ref_item_id": "ms-deli:w:0025",
+    "topic": "pilihan_ganda",
+    "validation_status": "draft",
+    "needs_verification": false
+  },
+  {
+    "id": "ms-deli:q:0026",
+    "course_id": "ms-deli",
+    "lesson_id": "ms-deli:l:0011",
+    "exercise_type": "mcq_translate",
+    "prompt": "Apa arti \"anak\"?",
+    "options": [
+      "anak",
+      "kakak perempuan",
+      "kakak laki-laki",
+      "adik"
+    ],
+    "correct_index": 0,
+    "ref_item_id": "ms-deli:w:0026",
+    "topic": "pilihan_ganda",
+    "validation_status": "draft",
+    "needs_verification": false
+  },
+  {
+    "id": "ms-deli:q:0027",
+    "course_id": "ms-deli",
+    "lesson_id": "ms-deli:l:0016",
+    "exercise_type": "mcq_translate",
+    "prompt": "Apa arti \"nasi\"?",
+    "options": [
+      "nasi",
+      "enak",
+      "gulai",
+      "lauk"
+    ],
+    "correct_index": 0,
+    "ref_item_id": "ms-deli:w:0027",
+    "topic": "pilihan_ganda",
+    "validation_status": "draft",
+    "needs_verification": false
+  },
+  {
+    "id": "ms-deli:q:0028",
+    "course_id": "ms-deli",
+    "lesson_id": "ms-deli:l:0016",
+    "exercise_type": "mcq_translate",
+    "prompt": "Apa arti \"lauk\"?",
+    "options": [
+      "lauk",
+      "air",
+      "makan",
+      "gulai"
+    ],
+    "correct_index": 0,
+    "ref_item_id": "ms-deli:w:0028",
+    "topic": "pilihan_ganda",
+    "validation_status": "draft",
+    "needs_verification": false
+  },
+  {
+    "id": "ms-deli:q:0029",
+    "course_id": "ms-deli",
+    "lesson_id": "ms-deli:l:0016",
+    "exercise_type": "mcq_translate",
+    "prompt": "Apa arti \"gulai\"?",
+    "options": [
+      "gulai",
+      "pedas",
+      "nasi ketan kuning",
+      "gurih (santan)"
+    ],
+    "correct_index": 0,
+    "ref_item_id": "ms-deli:w:0029",
+    "topic": "pilihan_ganda",
+    "validation_status": "draft",
+    "needs_verification": false
+  },
+  {
+    "id": "ms-deli:q:0030",
+    "course_id": "ms-deli",
+    "lesson_id": "ms-deli:l:0016",
+    "exercise_type": "mcq_translate",
+    "prompt": "Apa arti \"pulut kuning\"?",
+    "options": [
+      "nasi ketan kuning",
+      "makan",
+      "nasi",
+      "pedas"
+    ],
+    "correct_index": 0,
+    "ref_item_id": "ms-deli:w:0030",
+    "topic": "pilihan_ganda",
+    "validation_status": "draft",
+    "needs_verification": false
+  },
+  {
+    "id": "ms-deli:q:0031",
+    "course_id": "ms-deli",
+    "lesson_id": "ms-deli:l:0016",
+    "exercise_type": "mcq_translate",
+    "prompt": "Apa arti \"lemak\"?",
+    "options": [
+      "gurih (santan)",
+      "lauk",
+      "pedas",
+      "gulai"
+    ],
+    "correct_index": 0,
+    "ref_item_id": "ms-deli:w:0031",
+    "topic": "pilihan_ganda",
+    "validation_status": "draft",
+    "needs_verification": false
+  },
+  {
+    "id": "ms-deli:q:0032",
+    "course_id": "ms-deli",
+    "lesson_id": "ms-deli:l:0016",
+    "exercise_type": "mcq_translate",
+    "prompt": "Apa arti \"sedap\"?",
+    "options": [
+      "enak",
+      "pedas",
+      "minum",
+      "gurih (santan)"
+    ],
+    "correct_index": 0,
+    "ref_item_id": "ms-deli:w:0032",
+    "topic": "pilihan_ganda",
+    "validation_status": "draft",
+    "needs_verification": false
+  },
+  {
+    "id": "ms-deli:q:0033",
+    "course_id": "ms-deli",
+    "lesson_id": "ms-deli:l:0016",
+    "exercise_type": "mcq_translate",
+    "prompt": "Apa arti \"pedas\"?",
+    "options": [
+      "pedas",
+      "minum",
+      "lauk",
+      "makan"
+    ],
+    "correct_index": 0,
+    "ref_item_id": "ms-deli:w:0033",
+    "topic": "pilihan_ganda",
+    "validation_status": "draft",
+    "needs_verification": false
+  },
+  {
+    "id": "ms-deli:q:0034",
+    "course_id": "ms-deli",
+    "lesson_id": "ms-deli:l:0016",
+    "exercise_type": "mcq_translate",
+    "prompt": "Apa arti \"makan\"?",
+    "options": [
+      "makan",
+      "lauk",
+      "gurih (santan)",
+      "nasi ketan kuning"
+    ],
+    "correct_index": 0,
+    "ref_item_id": "ms-deli:w:0034",
+    "topic": "pilihan_ganda",
+    "validation_status": "draft",
+    "needs_verification": false
+  },
+  {
+    "id": "ms-deli:q:0035",
+    "course_id": "ms-deli",
+    "lesson_id": "ms-deli:l:0016",
+    "exercise_type": "mcq_translate",
+    "prompt": "Apa arti \"minum\"?",
+    "options": [
+      "minum",
+      "lauk",
+      "nasi",
+      "enak"
+    ],
+    "correct_index": 0,
+    "ref_item_id": "ms-deli:w:0035",
+    "topic": "pilihan_ganda",
+    "validation_status": "draft",
+    "needs_verification": false
+  },
+  {
+    "id": "ms-deli:q:0036",
+    "course_id": "ms-deli",
+    "lesson_id": "ms-deli:l:0016",
+    "exercise_type": "mcq_translate",
+    "prompt": "Apa arti \"air\"?",
+    "options": [
+      "air",
+      "gurih (santan)",
+      "makan",
+      "gulai"
+    ],
+    "correct_index": 0,
+    "ref_item_id": "ms-deli:w:0036",
+    "topic": "pilihan_ganda",
+    "validation_status": "draft",
+    "needs_verification": false
+  },
+  {
+    "id": "ms-deli:q:0037",
+    "course_id": "ms-deli",
+    "lesson_id": "ms-deli:l:0021",
+    "exercise_type": "mcq_translate",
+    "prompt": "Apa arti \"ape\"?",
+    "options": [
+      "apa",
+      "berapa",
+      "bagaimana",
+      "mengapa"
+    ],
+    "correct_index": 0,
+    "ref_item_id": "ms-deli:w:0037",
+    "topic": "pilihan_ganda",
+    "validation_status": "draft",
+    "needs_verification": false
+  },
+  {
+    "id": "ms-deli:q:0038",
+    "course_id": "ms-deli",
+    "lesson_id": "ms-deli:l:0021",
+    "exercise_type": "mcq_translate",
+    "prompt": "Apa arti \"mane\"?",
+    "options": [
+      "mana / di mana",
+      "apa",
+      "bagaimana",
+      "mengapa"
+    ],
+    "correct_index": 0,
+    "ref_item_id": "ms-deli:w:0038",
+    "topic": "pilihan_ganda",
+    "validation_status": "draft",
+    "needs_verification": false
+  },
+  {
+    "id": "ms-deli:q:0039",
+    "course_id": "ms-deli",
+    "lesson_id": "ms-deli:l:0021",
+    "exercise_type": "mcq_translate",
+    "prompt": "Apa arti \"sape\"?",
+    "options": [
+      "siapa",
+      "mana / di mana",
+      "kapan",
+      "apa"
+    ],
+    "correct_index": 0,
+    "ref_item_id": "ms-deli:w:0039",
+    "topic": "pilihan_ganda",
+    "validation_status": "draft",
+    "needs_verification": false
+  },
+  {
+    "id": "ms-deli:q:0040",
+    "course_id": "ms-deli",
+    "lesson_id": "ms-deli:l:0021",
+    "exercise_type": "mcq_translate",
+    "prompt": "Apa arti \"kenape\"?",
+    "options": [
+      "mengapa",
+      "bagaimana",
+      "apa",
+      "mana / di mana"
+    ],
+    "correct_index": 0,
+    "ref_item_id": "ms-deli:w:0040",
+    "topic": "pilihan_ganda",
+    "validation_status": "draft",
+    "needs_verification": false
+  },
+  {
+    "id": "ms-deli:q:0041",
+    "course_id": "ms-deli",
+    "lesson_id": "ms-deli:l:0021",
+    "exercise_type": "mcq_translate",
+    "prompt": "Apa arti \"macam mane\"?",
+    "options": [
+      "bagaimana",
+      "siapa",
+      "mana / di mana",
+      "kapan"
+    ],
+    "correct_index": 0,
+    "ref_item_id": "ms-deli:w:0041",
+    "topic": "pilihan_ganda",
+    "validation_status": "draft",
+    "needs_verification": false
+  },
+  {
+    "id": "ms-deli:q:0042",
+    "course_id": "ms-deli",
+    "lesson_id": "ms-deli:l:0021",
+    "exercise_type": "mcq_translate",
+    "prompt": "Apa arti \"bile\"?",
+    "options": [
+      "kapan",
+      "mengapa",
+      "berapa",
+      "bagaimana"
+    ],
+    "correct_index": 0,
+    "ref_item_id": "ms-deli:w:0042",
+    "topic": "pilihan_ganda",
+    "validation_status": "draft",
+    "needs_verification": false
+  },
+  {
+    "id": "ms-deli:q:0043",
+    "course_id": "ms-deli",
+    "lesson_id": "ms-deli:l:0021",
+    "exercise_type": "mcq_translate",
+    "prompt": "Apa arti \"berape\"?",
+    "options": [
+      "berapa",
+      "apa",
+      "mana / di mana",
+      "mengapa"
+    ],
+    "correct_index": 0,
+    "ref_item_id": "ms-deli:w:0043",
+    "topic": "pilihan_ganda",
+    "validation_status": "draft",
+    "needs_verification": false
+  },
+  {
+    "id": "ms-deli:q:0044",
+    "course_id": "ms-deli",
+    "lesson_id": "ms-deli:l:0001",
+    "exercise_type": "match_pairs",
+    "prompt": "Pasangkan Deli dengan Indonesia",
+    "options": [
+      "kabar = kabar",
+      "jemput = silakan / mengundang",
+      "masuk = masuk",
+      "terime = terima"
+    ],
+    "correct_index": 0,
+    "pairs": [
+      {
+        "left": "kabar",
+        "right": "kabar"
+      },
+      {
+        "left": "jemput",
+        "right": "silakan / mengundang"
+      },
+      {
+        "left": "masuk",
+        "right": "masuk"
+      },
+      {
+        "left": "terime",
+        "right": "terima"
+      }
+    ],
+    "ref_item_ids": [
+      "ms-deli:w:0001",
+      "ms-deli:w:0002",
+      "ms-deli:w:0003",
+      "ms-deli:w:0004"
+    ],
+    "topic": "pasangkan",
+    "validation_status": "draft",
+    "needs_verification": false
+  },
+  {
+    "id": "ms-deli:q:0045",
+    "course_id": "ms-deli",
+    "lesson_id": "ms-deli:l:0006",
+    "exercise_type": "match_pairs",
+    "prompt": "Pasangkan Deli dengan Indonesia",
+    "options": [
+      "satu = satu",
+      "due = dua",
+      "tige = tiga",
+      "empat = empat"
+    ],
+    "correct_index": 0,
+    "pairs": [
+      {
+        "left": "satu",
+        "right": "satu"
+      },
+      {
+        "left": "due",
+        "right": "dua"
+      },
+      {
+        "left": "tige",
+        "right": "tiga"
+      },
+      {
+        "left": "empat",
+        "right": "empat"
+      }
+    ],
+    "ref_item_ids": [
+      "ms-deli:w:0007",
+      "ms-deli:w:0008",
+      "ms-deli:w:0009",
+      "ms-deli:w:0010"
+    ],
+    "topic": "pasangkan",
+    "validation_status": "draft",
+    "needs_verification": false
+  },
+  {
+    "id": "ms-deli:q:0046",
+    "course_id": "ms-deli",
+    "lesson_id": "ms-deli:l:0011",
+    "exercise_type": "match_pairs",
+    "prompt": "Pasangkan Deli dengan Indonesia",
+    "options": [
+      "mak = ibu",
+      "abah = ayah",
+      "abang = kakak laki-laki",
+      "kak = kakak perempuan"
+    ],
+    "correct_index": 0,
+    "pairs": [
+      {
+        "left": "mak",
+        "right": "ibu"
+      },
+      {
+        "left": "abah",
+        "right": "ayah"
+      },
+      {
+        "left": "abang",
+        "right": "kakak laki-laki"
+      },
+      {
+        "left": "kak",
+        "right": "kakak perempuan"
+      }
+    ],
+    "ref_item_ids": [
+      "ms-deli:w:0019",
+      "ms-deli:w:0020",
+      "ms-deli:w:0021",
+      "ms-deli:w:0022"
+    ],
+    "topic": "pasangkan",
+    "validation_status": "draft",
+    "needs_verification": false
+  },
+  {
+    "id": "ms-deli:q:0047",
+    "course_id": "ms-deli",
+    "lesson_id": "ms-deli:l:0016",
+    "exercise_type": "match_pairs",
+    "prompt": "Pasangkan Deli dengan Indonesia",
+    "options": [
+      "nasi = nasi",
+      "lauk = lauk",
+      "gulai = gulai",
+      "pulut kuning = nasi ketan kuning"
+    ],
+    "correct_index": 0,
+    "pairs": [
+      {
+        "left": "nasi",
+        "right": "nasi"
+      },
+      {
+        "left": "lauk",
+        "right": "lauk"
+      },
+      {
+        "left": "gulai",
+        "right": "gulai"
+      },
+      {
+        "left": "pulut kuning",
+        "right": "nasi ketan kuning"
+      }
+    ],
+    "ref_item_ids": [
+      "ms-deli:w:0027",
+      "ms-deli:w:0028",
+      "ms-deli:w:0029",
+      "ms-deli:w:0030"
+    ],
+    "topic": "pasangkan",
+    "validation_status": "draft",
+    "needs_verification": false
+  },
+  {
+    "id": "ms-deli:q:0048",
+    "course_id": "ms-deli",
+    "lesson_id": "ms-deli:l:0021",
+    "exercise_type": "match_pairs",
+    "prompt": "Pasangkan Deli dengan Indonesia",
+    "options": [
+      "ape = apa",
+      "mane = mana / di mana",
+      "sape = siapa",
+      "kenape = mengapa"
+    ],
+    "correct_index": 0,
+    "pairs": [
+      {
+        "left": "ape",
+        "right": "apa"
+      },
+      {
+        "left": "mane",
+        "right": "mana / di mana"
+      },
+      {
+        "left": "sape",
+        "right": "siapa"
+      },
+      {
+        "left": "kenape",
+        "right": "mengapa"
+      }
+    ],
+    "ref_item_ids": [
+      "ms-deli:w:0037",
+      "ms-deli:w:0038",
+      "ms-deli:w:0039",
+      "ms-deli:w:0040"
+    ],
+    "topic": "pasangkan",
+    "validation_status": "draft",
+    "needs_verification": false
+  },
+  {
+    "id": "ms-deli:q:0049",
+    "course_id": "ms-deli",
+    "lesson_id": "ms-deli:l:0013",
+    "exercise_type": "build_sentence",
+    "prompt": "Susun: \"Mau ke mana, bang?\"",
+    "options": [
+      "mane",
+      "ke",
+      "Nak",
+      "bang",
+      "yang"
+    ],
+    "correct_index": 0,
+    "correct_sentence": "Nak ke mane, bang?",
+    "ref_item_id": "ms-deli:s:0001",
+    "topic": "susun_kalimat",
+    "validation_status": "draft",
+    "needs_verification": false
+  },
+  {
+    "id": "ms-deli:q:0050",
+    "course_id": "ms-deli",
+    "lesson_id": "ms-deli:l:0013",
+    "exercise_type": "build_sentence",
+    "prompt": "Susun: \"Ibu memasak gulai.\"",
+    "options": [
+      "yang",
+      "gulai",
+      "Mak",
+      "masak"
+    ],
+    "correct_index": 0,
+    "correct_sentence": "Mak masak gulai.",
+    "ref_item_id": "ms-deli:s:0002",
+    "topic": "susun_kalimat",
+    "validation_status": "draft",
+    "needs_verification": false
+  },
+  {
+    "id": "ms-deli:q:0051",
+    "course_id": "ms-deli",
+    "lesson_id": "ms-deli:l:0013",
+    "exercise_type": "build_sentence",
+    "prompt": "Susun: \"Gulai ini gurih sekali.\"",
+    "options": [
+      "yang",
+      "ni",
+      "lemak",
+      "Gulai",
+      "kali"
+    ],
+    "correct_index": 0,
+    "correct_sentence": "Gulai ni lemak kali.",
+    "ref_item_id": "ms-deli:s:0003",
+    "topic": "susun_kalimat",
+    "validation_status": "draft",
+    "needs_verification": false
+  },
+  {
+    "id": "ms-deli:q:0052",
+    "course_id": "ms-deli",
+    "lesson_id": "ms-deli:l:0013",
+    "exercise_type": "build_sentence",
+    "prompt": "Susun: \"Nasi ini enak.\"",
+    "options": [
+      "yang",
+      "ni",
+      "sedap",
+      "Nasi"
+    ],
+    "correct_index": 0,
+    "correct_sentence": "Nasi ni sedap.",
+    "ref_item_id": "ms-deli:s:0004",
+    "topic": "susun_kalimat",
+    "validation_status": "draft",
+    "needs_verification": false
+  },
+  {
+    "id": "ms-deli:q:0053",
+    "course_id": "ms-deli",
+    "lesson_id": "ms-deli:l:0013",
+    "exercise_type": "build_sentence",
+    "prompt": "Susun: \"Ayah pergi kerja.\"",
+    "options": [
+      "yang",
+      "kerje",
+      "Abah",
+      "pegi"
+    ],
+    "correct_index": 0,
+    "correct_sentence": "Abah pegi kerje.",
+    "ref_item_id": "ms-deli:s:0005",
+    "topic": "susun_kalimat",
+    "validation_status": "draft",
+    "needs_verification": false
+  },
+  {
+    "id": "ms-deli:q:0054",
+    "course_id": "ms-deli",
+    "lesson_id": "ms-deli:l:0013",
+    "exercise_type": "build_sentence",
+    "prompt": "Susun: \"Terima kasih, kak.\"",
+    "options": [
+      "kak",
+      "yang",
+      "Terime",
+      "kasih"
+    ],
+    "correct_index": 0,
+    "correct_sentence": "Terime kasih, kak.",
+    "ref_item_id": "ms-deli:s:0006",
+    "topic": "susun_kalimat",
+    "validation_status": "draft",
+    "needs_verification": false
+  },
+  {
+    "id": "ms-deli:q:0055",
+    "course_id": "ms-deli",
+    "lesson_id": "ms-deli:l:0013",
+    "exercise_type": "build_sentence",
+    "prompt": "Susun: \"Silakan masuk, tengku.\"",
+    "options": [
+      "Jemput",
+      "yang",
+      "masuk",
+      "tengku"
+    ],
+    "correct_index": 0,
+    "correct_sentence": "Jemput masuk, tengku.",
+    "ref_item_id": "ms-deli:s:0007",
+    "topic": "susun_kalimat",
+    "validation_status": "draft",
+    "needs_verification": false
+  },
+  {
+    "id": "ms-deli:q:0056",
+    "course_id": "ms-deli",
+    "lesson_id": "ms-deli:l:0013",
+    "exercise_type": "build_sentence",
+    "prompt": "Susun: \"Kakek minum air.\"",
+    "options": [
+      "air",
+      "minum",
+      "yang",
+      "Atok"
+    ],
+    "correct_index": 0,
+    "correct_sentence": "Atok minum air.",
+    "ref_item_id": "ms-deli:s:0008",
+    "topic": "susun_kalimat",
+    "validation_status": "draft",
+    "needs_verification": false
+  },
+  {
+    "id": "ms-deli:q:0057",
+    "course_id": "ms-deli",
+    "lesson_id": "ms-deli:l:0013",
+    "exercise_type": "build_sentence",
+    "prompt": "Susun: \"Berapa ini?\"",
+    "options": [
+      "ni",
+      "Berape",
+      "yang"
+    ],
+    "correct_index": 0,
+    "correct_sentence": "Berape ni?",
+    "ref_item_id": "ms-deli:s:0009",
+    "topic": "susun_kalimat",
+    "validation_status": "draft",
+    "needs_verification": false
+  },
+  {
+    "id": "ms-deli:q:0058",
+    "course_id": "ms-deli",
+    "lesson_id": "ms-deli:l:0013",
+    "exercise_type": "build_sentence",
+    "prompt": "Susun: \"Adik makan nasi.\"",
+    "options": [
+      "yang",
+      "makan",
+      "Adik",
+      "nasi"
+    ],
+    "correct_index": 0,
+    "correct_sentence": "Adik makan nasi.",
+    "ref_item_id": "ms-deli:s:0010",
+    "topic": "susun_kalimat",
+    "validation_status": "draft",
+    "needs_verification": false
+  },
+  {
+    "id": "ms-deli:q:0059",
+    "course_id": "ms-deli",
+    "lesson_id": "ms-deli:l:0021",
+    "exercise_type": "fill_blank",
+    "prompt": "Nak ke ___ ?",
+    "options": [
+      "mane",
+      "ape",
+      "sape",
+      "kenape"
+    ],
+    "correct_index": 0,
+    "ref_item_id": "ms-deli:w:0038",
+    "topic": "isi_kosong",
+    "validation_status": "draft",
+    "needs_verification": false
+  },
+  {
+    "id": "ms-deli:q:0060",
+    "course_id": "ms-deli",
+    "lesson_id": "ms-deli:l:0022",
+    "exercise_type": "fill_blank",
+    "prompt": "___ name awak?",
+    "options": [
+      "Sape",
+      "Ape",
+      "Mane",
+      "Bile"
+    ],
+    "correct_index": 0,
+    "ref_item_id": "ms-deli:w:0039",
+    "topic": "isi_kosong",
+    "validation_status": "draft",
+    "needs_verification": false
+  },
+  {
+    "id": "ms-deli:q:0061",
+    "course_id": "ms-deli",
+    "lesson_id": "ms-deli:l:0018",
+    "exercise_type": "fill_blank",
+    "prompt": "Gulai ni ___ kali.",
+    "options": [
+      "lemak",
+      "pedas",
+      "air",
+      "nasi"
+    ],
+    "correct_index": 0,
+    "ref_item_id": "ms-deli:w:0031",
+    "topic": "isi_kosong",
+    "validation_status": "draft",
+    "needs_verification": false
+  },
+  {
+    "id": "ms-deli:q:0062",
+    "course_id": "ms-deli",
+    "lesson_id": "ms-deli:l:0012",
+    "exercise_type": "fill_blank",
+    "prompt": "___ pegi kerje. (ayah)",
+    "options": [
+      "Abah",
+      "Mak",
+      "Kak",
+      "Adik"
+    ],
+    "correct_index": 0,
+    "ref_item_id": "ms-deli:w:0020",
+    "topic": "isi_kosong",
+    "validation_status": "draft",
+    "needs_verification": false
+  }
+]

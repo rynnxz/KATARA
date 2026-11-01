@@ -1,0 +1,32 @@
+{
+  "languages": [
+    {
+      "id": "ms",
+      "name": "Melayu",
+      "tagline": "Bahasa serumpun Nusantara",
+      "order": 1
+    }
+  ],
+  "courses": [
+    {
+      "id": "ms-deli",
+      "language_id": "ms",
+      "name": "Melayu Deli",
+      "region_label": "Medan & Sumatera Utara",
+      "status": "active",
+      "accent_hex": "#F5B700",
+      "content_version": 1,
+      "has_jawi": true
+    },
+    {
+      "id": "ms-other",
+      "language_id": "ms",
+      "name": "Melayu lainnya",
+      "region_label": "Segera hadir",
+      "status": "coming_soon",
+      "accent_hex": "#9AA0A6",
+      "content_version": 0,
+      "has_jawi": false
+    }
+  ]
+}

@@ -1,0 +1,127 @@
+[
+  {
+    "id": "ms-deli:s:0001",
+    "course_id": "ms-deli",
+    "deli": "Nak ke mane, bang?",
+    "indonesia": "Mau ke mana, bang?",
+    "word_ids": [
+      "ms-deli:w:0038",
+      "ms-deli:w:0021"
+    ],
+    "level": 1,
+    "validation_status": "draft"
+  },
+  {
+    "id": "ms-deli:s:0002",
+    "course_id": "ms-deli",
+    "deli": "Mak masak gulai.",
+    "indonesia": "Ibu memasak gulai.",
+    "word_ids": [
+      "ms-deli:w:0019",
+      "ms-deli:w:0046",
+      "ms-deli:w:0029"
+    ],
+    "level": 2,
+    "validation_status": "draft"
+  },
+  {
+    "id": "ms-deli:s:0003",
+    "course_id": "ms-deli",
+    "deli": "Gulai ni lemak kali.",
+    "indonesia": "Gulai ini gurih sekali.",
+    "word_ids": [
+      "ms-deli:w:0029",
+      "ms-deli:w:0031"
+    ],
+    "level": 1,
+    "validation_status": "draft"
+  },
+  {
+    "id": "ms-deli:s:0004",
+    "course_id": "ms-deli",
+    "deli": "Nasi ni sedap.",
+    "indonesia": "Nasi ini enak.",
+    "word_ids": [
+      "ms-deli:w:0027",
+      "ms-deli:w:0032"
+    ],
+    "level": 1,
+    "validation_status": "draft"
+  },
+  {
+    "id": "ms-deli:s:0005",
+    "course_id": "ms-deli",
+    "deli": "Abah pegi kerje.",
+    "indonesia": "Ayah pergi kerja.",
+    "word_ids": [
+      "ms-deli:w:0020",
+      "ms-deli:w:0047",
+      "ms-deli:w:0044"
+    ],
+    "level": 2,
+    "validation_status": "draft"
+  },
+  {
+    "id": "ms-deli:s:0006",
+    "course_id": "ms-deli",
+    "deli": "Terime kasih, kak.",
+    "indonesia": "Terima kasih, kak.",
+    "word_ids": [
+      "ms-deli:w:0004",
+      "ms-deli:w:0005",
+      "ms-deli:w:0022"
+    ],
+    "level": 1,
+    "validation_status": "draft"
+  },
+  {
+    "id": "ms-deli:s:0007",
+    "course_id": "ms-deli",
+    "deli": "Jemput masuk, tengku.",
+    "indonesia": "Silakan masuk, tengku.",
+    "word_ids": [
+      "ms-deli:w:0002",
+      "ms-deli:w:0003",
+      "ms-deli:w:0024"
+    ],
+    "level": 1,
+    "validation_status": "draft"
+  },
+  {
+    "id": "ms-deli:s:0008",
+    "course_id": "ms-deli",
+    "deli": "Atok minum air.",
+    "indonesia": "Kakek minum air.",
+    "word_ids": [
+      "ms-deli:w:0023",
+      "ms-deli:w:0035",
+      "ms-deli:w:0036"
+    ],
+    "level": 1,
+    "validation_status": "draft"
+  },
+  {
+    "id": "ms-deli:s:0009",
+    "course_id": "ms-deli",
+    "deli": "Berape ni?",
+    "indonesia": "Berapa ini?",
+    "word_ids": [
+      "ms-deli:w:0043"
+    ],
+    "level": 1,
+    "validation_status": "draft"
+  },
+  {
+    "id": "ms-deli:s:0010",
+    "course_id": "ms-deli",
+    "deli": "Adik makan nasi.",
+    "indonesia": "Adik makan nasi.",
+    "word_ids": [
+      "ms-deli:w:0025",
+      "ms-deli:w:0034",
+      "ms-deli:w:0027"
+    ],
+    "level": 1,
+    "validation_status": "draft"
+  }
+]

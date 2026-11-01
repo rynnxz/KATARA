@@ -1,0 +1,35 @@
+[
+  {
+    "id": "ms-deli:art:0001",
+    "course_id": "ms-deli",
+    "title": "Putri Hijau",
+    "body_markdown": null,
+    "sources": [],
+    "verification_notes": "belum_ditulis",
+    "status": "draft",
+    "card_id": null,
+    "unlock_after_unit_id": "ms-deli:u:0003"
+  },
+  {
+    "id": "ms-deli:art:0002",
+    "course_id": "ms-deli",
+    "title": "Istana Maimun",
+    "body_markdown": null,
+    "sources": [],
+    "verification_notes": "belum_ditulis",
+    "status": "draft",
+    "card_id": "ms-deli:c:0001",
+    "unlock_after_unit_id": "ms-deli:u:0003"
+  },
+  {
+    "id": "ms-deli:art:0003",
+    "course_id": "ms-deli",
+    "title": "Guru Patimpus",
+    "body_markdown": null,
+    "sources": [],
+    "verification_notes": "belum_ditulis",
+    "status": "draft",
+    "card_id": null,
+    "unlock_after_unit_id": "ms-deli:u:0003"
+  }
+]
