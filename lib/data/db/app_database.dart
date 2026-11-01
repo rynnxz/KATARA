@@ -1,15 +1,26 @@
 import 'dart:async';
 import 'package:drift/drift.dart';
-import 'package:drift/native.dart';
 import 'package:drift_flutter/drift_flutter.dart';
+import 'package:katara/data/db/connection_stub.dart'
+    if (dart.library.ffi) 'package:katara/data/db/connection_native.dart'
+    if (dart.library.js_interop) 'package:katara/data/db/connection_web.dart';
 
 /// Database SQLite lokal KATARA menggunakan `drift` (Bagian 6).
 /// Mencakup 15 tabel konten (6.1), 9 tabel progres (6.2), dan tabel `reports` (11.3).
 class AppDatabase extends GeneratedDatabase {
   AppDatabase([QueryExecutor? executor])
-      : super(executor ?? driftDatabase(name: 'katara_db'));
+      : super(
+          executor ??
+              driftDatabase(
+                name: 'katara_db',
+                web: DriftWebOptions(
+                  sqlite3Wasm: Uri.parse('sqlite3.wasm'),
+                  driftWorker: Uri.parse('drift_worker.js'),
+                ),
+              ),
+        );
 
-  factory AppDatabase.memory() => AppDatabase(NativeDatabase.memory());
+  factory AppDatabase.memory() => AppDatabase(openMemoryConnection());
 
   final StreamController<String> _changeController =
       StreamController<String>.broadcast();
