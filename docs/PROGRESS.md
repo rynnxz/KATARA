@@ -51,7 +51,7 @@
   - `sentences.json`: **10** kalimat contoh (`ms-deli:s:0001` s/d `ms-deli:s:0010`).
   - `dialogues.json`: **2** dialog percakapan (`ms-deli:d:0001` s/d `ms-deli:d:0002`, total 12 baris).
   - `letters.json`: **6** huruf tambahan Jawi Melayu (`چ ڠ ڤ ݢ ۏ ڽ`).
-  - `articles.json`: **3** kerangka artikel budaya (`Istana Maimun`, `Masjid Raya Al-Mashun`, `Busana Adat Melayu Deli`).
+  - `articles.json`: **3** kerangka artikel budaya (`Putri Hijau`, `Istana Maimun`, `Guru Patimpus`).
   - `collection_cards.json`: **5** kartu koleksi budaya.
   - `units.json`: **10** unit (5 unit Level 1 dari sumber + 5 unit Level 2 hasil pengelompokan `u06`–`u10` agar 24 kata Level 2 dapat dipelajari) dengan total **40** pelajaran (`ms-deli:l:0001` s/d `ms-deli:l:0040`).
   - `quiz_bank.json`: **62** soal kuis (40 soal umum + 22 soal latihan per unit; soal sejarah yang ditandai `[verifikasi]` di sumber diberi `needs_verification: true` dan disembunyikan dari sesi normal).
