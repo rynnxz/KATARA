@@ -1,0 +1,124 @@
+import 'package:flutter/material.dart';
+import 'package:katara/app/theme/katara_colors.dart';
+
+class KChip extends StatelessWidget {
+  const KChip({
+    super.key,
+    required this.label,
+    this.icon,
+    this.selected = false,
+    this.onTap,
+    this.backgroundColor,
+    Color? foregroundColor,
+    Color? textColor,
+  }) : foregroundColor = foregroundColor ?? textColor;
+
+  final String label;
+  final IconData? icon;
+  final bool selected;
+  final VoidCallback? onTap;
+  final Color? backgroundColor;
+  final Color? foregroundColor;
+
+  @override
+  Widget build(BuildContext context) {
+    final p = KataraPalette.of(context);
+    final bg = backgroundColor ?? (selected ? p.primary : p.surfaceAlt);
+    final fg = foregroundColor ?? (selected ? p.onPrimary : p.ink);
+
+    final chip = Container(
+      padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 7),
+      decoration: BoxDecoration(
+        color: bg,
+        borderRadius: BorderRadius.circular(10),
+        border: Border.all(
+          color: selected ? p.primaryDark : p.outline,
+          width: 1.2,
+        ),
+      ),
+      child: Row(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          if (icon != null) ...[
+            Icon(icon, size: 15, color: fg),
+            const SizedBox(width: 5),
+          ],
+          Text(
+            label,
+            style: TextStyle(
+              fontFamily: 'Nunito',
+              fontSize: 13,
+              fontWeight: FontWeight.w700,
+              color: fg,
+            ),
+          ),
+        ],
+      ),
+    );
+
+    if (onTap == null) return chip;
+
+    return Semantics(
+      button: true,
+      selected: selected,
+      label: label,
+      child: MouseRegion(
+        cursor: SystemMouseCursors.click,
+        child: GestureDetector(
+          behavior: HitTestBehavior.opaque,
+          onTap: onTap,
+          child: ConstrainedBox(
+            constraints: const BoxConstraints(minHeight: 44),
+            child: Align(
+              widthFactor: 1,
+              heightFactor: 1,
+              child: chip,
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+/// Badge status validasi konten sesuai Bagian 14 (`draft` | `speaker_checked` | `expert_verified`).
+class ValidationStatusBadge extends StatelessWidget {
+  const ValidationStatusBadge({
+    super.key,
+    required this.status,
+  });
+
+  final String status;
+
+  @override
+  Widget build(BuildContext context) {
+    final p = KataraPalette.of(context);
+    final (String text, IconData icon, Color bg, Color fg) = switch (status) {
+      'expert_verified' => (
+          'Terverifikasi Ahli',
+          Icons.verified_rounded,
+          p.success.withValues(alpha: 0.16),
+          p.ink
+        ),
+      'speaker_checked' => (
+          'Dicek Penutur',
+          Icons.check_circle_outline_rounded,
+          p.primary.withValues(alpha: 0.16),
+          p.ink
+        ),
+      _ => (
+          'Draf',
+          Icons.edit_note_rounded,
+          p.secondary.withValues(alpha: 0.25),
+          p.ink
+        ),
+    };
+
+    return KChip(
+      label: text,
+      icon: icon,
+      backgroundColor: bg,
+      foregroundColor: fg,
+    );
+  }
+}
