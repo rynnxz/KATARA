@@ -5,8 +5,9 @@ import 'package:katara/data/db/connection_stub.dart'
     if (dart.library.ffi) 'package:katara/data/db/connection_native.dart'
     if (dart.library.js_interop) 'package:katara/data/db/connection_web.dart';
 
-/// Database SQLite lokal KATARA menggunakan `drift` (Bagian 6).
-/// Mencakup 15 tabel konten (6.1), 9 tabel progres (6.2), dan tabel `reports` (11.3).
+/// Database SQLite lokal KATARA menggunakan `drift` (schemaVersion 2).
+/// Mencakup tabel konten multi-dialek, modul unduhan, referensi akademik,
+/// progres lokal, event ledger XP idempoten, dan antrean sinkronisasi cloud.
 class AppDatabase extends GeneratedDatabase {
   AppDatabase([QueryExecutor? executor])
       : super(
@@ -34,7 +35,7 @@ class AppDatabase extends GeneratedDatabase {
   }
 
   @override
-  int get schemaVersion => 1;
+  int get schemaVersion => 2;
 
   @override
   Iterable<TableInfo<Table, Object?>> get allTables => const [];
@@ -43,11 +44,277 @@ class AppDatabase extends GeneratedDatabase {
   MigrationStrategy get migration => MigrationStrategy(
         onCreate: (m) async {
           await _createAllTables();
+          await runV2UpgradeSafely();
+        },
+        onUpgrade: (m, from, to) async {
+          if (from < 2) {
+            await runV2UpgradeSafely();
+          }
         },
       );
 
   Future<void> ensureInitialized() async {
     await customSelect('SELECT 1').get();
+  }
+
+  Future<void> _addColumnIfMissing(
+    String table,
+    String column,
+    String definition,
+  ) async {
+    final info = await customSelect('PRAGMA table_info($table)').get();
+    final exists = info.any((row) => row.read<String>('name') == column);
+    if (!exists) {
+      await customStatement('ALTER TABLE $table ADD COLUMN $column $definition');
+    }
+  }
+
+  /// Menjalankan migrasi non-destruktif ke skema v2 secara idempoten.
+  Future<void> runV2UpgradeSafely() async {
+    // 1. Kolom tambahan pada courses (dialects & downloadable module metadata)
+    await _addColumnIfMissing(
+      'courses',
+      'dialect_id',
+      "TEXT NOT NULL DEFAULT 'melayu_deli'",
+    );
+    await _addColumnIfMissing(
+      'courses',
+      'is_bundled',
+      'INTEGER NOT NULL DEFAULT 1',
+    );
+    await _addColumnIfMissing(
+      'courses',
+      'is_installed',
+      'INTEGER NOT NULL DEFAULT 1',
+    );
+    await _addColumnIfMissing(
+      'courses',
+      'installed_version',
+      'INTEGER NOT NULL DEFAULT 1',
+    );
+    await _addColumnIfMissing('courses', 'download_url', 'TEXT');
+    await _addColumnIfMissing('courses', 'sha256', 'TEXT');
+    await _addColumnIfMissing(
+      'courses',
+      'size_bytes',
+      'INTEGER NOT NULL DEFAULT 0',
+    );
+    await _addColumnIfMissing('courses', 'color_identity_json', 'TEXT');
+    await _addColumnIfMissing('courses', 'theme_key', "TEXT NOT NULL DEFAULT 'deli'");
+    await _addColumnIfMissing('courses', 'description', "TEXT NOT NULL DEFAULT ''");
+
+    // 2. Kolom tambahan pada words (provenance, fonologi, contoh kalimat, wilayah)
+    await _addColumnIfMissing('words', 'pronunciation', 'TEXT');
+    await _addColumnIfMissing('words', 'example_sentence', 'TEXT');
+    await _addColumnIfMissing('words', 'example_translation', 'TEXT');
+    await _addColumnIfMissing('words', 'usage_context', 'TEXT');
+    await _addColumnIfMissing('words', 'region', 'TEXT');
+    await _addColumnIfMissing('words', 'variants_json', 'TEXT');
+    await _addColumnIfMissing(
+      'words',
+      'confidence',
+      "TEXT NOT NULL DEFAULT 'high'",
+    );
+    await _addColumnIfMissing('words', 'sources_json', 'TEXT');
+
+    // 3. Kolom tambahan pada phrases & sentences
+    await _addColumnIfMissing('phrases', 'pronunciation', 'TEXT');
+    await _addColumnIfMissing('phrases', 'region', 'TEXT');
+    await _addColumnIfMissing(
+      'phrases',
+      'confidence',
+      "TEXT NOT NULL DEFAULT 'high'",
+    );
+    await _addColumnIfMissing('phrases', 'sources_json', 'TEXT');
+
+    await _addColumnIfMissing('sentences', 'region', 'TEXT');
+    await _addColumnIfMissing(
+      'sentences',
+      'confidence',
+      "TEXT NOT NULL DEFAULT 'high'",
+    );
+    await _addColumnIfMissing('sentences', 'sources_json', 'TEXT');
+
+    // 4. Kolom metadata sinkronisasi pada tabel progres
+    await _addColumnIfMissing('user_stats', 'created_at', 'TEXT');
+    await _addColumnIfMissing(
+      'user_stats',
+      'is_synced',
+      'INTEGER NOT NULL DEFAULT 0',
+    );
+    await _addColumnIfMissing('user_stats', 'deleted_at', 'TEXT');
+    await _addColumnIfMissing(
+      'user_stats',
+      'device_id',
+      "TEXT NOT NULL DEFAULT 'local-device'",
+    );
+    await _addColumnIfMissing(
+      'user_stats',
+      'revision',
+      'INTEGER NOT NULL DEFAULT 1',
+    );
+
+    await _addColumnIfMissing('course_progress', 'created_at', 'TEXT');
+    await _addColumnIfMissing('course_progress', 'updated_at', 'TEXT');
+    await _addColumnIfMissing(
+      'course_progress',
+      'is_synced',
+      'INTEGER NOT NULL DEFAULT 0',
+    );
+    await _addColumnIfMissing('course_progress', 'deleted_at', 'TEXT');
+    await _addColumnIfMissing(
+      'course_progress',
+      'device_id',
+      "TEXT NOT NULL DEFAULT 'local-device'",
+    );
+    await _addColumnIfMissing(
+      'course_progress',
+      'revision',
+      'INTEGER NOT NULL DEFAULT 1',
+    );
+
+    await _addColumnIfMissing('word_mastery', 'created_at', 'TEXT');
+    await _addColumnIfMissing('word_mastery', 'updated_at', 'TEXT');
+    await _addColumnIfMissing(
+      'word_mastery',
+      'is_synced',
+      'INTEGER NOT NULL DEFAULT 0',
+    );
+    await _addColumnIfMissing('word_mastery', 'deleted_at', 'TEXT');
+    await _addColumnIfMissing(
+      'word_mastery',
+      'device_id',
+      "TEXT NOT NULL DEFAULT 'local-device'",
+    );
+    await _addColumnIfMissing(
+      'word_mastery',
+      'revision',
+      'INTEGER NOT NULL DEFAULT 1',
+    );
+
+    await _addColumnIfMissing(
+      'achievements_unlocked',
+      'is_synced',
+      'INTEGER NOT NULL DEFAULT 0',
+    );
+    await _addColumnIfMissing(
+      'achievements_unlocked',
+      'device_id',
+      "TEXT NOT NULL DEFAULT 'local-device'",
+    );
+
+    // 5. Tabel baru schemaVersion 2
+    await customStatement('''
+      CREATE TABLE IF NOT EXISTS installed_modules (
+        module_id TEXT PRIMARY KEY NOT NULL,
+        course_id TEXT NOT NULL,
+        version INTEGER NOT NULL DEFAULT 1,
+        is_bundled INTEGER NOT NULL DEFAULT 0,
+        install_path TEXT,
+        sha256 TEXT NOT NULL,
+        size_bytes INTEGER NOT NULL DEFAULT 0,
+        installed_at TEXT NOT NULL,
+        updated_at TEXT NOT NULL,
+        word_count INTEGER NOT NULL DEFAULT 0,
+        lesson_count INTEGER NOT NULL DEFAULT 0
+      )
+    ''');
+    await _addColumnIfMissing(
+      'installed_modules',
+      'word_count',
+      'INTEGER NOT NULL DEFAULT 0',
+    );
+    await _addColumnIfMissing(
+      'installed_modules',
+      'lesson_count',
+      'INTEGER NOT NULL DEFAULT 0',
+    );
+
+    await customStatement('''
+      CREATE TABLE IF NOT EXISTS dialect_references (
+        id TEXT PRIMARY KEY NOT NULL,
+        course_id TEXT NOT NULL,
+        dialect_id TEXT NOT NULL,
+        title TEXT NOT NULL,
+        author TEXT NOT NULL,
+        publication_year INTEGER,
+        publisher TEXT,
+        source_type TEXT NOT NULL,
+        url TEXT,
+        accessed_at TEXT,
+        reliability TEXT NOT NULL DEFAULT 'high',
+        supported_domain TEXT
+      )
+    ''');
+
+    await customStatement('''
+      CREATE TABLE IF NOT EXISTS xp_events (
+        event_id TEXT PRIMARY KEY NOT NULL,
+        course_id TEXT NOT NULL,
+        amount INTEGER NOT NULL,
+        source TEXT NOT NULL,
+        device_id TEXT NOT NULL,
+        created_at TEXT NOT NULL,
+        is_synced INTEGER NOT NULL DEFAULT 0
+      )
+    ''');
+
+    await customStatement('''
+      CREATE TABLE IF NOT EXISTS streak_history (
+        date TEXT PRIMARY KEY NOT NULL,
+        course_id TEXT NOT NULL,
+        xp_earned INTEGER NOT NULL DEFAULT 0,
+        lessons_completed INTEGER NOT NULL DEFAULT 0,
+        freeze_used INTEGER NOT NULL DEFAULT 0,
+        device_id TEXT NOT NULL DEFAULT 'local-device',
+        updated_at TEXT NOT NULL,
+        is_synced INTEGER NOT NULL DEFAULT 0
+      )
+    ''');
+
+    await customStatement('''
+      CREATE TABLE IF NOT EXISTS sync_queue (
+        id INTEGER PRIMARY KEY AUTOINCREMENT,
+        operation_id TEXT NOT NULL UNIQUE,
+        entity_type TEXT NOT NULL,
+        entity_id TEXT NOT NULL,
+        operation TEXT NOT NULL,
+        payload_json TEXT NOT NULL,
+        retry_count INTEGER NOT NULL DEFAULT 0,
+        next_retry_at TEXT,
+        last_error TEXT,
+        created_at TEXT NOT NULL
+      )
+    ''');
+
+    await customStatement('''
+      CREATE TABLE IF NOT EXISTS user_profiles (
+        uid TEXT PRIMARY KEY NOT NULL,
+        email TEXT,
+        display_name TEXT,
+        photo_url TEXT,
+        is_anonymous INTEGER NOT NULL DEFAULT 1,
+        device_id TEXT NOT NULL DEFAULT 'local-device',
+        revision INTEGER NOT NULL DEFAULT 1,
+        last_synced_at TEXT,
+        created_at TEXT NOT NULL,
+        updated_at TEXT NOT NULL
+      )
+    ''');
+
+    // Index tambahan v2
+    await customStatement(
+      'CREATE INDEX IF NOT EXISTS idx_words_course_category ON words(course_id, category)',
+    );
+    await customStatement(
+      'CREATE INDEX IF NOT EXISTS idx_refs_course ON dialect_references(course_id)',
+    );
+    await customStatement(
+      'CREATE INDEX IF NOT EXISTS idx_xp_events_synced ON xp_events(is_synced)',
+    );
+    await customStatement(
+      'CREATE INDEX IF NOT EXISTS idx_sync_queue_retry ON sync_queue(retry_count, next_retry_at)',
+    );
   }
 
   Future<void> _createAllTables() async {
@@ -65,12 +332,20 @@ class AppDatabase extends GeneratedDatabase {
       CREATE TABLE IF NOT EXISTS courses (
         id TEXT PRIMARY KEY NOT NULL,
         language_id TEXT NOT NULL,
+        dialect_id TEXT NOT NULL DEFAULT 'melayu_deli',
         name TEXT NOT NULL,
         region_label TEXT NOT NULL,
         status TEXT NOT NULL,
         accent_hex TEXT NOT NULL,
         content_version INTEGER NOT NULL DEFAULT 0,
-        has_jawi INTEGER NOT NULL DEFAULT 0
+        has_jawi INTEGER NOT NULL DEFAULT 0,
+        is_bundled INTEGER NOT NULL DEFAULT 1,
+        is_installed INTEGER NOT NULL DEFAULT 1,
+        installed_version INTEGER NOT NULL DEFAULT 1,
+        download_url TEXT,
+        sha256 TEXT,
+        size_bytes INTEGER NOT NULL DEFAULT 0,
+        color_identity_json TEXT
       )
     ''');
 
@@ -88,6 +363,14 @@ class AppDatabase extends GeneratedDatabase {
         register TEXT NOT NULL,
         raw_register TEXT NOT NULL DEFAULT 'deli',
         notes TEXT,
+        pronunciation TEXT,
+        example_sentence TEXT,
+        example_translation TEXT,
+        usage_context TEXT,
+        region TEXT,
+        variants_json TEXT,
+        confidence TEXT NOT NULL DEFAULT 'high',
+        sources_json TEXT,
         audio_path TEXT,
         image_path TEXT,
         validation_status TEXT NOT NULL DEFAULT 'draft',
@@ -106,6 +389,10 @@ class AppDatabase extends GeneratedDatabase {
         unit_id TEXT NOT NULL,
         audio_path TEXT,
         cultural_note TEXT,
+        pronunciation TEXT,
+        region TEXT,
+        confidence TEXT NOT NULL DEFAULT 'high',
+        sources_json TEXT,
         validation_status TEXT NOT NULL DEFAULT 'draft',
         deprecated INTEGER NOT NULL DEFAULT 0
       )
@@ -119,6 +406,9 @@ class AppDatabase extends GeneratedDatabase {
         indonesia TEXT NOT NULL,
         word_ids_json TEXT NOT NULL,
         level INTEGER NOT NULL DEFAULT 1,
+        region TEXT,
+        confidence TEXT NOT NULL DEFAULT 'high',
+        sources_json TEXT,
         validation_status TEXT NOT NULL DEFAULT 'draft',
         deprecated INTEGER NOT NULL DEFAULT 0
       )
@@ -274,7 +564,12 @@ class AppDatabase extends GeneratedDatabase {
         learning_goal TEXT NOT NULL DEFAULT 'budaya',
         casual_mode INTEGER NOT NULL DEFAULT 0,
         onboarding_completed INTEGER NOT NULL DEFAULT 0,
-        updated_at TEXT NOT NULL
+        created_at TEXT,
+        updated_at TEXT NOT NULL,
+        is_synced INTEGER NOT NULL DEFAULT 0,
+        deleted_at TEXT,
+        device_id TEXT NOT NULL DEFAULT 'local-device',
+        revision INTEGER NOT NULL DEFAULT 1
       )
     ''');
 
@@ -285,6 +580,12 @@ class AppDatabase extends GeneratedDatabase {
         stars INTEGER NOT NULL DEFAULT 0,
         best_score INTEGER NOT NULL DEFAULT 0,
         completed_at TEXT NOT NULL,
+        created_at TEXT,
+        updated_at TEXT,
+        is_synced INTEGER NOT NULL DEFAULT 0,
+        deleted_at TEXT,
+        device_id TEXT NOT NULL DEFAULT 'local-device',
+        revision INTEGER NOT NULL DEFAULT 1,
         PRIMARY KEY (course_id, lesson_id)
       )
     ''');
@@ -299,6 +600,12 @@ class AppDatabase extends GeneratedDatabase {
         wrong_count INTEGER NOT NULL DEFAULT 0,
         last_seen_at TEXT NOT NULL,
         next_review_at TEXT NOT NULL,
+        created_at TEXT,
+        updated_at TEXT,
+        is_synced INTEGER NOT NULL DEFAULT 0,
+        deleted_at TEXT,
+        device_id TEXT NOT NULL DEFAULT 'local-device',
+        revision INTEGER NOT NULL DEFAULT 1,
         PRIMARY KEY (course_id, item_id)
       )
     ''');
@@ -317,7 +624,9 @@ class AppDatabase extends GeneratedDatabase {
     await customStatement('''
       CREATE TABLE IF NOT EXISTS achievements_unlocked (
         achievement_id TEXT PRIMARY KEY NOT NULL,
-        unlocked_at TEXT NOT NULL
+        unlocked_at TEXT NOT NULL,
+        is_synced INTEGER NOT NULL DEFAULT 0,
+        device_id TEXT NOT NULL DEFAULT 'local-device'
       )
     ''');
 
@@ -389,10 +698,11 @@ class AppDatabase extends GeneratedDatabase {
         id, xp_total, level, coins, hearts, hearts_updated_at,
         streak_current, streak_best, last_active_date, streak_freezes,
         daily_goal_minutes, active_course_id, display_name, learning_goal,
-        casual_mode, onboarding_completed, updated_at
-      ) VALUES (1, 0, 1, 20, 5, ?, 0, 0, NULL, 1, 10, NULL, 'Pelajar', 'budaya', 0, 0, ?)
+        casual_mode, onboarding_completed, created_at, updated_at,
+        is_synced, device_id, revision
+      ) VALUES (1, 0, 1, 20, 5, ?, 0, 0, NULL, 1, 10, NULL, 'Pelajar', 'budaya', 0, 0, ?, ?, 0, 'local-device', 1)
       ''',
-      [nowIso, nowIso],
+      [nowIso, nowIso, nowIso],
     );
   }
 

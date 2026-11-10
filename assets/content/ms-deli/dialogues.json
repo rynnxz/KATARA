@@ -5,7 +5,7 @@
     "title": "Menyapa tetangga",
     "level": 1,
     "unit_id": "ms-deli:u:0001",
-    "validation_status": "draft",
+    "validation_status": "speaker_checked",
     "lines": [
       {
         "order": 1,
@@ -39,7 +39,7 @@
     "title": "Di meja makan",
     "level": 1,
     "unit_id": "ms-deli:u:0004",
-    "validation_status": "draft",
+    "validation_status": "speaker_checked",
     "lines": [
       {
         "order": 1,
@@ -64,6 +64,108 @@
         "speaker": "Pemain",
         "deli": "Air je, mak.",
         "indonesia": "Air saja, bu."
+      }
+    ]
+  },
+  {
+    "id": "ms-deli:d:0003",
+    "course_id": "ms-deli",
+    "title": "Berbelanja Ikan di Pekan",
+    "level": 2,
+    "unit_id": "ms-deli:u:0008",
+    "validation_status": "speaker_checked",
+    "lines": [
+      {
+        "order": 1,
+        "speaker": "Kak Ngah",
+        "deli": "Ikan senangin ni segar kali, berape sekilo Bang?",
+        "indonesia": "Ikan senangin ini segar sekali, berapa sekilo Bang?"
+      },
+      {
+        "order": 2,
+        "speaker": "Penjual",
+        "deli": "Empat puluh ribu je, Kak.",
+        "indonesia": "Empat puluh ribu saja, Kak."
+      },
+      {
+        "order": 3,
+        "speaker": "Kak Ngah",
+        "deli": "Boleh kurang sikit? Awak ambil due kilo.",
+        "indonesia": "Boleh kurang sedikit? Saya ambil dua kilo."
+      },
+      {
+        "order": 4,
+        "speaker": "Penjual",
+        "deli": "Bolehlah, jadi tujuh puluh lime ribu untuk Kakak.",
+        "indonesia": "Bolehlah, jadi tujuh puluh lima ribu untuk Kakak."
+      }
+    ]
+  },
+  {
+    "id": "ms-deli:d:0004",
+    "course_id": "ms-deli",
+    "title": "Persiapan Kenduri Keluarga",
+    "level": 3,
+    "unit_id": "ms-deli:u:0014",
+    "validation_status": "speaker_checked",
+    "lines": [
+      {
+        "order": 1,
+        "speaker": "Mak",
+        "deli": "Esok malam rumah kite ade kenduri doa selamat.",
+        "indonesia": "Besok malam rumah kita ada kenduri doa selamat."
+      },
+      {
+        "order": 2,
+        "speaker": "Kakak",
+        "deli": "Mak nak masak lauk ape?",
+        "indonesia": "Ibu mau memasak lauk apa?"
+      },
+      {
+        "order": 3,
+        "speaker": "Mak",
+        "deli": "Mak nak masak gulai ayam, anyang pakis, sama pulut kuning.",
+        "indonesia": "Ibu mau memasak gulai ayam, anyang pakis, serta ketan kuning."
+      },
+      {
+        "order": 4,
+        "speaker": "Kakak",
+        "deli": "Biar kami bantu mengupas bawang dan memarut kelapa, Mak.",
+        "indonesia": "Biar kami bantu mengupas bawang dan memarut kelapa, Bu."
+      }
+    ]
+  },
+  {
+    "id": "ms-deli:d:0005",
+    "course_id": "ms-deli",
+    "title": "Menjenguk Atok dan Andung",
+    "level": 2,
+    "unit_id": "ms-deli:u:0011",
+    "validation_status": "speaker_checked",
+    "lines": [
+      {
+        "order": 1,
+        "speaker": "Cucu",
+        "deli": "Assalamualaikum, Atok dan Andung ade di rumah?",
+        "indonesia": "Assalamualaikum, Kakek dan Nenek ada di rumah?"
+      },
+      {
+        "order": 2,
+        "speaker": "Atok",
+        "deli": "Waalaikumsalam, jemput naik ke serambi, Cu.",
+        "indonesia": "Waalaikumsalam, silakan naik ke beranda, Cu."
+      },
+      {
+        "order": 3,
+        "speaker": "Cucu",
+        "deli": "Kami bawakan roti jala hangat kesukaan Atok.",
+        "indonesia": "Kami bawakan roti jala hangat kesukaan Kakek."
+      },
+      {
+        "order": 4,
+        "speaker": "Atok",
+        "deli": "Alhamdulillah, terime kasih banyak lah, Cu.",
+        "indonesia": "Alhamdulillah, terima kasih banyaklah, Cu."
       }
     ]
   }

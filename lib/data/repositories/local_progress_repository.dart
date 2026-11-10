@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:convert';
 import 'dart:math' as math;
 import 'package:drift/drift.dart';
 import 'package:katara/data/db/app_database.dart';
@@ -18,6 +19,14 @@ class LocalProgressRepository implements ProgressRepository {
   final AppDatabase db;
   final ContentRepository contentRepository;
   final DateTime Function() _clock;
+  static final _rng = math.Random();
+
+  static String _generateId() {
+    final t = DateTime.now().microsecondsSinceEpoch.toRadixString(16);
+    final r1 = _rng.nextInt(0x7FFFFFFF).toRadixString(16).padLeft(8, '0');
+    final r2 = _rng.nextInt(0x7FFFFFFF).toRadixString(16).padLeft(8, '0');
+    return '$t-$r1-$r2';
+  }
 
   @override
   Stream<UserStats> watchStats() async* {
@@ -399,6 +408,49 @@ class LocalProgressRepository implements ProgressRepository {
         [todayStr, attempt.courseId, xpEarned, 'lesson:${attempt.lessonId}'],
       );
 
+      final eventId = _generateId();
+      final nowIso = now.toIso8601String();
+      await db.customStatement(
+        '''
+        INSERT INTO xp_events (event_id, course_id, amount, source, device_id, created_at, is_synced)
+        VALUES (?, ?, ?, ?, 'local-device', ?, 0)
+        ''',
+        [eventId, attempt.courseId, xpEarned, 'lesson:${attempt.lessonId}', nowIso],
+      );
+
+      await db.customStatement(
+        '''
+        INSERT INTO streak_history (date, course_id, xp_earned, lessons_completed, freeze_used, device_id, updated_at, is_synced)
+        VALUES (?, ?, ?, 1, 0, 'local-device', ?, 0)
+        ON CONFLICT(date) DO UPDATE SET
+          xp_earned = streak_history.xp_earned + excluded.xp_earned,
+          lessons_completed = streak_history.lessons_completed + 1,
+          updated_at = excluded.updated_at,
+          is_synced = 0
+        ''',
+        [todayStr, attempt.courseId, xpEarned, nowIso],
+      );
+
+      await db.customStatement(
+        '''
+        INSERT INTO sync_queue (operation_id, entity_type, entity_id, operation, payload_json, created_at)
+        VALUES (?, 'dialect_progress', ?, 'upsert', ?, ?)
+        ''',
+        [
+          _generateId(),
+          '${attempt.courseId}_${attempt.lessonId}',
+          jsonEncode({
+            'course_id': attempt.courseId,
+            'lesson_id': attempt.lessonId,
+            'stars': bestStars,
+            'best_score': bestScore,
+            'completed_at': nowIso,
+            'updated_at': nowIso,
+          }),
+          nowIso,
+        ],
+      );
+
       // 5. Update Daily Quests
       await _ensureDailyQuestsExistInTx(todayStr, config);
       await _incrementQuestMetricInTx(todayStr, 'lessons_done', 1);
@@ -684,6 +736,37 @@ class LocalProgressRepository implements ProgressRepository {
       await db.customStatement(
         'INSERT INTO xp_log (date, course_id, amount, source) VALUES (?, ?, ?, ?)',
         [todayStr, courseId, xpEarned, 'practice'],
+      );
+
+      final nowIso = now.toIso8601String();
+      final eventId = _generateId();
+      await db.customStatement(
+        '''
+        INSERT INTO xp_events (event_id, course_id, amount, source, device_id, created_at, is_synced)
+        VALUES (?, ?, ?, 'practice', 'local-device', ?, 0)
+        ''',
+        [eventId, courseId, xpEarned, nowIso],
+      );
+
+      await db.customStatement(
+        '''
+        INSERT INTO sync_queue (operation_id, entity_type, entity_id, operation, payload_json, created_at)
+        VALUES (?, 'xp_events', ?, 'upsert', ?, ?)
+        ''',
+        [
+          _generateId(),
+          eventId,
+          jsonEncode({
+            'event_id': eventId,
+            'course_id': courseId,
+            'delta_xp': xpEarned,
+            'amount': xpEarned,
+            'source_type': 'practice',
+            'source': 'practice',
+            'created_at': nowIso,
+          }),
+          nowIso,
+        ],
       );
     });
 

@@ -2,19 +2,19 @@
   "schema_version": 1,
   "courses": {
     "ms-deli": {
-      "content_version": 1,
-      "checksum": "b699225f9bcda70c78e3a0c48fa52f49030579988e70bd6a875b185f2bcee142",
+      "content_version": 2,
+      "checksum": "5ac191515bfc9a6f5c37ba097afdff8e71bfa49445bf7c6f545c101d858931b6",
       "counts": {
-        "words": 67,
-        "phrases": 10,
-        "sentences": 10,
-        "dialogues": 2,
+        "words": 364,
+        "phrases": 40,
+        "sentences": 35,
+        "dialogues": 5,
         "letters": 6,
-        "articles": 3,
-        "units": 10,
-        "lessons": 40,
+        "articles": 14,
+        "units": 16,
+        "lessons": 64,
         "quiz_bank": 62,
-        "collection_cards": 5
+        "collection_cards": 12
       }
     }
   }

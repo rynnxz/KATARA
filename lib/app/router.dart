@@ -6,6 +6,7 @@ import 'package:katara/features/culture/collection_screen.dart';
 import 'package:katara/features/culture/culture_screen.dart';
 import 'package:katara/features/culture/jawi_screen.dart';
 import 'package:katara/features/dev/dev_gallery_screen.dart';
+import 'package:katara/features/dialect_comparison/dialect_comparison_screen.dart';
 import 'package:katara/features/dictionary/dictionary_screen.dart';
 import 'package:katara/features/lesson/lesson_result_screen.dart';
 import 'package:katara/features/lesson/lesson_screen.dart';
@@ -15,7 +16,9 @@ import 'package:katara/features/onboarding/splash_screen.dart';
 import 'package:katara/features/path_map/home_shell_screen.dart';
 import 'package:katara/features/path_map/learn_map_screen.dart';
 import 'package:katara/features/path_map/unit_detail_screen.dart';
+import 'package:katara/features/practice/conversation_practice_screen.dart';
 import 'package:katara/features/practice/practice_screen.dart';
+import 'package:katara/features/practice/pronunciation_guide_screen.dart';
 import 'package:katara/features/profile/profile_screen.dart';
 import 'package:katara/features/quests/quests_screen.dart';
 import 'package:katara/features/region_picker/region_picker_screen.dart';
@@ -118,6 +121,18 @@ final appRouterProvider = Provider<GoRouter>((ref) {
       GoRoute(
         path: '/about',
         builder: (context, state) => const AboutScreen(),
+      ),
+      GoRoute(
+        path: '/dialect-comparison',
+        builder: (context, state) => const DialectComparisonScreen(),
+      ),
+      GoRoute(
+        path: '/practice/conversation',
+        builder: (context, state) => const ConversationPracticeScreen(),
+      ),
+      GoRoute(
+        path: '/practice/pronunciation',
+        builder: (context, state) => const PronunciationGuideScreen(),
       ),
       if (kDebugMode)
         GoRoute(

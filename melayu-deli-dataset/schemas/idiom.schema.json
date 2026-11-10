@@ -1,0 +1,81 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Melayu Deli Idiom, Proverb & Pantun Schema",
+  "type": "object",
+  "required": [
+    "id",
+    "type",
+    "text_deli",
+    "translation_literal_id",
+    "meaning_figurative_id",
+    "cultural_context",
+    "metaphor_domain",
+    "dialect",
+    "region",
+    "source_ids",
+    "confidence",
+    "verification_status",
+    "notes"
+  ],
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^IDM-\\d{6}$"
+    },
+    "type": {
+      "type": "string",
+      "enum": [
+        "proverb",
+        "idiom",
+        "pantun"
+      ]
+    },
+    "text_deli": {
+      "type": "string"
+    },
+    "translation_literal_id": {
+      "type": "string"
+    },
+    "meaning_figurative_id": {
+      "type": "string"
+    },
+    "cultural_context": {
+      "type": "string"
+    },
+    "metaphor_domain": {
+      "type": "string"
+    },
+    "dialect": {
+      "type": "string"
+    },
+    "region": {
+      "type": "string"
+    },
+    "source_ids": {
+      "type": "array"
+    },
+    "confidence": {
+      "type": "string",
+      "enum": [
+        "high",
+        "medium",
+        "low"
+      ]
+    },
+    "verification_status": {
+      "type": "string",
+      "enum": [
+        "verified",
+        "needs_review",
+        "disputed",
+        "rejected"
+      ]
+    },
+    "notes": {
+      "type": [
+        "string",
+        "null"
+      ]
+    }
+  }
+}

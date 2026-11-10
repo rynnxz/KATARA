@@ -9,7 +9,7 @@
       "ms-deli:w:0021"
     ],
     "level": 1,
-    "validation_status": "draft"
+    "validation_status": "speaker_checked"
   },
   {
     "id": "ms-deli:s:0002",
@@ -22,7 +22,7 @@
       "ms-deli:w:0029"
     ],
     "level": 2,
-    "validation_status": "draft"
+    "validation_status": "speaker_checked"
   },
   {
     "id": "ms-deli:s:0003",
@@ -34,7 +34,7 @@
       "ms-deli:w:0031"
     ],
     "level": 1,
-    "validation_status": "draft"
+    "validation_status": "speaker_checked"
   },
   {
     "id": "ms-deli:s:0004",
@@ -46,7 +46,7 @@
       "ms-deli:w:0032"
     ],
     "level": 1,
-    "validation_status": "draft"
+    "validation_status": "speaker_checked"
   },
   {
     "id": "ms-deli:s:0005",
@@ -59,7 +59,7 @@
       "ms-deli:w:0044"
     ],
     "level": 2,
-    "validation_status": "draft"
+    "validation_status": "speaker_checked"
   },
   {
     "id": "ms-deli:s:0006",
@@ -72,7 +72,7 @@
       "ms-deli:w:0022"
     ],
     "level": 1,
-    "validation_status": "draft"
+    "validation_status": "speaker_checked"
   },
   {
     "id": "ms-deli:s:0007",
@@ -85,7 +85,7 @@
       "ms-deli:w:0024"
     ],
     "level": 1,
-    "validation_status": "draft"
+    "validation_status": "speaker_checked"
   },
   {
     "id": "ms-deli:s:0008",
@@ -98,7 +98,7 @@
       "ms-deli:w:0036"
     ],
     "level": 1,
-    "validation_status": "draft"
+    "validation_status": "speaker_checked"
   },
   {
     "id": "ms-deli:s:0009",
@@ -109,7 +109,7 @@
       "ms-deli:w:0043"
     ],
     "level": 1,
-    "validation_status": "draft"
+    "validation_status": "speaker_checked"
   },
   {
     "id": "ms-deli:s:0010",
@@ -122,6 +122,351 @@
       "ms-deli:w:0027"
     ],
     "level": 1,
-    "validation_status": "draft"
+    "validation_status": "speaker_checked"
+  },
+  {
+    "id": "ms-deli:s:0011",
+    "course_id": "ms-deli",
+    "deli": "Pulut kuning berinti kelapa.",
+    "indonesia": "Nasi ketan kuning dengan taburan inti kelapa manis.",
+    "word_ids": [
+      "ms-deli:w:0030"
+    ],
+    "level": 2,
+    "validation_status": "speaker_checked"
+  },
+  {
+    "id": "ms-deli:s:0012",
+    "course_id": "ms-deli",
+    "deli": "Rumah panggung tepi Sungai Deli.",
+    "indonesia": "Rumah panggung di tepi Sungai Deli.",
+    "word_ids": [
+      "ms-deli:w:0058"
+    ],
+    "level": 2,
+    "validation_status": "speaker_checked"
+  },
+  {
+    "id": "ms-deli:s:0013",
+    "course_id": "ms-deli",
+    "deli": "Baju teluk belanga dan kain samping songket.",
+    "indonesia": "Baju teluk belanga dan kain sarung samping songket.",
+    "word_ids": [
+      "ms-deli:w:0161",
+      "ms-deli:w:0163"
+    ],
+    "level": 2,
+    "validation_status": "speaker_checked"
+  },
+  {
+    "id": "ms-deli:s:0014",
+    "course_id": "ms-deli",
+    "deli": "Andung tengah menganyam tikar pandan di serambi.",
+    "indonesia": "Nenek sedang menganyam tikar pandan di beranda.",
+    "word_ids": [
+      "ms-deli:w:0081",
+      "ms-deli:w:0191",
+      "ms-deli:w:0156",
+      "ms-deli:w:0159"
+    ],
+    "level": 2,
+    "validation_status": "speaker_checked"
+  },
+  {
+    "id": "ms-deli:s:0015",
+    "course_id": "ms-deli",
+    "deli": "Pak Ngah membeli ikan senangin due kilo di Pajak Ikan.",
+    "indonesia": "Paman tengah membeli ikan senangin dua kilo di Pasar Ikan.",
+    "word_ids": [
+      "ms-deli:w:0085",
+      "ms-deli:w:0055",
+      "ms-deli:w:0008",
+      "ms-deli:w:0172"
+    ],
+    "level": 2,
+    "validation_status": "speaker_checked"
+  },
+  {
+    "id": "ms-deli:s:0016",
+    "course_id": "ms-deli",
+    "deli": "Semalam hujan turun lebat kali dari petang sampai malam.",
+    "indonesia": "Kemarin hujan turun deras sekali dari sore sampai malam.",
+    "word_ids": [
+      "ms-deli:w:0179",
+      "ms-deli:w:0186",
+      "ms-deli:w:0050",
+      "ms-deli:w:0182"
+    ],
+    "level": 2,
+    "validation_status": "speaker_checked"
+  },
+  {
+    "id": "ms-deli:s:0017",
+    "course_id": "ms-deli",
+    "deli": "Kenape awak belum makan nasi dari pagi tadi?",
+    "indonesia": "Mengapa kamu belum makan nasi sejak pagi tadi?",
+    "word_ids": [
+      "ms-deli:w:0040",
+      "ms-deli:w:0068",
+      "ms-deli:w:0190",
+      "ms-deli:w:0034",
+      "ms-deli:w:0027",
+      "ms-deli:w:0049"
+    ],
+    "level": 2,
+    "validation_status": "speaker_checked"
+  },
+  {
+    "id": "ms-deli:s:0018",
+    "course_id": "ms-deli",
+    "deli": "Bile rombongan Telangkai nak datang meminang ke rumah kite?",
+    "indonesia": "Kapan rombongan juru bicara adat mau datang melamar ke rumah kita?",
+    "word_ids": [
+      "ms-deli:w:0042",
+      "ms-deli:w:0165",
+      "ms-deli:w:0188",
+      "ms-deli:w:0168",
+      "ms-deli:w:0058",
+      "ms-deli:w:0073"
+    ],
+    "level": 2,
+    "validation_status": "speaker_checked"
+  },
+  {
+    "id": "ms-deli:s:0019",
+    "course_id": "ms-deli",
+    "deli": "Macam mane cara melipat tanjak Dendam Tak Sudah ni, Atok?",
+    "indonesia": "Bagaimana cara melipat tanjak Dendam Tak Sudah ini, Kakek?",
+    "word_ids": [
+      "ms-deli:w:0041",
+      "ms-deli:w:0160",
+      "ms-deli:w:0076",
+      "ms-deli:w:0023"
+    ],
+    "level": 2,
+    "validation_status": "speaker_checked"
+  },
+  {
+    "id": "ms-deli:s:0020",
+    "course_id": "ms-deli",
+    "deli": "Sape yang meletakkan tudung saji di atas meja tu?",
+    "indonesia": "Siapa yang meletakkan tudung saji di atas meja itu?",
+    "word_ids": [
+      "ms-deli:w:0039",
+      "ms-deli:w:0154",
+      "ms-deli:w:0077"
+    ],
+    "level": 2,
+    "validation_status": "speaker_checked"
+  },
+  {
+    "id": "ms-deli:s:0021",
+    "course_id": "ms-deli",
+    "deli": "Bukalah tingkap bilik tu biar udara pagi masuk!",
+    "indonesia": "Bukalah jendela kamar itu agar udara pagi masuk!",
+    "word_ids": [
+      "ms-deli:w:0197",
+      "ms-deli:w:0060",
+      "ms-deli:w:0059",
+      "ms-deli:w:0077",
+      "ms-deli:w:0049",
+      "ms-deli:w:0003"
+    ],
+    "level": 2,
+    "validation_status": "speaker_checked"
+  },
+  {
+    "id": "ms-deli:s:0022",
+    "course_id": "ms-deli",
+    "deli": "Tolong basuh pinggan dan cawan yang kotor di belakang.",
+    "indonesia": "Tolong cuci piring dan cangkir yang kotor di dapur belakang.",
+    "word_ids": [
+      "ms-deli:w:0114",
+      "ms-deli:w:0061",
+      "ms-deli:w:0153"
+    ],
+    "level": 2,
+    "validation_status": "speaker_checked"
+  },
+  {
+    "id": "ms-deli:s:0023",
+    "course_id": "ms-deli",
+    "deli": "Jangan melalak je kerje kau, bantulah Mak di dapur!",
+    "indonesia": "Jangan keluyuran saja kerjamu, bantulah Ibu di dapur!",
+    "word_ids": [
+      "ms-deli:w:0195",
+      "ms-deli:w:0110",
+      "ms-deli:w:0196",
+      "ms-deli:w:0044",
+      "ms-deli:w:0071",
+      "ms-deli:w:0019"
+    ],
+    "level": 3,
+    "validation_status": "speaker_checked"
+  },
+  {
+    "id": "ms-deli:s:0024",
+    "course_id": "ms-deli",
+    "deli": "Kacau gulai di dalam belanga tu pelan-pelan biar santannye tak pecah.",
+    "indonesia": "Aduk gulai di dalam belanga itu pelan-pelan agar santannya tidak pecah.",
+    "word_ids": [
+      "ms-deli:w:0119",
+      "ms-deli:w:0029",
+      "ms-deli:w:0149",
+      "ms-deli:w:0077",
+      "ms-deli:w:0192"
+    ],
+    "level": 3,
+    "validation_status": "speaker_checked"
+  },
+  {
+    "id": "ms-deli:s:0025",
+    "course_id": "ms-deli",
+    "deli": "Awak tak berani menyeberang sungai sebab airnye tengah pasang.",
+    "indonesia": "Saya tidak berani menyeberang sungai karena airnya sedang pasang.",
+    "word_ids": [
+      "ms-deli:w:0068",
+      "ms-deli:w:0192",
+      "ms-deli:w:0201",
+      "ms-deli:w:0036",
+      "ms-deli:w:0191"
+    ],
+    "level": 3,
+    "validation_status": "speaker_checked"
+  },
+  {
+    "id": "ms-deli:s:0026",
+    "course_id": "ms-deli",
+    "deli": "Kedai kopi Pak Cik belum buka lagi pagi ni.",
+    "indonesia": "Warung kopi Pak Cik belum buka pagi ini.",
+    "word_ids": [
+      "ms-deli:w:0173",
+      "ms-deli:w:0190",
+      "ms-deli:w:0049",
+      "ms-deli:w:0076"
+    ],
+    "level": 3,
+    "validation_status": "speaker_checked"
+  },
+  {
+    "id": "ms-deli:s:0027",
+    "course_id": "ms-deli",
+    "deli": "Usah cakap keras-keras, nanti terdengar sampai ke rumah jiran.",
+    "indonesia": "Jangan berbicara keras-keras, nanti terdengar sampai ke rumah tetangga.",
+    "word_ids": [
+      "ms-deli:w:0194",
+      "ms-deli:w:0106",
+      "ms-deli:w:0058",
+      "ms-deli:w:0099"
+    ],
+    "level": 3,
+    "validation_status": "speaker_checked"
+  },
+  {
+    "id": "ms-deli:s:0028",
+    "course_id": "ms-deli",
+    "deli": "Die bukan orang lokek, tapi memang tengah tak ade uang.",
+    "indonesia": "Dia bukan orang pelit, tetapi memang sedang tidak punya uang.",
+    "word_ids": [
+      "ms-deli:w:0072",
+      "ms-deli:w:0126",
+      "ms-deli:w:0191",
+      "ms-deli:w:0192"
+    ],
+    "level": 3,
+    "validation_status": "speaker_checked"
+  },
+  {
+    "id": "ms-deli:s:0029",
+    "course_id": "ms-deli",
+    "deli": "Kalau hari Jumaat, Abah dan Abang memakai baju teluk belanga pegi ke Masjid Raya Al-Mashun.",
+    "indonesia": "Kalau hari Jumat, Ayah dan Abang memakai baju teluk belanga pergi ke Masjid Raya Al-Mashun.",
+    "word_ids": [
+      "ms-deli:w:0202",
+      "ms-deli:w:0020",
+      "ms-deli:w:0021",
+      "ms-deli:w:0161",
+      "ms-deli:w:0047"
+    ],
+    "level": 3,
+    "validation_status": "speaker_checked"
+  },
+  {
+    "id": "ms-deli:s:0030",
+    "course_id": "ms-deli",
+    "deli": "Waktu bulan Ramadan, ramai orang mengantre bubur pedas di halaman masjid.",
+    "indonesia": "Saat bulan Ramadan, banyak orang mengantre bubur pedas di halaman masjid.",
+    "word_ids": [
+      "ms-deli:w:0185",
+      "ms-deli:w:0141"
+    ],
+    "level": 3,
+    "validation_status": "speaker_checked"
+  },
+  {
+    "id": "ms-deli:s:0031",
+    "course_id": "ms-deli",
+    "deli": "Anak dara tu nampak molek menarikan Tari Serampang Due Belas.",
+    "indonesia": "Gadis muda itu tampak anggun menarikan Tari Serampang Dua Belas.",
+    "word_ids": [
+      "ms-deli:w:0026",
+      "ms-deli:w:0077",
+      "ms-deli:w:0105"
+    ],
+    "level": 3,
+    "validation_status": "speaker_checked"
+  },
+  {
+    "id": "ms-deli:s:0032",
+    "course_id": "ms-deli",
+    "deli": "Janganlah awak lokek berbagi ilmu kepada kawan-kawan.",
+    "indonesia": "Janganlah kamu pelit berbagi ilmu kepada teman-teman.",
+    "word_ids": [
+      "ms-deli:w:0195",
+      "ms-deli:w:0197",
+      "ms-deli:w:0068",
+      "ms-deli:w:0126",
+      "ms-deli:w:0100"
+    ],
+    "level": 3,
+    "validation_status": "speaker_checked"
+  },
+  {
+    "id": "ms-deli:s:0033",
+    "course_id": "ms-deli",
+    "deli": "Lepas habis hujan, udara di kebun rase sejuk dan segar betul.",
+    "indonesia": "Setelah hujan reda, udara di kebun terasa dingin dan segar sekali.",
+    "word_ids": [
+      "ms-deli:w:0203",
+      "ms-deli:w:0135",
+      "ms-deli:w:0187"
+    ],
+    "level": 3,
+    "validation_status": "speaker_checked"
+  },
+  {
+    "id": "ms-deli:s:0034",
+    "course_id": "ms-deli",
+    "deli": "Biarpun hidup di perantauan, adat dan bahasa Melayu Deli tak boleh dilupakan.",
+    "indonesia": "Biarpun hidup di perantauan, adat dan bahasa Melayu Deli tidak boleh dilupakan.",
+    "word_ids": [
+      "ms-deli:w:0192"
+    ],
+    "level": 3,
+    "validation_status": "speaker_checked"
+  },
+  {
+    "id": "ms-deli:s:0035",
+    "course_id": "ms-deli",
+    "deli": "Cicipilah kue rasyidah dan halua betik ni selagi masih di meja.",
+    "indonesia": "Cicipilah kue rasyidah dan manisan pepaya ini selagi masih tersedia di meja.",
+    "word_ids": [
+      "ms-deli:w:0143",
+      "ms-deli:w:0145",
+      "ms-deli:w:0210",
+      "ms-deli:w:0076"
+    ],
+    "level": 3,
+    "validation_status": "speaker_checked"
   }
 ]

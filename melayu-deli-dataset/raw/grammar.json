@@ -1,0 +1,546 @@
+[
+  {
+    "id": "GRM-000001",
+    "title": "Pelemahan Vokal Akhir Terbuka /a/ Menjadi Pepet [ə] atau [e] (Ciri Dialek \"e\")",
+    "linguistic_domain": "phonology",
+    "topic": "vowel_alternation",
+    "rule_summary": "Fonem vokal rendah /a/ pada suku kata akhir terbuka dalam Bahasa Melayu Baku/Indonesia secara teratur direalisasikan sebagai vokal tengah [ə] (pepet) atau [e] dalam tuturan asli Bahasa Melayu Deli.",
+    "pattern_formula": "/-a#/ -> [-ə] ~ [-e] (contoh: apa -> ape, mana -> mane, tiga -> tige, lima -> lime, terima -> terime)",
+    "comparison_indonesian": "Bahasa Indonesia mempertahankan bunyi [a] pada posisi akhir terbuka (apa, mana, tiga), sedangkan Bahasa Melayu Deli mengubahnya menjadi [ə] yang dalam ortografi Latin populer ditulis dengan huruf \"e\".",
+    "examples": [
+      {
+        "deli": "ape",
+        "indonesian": "apa",
+        "notes": "Kata tanya benda/hal"
+      },
+      {
+        "deli": "mane",
+        "indonesian": "mana",
+        "notes": "Kata tanya tempat"
+      },
+      {
+        "deli": "due / tige / lime",
+        "indonesian": "dua / tiga / lima",
+        "notes": "Kata bilangan dasar"
+      },
+      {
+        "deli": "gembire",
+        "indonesian": "gembira",
+        "notes": "Kata sifat perasaan"
+      }
+    ],
+    "dialect": "melayu_deli",
+    "region": "deli",
+    "source_ids": [
+      "SRC-0002",
+      "SRC-0003",
+      "SRC-0005"
+    ],
+    "confidence": "high",
+    "verification_status": "verified",
+    "notes": "Menjawab dan memverifikasi catatan deli_cek pada w008, w009, w011, dan w042 di draf awal aplikasi."
+  },
+  {
+    "id": "GRM-000002",
+    "title": "Perendahan Vokal Tinggi /i/ dan /u/ pada Suku Akhir Tertutup",
+    "linguistic_domain": "phonology",
+    "topic": "vowel_lowering",
+    "rule_summary": "Vokal tinggi depan /i/ dan vokal tinggi belakang /u/ pada suku kata akhir tertutup cenderung merendah menjadi alofon [e] (atau [ɛ]) dan [o] (atau [ɔ]) dalam pengucapan lisan penutur Melayu Deli.",
+    "pattern_formula": "/i/ -> [e] / _C# ; /u/ -> [o] / _C# (contoh: balik -> [baleʔ], masuk -> [masoʔ], tujuh -> [tudʒoh])",
+    "comparison_indonesian": "Dalam Bahasa Indonesia baku pelafalan tetap tinggi ([balik], [masuk]), meskipun dalam ragam cakapan Nusantara gejala serupa juga ditemukan.",
+    "examples": [
+      {
+        "deli": "balik [baleʔ]",
+        "indonesian": "pulang / balik",
+        "notes": "Vokal /i/ merendah sebelum hentian glotal"
+      },
+      {
+        "deli": "masuk [masoʔ]",
+        "indonesian": "masuk",
+        "notes": "Vokal /u/ merendah sebelum hentian glotal"
+      },
+      {
+        "deli": "kasut [kasot]",
+        "indonesian": "alas kaki / sepatu",
+        "notes": "Vokal /u/ merendah sebelum /t/"
+      }
+    ],
+    "dialect": "melayu_deli",
+    "region": "deli",
+    "source_ids": [
+      "SRC-0002",
+      "SRC-0003"
+    ],
+    "confidence": "high",
+    "verification_status": "verified",
+    "notes": null
+  },
+  {
+    "id": "GRM-000003",
+    "title": "Aferesis, Haplologi, dan Pelesapan Konsonan /r/ dalam Tuturan Cepat",
+    "linguistic_domain": "phonology",
+    "topic": "syllable_reduction",
+    "rule_summary": "Kosakata berfrekuensi tinggi dalam Bahasa Melayu Deli mengalami pemendekan suku kata awal (aferesis/haplologi) atau pelesapan konsonan getar /r/ pada suku kata pertama.",
+    "pattern_formula": "sedikit -> sikit; delapan -> lapan; hendak -> nak; ini -> ni; itu -> tu; pergi -> pegi/pigi",
+    "comparison_indonesian": "Bahasa Indonesia baku mempertahankan bentuk utuh (sedikit, delapan, hendak, ini, itu, pergi), sedangkan dalam Melayu Deli bentuk tereduksi telah menjadi lema mandiri dalam percakapan.",
+    "examples": [
+      {
+        "deli": "sikit",
+        "indonesian": "sedikit",
+        "notes": "Haplologi suku awal se-di-"
+      },
+      {
+        "deli": "lapan",
+        "indonesian": "delapan",
+        "notes": "Aferesis suku awal de-"
+      },
+      {
+        "deli": "pegi",
+        "indonesian": "pergi",
+        "notes": "Pelesapan /r/ koda suku pertama"
+      },
+      {
+        "deli": "ni / tu",
+        "indonesian": "ini / itu",
+        "notes": "Aferesis vokal awal demonstrativa"
+      }
+    ],
+    "dialect": "melayu_deli",
+    "region": "deli",
+    "source_ids": [
+      "SRC-0002",
+      "SRC-0003",
+      "SRC-0005"
+    ],
+    "confidence": "high",
+    "verification_status": "verified",
+    "notes": null
+  },
+  {
+    "id": "GRM-000004",
+    "title": "Struktur Klausa Dasar S-P-O dan Elipsis Subjek dalam Percakapan",
+    "linguistic_domain": "syntax",
+    "topic": "clause_structure",
+    "rule_summary": "Urutan konstituen dasar kalimat deklaratif Bahasa Melayu Deli adalah Subjek–Predikat–Objek (S-P-O) dengan hukum Diterangkan–Menerangkan (DM) pada frasa. Dalam wacana lisan, subjek pronomina sering mengalami elipsis (pelesapan) bila referennya sudah jelas dari konteks.",
+    "pattern_formula": "[Subjek] + Predikat (Verba/Adjektiva/Nomina) + [Objek] + [Keterangan]",
+    "comparison_indonesian": "Urutan S-P-O dan hukum DM sejajar dengan Bahasa Indonesia, namun frekuensi pelesapan subjek dan penggunaan verba dasar tanpa prefiks meN- pada klausa transitif lisan jauh lebih tinggi.",
+    "examples": [
+      {
+        "deli": "Mak masak gulai.",
+        "indonesian": "Ibu memasak gulai.",
+        "notes": "Pola S-P-O dengan verba dasar tanpa meN-"
+      },
+      {
+        "deli": "Nak ke mane, Bang?",
+        "indonesian": "(Kamu) mau ke mana, Bang?",
+        "notes": "Elipsis subjek orang kedua"
+      },
+      {
+        "deli": "Abah pegi kerje.",
+        "indonesian": "Ayah pergi bekerja.",
+        "notes": "Konstruksi verba beruntun"
+      }
+    ],
+    "dialect": "melayu_deli",
+    "region": "deli",
+    "source_ids": [
+      "SRC-0001",
+      "SRC-0003"
+    ],
+    "confidence": "high",
+    "verification_status": "verified",
+    "notes": null
+  },
+  {
+    "id": "GRM-000005",
+    "title": "Deiksis Persona Kontekstual pada Kata Ganti \"Awak\"",
+    "linguistic_domain": "pragmatics_syntax",
+    "topic": "pronoun_system",
+    "rule_summary": "Pronomina \"awak\" dalam Bahasa Melayu Deli dan Melayu Medan memiliki fleksibilitas deiktis: dapat merujuk pada orang pertama tunggal (\"saya/aku\") maupun orang kedua tunggal akrab (\"kamu/engkau\") bergantung pada peran argumen dan intonasi kalimat.",
+    "pattern_formula": "awak -> (1) 1SG (pembicara: \"Awak tak tahu\"); (2) 2SG akrab (lawan bicara: \"Sape name awak?\")",
+    "comparison_indonesian": "Dalam Bahasa Indonesia, \"saya/aku\" dan \"kamu/Anda\" terpisah tegas; tidak ada satu pronomina tunggal yang sekaligus berfungsi sebagai orang pertama dan orang kedua.",
+    "examples": [
+      {
+        "deli": "Sape name awak?",
+        "indonesian": "Siapa namamu?",
+        "notes": "Merujuk pada lawan bicara (orang kedua)"
+      },
+      {
+        "deli": "Awak pun tak tahu lah, Kak.",
+        "indonesian": "Saya pun tidak tahu, Kak.",
+        "notes": "Merujuk pada diri pembicara (orang pertama)"
+      },
+      {
+        "deli": "Sesama orang awak harus saling menolong.",
+        "indonesian": "Sesama orang kita (sesama warga lokal) harus saling menolong.",
+        "notes": "Makna kolektif inklusif (\"orang awak\")"
+      }
+    ],
+    "dialect": "melayu_deli",
+    "region": "deli",
+    "source_ids": [
+      "SRC-0001",
+      "SRC-0002",
+      "SRC-0003",
+      "SRC-0006",
+      "SRC-0011"
+    ],
+    "confidence": "high",
+    "verification_status": "verified",
+    "notes": null
+  },
+  {
+    "id": "GRM-000006",
+    "title": "Nasalisasi Verba Tanpa Suku Awal me- (Tipe \"tengok\" -> \"nengok\")",
+    "linguistic_domain": "morphology",
+    "topic": "verbal_affixation",
+    "rule_summary": "Dalam ragam lisan Melayu Deli, prefiks aktif meN- sering direalisasikan hanya melalui penggantian konsonan awal kata dasar dengan bunyi sengau (nasal) homorgan tanpa melafalkan suku kata \"me-\".",
+    "pattern_formula": "meN- + tengok -> menengok -> nengok; meN- + tunggu -> menunggu -> nunggu",
+    "comparison_indonesian": "Bahasa Indonesia baku mewajibkan bentuk penuh \"menengok\" dan \"menunggu\", sedangkan Melayu Deli lisan menggunakan \"nengok\" dan \"nunggu\".",
+    "examples": [
+      {
+        "deli": "Singgahlah nengok rumah kami.",
+        "indonesian": "Mampirlah melihat/menjenguk rumah kami.",
+        "notes": "tengok -> nengok"
+      },
+      {
+        "deli": "Tamu tu tengah nunggu di serambi.",
+        "indonesian": "Tamu itu sedang menunggu di beranda.",
+        "notes": "tunggu -> nunggu"
+      }
+    ],
+    "dialect": "melayu_deli",
+    "region": "deli",
+    "source_ids": [
+      "SRC-0003",
+      "SRC-0004",
+      "SRC-0011"
+    ],
+    "confidence": "high",
+    "verification_status": "verified",
+    "notes": null
+  },
+  {
+    "id": "GRM-000007",
+    "title": "Enklitik Posesif dan Nominalisasi \"-nye\" (Padanan \"-nya\")",
+    "linguistic_domain": "morphology",
+    "topic": "clitics_and_affixes",
+    "rule_summary": "Klitik posesif orang ketiga dan penanda definit \"-nya\" dalam Bahasa Indonesia dilafalkan dan ditulis menjadi \"-nye\" [-ɲə] dalam Bahasa Melayu Deli mengikuti kaidah pelemahan vokal akhir terbuka.",
+    "pattern_formula": "Nomina/Verba + -nye [-ɲə] (contoh: rumahnye, harganye, rasanye, nampaknye)",
+    "comparison_indonesian": "Bentuk \"-nye\" berkorespondensi satu-satu dengan enklitik \"-nya\" dalam Bahasa Indonesia.",
+    "examples": [
+      {
+        "deli": "Berape harganye ni?",
+        "indonesian": "Berapa harganya ini?",
+        "notes": "Klitik posesif/definit pada nomina"
+      },
+      {
+        "deli": "Lemak kali rasanye.",
+        "indonesian": "Gurih sekali rasanya.",
+        "notes": "Nominalisasi/posesif pada \"rasa\""
+      }
+    ],
+    "dialect": "melayu_deli",
+    "region": "deli",
+    "source_ids": [
+      "SRC-0002",
+      "SRC-0003",
+      "SRC-0004"
+    ],
+    "confidence": "high",
+    "verification_status": "verified",
+    "notes": null
+  },
+  {
+    "id": "GRM-000008",
+    "title": "Pemarkah Intensitas Adjektiva Pascakata \"kali\" dan \"betul\"",
+    "linguistic_domain": "syntax",
+    "topic": "adjective_intensifiers",
+    "rule_summary": "Untuk menyatakan tingkat kualitas \"sangat/sekali\", Bahasa Melayu Deli menempatkan adverbia intensifier \"kali\" (dari \"sekali\") atau \"betul\" tepat di belakang kata sifat.",
+    "pattern_formula": "Adjektiva + kali / betul (contoh: lemak kali, sedap betul, elok kali, sejuk kali)",
+    "comparison_indonesian": "Bahasa Indonesia menggunakan \"sangat + Adjektiva\" atau \"Adjektiva + sekali\". Dalam Melayu Deli dan Melayu Medan, bentuk tereduksi \"Adjektiva + kali\" menjadi penanda dialek yang sangat khas.",
+    "examples": [
+      {
+        "deli": "Gulai ni lemak kali.",
+        "indonesian": "Gulai ini gurih sekali.",
+        "notes": "Intensifier \"kali\""
+      },
+      {
+        "deli": "Cantik betul kain songket tu.",
+        "indonesian": "Indah sekali kain songket itu.",
+        "notes": "Intensifier \"betul\""
+      }
+    ],
+    "dialect": "melayu_deli",
+    "region": "deli",
+    "source_ids": [
+      "SRC-0001",
+      "SRC-0003",
+      "SRC-0004",
+      "SRC-0011"
+    ],
+    "confidence": "high",
+    "verification_status": "verified",
+    "notes": null
+  },
+  {
+    "id": "GRM-000009",
+    "title": "Sistem Pemarkah Aspek dan Modalitas (\"nak\", \"tengah\", \"udah\", \"belum ... lagi\")",
+    "linguistic_domain": "syntax",
+    "topic": "aspect_and_modality",
+    "rule_summary": "Keinginan/masa depan ditandai oleh \"nak\" (hendak/mau), aspek sedang berlangsung (progresif) ditandai oleh \"tengah\" (sedang), aspek selesai (perfektif) oleh \"udah\" (sudah), dan aspek belum terjadi sering diperkuat dengan bingkai \"belum ... lagi\".",
+    "pattern_formula": "Subjek + [nak / tengah / udah / belum] + Verba (+ lagi)",
+    "comparison_indonesian": "Bahasa Indonesia memakai \"mau/akan\", \"sedang/lagi\", dan \"sudah\". Dalam Melayu Deli, kata \"tengah\" berfungsi sebagai pemarkah progresif (\"tengah masak\" = sedang memasak), sedangkan \"belum buka lagi\" berarti \"belum buka\" (bukan \"belum buka kembali\").",
+    "examples": [
+      {
+        "deli": "Mak tengah masak di dapur.",
+        "indonesian": "Ibu sedang memasak di dapur.",
+        "notes": "Progresif \"tengah\""
+      },
+      {
+        "deli": "Kedai tu belum buka lagi.",
+        "indonesian": "Warung itu belum buka.",
+        "notes": "Bingkai aspek \"belum ... lagi\""
+      },
+      {
+        "deli": "Kami nak pegi ke pekan.",
+        "indonesian": "Kami mau pergi ke pasar.",
+        "notes": "Modalitas \"nak\""
+      }
+    ],
+    "dialect": "melayu_deli",
+    "region": "deli",
+    "source_ids": [
+      "SRC-0001",
+      "SRC-0002",
+      "SRC-0003",
+      "SRC-0005"
+    ],
+    "confidence": "high",
+    "verification_status": "verified",
+    "notes": null
+  },
+  {
+    "id": "GRM-000010",
+    "title": "Pola Kalimat Tanya dan Frasa Interogatif Khas Melayu Deli",
+    "linguistic_domain": "syntax",
+    "topic": "interrogative_patterns",
+    "rule_summary": "Kata tanya dalam Bahasa Melayu Deli mengalami perubahan vokal akhir menjadi -e: ape (apa), sape (siapa), mane (mana), kenape/ngape (mengapa), bile (kapan), berape (berapa), dan frasa komposit \"macam mane\" (bagaimana). Kata tanya dapat berada di awal kalimat maupun in-situ (di posisi argumen yang ditanyakan).",
+    "pattern_formula": "[Kata Tanya] + Klausa? ATAU Subjek + Verba + [Kata Tanya]?",
+    "comparison_indonesian": "Perbedaan paling mencolok dengan Bahasa Indonesia adalah penggunaan \"macam mane\" untuk \"bagaimana\" serta \"bile\" untuk \"kapan\" (sedangkan \"bila\" dalam Bahasa Indonesia baku bergeser menjadi konjungsi syarat \"jika\").",
+    "examples": [
+      {
+        "deli": "Macam mane cara membuatnye?",
+        "indonesian": "Bagaimana cara membuatnya?",
+        "notes": "Frasa tanya cara \"macam mane\""
+      },
+      {
+        "deli": "Bile awak sampai di sini?",
+        "indonesian": "Kapan kamu tiba di sini?",
+        "notes": "Kata tanya waktu \"bile\""
+      },
+      {
+        "deli": "Nak minum ape?",
+        "indonesian": "Mau minum apa?",
+        "notes": "Posisi kata tanya in-situ di akhir klausa"
+      }
+    ],
+    "dialect": "melayu_deli",
+    "region": "deli",
+    "source_ids": [
+      "SRC-0001",
+      "SRC-0002",
+      "SRC-0003"
+    ],
+    "confidence": "high",
+    "verification_status": "verified",
+    "notes": null
+  },
+  {
+    "id": "GRM-000011",
+    "title": "Sistem Negasi: \"tak / ndak\", \"bukan\", dan Larangan \"jangan / usah\"",
+    "linguistic_domain": "syntax",
+    "topic": "negation",
+    "rule_summary": "Bahasa Melayu Deli membedakan empat negator utama: (1) \"tak\" (atau varian kolokial \"ndak/indak\") untuk mengingkari predikat verba dan adjektiva; (2) \"bukan\" untuk mengingkari predikat nomina atau fokus kontras; (3) \"jangan\" untuk larangan langsung; dan (4) \"usah / tak usah\" untuk larangan atau imbauan halus.",
+    "pattern_formula": "tak/ndak + Verba/Adjektiva; bukan + Nomina; jangan/usah + Verba",
+    "comparison_indonesian": "Distribusi \"bukan\" dan \"jangan\" sama dengan Bahasa Indonesia, tetapi frekuensi \"tak\" dan \"usah\" dalam percakapan harian Melayu Deli jauh lebih tinggi dibandingkan \"tidak\".",
+    "examples": [
+      {
+        "deli": "Awak tak tahu.",
+        "indonesian": "Saya tidak tahu.",
+        "notes": "Negasi verba dengan \"tak\""
+      },
+      {
+        "deli": "Usah gaduh hati Mak.",
+        "indonesian": "Jangan khawatir hati Ibu.",
+        "notes": "Larangan halus dengan \"usah\""
+      },
+      {
+        "deli": "Die bukan orang lain, masih sanak kite.",
+        "indonesian": "Dia bukan orang lain, masih kerabat kita.",
+        "notes": "Negasi nomina dengan \"bukan\""
+      }
+    ],
+    "dialect": "melayu_deli",
+    "region": "deli",
+    "source_ids": [
+      "SRC-0002",
+      "SRC-0003",
+      "SRC-0005"
+    ],
+    "confidence": "high",
+    "verification_status": "verified",
+    "notes": null
+  },
+  {
+    "id": "GRM-000012",
+    "title": "Partikel Wacana dan Pragmatik: \"je\", \"lah\", \"pun\", dan \"pule\"",
+    "linguistic_domain": "pragmatics_syntax",
+    "topic": "discourse_particles",
+    "rule_summary": "Nuansa kesantunan, pembatasan, dan penegasan dalam kalimat Melayu Deli dikendalikan oleh partikel pascakata: \"je\" (saja/hanya), \"lah\" (penghalus perintah/penegas predikat), \"pun\" (inklusif/juga), dan \"pule/pulak\" (keheranan/tambahan).",
+    "pattern_formula": "Konstituen + [je / lah / pun / pule]",
+    "comparison_indonesian": "Partikel \"je\" (dari \"saja\") merupakan penanda kolokial khas Melayu yang tidak terdapat dalam Bahasa Indonesia baku.",
+    "examples": [
+      {
+        "deli": "Air je, Mak.",
+        "indonesian": "Air saja, Bu.",
+        "notes": "Partikel pembatas \"je\""
+      },
+      {
+        "deli": "Singgahlah sebentar.",
+        "indonesian": "Mampirlah sebentar.",
+        "notes": "Partikel penghalus ajakan \"-lah\""
+      },
+      {
+        "deli": "Kenape pule lampu ni mati?",
+        "indonesian": "Mengapa pula lampu ini padam?",
+        "notes": "Partikel ekspresif \"pule\""
+      }
+    ],
+    "dialect": "melayu_deli",
+    "region": "deli",
+    "source_ids": [
+      "SRC-0001",
+      "SRC-0002",
+      "SRC-0003"
+    ],
+    "confidence": "high",
+    "verification_status": "verified",
+    "notes": null
+  },
+  {
+    "id": "GRM-000013",
+    "title": "Pola Pengulangan Kata (Reduplikasi Nomina, Adjektiva, dan Verba)",
+    "linguistic_domain": "morphology",
+    "topic": "reduplication",
+    "rule_summary": "Reduplikasi dalam Bahasa Melayu Deli meliputi pengulangan utuh, pengulangan berimbuhan, dan pengulangan salin suara. Pada nomina menyatakan kejamakan/keanekaragaman (budak-budak, lauk-pauk), pada adjektiva menyatakan intensitas atau adverbia cara (elok-elok, pagi-pagi), dan pada verba menyatakan tindakan berulang/santai (berjalan-jalan, duduk-duduk).",
+    "pattern_formula": "Kata Dasar + Kata Dasar (dengan peluluhan bunyi akhir sesuai fonologi Deli)",
+    "comparison_indonesian": "Kaidah morfologisnya sejajar dengan Bahasa Indonesia, namun pada kata dasar berakhiran /-a/ kedua unsur yang diulang sama-sama mengalami perubahan vokal menjadi [-ə] (mis. same-same, ade-ade).",
+    "examples": [
+      {
+        "deli": "budak-budak",
+        "indonesian": "anak-anak",
+        "notes": "Reduplikasi nomina jamak"
+      },
+      {
+        "deli": "elok-elok di jalan",
+        "indonesian": "hati-hati / baik-baik di jalan",
+        "notes": "Reduplikasi adverbial cara"
+      },
+      {
+        "deli": "same-same / ade-ade je",
+        "indonesian": "sama-sama / ada-ada saja",
+        "notes": "Reduplikasi dengan vokal akhir -e"
+      }
+    ],
+    "dialect": "melayu_deli",
+    "region": "deli",
+    "source_ids": [
+      "SRC-0002",
+      "SRC-0003",
+      "SRC-0004"
+    ],
+    "confidence": "high",
+    "verification_status": "verified",
+    "notes": null
+  },
+  {
+    "id": "GRM-000014",
+    "title": "Pergeseran Semantik Lintas Varian (False Friends Melayu Deli vs. Bahasa Indonesia)",
+    "linguistic_domain": "semantics",
+    "topic": "lexical_divergence",
+    "rule_summary": "Sejumlah kosakata Bahasa Melayu Deli memiliki bentuk yang identik dengan kata Bahasa Indonesia, tetapi memiliki makna sehari-hari yang berbeda secara signifikan sehingga berpotensi menimbulkan salah paham bagi pembelajar.",
+    "pattern_formula": "Leksem Homonim != Makna Bahasa Indonesia Baku",
+    "comparison_indonesian": "Lima contoh utama perbedaan makna: (1) \"semalam\" = kemarin (bukan hanya tadi malam); (2) \"pajak\" = pasar tradisional (bukan hanya iuran pajak); (3) \"lemak\" = gurih bersantan (bukan hanya zat lemak); (4) \"budak\" = anak-anak (bukan hamba sahaya); (5) \"senang\" = mudah/gampang (selain bahagia).",
+    "examples": [
+      {
+        "deli": "Semalam siang hujan lebat.",
+        "indonesian": "Kemarin siang hujan deras.",
+        "notes": "semalam = kemarin"
+      },
+      {
+        "deli": "Mak pegi ke pajak.",
+        "indonesian": "Ibu pergi ke pasar tradisional.",
+        "notes": "pajak = pasar"
+      },
+      {
+        "deli": "Budak-budak tengah bermain.",
+        "indonesian": "Anak-anak sedang bermain.",
+        "notes": "budak = anak-anak"
+      }
+    ],
+    "dialect": "melayu_deli",
+    "region": "deli",
+    "source_ids": [
+      "SRC-0001",
+      "SRC-0002",
+      "SRC-0004",
+      "SRC-0005",
+      "SRC-0011"
+    ],
+    "confidence": "high",
+    "verification_status": "verified",
+    "notes": null
+  },
+  {
+    "id": "GRM-000015",
+    "title": "Sistem Ortografi Aksara Jawi Melayu Deli (Enam Huruf Tambahan)",
+    "linguistic_domain": "orthography",
+    "topic": "jawi_script",
+    "rule_summary": "Tradisi keberaksaraan Melayu Deli menggunakan abjad Jawi (Arab-Melayu) yang ditulis dari kanan ke kiri (RTL), terdiri atas 29 huruf hijaiyah Arab ditambah 6 huruf rekaan khas Melayu untuk melambangkan fonem yang tidak ada dalam bahasa Arab standar.",
+    "pattern_formula": "چ (Ca /tʃ/), ڠ (Nga /ŋ/), ڤ (Pa /p/), ݢ (Ga /g/), ۏ (Va /v/), ڽ (Nya /ɲ/)",
+    "comparison_indonesian": "Kelima huruf konsonan asli Melayu (Ca, Nga, Pa, Ga, Nya) dapat disambung di awal, tengah, dan akhir kata, sedangkan huruf Va (ۏ) memiliki sifat seperti Waw (و) yang hanya menyambung ke huruf sebelumnya.",
+    "examples": [
+      {
+        "deli": "چاکڤ (cakap)",
+        "indonesian": "bicara",
+        "notes": "Huruf Ca (چ) bertitik tiga di bawah"
+      },
+      {
+        "deli": "بوڠا (bunga)",
+        "indonesian": "bunga",
+        "notes": "Huruf Nga (ڠ) bertitik tiga di atas"
+      },
+      {
+        "deli": "ڤيڠݢن (pinggan)",
+        "indonesian": "piring",
+        "notes": "Huruf Pa (ڤ) dan Ga (ݢ)"
+      },
+      {
+        "deli": "ڽاموق (nyamuk)",
+        "indonesian": "nyamuk",
+        "notes": "Huruf Nya (ڽ)"
+      }
+    ],
+    "dialect": "melayu_deli",
+    "region": "deli",
+    "source_ids": [
+      "SRC-0001",
+      "SRC-0009",
+      "SRC-0010"
+    ],
+    "confidence": "high",
+    "verification_status": "verified",
+    "notes": "Sesuai dengan 6 entri huruf Jawi (j01..j06) pada konten aplikasi KATARA."
+  }
+]

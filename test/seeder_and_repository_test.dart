@@ -41,7 +41,7 @@ void main() {
       expect(sw.elapsedMilliseconds, lessThan(2000));
 
       final courses = await contentRepo.getCourses();
-      expect(courses.length, 2);
+      expect(courses.length, 3);
       expect(courses.first.id, 'ms-deli');
       expect(courses.first.isActive, isTrue);
 
@@ -50,18 +50,20 @@ void main() {
       final sentences = await contentRepo.getSentences('ms-deli');
       final dialogues = await contentRepo.getDialogues('ms-deli');
       final letters = await contentRepo.getLetters('ms-deli');
+      final articles = await contentRepo.getArticles('ms-deli');
       final units = await contentRepo.getUnits('ms-deli');
       final quizBank = await contentRepo.getQuizBank('ms-deli');
       final cards = await contentRepo.getCollectionCards('ms-deli');
 
-      expect(words.length, 67);
-      expect(phrases.length, 10);
-      expect(sentences.length, 10);
-      expect(dialogues.length, 2);
+      expect(words.length, 364);
+      expect(phrases.length, 40);
+      expect(sentences.length, 35);
+      expect(dialogues.length, greaterThanOrEqualTo(5));
       expect(letters.length, 6);
-      expect(units.length, 10);
-      expect(quizBank.length, 62);
-      expect(cards.length, 5);
+      expect(articles.length, 14);
+      expect(units.length, 16);
+      expect(quizBank.length, greaterThanOrEqualTo(62));
+      expect(cards.length, 12);
 
       // Seed kedua kali (termasuk dengan force=true) tidak boleh menggandakan baris.
       await seeder.seedIfNeeded();
@@ -69,8 +71,8 @@ void main() {
 
       final wordsAfter = await contentRepo.getWords('ms-deli');
       final phrasesAfter = await contentRepo.getPhrases('ms-deli');
-      expect(wordsAfter.length, 67);
-      expect(phrasesAfter.length, 10);
+      expect(wordsAfter.length, 364);
+      expect(phrasesAfter.length, 40);
     });
 
     test('Content version upgrade upserts content, marks removed items deprecated, and preserves user progress', () async {
@@ -104,14 +106,14 @@ void main() {
       expect(result.xpEarned, greaterThan(0));
       expect(result.starsEarned, 3);
 
-      // Simulasikan manifest v2 di mana kata pertama diperbarui dan kata terakhir dihapus dari daftar.
+      // Simulasikan manifest v3 di mana kata pertama diperbarui dan kata terakhir dihapus dari daftar.
       final customSeeder = ContentSeeder(
         db: db,
         loadAsset: (path) async {
           final original = await diskAssetLoader(path);
           if (path == 'assets/content/manifest.json') {
             final map = jsonDecode(original) as Map<String, dynamic>;
-            (map['courses'] as Map<String, dynamic>)['ms-deli']['content_version'] = 2;
+            (map['courses'] as Map<String, dynamic>)['ms-deli']['content_version'] = 3;
             return jsonEncode(map);
           }
           if (path == 'assets/content/ms-deli/words.json') {
@@ -127,7 +129,7 @@ void main() {
 
       await customSeeder.seedIfNeeded();
 
-      // Pastikan progres tetap utuh setelah update konten v2.
+      // Pastikan progres tetap utuh setelah update konten v3.
       final stats = await progressRepo.getStats();
       expect(stats.xpTotal, result.xpEarned);
       expect(stats.streakCurrent, 1);
@@ -138,9 +140,9 @@ void main() {
       final mastery = await progressRepo.getCourseMastery('ms-deli');
       expect(mastery.any((m) => m.itemId == 'ms-deli:w:0001' && m.strength == 1), isTrue);
 
-      // Kata aktif berkurang 1 (jadi 66), kata pertama ter-update, dan kata yang dihapus ditandai deprecated=1 di DB.
+      // Kata aktif berkurang 1 (jadi 363), kata pertama ter-update, dan kata yang dihapus ditandai deprecated=1 di DB.
       final activeWords = await contentRepo.getWords('ms-deli');
-      expect(activeWords.length, 66);
+      expect(activeWords.length, 363);
       expect(activeWords.first.indonesia, 'kabar / berita');
 
       final deprecatedRow = await db

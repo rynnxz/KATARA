@@ -1,6 +1,5 @@
 import 'dart:convert';
 import 'package:drift/drift.dart';
-import 'package:flutter/services.dart';
 import 'package:katara/data/content/content_models.dart';
 import 'package:katara/data/content/content_seeder.dart';
 import 'package:katara/data/db/app_database.dart';
@@ -11,7 +10,7 @@ class LocalContentRepository implements ContentRepository {
   LocalContentRepository({
     required this.db,
     AssetStringLoader? loadAsset,
-  }) : _loadAsset = loadAsset ?? rootBundle.loadString;
+  }) : _loadAsset = loadAsset ?? defaultAssetStringLoader;
 
   final AppDatabase db;
   final AssetStringLoader _loadAsset;
@@ -59,16 +58,7 @@ class LocalContentRepository implements ContentRepository {
     return _mapCourse(rows.first);
   }
 
-  CourseModel _mapCourse(QueryRow r) => CourseModel(
-        id: r.read<String>('id'),
-        languageId: r.read<String>('language_id'),
-        name: r.read<String>('name'),
-        regionLabel: r.read<String>('region_label'),
-        status: r.read<String>('status'),
-        accentHex: r.read<String>('accent_hex'),
-        contentVersion: r.read<int>('content_version'),
-        hasJawi: r.read<int>('has_jawi') == 1,
-      );
+  CourseModel _mapCourse(QueryRow r) => CourseModel.fromJson(r.data);
 
   @override
   Future<List<UnitModel>> getUnits(String courseId) async {
@@ -178,26 +168,7 @@ class LocalContentRepository implements ContentRepository {
       variables: [Variable.withString(courseId)],
     ).get();
 
-    var list = rows
-        .map((r) => WordModel(
-              id: r.read<String>('id'),
-              courseId: r.read<String>('course_id'),
-              deli: r.read<String>('deli'),
-              indonesia: r.read<String>('indonesia'),
-              jawi: r.readNullable<String>('jawi'),
-              category: r.read<String>('category'),
-              level: r.read<int>('level'),
-              unitId: r.read<String>('unit_id'),
-              pos: r.read<String>('pos'),
-              register: r.read<String>('register'),
-              rawRegister: r.read<String>('raw_register'),
-              notes: r.readNullable<String>('notes'),
-              audioPath: r.readNullable<String>('audio_path'),
-              imagePath: r.readNullable<String>('image_path'),
-              validationStatus: r.read<String>('validation_status'),
-              deprecated: r.read<int>('deprecated') == 1,
-            ))
-        .toList();
+    var list = rows.map((r) => WordModel.fromJson(r.data)).toList();
 
     if (category != null && category.isNotEmpty && category != 'semua') {
       list = list.where((w) => w.category == category).toList();
@@ -376,5 +347,287 @@ class LocalContentRepository implements ContentRepository {
     } catch (_) {
       return const [];
     }
+  }
+
+  @override
+  Future<List<DialectReferenceModel>> getDialectReferences([
+    String? courseId,
+  ]) async {
+    await db.ensureInitialized();
+    final rows = courseId != null
+        ? await db.customSelect(
+            'SELECT * FROM dialect_references WHERE course_id = ? ORDER BY id ASC',
+            variables: [Variable.withString(courseId)],
+          ).get()
+        : await db
+            .customSelect('SELECT * FROM dialect_references ORDER BY course_id ASC, id ASC')
+            .get();
+    return rows.map((r) => DialectReferenceModel.fromJson(r.data)).toList();
+  }
+
+  @override
+  Future<List<InstalledModuleModel>> getInstalledModules() async {
+    await db.ensureInitialized();
+    final rows = await db
+        .customSelect(
+            'SELECT * FROM installed_modules ORDER BY is_bundled DESC, course_id ASC')
+        .get();
+    return rows.map((r) => InstalledModuleModel.fromJson(r.data)).toList();
+  }
+
+  @override
+  Future<List<DialectComparisonRowModel>> getDialectComparisonRows({
+    String? query,
+  }) async {
+    await db.ensureInitialized();
+    const curatedComparisons = <DialectComparisonRowModel>[
+      DialectComparisonRowModel(
+        conceptId: 'cmp_01',
+        indonesianTerm: 'apa',
+        category: 'Kata Tanya',
+        deliTerm: 'ape',
+        deliPronunciation: '[apə]',
+        langkatTerm: 'ape',
+        langkatPronunciation: '[apə]',
+        palembangTerm: 'apo (Sari-sari) / napi (Bebaso)',
+        palembangPronunciation: '[apɔ] / [napi]',
+        linguisticNote:
+            'Melayu Deli & Langkat melemahkan /-a/ akhir menjadi pepet [-ə], sedangkan Palembang membulatkannya menjadi [-ɔ].',
+      ),
+      DialectComparisonRowModel(
+        conceptId: 'cmp_02',
+        indonesianTerm: 'di mana / ke mana',
+        category: 'Kata Tanya',
+        deliTerm: 'di mane / ke mane',
+        deliPronunciation: '[di manə]',
+        langkatTerm: 'di mane / ke mane',
+        langkatPronunciation: '[di manə]',
+        palembangTerm: 'di mano (Sari-sari) / di pundi (Bebaso)',
+        palembangPronunciation: '[di manɔ] / [di pundi]',
+        linguisticNote:
+            'Dalam ragam Bebaso Palembang, kata tanya tempat menggunakan leksikon khusus "pundi".',
+      ),
+      DialectComparisonRowModel(
+        conceptId: 'cmp_03',
+        indonesianTerm: 'mengapa / kenapa',
+        category: 'Kata Tanya',
+        deliTerm: 'mengape / ngape',
+        deliPronunciation: '[ŋapə]',
+        langkatTerm: 'mengape / ngape',
+        langkatPronunciation: '[ŋapə]',
+        palembangTerm: 'ngapo / mengapo',
+        palembangPronunciation: '[ŋapɔ]',
+        linguisticNote:
+            'Peluluhan suku awal me- menghasilkan bentuk ringkas ngape (Deli/Langkat) dan ngapo (Palembang).',
+      ),
+      DialectComparisonRowModel(
+        conceptId: 'cmp_04',
+        indonesianTerm: 'bagaimana',
+        category: 'Kata Tanya',
+        deliTerm: 'macam mane / cemane',
+        deliPronunciation: '[tʃəmanə]',
+        langkatTerm: 'macam mane / camne',
+        langkatPronunciation: '[tʃamnə]',
+        palembangTerm: 'cakmano / makmano',
+        palembangPronunciation: '[tʃaʔmanɔ]',
+        linguisticNote:
+            'Dibentuk dari gabungan kata "macam/cak" (seperti) + "mana" (mane/mano).',
+      ),
+      DialectComparisonRowModel(
+        conceptId: 'cmp_05',
+        indonesianTerm: 'saya / aku',
+        category: 'Pronomina',
+        deliTerm: 'saye (santun) / aku / awak',
+        deliPronunciation: '[sayə] / [aku]',
+        langkatTerm: 'saye (santun) / aku / awak',
+        langkatPronunciation: '[sayə] / [aku]',
+        palembangTerm: 'kulo (Bebaso) / aku / kami (Sari-sari)',
+        palembangPronunciation: '[kulɔ] / [aku]',
+        linguisticNote:
+            'Palembang membedakan pronomina secara tegas antara tingkat tutur Alus (kulo) dan Sari-sari (aku/kami).',
+      ),
+      DialectComparisonRowModel(
+        conceptId: 'cmp_06',
+        indonesianTerm: 'kamu / Anda',
+        category: 'Pronomina',
+        deliTerm: 'awak / kau / engkau',
+        deliPronunciation: '[awaʔ]',
+        langkatTerm: 'awak / kau',
+        langkatPronunciation: '[awaʔ]',
+        palembangTerm: 'niko (Bebaso) / kau / awak (Sari-sari)',
+        palembangPronunciation: '[nikɔ] / [kau]',
+        linguisticNote:
+            'Kata "awak" di Sumatera Timur dan Sumatera Selatan dipakai luas sebagai sapaan sebaya yang akrab.',
+      ),
+      DialectComparisonRowModel(
+        conceptId: 'cmp_07',
+        indonesianTerm: 'kita semua',
+        category: 'Pronomina',
+        deliTerm: 'kite semue',
+        deliPronunciation: '[kitə səmuə]',
+        langkatTerm: 'kite semue',
+        langkatPronunciation: '[kitə səmuə]',
+        palembangTerm: 'kito galo',
+        palembangPronunciation: '[kitɔ galɔ]',
+        linguisticNote:
+            'Kuantor "galo" (semua) merupakan ciri leksikal khas Melayu Palembang ("Wong Kito Galo").',
+      ),
+      DialectComparisonRowModel(
+        conceptId: 'cmp_08',
+        indonesianTerm: 'tidak / tidak ada',
+        category: 'Partikel & Ingkar',
+        deliTerm: 'tak / tak ade',
+        deliPronunciation: '[taʔ adə]',
+        langkatTerm: 'tak / tak ade',
+        langkatPronunciation: '[taʔ adə]',
+        palembangTerm: 'dak / katek (Sari-sari), nedo (Bebaso)',
+        palembangPronunciation: '[daʔ] / [kateʔ]',
+        linguisticNote:
+            'Kontraksi "katek" (tidak ada) di Palembang berpadanan dengan "tak ade / takde" di Deli dan Langkat.',
+      ),
+      DialectComparisonRowModel(
+        conceptId: 'cmp_09',
+        indonesianTerm: 'sangat / sekali',
+        category: 'Partikel & Penguat',
+        deliTerm: 'kali / betul',
+        deliPronunciation: '[kali]',
+        langkatTerm: 'kali / betul',
+        langkatPronunciation: '[kali] / [bətol]',
+        palembangTerm: 'nian',
+        palembangPronunciation: '[nian]',
+        linguisticNote:
+            '"Sedap kali" (Deli/Langkat) berpadanan langsung dengan "Lemak nian" (Palembang).',
+      ),
+      DialectComparisonRowModel(
+        conceptId: 'cmp_10',
+        indonesianTerm: 'saja',
+        category: 'Partikel & Penguat',
+        deliTerm: 'aje / saje',
+        deliPronunciation: '[adʒə]',
+        langkatTerm: 'aje / je',
+        langkatPronunciation: '[adʒə]',
+        palembangTerm: 'bae (Sari-sari) / kemawon (Bebaso)',
+        palembangPronunciation: '[bae] / [kəmawɔn]',
+        linguisticNote:
+            'Partikel pembatas "aje" di pesisir Sumatera Utara berkorespondensi dengan "bae" di Sumatera Selatan.',
+      ),
+      DialectComparisonRowModel(
+        conceptId: 'cmp_11',
+        indonesianTerm: 'air',
+        category: 'Alam & Sungai',
+        deliTerm: 'air / aye',
+        deliPronunciation: '[aye]',
+        langkatTerm: 'air / aye',
+        langkatPronunciation: '[aye]',
+        palembangTerm: 'banyu',
+        palembangPronunciation: '[baɲu]',
+        linguisticNote:
+            'Melayu Palembang menyerap dan melestarikan leksikon "banyu" untuk segala jenis air.',
+      ),
+      DialectComparisonRowModel(
+        conceptId: 'cmp_12',
+        indonesianTerm: 'pasar tradisional',
+        category: 'Ruang Sosial',
+        deliTerm: 'pajak / pekan',
+        deliPronunciation: '[padʒaʔ] / [pəkan]',
+        langkatTerm: 'pekan / pajak',
+        langkatPronunciation: '[pəkan]',
+        palembangTerm: 'pasar / kalangan',
+        palembangPronunciation: '[pasaɾ] / [kalaŋan]',
+        linguisticNote:
+            'Di Medan/Deli populer istilah "pajak" dan "pekan", di Langkat "pekan", sedangkan di Palembang "pasar" atau "kalangan".',
+      ),
+      DialectComparisonRowModel(
+        conceptId: 'cmp_13',
+        indonesianTerm: 'melihat / menjenguk',
+        category: 'Tindakan Harian',
+        deliTerm: 'tengok / menengok',
+        deliPronunciation: '[teŋoʔ]',
+        langkatTerm: 'tengok / menengok',
+        langkatPronunciation: '[teŋoʔ]',
+        palembangTerm: 'jingok / nyingok (Sari-sari), ningali (Bebaso)',
+        palembangPronunciation: '[ɲiŋɔʔ] / [niŋali]',
+        linguisticNote:
+            'Bentuk verba persepsi visual "tengok" (Deli/Langkat) berkorespondensi dengan "jingok/nyingok" (Palembang).',
+      ),
+      DialectComparisonRowModel(
+        conceptId: 'cmp_14',
+        indonesianTerm: 'mengobrol / berbincang',
+        category: 'Tindakan Harian',
+        deliTerm: 'berbual / cakap-cakap',
+        deliPronunciation: '[bərbual]',
+        langkatTerm: 'berbual / bercakap',
+        langkatPronunciation: '[bərbual]',
+        palembangTerm: 'begesah / bekotek',
+        palembangPronunciation: '[bəgəsah]',
+        linguisticNote:
+            '"Berbual" di Sumatera Timur berarti mengobrol santai; di Palembang digunakan "begesah" (berkisah).',
+      ),
+      DialectComparisonRowModel(
+        conceptId: 'cmp_15',
+        indonesianTerm: 'enak / lezat',
+        category: 'Kuliner & Rasa',
+        deliTerm: 'sedap / lemak',
+        deliPronunciation: '[sədap] / [ləmaʔ]',
+        langkatTerm: 'sedap / lemak',
+        langkatPronunciation: '[sədap]',
+        palembangTerm: 'lemak',
+        palembangPronunciation: '[ləmaʔ]',
+        linguisticNote:
+            'Kata "lemak" dalam rumpun Melayu berarti gurih/lezat; di Palembang menjadi kata sifat utama untuk "enak".',
+      ),
+      DialectComparisonRowModel(
+        conceptId: 'cmp_16',
+        indonesianTerm: 'indah / cantik / bagus',
+        category: 'Sifat & Apresiasi',
+        deliTerm: 'elok / cantik',
+        deliPronunciation: '[eloʔ]',
+        langkatTerm: 'elok / molek',
+        langkatPronunciation: '[eloʔ]',
+        palembangTerm: 'cindo (cantik) / belagak (gagah)',
+        palembangPronunciation: '[tʃindɔ] / [bəlagaʔ]',
+        linguisticNote:
+            'Hati-hati: "elok" di Deli/Langkat berarti bagus, sedangkan "melok" di Palembang berarti "ikut"!',
+      ),
+      DialectComparisonRowModel(
+        conceptId: 'cmp_17',
+        indonesianTerm: 'kakek & nenek',
+        category: 'Kekerabatan',
+        deliTerm: 'Atok & Andung / Wan',
+        deliPronunciation: '[atoʔ] & [andoŋ]',
+        langkatTerm: 'Atok & Andung',
+        langkatPronunciation: '[atoʔ] & [andoŋ]',
+        palembangTerm: 'Yayi & Nyai',
+        palembangPronunciation: '[yayi] & [ɲai]',
+        linguisticNote:
+            'Sapaan Atok-Andung menjadi ciri khas Melayu Sumatera Timur, sedangkan Yayi-Nyai khas Palembang.',
+      ),
+      DialectComparisonRowModel(
+        conceptId: 'cmp_18',
+        indonesianTerm: 'rumah kediaman',
+        category: 'Arsitektur & Adat',
+        deliTerm: 'rumah / teratak (merendah)',
+        deliPronunciation: '[təɾataʔ]',
+        langkatTerm: 'rumah panggung / teratak',
+        langkatPronunciation: '[təɾataʔ]',
+        palembangTerm: 'rumah / bari (Sari-sari), rompok (Bebaso)',
+        palembangPronunciation: '[ɾɔmpɔʔ]',
+        linguisticNote:
+            'Dalam bertutur santun, Melayu Deli/Langkat menyebut rumah sendiri "teratak", sedangkan Palembang menggunakan "rompok".',
+      ),
+    ];
+
+    if (query == null || query.trim().isEmpty) {
+      return curatedComparisons;
+    }
+    final q = query.trim().toLowerCase();
+    return curatedComparisons
+        .where((row) =>
+            row.indonesianTerm.toLowerCase().contains(q) ||
+            row.deliTerm.toLowerCase().contains(q) ||
+            row.langkatTerm.toLowerCase().contains(q) ||
+            row.palembangTerm.toLowerCase().contains(q) ||
+            row.category.toLowerCase().contains(q))
+        .toList();
   }
 }

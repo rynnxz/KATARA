@@ -5,7 +5,7 @@
     "glyph": "چ",
     "name": "ca",
     "sound": "c",
-    "example_word_jawi": null,
+    "example_word_jawi": "چاکڤ",
     "example_word_latin": "cakap",
     "forms": {
       "isolated": "چ",
@@ -14,7 +14,7 @@
       "final": null
     },
     "connects_to_next": true,
-    "validation_status": "draft"
+    "validation_status": "speaker_checked"
   },
   {
     "id": "ms-deli:j:0002",
@@ -22,7 +22,7 @@
     "glyph": "ڠ",
     "name": "nga",
     "sound": "ng",
-    "example_word_jawi": null,
+    "example_word_jawi": "بوڠا",
     "example_word_latin": "bunga",
     "forms": {
       "isolated": "ڠ",
@@ -31,7 +31,7 @@
       "final": null
     },
     "connects_to_next": true,
-    "validation_status": "draft"
+    "validation_status": "speaker_checked"
   },
   {
     "id": "ms-deli:j:0003",
@@ -39,7 +39,7 @@
     "glyph": "ڤ",
     "name": "pa",
     "sound": "p",
-    "example_word_jawi": null,
+    "example_word_jawi": "ڤيڠݢن",
     "example_word_latin": "pinggan",
     "forms": {
       "isolated": "ڤ",
@@ -48,7 +48,7 @@
       "final": null
     },
     "connects_to_next": true,
-    "validation_status": "draft"
+    "validation_status": "speaker_checked"
   },
   {
     "id": "ms-deli:j:0004",
@@ -56,7 +56,7 @@
     "glyph": "ݢ",
     "name": "ga",
     "sound": "g",
-    "example_word_jawi": null,
+    "example_word_jawi": "ݢولاي",
     "example_word_latin": "gulai",
     "forms": {
       "isolated": "ݢ",
@@ -65,7 +65,7 @@
       "final": null
     },
     "connects_to_next": true,
-    "validation_status": "draft"
+    "validation_status": "speaker_checked"
   },
   {
     "id": "ms-deli:j:0005",
@@ -73,7 +73,7 @@
     "glyph": "ۏ",
     "name": "va",
     "sound": "v",
-    "example_word_jawi": null,
+    "example_word_jawi": "ۏيديو",
     "example_word_latin": "vitamin",
     "forms": {
       "isolated": "ۏ",
@@ -82,7 +82,7 @@
       "final": null
     },
     "connects_to_next": false,
-    "validation_status": "draft"
+    "validation_status": "speaker_checked"
   },
   {
     "id": "ms-deli:j:0006",
@@ -90,7 +90,7 @@
     "glyph": "ڽ",
     "name": "nya",
     "sound": "ny",
-    "example_word_jawi": null,
+    "example_word_jawi": "ڽاموق",
     "example_word_latin": "nyamuk",
     "forms": {
       "isolated": "ڽ",
@@ -99,6 +99,6 @@
       "final": null
     },
     "connects_to_next": true,
-    "validation_status": "draft"
+    "validation_status": "speaker_checked"
   }
 ]

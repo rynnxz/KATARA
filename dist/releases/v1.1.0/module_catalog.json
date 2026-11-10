@@ -1,0 +1,50 @@
+{
+  "catalog_version": "1.1.0",
+  "generated_at": "2026-11-11T00:00:00Z",
+  "github_release_tag": "v1.1.0",
+  "repository_url": "https://github.com/rynnxz/KATARA",
+  "modules": [
+    {
+      "course_id": "ms-langkat",
+      "dialect_id": "melayu_langkat",
+      "name": "Melayu Langkat",
+      "region_label": "Tanjung Pura, Stabat & Pesisir Langkat",
+      "description": "Bahasa Melayu Kesultanan Langkat (Tanjung Pura, Stabat, Secanggang, Pangkalan Brandan) lengkap dengan kosakata pesisir-sungai, kuliner halua, dan sastra pantun.",
+      "version": "1.1.0",
+      "content_version": 1,
+      "archive_filename": "module_langkat.zip",
+      "download_url": "https://github.com/rynnxz/KATARA/releases/download/v1.1.0/module_langkat.zip",
+      "size_bytes": 82273,
+      "sha256": "b9c2aaa268ad3e0b9eb1b75c4bf71fff7932c17fd20c8b018f530a985559cdb0",
+      "word_count": 308,
+      "lesson_count": 30,
+      "conversation_count": 10,
+      "quiz_count": 120,
+      "reference_count": 6,
+      "is_bundled": false,
+      "theme_key": "langkat",
+      "accent_hex": "#1E7F5C"
+    },
+    {
+      "course_id": "ms-palembang",
+      "dialect_id": "melayu_palembang",
+      "name": "Melayu Palembang",
+      "region_label": "Seberang Ilir, Seberang Ulu & Tepian Musi",
+      "description": "Bahasa Melayu Palembang dengan dua tingkat tutur (Baso Palembang Alus/Bebaso & Sari-sari), ekologi Sungai Musi, Rumah Limas, kuliner Pempek-Pindang, dan Songket.",
+      "version": "1.1.0",
+      "content_version": 1,
+      "archive_filename": "module_palembang.zip",
+      "download_url": "https://github.com/rynnxz/KATARA/releases/download/v1.1.0/module_palembang.zip",
+      "size_bytes": 84219,
+      "sha256": "16185eb07de40d307eaeea7cdb1f07aad270093cac0d4c19c62e083052956497",
+      "word_count": 308,
+      "lesson_count": 30,
+      "conversation_count": 10,
+      "quiz_count": 120,
+      "reference_count": 6,
+      "is_bundled": false,
+      "theme_key": "palembang",
+      "accent_hex": "#8B1E24"
+    }
+  ]
+}

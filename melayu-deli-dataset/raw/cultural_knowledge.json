@@ -1,0 +1,396 @@
+[
+  {
+    "id": "CUL-000001",
+    "title": "Legenda Putri Hijau dan Situs Benteng Deli Tua",
+    "category": "folklore_and_legends",
+    "summary": "Kisah tradisional masyarakat Melayu Deli dan Karo mengenai Putri Hijau dari Kerajaan Haru/Deli Tua yang terkenal karena kecantikan serta pancaran cahaya hijaunya, beserta kisah pengorbanan dua saudaranya (Ular Simangombus dan Meriam Puntung).",
+    "description": "Dalam tradisi lisan Melayu Deli, Putri Hijau adalah putri jelita yang bermukim di Benteng Putri Hijau (kawasan Deli Tua, Kabupaten Deli Serdang). Kecantikannya memancar hingga memikat Sultan Aceh yang kemudian datang meminang. Ketika pinangan tersebut ditolak, pecahlah peperangan mempertahankan benteng Deli Tua. Menurut legenda, saudara laki-laki Putri Hijau yang bernama Mambang Khayali menjelma menjadi meriam sakti yang menembakkan peluru tanpa henti hingga larasnya memanas dan terbelah dua (dikenal sebagai Meriam Puntung), sedangkan saudaranya yang lain, Mambang Jazid, menjelma menjadi naga/ular besar yang membawa Putri Hijau ke perairan Selat Malaka.",
+    "related_terms": [
+      "Putri Hijau",
+      "Meriam Puntung",
+      "Deli Tua",
+      "Kerajaan Haru"
+    ],
+    "katara_legacy_id": "art01",
+    "dialect": "melayu_deli",
+    "region": "deli",
+    "source_ids": [
+      "SRC-0001",
+      "SRC-0009",
+      "SRC-0010"
+    ],
+    "confidence": "high",
+    "verification_status": "verified",
+    "notes": "Melengkapi isi artikel budaya art01 (\"Putri Hijau\") yang sebelumnya bernilai null di draf awal aplikasi KATARA."
+  },
+  {
+    "id": "CUL-000002",
+    "title": "Istana Maimun: Arsitektur dan Simbol Kejayaan Kesultanan Deli",
+    "category": "architecture_and_heritage",
+    "summary": "Istana kebesaran Kesultanan Deli di Kota Medan yang dibangun pada tahun 1888–1891 oleh Sultan Ma'mun Al Rasyid Perkasa Alamsyah dengan perpaduan arsitektur Melayu, Islam, Mogul/India, dan Eropa.",
+    "description": "Istana Maimun terletak di Kelurahan Aur, Kecamatan Medan Maimun, Kota Medan. Istana seluas sekitar 2.772 meter persegi dengan 30 ruangan ini dibangun mulai 26 Agustus 1888 dan diresmikan pada 18 Mei 1891 pada masa pemerintahan Sultan Ma'mun Al Rasyid Perkasa Alamsyah (Sultan Deli IX). Bangunan dua lantai ini didominasi warna kuning diraja (lambang kemuliaan dan kebesaran Melayu) serta memadukan rumah panggung Melayu dengan lengkung-lengkung bergaya Islam Timur Tengah/Mogul serta elemen klasik Eropa. Di dalam Balairung Seri terdapat singgasana sultan tempat berlangsungnya penobatan dan upacara adat Kesultanan Deli.",
+    "related_terms": [
+      "Istana Maimun",
+      "Balairung Seri",
+      "kuning diraja",
+      "Sultan Ma'mun Al Rasyid"
+    ],
+    "katara_legacy_id": "art02 / c01",
+    "dialect": "melayu_deli",
+    "region": "deli",
+    "source_ids": [
+      "SRC-0001",
+      "SRC-0009",
+      "SRC-0010"
+    ],
+    "confidence": "high",
+    "verification_status": "verified",
+    "notes": "Melengkapi isi artikel budaya art02 dan fakta kartu koleksi c01 (\"Istana Maimun\") yang sebelumnya bernilai null di draf awal aplikasi."
+  },
+  {
+    "id": "CUL-000003",
+    "title": "Guru Patimpus Sembiring Pelawi dan Asal-Usul Kampung Medan",
+    "category": "historical_tradition",
+    "summary": "Tokoh tabib dan penyebar Islam beretnis Karo yang membuka perkampungan di pertemuan Sungai Deli dan Sungai Babura sekitar tahun 1590, yang menjadi cikal bakal Kota Medan dan berbaur erat dengan adat Kesultanan Deli.",
+    "description": "Guru Patimpus Sembiring Pelawi dikenal dalam historiografi dan tradisi lisan Sumatera Timur sebagai perintis berdirinya Kampung Medan Putri pada akhir abad ke-16 (sekitar tahun 1590). Beliau menikahi putri Datuk Pulo Brayan dan membangun pemukiman di tanah datar pertemuan Sungai Deli dan Sungai Babura. Keturunan Guru Patimpus kemudian memegang peranan penting dalam struktur adat Kedatukan Sukapiring dan Sunggal di bawah naungan Kesultanan Deli, mencerminkan hubungan kekerabatan historis yang erat antara masyarakat Karo dan Melayu Deli.",
+    "related_terms": [
+      "Guru Patimpus",
+      "Sungai Deli",
+      "Sungai Babura",
+      "Datuk Empat Suku"
+    ],
+    "katara_legacy_id": "art03",
+    "dialect": "melayu_deli",
+    "region": "deli",
+    "source_ids": [
+      "SRC-0001",
+      "SRC-0009",
+      "SRC-0010"
+    ],
+    "confidence": "high",
+    "verification_status": "verified",
+    "notes": "Melengkapi isi artikel budaya art03 (\"Guru Patimpus\") yang sebelumnya bernilai null di draf awal aplikasi."
+  },
+  {
+    "id": "CUL-000004",
+    "title": "Meriam Puntung di Halaman Istana Maimun",
+    "category": "folklore_and_legends",
+    "summary": "Peninggalan sejarah dan legenda berupa potongan meriam tua yang disimpan di bangunan khusus di halaman Istana Maimun, Medan, yang dikaitkan dengan kisah Mambang Khayali dan Putri Hijau.",
+    "description": "Meriam Puntung adalah artefak meriam besi yang terpotong (puntung) dan disimpan di sebuah bangsal khusus di kompleks halaman Istana Maimun, Medan. Dalam tradisi masyarakat Melayu Deli, meriam ini diyakini sebagai penjelmaan Mambang Khayali, adik Putri Hijau, yang mempertahankan benteng kerajaan di Deli Tua dari serangan pasukan Aceh hingga larasnya pecah menjadi dua bagian: bagian pangkal berada di Istana Maimun dan bagian lainnya menurut cerita rakyat terpental ke dataran tinggi Karo.",
+    "related_terms": [
+      "Meriam Puntung",
+      "Mambang Khayali",
+      "Putri Hijau",
+      "Istana Maimun"
+    ],
+    "katara_legacy_id": "c02",
+    "dialect": "melayu_deli",
+    "region": "deli",
+    "source_ids": [
+      "SRC-0001",
+      "SRC-0009",
+      "SRC-0010"
+    ],
+    "confidence": "high",
+    "verification_status": "verified",
+    "notes": "Melengkapi fakta kartu koleksi c02 (\"Meriam Puntung\") di aplikasi KATARA."
+  },
+  {
+    "id": "CUL-000005",
+    "title": "Tanjak Melayu Deli: Filosofi Lipatan dan Marwah Laki-Laki Melayu",
+    "category": "traditional_attire",
+    "summary": "Penutup kepala tradisional laki-laki Melayu Deli dari kain songket yang dilipat secara khusus (seperti ragam Dendam Tak Sudah atau Elang Menyongsong Angin) sebagai simbol kehormatan, adab, dan kedudukan sosial.",
+    "description": "Tanjak (disebut juga tengkuluk atau destar) merupakan mahkota kehormatan dalam busana adat laki-laki Melayu Deli. Kata \"tanjak\" sering dikaitkan dengan \"tanah yang dipijak\", melambangkan jati diri dan kedaulatan adat. Tanjak dibuat dari kain songket berbentuk persegi yang dilipat menjadi segitiga lalu disusun bertingkat (tapak, bengkung, dan pucuk/simpul). Posisi simpul dan arah pucuk tanjak memiliki makna simbolis tentang status pemakainya.",
+    "related_terms": [
+      "tanjak",
+      "tengkuluk",
+      "kain songket",
+      "teluk belanga",
+      "marwah"
+    ],
+    "katara_legacy_id": "c03 / i03",
+    "dialect": "melayu_deli",
+    "region": "deli",
+    "source_ids": [
+      "SRC-0001",
+      "SRC-0009",
+      "SRC-0010"
+    ],
+    "confidence": "high",
+    "verification_status": "verified",
+    "notes": "Melengkapi fakta kartu koleksi c03 (\"Tanjak\") di aplikasi KATARA."
+  },
+  {
+    "id": "CUL-000006",
+    "title": "Pulut Kuning: Hidangan Sakral Kenduri dan Upacara Tepung Tawar",
+    "category": "culinary_heritage",
+    "summary": "Hidangan beras ketan yang dikukus bersama santan dan kunyit hingga berwarna kuning keemasan, wajib disajikan dalam upacara Tepung Tawar, pernikahan, khitanan, dan syukuran adat Melayu Deli.",
+    "description": "Dalam kebudayaan Melayu Deli, Pulut Kuning bukan sekadar penganan, melainkan simbol rasa syukur, kemuliaan (warna kuning diraja), serta eratnya ikatan persaudaraan (sifat beras pulut/ketan yang lengket menyatu). Pulut kuning disajikan dengan dua cara utama: (1) Pulut Kuning Berinti yang diberi taburan kelapa parut masak gula merah manis di atasnya, atau (2) disajikan bersama lauk rendang daging, telur rebus, dan gulai/opor ayam dalam upacara Tepung Tawar.",
+    "related_terms": [
+      "pulut kuning",
+      "tepung tawar",
+      "kenduri",
+      "inti kelapa",
+      "lemak"
+    ],
+    "katara_legacy_id": "c04 / w030",
+    "dialect": "melayu_deli",
+    "region": "deli",
+    "source_ids": [
+      "SRC-0001",
+      "SRC-0005",
+      "SRC-0009"
+    ],
+    "confidence": "high",
+    "verification_status": "verified",
+    "notes": "Melengkapi fakta kartu koleksi c04 (\"Pulut Kuning\") di aplikasi KATARA."
+  },
+  {
+    "id": "CUL-000007",
+    "title": "Tari Serampang Dua Belas Karya Guru Sauti",
+    "category": "performing_arts",
+    "summary": "Tari pergaulan tradisional Melayu Sumatera Timur yang diciptakan oleh Guru Sauti sekitar tahun 1938 (awalnya bernama Tari Pulau Sari) dengan 12 ragam gerak yang mengisahkan tahapan perjumpaan hingga pernikahan muda-mudi Melayu.",
+    "description": "Tari Serampang Dua Belas adalah warisan seni pertunjukan paling masyhur dari kebudayaan Melayu pesisir timur Sumatera Utara (Deli dan Serdang). Diciptakan oleh Guru Sauti pada tahun 1938 berdasarkan lagu ronggeng \"Pulau Sari\", tarian berpasangan ini memiliki tempo rancak dan terdiri atas 12 ragam gerak berurutan yang melambangkan perjalanan cinta yang santun menurut adat Melayu: (1) Permulaan/Pertemuan Pertama, (2) Cinta Meresap, (3) Memendam Cinta, (4) Menggila/Mabuk Kepayang, (5) Isyarat Tanda Cinta, (6) Balasan Isyarat, (7) Menduga, (8) Masih Belum Percaya, (9) Jawaban, (10) Pinang-Meminang, (11) Mengantar Pengantin, dan (12) Pertemuan Kasih.",
+    "related_terms": [
+      "Serampang Dua Belas",
+      "Guru Sauti",
+      "Pulau Sari",
+      "meminang"
+    ],
+    "katara_legacy_id": "c05",
+    "dialect": "melayu_deli",
+    "region": "deli",
+    "source_ids": [
+      "SRC-0001",
+      "SRC-0009",
+      "SRC-0010"
+    ],
+    "confidence": "high",
+    "verification_status": "verified",
+    "notes": "Melengkapi fakta kartu koleksi c05 (\"Serampang Dua Belas\") di aplikasi KATARA."
+  },
+  {
+    "id": "CUL-000008",
+    "title": "Tepak Sirih dan Tradisi Berbalas Pantun Telangkai",
+    "category": "customs_and_rituals",
+    "summary": "Tepak sirih sebagai pembuka kata wajib dalam perundingan adat peminangan Melayu Deli yang dibawakan oleh juru bicara adat (Telangkai) melalui seni berbalas pantun.",
+    "description": "Dalam adat perkawinan Melayu Deli (merisik, meminang, hingga mengantar belanja), kedua belah pihak keluarga tidak berunding secara langsung, melainkan menunjuk seorang juru bicara adat yang disebut Telangkai. Sebelum menyampaikan maksud, Telangkai pihak tamu menyodorkan Tepak Sirih lengkap (berisi daun sirih yang disusun rapi, kapur, gambir, pinang, dan tembakau/cengkeh) kepada pihak tuan rumah. Penyuguhan dan penerimaan tepak sirih ini diiringi dengan berbalas pantun yang penuh kiasan halus, permohonan maaf, dan penghormatan.",
+    "related_terms": [
+      "tepak sirih",
+      "telangkai",
+      "merisik",
+      "meminang",
+      "pantun",
+      "besan"
+    ],
+    "katara_legacy_id": null,
+    "dialect": "melayu_deli",
+    "region": "deli",
+    "source_ids": [
+      "SRC-0005",
+      "SRC-0008",
+      "SRC-0009"
+    ],
+    "confidence": "high",
+    "verification_status": "verified",
+    "notes": null
+  },
+  {
+    "id": "CUL-000009",
+    "title": "Upacara Adat Tepung Tawar dalam Daur Hidup Masyarakat Melayu Deli",
+    "category": "customs_and_rituals",
+    "summary": "Prosesi pemberian doa restu dan keselamatan dalam adat Melayu Deli pada peristiwa penting seperti pernikahan, khitanan, menempati rumah baru, atau menyambut tamu kehormatan.",
+    "description": "Upacara Tepung Tawar dilakukan oleh orang tua dan tetua adat dengan jumlah pemberi tepung tawar berangka ganjil (3, 5, 7, atau 9 orang). Perlengkapannya meliputi beras putih, beras kunyit, bertih (padi yang disangrai mekar), air mawar/bedak sejuk, serta ikatan daun perenjis (daun setawar, sedingin, hati-hati, dan juang-juang). Setelah perenjisan ke telapak tangan dan bahu, acara ditutup dengan penyuapan sedikit Pulut Kuning dan doa selamat.",
+    "related_terms": [
+      "tepung tawar",
+      "pulut kuning",
+      "kenduri",
+      "doa selamat"
+    ],
+    "katara_legacy_id": null,
+    "dialect": "melayu_deli",
+    "region": "deli",
+    "source_ids": [
+      "SRC-0009",
+      "SRC-0010"
+    ],
+    "confidence": "high",
+    "verification_status": "verified",
+    "notes": null
+  },
+  {
+    "id": "CUL-000010",
+    "title": "Sistem Sapaan Urutan Kelahiran dan Gelar Kebangsawanan Melayu Deli",
+    "category": "sociolinguistics_and_kinship",
+    "summary": "Struktur sapaan keluarga berdasarkan urutan kelahiran (Long, Ngah, Uda, Cik, Busu) serta sistem gelar kebangsawanan (Tengku, Datuk, Orang Kaya/OK, Wan) dalam masyarakat Melayu Deli.",
+    "description": "Sebagaimana didokumentasikan oleh T. Syarfina (2004), masyarakat Melayu Deli sangat menjaga kesantunan berbahasa melalui sapaan yang tepat. Dalam keluarga inti maupun keluarga besar, paman, bibi, abang, dan kakak disapa menurut urutan kelahirannya: Long (sulung/pertama), Ngah (tengah/kedua), Uda (muda), Cik (kecil), dan Busu/Usu (bungsu). Dalam ranah sosial-adat, gelar Tengku diwariskan secara patrilineal kepada keturunan Sultan; gelar Wan diberikan kepada anak dari ibu bergelar Tengku yang menikah dengan laki-laki non-Tengku; sedangkan Datuk dan Orang Kaya (OK) merupakan gelar kehormatan pembesar adat dan bangsawan.",
+    "related_terms": [
+      "pak long",
+      "mak ngah",
+      "pak busu",
+      "atok",
+      "andung",
+      "tengku",
+      "datuk",
+      "orang kaya",
+      "wan"
+    ],
+    "katara_legacy_id": null,
+    "dialect": "melayu_deli",
+    "region": "deli",
+    "source_ids": [
+      "SRC-0006",
+      "SRC-0010"
+    ],
+    "confidence": "high",
+    "verification_status": "verified",
+    "notes": null
+  },
+  {
+    "id": "CUL-000011",
+    "title": "Busana Adat Baju Teluk Belanga dan Kebaya Labuh",
+    "category": "traditional_attire",
+    "summary": "Pakaian tradisional laki-laki (Baju Teluk Belanga dengan kain samping songket dan tanjak) serta perempuan (Kebaya Labuh atau Baju Kurung) khas Melayu Deli.",
+    "description": "Busana adat Melayu Deli mencerminkan nilai kesopanan Islam dan estetika istana. Laki-laki mengenakan Baju Teluk Belanga (berkerah bulat tanpa kancing berdiri, dijahit dengan teknik tulang belut) atau Baju Cekak Musang, dipadukan dengan seluar panjang yang sewarna, kain samping songket yang diikat di pinggang, serta tanjak di kepala. Perempuan mengenakan Kebaya Labuh (kebaya panjang hingga bawah lutut) atau Baju Kurung dengan kain sarung songket dan selendang.",
+    "related_terms": [
+      "teluk belanga",
+      "kebaya labuh",
+      "kain samping",
+      "tanjak",
+      "seluar",
+      "kasut"
+    ],
+    "katara_legacy_id": "i04",
+    "dialect": "melayu_deli",
+    "region": "deli",
+    "source_ids": [
+      "SRC-0001",
+      "SRC-0009",
+      "SRC-0010"
+    ],
+    "confidence": "high",
+    "verification_status": "verified",
+    "notes": null
+  },
+  {
+    "id": "CUL-000012",
+    "title": "Tradisi Bubur Pedas dan Anyang Pakis pada Bulan Ramadan di Deli",
+    "category": "culinary_heritage",
+    "summary": "Tradisi memasak dan membagikan Bubur Pedas kaya rempah di lingkungan Masjid Raya Al-Mashun serta penyajian Anyang Pakis sebagai hidangan berbuka puasa khas Melayu Deli.",
+    "description": "Setiap bulan Ramadan, masyarakat Melayu Deli memiliki tradisi kuliner komunal yang telah berlangsung sejak masa Kesultanan Deli, yaitu memasak Bubur Pedas dalam kawah/belanga besar untuk dibagikan sebagai takjil berbuka puasa di sekitar Masjid Raya Al-Mashun. Selain bubur pedas, hidangan wajib di meja makan keluarga Melayu Deli saat Ramadan adalah Anyang Pakis (pucuk pakis rebus dengan kelapa sangrai berbumbu segar) dan Roti Jala kuah kari.",
+    "related_terms": [
+      "bubur pedas",
+      "anyang pakis",
+      "roti jala",
+      "belanga"
+    ],
+    "katara_legacy_id": null,
+    "dialect": "melayu_deli",
+    "region": "deli",
+    "source_ids": [
+      "SRC-0005",
+      "SRC-0009",
+      "SRC-0010"
+    ],
+    "confidence": "high",
+    "verification_status": "verified",
+    "notes": null
+  },
+  {
+    "id": "CUL-000013",
+    "title": "Kue Rasyidah dan Manisan Halua dalam Hantaran Adat dan Hari Raya",
+    "category": "culinary_heritage",
+    "summary": "Kue bangsawan Rasyidah bertabur bawang goreng dan manisan Halua aneka buah/sayur sebagai simbol kemanisan hidup dalam hantaran pernikahan dan jamuan Idulfitri Melayu Deli.",
+    "description": "Dalam adat Melayu Deli, penganan manis memiliki kedudukan istimewa sebagai lambang doa agar kehidupan rumah tangga atau persaudaraan selalu manis dan rukun. Kue Rasyidah—kue lembut berbahan tepung, gula, minyak samin, dan taburan bawang goreng—merupakan kue kehormatan yang disajikan pada hantaran pernikahan dan majelis adat. Sementara itu, Halua (manisan dari pepaya/betik, cabai merah yang dibuang bijinya, labu, kolang-kaling, hingga gelugur) disajikan secara turun-temurun saat Hari Raya Idulfitri.",
+    "related_terms": [
+      "kue rasyidah",
+      "halua",
+      "kue karas-karas",
+      "betik"
+    ],
+    "katara_legacy_id": null,
+    "dialect": "melayu_deli",
+    "region": "deli",
+    "source_ids": [
+      "SRC-0005",
+      "SRC-0009"
+    ],
+    "confidence": "high",
+    "verification_status": "verified",
+    "notes": null
+  },
+  {
+    "id": "CUL-000014",
+    "title": "Konsep Budaya \"Kempunan\" dalam Etika Menjamu Tamu",
+    "category": "customs_and_rituals",
+    "summary": "Kepercayaan dan etika sosial masyarakat Melayu Deli untuk selalu menawarkan makanan kepada tamu dan kewajiban tamu mencicipi atau menyentuh hidangan sedikit agar terhindar dari \"kempunan\".",
+    "description": "Kata \"kempunan\" merujuk pada keadaan seseorang yang sangat menginginkan makanan atau minuman (atau ditawari hidangan sebelum bepergian) tetapi tidak sempat mencicipinya, sehingga dikhawatirkan tertimpa kemalangan di perjalanan. Oleh karena itu, tuan rumah Melayu Deli selalu berkata \"Jemput makan, cicipilah sikit biar tak kempunan\", dan tamu yang sedang terburu-buru sekalipun akan menyentuhkan ujung jari ke piring/cawan lalu menyentuhkannya ke bibir sebagai tanda menghormati rezeki dan tuan rumah.",
+    "related_terms": [
+      "kempunan",
+      "jemput",
+      "pinggan",
+      "cawan"
+    ],
+    "katara_legacy_id": null,
+    "dialect": "melayu_deli",
+    "region": "deli",
+    "source_ids": [
+      "SRC-0002",
+      "SRC-0005",
+      "SRC-0009"
+    ],
+    "confidence": "high",
+    "verification_status": "verified",
+    "notes": null
+  },
+  {
+    "id": "CUL-000015",
+    "title": "Motif Pucuk Rebung dalam Tenun Songket dan Ornamen Melayu Deli",
+    "category": "architecture_and_heritage",
+    "summary": "Motif geometris berbentuk tunas bambu muda (pucuk rebung) pada kain songket dan ukiran bangunan Melayu Deli yang melambangkan harapan, pertumbuhan, dan keteguhan hati.",
+    "description": "Pucuk Rebung adalah salah satu ragam hias paling ikonik dalam tenun songket dan arsitektur tradisional Melayu Deli (dan dijadikan inspirasi maskot Si Rebung serta latar PatternBackground pada aplikasi KATARA). Falsafah Melayu menyebutkan \"Kokoh bagai aur dengan tebing, bertunas bagai pucuk rebung\": tunas bambu yang tumbuh tegak lurus ke atas dan tidak mudah patah melambangkan generasi muda yang berilmu, santun, dan bermanfaat bagi masyarakat.",
+    "related_terms": [
+      "tanjak",
+      "kain samping",
+      "serambi"
+    ],
+    "katara_legacy_id": null,
+    "dialect": "melayu_deli",
+    "region": "deli",
+    "source_ids": [
+      "SRC-0001",
+      "SRC-0009",
+      "SRC-0010"
+    ],
+    "confidence": "high",
+    "verification_status": "verified",
+    "notes": null
+  },
+  {
+    "id": "CUL-000016",
+    "title": "Dinamika Sosiolinguistik: Bahasa Melayu Deli Tradisional vs. Dialek Melayu Medan",
+    "category": "sociolinguistics_and_kinship",
+    "summary": "Perbedaan karakteristik antara Bahasa Melayu Deli asli (yang berirama lembut, bervokal akhir -e, dan kaya leksikon adat) dengan Bahasa Melayu Medan kolokial (lingua franca multietnis perkotaan yang berintonasi tegas).",
+    "description": "Dalam kajian sosiolinguistik Sumatera Utara, penting membedakan Bahasa Melayu Deli (yang dituturkan oleh komunitas etnis Melayu di Medan Maimun, Labuhan Deli, Marelan, Hamparan Perak, Deli Tua, dan Percut Sei Tuan) dari Bahasa Indonesia Dialek Medan umum. Bahasa Melayu Deli asli mempertahankan vokal pepet akhir [-ə] (ape, mane, tige), intonasi mengalun lembut, serta kosa kata tradisional (petang, bilik, tingkap, pinggan, jemput). Sementara itu, dialek Melayu Medan perkotaan terbentuk dari percampuran dasar Melayu Deli dengan intonasi dan partikel bahasa Batak (seperti partikel \"bah\"), Jawa, Hokkien, dan Tamil seiring pesatnya urbanisasi sejak era perkebunan Deli.",
+    "related_terms": [
+      "awak",
+      "kali",
+      "semalam",
+      "pajak",
+      "bah",
+      "kelen"
+    ],
+    "katara_legacy_id": null,
+    "dialect": "melayu_deli",
+    "region": "deli",
+    "source_ids": [
+      "SRC-0003",
+      "SRC-0005",
+      "SRC-0006",
+      "SRC-0011"
+    ],
+    "confidence": "high",
+    "verification_status": "verified",
+    "notes": null
+  }
+]

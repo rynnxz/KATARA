@@ -11,25 +11,64 @@ import 'package:katara/app/widgets/path_node.dart';
 import 'package:katara/features/dev/dev_gallery_screen.dart';
 
 void main() {
-  group('WCAG AA Contrast Verification', () {
-    test('Light palette text/background pairs meet WCAG AA (>= 4.5:1)', () {
+  group('WCAG AA+ High-Contrast & Dialect Visual Identity Verification', () {
+    test('Light palette text/background pairs meet strict WCAG AA+ (inkMuted >= 7.0:1 on bg/surface, >= 6.0:1 on surfaceAlt)', () {
       const p = KataraPalette.light;
       expect(KataraColors.contrastRatio(p.primary, p.onPrimary), greaterThanOrEqualTo(4.5));
       expect(KataraColors.contrastRatio(p.secondary, p.onSecondary), greaterThanOrEqualTo(4.5));
-      expect(KataraColors.contrastRatio(p.bg, p.ink), greaterThanOrEqualTo(4.5));
-      expect(KataraColors.contrastRatio(p.bg, p.inkMuted), greaterThanOrEqualTo(4.5));
-      expect(KataraColors.contrastRatio(p.surface, p.ink), greaterThanOrEqualTo(4.5));
-      expect(KataraColors.contrastRatio(p.surfaceAlt, p.ink), greaterThanOrEqualTo(4.5));
+      expect(KataraColors.contrastRatio(p.bg, p.ink), greaterThanOrEqualTo(12.0));
+      expect(KataraColors.contrastRatio(p.bg, p.inkMuted), greaterThanOrEqualTo(7.0));
+      expect(KataraColors.contrastRatio(p.surface, p.ink), greaterThanOrEqualTo(12.0));
+      expect(KataraColors.contrastRatio(p.surface, p.inkMuted), greaterThanOrEqualTo(7.0));
+      expect(KataraColors.contrastRatio(p.surfaceAlt, p.ink), greaterThanOrEqualTo(11.0));
+      expect(KataraColors.contrastRatio(p.surfaceAlt, p.inkMuted), greaterThanOrEqualTo(6.0));
     });
 
-    test('Dark palette text/background pairs meet WCAG AA (>= 4.5:1)', () {
+    test('Dark palette text/background pairs meet strict WCAG AA+ (inkMuted >= 7.0:1 on bg/surface)', () {
       const p = KataraPalette.dark;
       expect(KataraColors.contrastRatio(p.primary, p.onPrimary), greaterThanOrEqualTo(4.5));
       expect(KataraColors.contrastRatio(p.secondary, p.onSecondary), greaterThanOrEqualTo(4.5));
-      expect(KataraColors.contrastRatio(p.bg, p.ink), greaterThanOrEqualTo(4.5));
-      expect(KataraColors.contrastRatio(p.bg, p.inkMuted), greaterThanOrEqualTo(4.5));
-      expect(KataraColors.contrastRatio(p.surface, p.ink), greaterThanOrEqualTo(4.5));
-      expect(KataraColors.contrastRatio(p.surfaceAlt, p.ink), greaterThanOrEqualTo(4.5));
+      expect(KataraColors.contrastRatio(p.bg, p.ink), greaterThanOrEqualTo(12.0));
+      expect(KataraColors.contrastRatio(p.bg, p.inkMuted), greaterThanOrEqualTo(7.0));
+      expect(KataraColors.contrastRatio(p.surface, p.ink), greaterThanOrEqualTo(11.0));
+      expect(KataraColors.contrastRatio(p.surface, p.inkMuted), greaterThanOrEqualTo(7.0));
+      expect(KataraColors.contrastRatio(p.surfaceAlt, p.ink), greaterThanOrEqualTo(9.0));
+      expect(KataraColors.contrastRatio(p.surfaceAlt, p.inkMuted), greaterThanOrEqualTo(6.0));
+    });
+
+    test('KataraTheme explicitly sets onSurfaceVariant, inverseSurface, SnackBar, and Input themes to prevent grey-on-bright text', () {
+      final lightTheme = KataraTheme.light();
+      final darkTheme = KataraTheme.dark();
+
+      expect(lightTheme.colorScheme.onSurfaceVariant, equals(KataraPalette.light.inkMuted));
+      expect(darkTheme.colorScheme.onSurfaceVariant, equals(KataraPalette.dark.inkMuted));
+      expect(
+        KataraColors.contrastRatio(
+          lightTheme.colorScheme.surface,
+          lightTheme.colorScheme.onSurfaceVariant,
+        ),
+        greaterThanOrEqualTo(7.0),
+      );
+      expect(lightTheme.snackBarTheme.backgroundColor, isNotNull);
+      expect(lightTheme.inputDecorationTheme.hintStyle?.color, equals(KataraPalette.light.inkMuted));
+    });
+
+    test('DialectVisualIdentity defines distinct culturally authentic colors and >= 4.5:1 badge contrast for Deli, Langkat, and Palembang', () {
+      final deli = DialectVisualIdentity.forCourse('ms-deli');
+      final langkat = DialectVisualIdentity.forCourse('ms-langkat');
+      final palembang = DialectVisualIdentity.forCourse('ms-palembang');
+
+      expect(deli.accentColor, equals(const Color(0xFFF5B700)));
+      expect(langkat.accentColor, equals(const Color(0xFF1E7F5C)));
+      expect(palembang.accentColor, equals(const Color(0xFF8B1E24)));
+
+      expect(deli.motifName, contains('Pucuk Rebung'));
+      expect(langkat.motifName, contains('Tampuk Manggis'));
+      expect(palembang.motifName, contains('Songket Lepus'));
+
+      expect(KataraColors.contrastRatio(deli.badgeBgLight, deli.badgeFgLight), greaterThanOrEqualTo(4.5));
+      expect(KataraColors.contrastRatio(langkat.badgeBgLight, langkat.badgeFgLight), greaterThanOrEqualTo(4.5));
+      expect(KataraColors.contrastRatio(palembang.badgeBgLight, palembang.badgeFgLight), greaterThanOrEqualTo(4.5));
     });
   });
 

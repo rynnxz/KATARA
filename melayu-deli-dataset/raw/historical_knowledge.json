@@ -1,0 +1,315 @@
+[
+  {
+    "id": "HIS-000001",
+    "title": "Era Kerajaan Haru (Aru) dan Benteng Deli Tua (Abad ke-13 hingga ke-16)",
+    "period": "Abad ke-13 – Abad ke-16",
+    "category": "pre_sultanate_history",
+    "summary": "Kerajaan maritim awal di pesisir timur Sumatera Utara yang berpusat di kawasan Deli Tua dan aliran Sungai Deli sebelum berdirinya Kesultanan Deli.",
+    "description": "Sebelum Kesultanan Deli berdiri pada abad ke-17, wilayah lembah Sungai Deli dan pesisir timur Sumatera Utara merupakan pusat Kerajaan Haru (Aru) yang tercatat dalam kronik Tiongkok (Dinasti Yuan dan Ming), Nagarakretagama, serta Sejarah Melayu. Situs arkeologi Benteng Putri Hijau di Deli Tua menunjukkan jejak pemukiman berbenteng tanah yang menjadi latar historis bagi legenda Putri Hijau dan ekspedisi Kesultanan Aceh ke wilayah timur Sumatera.",
+    "key_figures": [
+      "Raja Haru",
+      "Putri Hijau (tradisi lisan)",
+      "Sultan Iskandar Muda"
+    ],
+    "key_locations": [
+      "Deli Tua",
+      "Sungai Deli",
+      "Selat Malaka"
+    ],
+    "katara_legacy_id": "art01",
+    "source_ids": [
+      "SRC-0009",
+      "SRC-0010"
+    ],
+    "confidence": "high",
+    "verification_status": "verified",
+    "notes": null
+  },
+  {
+    "id": "HIS-000002",
+    "title": "Pembukaan Kampung Medan Putri oleh Guru Patimpus (Sekitar 1590)",
+    "period": "Akhir Abad ke-16 (±1590)",
+    "category": "city_foundation",
+    "summary": "Pembukaan pemukiman awal di pertemuan Sungai Deli dan Sungai Babura oleh Guru Patimpus Sembiring Pelawi yang menjadi cikal bakal Kota Medan.",
+    "description": "Sekitar tahun 1590, Guru Patimpus Sembiring Pelawi—seorang ulama dan tabib keturunan Karo yang telah memeluk Islam—membuka kawasan hutan di antara pertemuan Sungai Deli dan Sungai Babura menjadi sebuah perkampungan yang dinamakan Kampung Medan Putri. Pernikahannya dengan putri penguasa lokal di Pulo Brayan melahirkan garis keturunan yang kemudian terintegrasi ke dalam struktur Kedatukan di wilayah Deli.",
+    "key_figures": [
+      "Guru Patimpus Sembiring Pelawi",
+      "Datuk Pulo Brayan"
+    ],
+    "key_locations": [
+      "Pertemuan Sungai Deli dan Sungai Babura",
+      "Pulo Brayan",
+      "Medan"
+    ],
+    "katara_legacy_id": "art03",
+    "source_ids": [
+      "SRC-0001",
+      "SRC-0009",
+      "SRC-0010"
+    ],
+    "confidence": "high",
+    "verification_status": "verified",
+    "notes": "Tanggal 1 Juli 1590 ditetapkan oleh Pemerintah Kota Medan sebagai hari jadi Kota Medan."
+  },
+  {
+    "id": "HIS-000003",
+    "title": "Pendirian Kesultanan Deli oleh Tuanku Panglima Gocah Pahlawan (1632)",
+    "period": "1632–1669",
+    "category": "sultanate_history",
+    "summary": "Pengangkatan Tuanku Panglima Gocah Pahlawan (Muhammad Dalik) sebagai wakil Kesultanan Aceh di wilayah bekas Kerajaan Haru pada tahun 1632 dan penyatuan empat kedatukan lokal.",
+    "description": "Kesultanan Deli dirintis pada tahun 1632 oleh Tuanku Panglima Gocah Pahlawan (bernama asli Muhammad Dalik), seorang panglima Kesultanan Aceh di bawah Sultan Iskandar Muda. Di tanah Deli, Gocah Pahlawan diangkat sebagai pemimpin oleh empat kepala suku pribumi (Datuk Empat Suku) dan menikahi adik Datuk Sunggal (Nang Baluan Beru Surbakti). Pemerintahan awal ini meletakkan fondasi perpaduan budaya Melayu-Islam dengan masyarakat lokal di Deli.",
+    "key_figures": [
+      "Tuanku Panglima Gocah Pahlawan (Muhammad Dalik)",
+      "Nang Baluan Beru Surbakti",
+      "Datuk Sunggal"
+    ],
+    "key_locations": [
+      "Deli Tua",
+      "Sunggal",
+      "Labuhan Deli"
+    ],
+    "katara_legacy_id": null,
+    "source_ids": [
+      "SRC-0009",
+      "SRC-0010",
+      "SRC-0011"
+    ],
+    "confidence": "high",
+    "verification_status": "verified",
+    "notes": null
+  },
+  {
+    "id": "HIS-000004",
+    "title": "Kemerdekaan Deli di Bawah Tuanku Panglima Perunggit (1669)",
+    "period": "1669",
+    "category": "sultanate_history",
+    "summary": "Deklarasi kemandirian pemerintahan Deli dari pengaruh Kesultanan Aceh oleh penguasa kedua Deli, Tuanku Panglima Perunggit, pada tahun 1669.",
+    "description": "Setelah wafatnya Gocah Pahlawan sekitar tahun 1653, putranya yang bernama Tuanku Panglima Perunggit melanjutkan kepemimpinan. Pada tahun 1669, memanfaatkan melemahnya kontrol pusat Aceh pasca-Sultan Iskandar Muda dan menjalin hubungan dagang dengan VOC di Melaka, Tuanku Panglima Perunggit memproklamasikan kemandirian Deli sebagai negeri berdaulat yang berpusat di kawasan hilir Sungai Deli (Labuhan).",
+    "key_figures": [
+      "Tuanku Panglima Perunggit"
+    ],
+    "key_locations": [
+      "Labuhan Deli",
+      "Sungai Deli"
+    ],
+    "katara_legacy_id": null,
+    "source_ids": [
+      "SRC-0010",
+      "SRC-0011"
+    ],
+    "confidence": "high",
+    "verification_status": "verified",
+    "notes": null
+  },
+  {
+    "id": "HIS-000005",
+    "title": "Struktur Politik Tradisional Lembaga Datuk Empat Suku",
+    "period": "Abad ke-17 – Abad ke-20",
+    "category": "political_and_customary_system",
+    "summary": "Sistem pembagian kekuasaan adat di Kesultanan Deli antara Sultan dan empat wilayah kedatukan utama (Sunggal/Serbanyaman, Hamparan Perak/Sepuluh Dua Kuta, Senembah, dan Sukapiring).",
+    "description": "Dalam tata negara tradisional Kesultanan Deli berlaku ungkapan bahwa Sultan memerintah bersama Lembaga Datuk Empat Suku—yang mewakili masyarakat pribumi di empat urung (wilayah kedatukan): Urung Sunggal (Serbanyaman), Urung Hamparan Perak (Sepuluh Dua Kuta), Urung Senembah, dan Urung Sukapiring. Para Datuk Empat Suku memiliki wewenang mengukuhkan pengangkatan Sultan Deli yang baru serta menjaga hukum adat tanah ulayat.",
+    "key_figures": [
+      "Datuk Sunggal",
+      "Datuk Hamparan Perak",
+      "Datuk Senembah",
+      "Datuk Sukapiring"
+    ],
+    "key_locations": [
+      "Sunggal",
+      "Hamparan Perak",
+      "Tanjung Morawa (Senembah)",
+      "Sukapiring (Medan)"
+    ],
+    "katara_legacy_id": null,
+    "source_ids": [
+      "SRC-0006",
+      "SRC-0010"
+    ],
+    "confidence": "high",
+    "verification_status": "verified",
+    "notes": null
+  },
+  {
+    "id": "HIS-000006",
+    "title": "Era Kejayaan Perkebunan Tembakau Deli dan Transformasi Kota Medan (1863–1910)",
+    "period": "1863–1910",
+    "category": "economic_and_linguistic_history",
+    "summary": "Pembukaan perkebunan tembakau Deli pada masa Sultan Mahmud Al Rasyid (1863) yang menjadikan Deli sangat makmur dan mendorong pemindahan pusat kesultanan serta administrasi dari Labuhan Deli ke Medan.",
+    "description": "Pada tahun 1863, perintis perkebunan Belanda Jacob Nienhuys memperoleh konsesi tanah dari Sultan Mahmud Al Rasyid Perkasa Alamsyah untuk menanam tembakau pembungkus cerutu berkualitas dunia (Deli Dekblad). Kemakmuran ekonomi dari perkebunan ini mengubah Medan dari kampung kecil menjadi kota kosmopolitan (\"Parijs van Sumatra\"). Masuknya pekerja perkebunan dari Jawa, Tiongkok, dan India serta pedagang dari berbagai suku di Sumatera Utara menjadikan Bahasa Melayu Deli sebagai lingua franca antaretnis.",
+    "key_figures": [
+      "Sultan Mahmud Al Rasyid Perkasa Alamsyah",
+      "Sultan Ma'mun Al Rasyid Perkasa Alamsyah",
+      "Jacob Nienhuys"
+    ],
+    "key_locations": [
+      "Labuhan Deli",
+      "Medan",
+      "Deli Serdang"
+    ],
+    "katara_legacy_id": null,
+    "source_ids": [
+      "SRC-0003",
+      "SRC-0010",
+      "SRC-0011"
+    ],
+    "confidence": "high",
+    "verification_status": "verified",
+    "notes": null
+  },
+  {
+    "id": "HIS-000007",
+    "title": "Pembangunan Istana Maimun pada Masa Sultan Ma'mun Al Rasyid (1888–1891)",
+    "period": "1888–1891",
+    "category": "architectural_history",
+    "summary": "Pembangunan istana baru Kesultanan Deli di pusat Kota Medan mulai 26 Agustus 1888 hingga selesai pada 18 Mei 1891.",
+    "description": "Seiring berpindahnya pusat pemerintahan Kesultanan Deli dari Labuhan Deli ke Medan, Sultan Ma'mun Al Rasyid Perkasa Alamsyah membangun Istana Maimun pada 26 Agustus 1888 dan meresmikannya pada 18 Mei 1891. Istana ini menjadi pusat kegiatan adat, keagamaan, dan kebahasaan Melayu Deli hingga masa kini.",
+    "key_figures": [
+      "Sultan Ma'mun Al Rasyid Perkasa Alamsyah"
+    ],
+    "key_locations": [
+      "Istana Maimun, Medan Maimun"
+    ],
+    "katara_legacy_id": "art02 / c01",
+    "source_ids": [
+      "SRC-0001",
+      "SRC-0009",
+      "SRC-0010"
+    ],
+    "confidence": "high",
+    "verification_status": "verified",
+    "notes": null
+  },
+  {
+    "id": "HIS-000008",
+    "title": "Pembangunan Masjid Raya Al-Mashun sebagai Pusat Peradaban Islam Melayu Deli (1906–1909)",
+    "period": "1906–1909",
+    "category": "architectural_history",
+    "summary": "Pembangunan Masjid Raya Al-Mashun oleh Sultan Ma'mun Al Rasyid pada 21 Agustus 1906 hingga peresmiannya pada 10 September 1909.",
+    "description": "Berjarak sekitar 200 meter dari Istana Maimun, Sultan Ma'mun Al Rasyid membangun Masjid Raya Al-Mashun dengan prinsip bahwa kemegahan rumah ibadah harus melampaui istana sultan. Peletakan batu pertama dilakukan pada 21 Agustus 1906 (1 Rajab 1324 H) dan salat Jumat perdana dilaksanakan pada 10 September 1909 (25 Sya'ban 1327 H). Kawasan sekitar Masjid Raya dan Istana Maimun menjadi jantung pelestarian tradisi dan penutur Bahasa Melayu Deli di Kota Medan.",
+    "key_figures": [
+      "Sultan Ma'mun Al Rasyid Perkasa Alamsyah",
+      "J.A. Tingdeman"
+    ],
+    "key_locations": [
+      "Masjid Raya Al-Mashun, Medan"
+    ],
+    "katara_legacy_id": null,
+    "source_ids": [
+      "SRC-0009",
+      "SRC-0010"
+    ],
+    "confidence": "high",
+    "verification_status": "verified",
+    "notes": null
+  },
+  {
+    "id": "HIS-000009",
+    "title": "Sejarah Penciptaan Tari Serampang Dua Belas oleh Guru Sauti (1938)",
+    "period": "1938 – 1950-an",
+    "category": "cultural_history",
+    "summary": "Pembakuan 12 ragam gerak Tari Pulau Sari oleh Guru Sauti pada tahun 1938 di kawasan Deli/Serdang yang kemudian dikenal secara nasional sebagai Tari Serampang Dua Belas.",
+    "description": "Sekitar tahun 1938, seorang guru dan seniman Melayu bernama Guru Sauti menyusun dan membakukan gerak tari tradisional pesisir Sumatera Timur yang diiringi lagu \"Pulau Sari\" menjadi 12 ragam gerak berkesinambungan. Pada dekade 1950-an, nama tarian ini diubah menjadi Tari Serampang Dua Belas dan diperkenalkan ke tingkat nasional hingga ditetapkan sebagai Warisan Budaya Takbenda Indonesia.",
+    "key_figures": [
+      "Guru Sauti"
+    ],
+    "key_locations": [
+      "Perbaungan / Serdang",
+      "Deli Serdang",
+      "Medan"
+    ],
+    "katara_legacy_id": "c05",
+    "source_ids": [
+      "SRC-0001",
+      "SRC-0009",
+      "SRC-0010"
+    ],
+    "confidence": "high",
+    "verification_status": "verified",
+    "notes": null
+  },
+  {
+    "id": "HIS-000010",
+    "title": "Tradisi Keberaksaraan Jawi dan Persuratkabaran Melayu di Medan Awal Abad ke-20",
+    "period": "Akhir Abad ke-19 – Awal Abad ke-20",
+    "category": "linguistic_history",
+    "summary": "Peralihan penggunaan aksara Jawi (Arab-Melayu) dalam arsip Kesultanan Deli menuju aksara Rumi (Latin) seiring berkembangnya percetakan dan surat kabar berbahasa Melayu di Medan.",
+    "description": "Hingga awal abad ke-20, surat-menyurat resmi Kesultanan Deli, piagam tanah (grant sultan), dan naskah keagamaan ditulis menggunakan aksara Jawi berbahasa Melayu. Seiring tumbuhnya industri percetakan dan surat kabar berbahasa Melayu di Medan (seperti Pewarta Deli yang terbit sejak 1910), penggunaan aksara Latin (Rumi) makin meluas, sementara aksara Jawi tetap dipertahankan dalam pendidikan agama dan simbol identitas budaya Melayu Deli.",
+    "key_figures": [
+      "Dja Endar Muda",
+      "Soeetan Casajangan Soripada"
+    ],
+    "key_locations": [
+      "Medan",
+      "Kesultanan Deli"
+    ],
+    "katara_legacy_id": null,
+    "source_ids": [
+      "SRC-0001",
+      "SRC-0010",
+      "SRC-0011"
+    ],
+    "confidence": "high",
+    "verification_status": "verified",
+    "notes": null
+  },
+  {
+    "id": "HIS-000011",
+    "title": "Dokumentasi Ilmiah Bahasa Melayu Deli oleh Pusat Bahasa dan Akademisi USU (1980–2018)",
+    "period": "1980–2018",
+    "category": "linguistic_history",
+    "summary": "Tonggak kodifikasi dan penelitian linguistik Bahasa Melayu Deli melalui penerbitan monograf struktur bahasa (1984, 1993), Kamus Melayu Deli-Indonesia (1985), tesis sosiolinguistik USU (2004), hingga Kamus Melayu Sumatera Utara (2018).",
+    "description": "Upaya pendokumentasian ilmiah Bahasa Melayu Deli secara sistematis dimulai pada awal 1980-an melalui Proyek Pengembangan Bahasa dan Sastra Indonesia dan Daerah bekerja sama dengan Fakultas Sastra Universitas Sumatera Utara (USU). Tonggak utamanya meliputi penerbitan \"Bahasa Melayu Dialek Deli Medan\" oleh Syahdan Manurung & Zubeirsyah (1984), \"Kamus Melayu Deli-Indonesia\" oleh Hayati Chalil dkk. (1985), \"Kata Benda dan Kata Sipat Bahasa Melayu Deli\" oleh Muhizar Muchtar dkk. (1993), tesis sosiolinguistik Tengku Syarfina (2004), serta pemutakhiran dalam \"Kamus Melayu Sumatera Utara - Indonesia\" oleh Balai Bahasa Sumatera Utara (2018).",
+    "key_figures": [
+      "Hayati Chalil",
+      "Syahdan Manurung",
+      "Muhizar Muchtar",
+      "Tengku Syarfina",
+      "Chairani Nasution"
+    ],
+    "key_locations": [
+      "Medan",
+      "Universitas Sumatera Utara",
+      "Balai Bahasa Provinsi Sumatera Utara"
+    ],
+    "katara_legacy_id": null,
+    "source_ids": [
+      "SRC-0002",
+      "SRC-0003",
+      "SRC-0004",
+      "SRC-0005",
+      "SRC-0006"
+    ],
+    "confidence": "high",
+    "verification_status": "verified",
+    "notes": null
+  },
+  {
+    "id": "HIS-000012",
+    "title": "Perkembangan Kontemporer dan Tantangan Pelestarian Bahasa Melayu Deli di Era Digital",
+    "period": "Abad ke-21 (2000–sekarang)",
+    "category": "linguistic_history",
+    "summary": "Pergeseran penggunaan Bahasa Melayu Deli tradisional di kalangan generasi muda perkotaan Medan menuju Bahasa Indonesia dialek Medan dan upaya revitalisasi melalui media pembelajaran digital.",
+    "description": "Di abad ke-21, penutur aktif Bahasa Melayu Deli tradisional (dengan ciri vokal pepet akhir -e, kosakata adat, dan tradisi berpantun) semakin terkonsentrasi di kantong-kantong pemukiman Melayu tua seperti Labuhan Deli, Medan Marelan, Hamparan Perak, Kota Matsum/Maimun, dan Deli Tua. Generasi muda di pusat Kota Medan cenderung beralih ke Bahasa Indonesia kolokial dialek Medan. Kondisi ini mendorong pentingnya pelestarian digital melalui penyusunan korpus terstruktur dan aplikasi edukasi bahasa daerah seperti KATARA.",
+    "key_figures": [
+      "Komunitas Penutur Melayu Deli",
+      "Balai Bahasa Sumatera Utara"
+    ],
+    "key_locations": [
+      "Medan Maimun",
+      "Medan Labuhan",
+      "Medan Marelan",
+      "Hamparan Perak",
+      "Deli Tua"
+    ],
+    "katara_legacy_id": null,
+    "source_ids": [
+      "SRC-0001",
+      "SRC-0005",
+      "SRC-0008",
+      "SRC-0011"
+    ],
+    "confidence": "high",
+    "verification_status": "verified",
+    "notes": null
+  }
+]

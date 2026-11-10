@@ -23,4 +23,7 @@ abstract class ContentRepository {
   });
   Future<GameConfig> getGameConfig();
   Future<List<AchievementModel>> getAchievements({Set<String> unlockedIds = const {}});
+  Future<List<DialectReferenceModel>> getDialectReferences([String? courseId]);
+  Future<List<InstalledModuleModel>> getInstalledModules();
+  Future<List<DialectComparisonRowModel>> getDialectComparisonRows({String? query});
 }

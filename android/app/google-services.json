@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "236754467620",
+    "project_id": "katara-melayu",
+    "storage_bucket": "katara-melayu.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:236754467620:android:5372f6e639825fd462d1b1",
+        "android_client_info": {
+          "package_name": "com.arrienty.katara"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDiP5SoFyF-9ivwghm7wHgskBWKrHiGsrM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:236754467620:android:603644d507d0290562d1b1",
+        "android_client_info": {
+          "package_name": "id.katara.app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDiP5SoFyF-9ivwghm7wHgskBWKrHiGsrM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

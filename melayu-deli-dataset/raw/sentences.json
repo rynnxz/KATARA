@@ -1,0 +1,1215 @@
+[
+  {
+    "id": "SNT-000001",
+    "sentence_deli": "Nak ke mane, bang?",
+    "normalized_sentence": "nak ke mane, bang?",
+    "translation_id": "Mau ke mana, bang?",
+    "sentence_type": "interrogative",
+    "context_domain": "community",
+    "usage_context": "informal",
+    "dialect": "melayu_deli",
+    "region": "deli",
+    "related_vocab_ids": [
+      "MD-000188",
+      "MD-000038",
+      "MD-000021"
+    ],
+    "grammar_notes": "Kalimat tanya eliptis tanpa subjek eksplisit: Modalitas (nak) + Preposisi (ke) + Kata Tanya Tempat (mane) + Vokatif (bang).",
+    "dialogue_exchange": null,
+    "katara_legacy_id": "s001",
+    "source_ids": [
+      "SRC-0001",
+      "SRC-0003"
+    ],
+    "confidence": "high",
+    "verification_status": "verified",
+    "notes": null
+  },
+  {
+    "id": "SNT-000002",
+    "sentence_deli": "Mak masak gulai.",
+    "normalized_sentence": "mak masak gulai.",
+    "translation_id": "Ibu memasak gulai.",
+    "sentence_type": "declarative_simple",
+    "context_domain": "family",
+    "usage_context": "neutral",
+    "dialect": "melayu_deli",
+    "region": "deli",
+    "related_vocab_ids": [
+      "MD-000019",
+      "MD-000046",
+      "MD-000029"
+    ],
+    "grammar_notes": "Pola klausa dasar S-P-O (Subjek: Mak + Predikat verba tanpa afiks meN-: masak + Objek: gulai).",
+    "dialogue_exchange": null,
+    "katara_legacy_id": "s002",
+    "source_ids": [
+      "SRC-0001",
+      "SRC-0003"
+    ],
+    "confidence": "high",
+    "verification_status": "verified",
+    "notes": null
+  },
+  {
+    "id": "SNT-000003",
+    "sentence_deli": "Gulai ni lemak kali.",
+    "normalized_sentence": "gulai ni lemak kali.",
+    "translation_id": "Gulai ini gurih sekali.",
+    "sentence_type": "declarative_simple",
+    "context_domain": "family",
+    "usage_context": "informal",
+    "dialect": "melayu_deli",
+    "region": "deli",
+    "related_vocab_ids": [
+      "MD-000029",
+      "MD-000076",
+      "MD-000031",
+      "MD-000186"
+    ],
+    "grammar_notes": "Subjek Frasa Nomina Demonstratif (Gulai ni) + Predikat Frasa Adjektiva Intensif (lemak kali).",
+    "dialogue_exchange": null,
+    "katara_legacy_id": "s003",
+    "source_ids": [
+      "SRC-0001",
+      "SRC-0003",
+      "SRC-0004"
+    ],
+    "confidence": "high",
+    "verification_status": "verified",
+    "notes": null
+  },
+  {
+    "id": "SNT-000004",
+    "sentence_deli": "Nasi ni sedap.",
+    "normalized_sentence": "nasi ni sedap.",
+    "translation_id": "Nasi ini enak.",
+    "sentence_type": "declarative_simple",
+    "context_domain": "family",
+    "usage_context": "neutral",
+    "dialect": "melayu_deli",
+    "region": "deli",
+    "related_vocab_ids": [
+      "MD-000027",
+      "MD-000076",
+      "MD-000032"
+    ],
+    "grammar_notes": "Kalimat ekuatif/adjektival sederhana (Subjek: Nasi ni + Predikat: sedap).",
+    "dialogue_exchange": null,
+    "katara_legacy_id": "s004",
+    "source_ids": [
+      "SRC-0001",
+      "SRC-0004"
+    ],
+    "confidence": "high",
+    "verification_status": "verified",
+    "notes": null
+  },
+  {
+    "id": "SNT-000005",
+    "sentence_deli": "Abah pegi kerje.",
+    "normalized_sentence": "abah pegi kerje.",
+    "translation_id": "Ayah pergi kerja.",
+    "sentence_type": "declarative_simple",
+    "context_domain": "family",
+    "usage_context": "informal",
+    "dialect": "melayu_deli",
+    "region": "deli",
+    "related_vocab_ids": [
+      "MD-000020",
+      "MD-000047",
+      "MD-000044"
+    ],
+    "grammar_notes": "Konstruksi verba beruntun (serial verb construction): Subjek (Abah) + Verba gerak (pegi) + Verba aktivitas (kerje).",
+    "dialogue_exchange": null,
+    "katara_legacy_id": "s005",
+    "source_ids": [
+      "SRC-0001",
+      "SRC-0003"
+    ],
+    "confidence": "high",
+    "verification_status": "verified",
+    "notes": null
+  },
+  {
+    "id": "SNT-000006",
+    "sentence_deli": "Terime kasih, kak.",
+    "normalized_sentence": "terime kasih, kak.",
+    "translation_id": "Terima kasih, kak.",
+    "sentence_type": "short_phrase",
+    "context_domain": "family",
+    "usage_context": "neutral",
+    "dialect": "melayu_deli",
+    "region": "deli",
+    "related_vocab_ids": [
+      "MD-000004",
+      "MD-000005",
+      "MD-000022"
+    ],
+    "grammar_notes": "Frasa ucapan terima kasih diikuti sapaan kekerabatan perempuan (kak).",
+    "dialogue_exchange": null,
+    "katara_legacy_id": "s006",
+    "source_ids": [
+      "SRC-0001",
+      "SRC-0006"
+    ],
+    "confidence": "high",
+    "verification_status": "verified",
+    "notes": null
+  },
+  {
+    "id": "SNT-000007",
+    "sentence_deli": "Jemput masuk, tengku.",
+    "normalized_sentence": "jemput masuk, tengku.",
+    "translation_id": "Silakan masuk, tengku.",
+    "sentence_type": "imperative",
+    "context_domain": "community",
+    "usage_context": "formal",
+    "dialect": "melayu_deli",
+    "region": "deli",
+    "related_vocab_ids": [
+      "MD-000002",
+      "MD-000003",
+      "MD-000024"
+    ],
+    "grammar_notes": "Kalimat imperatif persilahan sopan menggunakan penanda hormat \"jemput\" dan vokatif bangsawan \"tengku\".",
+    "dialogue_exchange": null,
+    "katara_legacy_id": "s007",
+    "source_ids": [
+      "SRC-0001",
+      "SRC-0006"
+    ],
+    "confidence": "high",
+    "verification_status": "verified",
+    "notes": null
+  },
+  {
+    "id": "SNT-000008",
+    "sentence_deli": "Atok minum air.",
+    "normalized_sentence": "atok minum air.",
+    "translation_id": "Kakek minum air.",
+    "sentence_type": "declarative_simple",
+    "context_domain": "family",
+    "usage_context": "neutral",
+    "dialect": "melayu_deli",
+    "region": "deli",
+    "related_vocab_ids": [
+      "MD-000023",
+      "MD-000035",
+      "MD-000036"
+    ],
+    "grammar_notes": "Pola S-P-O sederhana (Subjek: Atok + Predikat: minum + Objek: air).",
+    "dialogue_exchange": null,
+    "katara_legacy_id": "s008",
+    "source_ids": [
+      "SRC-0001",
+      "SRC-0003"
+    ],
+    "confidence": "high",
+    "verification_status": "verified",
+    "notes": null
+  },
+  {
+    "id": "SNT-000009",
+    "sentence_deli": "Berape ni?",
+    "normalized_sentence": "berape ni?",
+    "translation_id": "Berapa ini?",
+    "sentence_type": "interrogative",
+    "context_domain": "community",
+    "usage_context": "informal",
+    "dialect": "melayu_deli",
+    "region": "deli",
+    "related_vocab_ids": [
+      "MD-000043",
+      "MD-000076"
+    ],
+    "grammar_notes": "Kalimat tanya ringkas menanyakan harga di pekan/kedai (Predikat interogatif: Berape + Subjek demonstratif: ni).",
+    "dialogue_exchange": null,
+    "katara_legacy_id": "s009",
+    "source_ids": [
+      "SRC-0001",
+      "SRC-0003"
+    ],
+    "confidence": "high",
+    "verification_status": "verified",
+    "notes": null
+  },
+  {
+    "id": "SNT-000010",
+    "sentence_deli": "Adik makan nasi.",
+    "normalized_sentence": "adik makan nasi.",
+    "translation_id": "Adik makan nasi.",
+    "sentence_type": "declarative_simple",
+    "context_domain": "family",
+    "usage_context": "neutral",
+    "dialect": "melayu_deli",
+    "region": "deli",
+    "related_vocab_ids": [
+      "MD-000025",
+      "MD-000034",
+      "MD-000027"
+    ],
+    "grammar_notes": "Pola S-P-O dasar (Subjek: Adik + Predikat: makan + Objek: nasi).",
+    "dialogue_exchange": null,
+    "katara_legacy_id": "s010",
+    "source_ids": [
+      "SRC-0001",
+      "SRC-0003"
+    ],
+    "confidence": "high",
+    "verification_status": "verified",
+    "notes": null
+  },
+  {
+    "id": "SNT-000011",
+    "sentence_deli": "Percakapan Menyapa Tetangga: \"Ape kabar?\" — \"Kabar baik, kak.\" — \"Jemput masuk.\" — \"Terime kasih, kak.\"",
+    "normalized_sentence": "percakapan menyapa tetangga: \"ape kabar?\" — \"kabar baik, kak.\" — \"jemput masuk.\" — \"terime kasih, kak.\"",
+    "translation_id": "Percakapan Menyapa Tetangga: \"Apa kabar?\" — \"Kabar baik, kak.\" — \"Silakan masuk.\" — \"Terima kasih, kak.\"",
+    "sentence_type": "conversational",
+    "context_domain": "community",
+    "usage_context": "neutral",
+    "dialect": "melayu_deli",
+    "region": "deli",
+    "related_vocab_ids": [
+      "MD-000037",
+      "MD-000001",
+      "MD-000002",
+      "MD-000003",
+      "MD-000004",
+      "MD-000005",
+      "MD-000022"
+    ],
+    "grammar_notes": "Struktur wacana tegur sapa empat giliran tutur (greeting -> response -> invitation -> gratitude).",
+    "dialogue_exchange": [
+      {
+        "speaker": "Kak Ani",
+        "deli": "Ape kabar?",
+        "indonesia": "Apa kabar?"
+      },
+      {
+        "speaker": "Pemain",
+        "deli": "Kabar baik, kak.",
+        "indonesia": "Kabar baik, kak."
+      },
+      {
+        "speaker": "Kak Ani",
+        "deli": "Jemput masuk.",
+        "indonesia": "Silakan masuk."
+      },
+      {
+        "speaker": "Pemain",
+        "deli": "Terime kasih, kak.",
+        "indonesia": "Terima kasih, kak."
+      }
+    ],
+    "katara_legacy_id": "d001",
+    "source_ids": [
+      "SRC-0001",
+      "SRC-0006"
+    ],
+    "confidence": "high",
+    "verification_status": "verified",
+    "notes": null
+  },
+  {
+    "id": "SNT-000012",
+    "sentence_deli": "Percakapan Di Meja Makan: \"Makan, dik.\" — \"Gulai ni lemak kali, mak.\" — \"Nak minum ape?\" — \"Air je, mak.\"",
+    "normalized_sentence": "percakapan di meja makan: \"makan, dik.\" — \"gulai ni lemak kali, mak.\" — \"nak minum ape?\" — \"air je, mak.\"",
+    "translation_id": "Percakapan Di Meja Makan: \"Makan, dik.\" — \"Gulai ini gurih sekali, bu.\" — \"Mau minum apa?\" — \"Air saja, bu.\"",
+    "sentence_type": "conversational",
+    "context_domain": "family",
+    "usage_context": "informal",
+    "dialect": "melayu_deli",
+    "region": "deli",
+    "related_vocab_ids": [
+      "MD-000034",
+      "MD-000025",
+      "MD-000029",
+      "MD-000031",
+      "MD-000186",
+      "MD-000019",
+      "MD-000188",
+      "MD-000035",
+      "MD-000037",
+      "MD-000036",
+      "MD-000196"
+    ],
+    "grammar_notes": "Menampilkan partikel pembatas \"je\" (saja) dan intensifier \"kali\" (sekali) dalam percakapan meja makan keluarga.",
+    "dialogue_exchange": [
+      {
+        "speaker": "Mak",
+        "deli": "Makan, dik.",
+        "indonesia": "Makan, dik."
+      },
+      {
+        "speaker": "Pemain",
+        "deli": "Gulai ni lemak kali, mak.",
+        "indonesia": "Gulai ini gurih sekali, bu."
+      },
+      {
+        "speaker": "Mak",
+        "deli": "Nak minum ape?",
+        "indonesia": "Mau minum apa?"
+      },
+      {
+        "speaker": "Pemain",
+        "deli": "Air je, mak.",
+        "indonesia": "Air saja, bu."
+      }
+    ],
+    "katara_legacy_id": "d002",
+    "source_ids": [
+      "SRC-0001",
+      "SRC-0003"
+    ],
+    "confidence": "high",
+    "verification_status": "verified",
+    "notes": null
+  },
+  {
+    "id": "SNT-000013",
+    "sentence_deli": "Pulut kuning berinti kelapa.",
+    "normalized_sentence": "pulut kuning berinti kelapa.",
+    "translation_id": "Nasi ketan kuning dengan taburan inti kelapa manis.",
+    "sentence_type": "short_phrase",
+    "context_domain": "family",
+    "usage_context": "cultural",
+    "dialect": "melayu_deli",
+    "region": "deli",
+    "related_vocab_ids": [
+      "MD-000030"
+    ],
+    "grammar_notes": "Frasa nomina endosentris atributif dengan pewatas partisipial \"berinti kelapa\".",
+    "dialogue_exchange": null,
+    "katara_legacy_id": null,
+    "source_ids": [
+      "SRC-0005",
+      "SRC-0009"
+    ],
+    "confidence": "high",
+    "verification_status": "verified",
+    "notes": null
+  },
+  {
+    "id": "SNT-000014",
+    "sentence_deli": "Rumah panggung tepi Sungai Deli.",
+    "normalized_sentence": "rumah panggung tepi sungai deli.",
+    "translation_id": "Rumah panggung di tepi Sungai Deli.",
+    "sentence_type": "short_phrase",
+    "context_domain": "community",
+    "usage_context": "neutral",
+    "dialect": "melayu_deli",
+    "region": "deli",
+    "related_vocab_ids": [
+      "MD-000058"
+    ],
+    "grammar_notes": "Frasa nomina lokatif dengan pelesapan preposisi \"di\" sebelum kata benda ruang \"tepi\".",
+    "dialogue_exchange": null,
+    "katara_legacy_id": null,
+    "source_ids": [
+      "SRC-0003",
+      "SRC-0010"
+    ],
+    "confidence": "high",
+    "verification_status": "verified",
+    "notes": null
+  },
+  {
+    "id": "SNT-000015",
+    "sentence_deli": "Baju teluk belanga dan kain samping songket.",
+    "normalized_sentence": "baju teluk belanga dan kain samping songket.",
+    "translation_id": "Baju teluk belanga dan kain sarung samping songket.",
+    "sentence_type": "short_phrase",
+    "context_domain": "community",
+    "usage_context": "cultural",
+    "dialect": "melayu_deli",
+    "region": "deli",
+    "related_vocab_ids": [
+      "MD-000161",
+      "MD-000163"
+    ],
+    "grammar_notes": "Frasa nomina koordinatif yang dihubungkan oleh konjungsi \"dan\".",
+    "dialogue_exchange": null,
+    "katara_legacy_id": null,
+    "source_ids": [
+      "SRC-0009",
+      "SRC-0010"
+    ],
+    "confidence": "high",
+    "verification_status": "verified",
+    "notes": null
+  },
+  {
+    "id": "SNT-000016",
+    "sentence_deli": "Andung tengah menganyam tikar pandan di serambi.",
+    "normalized_sentence": "andung tengah menganyam tikar pandan di serambi.",
+    "translation_id": "Nenek sedang menganyam tikar pandan di beranda.",
+    "sentence_type": "declarative_simple",
+    "context_domain": "family",
+    "usage_context": "neutral",
+    "dialect": "melayu_deli",
+    "region": "deli",
+    "related_vocab_ids": [
+      "MD-000081",
+      "MD-000191",
+      "MD-000156",
+      "MD-000159"
+    ],
+    "grammar_notes": "Pola S-P-O-Ket.Tempat dengan penanda aspek progresif \"tengah\" (sedang).",
+    "dialogue_exchange": null,
+    "katara_legacy_id": null,
+    "source_ids": [
+      "SRC-0002",
+      "SRC-0003",
+      "SRC-0004"
+    ],
+    "confidence": "high",
+    "verification_status": "verified",
+    "notes": null
+  },
+  {
+    "id": "SNT-000017",
+    "sentence_deli": "Pak Ngah membeli ikan senangin due kilo di Pajak Ikan.",
+    "normalized_sentence": "pak ngah membeli ikan senangin due kilo di pajak ikan.",
+    "translation_id": "Paman tengah membeli ikan senangin dua kilo di Pasar Ikan.",
+    "sentence_type": "declarative_simple",
+    "context_domain": "community",
+    "usage_context": "neutral",
+    "dialect": "melayu_deli",
+    "region": "deli",
+    "related_vocab_ids": [
+      "MD-000085",
+      "MD-000055",
+      "MD-000008",
+      "MD-000172"
+    ],
+    "grammar_notes": "Pola S-P-O-Ket.Tempat dengan frasa numeralia ukuran \"due kilo\" di belakang nomina objek.",
+    "dialogue_exchange": null,
+    "katara_legacy_id": null,
+    "source_ids": [
+      "SRC-0003",
+      "SRC-0005"
+    ],
+    "confidence": "high",
+    "verification_status": "verified",
+    "notes": null
+  },
+  {
+    "id": "SNT-000018",
+    "sentence_deli": "Semalam hujan turun lebat kali dari petang sampai malam.",
+    "normalized_sentence": "semalam hujan turun lebat kali dari petang sampai malam.",
+    "translation_id": "Kemarin hujan turun deras sekali dari sore sampai malam.",
+    "sentence_type": "declarative_simple",
+    "context_domain": "community",
+    "usage_context": "informal",
+    "dialect": "melayu_deli",
+    "region": "deli",
+    "related_vocab_ids": [
+      "MD-000179",
+      "MD-000186",
+      "MD-000050",
+      "MD-000182"
+    ],
+    "grammar_notes": "Penggunaan keterangan waktu \"semalam\" yang bermakna \"kemarin\".",
+    "dialogue_exchange": null,
+    "katara_legacy_id": null,
+    "source_ids": [
+      "SRC-0002",
+      "SRC-0003",
+      "SRC-0005"
+    ],
+    "confidence": "high",
+    "verification_status": "verified",
+    "notes": null
+  },
+  {
+    "id": "SNT-000019",
+    "sentence_deli": "Kenape awak belum makan nasi dari pagi tadi?",
+    "normalized_sentence": "kenape awak belum makan nasi dari pagi tadi?",
+    "translation_id": "Mengapa kamu belum makan nasi sejak pagi tadi?",
+    "sentence_type": "interrogative",
+    "context_domain": "family",
+    "usage_context": "informal",
+    "dialect": "melayu_deli",
+    "region": "deli",
+    "related_vocab_ids": [
+      "MD-000040",
+      "MD-000068",
+      "MD-000190",
+      "MD-000034",
+      "MD-000027",
+      "MD-000049"
+    ],
+    "grammar_notes": "Kalimat interogatif kausal dengan kata tanya \"kenape\" di awal kalimat dan aspek \"belum\".",
+    "dialogue_exchange": null,
+    "katara_legacy_id": null,
+    "source_ids": [
+      "SRC-0002",
+      "SRC-0003"
+    ],
+    "confidence": "high",
+    "verification_status": "verified",
+    "notes": null
+  },
+  {
+    "id": "SNT-000020",
+    "sentence_deli": "Bile rombongan Telangkai nak datang meminang ke rumah kite?",
+    "normalized_sentence": "bile rombongan telangkai nak datang meminang ke rumah kite?",
+    "translation_id": "Kapan rombongan juru bicara adat mau datang melamar ke rumah kita?",
+    "sentence_type": "interrogative",
+    "context_domain": "family",
+    "usage_context": "cultural",
+    "dialect": "melayu_deli",
+    "region": "deli",
+    "related_vocab_ids": [
+      "MD-000042",
+      "MD-000165",
+      "MD-000188",
+      "MD-000168",
+      "MD-000058",
+      "MD-000073"
+    ],
+    "grammar_notes": "Kalimat tanya waktu dengan \"bile\" (kapan) dan modalitas \"nak\" (akan/hendak).",
+    "dialogue_exchange": null,
+    "katara_legacy_id": null,
+    "source_ids": [
+      "SRC-0002",
+      "SRC-0008"
+    ],
+    "confidence": "high",
+    "verification_status": "verified",
+    "notes": null
+  },
+  {
+    "id": "SNT-000021",
+    "sentence_deli": "Macam mane cara melipat tanjak Dendam Tak Sudah ni, Atok?",
+    "normalized_sentence": "macam mane cara melipat tanjak dendam tak sudah ni, atok?",
+    "translation_id": "Bagaimana cara melipat tanjak Dendam Tak Sudah ini, Kakek?",
+    "sentence_type": "interrogative",
+    "context_domain": "family",
+    "usage_context": "cultural",
+    "dialect": "melayu_deli",
+    "region": "deli",
+    "related_vocab_ids": [
+      "MD-000041",
+      "MD-000160",
+      "MD-000076",
+      "MD-000023"
+    ],
+    "grammar_notes": "Kalimat tanya cara dengan frasa interogatif \"macam mane\".",
+    "dialogue_exchange": null,
+    "katara_legacy_id": null,
+    "source_ids": [
+      "SRC-0003",
+      "SRC-0009"
+    ],
+    "confidence": "high",
+    "verification_status": "verified",
+    "notes": null
+  },
+  {
+    "id": "SNT-000022",
+    "sentence_deli": "Sape yang meletakkan tudung saji di atas meja tu?",
+    "normalized_sentence": "sape yang meletakkan tudung saji di atas meja tu?",
+    "translation_id": "Siapa yang meletakkan tudung saji di atas meja itu?",
+    "sentence_type": "interrogative",
+    "context_domain": "family",
+    "usage_context": "neutral",
+    "dialect": "melayu_deli",
+    "region": "deli",
+    "related_vocab_ids": [
+      "MD-000039",
+      "MD-000154",
+      "MD-000077"
+    ],
+    "grammar_notes": "Konstruksi tanya fokus subjek \"Sape yang + Verba\".",
+    "dialogue_exchange": null,
+    "katara_legacy_id": null,
+    "source_ids": [
+      "SRC-0002",
+      "SRC-0003"
+    ],
+    "confidence": "high",
+    "verification_status": "verified",
+    "notes": null
+  },
+  {
+    "id": "SNT-000023",
+    "sentence_deli": "Bukalah tingkap bilik tu biar udara pagi masuk!",
+    "normalized_sentence": "bukalah tingkap bilik tu biar udara pagi masuk!",
+    "translation_id": "Bukalah jendela kamar itu agar udara pagi masuk!",
+    "sentence_type": "imperative",
+    "context_domain": "family",
+    "usage_context": "neutral",
+    "dialect": "melayu_deli",
+    "region": "deli",
+    "related_vocab_ids": [
+      "MD-000197",
+      "MD-000060",
+      "MD-000059",
+      "MD-000077",
+      "MD-000049",
+      "MD-000003"
+    ],
+    "grammar_notes": "Kalimat perintah diperhalus dengan partikel enklitik \"-lah\" pada verba dasar (\"bukalah\").",
+    "dialogue_exchange": null,
+    "katara_legacy_id": null,
+    "source_ids": [
+      "SRC-0002",
+      "SRC-0003",
+      "SRC-0004"
+    ],
+    "confidence": "high",
+    "verification_status": "verified",
+    "notes": null
+  },
+  {
+    "id": "SNT-000024",
+    "sentence_deli": "Tolong basuh pinggan dan cawan yang kotor di belakang.",
+    "normalized_sentence": "tolong basuh pinggan dan cawan yang kotor di belakang.",
+    "translation_id": "Tolong cuci piring dan cangkir yang kotor di dapur belakang.",
+    "sentence_type": "imperative",
+    "context_domain": "family",
+    "usage_context": "neutral",
+    "dialect": "melayu_deli",
+    "region": "deli",
+    "related_vocab_ids": [
+      "MD-000114",
+      "MD-000061",
+      "MD-000153"
+    ],
+    "grammar_notes": "Kalimat imperatif permintaan bantuan dengan pemarkah kesantunan \"tolong\".",
+    "dialogue_exchange": null,
+    "katara_legacy_id": null,
+    "source_ids": [
+      "SRC-0002",
+      "SRC-0005"
+    ],
+    "confidence": "high",
+    "verification_status": "verified",
+    "notes": null
+  },
+  {
+    "id": "SNT-000025",
+    "sentence_deli": "Jangan melalak je kerje kau, bantulah Mak di dapur!",
+    "normalized_sentence": "jangan melalak je kerje kau, bantulah mak di dapur!",
+    "translation_id": "Jangan keluyuran saja kerjamu, bantulah Ibu di dapur!",
+    "sentence_type": "imperative",
+    "context_domain": "family",
+    "usage_context": "informal",
+    "dialect": "melayu_deli",
+    "region": "deli",
+    "related_vocab_ids": [
+      "MD-000195",
+      "MD-000110",
+      "MD-000196",
+      "MD-000044",
+      "MD-000071",
+      "MD-000019"
+    ],
+    "grammar_notes": "Kalimat imperatif larangan (\"jangan\") dikombinasikan dengan klausa perintah positif (\"bantulah\").",
+    "dialogue_exchange": null,
+    "katara_legacy_id": null,
+    "source_ids": [
+      "SRC-0005",
+      "SRC-0011"
+    ],
+    "confidence": "high",
+    "verification_status": "verified",
+    "notes": null
+  },
+  {
+    "id": "SNT-000026",
+    "sentence_deli": "Kacau gulai di dalam belanga tu pelan-pelan biar santannye tak pecah.",
+    "normalized_sentence": "kacau gulai di dalam belanga tu pelan-pelan biar santannye tak pecah.",
+    "translation_id": "Aduk gulai di dalam belanga itu pelan-pelan agar santannya tidak pecah.",
+    "sentence_type": "imperative",
+    "context_domain": "family",
+    "usage_context": "neutral",
+    "dialect": "melayu_deli",
+    "region": "deli",
+    "related_vocab_ids": [
+      "MD-000119",
+      "MD-000029",
+      "MD-000149",
+      "MD-000077",
+      "MD-000192"
+    ],
+    "grammar_notes": "Kalimat perintah kuliner dengan klausa tujuan \"biar ... tak ...\".",
+    "dialogue_exchange": null,
+    "katara_legacy_id": null,
+    "source_ids": [
+      "SRC-0002",
+      "SRC-0005"
+    ],
+    "confidence": "high",
+    "verification_status": "verified",
+    "notes": null
+  },
+  {
+    "id": "SNT-000027",
+    "sentence_deli": "Awak tak berani menyeberang sungai sebab airnye tengah pasang.",
+    "normalized_sentence": "awak tak berani menyeberang sungai sebab airnye tengah pasang.",
+    "translation_id": "Saya tidak berani menyeberang sungai karena airnya sedang pasang.",
+    "sentence_type": "negative",
+    "context_domain": "community",
+    "usage_context": "neutral",
+    "dialect": "melayu_deli",
+    "region": "deli",
+    "related_vocab_ids": [
+      "MD-000068",
+      "MD-000192",
+      "MD-000201",
+      "MD-000036",
+      "MD-000191"
+    ],
+    "grammar_notes": "Kalimat negatif dengan negator \"tak\" dan klausa subordinatif kausal \"sebab\".",
+    "dialogue_exchange": null,
+    "katara_legacy_id": null,
+    "source_ids": [
+      "SRC-0002",
+      "SRC-0003"
+    ],
+    "confidence": "high",
+    "verification_status": "verified",
+    "notes": null
+  },
+  {
+    "id": "SNT-000028",
+    "sentence_deli": "Kedai kopi Pak Cik belum buka lagi pagi ni.",
+    "normalized_sentence": "kedai kopi pak cik belum buka lagi pagi ni.",
+    "translation_id": "Warung kopi Pak Cik belum buka pagi ini.",
+    "sentence_type": "negative",
+    "context_domain": "community",
+    "usage_context": "informal",
+    "dialect": "melayu_deli",
+    "region": "deli",
+    "related_vocab_ids": [
+      "MD-000173",
+      "MD-000190",
+      "MD-000049",
+      "MD-000076"
+    ],
+    "grammar_notes": "Konstruksi negasi temporal \"belum ... lagi\" (belum) yang khas dalam sintaksis Melayu.",
+    "dialogue_exchange": null,
+    "katara_legacy_id": null,
+    "source_ids": [
+      "SRC-0002",
+      "SRC-0003"
+    ],
+    "confidence": "high",
+    "verification_status": "verified",
+    "notes": null
+  },
+  {
+    "id": "SNT-000029",
+    "sentence_deli": "Usah cakap keras-keras, nanti terdengar sampai ke rumah jiran.",
+    "normalized_sentence": "usah cakap keras-keras, nanti terdengar sampai ke rumah jiran.",
+    "translation_id": "Jangan berbicara keras-keras, nanti terdengar sampai ke rumah tetangga.",
+    "sentence_type": "negative",
+    "context_domain": "community",
+    "usage_context": "neutral",
+    "dialect": "melayu_deli",
+    "region": "deli",
+    "related_vocab_ids": [
+      "MD-000194",
+      "MD-000106",
+      "MD-000058",
+      "MD-000099"
+    ],
+    "grammar_notes": "Kalimat larangan halus dengan negator imperatif \"usah\" dan reduplikasi adverbial \"keras-keras\".",
+    "dialogue_exchange": null,
+    "katara_legacy_id": null,
+    "source_ids": [
+      "SRC-0002",
+      "SRC-0005"
+    ],
+    "confidence": "high",
+    "verification_status": "verified",
+    "notes": null
+  },
+  {
+    "id": "SNT-000030",
+    "sentence_deli": "Die bukan orang lokek, tapi memang tengah tak ade uang.",
+    "normalized_sentence": "die bukan orang lokek, tapi memang tengah tak ade uang.",
+    "translation_id": "Dia bukan orang pelit, tetapi memang sedang tidak punya uang.",
+    "sentence_type": "negative",
+    "context_domain": "community",
+    "usage_context": "informal",
+    "dialect": "melayu_deli",
+    "region": "deli",
+    "related_vocab_ids": [
+      "MD-000072",
+      "MD-000126",
+      "MD-000191",
+      "MD-000192"
+    ],
+    "grammar_notes": "Kontras dua pemarkah negasi: \"bukan\" untuk mengingkari frasa nomina (\"orang lokek\") dan \"tak\" untuk mengingkari verba eksistensial (\"tak ade\").",
+    "dialogue_exchange": null,
+    "katara_legacy_id": null,
+    "source_ids": [
+      "SRC-0003",
+      "SRC-0004"
+    ],
+    "confidence": "high",
+    "verification_status": "verified",
+    "notes": null
+  },
+  {
+    "id": "SNT-000031",
+    "sentence_deli": "Percakapan Berbelanja di Pekan: \"Ikan senangin ni segar kali, berape sekilo Bang?\" — \"Empat puluh ribu je, Kak.\" — \"Boleh kurang sikit? Awak ambil due kilo.\" — \"Bolehlah, jadi tujuh puluh lime ribu untuk Kakak.\"",
+    "normalized_sentence": "percakapan berbelanja di pekan: \"ikan senangin ni segar kali, berape sekilo bang?\" — \"empat puluh ribu je, kak.\" — \"boleh kurang sikit? awak ambil due kilo.\" — \"bolehlah, jadi tujuh puluh lime ribu untuk kakak.\"",
+    "translation_id": "Percakapan Berbelanja di Pasar: \"Ikan senangin ini segar sekali, berapa sekilo Bang?\" — \"Empat puluh ribu saja, Kak.\" — \"Boleh kurang sedikit? Saya ambil dua kilo.\" — \"Bolehlah, jadi tujuh puluh lima ribu untuk Kakak.\"",
+    "sentence_type": "conversational",
+    "context_domain": "community",
+    "usage_context": "informal",
+    "dialect": "melayu_deli",
+    "region": "deli",
+    "related_vocab_ids": [
+      "MD-000076",
+      "MD-000186",
+      "MD-000043",
+      "MD-000021",
+      "MD-000010",
+      "MD-000018",
+      "MD-000196",
+      "MD-000022",
+      "MD-000183",
+      "MD-000068",
+      "MD-000008",
+      "MD-000013",
+      "MD-000011"
+    ],
+    "grammar_notes": "Wacana transaksi jual-beli di pekan tradisional dengan negosiasi harga secara santun.",
+    "dialogue_exchange": [
+      {
+        "speaker": "Kak Ngah",
+        "deli": "Ikan senangin ni segar kali, berape sekilo Bang?",
+        "indonesia": "Ikan senangin ini segar sekali, berapa sekilo Bang?"
+      },
+      {
+        "speaker": "Penjual",
+        "deli": "Empat puluh ribu je, Kak.",
+        "indonesia": "Empat puluh ribu saja, Kak."
+      },
+      {
+        "speaker": "Kak Ngah",
+        "deli": "Boleh kurang sikit? Awak ambil due kilo.",
+        "indonesia": "Boleh kurang sedikit? Saya ambil dua kilo."
+      },
+      {
+        "speaker": "Penjual",
+        "deli": "Bolehlah, jadi tujuh puluh lime ribu untuk Kakak.",
+        "indonesia": "Bolehlah, jadi tujuh puluh lima ribu untuk Kakak."
+      }
+    ],
+    "katara_legacy_id": null,
+    "source_ids": [
+      "SRC-0002",
+      "SRC-0003",
+      "SRC-0005"
+    ],
+    "confidence": "high",
+    "verification_status": "verified",
+    "notes": null
+  },
+  {
+    "id": "SNT-000032",
+    "sentence_deli": "Percakapan Persiapan Kenduri Keluarga: \"Esok malam rumah kite ade kenduri doa selamat.\" — \"Mak nak masak lauk ape?\" — \"Mak nak masak gulai ayam, anyang pakis, sama pulut kuning.\" — \"Biar kami bantu mengupas bawang dan memarut kelapa, Mak.\"",
+    "normalized_sentence": "percakapan persiapan kenduri keluarga: \"esok malam rumah kite ade kenduri doa selamat.\" — \"mak nak masak lauk ape?\" — \"mak nak masak gulai ayam, anyang pakis, sama pulut kuning.\" — \"biar kami bantu mengupas bawang dan memarut kelapa, mak.\"",
+    "translation_id": "Percakapan Persiapan Kenduri Keluarga: \"Besok malam rumah kita ada kenduri doa selamat.\" — \"Ibu mau memasak lauk apa?\" — \"Ibu mau memasak gulai ayam, anyang pakis, serta ketan kuning.\" — \"Biar kami bantu mengupas bawang dan memarut kelapa, Bu.\"",
+    "sentence_type": "conversational",
+    "context_domain": "family",
+    "usage_context": "cultural",
+    "dialect": "melayu_deli",
+    "region": "deli",
+    "related_vocab_ids": [
+      "MD-000051",
+      "MD-000182",
+      "MD-000058",
+      "MD-000073",
+      "MD-000169",
+      "MD-000019",
+      "MD-000188",
+      "MD-000046",
+      "MD-000028",
+      "MD-000037",
+      "MD-000029",
+      "MD-000140",
+      "MD-000030",
+      "MD-000074"
+    ],
+    "grammar_notes": "Percakapan gotong royong keluarga dalam menyiapkan hidangan adat Melayu Deli.",
+    "dialogue_exchange": [
+      {
+        "speaker": "Mak",
+        "deli": "Esok malam rumah kite ade kenduri doa selamat.",
+        "indonesia": "Besok malam rumah kita ada kenduri doa selamat."
+      },
+      {
+        "speaker": "Kakak",
+        "deli": "Mak nak masak lauk ape?",
+        "indonesia": "Ibu mau memasak lauk apa?"
+      },
+      {
+        "speaker": "Mak",
+        "deli": "Mak nak masak gulai ayam, anyang pakis, sama pulut kuning.",
+        "indonesia": "Ibu mau memasak gulai ayam, anyang pakis, serta ketan kuning."
+      },
+      {
+        "speaker": "Kakak",
+        "deli": "Biar kami bantu mengupas bawang dan memarut kelapa, Mak.",
+        "indonesia": "Biar kami bantu mengupas bawang dan memarut kelapa, Bu."
+      }
+    ],
+    "katara_legacy_id": null,
+    "source_ids": [
+      "SRC-0002",
+      "SRC-0005",
+      "SRC-0009"
+    ],
+    "confidence": "high",
+    "verification_status": "verified",
+    "notes": null
+  },
+  {
+    "id": "SNT-000033",
+    "sentence_deli": "Percakapan Menjenguk Atok: \"Assalamualaikum, Atok dan Andung ade di rumah?\" — \"Waalaikumsalam, jemput naik ke serambi, Cu.\" — \"Kami bawakan roti jala hangat kesukaan Atok.\" — \"Alhamdulillah, terime kasih banyak lah, Cu.\"",
+    "normalized_sentence": "percakapan menjenguk atok: \"assalamualaikum, atok dan andung ade di rumah?\" — \"waalaikumsalam, jemput naik ke serambi, cu.\" — \"kami bawakan roti jala hangat kesukaan atok.\" — \"alhamdulillah, terime kasih banyak lah, cu.\"",
+    "translation_id": "Percakapan Menjenguk Kakek: \"Assalamualaikum, Kakek dan Nenek ada di rumah?\" — \"Waalaikumsalam, silakan naik ke beranda, Cu.\" — \"Kami bawakan roti jala hangat kesukaan Kakek.\" — \"Alhamdulillah, terima kasih banyaklah, Cu.\"",
+    "sentence_type": "conversational",
+    "context_domain": "family",
+    "usage_context": "neutral",
+    "dialect": "melayu_deli",
+    "region": "deli",
+    "related_vocab_ids": [
+      "MD-000023",
+      "MD-000081",
+      "MD-000058",
+      "MD-000002",
+      "MD-000159",
+      "MD-000097",
+      "MD-000074",
+      "MD-000142",
+      "MD-000136",
+      "MD-000004",
+      "MD-000005"
+    ],
+    "grammar_notes": "Penggunaan kata kerja \"naik\" ketika mempersilakan tamu masuk ke rumah panggung Melayu (\"jemput naik ke serambi\").",
+    "dialogue_exchange": [
+      {
+        "speaker": "Cucu",
+        "deli": "Assalamualaikum, Atok dan Andung ade di rumah?",
+        "indonesia": "Assalamualaikum, Kakek dan Nenek ada di rumah?"
+      },
+      {
+        "speaker": "Atok",
+        "deli": "Waalaikumsalam, jemput naik ke serambi, Cu.",
+        "indonesia": "Waalaikumsalam, silakan naik ke beranda, Cu."
+      },
+      {
+        "speaker": "Cucu",
+        "deli": "Kami bawakan roti jala hangat kesukaan Atok.",
+        "indonesia": "Kami bawakan roti jala hangat kesukaan Kakek."
+      },
+      {
+        "speaker": "Atok",
+        "deli": "Alhamdulillah, terime kasih banyak lah, Cu.",
+        "indonesia": "Alhamdulillah, terima kasih banyaklah, Cu."
+      }
+    ],
+    "katara_legacy_id": null,
+    "source_ids": [
+      "SRC-0005",
+      "SRC-0006",
+      "SRC-0009"
+    ],
+    "confidence": "high",
+    "verification_status": "verified",
+    "notes": null
+  },
+  {
+    "id": "SNT-000034",
+    "sentence_deli": "Kalau hari Jumaat, Abah dan Abang memakai baju teluk belanga pegi ke Masjid Raya Al-Mashun.",
+    "normalized_sentence": "kalau hari jumaat, abah dan abang memakai baju teluk belanga pegi ke masjid raya al-mashun.",
+    "translation_id": "Kalau hari Jumat, Ayah dan Abang memakai baju teluk belanga pergi ke Masjid Raya Al-Mashun.",
+    "sentence_type": "declarative_simple",
+    "context_domain": "community",
+    "usage_context": "cultural",
+    "dialect": "melayu_deli",
+    "region": "deli",
+    "related_vocab_ids": [
+      "MD-000202",
+      "MD-000020",
+      "MD-000021",
+      "MD-000161",
+      "MD-000047"
+    ],
+    "grammar_notes": "Kalimat majemuk bersyarat kebiasaan (\"Kalau hari Jumaat, ...\").",
+    "dialogue_exchange": null,
+    "katara_legacy_id": null,
+    "source_ids": [
+      "SRC-0009",
+      "SRC-0010"
+    ],
+    "confidence": "high",
+    "verification_status": "verified",
+    "notes": null
+  },
+  {
+    "id": "SNT-000035",
+    "sentence_deli": "Waktu bulan Ramadan, ramai orang mengantre bubur pedas di halaman masjid.",
+    "normalized_sentence": "waktu bulan ramadan, ramai orang mengantre bubur pedas di halaman masjid.",
+    "translation_id": "Saat bulan Ramadan, banyak orang mengantre bubur pedas di halaman masjid.",
+    "sentence_type": "declarative_simple",
+    "context_domain": "community",
+    "usage_context": "cultural",
+    "dialect": "melayu_deli",
+    "region": "deli",
+    "related_vocab_ids": [
+      "MD-000185",
+      "MD-000141"
+    ],
+    "grammar_notes": "Penggunaan kata \"ramai\" sebagai kuantor subjek bernyawa jamak (\"ramai orang\").",
+    "dialogue_exchange": null,
+    "katara_legacy_id": null,
+    "source_ids": [
+      "SRC-0009",
+      "SRC-0010"
+    ],
+    "confidence": "high",
+    "verification_status": "verified",
+    "notes": null
+  },
+  {
+    "id": "SNT-000036",
+    "sentence_deli": "Anak dara tu nampak molek menarikan Tari Serampang Due Belas.",
+    "normalized_sentence": "anak dara tu nampak molek menarikan tari serampang due belas.",
+    "translation_id": "Gadis muda itu tampak anggun menarikan Tari Serampang Dua Belas.",
+    "sentence_type": "declarative_simple",
+    "context_domain": "community",
+    "usage_context": "cultural",
+    "dialect": "melayu_deli",
+    "region": "deli",
+    "related_vocab_ids": [
+      "MD-000026",
+      "MD-000077",
+      "MD-000105"
+    ],
+    "grammar_notes": "Istilah \"anak dara\" merujuk pada gadis remaja yang belum menikah.",
+    "dialogue_exchange": null,
+    "katara_legacy_id": null,
+    "source_ids": [
+      "SRC-0005",
+      "SRC-0009"
+    ],
+    "confidence": "high",
+    "verification_status": "verified",
+    "notes": null
+  },
+  {
+    "id": "SNT-000037",
+    "sentence_deli": "Janganlah awak lokek berbagi ilmu kepada kawan-kawan.",
+    "normalized_sentence": "janganlah awak lokek berbagi ilmu kepada kawan-kawan.",
+    "translation_id": "Janganlah kamu pelit berbagi ilmu kepada teman-teman.",
+    "sentence_type": "imperative",
+    "context_domain": "community",
+    "usage_context": "neutral",
+    "dialect": "melayu_deli",
+    "region": "deli",
+    "related_vocab_ids": [
+      "MD-000195",
+      "MD-000197",
+      "MD-000068",
+      "MD-000126",
+      "MD-000100"
+    ],
+    "grammar_notes": "Kalimat nasihat menggunakan larangan berpartikel \"-lah\" (\"janganlah\").",
+    "dialogue_exchange": null,
+    "katara_legacy_id": null,
+    "source_ids": [
+      "SRC-0002",
+      "SRC-0005"
+    ],
+    "confidence": "high",
+    "verification_status": "verified",
+    "notes": null
+  },
+  {
+    "id": "SNT-000038",
+    "sentence_deli": "Lepas habis hujan, udara di kebun rase sejuk dan segar betul.",
+    "normalized_sentence": "lepas habis hujan, udara di kebun rase sejuk dan segar betul.",
+    "translation_id": "Setelah hujan reda, udara di kebun terasa dingin dan segar sekali.",
+    "sentence_type": "declarative_simple",
+    "context_domain": "community",
+    "usage_context": "neutral",
+    "dialect": "melayu_deli",
+    "region": "deli",
+    "related_vocab_ids": [
+      "MD-000203",
+      "MD-000135",
+      "MD-000187"
+    ],
+    "grammar_notes": "Klausa temporal dengan konjungsi \"lepas habis\" (setelah selesai).",
+    "dialogue_exchange": null,
+    "katara_legacy_id": null,
+    "source_ids": [
+      "SRC-0002",
+      "SRC-0003"
+    ],
+    "confidence": "high",
+    "verification_status": "verified",
+    "notes": null
+  },
+  {
+    "id": "SNT-000039",
+    "sentence_deli": "Biarpun hidup di perantauan, adat dan bahasa Melayu Deli tak boleh dilupakan.",
+    "normalized_sentence": "biarpun hidup di perantauan, adat dan bahasa melayu deli tak boleh dilupakan.",
+    "translation_id": "Biarpun hidup di perantauan, adat dan bahasa Melayu Deli tidak boleh dilupakan.",
+    "sentence_type": "negative",
+    "context_domain": "community",
+    "usage_context": "formal",
+    "dialect": "melayu_deli",
+    "region": "deli",
+    "related_vocab_ids": [
+      "MD-000192"
+    ],
+    "grammar_notes": "Kalimat majemuk konsesif (\"Biarpun ..., ...\") dengan predikat pasif bernegasi (\"tak boleh dilupakan\").",
+    "dialogue_exchange": null,
+    "katara_legacy_id": null,
+    "source_ids": [
+      "SRC-0003",
+      "SRC-0010"
+    ],
+    "confidence": "high",
+    "verification_status": "verified",
+    "notes": null
+  },
+  {
+    "id": "SNT-000040",
+    "sentence_deli": "Cicipilah kue rasyidah dan halua betik ni selagi masih di meja.",
+    "normalized_sentence": "cicipilah kue rasyidah dan halua betik ni selagi masih di meja.",
+    "translation_id": "Cicipilah kue rasyidah dan manisan pepaya ini selagi masih tersedia di meja.",
+    "sentence_type": "imperative",
+    "context_domain": "family",
+    "usage_context": "cultural",
+    "dialect": "melayu_deli",
+    "region": "deli",
+    "related_vocab_ids": [
+      "MD-000143",
+      "MD-000145",
+      "MD-000210",
+      "MD-000076"
+    ],
+    "grammar_notes": "Kalimat ajakan menjamu tamu dengan hidangan khas Melayu Deli.",
+    "dialogue_exchange": null,
+    "katara_legacy_id": null,
+    "source_ids": [
+      "SRC-0005",
+      "SRC-0009"
+    ],
+    "confidence": "high",
+    "verification_status": "verified",
+    "notes": null
+  }
+]

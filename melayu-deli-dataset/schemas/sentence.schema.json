@@ -1,0 +1,114 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Melayu Deli Sentence and Dialogue Schema",
+  "type": "object",
+  "required": [
+    "id",
+    "sentence_deli",
+    "normalized_sentence",
+    "translation_id",
+    "sentence_type",
+    "context_domain",
+    "usage_context",
+    "dialect",
+    "region",
+    "related_vocab_ids",
+    "source_ids",
+    "confidence",
+    "verification_status",
+    "notes"
+  ],
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^SNT-\\d{6}$"
+    },
+    "sentence_deli": {
+      "type": "string"
+    },
+    "normalized_sentence": {
+      "type": "string"
+    },
+    "translation_id": {
+      "type": "string"
+    },
+    "sentence_type": {
+      "type": "string",
+      "enum": [
+        "declarative",
+        "interrogative",
+        "imperative",
+        "negative",
+        "exclamatory",
+        "dialogue"
+      ]
+    },
+    "context_domain": {
+      "type": "string"
+    },
+    "usage_context": {
+      "type": "string"
+    },
+    "dialect": {
+      "type": "string"
+    },
+    "region": {
+      "type": "string"
+    },
+    "related_vocab_ids": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "pattern": "^MD-\\d{6}$"
+      }
+    },
+    "grammar_notes": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "dialogue_exchange": {
+      "type": [
+        "array",
+        "null"
+      ]
+    },
+    "katara_legacy_id": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "source_ids": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "string"
+      }
+    },
+    "confidence": {
+      "type": "string",
+      "enum": [
+        "high",
+        "medium",
+        "low"
+      ]
+    },
+    "verification_status": {
+      "type": "string",
+      "enum": [
+        "verified",
+        "needs_review",
+        "disputed",
+        "rejected"
+      ]
+    },
+    "notes": {
+      "type": [
+        "string",
+        "null"
+      ]
+    }
+  }
+}

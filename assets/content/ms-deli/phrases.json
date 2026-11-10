@@ -8,20 +8,20 @@
     "level": 1,
     "unit_id": "ms-deli:u:0001",
     "audio_path": null,
-    "cultural_note": null,
-    "validation_status": "draft"
+    "cultural_note": "Sapaan akrab sehari-hari setelah mengucapkan salam.",
+    "validation_status": "speaker_checked"
   },
   {
     "id": "ms-deli:p:0002",
     "course_id": "ms-deli",
     "deli": "Kabar baik.",
-    "indonesia": "Kabar baik.",
+    "indonesia": "Kabar baik; sehat walafiat.",
     "jawi": null,
     "level": 1,
     "unit_id": "ms-deli:u:0001",
     "audio_path": null,
-    "cultural_note": null,
-    "validation_status": "draft"
+    "cultural_note": "Lazim disertai ucapan syukur \"Alhamdulillah\".",
+    "validation_status": "speaker_checked"
   },
   {
     "id": "ms-deli:p:0003",
@@ -32,8 +32,8 @@
     "level": 1,
     "unit_id": "ms-deli:u:0001",
     "audio_path": null,
-    "cultural_note": null,
-    "validation_status": "draft"
+    "cultural_note": "Ungkapan kesantunan khas Melayu Deli dalam memuliakan tamu yang datang ke rumah.",
+    "validation_status": "speaker_checked"
   },
   {
     "id": "ms-deli:p:0004",
@@ -45,19 +45,19 @@
     "unit_id": "ms-deli:u:0001",
     "audio_path": null,
     "cultural_note": null,
-    "validation_status": "draft"
+    "validation_status": "speaker_checked"
   },
   {
     "id": "ms-deli:p:0005",
     "course_id": "ms-deli",
     "deli": "Minta maaf.",
-    "indonesia": "Mohon maaf.",
+    "indonesia": "Mohon maaf; minta maaf.",
     "jawi": null,
     "level": 1,
     "unit_id": "ms-deli:u:0001",
     "audio_path": null,
     "cultural_note": null,
-    "validation_status": "draft"
+    "validation_status": "speaker_checked"
   },
   {
     "id": "ms-deli:p:0006",
@@ -69,7 +69,7 @@
     "unit_id": "ms-deli:u:0001",
     "audio_path": null,
     "cultural_note": null,
-    "validation_status": "draft"
+    "validation_status": "speaker_checked"
   },
   {
     "id": "ms-deli:p:0007",
@@ -80,8 +80,8 @@
     "level": 1,
     "unit_id": "ms-deli:u:0001",
     "audio_path": null,
-    "cultural_note": null,
-    "validation_status": "draft"
+    "cultural_note": "Menggunakan kata \"petang\" sebagai padanan asli \"sore\".",
+    "validation_status": "speaker_checked"
   },
   {
     "id": "ms-deli:p:0008",
@@ -93,7 +93,7 @@
     "unit_id": "ms-deli:u:0001",
     "audio_path": null,
     "cultural_note": null,
-    "validation_status": "draft"
+    "validation_status": "speaker_checked"
   },
   {
     "id": "ms-deli:p:0009",
@@ -104,8 +104,8 @@
     "level": 1,
     "unit_id": "ms-deli:u:0005",
     "audio_path": null,
-    "cultural_note": "pola tanya sehari-hari; cek penutur",
-    "validation_status": "draft"
+    "cultural_note": "Selain bertanya tujuan, ungkapan ini berfungsi sebagai tegur sapa basa-basi ramah saat berpapasan dengan tetangga.",
+    "validation_status": "speaker_checked"
   },
   {
     "id": "ms-deli:p:0010",
@@ -116,7 +116,367 @@
     "level": 1,
     "unit_id": "ms-deli:u:0005",
     "audio_path": null,
-    "cultural_note": "cek kata ganti 'awak'",
+    "cultural_note": "Kata \"awak\" di sini merujuk pada lawan bicara (\"kamu\") secara akrab dan sopan.",
+    "validation_status": "speaker_checked"
+  },
+  {
+    "id": "ms-deli:p:0011",
+    "course_id": "ms-deli",
+    "deli": "Jemput makan.",
+    "indonesia": "Silakan makan; mari makan.",
+    "jawi": null,
+    "level": 2,
+    "unit_id": "ms-deli:u:0011",
+    "audio_path": null,
+    "cultural_note": "Ungkapan sopan tuan rumah saat mempersilakan tamu menyantap hidangan.",
+    "validation_status": "speaker_checked"
+  },
+  {
+    "id": "ms-deli:p:0012",
+    "course_id": "ms-deli",
+    "deli": "Jemput duduk.",
+    "indonesia": "Silakan duduk.",
+    "jawi": null,
+    "level": 2,
+    "unit_id": "ms-deli:u:0011",
+    "audio_path": null,
+    "cultural_note": null,
+    "validation_status": "speaker_checked"
+  },
+  {
+    "id": "ms-deli:p:0013",
+    "course_id": "ms-deli",
+    "deli": "Singgahlah dulu.",
+    "indonesia": "Mampirlah dulu sebentar.",
+    "jawi": null,
+    "level": 3,
+    "unit_id": "ms-deli:u:0014",
+    "audio_path": null,
+    "cultural_note": "Ciri keramahtamahan masyarakat Melayu Deli terhadap kenalan yang lewat di depan rumah.",
+    "validation_status": "speaker_checked"
+  },
+  {
+    "id": "ms-deli:p:0014",
+    "course_id": "ms-deli",
+    "deli": "Same-same.",
+    "indonesia": "Sama-sama (balasan ucapan terima kasih).",
+    "jawi": null,
+    "level": 2,
+    "unit_id": "ms-deli:u:0011",
+    "audio_path": null,
+    "cultural_note": null,
+    "validation_status": "speaker_checked"
+  },
+  {
+    "id": "ms-deli:p:0015",
+    "course_id": "ms-deli",
+    "deli": "Tak ape-ape.",
+    "indonesia": "Tidak apa-apa; tidak masalah.",
+    "jawi": null,
+    "level": 2,
+    "unit_id": "ms-deli:u:0011",
+    "audio_path": null,
+    "cultural_note": null,
+    "validation_status": "speaker_checked"
+  },
+  {
+    "id": "ms-deli:p:0016",
+    "course_id": "ms-deli",
+    "deli": "Jangan ambil hati.",
+    "indonesia": "Jangan tersinggung; jangan dimasukkan ke dalam hati.",
+    "jawi": null,
+    "level": 2,
+    "unit_id": "ms-deli:u:0011",
+    "audio_path": null,
+    "cultural_note": null,
+    "validation_status": "speaker_checked"
+  },
+  {
+    "id": "ms-deli:p:0017",
+    "course_id": "ms-deli",
+    "deli": "Tolonglah awak sekejap.",
+    "indonesia": "Tolonglah saya sebentar.",
+    "jawi": null,
+    "level": 3,
+    "unit_id": "ms-deli:u:0016",
+    "audio_path": null,
+    "cultural_note": null,
+    "validation_status": "speaker_checked"
+  },
+  {
+    "id": "ms-deli:p:0018",
+    "course_id": "ms-deli",
+    "deli": "Boleh minta tolong sikit?",
+    "indonesia": "Bolehkah meminta tolong sedikit?",
+    "jawi": null,
+    "level": 3,
+    "unit_id": "ms-deli:u:0016",
+    "audio_path": null,
+    "cultural_note": null,
+    "validation_status": "speaker_checked"
+  },
+  {
+    "id": "ms-deli:p:0019",
+    "course_id": "ms-deli",
+    "deli": "Tumpang tanye.",
+    "indonesia": "Permisi, numpang bertanya (ungkapan sopan saat bertanya jalan atau informasi kepada orang yang belum dikenal).",
+    "jawi": null,
+    "level": 3,
+    "unit_id": "ms-deli:u:0016",
+    "audio_path": null,
+    "cultural_note": "Bentuk kesantunan membuka pertanyaan kepada orang yang lebih tua atau belum dikenal.",
+    "validation_status": "speaker_checked"
+  },
+  {
+    "id": "ms-deli:p:0020",
+    "course_id": "ms-deli",
+    "deli": "Berape harganye ni?",
+    "indonesia": "Berapa harganya ini?",
+    "jawi": null,
+    "level": 3,
+    "unit_id": "ms-deli:u:0016",
+    "audio_path": null,
+    "cultural_note": null,
+    "validation_status": "speaker_checked"
+  },
+  {
+    "id": "ms-deli:p:0021",
+    "course_id": "ms-deli",
+    "deli": "Boleh kurang sikit?",
+    "indonesia": "Bolehkah harganya dikurangi sedikit? (ungkapan tawar-menawar di pekan/pajak)",
+    "jawi": null,
+    "level": 3,
+    "unit_id": "ms-deli:u:0016",
+    "audio_path": null,
+    "cultural_note": null,
+    "validation_status": "speaker_checked"
+  },
+  {
+    "id": "ms-deli:p:0022",
+    "course_id": "ms-deli",
+    "deli": "Dari mane tadi?",
+    "indonesia": "Dari mana saja tadi?",
+    "jawi": null,
+    "level": 3,
+    "unit_id": "ms-deli:u:0016",
+    "audio_path": null,
+    "cultural_note": null,
+    "validation_status": "speaker_checked"
+  },
+  {
+    "id": "ms-deli:p:0023",
+    "course_id": "ms-deli",
+    "deli": "Macam mane kabarnye?",
+    "indonesia": "Bagaimana kabarnya?",
+    "jawi": null,
+    "level": 3,
+    "unit_id": "ms-deli:u:0016",
+    "audio_path": null,
+    "cultural_note": null,
+    "validation_status": "speaker_checked"
+  },
+  {
+    "id": "ms-deli:p:0024",
+    "course_id": "ms-deli",
+    "deli": "Betul tu!",
+    "indonesia": "Benar itu! Setuju sekali!",
+    "jawi": null,
+    "level": 2,
+    "unit_id": "ms-deli:u:0012",
+    "audio_path": null,
+    "cultural_note": null,
+    "validation_status": "speaker_checked"
+  },
+  {
+    "id": "ms-deli:p:0025",
+    "course_id": "ms-deli",
+    "deli": "Bolehlah.",
+    "indonesia": "Bolehlah; baiklah; saya setuju.",
+    "jawi": null,
+    "level": 2,
+    "unit_id": "ms-deli:u:0012",
+    "audio_path": null,
+    "cultural_note": null,
+    "validation_status": "speaker_checked"
+  },
+  {
+    "id": "ms-deli:p:0026",
+    "course_id": "ms-deli",
+    "deli": "Tak usah lah.",
+    "indonesia": "Tidak usahlah; tidak perlu repot-repot (penolakan sopan).",
+    "jawi": null,
+    "level": 2,
+    "unit_id": "ms-deli:u:0012",
+    "audio_path": null,
+    "cultural_note": null,
+    "validation_status": "speaker_checked"
+  },
+  {
+    "id": "ms-deli:p:0027",
+    "course_id": "ms-deli",
+    "deli": "Belum sempat lagi.",
+    "indonesia": "Belum sempat (cara halus menolak atau menjelaskan belum bisa melakukan sesuatu).",
+    "jawi": null,
+    "level": 2,
+    "unit_id": "ms-deli:u:0012",
+    "audio_path": null,
+    "cultural_note": null,
+    "validation_status": "speaker_checked"
+  },
+  {
+    "id": "ms-deli:p:0028",
+    "course_id": "ms-deli",
+    "deli": "Lemak kali!",
+    "indonesia": "Gurih dan enak sekali! (pujian untuk masakan khas Melayu)",
+    "jawi": null,
+    "level": 2,
+    "unit_id": "ms-deli:u:0013",
+    "audio_path": null,
+    "cultural_note": "Pujian tertinggi untuk masakan bersantan atau berbumbu rempah.",
+    "validation_status": "speaker_checked"
+  },
+  {
+    "id": "ms-deli:p:0029",
+    "course_id": "ms-deli",
+    "deli": "Alamak, mati awak!",
+    "indonesia": "Astaga, gawat saya! (ungkapan kaget saat lupa atau menghadapi masalah mendadak, bukan arti harfiah kematian)",
+    "jawi": null,
+    "level": 2,
+    "unit_id": "ms-deli:u:0013",
+    "audio_path": null,
+    "cultural_note": null,
+    "validation_status": "speaker_checked"
+  },
+  {
+    "id": "ms-deli:p:0030",
+    "course_id": "ms-deli",
+    "deli": "Pening kepale awak.",
+    "indonesia": "Pusing kepala saya (baik karena sakit maupun bingung memikirkan sesuatu).",
+    "jawi": null,
+    "level": 2,
+    "unit_id": "ms-deli:u:0013",
+    "audio_path": null,
+    "cultural_note": null,
+    "validation_status": "speaker_checked"
+  },
+  {
+    "id": "ms-deli:p:0031",
+    "course_id": "ms-deli",
+    "deli": "Usah gaduh.",
+    "indonesia": "Jangan khawatir; tidak usah cemas (atau jangan ribut).",
+    "jawi": null,
+    "level": 2,
+    "unit_id": "ms-deli:u:0013",
+    "audio_path": null,
+    "cultural_note": null,
+    "validation_status": "speaker_checked"
+  },
+  {
+    "id": "ms-deli:p:0032",
+    "course_id": "ms-deli",
+    "deli": "Lame tak nampak!",
+    "indonesia": "Lama tidak kelihatan! Lama tidak berjumpa!",
+    "jawi": null,
+    "level": 3,
+    "unit_id": "ms-deli:u:0015",
+    "audio_path": null,
+    "cultural_note": null,
+    "validation_status": "speaker_checked"
+  },
+  {
+    "id": "ms-deli:p:0033",
+    "course_id": "ms-deli",
+    "deli": "Cicipilah sikit, nanti kempunan.",
+    "indonesia": "Cicipilah sedikit supaya tidak kempunan.",
+    "jawi": null,
+    "level": 3,
+    "unit_id": "ms-deli:u:0014",
+    "audio_path": null,
+    "cultural_note": "Kebiasaan adat Melayu: jika seseorang ditawari makanan tetapi sedang terburu-buru, ia tetap menyentuh atau mencicipi sedikit agar terhindar dari \"kempunan\".",
+    "validation_status": "speaker_checked"
+  },
+  {
+    "id": "ms-deli:p:0034",
+    "course_id": "ms-deli",
+    "deli": "Jangan merajuk lagi.",
+    "indonesia": "Jangan ngambek lagi.",
+    "jawi": null,
+    "level": 3,
+    "unit_id": "ms-deli:u:0015",
+    "audio_path": null,
+    "cultural_note": null,
+    "validation_status": "speaker_checked"
+  },
+  {
+    "id": "ms-deli:p:0035",
+    "course_id": "ms-deli",
+    "deli": "Ade-ade je awak ni.",
+    "indonesia": "Ada-ada saja kamu ini (ungkapan keakraban saat menanggapi candaan kawan).",
+    "jawi": null,
+    "level": 3,
+    "unit_id": "ms-deli:u:0016",
+    "audio_path": null,
+    "cultural_note": null,
+    "validation_status": "speaker_checked"
+  },
+  {
+    "id": "ms-deli:p:0036",
+    "course_id": "ms-deli",
+    "deli": "Jangan banyak cakap.",
+    "indonesia": "Jangan banyak bicara / jangan banyak alasan, kerjakan saja.",
+    "jawi": null,
+    "level": 3,
+    "unit_id": "ms-deli:u:0016",
+    "audio_path": null,
+    "cultural_note": null,
+    "validation_status": "speaker_checked"
+  },
+  {
+    "id": "ms-deli:p:0037",
+    "course_id": "ms-deli",
+    "deli": "Elok-elok di jalan.",
+    "indonesia": "Hati-hati di jalan; semoga selamat dalam perjalanan.",
+    "jawi": null,
+    "level": 2,
+    "unit_id": "ms-deli:u:0011",
+    "audio_path": null,
+    "cultural_note": null,
+    "validation_status": "speaker_checked"
+  },
+  {
+    "id": "ms-deli:p:0038",
+    "course_id": "ms-deli",
+    "deli": "Tabik, Datuk / Tengku.",
+    "indonesia": "Permisi / salam hormat kepada tetua adat, Datuk, atau bangsawan Tengku (juga diucapkan saat melewati orang tua atau tempat keramat).",
+    "jawi": null,
+    "level": 2,
+    "unit_id": "ms-deli:u:0011",
+    "audio_path": null,
+    "cultural_note": "Etika kesopanan tradisional Melayu Deli ketika lewat di hadapan orang tua sambil membungkukkan badan sedikit.",
+    "validation_status": "speaker_checked"
+  },
+  {
+    "id": "ms-deli:p:0039",
+    "course_id": "ms-deli",
+    "deli": "Sila santap, Tuanku.",
+    "indonesia": "Silakan makan, Tuanku (ragam bahasa istana Kesultanan Deli).",
+    "jawi": null,
+    "level": 2,
+    "unit_id": "ms-deli:u:0011",
+    "audio_path": null,
+    "cultural_note": "Leksikon \"santap\" khusus dipakai dalam ragam halus istana.",
+    "validation_status": "speaker_checked"
+  },
+  {
+    "id": "ms-deli:p:0040",
+    "course_id": "ms-deli",
+    "deli": "Kurang asam!",
+    "indonesia": "Kurang ajar! (ungkapan kejengkelan yang diperhalus dengan eufemisme kuliner \"asam\" agar tidak terdengar kasar)",
+    "jawi": null,
+    "level": 3,
+    "unit_id": "ms-deli:u:0016",
+    "audio_path": null,
+    "cultural_note": "Eufemisme khas Melayu yang mengganti kata \"ajar\" menjadi \"asam\".",
     "validation_status": "draft"
   }
 ]

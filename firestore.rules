@@ -1,0 +1,504 @@
+rules_version = '2';
+
+// ===============================================================
+// Assumed Data Model — KATARA (id.katara.app / katara-melayu)
+// ===============================================================
+//
+// This security rules file enforces strict ownership, schema validation,
+// type safety, and size limits for the following Firestore collections:
+//
+// 1. Collection: /users/{uid}
+//    Document ID: {uid} (must match authenticated Firebase Auth UID)
+//    Fields:
+//      - uid: string (optional, immutable, 1..128 chars, must equal {uid})
+//      - email: string | null (optional, <= 254 chars, valid email format)
+//      - display_name: string | null (optional, 1..100 chars)
+//      - photo_url: string | null (optional, <= 512 chars, http/https URL)
+//      - auth_provider: string | null (optional, 1..64 chars)
+//      - is_anonymous: bool (optional)
+//      - active_course_id: string | null (optional, 2..64 chars, e.g. 'ms-deli')
+//      - xp: int (required, 0..100000000)
+//      - xp_total: int (optional alias, 0..100000000)
+//      - level: int (required, 1..10000)
+//      - streak_days: int (required, 0..36500)
+//      - streak_current: int (optional alias, 0..36500)
+//      - streak_best: int (optional, 0..36500)
+//      - last_active_date: string | null (optional, <= 32 chars, YYYY-MM-DD)
+//      - hearts: int (optional, 0..100)
+//      - hearts_updated_at: string | timestamp | null (optional, <= 64 chars)
+//      - coins: int (optional, 0..100000000)
+//      - streak_freezes: int (optional, 0..1000)
+//      - daily_goal_minutes: int (optional, 1..1440)
+//      - learning_goal: string | null (optional, 1..64 chars)
+//      - casual_mode: bool (optional)
+//      - onboarding_completed: bool (optional)
+//      - installed_modules: list | map (optional, size <= 50)
+//      - achievements_unlocked: list (optional, size <= 200)
+//      - device_id: string | null (optional, 1..128 chars)
+//      - revision: int (optional, 1..100000000)
+//      - created_at: string | timestamp | null (optional, immutable, <= 64 chars)
+//      - updated_at: string | timestamp (optional, <= 64 chars)
+//
+// 2. Subcollection: /users/{uid}/dialect_progress/{docId}
+//    Document ID: {docId} (e.g., '{course_id}_{lesson_id}' or lesson ID)
+//    Fields:
+//      - course_id: string (required, immutable, 2..64 chars)
+//      - lesson_id: string (required, immutable, 1..128 chars)
+//      - stars: int (required, 0..3)
+//      - best_score: int (required, 0..100)
+//      - completed_at: string | timestamp | null (optional, <= 64 chars)
+//      - created_at: string | timestamp | null (optional, immutable, <= 64 chars)
+//      - updated_at: string | timestamp | null (optional, <= 64 chars)
+//      - device_id: string | null (optional, 1..128 chars)
+//      - revision: int (optional, 1..100000000)
+//      - is_synced: bool | int (optional)
+//      - deleted_at: string | timestamp | null (optional, <= 64 chars)
+//
+// 3. Subcollection: /users/{uid}/word_mastery/{docId}
+//    Document ID: {docId} (e.g., '{course_id}_{item_id}' or item ID)
+//    Fields:
+//      - course_id: string (required, immutable, 2..64 chars)
+//      - item_id: string (required, immutable, 1..128 chars)
+//      - item_type: string | null (optional, 1..32 chars)
+//      - strength: int (required, 0..5)
+//      - correct_count: int (optional, 0..1000000)
+//      - wrong_count: int (optional, 0..1000000)
+//      - last_seen_at: string | timestamp | null (optional, <= 64 chars)
+//      - next_review_at: string | timestamp | null (optional, <= 64 chars)
+//      - created_at: string | timestamp | null (optional, immutable, <= 64 chars)
+//      - updated_at: string | timestamp | null (optional, <= 64 chars)
+//      - device_id: string | null (optional, 1..128 chars)
+//      - revision: int (optional, 1..100000000)
+//      - is_synced: bool | int (optional)
+//      - deleted_at: string | timestamp | null (optional, <= 64 chars)
+//
+// 4. Subcollection: /users/{uid}/xp_events/{eventId}
+//    Document ID: {eventId} (deterministic UUID/event identifier)
+//    Fields:
+//      - event_id: string (optional, immutable, 1..128 chars)
+//      - course_id: string (optional, immutable, 2..64 chars)
+//      - delta_xp: int (required if amount omitted, immutable, 1..500)
+//      - amount: int (optional alias for delta_xp, immutable, 1..500)
+//      - source_type: string (required if source omitted, immutable, 1..128 chars)
+//      - source: string (optional alias for source_type, immutable, 1..128 chars)
+//      - device_id: string | null (optional, 1..128 chars)
+//      - created_at: string | timestamp | null (optional, immutable, <= 64 chars)
+//      - updated_at: string | timestamp | null (optional, <= 64 chars)
+//      - is_synced: bool | int (optional)
+//
+// 5. Subcollection: /users/{uid}/streak_history/{dateId}
+//    Document ID: {dateId} (YYYY-MM-DD local date string)
+//    Fields:
+//      - date: string (optional, immutable, 8..32 chars)
+//      - date_id: string (optional, immutable, 8..32 chars)
+//      - course_id: string (optional, 2..64 chars)
+//      - xp_earned: int (optional, 0..50000)
+//      - lessons_completed: int (optional, 0..1000)
+//      - freeze_used: bool | int (optional)
+//      - device_id: string | null (optional, 1..128 chars)
+//      - created_at: string | timestamp | null (optional, immutable, <= 64 chars)
+//      - updated_at: string | timestamp | null (optional, <= 64 chars)
+//      - is_synced: bool | int (optional)
+//
+// 6. Collection: /module_catalog/{moduleId}
+//    Public read-only downloadable dialect module catalog metadata.
+//    Client writes are strictly forbidden.
+// ===============================================================
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    // ===============================================================
+    // Helper Functions
+    // ===============================================================
+
+    // Check if the user is authenticated
+    function isAuthenticated() {
+      return request.auth != null;
+    }
+
+    // Check if the authenticated user owns the path {uid}
+    function isOwner(userId) {
+      return isAuthenticated() &&
+             userId is string &&
+             userId.size() >= 1 &&
+             userId.size() <= 128 &&
+             request.auth.uid == userId;
+    }
+
+    // Verify UID field in document data matches path {uid} and auth.uid on create
+    function uidUnchanged(userId) {
+      return !('uid' in request.resource.data) ||
+             (request.resource.data.uid is string &&
+              request.resource.data.uid == userId &&
+              request.resource.data.uid == request.auth.uid);
+    }
+
+    // Ensure UID field is not modified on update
+    function uidNotModified(userId) {
+      return !('uid' in request.resource.data) ||
+             (request.resource.data.uid == userId &&
+              (!('uid' in resource.data) || request.resource.data.uid == resource.data.uid));
+    }
+
+    // Validate required fields exist on the resulting document
+    function hasRequiredFields(fields) {
+      return request.resource.data.keys().hasAll(fields);
+    }
+
+    // Validate that the document contains only allowed fields (strict schema)
+    function hasOnlyAllowedFields(fields) {
+      return request.resource.data.keys().hasOnly(fields);
+    }
+
+    // Validate that immutable fields have not been modified during an update
+    function areImmutableFieldsUnchanged(fields) {
+      return !request.resource.data.diff(resource.data).affectedKeys().hasAny(fields);
+    }
+
+    // Validate a required string field's type and length bounds
+    function validRequiredString(data, field, minLen, maxLen) {
+      return (field in data) &&
+             data[field] is string &&
+             data[field].size() >= minLen &&
+             data[field].size() <= maxLen;
+    }
+
+    // Validate an optional or nullable string field's type and length bounds
+    function validOptionalString(data, field, minLen, maxLen) {
+      return !(field in data) ||
+             data[field] == null ||
+             (data[field] is string &&
+              data[field].size() >= minLen &&
+              data[field].size() <= maxLen);
+    }
+
+    // Validate an optional or nullable integer field within [minVal, maxVal]
+    function validOptionalInt(data, field, minVal, maxVal) {
+      return !(field in data) ||
+             data[field] == null ||
+             (data[field] is int &&
+              data[field] >= minVal &&
+              data[field] <= maxVal);
+    }
+
+    // Validate an optional boolean (or SQLite 0/1 integer flag)
+    function validOptionalBoolOrFlag(data, field) {
+      return !(field in data) ||
+             data[field] == null ||
+             data[field] is bool ||
+             (data[field] is int && (data[field] == 0 || data[field] == 1));
+    }
+
+    // Validate an optional timestamp or bounded ISO-8601 date string
+    function validOptionalTimestampOrIsoString(data, field) {
+      return !(field in data) ||
+             data[field] == null ||
+             data[field] is timestamp ||
+             (data[field] is string &&
+              data[field].size() >= 10 &&
+              data[field].size() <= 64);
+    }
+
+    // Validate optional email format and size
+    function validOptionalEmail(data, field) {
+      return !(field in data) ||
+             data[field] == null ||
+             (data[field] is string &&
+              data[field].size() >= 3 &&
+              data[field].size() <= 254 &&
+              data[field].matches("^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$"));
+    }
+
+    // Validate optional URL format and size
+    function validOptionalUrl(data, field) {
+      return !(field in data) ||
+             data[field] == null ||
+             (data[field] is string &&
+              data[field].size() >= 8 &&
+              data[field].size() <= 512 &&
+              (data[field].matches("^https://.*") || data[field].matches("^http://.*")));
+    }
+
+    // ===============================================================
+    // Domain Validators (Called on BOTH create and update)
+    // ===============================================================
+
+    function isValidUserProfile(data, uid) {
+      let allowedFields = [
+        'uid',
+        'email',
+        'display_name',
+        'photo_url',
+        'auth_provider',
+        'is_anonymous',
+        'active_course_id',
+        'xp',
+        'xp_total',
+        'level',
+        'streak_days',
+        'streak_current',
+        'streak_best',
+        'last_active_date',
+        'hearts',
+        'hearts_updated_at',
+        'coins',
+        'streak_freezes',
+        'daily_goal_minutes',
+        'learning_goal',
+        'casual_mode',
+        'onboarding_completed',
+        'installed_modules',
+        'achievements_unlocked',
+        'created_at',
+        'updated_at',
+        'device_id',
+        'revision'
+      ];
+      return hasOnlyAllowedFields(allowedFields) &&
+             hasRequiredFields(['xp', 'level', 'streak_days']) &&
+             uidUnchanged(uid) &&
+             data.xp is int && data.xp >= 0 && data.xp <= 100000000 &&
+             data.level is int && data.level >= 1 && data.level <= 10000 &&
+             data.streak_days is int && data.streak_days >= 0 && data.streak_days <= 36500 &&
+             validOptionalInt(data, 'xp_total', 0, 100000000) &&
+             validOptionalInt(data, 'streak_current', 0, 36500) &&
+             validOptionalInt(data, 'streak_best', 0, 36500) &&
+             validOptionalInt(data, 'hearts', 0, 100) &&
+             validOptionalInt(data, 'coins', 0, 100000000) &&
+             validOptionalInt(data, 'streak_freezes', 0, 1000) &&
+             validOptionalInt(data, 'daily_goal_minutes', 1, 1440) &&
+             validOptionalInt(data, 'revision', 1, 100000000) &&
+             validOptionalEmail(data, 'email') &&
+             validOptionalString(data, 'display_name', 1, 100) &&
+             validOptionalUrl(data, 'photo_url') &&
+             validOptionalString(data, 'auth_provider', 1, 64) &&
+             validOptionalString(data, 'active_course_id', 2, 64) &&
+             validOptionalString(data, 'last_active_date', 8, 32) &&
+             validOptionalString(data, 'learning_goal', 1, 64) &&
+             validOptionalString(data, 'device_id', 1, 128) &&
+             validOptionalBoolOrFlag(data, 'is_anonymous') &&
+             validOptionalBoolOrFlag(data, 'casual_mode') &&
+             validOptionalBoolOrFlag(data, 'onboarding_completed') &&
+             validOptionalTimestampOrIsoString(data, 'hearts_updated_at') &&
+             validOptionalTimestampOrIsoString(data, 'created_at') &&
+             validOptionalTimestampOrIsoString(data, 'updated_at') &&
+             (!('installed_modules' in data) ||
+              data.installed_modules == null ||
+              (data.installed_modules is list && data.installed_modules.size() <= 50) ||
+              (data.installed_modules is map && data.installed_modules.size() <= 50)) &&
+             (!('achievements_unlocked' in data) ||
+              data.achievements_unlocked == null ||
+              (data.achievements_unlocked is list && data.achievements_unlocked.size() <= 200));
+    }
+
+    function isValidDialectProgress(data) {
+      let allowedFields = [
+        'course_id',
+        'lesson_id',
+        'stars',
+        'best_score',
+        'completed_at',
+        'created_at',
+        'updated_at',
+        'device_id',
+        'revision',
+        'is_synced',
+        'deleted_at'
+      ];
+      return hasOnlyAllowedFields(allowedFields) &&
+             hasRequiredFields(['course_id', 'lesson_id', 'stars', 'best_score']) &&
+             validRequiredString(data, 'course_id', 2, 64) &&
+             validRequiredString(data, 'lesson_id', 1, 128) &&
+             data.stars is int && data.stars >= 0 && data.stars <= 3 &&
+             data.best_score is int && data.best_score >= 0 && data.best_score <= 100 &&
+             validOptionalString(data, 'device_id', 1, 128) &&
+             validOptionalInt(data, 'revision', 1, 100000000) &&
+             validOptionalBoolOrFlag(data, 'is_synced') &&
+             validOptionalTimestampOrIsoString(data, 'completed_at') &&
+             validOptionalTimestampOrIsoString(data, 'created_at') &&
+             validOptionalTimestampOrIsoString(data, 'updated_at') &&
+             validOptionalTimestampOrIsoString(data, 'deleted_at');
+    }
+
+    function isValidWordMastery(data) {
+      let allowedFields = [
+        'course_id',
+        'item_id',
+        'item_type',
+        'strength',
+        'correct_count',
+        'wrong_count',
+        'last_seen_at',
+        'next_review_at',
+        'created_at',
+        'updated_at',
+        'device_id',
+        'revision',
+        'is_synced',
+        'deleted_at'
+      ];
+      return hasOnlyAllowedFields(allowedFields) &&
+             hasRequiredFields(['course_id', 'item_id', 'strength']) &&
+             validRequiredString(data, 'course_id', 2, 64) &&
+             validRequiredString(data, 'item_id', 1, 128) &&
+             data.strength is int && data.strength >= 0 && data.strength <= 5 &&
+             validOptionalString(data, 'item_type', 1, 32) &&
+             validOptionalInt(data, 'correct_count', 0, 1000000) &&
+             validOptionalInt(data, 'wrong_count', 0, 1000000) &&
+             validOptionalString(data, 'device_id', 1, 128) &&
+             validOptionalInt(data, 'revision', 1, 100000000) &&
+             validOptionalBoolOrFlag(data, 'is_synced') &&
+             validOptionalTimestampOrIsoString(data, 'last_seen_at') &&
+             validOptionalTimestampOrIsoString(data, 'next_review_at') &&
+             validOptionalTimestampOrIsoString(data, 'created_at') &&
+             validOptionalTimestampOrIsoString(data, 'updated_at') &&
+             validOptionalTimestampOrIsoString(data, 'deleted_at');
+    }
+
+    function isValidXpEvent(data) {
+      let allowedFields = [
+        'event_id',
+        'course_id',
+        'delta_xp',
+        'amount',
+        'source_type',
+        'source',
+        'device_id',
+        'created_at',
+        'updated_at',
+        'is_synced'
+      ];
+      let hasValidDeltaXp =
+        (('delta_xp' in data) && data.delta_xp is int && data.delta_xp > 0 && data.delta_xp <= 500) ||
+        (('amount' in data) && data.amount is int && data.amount > 0 && data.amount <= 500);
+      let hasValidSource =
+        (('source_type' in data) && data.source_type is string && data.source_type.size() >= 1 && data.source_type.size() <= 128) ||
+        (('source' in data) && data.source is string && data.source.size() >= 1 && data.source.size() <= 128);
+
+      return hasOnlyAllowedFields(allowedFields) &&
+             hasValidDeltaXp &&
+             hasValidSource &&
+             (!('delta_xp' in data) || (data.delta_xp is int && data.delta_xp > 0 && data.delta_xp <= 500)) &&
+             (!('amount' in data) || (data.amount is int && data.amount > 0 && data.amount <= 500)) &&
+             (!('source_type' in data) || (data.source_type is string && data.source_type.size() >= 1 && data.source_type.size() <= 128)) &&
+             (!('source' in data) || (data.source is string && data.source.size() >= 1 && data.source.size() <= 128)) &&
+             validOptionalString(data, 'event_id', 1, 128) &&
+             validOptionalString(data, 'course_id', 2, 64) &&
+             validOptionalString(data, 'device_id', 1, 128) &&
+             validOptionalBoolOrFlag(data, 'is_synced') &&
+             validOptionalTimestampOrIsoString(data, 'created_at') &&
+             validOptionalTimestampOrIsoString(data, 'updated_at');
+    }
+
+    function isValidStreakHistory(data, dateId) {
+      let allowedFields = [
+        'date',
+        'date_id',
+        'course_id',
+        'xp_earned',
+        'lessons_completed',
+        'freeze_used',
+        'device_id',
+        'created_at',
+        'updated_at',
+        'is_synced'
+      ];
+      return hasOnlyAllowedFields(allowedFields) &&
+             dateId.size() >= 8 && dateId.size() <= 32 &&
+             validOptionalString(data, 'date', 8, 32) &&
+             validOptionalString(data, 'date_id', 8, 32) &&
+             validOptionalString(data, 'course_id', 2, 64) &&
+             validOptionalInt(data, 'xp_earned', 0, 50000) &&
+             validOptionalInt(data, 'lessons_completed', 0, 1000) &&
+             validOptionalBoolOrFlag(data, 'freeze_used') &&
+             validOptionalString(data, 'device_id', 1, 128) &&
+             validOptionalBoolOrFlag(data, 'is_synced') &&
+             validOptionalTimestampOrIsoString(data, 'created_at') &&
+             validOptionalTimestampOrIsoString(data, 'updated_at');
+    }
+
+    // ===============================================================
+    // Collection Rules
+    // ===============================================================
+
+    // User profile document: strictly owner-only access (protects PII such as email)
+    match /users/{uid} {
+      allow read: if isOwner(uid);
+      allow create: if isOwner(uid) && isValidUserProfile(request.resource.data, uid);
+      allow update: if isOwner(uid) &&
+                       isValidUserProfile(request.resource.data, uid) &&
+                       uidNotModified(uid) &&
+                       areImmutableFieldsUnchanged(['uid', 'created_at']);
+      allow delete: if isOwner(uid);
+
+      // Per-lesson dialect progress
+      match /dialect_progress/{docId} {
+        allow read: if isOwner(uid);
+        allow create: if isOwner(uid) &&
+                         docId.size() >= 1 && docId.size() <= 192 &&
+                         isValidDialectProgress(request.resource.data);
+        allow update: if isOwner(uid) &&
+                         docId.size() >= 1 && docId.size() <= 192 &&
+                         isValidDialectProgress(request.resource.data) &&
+                         areImmutableFieldsUnchanged(['course_id', 'lesson_id', 'created_at']);
+        allow delete: if isOwner(uid);
+      }
+
+      // Per-word Spaced Repetition System (SRS) mastery
+      match /word_mastery/{docId} {
+        allow read: if isOwner(uid);
+        allow create: if isOwner(uid) &&
+                         docId.size() >= 1 && docId.size() <= 192 &&
+                         isValidWordMastery(request.resource.data);
+        allow update: if isOwner(uid) &&
+                         docId.size() >= 1 && docId.size() <= 192 &&
+                         isValidWordMastery(request.resource.data) &&
+                         areImmutableFieldsUnchanged(['course_id', 'item_id', 'created_at']);
+        allow delete: if isOwner(uid);
+      }
+
+      // Idempotent XP event ledger
+      match /xp_events/{eventId} {
+        allow read: if isOwner(uid);
+        allow create: if isOwner(uid) &&
+                         eventId.size() >= 1 && eventId.size() <= 128 &&
+                         isValidXpEvent(request.resource.data);
+        allow update: if isOwner(uid) &&
+                         eventId.size() >= 1 && eventId.size() <= 128 &&
+                         isValidXpEvent(request.resource.data) &&
+                         areImmutableFieldsUnchanged([
+                           'event_id',
+                           'course_id',
+                           'delta_xp',
+                           'amount',
+                           'source_type',
+                           'source',
+                           'created_at'
+                         ]);
+        allow delete: if isOwner(uid);
+      }
+
+      // Daily streak history
+      match /streak_history/{dateId} {
+        allow read: if isOwner(uid);
+        allow create: if isOwner(uid) && isValidStreakHistory(request.resource.data, dateId);
+        allow update: if isOwner(uid) &&
+                         isValidStreakHistory(request.resource.data, dateId) &&
+                         areImmutableFieldsUnchanged(['date', 'date_id', 'created_at']);
+        allow delete: if isOwner(uid);
+      }
+    }
+
+    // Public read-only catalog metadata for downloadable dialect modules
+    match /module_catalog/{moduleId} {
+      allow read: if true;
+      allow write: if false;
+    }
+
+    // Default deny all other reads and writes across the database
+    match /{document=**} {
+      allow read, write: if false;
+    }
+  }
+}

@@ -1,0 +1,190 @@
+{
+  "generated_at": "2026-11-10",
+  "summary": {
+    "total_raw_entries": 358,
+    "total_curated_entries": 353,
+    "total_verified_entries": 348,
+    "total_needs_review_entries": 5,
+    "total_disputed_entries": 3,
+    "total_rejected_entries": 2,
+    "total_sources": 12,
+    "katara_legacy_words_covered": 67,
+    "katara_legacy_phrases_covered": 10,
+    "katara_legacy_sentences_covered": 10,
+    "katara_legacy_dialogues_covered": 2,
+    "katara_legacy_cultural_items_enriched": 8
+  },
+  "categories": {
+    "vocabulary": {
+      "raw_total": 215,
+      "curated_total": 210,
+      "verified": 206,
+      "needs_review": 4,
+      "disputed": 3,
+      "rejected": 2,
+      "confidence_high": 209,
+      "confidence_medium": 5,
+      "confidence_low": 1
+    },
+    "expressions": {
+      "raw_total": 40,
+      "curated_total": 40,
+      "verified": 39,
+      "needs_review": 1,
+      "disputed": 0,
+      "rejected": 0,
+      "confidence_high": 39,
+      "confidence_medium": 1,
+      "confidence_low": 0
+    },
+    "sentences": {
+      "raw_total": 40,
+      "curated_total": 40,
+      "verified": 40,
+      "needs_review": 0,
+      "disputed": 0,
+      "rejected": 0,
+      "confidence_high": 40,
+      "confidence_medium": 0,
+      "confidence_low": 0
+    },
+    "grammar": {
+      "raw_total": 15,
+      "curated_total": 15,
+      "verified": 15,
+      "needs_review": 0,
+      "disputed": 0,
+      "rejected": 0,
+      "confidence_high": 15,
+      "confidence_medium": 0,
+      "confidence_low": 0
+    },
+    "idioms": {
+      "raw_total": 20,
+      "curated_total": 20,
+      "verified": 20,
+      "needs_review": 0,
+      "disputed": 0,
+      "rejected": 0,
+      "confidence_high": 20,
+      "confidence_medium": 0,
+      "confidence_low": 0
+    },
+    "cultural_knowledge": {
+      "raw_total": 16,
+      "curated_total": 16,
+      "verified": 16,
+      "needs_review": 0,
+      "disputed": 0,
+      "rejected": 0,
+      "confidence_high": 16,
+      "confidence_medium": 0,
+      "confidence_low": 0
+    },
+    "historical_knowledge": {
+      "raw_total": 12,
+      "curated_total": 12,
+      "verified": 12,
+      "needs_review": 0,
+      "disputed": 0,
+      "rejected": 0,
+      "confidence_high": 12,
+      "confidence_medium": 0,
+      "confidence_low": 0
+    }
+  },
+  "vocabulary_breakdown": {
+    "by_part_of_speech": {
+      "noun": 94,
+      "verb": 29,
+      "numeral": 14,
+      "adjective": 30,
+      "pronoun": 24,
+      "adverb": 12,
+      "particle": 5,
+      "preposition": 2,
+      "conjunction": 2,
+      "interjection": 3
+    },
+    "by_semantic_category": {
+      "greetings_and_address": 6,
+      "numbers_and_quantifiers": 17,
+      "kinship_and_family": 31,
+      "food_and_culinary": 23,
+      "question_words": 7,
+      "daily_activities": 17,
+      "time_and_calendar": 10,
+      "market_and_livelihood": 8,
+      "household_and_objects": 18,
+      "emotions_and_states": 24,
+      "pronouns_and_deixis": 17,
+      "culture_and_customs": 12,
+      "nature_and_environment": 3,
+      "particles_and_connectors": 22
+    },
+    "by_usage_context": {
+      "neutral": 118,
+      "formal": 10,
+      "informal": 55,
+      "cultural": 32
+    },
+    "by_dialect_label": {
+      "melayu_deli": 210,
+      "melayu_medan_kolokial": 2,
+      "melayu_pesisir_utara": 1,
+      "melayu_perak": 2
+    }
+  },
+  "expressions_breakdown": {
+    "by_category": {
+      "greeting": 5,
+      "polite_formal": 6,
+      "gratitude": 2,
+      "apology": 3,
+      "questioning": 6,
+      "socializing": 4,
+      "requesting_help": 3,
+      "agreement_refusal": 4,
+      "emotion": 4,
+      "informal_slang": 3
+    },
+    "by_usage_context": {
+      "neutral": 17,
+      "formal": 6,
+      "informal": 16,
+      "cultural": 1
+    }
+  },
+  "sentences_breakdown": {
+    "by_sentence_type": {
+      "interrogative": 6,
+      "declarative_simple": 13,
+      "short_phrase": 4,
+      "imperative": 7,
+      "conversational": 5,
+      "negative": 5
+    },
+    "by_context_domain": {
+      "community": 19,
+      "family": 21
+    }
+  },
+  "idioms_breakdown": {
+    "by_type": {
+      "proverb": 12,
+      "idiom": 4,
+      "pantun": 4
+    },
+    "by_metaphor_domain": {
+      "household_utensils": 3,
+      "animal_fauna": 6,
+      "nature_geography": 2,
+      "customary_law": 1,
+      "body_parts": 2,
+      "flora_plants": 1,
+      "culinary": 1,
+      "customary_pantun": 3,
+      "classical_pantun": 1
+    }
+  }
+}

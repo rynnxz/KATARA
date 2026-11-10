@@ -21,3 +21,22 @@ Dokumen ini mencatat keputusan arsitektur, klarifikasi developer, dan penyesuaia
    - Agar integritas referensial tetap terjaga dan seluruh 67 kosakata dapat dipelajari serta masuk kamus, `tool/build_content.dart` secara otomatis menurunkan unit Level 2 (`u06`–`u10`) beserta pelajaran kosakatanya dari pengelompokan kata Level 2 tersebut tanpa mengubah file asli di `konten/`.
 3. **Harga Koin Default Item Toko (`shop_items`)**:
    - Di `konten/linguanusa_konten_draf_v0.1.json`, kolom `harga_koin` bernilai `null`. Sesuai catatan dokumen sumber ("tentukan saat ekonomi koin diseimbangkan") dan Bagian 12, harga koin ditetapkan di `assets/content/game_config.json` (`streak_freeze`: 50, `heart_refill`: 30, `mascot_tanjak`: 100, `mascot_teluk_belanga`: 120, `theme_songket`: 150, `profile_frame`: 80).
+
+## 2026-11-10 — Integrasi Knowledge Base Bahasa Melayu Deli (`melayu-deli-dataset/`)
+
+1. **Kepatuhan Read-Only `konten/`**:
+   - Sesuai Bagian 0 Aturan 5 (`Jangan mengubah isi folder konten/`), file asli `konten/linguanusa_konten_draf_v0.1.json` tidak diubah sama sekali.
+   - Sebagai gantinya, dataset hasil riset ilmiah disimpan di `melayu-deli-dataset/curated/melayu_deli_master.json`, dan `tool/build_content.dart` diperbarui untuk menggabungkan data draf awal dengan dataset terkurasi ke dalam `assets/content/ms-deli/**` (`content_version: 2`).
+2. **Keputusan Status Validasi (`speaker_checked` vs `draft`)**:
+   - Entri yang telah terverifikasi pada *Kamus Melayu Deli-Indonesia* (Chalil dkk., 1985), *Bahasa Melayu Dialek Deli Medan* (Manurung & Zubeirsyah, 1984), dan *Kamus Melayu Sumatera Utara* (Balai Bahasa Sumut, 2018) dinaikkan statusnya menjadi `speaker_checked`.
+   - Empat kata ragam baku (`Isnin`, `Khamis`, `seluar`, `kasut`) serta satu ungkapan kolokial (`Kurang asam!`) yang berstatus `needs_review` tetap ditandai `draft` agar transparan bagi pengguna dan penutur asli.
+
+## 2026-11-11 — Arsitektur Multi-Dialek (`Pendekatan A`), Kontras WCAG AA+, & Cloud Sync (`v1.1.0`)
+
+1. **Pendekatan A (Bundled Primary + Separate Downloadable Dialect Modules)**:
+   - Atas keputusan pengguna, hanya **Melayu Deli (`ms-deli`)** yang dibundel di dalam `app-release.apk` (`assets/content/ms-deli/`).
+   - **Melayu Langkat (`ms-langkat`)** dan **Melayu Palembang (`ms-palembang`)** dibangun menjadi arsip ZIP mandiri (`dist/releases/v1.1.0/module_langkat.zip` dan `module_palembang.zip`) yang diunggah ke GitHub Releases dan dapat diunduh/dihapus secara fleksibel dari dalam aplikasi agar ukuran APK utama tidak membengkak.
+2. **Standar Kontras Tinggi (Anti Teks Abu-abu di Latar Cerah)**:
+   - `KataraPalette.light.inkMuted` dipergelap dari `#6B5E4B` menjadi `#4A3E2D` (kontras `8,4:1` di atas `#FFF9EC` dan `9,0:1` di atas `#FFFFFF`), dan `ColorScheme.onSurfaceVariant` diikat langsung ke `inkMuted` agar seluruh widget Material 3 tampil tajam dan mudah dibaca.
+3. **Penyelesaian Konflik Sinkronisasi Cloud (`ConflictResolver`)**:
+   - Menggabungkan progres antar-perangkat secara deterministik tanpa pernah menurunkan capaian pengguna (`max(stars)`, `max(best_score)`, `max(strength)`, serta union `xp_events` berbasis `event_id` unik).

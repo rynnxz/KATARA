@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:go_router/go_router.dart';
 import 'package:katara/app/providers.dart';
 import 'package:katara/app/theme/katara_colors.dart';
 import 'package:katara/app/widgets/jawi_text.dart';
@@ -92,6 +93,20 @@ class _DictionaryScreenState extends ConsumerState<DictionaryScreen> {
                                   color: palette.primary,
                                 ),
                       ),
+                      if (word.pronunciation != null &&
+                          word.pronunciation!.trim().isNotEmpty) ...[
+                        const SizedBox(height: 4),
+                        Text(
+                          '[${word.pronunciation}] • Ragam ${word.rawRegister}',
+                          style: Theme.of(context)
+                              .textTheme
+                              .labelMedium
+                              ?.copyWith(
+                                color: palette.inkMuted,
+                                fontWeight: FontWeight.w700,
+                              ),
+                        ),
+                      ],
                       const SizedBox(height: 4),
                       Text(
                         word.indonesia,
@@ -109,6 +124,83 @@ class _DictionaryScreenState extends ConsumerState<DictionaryScreen> {
               ],
             ),
             const SizedBox(height: 14),
+            if (word.exampleSentence != null &&
+                word.exampleSentence!.trim().isNotEmpty) ...[
+              Container(
+                padding: const EdgeInsets.all(12),
+                decoration: BoxDecoration(
+                  color: palette.surfaceAlt,
+                  borderRadius: BorderRadius.circular(12),
+                  border: Border.all(color: palette.outline),
+                ),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      'Contoh Kalimat:',
+                      style: Theme.of(context).textTheme.labelMedium?.copyWith(
+                            color: palette.primary,
+                            fontWeight: FontWeight.w800,
+                          ),
+                    ),
+                    const SizedBox(height: 4),
+                    Text(
+                      '"${word.exampleSentence}"',
+                      style: Theme.of(context).textTheme.titleSmall?.copyWith(
+                            fontWeight: FontWeight.w800,
+                          ),
+                    ),
+                    if (word.exampleTranslation != null &&
+                        word.exampleTranslation!.trim().isNotEmpty) ...[
+                      const SizedBox(height: 2),
+                      Text(
+                        word.exampleTranslation!,
+                        style: Theme.of(context).textTheme.bodySmall?.copyWith(
+                              color: palette.inkMuted,
+                            ),
+                      ),
+                    ],
+                  ],
+                ),
+              ),
+              const SizedBox(height: 12),
+            ],
+            if (word.sources.isNotEmpty) ...[
+              Wrap(
+                spacing: 6,
+                runSpacing: 6,
+                children: [
+                  if (word.region != null && word.region!.isNotEmpty)
+                    KChip(
+                      label: word.region!,
+                      icon: Icons.place_outlined,
+                    ),
+                  for (final src in word.sources)
+                    KChip(
+                      label: 'Sumber: $src',
+                      icon: Icons.menu_book_rounded,
+                    ),
+                ],
+              ),
+              const SizedBox(height: 12),
+            ],
+            if (word.notes != null && word.notes!.trim().isNotEmpty) ...[
+              Container(
+                padding: const EdgeInsets.all(12),
+                decoration: BoxDecoration(
+                  color: palette.surfaceAlt,
+                  borderRadius: BorderRadius.circular(12),
+                  border: Border.all(color: palette.outline),
+                ),
+                child: Text(
+                  word.notes!,
+                  style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                        height: 1.5,
+                      ),
+                ),
+              ),
+              const SizedBox(height: 12),
+            ],
             if (word.register == 'baku')
               Container(
                 padding: const EdgeInsets.all(12),
@@ -167,13 +259,23 @@ class _DictionaryScreenState extends ConsumerState<DictionaryScreen> {
     final showJawi = ref.watch(appSettingsProvider).showJawiScript;
     final statsAsync = ref.watch(userStatsStreamProvider);
     final courseId = statsAsync.value?.activeCourseId ?? 'ms-deli';
+    final activeCourse = ref.watch(activeCourseProvider).value;
+    final courseTitle = activeCourse?.name ?? 'Melayu Deli';
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Kamus Melayu Deli'),
+        title: Text('Kamus $courseTitle'),
+        actions: [
+          IconButton(
+            tooltip: 'Perbandingan Dialek',
+            onPressed: () => context.push('/dialect-comparison'),
+            icon: const Icon(Icons.compare_arrows_rounded),
+          ),
+        ],
       ),
       body: PatternBackground(
         opacity: 0.04,
+        courseId: courseId,
         child: Column(
           children: [
             Padding(

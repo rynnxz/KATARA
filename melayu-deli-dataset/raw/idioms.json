@@ -1,0 +1,357 @@
+[
+  {
+    "id": "IDM-000001",
+    "type": "proverb",
+    "text_deli": "Senduk dengan belanga lagi berlaga, inikan pula suami isteri.",
+    "translation_literal_id": "Sendok sayur dengan belanga saja masih saling berbenturan, apalagi suami istri.",
+    "meaning_figurative_id": "Dalam kehidupan berumah tangga, persahabatan, atau kekerabatan dekat, perselisihan kecil adalah hal yang wajar terjadi dan harus diselesaikan dengan saling memaafkan.",
+    "cultural_context": "Sering diselipkan dalam petuah orang tua atau Telangkai kepada mempelai saat upacara pernikahan adat Melayu Deli.",
+    "metaphor_domain": "household_utensils",
+    "dialect": "melayu_deli",
+    "region": "deli",
+    "source_ids": [
+      "SRC-0005",
+      "SRC-0008"
+    ],
+    "confidence": "high",
+    "verification_status": "verified",
+    "notes": null
+  },
+  {
+    "id": "IDM-000002",
+    "type": "proverb",
+    "text_deli": "Anak dipangku dilepaskan, beruk dalam rimba disusukan.",
+    "translation_literal_id": "Anak di pangkuan sendiri dilepaskan, beruk di dalam hutan malah disusui.",
+    "meaning_figurative_id": "Mengurus atau mementingkan urusan orang lain yang jauh, sementara tanggung jawab terhadap keluarga atau kerabat sendiri di rumah malah ditelantarkan.",
+    "cultural_context": "Peribahasa sindiran halus bermetafora fauna (primata/beruk) untuk mengingatkan tanggung jawab keluarga.",
+    "metaphor_domain": "animal_fauna",
+    "dialect": "melayu_deli",
+    "region": "deli",
+    "source_ids": [
+      "SRC-0007",
+      "SRC-0008"
+    ],
+    "confidence": "high",
+    "verification_status": "verified",
+    "notes": "Terdokumentasi dalam kajian metafora binatang peribahasa Melayu Deli (Astari & Mulyadi, 2022)."
+  },
+  {
+    "id": "IDM-000003",
+    "type": "proverb",
+    "text_deli": "Macam lembu dicucuk hidung.",
+    "translation_literal_id": "Seperti sapi yang ditusuk dan ditali hidungnya.",
+    "meaning_figurative_id": "Orang yang tidak memiliki pendirian sendiri dan hanya menurut saja ke mana pun diarahkan orang lain tanpa berpikir kritis.",
+    "cultural_context": "Digunakan sebagai nasihat agar anak muda Melayu memiliki ilmu dan keteguhan prinsip.",
+    "metaphor_domain": "animal_fauna",
+    "dialect": "melayu_deli",
+    "region": "deli",
+    "source_ids": [
+      "SRC-0007"
+    ],
+    "confidence": "high",
+    "verification_status": "verified",
+    "notes": null
+  },
+  {
+    "id": "IDM-000004",
+    "type": "proverb",
+    "text_deli": "Macam belut pulang ke lumpur.",
+    "translation_literal_id": "Seperti belut yang kembali ke dalam lumpur.",
+    "meaning_figurative_id": "Perantau yang akhirnya kembali ke kampung halaman asalnya dan merasa sangat nyaman di lingkungan budayanya sendiri.",
+    "cultural_context": "Menggambarkan ikatan batin perantau Melayu dengan tanah asalnya di pesisir sungai yang berlumpur subur.",
+    "metaphor_domain": "animal_fauna",
+    "dialect": "melayu_deli",
+    "region": "deli",
+    "source_ids": [
+      "SRC-0005",
+      "SRC-0007"
+    ],
+    "confidence": "high",
+    "verification_status": "verified",
+    "notes": null
+  },
+  {
+    "id": "IDM-000005",
+    "type": "proverb",
+    "text_deli": "Jangan macam ketam menyuruh anaknye berjalan betul.",
+    "translation_literal_id": "Jangan seperti kepiting yang menyuruh anaknya berjalan lurus.",
+    "meaning_figurative_id": "Jangan hanya pandai menasihati atau menuntut orang lain berbuat benar, sedangkan perilaku diri sendiri belum memberi teladan yang lurus.",
+    "cultural_context": "Metafora fauna pesisir (ketam/kepiting bakau di pantai timur Sumatera) dalam pendidikan moral keluarga.",
+    "metaphor_domain": "animal_fauna",
+    "dialect": "melayu_deli",
+    "region": "deli",
+    "source_ids": [
+      "SRC-0007"
+    ],
+    "confidence": "high",
+    "verification_status": "verified",
+    "notes": null
+  },
+  {
+    "id": "IDM-000006",
+    "type": "proverb",
+    "text_deli": "Seekor kerbau membawa lumpur, semua habis terpalit.",
+    "translation_literal_id": "Seekor kerbau membawa lumpur, semua kerbau di kandang ikut terkena lumpurnya.",
+    "meaning_figurative_id": "Karena perbuatan buruk satu orang anggota keluarga atau kampung, nama baik seluruh keluarga atau masyarakat ikut tercemar.",
+    "cultural_context": "Menekankan pentingnya menjaga marwah (kehormatan) bersama dalam masyarakat adat Melayu Deli.",
+    "metaphor_domain": "animal_fauna",
+    "dialect": "melayu_deli",
+    "region": "deli",
+    "source_ids": [
+      "SRC-0007",
+      "SRC-0010"
+    ],
+    "confidence": "high",
+    "verification_status": "verified",
+    "notes": null
+  },
+  {
+    "id": "IDM-000007",
+    "type": "proverb",
+    "text_deli": "Macam ayam berak kapur.",
+    "translation_literal_id": "Seperti ayam yang buang kotoran kapur (sakit).",
+    "meaning_figurative_id": "Wajah yang tampak pucat pasi, lesu, dan tidak bersemangat karena sakit atau ketakutan.",
+    "cultural_context": "Perumpamaan sehari-hari berbasis pengamatan hewan ternak di kampung.",
+    "metaphor_domain": "animal_fauna",
+    "dialect": "melayu_deli",
+    "region": "deli",
+    "source_ids": [
+      "SRC-0007"
+    ],
+    "confidence": "high",
+    "verification_status": "verified",
+    "notes": null
+  },
+  {
+    "id": "IDM-000008",
+    "type": "proverb",
+    "text_deli": "Biar lambat asal selamat, tak lari gunung dikejar.",
+    "translation_literal_id": "Biar lambat asalkan selamat, gunung yang dituju tidak akan lari dikejar.",
+    "meaning_figurative_id": "Dalam mengerjakan urusan penting, ketelitian dan keselamatan jauh lebih utama daripada tergesa-gesa namun berujung celaka.",
+    "cultural_context": "Pepatah kesabaran dan kehati-hatian dalam bekerja maupun merantau.",
+    "metaphor_domain": "nature_geography",
+    "dialect": "melayu_deli",
+    "region": "deli",
+    "source_ids": [
+      "SRC-0005",
+      "SRC-0008"
+    ],
+    "confidence": "high",
+    "verification_status": "verified",
+    "notes": null
+  },
+  {
+    "id": "IDM-000009",
+    "type": "proverb",
+    "text_deli": "Adat bersendi syarak, syarak bersendi Kitabullah.",
+    "translation_literal_id": "Adat bersendikan hukum agama (syariat), dan syariat bersendikan Al-Quran.",
+    "meaning_figurative_id": "Seluruh tata krama, upacara adat, dan hukum kemasyarakatan Melayu Deli berlandaskan pada nilai-nilai ajaran Islam.",
+    "cultural_context": "Falsafah dasar adat Melayu Deli yang selalu diucapkan dalam pembukaan majelis adat dan pernikahan.",
+    "metaphor_domain": "customary_law",
+    "dialect": "melayu_deli",
+    "region": "deli",
+    "source_ids": [
+      "SRC-0008",
+      "SRC-0010"
+    ],
+    "confidence": "high",
+    "verification_status": "verified",
+    "notes": null
+  },
+  {
+    "id": "IDM-000010",
+    "type": "proverb",
+    "text_deli": "Di mane bumi dipijak, di situ langit dijunjung.",
+    "translation_literal_id": "Di mana bumi diinjak, di situ langit dijunjung.",
+    "meaning_figurative_id": "Setiap perantau wajib menghormati adat istiadat, bahasa, dan tata krama masyarakat di tempat ia tinggal.",
+    "cultural_context": "Pegangan hidup masyarakat Melayu Deli yang terbuka terhadap pendatang di tanah Deli.",
+    "metaphor_domain": "nature_geography",
+    "dialect": "melayu_deli",
+    "region": "deli",
+    "source_ids": [
+      "SRC-0005",
+      "SRC-0010"
+    ],
+    "confidence": "high",
+    "verification_status": "verified",
+    "notes": null
+  },
+  {
+    "id": "IDM-000011",
+    "type": "proverb",
+    "text_deli": "Pinggan tak retak, nasi tak dingin.",
+    "translation_literal_id": "Piring tidak retak, nasi pun tidak menjadi dingin.",
+    "meaning_figurative_id": "Melakukan suatu pekerjaan atau perundingan dengan penuh kecermatan sehingga tujuan tercapai tanpa melukai perasaan siapa pun.",
+    "cultural_context": "Prinsip diplomasi Telangkai saat berunding adat.",
+    "metaphor_domain": "household_utensils",
+    "dialect": "melayu_deli",
+    "region": "deli",
+    "source_ids": [
+      "SRC-0005",
+      "SRC-0008"
+    ],
+    "confidence": "high",
+    "verification_status": "verified",
+    "notes": null
+  },
+  {
+    "id": "IDM-000012",
+    "type": "proverb",
+    "text_deli": "Kecil tapak tangan, nyiru kami tadahkan.",
+    "translation_literal_id": "Jika telapak tangan terasa terlalu kecil, tampah beras (nyiru) yang lebar kami tadahkan.",
+    "meaning_figurative_id": "Ungkapan rasa syukur dan sukacita yang amat besar dalam menyambut kedatangan tamu, niat baik, atau pemberian orang lain.",
+    "cultural_context": "Lazim diucapkan oleh tuan rumah atau Telangkai pihak perempuan ketika menerima rombongan tamu.",
+    "metaphor_domain": "household_utensils",
+    "dialect": "melayu_deli",
+    "region": "deli",
+    "source_ids": [
+      "SRC-0005",
+      "SRC-0008"
+    ],
+    "confidence": "high",
+    "verification_status": "verified",
+    "notes": null
+  },
+  {
+    "id": "IDM-000013",
+    "type": "idiom",
+    "text_deli": "ringan tulang",
+    "translation_literal_id": "ringan tulang",
+    "meaning_figurative_id": "rajin bekerja; sigap dan suka menolong orang lain tanpa diminta",
+    "cultural_context": "Pujian terhadap anak muda atau menantu yang cekatan membantu di rumah dan kenduri.",
+    "metaphor_domain": "body_parts",
+    "dialect": "melayu_deli",
+    "region": "deli",
+    "source_ids": [
+      "SRC-0002",
+      "SRC-0005"
+    ],
+    "confidence": "high",
+    "verification_status": "verified",
+    "notes": "Lawan katanya adalah \"berat tulang\" (pemalas)."
+  },
+  {
+    "id": "IDM-000014",
+    "type": "idiom",
+    "text_deli": "berat tulang",
+    "translation_literal_id": "berat tulang",
+    "meaning_figurative_id": "pemalas; enggan bergerak atau membantu pekerjaan",
+    "cultural_context": "Teguran halus bagi orang yang malas bekerja.",
+    "metaphor_domain": "body_parts",
+    "dialect": "melayu_deli",
+    "region": "deli",
+    "source_ids": [
+      "SRC-0002",
+      "SRC-0005"
+    ],
+    "confidence": "high",
+    "verification_status": "verified",
+    "notes": null
+  },
+  {
+    "id": "IDM-000015",
+    "type": "idiom",
+    "text_deli": "tangkai jering",
+    "translation_literal_id": "tangkai buah jengkol (yang keras dan alot dilepas)",
+    "meaning_figurative_id": "orang yang sangat pelit, kikir, atau lokek mengeluarkan harta",
+    "cultural_context": "Idiom flora lokal untuk menyindir sifat kikir.",
+    "metaphor_domain": "flora_plants",
+    "dialect": "melayu_deli",
+    "region": "deli",
+    "source_ids": [
+      "SRC-0005"
+    ],
+    "confidence": "high",
+    "verification_status": "verified",
+    "notes": null
+  },
+  {
+    "id": "IDM-000016",
+    "type": "idiom",
+    "text_deli": "banyak makan asam garam",
+    "translation_literal_id": "sudah banyak memakan asam dan garam",
+    "meaning_figurative_id": "sangat berpengalaman dalam menjalani pahit-manis kehidupan",
+    "cultural_context": "Ungkapan penghormatan terhadap kebijaksanaan orang tua atau tetua adat.",
+    "metaphor_domain": "culinary",
+    "dialect": "melayu_deli",
+    "region": "deli",
+    "source_ids": [
+      "SRC-0002",
+      "SRC-0005"
+    ],
+    "confidence": "high",
+    "verification_status": "verified",
+    "notes": null
+  },
+  {
+    "id": "IDM-000017",
+    "type": "pantun",
+    "text_deli": "Sirih berlipat sirih pinang,\nSirih dari Pulau Mutiara;\nNiat datang hendak meminang,\nMembawa hajat bersaudara.",
+    "translation_literal_id": "Sirih berlipat sirih pinang, sirih dari Pulau Mutiara; Niat datang hendak meminang, membawa hajat bersaudara.",
+    "meaning_figurative_id": "Pantun pembuka yang disampaikan oleh Telangkai pihak laki-laki saat menyerahkan tepak sirih untuk menyatakan maksud melamar secara santun dan mempererat silaturahmi dua keluarga.",
+    "cultural_context": "Tradisi lisan upacara peminangan adat Melayu Deli.",
+    "metaphor_domain": "customary_pantun",
+    "dialect": "melayu_deli",
+    "region": "deli",
+    "source_ids": [
+      "SRC-0008",
+      "SRC-0009"
+    ],
+    "confidence": "high",
+    "verification_status": "verified",
+    "notes": null
+  },
+  {
+    "id": "IDM-000018",
+    "type": "pantun",
+    "text_deli": "Assalamualaikum kami ucapkan,\nKepadamu tuan saudara sekalian;\nKami datang bersama rombongan,\nMane yang salah mohon dimaafkan.",
+    "translation_literal_id": "Assalamualaikum kami ucapkan, kepadamu tuan saudara sekalian; Kami datang bersama rombongan, mana yang salah mohon dimaafkan.",
+    "meaning_figurative_id": "Pantun salam penghormatan dan kerendahan hati saat rombongan tamu tiba di ambang pintu rumah tuan rumah.",
+    "cultural_context": "Dibacakan pada awal prosesi bertandang atau meminang dalam adat Melayu Deli.",
+    "metaphor_domain": "customary_pantun",
+    "dialect": "melayu_deli",
+    "region": "deli",
+    "source_ids": [
+      "SRC-0008"
+    ],
+    "confidence": "high",
+    "verification_status": "verified",
+    "notes": null
+  },
+  {
+    "id": "IDM-000019",
+    "type": "pantun",
+    "text_deli": "Kembang melati tumbuh di taman,\nHarum semerbak penyeri muhibah;\nAdat diisi hukum disulam,\nNiat yang baik disambut sembah.",
+    "translation_literal_id": "Bunga melati tumbuh di taman, harum semerbak penghias persahabatan; Adat dijalankan hukum dirajut, niat yang baik disambut dengan hormat.",
+    "meaning_figurative_id": "Pantun balasan dari Telangkai pihak perempuan yang menyatakan bahwa kedatangan dan niat baik rombongan tamu diterima dengan tangan terbuka sesuai ketentuan adat dan syariat.",
+    "cultural_context": "Tradisi berbalas pantun Telangkai dalam upacara adat Melayu Deli.",
+    "metaphor_domain": "customary_pantun",
+    "dialect": "melayu_deli",
+    "region": "deli",
+    "source_ids": [
+      "SRC-0008",
+      "SRC-0009"
+    ],
+    "confidence": "high",
+    "verification_status": "verified",
+    "notes": null
+  },
+  {
+    "id": "IDM-000020",
+    "type": "pantun",
+    "text_deli": "Kalau roboh kota Melaka,\nPapan di Jawa saye dirikan;\nKalau sungguh bagai dikata,\nBadan dan nyawa saye serahkan.",
+    "translation_literal_id": "Kalau roboh benteng Melaka, papan di Jawa saya dirikan; Kalau sungguh seperti yang dikatakan, jiwa dan raga saya serahkan.",
+    "meaning_figurative_id": "Pantun klasik warisan rumpun Melayu yang juga populer dalam dendang dan acara adat di Deli untuk menyatakan kesetiaan, ketulusan janji, dan pengabdian.",
+    "cultural_context": "Sastra lisan pantun nasihat dan kesetiaan Melayu.",
+    "metaphor_domain": "classical_pantun",
+    "dialect": "melayu_deli",
+    "region": "deli",
+    "source_ids": [
+      "SRC-0008",
+      "SRC-0010"
+    ],
+    "confidence": "high",
+    "verification_status": "verified",
+    "notes": null
+  }
+]

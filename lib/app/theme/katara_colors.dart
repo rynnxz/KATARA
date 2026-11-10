@@ -41,25 +41,25 @@ class KataraPalette extends ThemeExtension<KataraPalette> {
   final Color heart;
   final Color coin;
 
-  // Token warna resmi Bagian 10.2 (Hijau Rebung, Kuning Diraja, Merah Songket).
+  // Token warna resmi Bagian 10.2 dengan peningkatan kontras WCAG AA+ (AAA pada ink & inkMuted).
   static const KataraPalette light = KataraPalette(
     primary: Color(0xFF1E7F5C),
     primaryDark: Color(0xFF14573F),
     onPrimary: Color(0xFFFFFFFF),
     secondary: Color(0xFFF5B700),
-    onSecondary: Color(0xFF2B2118),
+    onSecondary: Color(0xFF221910),
     accent: Color(0xFFA62B2B),
     bg: Color(0xFFFFF9EC),
     surface: Color(0xFFFFFFFF),
     surfaceAlt: Color(0xFFF6EEDC),
-    outline: Color(0xFFE5D9BF),
-    ink: Color(0xFF2B2118),
-    inkMuted: Color(0xFF6B5E4B),
-    success: Color(0xFF2E9E5B),
-    error: Color(0xFFD2453B),
-    streak: Color(0xFFF28C28),
-    heart: Color(0xFFE5484D),
-    coin: Color(0xFFE0A800),
+    outline: Color(0xFFCBBBA0),
+    ink: Color(0xFF221910),
+    inkMuted: Color(0xFF4A3E2D),
+    success: Color(0xFF217A44),
+    error: Color(0xFFC93329),
+    streak: Color(0xFFD97214),
+    heart: Color(0xFFD9383E),
+    coin: Color(0xFFC99400),
   );
 
   static const KataraPalette dark = KataraPalette(
@@ -67,14 +67,14 @@ class KataraPalette extends ThemeExtension<KataraPalette> {
     primaryDark: Color(0xFF2C9A6C),
     onPrimary: Color(0xFF0F1F18),
     secondary: Color(0xFFFFC933),
-    onSecondary: Color(0xFF2B2118),
+    onSecondary: Color(0xFF221910),
     accent: Color(0xFFE0605F),
     bg: Color(0xFF15110C),
     surface: Color(0xFF211B14),
     surfaceAlt: Color(0xFF2C241A),
-    outline: Color(0xFF3B3224),
-    ink: Color(0xFFF6EDDC),
-    inkMuted: Color(0xFFB9AB92),
+    outline: Color(0xFF43382B),
+    ink: Color(0xFFF8F1E3),
+    inkMuted: Color(0xFFD8CCB8),
     success: Color(0xFF4CD08A),
     error: Color(0xFFFF6B6B),
     streak: Color(0xFFFFA94D),
@@ -196,22 +196,99 @@ class KataraColors {
   }
 }
 
+/// Identitas visual budaya per dialek Melayu (Deli, Langkat, Palembang).
+@immutable
+class DialectVisualIdentity {
+  const DialectVisualIdentity({
+    required this.courseId,
+    required this.regionName,
+    required this.accentColor,
+    required this.secondaryColor,
+    required this.badgeBgLight,
+    required this.badgeFgLight,
+    required this.badgeBgDark,
+    required this.badgeFgDark,
+    required this.motifName,
+    required this.culturalTagline,
+  });
+
+  final String courseId;
+  final String regionName;
+  final Color accentColor;
+  final Color secondaryColor;
+  final Color badgeBgLight;
+  final Color badgeFgLight;
+  final Color badgeBgDark;
+  final Color badgeFgDark;
+  final String motifName;
+  final String culturalTagline;
+
+  static const DialectVisualIdentity deli = DialectVisualIdentity(
+    courseId: 'ms-deli',
+    regionName: 'Sumatera Utara • Medan & Deli Serdang',
+    accentColor: Color(0xFFF5B700),
+    secondaryColor: Color(0xFF1E7F5C),
+    badgeBgLight: Color(0xFFFFF0BD),
+    badgeFgLight: Color(0xFF221910),
+    badgeBgDark: Color(0xFF473500),
+    badgeFgDark: Color(0xFFFFE58F),
+    motifName: 'Pucuk Rebung Kesultanan Deli',
+    culturalTagline: 'Kuning Emas Diraja & Hijau Pucuk Rebung Maimun',
+  );
+
+  static const DialectVisualIdentity langkat = DialectVisualIdentity(
+    courseId: 'ms-langkat',
+    regionName: 'Sumatera Utara • Tanjung Pura & Pesisir Langkat',
+    accentColor: Color(0xFF1E7F5C),
+    secondaryColor: Color(0xFFD97706),
+    badgeBgLight: Color(0xFFDDF5EB),
+    badgeFgLight: Color(0xFF103F2D),
+    badgeBgDark: Color(0xFF123D2D),
+    badgeFgDark: Color(0xFFA7F3D0),
+    motifName: 'Tampuk Manggis Songket Langkat',
+    culturalTagline: 'Hijau Zamrud Pesisir & Emas Tampuk Manggis Tanjung Pura',
+  );
+
+  static const DialectVisualIdentity palembang = DialectVisualIdentity(
+    courseId: 'ms-palembang',
+    regionName: 'Sumatera Selatan • Palembang & Tepian Musi',
+    accentColor: Color(0xFF8B1E24),
+    secondaryColor: Color(0xFFD97706),
+    badgeBgLight: Color(0xFFFCE4E6),
+    badgeFgLight: Color(0xFF4C0D11),
+    badgeBgDark: Color(0xFF4C1115),
+    badgeFgDark: Color(0xFFFECDD3),
+    motifName: 'Songket Lepus Sriwijaya Palembang',
+    culturalTagline: 'Merah Lakuer Sriwijaya & Benang Emas Songket Lepus',
+  );
+
+  static DialectVisualIdentity forCourse(String? courseId) {
+    return switch (courseId) {
+      'ms-langkat' || 'melayu_langkat' => langkat,
+      'ms-palembang' || 'melayu_palembang' => palembang,
+      _ => deli,
+    };
+  }
+}
+
 /// Menimpa token warna `secondary` sesuai `accent_hex` daerah/course aktif (Bagian 10.2).
 class CourseTheme extends InheritedWidget {
   CourseTheme({
     super.key,
     Color? accentColor,
     String? accentHex,
+    this.courseId,
     this.isComingSoon = false,
     required super.child,
   }) : accentColor = isComingSoon
-            ? const Color(0xFF9AA0A6)
+            ? const Color(0xFF4A3E2D)
             : (accentColor ??
                 (accentHex != null
                     ? KataraColors.parseHex(accentHex)
-                    : const Color(0xFFF5B700)));
+                    : DialectVisualIdentity.forCourse(courseId).accentColor));
 
   final Color accentColor;
+  final String? courseId;
   final bool isComingSoon;
 
   static Color? maybeAccentOf(BuildContext context) {
@@ -220,9 +297,15 @@ class CourseTheme extends InheritedWidget {
         ?.accentColor;
   }
 
+  static DialectVisualIdentity identityOf(BuildContext context, [String? fallbackCourseId]) {
+    final inherited = context.dependOnInheritedWidgetOfExactType<CourseTheme>();
+    return DialectVisualIdentity.forCourse(inherited?.courseId ?? fallbackCourseId);
+  }
+
   @override
   bool updateShouldNotify(CourseTheme oldWidget) =>
       oldWidget.accentColor != accentColor ||
+      oldWidget.courseId != courseId ||
       oldWidget.isComingSoon != isComingSoon;
 }
 

@@ -1,0 +1,88 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Melayu Deli Grammar & Linguistics Rule Schema",
+  "type": "object",
+  "required": [
+    "id",
+    "title",
+    "linguistic_domain",
+    "topic",
+    "rule_summary",
+    "pattern_formula",
+    "comparison_indonesian",
+    "examples",
+    "dialect",
+    "region",
+    "source_ids",
+    "confidence",
+    "verification_status",
+    "notes"
+  ],
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^GRM-\\d{6}$"
+    },
+    "title": {
+      "type": "string"
+    },
+    "linguistic_domain": {
+      "type": "string",
+      "enum": [
+        "phonology",
+        "morphology",
+        "syntax",
+        "pragmatics",
+        "sociolinguistics",
+        "orthography"
+      ]
+    },
+    "topic": {
+      "type": "string"
+    },
+    "rule_summary": {
+      "type": "string"
+    },
+    "pattern_formula": {
+      "type": "string"
+    },
+    "comparison_indonesian": {
+      "type": "string"
+    },
+    "examples": {
+      "type": "array"
+    },
+    "dialect": {
+      "type": "string"
+    },
+    "region": {
+      "type": "string"
+    },
+    "source_ids": {
+      "type": "array"
+    },
+    "confidence": {
+      "type": "string",
+      "enum": [
+        "high",
+        "medium",
+        "low"
+      ]
+    },
+    "verification_status": {
+      "type": "string",
+      "enum": [
+        "verified",
+        "needs_review",
+        "disputed",
+        "rejected"
+      ]
+    },
+    "notes": {
+      "type": [
+        "string",
+        "null"
+      ]
+    }
+  }
+}

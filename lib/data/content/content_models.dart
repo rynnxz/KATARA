@@ -31,29 +31,111 @@ class CourseModel {
     required this.accentHex,
     required this.contentVersion,
     required this.hasJawi,
+    this.dialectId = 'melayu_deli',
+    this.isBundled = true,
+    this.isInstalled = true,
+    this.installedVersion = 1,
+    this.downloadUrl,
+    this.sha256,
+    this.sizeBytes = 0,
+    this.colorIdentity,
   });
 
   final String id;
   final String languageId;
+  final String dialectId;
   final String name;
   final String regionLabel;
   final String status;
   final String accentHex;
   final int contentVersion;
   final bool hasJawi;
+  final bool isBundled;
+  final bool isInstalled;
+  final int installedVersion;
+  final String? downloadUrl;
+  final String? sha256;
+  final int sizeBytes;
+  final Map<String, dynamic>? colorIdentity;
 
   bool get isActive => status == 'active';
+  bool get isDownloadable => !isBundled && status != 'coming_soon';
+  bool get canOpenOffline => isBundled || isInstalled;
 
-  factory CourseModel.fromJson(Map<String, dynamic> json) => CourseModel(
-        id: json['id'] as String,
-        languageId: json['language_id'] as String,
-        name: json['name'] as String,
-        regionLabel: json['region_label'] as String? ?? '',
-        status: json['status'] as String? ?? 'coming_soon',
-        accentHex: json['accent_hex'] as String? ?? '#F5B700',
-        contentVersion: (json['content_version'] as num?)?.toInt() ?? 0,
-        hasJawi: json['has_jawi'] == true || json['has_jawi'] == 1,
-      );
+  CourseModel copyWith({
+    String? status,
+    int? contentVersion,
+    bool? isBundled,
+    bool? isInstalled,
+    int? installedVersion,
+    String? downloadUrl,
+    String? sha256,
+    int? sizeBytes,
+  }) {
+    return CourseModel(
+      id: id,
+      languageId: languageId,
+      dialectId: dialectId,
+      name: name,
+      regionLabel: regionLabel,
+      status: status ?? this.status,
+      accentHex: accentHex,
+      contentVersion: contentVersion ?? this.contentVersion,
+      hasJawi: hasJawi,
+      isBundled: isBundled ?? this.isBundled,
+      isInstalled: isInstalled ?? this.isInstalled,
+      installedVersion: installedVersion ?? this.installedVersion,
+      downloadUrl: downloadUrl ?? this.downloadUrl,
+      sha256: sha256 ?? this.sha256,
+      sizeBytes: sizeBytes ?? this.sizeBytes,
+      colorIdentity: colorIdentity,
+    );
+  }
+
+  factory CourseModel.fromJson(Map<String, dynamic> json) {
+    Map<String, dynamic>? parsedColorIdentity;
+    final rawColor = json['color_identity'] ?? json['color_identity_json'];
+    if (rawColor is Map<String, dynamic>) {
+      parsedColorIdentity = rawColor;
+    } else if (rawColor is String && rawColor.isNotEmpty) {
+      try {
+        parsedColorIdentity = jsonDecode(rawColor) as Map<String, dynamic>;
+      } catch (_) {}
+    }
+
+    final id = json['id'] as String;
+    final defaultDialectId = switch (id) {
+      'ms-langkat' => 'melayu_langkat',
+      'ms-palembang' => 'melayu_palembang',
+      _ => 'melayu_deli',
+    };
+    final bundled = json['is_bundled'] == null
+        ? (id == 'ms-deli')
+        : (json['is_bundled'] == true || json['is_bundled'] == 1);
+    final installed = json['is_installed'] == null
+        ? bundled
+        : (json['is_installed'] == true || json['is_installed'] == 1);
+
+    return CourseModel(
+      id: id,
+      languageId: json['language_id'] as String? ?? 'ms',
+      dialectId: json['dialect_id'] as String? ?? defaultDialectId,
+      name: json['name'] as String,
+      regionLabel: json['region_label'] as String? ?? '',
+      status: json['status'] as String? ?? 'coming_soon',
+      accentHex: json['accent_hex'] as String? ?? '#F5B700',
+      contentVersion: (json['content_version'] as num?)?.toInt() ?? 0,
+      hasJawi: json['has_jawi'] == true || json['has_jawi'] == 1,
+      isBundled: bundled,
+      isInstalled: installed,
+      installedVersion: (json['installed_version'] as num?)?.toInt() ??
+          (installed ? ((json['content_version'] as num?)?.toInt() ?? 1) : 0),
+      downloadUrl: json['download_url'] as String?,
+      sha256: json['sha256'] as String?,
+      sizeBytes: (json['size_bytes'] as num?)?.toInt() ?? 0,
+      colorIdentity: parsedColorIdentity,
+    );
+  }
 }
 
 class WordModel {
@@ -71,6 +153,14 @@ class WordModel {
     required this.validationStatus,
     this.jawi,
     this.notes,
+    this.pronunciation,
+    this.exampleSentence,
+    this.exampleTranslation,
+    this.usageContext,
+    this.region,
+    this.variants = const [],
+    this.confidence = 'high',
+    this.sources = const [],
     this.audioPath,
     this.imagePath,
     this.deprecated = false,
@@ -88,29 +178,78 @@ class WordModel {
   final String register;
   final String rawRegister;
   final String? notes;
+  final String? pronunciation;
+  final String? exampleSentence;
+  final String? exampleTranslation;
+  final String? usageContext;
+  final String? region;
+  final List<String> variants;
+  final String confidence;
+  final List<String> sources;
   final String? audioPath;
   final String? imagePath;
   final String validationStatus;
   final bool deprecated;
 
-  factory WordModel.fromJson(Map<String, dynamic> json) => WordModel(
-        id: json['id'] as String,
-        courseId: json['course_id'] as String? ?? 'ms-deli',
-        deli: json['deli'] as String,
-        indonesia: json['indonesia'] as String,
-        jawi: json['jawi'] as String?,
-        category: json['category'] as String? ?? 'umum',
-        level: (json['level'] as num?)?.toInt() ?? 1,
-        unitId: json['unit_id'] as String? ?? 'ms-deli:u:0001',
-        pos: json['pos'] as String? ?? 'benda',
-        register: json['register'] as String? ?? 'deli',
-        rawRegister: json['raw_register'] as String? ?? 'deli',
-        notes: json['notes'] as String?,
-        audioPath: json['audio_path'] as String?,
-        imagePath: json['image_path'] as String?,
-        validationStatus: json['validation_status'] as String? ?? 'draft',
-        deprecated: json['deprecated'] == 1 || json['deprecated'] == true,
-      );
+  String get word => deli;
+  String get meaning => indonesia;
+
+  factory WordModel.fromJson(Map<String, dynamic> json) {
+    List<String> parseStringList(Object? raw) {
+      if (raw is List) {
+        return raw.map((e) {
+          if (e is Map) {
+            return (e['id'] ?? e['title'] ?? e.toString()).toString();
+          }
+          return e.toString();
+        }).toList();
+      }
+      if (raw is String && raw.trim().isNotEmpty) {
+        try {
+          final decoded = jsonDecode(raw);
+          if (decoded is List) {
+            return decoded.map((e) {
+              if (e is Map) {
+                return (e['id'] ?? e['title'] ?? e.toString()).toString();
+              }
+              return e.toString();
+            }).toList();
+          }
+        } catch (_) {}
+      }
+      return const [];
+    }
+
+    return WordModel(
+      id: json['id'] as String,
+      courseId: json['course_id'] as String? ?? 'ms-deli',
+      deli: (json['deli'] ?? json['word'] ?? '') as String,
+      indonesia: (json['indonesia'] ?? json['meaning'] ?? '') as String,
+      jawi: json['jawi'] as String?,
+      category: json['category'] as String? ?? 'umum',
+      level: (json['level'] as num?)?.toInt() ?? 1,
+      unitId: json['unit_id'] as String? ?? 'ms-deli:u:0001',
+      pos: json['pos'] as String? ?? 'benda',
+      register: json['register'] as String? ?? 'deli',
+      rawRegister: json['raw_register'] as String? ?? 'deli',
+      notes: json['notes'] as String?,
+      pronunciation: json['pronunciation'] as String?,
+      exampleSentence: json['example_sentence'] as String?,
+      exampleTranslation:
+          (json['example_translation'] ?? json['translation']) as String?,
+      usageContext: json['usage_context'] as String?,
+      region: json['region'] as String?,
+      variants: parseStringList(json['variants'] ?? json['variants_json']),
+      confidence: json['confidence'] as String? ?? 'high',
+      sources: parseStringList(json['sources'] ?? json['sources_json']),
+      audioPath: json['audio_path'] as String?,
+      imagePath: json['image_path'] as String?,
+      validationStatus: (json['validation_status'] ??
+          json['verification_status'] ??
+          'draft') as String,
+      deprecated: json['deprecated'] == 1 || json['deprecated'] == true,
+    );
+  }
 }
 
 class PhraseModel {
@@ -125,6 +264,10 @@ class PhraseModel {
     this.jawi,
     this.audioPath,
     this.culturalNote,
+    this.pronunciation,
+    this.region,
+    this.confidence = 'high',
+    this.sources = const [],
     this.deprecated = false,
   });
 
@@ -137,22 +280,43 @@ class PhraseModel {
   final String unitId;
   final String? audioPath;
   final String? culturalNote;
+  final String? pronunciation;
+  final String? region;
+  final String confidence;
+  final List<String> sources;
   final String validationStatus;
   final bool deprecated;
 
-  factory PhraseModel.fromJson(Map<String, dynamic> json) => PhraseModel(
-        id: json['id'] as String,
-        courseId: json['course_id'] as String? ?? 'ms-deli',
-        deli: json['deli'] as String,
-        indonesia: json['indonesia'] as String,
-        jawi: json['jawi'] as String?,
-        level: (json['level'] as num?)?.toInt() ?? 1,
-        unitId: json['unit_id'] as String? ?? 'ms-deli:u:0001',
-        audioPath: json['audio_path'] as String?,
-        culturalNote: json['cultural_note'] as String?,
-        validationStatus: json['validation_status'] as String? ?? 'draft',
-        deprecated: json['deprecated'] == 1 || json['deprecated'] == true,
-      );
+  factory PhraseModel.fromJson(Map<String, dynamic> json) {
+    List<String> parseSources(Object? raw) {
+      if (raw is List) return raw.map((e) => e.toString()).toList();
+      if (raw is String && raw.isNotEmpty) {
+        try {
+          final d = jsonDecode(raw);
+          if (d is List) return d.map((e) => e.toString()).toList();
+        } catch (_) {}
+      }
+      return const [];
+    }
+
+    return PhraseModel(
+      id: json['id'] as String,
+      courseId: json['course_id'] as String? ?? 'ms-deli',
+      deli: (json['deli'] ?? json['expression'] ?? '') as String,
+      indonesia: (json['indonesia'] ?? json['meaning'] ?? '') as String,
+      jawi: json['jawi'] as String?,
+      level: (json['level'] as num?)?.toInt() ?? 1,
+      unitId: json['unit_id'] as String? ?? 'ms-deli:u:0001',
+      audioPath: json['audio_path'] as String?,
+      culturalNote: json['cultural_note'] as String?,
+      pronunciation: json['pronunciation'] as String?,
+      region: json['region'] as String?,
+      confidence: json['confidence'] as String? ?? 'high',
+      sources: parseSources(json['sources'] ?? json['sources_json']),
+      validationStatus: json['validation_status'] as String? ?? 'draft',
+      deprecated: json['deprecated'] == 1 || json['deprecated'] == true,
+    );
+  }
 }
 
 class SentenceModel {
@@ -164,6 +328,9 @@ class SentenceModel {
     required this.wordIds,
     required this.level,
     required this.validationStatus,
+    this.region,
+    this.confidence = 'high',
+    this.sources = const [],
   });
 
   final String id;
@@ -172,6 +339,9 @@ class SentenceModel {
   final String indonesia;
   final List<String> wordIds;
   final int level;
+  final String? region;
+  final String confidence;
+  final List<String> sources;
   final String validationStatus;
 
   factory SentenceModel.fromJson(Map<String, dynamic> json) {
@@ -179,13 +349,20 @@ class SentenceModel {
         (json['word_ids_json'] != null
             ? jsonDecode(json['word_ids_json'] as String)
             : const <dynamic>[]);
+    final rawSources = json['sources'] ??
+        (json['sources_json'] != null && (json['sources_json'] as String).isNotEmpty
+            ? jsonDecode(json['sources_json'] as String)
+            : const <dynamic>[]);
     return SentenceModel(
       id: json['id'] as String,
       courseId: json['course_id'] as String? ?? 'ms-deli',
-      deli: json['deli'] as String,
-      indonesia: json['indonesia'] as String,
+      deli: (json['deli'] ?? json['sentence'] ?? '') as String,
+      indonesia: (json['indonesia'] ?? json['translation'] ?? '') as String,
       wordIds: (rawWordIds as List<dynamic>).map((e) => e.toString()).toList(),
       level: (json['level'] as num?)?.toInt() ?? 1,
+      region: json['region'] as String?,
+      confidence: json['confidence'] as String? ?? 'high',
+      sources: (rawSources as List<dynamic>).map((e) => e.toString()).toList(),
       validationStatus: json['validation_status'] as String? ?? 'draft',
     );
   }
@@ -210,8 +387,8 @@ class DialogueLineModel {
             (json['line_order'] as num?)?.toInt() ??
             1,
         speaker: json['speaker'] as String? ?? 'Penutur',
-        deli: json['deli'] as String? ?? '',
-        indonesia: json['indonesia'] as String? ?? '',
+        deli: (json['deli'] ?? json['text'] ?? '') as String,
+        indonesia: (json['indonesia'] ?? json['translation'] ?? '') as String,
       );
 }
 
@@ -380,7 +557,11 @@ class CollectionCardModel {
   final String? articleId;
   final String validationStatus;
 
-  String get category => 'Budaya Deli';
+  String get category => switch (courseId) {
+        'ms-langkat' => 'Budaya Langkat',
+        'ms-palembang' => 'Budaya Palembang',
+        _ => 'Budaya Deli',
+      };
 
   factory CollectionCardModel.fromJson(Map<String, dynamic> json) =>
       CollectionCardModel(
@@ -420,7 +601,7 @@ class LessonModel {
         'vocab' => 'Kosakata',
         'phrase' => 'Frasa Harian',
         'dialogue' => 'Percakapan',
-        'culture' => 'Budaya & Jawi',
+        'culture' => 'Budaya & Kaidah',
         'jawi' => 'Aksara Jawi',
         'review' => 'Ulasan Unit',
         'boss' => 'Tantangan Boss',
@@ -561,4 +742,260 @@ class QuizBankItemModel {
           json['needs_verification'] == true || json['needs_verification'] == 1,
     );
   }
+}
+
+/// Model modul dialek yang terpasang di perangkat (`installed_modules`).
+class InstalledModuleModel {
+  const InstalledModuleModel({
+    required this.moduleId,
+    required this.courseId,
+    required this.version,
+    required this.isBundled,
+    required this.sha256,
+    required this.sizeBytes,
+    required this.installedAt,
+    required this.updatedAt,
+    this.installPath,
+    this.wordCount = 0,
+    this.lessonCount = 0,
+  });
+
+  final String moduleId;
+  final String courseId;
+  final int version;
+  final bool isBundled;
+  final String? installPath;
+  final String sha256;
+  final int sizeBytes;
+  final DateTime installedAt;
+  final DateTime updatedAt;
+  final int wordCount;
+  final int lessonCount;
+
+  factory InstalledModuleModel.fromJson(Map<String, dynamic> json) =>
+      InstalledModuleModel(
+        moduleId: (json['module_id'] ?? json['course_id'] ?? 'ms-deli').toString(),
+        courseId: (json['course_id'] ?? json['module_id'] ?? 'ms-deli').toString(),
+        version: int.tryParse(json['version']?.toString() ?? '') ?? 1,
+        isBundled: json['is_bundled'] == true || json['is_bundled'] == 1,
+        installPath: json['install_path'] as String?,
+        sha256: json['sha256'] as String? ?? '',
+        sizeBytes: (json['size_bytes'] as num?)?.toInt() ?? 0,
+        installedAt: DateTime.tryParse(json['installed_at']?.toString() ?? '') ??
+            DateTime.now(),
+        updatedAt: DateTime.tryParse(json['updated_at']?.toString() ?? '') ??
+            DateTime.now(),
+        wordCount: (json['word_count'] as num?)?.toInt() ?? 0,
+        lessonCount: (json['lesson_count'] as num?)?.toInt() ?? 0,
+      );
+
+  Map<String, dynamic> toJson() => {
+        'module_id': moduleId,
+        'course_id': courseId,
+        'version': version,
+        'is_bundled': isBundled,
+        'install_path': installPath,
+        'sha256': sha256,
+        'size_bytes': sizeBytes,
+        'installed_at': installedAt.toIso8601String(),
+        'updated_at': updatedAt.toIso8601String(),
+        'word_count': wordCount,
+        'lesson_count': lessonCount,
+      };
+}
+
+/// Model katalog modul unduhan (`module_catalog.json`).
+class ModuleCatalogItemModel {
+  const ModuleCatalogItemModel({
+    required this.id,
+    required this.courseId,
+    required this.name,
+    required this.regionLabel,
+    required this.version,
+    required this.isBundled,
+    required this.accentHex,
+    this.downloadUrl,
+    this.sha256,
+    this.sizeBytes = 0,
+    this.vocabularyCount = 0,
+    this.lessonCount = 0,
+    this.quizCount = 0,
+    this.archiveFilename,
+    this.description = '',
+  });
+
+  final String id;
+  final String courseId;
+  final String name;
+  final String regionLabel;
+  final int version;
+  final bool isBundled;
+  final String accentHex;
+  final String? downloadUrl;
+  final String? sha256;
+  final int sizeBytes;
+  final int vocabularyCount;
+  final int lessonCount;
+  final int quizCount;
+  final String? archiveFilename;
+  final String description;
+
+  factory ModuleCatalogItemModel.fromJson(Map<String, dynamic> json) {
+    final rawId =
+        (json['id'] ?? json['dialect_id'] ?? json['course_id'] ?? 'ms-deli')
+            .toString();
+    final cid = json['course_id'] as String? ??
+        switch (rawId) {
+          'melayu_langkat' => 'ms-langkat',
+          'melayu_palembang' => 'ms-palembang',
+          _ => rawId,
+        };
+    final rawVersion = json['content_version'] ?? json['version'];
+    final parsedVersion = rawVersion is num
+        ? rawVersion.toInt()
+        : (int.tryParse(rawVersion?.toString() ?? '') ?? 1);
+
+    return ModuleCatalogItemModel(
+      id: rawId,
+      courseId: cid,
+      name: json['name'] as String? ?? '',
+      regionLabel: json['region_label'] as String? ?? '',
+      version: parsedVersion,
+      isBundled: json['is_bundled'] == true || json['is_bundled'] == 1,
+      accentHex: json['accent_hex'] as String? ?? '#F5B700',
+      downloadUrl: json['download_url'] as String?,
+      sha256: json['sha256'] as String?,
+      sizeBytes: (json['size_bytes'] as num?)?.toInt() ?? 0,
+      vocabularyCount:
+          ((json['vocabulary_count'] ?? json['word_count']) as num?)?.toInt() ??
+              0,
+      lessonCount: (json['lesson_count'] as num?)?.toInt() ?? 0,
+      quizCount: (json['quiz_count'] as num?)?.toInt() ?? 0,
+      archiveFilename: json['archive_filename'] as String?,
+      description: json['description'] as String? ?? '',
+    );
+  }
+}
+
+/// Model sumber referensi linguistik & budaya (`dialect_references`).
+class DialectReferenceModel {
+  const DialectReferenceModel({
+    required this.id,
+    required this.courseId,
+    required this.dialectId,
+    required this.title,
+    required this.author,
+    required this.sourceType,
+    required this.reliability,
+    this.publicationYear,
+    this.publisher,
+    this.url,
+    this.accessedAt,
+    this.supportedDomain,
+  });
+
+  final String id;
+  final String courseId;
+  final String dialectId;
+  final String title;
+  final String author;
+  final int? publicationYear;
+  final String? publisher;
+  final String sourceType;
+  final String? url;
+  final String? accessedAt;
+  final String reliability;
+  final String? supportedDomain;
+
+  factory DialectReferenceModel.fromJson(Map<String, dynamic> json) =>
+      DialectReferenceModel(
+        id: json['id'] as String,
+        courseId: json['course_id'] as String? ?? 'ms-deli',
+        dialectId: json['dialect_id'] as String? ?? 'melayu_deli',
+        title: json['title'] as String,
+        author: (json['author'] ??
+                (json['authors'] is List
+                    ? (json['authors'] as List).join(', ')
+                    : 'Tim Peneliti'))
+            .toString(),
+        publicationYear:
+            ((json['publication_year'] ?? json['year']) as num?)?.toInt(),
+        publisher: (json['publisher'] ?? json['institution']) as String?,
+        sourceType: (json['source_type'] ?? json['type'] ?? 'academic') as String,
+        url: json['url'] as String?,
+        accessedAt: json['accessed_at'] as String?,
+        reliability: json['reliability'] as String? ?? 'high',
+        supportedDomain:
+            (json['supported_domain'] ?? json['notes']) as String?,
+      );
+
+  Map<String, dynamic> toJson() => {
+        'id': id,
+        'course_id': courseId,
+        'dialect_id': dialectId,
+        'title': title,
+        'author': author,
+        'publication_year': publicationYear,
+        'publisher': publisher,
+        'source_type': sourceType,
+        'url': url,
+        'accessed_at': accessedAt,
+        'reliability': reliability,
+        'supported_domain': supportedDomain,
+      };
+}
+
+/// Model baris perbandingan kosakata antar-dialek (Indonesia | Deli | Langkat | Palembang).
+class DialectComparisonRowModel {
+  const DialectComparisonRowModel({
+    String? indonesia,
+    String? indonesianTerm,
+    required this.category,
+    this.conceptId,
+    this.deliWord,
+    this.langkatWord,
+    this.palembangWord,
+    String? phonologicalNote,
+    String? linguisticNote,
+    String? deliTerm,
+    String? deliPronunciation,
+    String? langkatTerm,
+    String? langkatPronunciation,
+    String? palembangTerm,
+    String? palembangPronunciation,
+  })  : indonesia = indonesia ?? indonesianTerm ?? '',
+        phonologicalNote = phonologicalNote ?? linguisticNote,
+        deliTermText = deliTerm,
+        deliPronunciationText = deliPronunciation,
+        langkatTermText = langkatTerm,
+        langkatPronunciationText = langkatPronunciation,
+        palembangTermText = palembangTerm,
+        palembangPronunciationText = palembangPronunciation;
+
+  final String? conceptId;
+  final String indonesia;
+  final String category;
+  final WordModel? deliWord;
+  final WordModel? langkatWord;
+  final WordModel? palembangWord;
+  final String? phonologicalNote;
+
+  final String? deliTermText;
+  final String? deliPronunciationText;
+  final String? langkatTermText;
+  final String? langkatPronunciationText;
+  final String? palembangTermText;
+  final String? palembangPronunciationText;
+
+  String get indonesianTerm => indonesia;
+  String get deliTerm => deliTermText ?? deliWord?.deli ?? '-';
+  String get deliPronunciation =>
+      deliPronunciationText ?? deliWord?.pronunciation ?? '';
+  String get langkatTerm => langkatTermText ?? langkatWord?.deli ?? '-';
+  String get langkatPronunciation =>
+      langkatPronunciationText ?? langkatWord?.pronunciation ?? '';
+  String get palembangTerm => palembangTermText ?? palembangWord?.deli ?? '-';
+  String get palembangPronunciation =>
+      palembangPronunciationText ?? palembangWord?.pronunciation ?? '';
+  String get linguisticNote => phonologicalNote ?? '';
 }

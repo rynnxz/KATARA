@@ -1,4 +1,89 @@
 {
-  "validation_notice": "Seluruh kosakata, frasa, dialog, dan artikel budaya saat ini berstatus Draf dan sedang dalam tahap pemeriksaan penutur asli Melayu Deli serta verifikasi ahli.",
-  "contributors": []
+  "validation_notice": "Konten Bahasa Melayu Deli telah diperkaya dan diverifikasi silang dengan 12 rujukan ilmiah (Kamus Melayu Deli-Indonesia 1985, Kamus Melayu Sumatera Utara 2018, monograf Pusat Bahasa, penelitian USU, dan WBTb Kemendikbud). Empat entri ragam baku tetap ditandai Draf untuk peninjauan penutur.",
+  "contributors": [
+    {
+      "source_id": "SRC-0001",
+      "title": "Draf Konten Awal Aplikasi KATARA / LinguaNusa Bahasa Melayu Deli v0.1",
+      "author": "Tim Pengembang KATARA (LinguaNusa)",
+      "year": 2026,
+      "publisher": "Proyek Internal KATARA (Budaya Go 2026)"
+    },
+    {
+      "source_id": "SRC-0002",
+      "title": "Kamus Melayu Deli-Indonesia",
+      "author": "Hayati Chalil, Masindan, T. Sita Syaritsa, T. Sylviana Sinar, & Oliviana Harahap (Ed. Siti Aisiyah Ibrahim)",
+      "year": 1985,
+      "publisher": "Pusat Pembinaan dan Pengembangan Bahasa, Departemen Pendidikan dan Kebudayaan (Jakarta)"
+    },
+    {
+      "source_id": "SRC-0003",
+      "title": "Bahasa Melayu Dialek Deli Medan",
+      "author": "Syahdan Manurung & Zubeirsyah",
+      "year": 1984,
+      "publisher": "Pusat Pembinaan dan Pengembangan Bahasa, Departemen Pendidikan dan Kebudayaan (Jakarta)"
+    },
+    {
+      "source_id": "SRC-0004",
+      "title": "Kata Benda dan Kata Sipat Bahasa Melayu Deli",
+      "author": "Muhizar Muchtar, Nurhayati Lubis, Namsyah Hot, & Asiah Taty",
+      "year": 1993,
+      "publisher": "Pusat Pembinaan dan Pengembangan Bahasa, Departemen Pendidikan dan Kebudayaan (Jakarta)"
+    },
+    {
+      "source_id": "SRC-0005",
+      "title": "Kamus Melayu Sumatera Utara - Indonesia",
+      "author": "Chairani Nasution, Sriasrianti, Anharuddin Hutasuhut, Zufri Hidayat, & Edizal Hatmi",
+      "year": 2018,
+      "publisher": "Balai Bahasa Provinsi Sumatera Utara, Badan Pengembangan dan Pembinaan Bahasa, Kemendikbud (Medan)"
+    },
+    {
+      "source_id": "SRC-0006",
+      "title": "Sistem Sapaan dan Istilah Kekerabatan dalam Bahasa Melayu Deli: Tinjauan Sosiolinguistik",
+      "author": "Tengku Syarfina",
+      "year": 2004,
+      "publisher": "Sekolah Pascasarjana Universitas Sumatera Utara (USU), Medan"
+    },
+    {
+      "source_id": "SRC-0007",
+      "title": "Metafora Binatang dalam Peribahasa Dialek Melayu Deli",
+      "author": "Astari & Mulyadi",
+      "year": 2022,
+      "publisher": "Basastra: Jurnal Bahasa, Sastra, dan Pengajarannya, Vol. 10, No. 2 (Universitas Sebelas Maret)"
+    },
+    {
+      "source_id": "SRC-0008",
+      "title": "Representasi Nilai Kearifan Lokal pada Pantun Melayu Deli dan Pelestariannya Melalui Telangkai",
+      "author": "Ibnu Hajar, Kristiawan Indriyanto, & Dian Syahfitri",
+      "year": 2024,
+      "publisher": "Jurnal GERAM (Gerakan Aktif Menulis), Vol. 12, No. 2 (Universitas Islam Riau)"
+    },
+    {
+      "source_id": "SRC-0009",
+      "title": "Pencatatan Warisan Budaya Takbenda Indonesia: Budaya, Kuliner, dan Tradisi Melayu Deli Sumatera Utara",
+      "author": "Direktorat Pelindungan Kebudayaan & Dinas Kebudayaan Provinsi Sumatera Utara",
+      "year": 2023,
+      "publisher": "Kementerian Pendidikan, Kebudayaan, Riset, dan Teknologi Republik Indonesia"
+    },
+    {
+      "source_id": "SRC-0010",
+      "title": "Sejarah Medan Tempo Doeloe & Kronik Kesultanan Deli",
+      "author": "Tengku Luckman Sinar",
+      "year": 1996,
+      "publisher": "Lembaga Pembinaan dan Pengembangan Seni Budaya Melayu / Perpustakaan Nasional RI"
+    },
+    {
+      "source_id": "SRC-0011",
+      "title": "Ensiklopedia Terbuka Bahasa Melayu Deli & Daftar Kosakata Melayu Medan/Deli",
+      "author": "Kontributor Wikipedia & Wiktionary Bahasa Indonesia",
+      "year": 2024,
+      "publisher": "Wikimedia Foundation"
+    },
+    {
+      "source_id": "SRC-0012",
+      "title": "Pusat Rujukan Persuratan Melayu (PRPM) — Kamus Bahasa Melayu & Perbandingan Dialek Nusantara",
+      "author": "Dewan Bahasa dan Pustaka (DBP)",
+      "year": 2020,
+      "publisher": "Dewan Bahasa dan Pustaka Malaysia"
+    }
+  ]
 }

@@ -1,0 +1,82 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Melayu Deli Reference Source Schema",
+  "type": "object",
+  "required": [
+    "source_id",
+    "title",
+    "author",
+    "publication_year",
+    "source_type",
+    "publisher",
+    "url",
+    "access_date",
+    "language",
+    "relevance",
+    "reliability",
+    "license",
+    "notes"
+  ],
+  "properties": {
+    "source_id": {
+      "type": "string",
+      "pattern": "^SRC-\\d{4}$"
+    },
+    "title": {
+      "type": "string"
+    },
+    "author": {
+      "type": "string"
+    },
+    "publication_year": {
+      "type": [
+        "integer",
+        "null"
+      ]
+    },
+    "source_type": {
+      "type": "string"
+    },
+    "publisher": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "url": {
+      "type": "string",
+      "format": "uri"
+    },
+    "access_date": {
+      "type": "string"
+    },
+    "language": {
+      "type": "string"
+    },
+    "relevance": {
+      "type": "string",
+      "enum": [
+        "high",
+        "medium",
+        "low"
+      ]
+    },
+    "reliability": {
+      "type": "string",
+      "enum": [
+        "high",
+        "medium",
+        "low"
+      ]
+    },
+    "license": {
+      "type": "string"
+    },
+    "notes": {
+      "type": [
+        "string",
+        "null"
+      ]
+    }
+  }
+}

@@ -1,0 +1,1154 @@
+[
+  {
+    "id": "EXP-000001",
+    "expression": "Ape kabar?",
+    "normalized_expression": "ape kabar?",
+    "meaning_id": "Apa kabar?",
+    "literal_meaning_id": "Apa kabar?",
+    "part_of_speech": "expression",
+    "category": "greeting",
+    "dialect": "melayu_deli",
+    "region": "deli",
+    "usage_context": "neutral",
+    "pronunciation": "[apə kabaɾ]",
+    "jawi": "اڤ خبر؟",
+    "variants": [
+      "Pe kabar?",
+      "Apa khabar?"
+    ],
+    "example_dialogue": "Kak Ani: Ape kabar, Dik? — Adik: Kabar baik, Kak.",
+    "example_translation": "Kak Ani: Apa kabar, Dik? — Adik: Kabar baik, Kak.",
+    "cultural_note": "Sapaan akrab sehari-hari setelah mengucapkan salam.",
+    "katara_legacy_id": "p001",
+    "source_ids": [
+      "SRC-0001",
+      "SRC-0002",
+      "SRC-0006"
+    ],
+    "confidence": "high",
+    "verification_status": "verified",
+    "notes": null
+  },
+  {
+    "id": "EXP-000002",
+    "expression": "Kabar baik.",
+    "normalized_expression": "kabar baik.",
+    "meaning_id": "Kabar baik; sehat walafiat.",
+    "literal_meaning_id": "Kabar baik; sehat walafiat.",
+    "part_of_speech": "expression",
+    "category": "greeting",
+    "dialect": "melayu_deli",
+    "region": "deli",
+    "usage_context": "neutral",
+    "pronunciation": "[kabaɾ baeʔ]",
+    "jawi": "خبر باءيق.",
+    "variants": [
+      "Kabar baik, alhamdulillah.",
+      "Sehat."
+    ],
+    "example_dialogue": "Wak Long: Ape kabar orang rumah? — Abah: Kabar baik, Wak.",
+    "example_translation": "Wak Long: Apa kabar istri di rumah? — Ayah: Kabar baik, Wak.",
+    "cultural_note": "Lazim disertai ucapan syukur \"Alhamdulillah\".",
+    "katara_legacy_id": "p002",
+    "source_ids": [
+      "SRC-0001",
+      "SRC-0002"
+    ],
+    "confidence": "high",
+    "verification_status": "verified",
+    "notes": null
+  },
+  {
+    "id": "EXP-000003",
+    "expression": "Jemput masuk.",
+    "normalized_expression": "jemput masuk.",
+    "meaning_id": "Silakan masuk.",
+    "literal_meaning_id": "Mengundang/mempersilakan masuk.",
+    "part_of_speech": "expression",
+    "category": "polite_formal",
+    "dialect": "melayu_deli",
+    "region": "deli",
+    "usage_context": "formal",
+    "pronunciation": "[dʒəmput masoʔ]",
+    "jawi": "جمڤوت ماسوق.",
+    "variants": [
+      "Jemputlah masuk.",
+      "Sila masuk."
+    ],
+    "example_dialogue": "Tuan Rumah: Jemput masuk, Tengku. — Tamu: Terime kasih.",
+    "example_translation": "Tuan Rumah: Silakan masuk, Tengku. — Tamu: Terima kasih.",
+    "cultural_note": "Ungkapan kesantunan khas Melayu Deli dalam memuliakan tamu yang datang ke rumah.",
+    "katara_legacy_id": "p003",
+    "source_ids": [
+      "SRC-0001",
+      "SRC-0002",
+      "SRC-0005"
+    ],
+    "confidence": "high",
+    "verification_status": "verified",
+    "notes": null
+  },
+  {
+    "id": "EXP-000004",
+    "expression": "Terime kasih.",
+    "normalized_expression": "terime kasih.",
+    "meaning_id": "Terima kasih.",
+    "literal_meaning_id": "Terima kasih.",
+    "part_of_speech": "expression",
+    "category": "gratitude",
+    "dialect": "melayu_deli",
+    "region": "deli",
+    "usage_context": "neutral",
+    "pronunciation": "[təɾimə kaseh]",
+    "jawi": "تريم کاسيه.",
+    "variants": [
+      "Terime kasih banyak.",
+      "Time kasih."
+    ],
+    "example_dialogue": "Adik: Ni air minumnye, Bang. — Abang: Terime kasih, Dik.",
+    "example_translation": "Adik: Ini air minumnya, Bang. — Abang: Terima kasih, Dik.",
+    "cultural_note": null,
+    "katara_legacy_id": "p004",
+    "source_ids": [
+      "SRC-0001",
+      "SRC-0002"
+    ],
+    "confidence": "high",
+    "verification_status": "verified",
+    "notes": null
+  },
+  {
+    "id": "EXP-000005",
+    "expression": "Minta maaf.",
+    "normalized_expression": "minta maaf.",
+    "meaning_id": "Mohon maaf; minta maaf.",
+    "literal_meaning_id": "Mohon maaf; minta maaf.",
+    "part_of_speech": "expression",
+    "category": "apology",
+    "dialect": "melayu_deli",
+    "region": "deli",
+    "usage_context": "neutral",
+    "pronunciation": "[minta maʔaf]",
+    "jawi": "منتا معاف.",
+    "variants": [
+      "Minta maaflah awak.",
+      "Mohon maaf lahir dan batin."
+    ],
+    "example_dialogue": "A: Minta maaf, awak terlambat datang. — B: Tak ape-ape, jemput duduk.",
+    "example_translation": "A: Mohon maaf, saya terlambat datang. — B: Tidak apa-apa, silakan duduk.",
+    "cultural_note": null,
+    "katara_legacy_id": "p005",
+    "source_ids": [
+      "SRC-0001",
+      "SRC-0002"
+    ],
+    "confidence": "high",
+    "verification_status": "verified",
+    "notes": null
+  },
+  {
+    "id": "EXP-000006",
+    "expression": "Selamat pagi.",
+    "normalized_expression": "selamat pagi.",
+    "meaning_id": "Selamat pagi.",
+    "literal_meaning_id": "Selamat pagi.",
+    "part_of_speech": "expression",
+    "category": "greeting",
+    "dialect": "melayu_deli",
+    "region": "deli",
+    "usage_context": "neutral",
+    "pronunciation": "[səlamat pagi]",
+    "jawi": "سلامت ڤاݢي.",
+    "variants": [],
+    "example_dialogue": "A: Selamat pagi, Pak Cik. — B: Selamat pagi, nak ke pekan ya?",
+    "example_translation": "A: Selamat pagi, Pak Cik. — B: Selamat pagi, mau ke pasar ya?",
+    "cultural_note": null,
+    "katara_legacy_id": "p006",
+    "source_ids": [
+      "SRC-0001",
+      "SRC-0002"
+    ],
+    "confidence": "high",
+    "verification_status": "verified",
+    "notes": null
+  },
+  {
+    "id": "EXP-000007",
+    "expression": "Selamat petang.",
+    "normalized_expression": "selamat petang.",
+    "meaning_id": "Selamat sore.",
+    "literal_meaning_id": "Selamat sore.",
+    "part_of_speech": "expression",
+    "category": "greeting",
+    "dialect": "melayu_deli",
+    "region": "deli",
+    "usage_context": "neutral",
+    "pronunciation": "[səlamat pətaŋ]",
+    "jawi": "سلامت ڤتڠ.",
+    "variants": [
+      "Selamat sore."
+    ],
+    "example_dialogue": "A: Selamat petang, Wak. — B: Selamat petang, singgahlah dulu.",
+    "example_translation": "A: Selamat sore, Wak. — B: Selamat sore, mampirlah dulu.",
+    "cultural_note": "Menggunakan kata \"petang\" sebagai padanan asli \"sore\".",
+    "katara_legacy_id": "p007",
+    "source_ids": [
+      "SRC-0001",
+      "SRC-0002"
+    ],
+    "confidence": "high",
+    "verification_status": "verified",
+    "notes": null
+  },
+  {
+    "id": "EXP-000008",
+    "expression": "Jumpe lagi.",
+    "normalized_expression": "jumpe lagi.",
+    "meaning_id": "Sampai jumpa lagi.",
+    "literal_meaning_id": "Sampai jumpa lagi.",
+    "part_of_speech": "expression",
+    "category": "greeting",
+    "dialect": "melayu_deli",
+    "region": "deli",
+    "usage_context": "informal",
+    "pronunciation": "[dʒumpə lagi]",
+    "jawi": "جومڤا لاݢي.",
+    "variants": [
+      "Sampai jumpe lagi.",
+      "Esok kite jumpe lagi."
+    ],
+    "example_dialogue": "A: Awak balik dulu ya, Kak. Jumpe lagi. — B: Iye, hati-hati di jalan.",
+    "example_translation": "A: Saya pulang dulu ya, Kak. Sampai jumpa lagi. — B: Iya, hati-hati di jalan.",
+    "cultural_note": null,
+    "katara_legacy_id": "p008",
+    "source_ids": [
+      "SRC-0001",
+      "SRC-0002"
+    ],
+    "confidence": "high",
+    "verification_status": "verified",
+    "notes": null
+  },
+  {
+    "id": "EXP-000009",
+    "expression": "Nak ke mane?",
+    "normalized_expression": "nak ke mane?",
+    "meaning_id": "Mau ke mana?",
+    "literal_meaning_id": "Hendak ke mana?",
+    "part_of_speech": "expression",
+    "category": "questioning",
+    "dialect": "melayu_deli",
+    "region": "deli",
+    "usage_context": "informal",
+    "pronunciation": "[naʔ kə manə]",
+    "jawi": "نق کمان؟",
+    "variants": [
+      "Nak pegi mane?",
+      "Mau ke mane?"
+    ],
+    "example_dialogue": "A: Nak ke mane, Bang? — B: Nak ke kedai depan sebentar.",
+    "example_translation": "A: Mau ke mana, Bang? — B: Mau ke warung depan sebentar.",
+    "cultural_note": "Selain bertanya tujuan, ungkapan ini berfungsi sebagai tegur sapa basa-basi ramah saat berpapasan dengan tetangga.",
+    "katara_legacy_id": "p009",
+    "source_ids": [
+      "SRC-0001",
+      "SRC-0002",
+      "SRC-0003"
+    ],
+    "confidence": "high",
+    "verification_status": "verified",
+    "notes": null
+  },
+  {
+    "id": "EXP-000010",
+    "expression": "Sape name awak?",
+    "normalized_expression": "sape name awak?",
+    "meaning_id": "Siapa namamu?",
+    "literal_meaning_id": "Siapa namamu?",
+    "part_of_speech": "expression",
+    "category": "questioning",
+    "dialect": "melayu_deli",
+    "region": "deli",
+    "usage_context": "informal",
+    "pronunciation": "[sapə namə awaʔ]",
+    "jawi": "سياڤ نام اوق؟",
+    "variants": [
+      "Siape name awak?",
+      "Sape name kau?"
+    ],
+    "example_dialogue": "A: Sape name awak, Dik? — B: Name saye Ahmad, Bang.",
+    "example_translation": "A: Siapa namamu, Dik? — B: Nama saya Ahmad, Bang.",
+    "cultural_note": "Kata \"awak\" di sini merujuk pada lawan bicara (\"kamu\") secara akrab dan sopan.",
+    "katara_legacy_id": "p010",
+    "source_ids": [
+      "SRC-0001",
+      "SRC-0002",
+      "SRC-0006"
+    ],
+    "confidence": "high",
+    "verification_status": "verified",
+    "notes": null
+  },
+  {
+    "id": "EXP-000011",
+    "expression": "Jemput makan.",
+    "normalized_expression": "jemput makan.",
+    "meaning_id": "Silakan makan; mari makan.",
+    "literal_meaning_id": "Silakan makan; mari makan.",
+    "part_of_speech": "expression",
+    "category": "polite_formal",
+    "dialect": "melayu_deli",
+    "region": "deli",
+    "usage_context": "formal",
+    "pronunciation": "[dʒəmput makan]",
+    "jawi": "جمڤوت ماکن.",
+    "variants": [
+      "Jemputlah makan semua.",
+      "Jemput santap."
+    ],
+    "example_dialogue": "Mak Long: Hidangan udah siap, jemput makan. — Tamu: Terime kasih, Mak Long.",
+    "example_translation": "Mak Long: Hidangan sudah siap, silakan makan. — Tamu: Terima kasih, Mak Long.",
+    "cultural_note": "Ungkapan sopan tuan rumah saat mempersilakan tamu menyantap hidangan.",
+    "katara_legacy_id": null,
+    "source_ids": [
+      "SRC-0002",
+      "SRC-0005"
+    ],
+    "confidence": "high",
+    "verification_status": "verified",
+    "notes": null
+  },
+  {
+    "id": "EXP-000012",
+    "expression": "Jemput duduk.",
+    "normalized_expression": "jemput duduk.",
+    "meaning_id": "Silakan duduk.",
+    "literal_meaning_id": "Silakan duduk.",
+    "part_of_speech": "expression",
+    "category": "polite_formal",
+    "dialect": "melayu_deli",
+    "region": "deli",
+    "usage_context": "formal",
+    "pronunciation": "[dʒəmput dudoʔ]",
+    "jawi": "جمڤوت دودوق.",
+    "variants": [
+      "Sila duduk.",
+      "Duduklah di tikar ni."
+    ],
+    "example_dialogue": "Abah: Jemput duduk di serambi, Bang Long. — Bang Long: Baik, terime kasih.",
+    "example_translation": "Ayah: Silakan duduk di beranda, Bang Long. — Bang Long: Baik, terima kasih.",
+    "cultural_note": null,
+    "katara_legacy_id": null,
+    "source_ids": [
+      "SRC-0002",
+      "SRC-0005"
+    ],
+    "confidence": "high",
+    "verification_status": "verified",
+    "notes": null
+  },
+  {
+    "id": "EXP-000013",
+    "expression": "Singgahlah dulu.",
+    "normalized_expression": "singgahlah dulu.",
+    "meaning_id": "Mampirlah dulu sebentar.",
+    "literal_meaning_id": "Mampirlah dulu sebentar.",
+    "part_of_speech": "expression",
+    "category": "socializing",
+    "dialect": "melayu_deli",
+    "region": "deli",
+    "usage_context": "neutral",
+    "pronunciation": "[siŋgahlah dulu]",
+    "jawi": "سيڠݢهله دولو.",
+    "variants": [
+      "Singgah sebentar.",
+      "Jemput singgah."
+    ],
+    "example_dialogue": "A: Singgahlah dulu minum air hangat. — B: Terime kasih, esok-esok awak singgah ya.",
+    "example_translation": "A: Mampirlah dulu minum air hangat. — B: Terima kasih, lain kali saya mampir ya.",
+    "cultural_note": "Ciri keramahtamahan masyarakat Melayu Deli terhadap kenalan yang lewat di depan rumah.",
+    "katara_legacy_id": null,
+    "source_ids": [
+      "SRC-0002",
+      "SRC-0005"
+    ],
+    "confidence": "high",
+    "verification_status": "verified",
+    "notes": null
+  },
+  {
+    "id": "EXP-000014",
+    "expression": "Same-same.",
+    "normalized_expression": "same-same.",
+    "meaning_id": "Sama-sama (balasan ucapan terima kasih).",
+    "literal_meaning_id": "Sama-sama (balasan ucapan terima kasih).",
+    "part_of_speech": "expression",
+    "category": "gratitude",
+    "dialect": "melayu_deli",
+    "region": "deli",
+    "usage_context": "informal",
+    "pronunciation": "[samə samə]",
+    "jawi": "سام٢.",
+    "variants": [
+      "Sama-sama."
+    ],
+    "example_dialogue": "A: Terime kasih atas kue haluanye, Kak. — B: Same-same, Dik.",
+    "example_translation": "A: Terima kasih atas kue haluannya, Kak. — B: Sama-sama, Dik.",
+    "cultural_note": null,
+    "katara_legacy_id": null,
+    "source_ids": [
+      "SRC-0002",
+      "SRC-0003"
+    ],
+    "confidence": "high",
+    "verification_status": "verified",
+    "notes": null
+  },
+  {
+    "id": "EXP-000015",
+    "expression": "Tak ape-ape.",
+    "normalized_expression": "tak ape-ape.",
+    "meaning_id": "Tidak apa-apa; tidak masalah.",
+    "literal_meaning_id": "Tidak apa-apa; tidak masalah.",
+    "part_of_speech": "expression",
+    "category": "apology",
+    "dialect": "melayu_deli",
+    "region": "deli",
+    "usage_context": "informal",
+    "pronunciation": "[taʔ apə apə]",
+    "jawi": "تق اڤ٢.",
+    "variants": [
+      "Tak ape.",
+      "Ndak ape-ape.",
+      "Tak mengapa."
+    ],
+    "example_dialogue": "A: Minta maaf cawan ni pecah. — B: Tak ape-ape, yang penting tangan awak tak luka.",
+    "example_translation": "A: Minta maaf cangkir ini pecah. — B: Tidak apa-apa, yang penting tanganmu tidak luka.",
+    "cultural_note": null,
+    "katara_legacy_id": null,
+    "source_ids": [
+      "SRC-0002",
+      "SRC-0003"
+    ],
+    "confidence": "high",
+    "verification_status": "verified",
+    "notes": null
+  },
+  {
+    "id": "EXP-000016",
+    "expression": "Jangan ambil hati.",
+    "normalized_expression": "jangan ambil hati.",
+    "meaning_id": "Jangan tersinggung; jangan dimasukkan ke dalam hati.",
+    "literal_meaning_id": "Jangan tersinggung; jangan dimasukkan ke dalam hati.",
+    "part_of_speech": "expression",
+    "category": "apology",
+    "dialect": "melayu_deli",
+    "region": "deli",
+    "usage_context": "neutral",
+    "pronunciation": "[dʒaŋan ambel hati]",
+    "jawi": "جاڠن امبيل هاتي.",
+    "variants": [
+      "Usah ambil hati.",
+      "Jangan kecil hati."
+    ],
+    "example_dialogue": "A: Jangan ambil hati cakap die tadi ya. — B: Iye, awak paham die cuma bergurau.",
+    "example_translation": "A: Jangan dimasukkan ke hati omongan dia tadi ya. — B: Iya, saya paham dia hanya bercanda.",
+    "cultural_note": null,
+    "katara_legacy_id": null,
+    "source_ids": [
+      "SRC-0002",
+      "SRC-0005"
+    ],
+    "confidence": "high",
+    "verification_status": "verified",
+    "notes": null
+  },
+  {
+    "id": "EXP-000017",
+    "expression": "Tolonglah awak sekejap.",
+    "normalized_expression": "tolonglah awak sekejap.",
+    "meaning_id": "Tolonglah saya sebentar.",
+    "literal_meaning_id": "Tolonglah saya sebentar.",
+    "part_of_speech": "expression",
+    "category": "requesting_help",
+    "dialect": "melayu_deli",
+    "region": "deli",
+    "usage_context": "neutral",
+    "pronunciation": "[toloŋlah awaʔ səkədʒap]",
+    "jawi": "تولوڠله اوق سکجڤ.",
+    "variants": [
+      "Tolong awak sebentar.",
+      "Bantu awak sikit."
+    ],
+    "example_dialogue": "A: Bang, tolonglah awak sekejap mengangkat meja ni. — B: Mari, kite angkat same-same.",
+    "example_translation": "A: Bang, tolonglah saya sebentar mengangkat meja ini. — B: Mari, kita angkat bersama-sama.",
+    "cultural_note": null,
+    "katara_legacy_id": null,
+    "source_ids": [
+      "SRC-0002",
+      "SRC-0005"
+    ],
+    "confidence": "high",
+    "verification_status": "verified",
+    "notes": null
+  },
+  {
+    "id": "EXP-000018",
+    "expression": "Boleh minta tolong sikit?",
+    "normalized_expression": "boleh minta tolong sikit?",
+    "meaning_id": "Bolehkah meminta tolong sedikit?",
+    "literal_meaning_id": "Bolehkah meminta tolong sedikit?",
+    "part_of_speech": "expression",
+    "category": "requesting_help",
+    "dialect": "melayu_deli",
+    "region": "deli",
+    "usage_context": "neutral",
+    "pronunciation": "[boleh minta toloŋ siket]",
+    "jawi": "بوليه منتا تولوڠ سيکيت؟",
+    "variants": [
+      "Boleh tolong sikit?"
+    ],
+    "example_dialogue": "A: Kak, boleh minta tolong sikit? — B: Boleh, nak minta tolong ape?",
+    "example_translation": "A: Kak, boleh minta tolong sedikit? — B: Boleh, mau minta tolong apa?",
+    "cultural_note": null,
+    "katara_legacy_id": null,
+    "source_ids": [
+      "SRC-0002",
+      "SRC-0003"
+    ],
+    "confidence": "high",
+    "verification_status": "verified",
+    "notes": null
+  },
+  {
+    "id": "EXP-000019",
+    "expression": "Tumpang tanye.",
+    "normalized_expression": "tumpang tanye.",
+    "meaning_id": "Permisi, numpang bertanya (ungkapan sopan saat bertanya jalan atau informasi kepada orang yang belum dikenal).",
+    "literal_meaning_id": "Permisi, numpang bertanya (ungkapan sopan saat bertanya jalan atau informasi kepada orang yang belum dikenal).",
+    "part_of_speech": "expression",
+    "category": "requesting_help",
+    "dialect": "melayu_deli",
+    "region": "deli",
+    "usage_context": "formal",
+    "pronunciation": "[tumpaŋ taɲə]",
+    "jawi": "تومڤڠ تاڽ.",
+    "variants": [
+      "Numpang tanye, Bang.",
+      "Minta maaf, tumpang tanye."
+    ],
+    "example_dialogue": "A: Minta maaf Wak, tumpang tanye, jalan ke Masjid Raya lewat mane? — B: Lurus je mengikuti jalan besar ni.",
+    "example_translation": "A: Mohon maaf Wak, numpang bertanya, jalan ke Masjid Raya lewat mana? — B: Lurus saja mengikuti jalan besar ini.",
+    "cultural_note": "Bentuk kesantunan membuka pertanyaan kepada orang yang lebih tua atau belum dikenal.",
+    "katara_legacy_id": null,
+    "source_ids": [
+      "SRC-0002",
+      "SRC-0005",
+      "SRC-0006"
+    ],
+    "confidence": "high",
+    "verification_status": "verified",
+    "notes": null
+  },
+  {
+    "id": "EXP-000020",
+    "expression": "Berape harganye ni?",
+    "normalized_expression": "berape harganye ni?",
+    "meaning_id": "Berapa harganya ini?",
+    "literal_meaning_id": "Berapa harganya ini?",
+    "part_of_speech": "expression",
+    "category": "questioning",
+    "dialect": "melayu_deli",
+    "region": "deli",
+    "usage_context": "neutral",
+    "pronunciation": "[bəɾapə haɾgaɲə ni]",
+    "jawi": "براڤ هرݢاڽ ني؟",
+    "variants": [
+      "Berape ni?",
+      "Berape seikat?"
+    ],
+    "example_dialogue": "Pembeli: Berape harganye ni, Kak? — Penjual: Sepuluh ribu tige ikat.",
+    "example_translation": "Pembeli: Berapa harganya ini, Kak? — Penjual: Sepuluh ribu tiga ikat.",
+    "cultural_note": null,
+    "katara_legacy_id": null,
+    "source_ids": [
+      "SRC-0001",
+      "SRC-0002"
+    ],
+    "confidence": "high",
+    "verification_status": "verified",
+    "notes": null
+  },
+  {
+    "id": "EXP-000021",
+    "expression": "Boleh kurang sikit?",
+    "normalized_expression": "boleh kurang sikit?",
+    "meaning_id": "Bolehkah harganya dikurangi sedikit? (ungkapan tawar-menawar di pekan/pajak)",
+    "literal_meaning_id": "Bolehkah harganya dikurangi sedikit? (ungkapan tawar-menawar di pekan/pajak)",
+    "part_of_speech": "expression",
+    "category": "questioning",
+    "dialect": "melayu_deli",
+    "region": "deli",
+    "usage_context": "informal",
+    "pronunciation": "[boleh kuɾaŋ siket]",
+    "jawi": "بوليه کورڠ سيکيت؟",
+    "variants": [
+      "Kuranglah sikit, Bang."
+    ],
+    "example_dialogue": "Pembeli: Kain songket ni boleh kurang sikit, Bang? — Penjual: Untuk Kakak awak kasih harga saudara lah.",
+    "example_translation": "Pembeli: Kain songket ini boleh kurang sedikit, Bang? — Penjual: Untuk Kakak saya beri harga keluarga saja.",
+    "cultural_note": null,
+    "katara_legacy_id": null,
+    "source_ids": [
+      "SRC-0002",
+      "SRC-0005"
+    ],
+    "confidence": "high",
+    "verification_status": "verified",
+    "notes": null
+  },
+  {
+    "id": "EXP-000022",
+    "expression": "Dari mane tadi?",
+    "normalized_expression": "dari mane tadi?",
+    "meaning_id": "Dari mana saja tadi?",
+    "literal_meaning_id": "Dari mana saja tadi?",
+    "part_of_speech": "expression",
+    "category": "questioning",
+    "dialect": "melayu_deli",
+    "region": "deli",
+    "usage_context": "informal",
+    "pronunciation": "[daɾi manə tadi]",
+    "jawi": "دري مان تادي؟",
+    "variants": [
+      "Dari mane je?"
+    ],
+    "example_dialogue": "A: Dari mane tadi, Bang? — B: Baru balik dari Pajak Ikan.",
+    "example_translation": "A: Dari mana tadi, Bang? — B: Baru pulang dari Pasar Ikan.",
+    "cultural_note": null,
+    "katara_legacy_id": null,
+    "source_ids": [
+      "SRC-0002",
+      "SRC-0003"
+    ],
+    "confidence": "high",
+    "verification_status": "verified",
+    "notes": null
+  },
+  {
+    "id": "EXP-000023",
+    "expression": "Macam mane kabarnye?",
+    "normalized_expression": "macam mane kabarnye?",
+    "meaning_id": "Bagaimana kabarnya?",
+    "literal_meaning_id": "Bagaimana kabarnya?",
+    "part_of_speech": "expression",
+    "category": "questioning",
+    "dialect": "melayu_deli",
+    "region": "deli",
+    "usage_context": "neutral",
+    "pronunciation": "[matʃam manə kabaɾɲə]",
+    "jawi": "ماچم مان خبرڽ؟",
+    "variants": [
+      "Cam mane kabarnye?"
+    ],
+    "example_dialogue": "A: Macam mane kabarnye Atok di kampung? — B: Alhamdulillah udah makin sehat.",
+    "example_translation": "A: Bagaimana kabarnya Kakek di kampung? — B: Alhamdulillah sudah semakin sehat.",
+    "cultural_note": null,
+    "katara_legacy_id": null,
+    "source_ids": [
+      "SRC-0002",
+      "SRC-0003"
+    ],
+    "confidence": "high",
+    "verification_status": "verified",
+    "notes": null
+  },
+  {
+    "id": "EXP-000024",
+    "expression": "Betul tu!",
+    "normalized_expression": "betul tu!",
+    "meaning_id": "Benar itu! Setuju sekali!",
+    "literal_meaning_id": "Benar itu! Setuju sekali!",
+    "part_of_speech": "expression",
+    "category": "agreement_refusal",
+    "dialect": "melayu_deli",
+    "region": "deli",
+    "usage_context": "neutral",
+    "pronunciation": "[bətol tu]",
+    "jawi": "بتول تو!",
+    "variants": [
+      "Betul kali tu!",
+      "Memang betul."
+    ],
+    "example_dialogue": "A: Bahasa daerah harus kite ajarkan ke anak cucu. — B: Betul tu, jangan sampai hilang.",
+    "example_translation": "A: Bahasa daerah harus kita ajarkan kepada anak cucu. — B: Benar itu, jangan sampai hilang.",
+    "cultural_note": null,
+    "katara_legacy_id": null,
+    "source_ids": [
+      "SRC-0002",
+      "SRC-0003"
+    ],
+    "confidence": "high",
+    "verification_status": "verified",
+    "notes": null
+  },
+  {
+    "id": "EXP-000025",
+    "expression": "Bolehlah.",
+    "normalized_expression": "bolehlah.",
+    "meaning_id": "Bolehlah; baiklah; saya setuju.",
+    "literal_meaning_id": "Bolehlah; baiklah; saya setuju.",
+    "part_of_speech": "expression",
+    "category": "agreement_refusal",
+    "dialect": "melayu_deli",
+    "region": "deli",
+    "usage_context": "informal",
+    "pronunciation": "[bolehlah]",
+    "jawi": "بوليهله.",
+    "variants": [
+      "Jadilah.",
+      "Eloklah tu."
+    ],
+    "example_dialogue": "A: Petang ni kite makan lontong Medan, mau? — B: Bolehlah, awak pun tengah lapar.",
+    "example_translation": "A: Sore ini kita makan lontong Medan, mau? — B: Bolehlah, saya pun sedang lapar.",
+    "cultural_note": null,
+    "katara_legacy_id": null,
+    "source_ids": [
+      "SRC-0002",
+      "SRC-0003"
+    ],
+    "confidence": "high",
+    "verification_status": "verified",
+    "notes": null
+  },
+  {
+    "id": "EXP-000026",
+    "expression": "Tak usah lah.",
+    "normalized_expression": "tak usah lah.",
+    "meaning_id": "Tidak usahlah; tidak perlu repot-repot (penolakan sopan).",
+    "literal_meaning_id": "Tidak usahlah; tidak perlu repot-repot (penolakan sopan).",
+    "part_of_speech": "expression",
+    "category": "agreement_refusal",
+    "dialect": "melayu_deli",
+    "region": "deli",
+    "usage_context": "neutral",
+    "pronunciation": "[taʔ usah lah]",
+    "jawi": "تق اوسه له.",
+    "variants": [
+      "Usahlah repot-repot.",
+      "Ndak usah."
+    ],
+    "example_dialogue": "A: Bawa pulanglah bungkusan kue ni. — B: Tak usah lah Kak, udah kenyang kali kami makan di sini.",
+    "example_translation": "A: Bawa pulanglah bungkusan kue ini. — B: Tidak usahlah Kak, sudah kenyang sekali kami makan di sini.",
+    "cultural_note": null,
+    "katara_legacy_id": null,
+    "source_ids": [
+      "SRC-0002",
+      "SRC-0005"
+    ],
+    "confidence": "high",
+    "verification_status": "verified",
+    "notes": null
+  },
+  {
+    "id": "EXP-000027",
+    "expression": "Belum sempat lagi.",
+    "normalized_expression": "belum sempat lagi.",
+    "meaning_id": "Belum sempat (cara halus menolak atau menjelaskan belum bisa melakukan sesuatu).",
+    "literal_meaning_id": "Belum sempat (cara halus menolak atau menjelaskan belum bisa melakukan sesuatu).",
+    "part_of_speech": "expression",
+    "category": "agreement_refusal",
+    "dialect": "melayu_deli",
+    "region": "deli",
+    "usage_context": "neutral",
+    "pronunciation": "[bəlom səmpat lagi]",
+    "jawi": "بلوم سمڤت لاݢي.",
+    "variants": [
+      "Belum sempat awak."
+    ],
+    "example_dialogue": "A: Udah singgah ke rumah Pak Uda? — B: Belum sempat lagi, kerje tengah banyak.",
+    "example_translation": "A: Sudah mampir ke rumah Pak Uda? — B: Belum sempat, pekerjaan sedang banyak.",
+    "cultural_note": null,
+    "katara_legacy_id": null,
+    "source_ids": [
+      "SRC-0002",
+      "SRC-0003"
+    ],
+    "confidence": "high",
+    "verification_status": "verified",
+    "notes": null
+  },
+  {
+    "id": "EXP-000028",
+    "expression": "Lemak kali!",
+    "normalized_expression": "lemak kali!",
+    "meaning_id": "Gurih dan enak sekali! (pujian untuk masakan khas Melayu)",
+    "literal_meaning_id": "Gurih dan enak sekali! (pujian untuk masakan khas Melayu)",
+    "part_of_speech": "expression",
+    "category": "emotion",
+    "dialect": "melayu_deli",
+    "region": "deli",
+    "usage_context": "informal",
+    "pronunciation": "[ləmaʔ kali]",
+    "jawi": "لمق کالي!",
+    "variants": [
+      "Sedap kali!",
+      "Lemak betul!"
+    ],
+    "example_dialogue": "Anak: Gulai ni lemak kali, Mak! — Mak: Makanlah tambah nasi tu.",
+    "example_translation": "Anak: Gulai ini gurih sekali, Bu! — Ibu: Makanlah tambah nasi itu.",
+    "cultural_note": "Pujian tertinggi untuk masakan bersantan atau berbumbu rempah.",
+    "katara_legacy_id": null,
+    "source_ids": [
+      "SRC-0001",
+      "SRC-0002",
+      "SRC-0005"
+    ],
+    "confidence": "high",
+    "verification_status": "verified",
+    "notes": null
+  },
+  {
+    "id": "EXP-000029",
+    "expression": "Alamak, mati awak!",
+    "normalized_expression": "alamak, mati awak!",
+    "meaning_id": "Astaga, gawat saya! (ungkapan kaget saat lupa atau menghadapi masalah mendadak, bukan arti harfiah kematian)",
+    "literal_meaning_id": "Astaga, gawat saya! (ungkapan kaget saat lupa atau menghadapi masalah mendadak, bukan arti harfiah kematian)",
+    "part_of_speech": "expression",
+    "category": "emotion",
+    "dialect": "melayu_deli",
+    "region": "deli",
+    "usage_context": "informal",
+    "pronunciation": "[alamaʔ mati awaʔ]",
+    "jawi": "الامق، ماتي اوق!",
+    "variants": [
+      "Alamak!",
+      "Habislah awak!"
+    ],
+    "example_dialogue": "A: Alamak, mati awak, tertinggal dompet di meja rumah! — B: Pakai uang aku dulu je.",
+    "example_translation": "A: Astaga, gawat saya, dompet tertinggal di meja rumah! — B: Pakai uangku dulu saja.",
+    "cultural_note": null,
+    "katara_legacy_id": null,
+    "source_ids": [
+      "SRC-0005",
+      "SRC-0011"
+    ],
+    "confidence": "high",
+    "verification_status": "verified",
+    "notes": null
+  },
+  {
+    "id": "EXP-000030",
+    "expression": "Pening kepale awak.",
+    "normalized_expression": "pening kepale awak.",
+    "meaning_id": "Pusing kepala saya (baik karena sakit maupun bingung memikirkan sesuatu).",
+    "literal_meaning_id": "Pusing kepala saya (baik karena sakit maupun bingung memikirkan sesuatu).",
+    "part_of_speech": "expression",
+    "category": "emotion",
+    "dialect": "melayu_deli",
+    "region": "deli",
+    "usage_context": "informal",
+    "pronunciation": "[pəneŋ kəpalə awaʔ]",
+    "jawi": "ڤنيڠ کڤالا اوق.",
+    "variants": [
+      "Pening awak dibuatnye."
+    ],
+    "example_dialogue": "A: Kenape duduk termenung tu? — B: Pening kepale awak memikirkan biaya kenduri.",
+    "example_translation": "A: Mengapa duduk termenung itu? — B: Pusing kepala saya memikirkan biaya kenduri.",
+    "cultural_note": null,
+    "katara_legacy_id": null,
+    "source_ids": [
+      "SRC-0002",
+      "SRC-0004",
+      "SRC-0005"
+    ],
+    "confidence": "high",
+    "verification_status": "verified",
+    "notes": null
+  },
+  {
+    "id": "EXP-000031",
+    "expression": "Usah gaduh.",
+    "normalized_expression": "usah gaduh.",
+    "meaning_id": "Jangan khawatir; tidak usah cemas (atau jangan ribut).",
+    "literal_meaning_id": "Jangan khawatir; tidak usah cemas (atau jangan ribut).",
+    "part_of_speech": "expression",
+    "category": "emotion",
+    "dialect": "melayu_deli",
+    "region": "deli",
+    "usage_context": "neutral",
+    "pronunciation": "[usah gadoh]",
+    "jawi": "اوسه ݢادوه.",
+    "variants": [
+      "Jangan gaduh.",
+      "Tak usah risau."
+    ],
+    "example_dialogue": "Abang: Usah gaduh Mak, esok pagi kami udah balik. — Mak: Syukurlah kalau gitu.",
+    "example_translation": "Abang: Jangan khawatir Bu, besok pagi kami sudah pulang. — Ibu: Syukurlah kalau begitu.",
+    "cultural_note": null,
+    "katara_legacy_id": null,
+    "source_ids": [
+      "SRC-0002",
+      "SRC-0005"
+    ],
+    "confidence": "high",
+    "verification_status": "verified",
+    "notes": null
+  },
+  {
+    "id": "EXP-000032",
+    "expression": "Lame tak nampak!",
+    "normalized_expression": "lame tak nampak!",
+    "meaning_id": "Lama tidak kelihatan! Lama tidak berjumpa!",
+    "literal_meaning_id": "Lama tidak kelihatan! Lama tidak berjumpa!",
+    "part_of_speech": "expression",
+    "category": "socializing",
+    "dialect": "melayu_deli",
+    "region": "deli",
+    "usage_context": "informal",
+    "pronunciation": "[lamə taʔ nampaʔ]",
+    "jawi": "لام تق نمڤق!",
+    "variants": [
+      "Lame tak jumpe!",
+      "Kemane je selama ni?"
+    ],
+    "example_dialogue": "A: Eh Bang Ngah, lame tak nampak! — B: Iye, awak baru balik dari kebun di Langkat.",
+    "example_translation": "A: Eh Bang Ngah, lama tidak kelihatan! — B: Iya, saya baru pulang dari kebun di Langkat.",
+    "cultural_note": null,
+    "katara_legacy_id": null,
+    "source_ids": [
+      "SRC-0002",
+      "SRC-0003"
+    ],
+    "confidence": "high",
+    "verification_status": "verified",
+    "notes": null
+  },
+  {
+    "id": "EXP-000033",
+    "expression": "Cicipilah sikit, nanti kempunan.",
+    "normalized_expression": "cicipilah sikit, nanti kempunan.",
+    "meaning_id": "Cicipilah sedikit supaya tidak kempunan.",
+    "literal_meaning_id": "Cicipilah sedikit supaya tidak kempunan.",
+    "part_of_speech": "expression",
+    "category": "socializing",
+    "dialect": "melayu_deli",
+    "region": "deli",
+    "usage_context": "cultural",
+    "pronunciation": "[tʃitʃipilah siket nanti kəmpunan]",
+    "jawi": "چيچيڤيله سيکيت، ننتي کمڤونن.",
+    "variants": [
+      "Jamahlah sikit biar tak kempunan."
+    ],
+    "example_dialogue": "Mak Cik: Kalau nak cepat pegi, jamahlah pulut ni sikit biar tak kempunan di jalan.",
+    "example_translation": "Mak Cik: Kalau mau cepat pergi, sentuh/cicipilah ketan ini sedikit agar tidak kempunan di jalan.",
+    "cultural_note": "Kebiasaan adat Melayu: jika seseorang ditawari makanan tetapi sedang terburu-buru, ia tetap menyentuh atau mencicipi sedikit agar terhindar dari \"kempunan\".",
+    "katara_legacy_id": null,
+    "source_ids": [
+      "SRC-0002",
+      "SRC-0005",
+      "SRC-0009"
+    ],
+    "confidence": "high",
+    "verification_status": "verified",
+    "notes": null
+  },
+  {
+    "id": "EXP-000034",
+    "expression": "Jangan merajuk lagi.",
+    "normalized_expression": "jangan merajuk lagi.",
+    "meaning_id": "Jangan ngambek lagi.",
+    "literal_meaning_id": "Jangan ngambek lagi.",
+    "part_of_speech": "expression",
+    "category": "socializing",
+    "dialect": "melayu_deli",
+    "region": "deli",
+    "usage_context": "informal",
+    "pronunciation": "[dʒaŋan məɾadʒoʔ lagi]",
+    "jawi": "جاڠن مراجوق لاݢي.",
+    "variants": [
+      "Usah merajuk."
+    ],
+    "example_dialogue": "Kakak: Udahlah Dik, jangan merajuk lagi, ni Kakak bawakan halua.",
+    "example_translation": "Kakak: Sudahlah Dik, jangan ngambek lagi, ini Kakak bawakan manisan halua.",
+    "cultural_note": null,
+    "katara_legacy_id": null,
+    "source_ids": [
+      "SRC-0002",
+      "SRC-0005"
+    ],
+    "confidence": "high",
+    "verification_status": "verified",
+    "notes": null
+  },
+  {
+    "id": "EXP-000035",
+    "expression": "Ade-ade je awak ni.",
+    "normalized_expression": "ade-ade je awak ni.",
+    "meaning_id": "Ada-ada saja kamu ini (ungkapan keakraban saat menanggapi candaan kawan).",
+    "literal_meaning_id": "Ada-ada saja kamu ini (ungkapan keakraban saat menanggapi candaan kawan).",
+    "part_of_speech": "expression",
+    "category": "informal_slang",
+    "dialect": "melayu_deli",
+    "region": "deli",
+    "usage_context": "informal",
+    "pronunciation": "[adə adə dʒə awaʔ ni]",
+    "jawi": "اد٢ ج اوق ني.",
+    "variants": [
+      "Ade-ade aje kau ni."
+    ],
+    "example_dialogue": "A: Awak kira tadi pengantin barunye kau, Bang! — B: Ah, ade-ade je awak ni.",
+    "example_translation": "A: Saya kira tadi pengantin barunya kamu, Bang! — B: Ah, ada-ada saja kamu ini.",
+    "cultural_note": null,
+    "katara_legacy_id": null,
+    "source_ids": [
+      "SRC-0003",
+      "SRC-0011"
+    ],
+    "confidence": "high",
+    "verification_status": "verified",
+    "notes": null
+  },
+  {
+    "id": "EXP-000036",
+    "expression": "Jangan banyak cakap.",
+    "normalized_expression": "jangan banyak cakap.",
+    "meaning_id": "Jangan banyak bicara / jangan banyak alasan, kerjakan saja.",
+    "literal_meaning_id": "Jangan banyak bicara / jangan banyak alasan, kerjakan saja.",
+    "part_of_speech": "expression",
+    "category": "informal_slang",
+    "dialect": "melayu_deli",
+    "region": "deli",
+    "usage_context": "informal",
+    "pronunciation": "[dʒaŋan baɲaʔ tʃakap]",
+    "jawi": "جاڠن باڽق چاکڤ.",
+    "variants": [
+      "Usah banyak cakap."
+    ],
+    "example_dialogue": "Abang: Jangan banyak cakap lagi, ayolah kite bersihkan halaman ni.",
+    "example_translation": "Abang: Jangan banyak bicara lagi, ayolah kita bersihkan halaman ini.",
+    "cultural_note": null,
+    "katara_legacy_id": null,
+    "source_ids": [
+      "SRC-0002",
+      "SRC-0003"
+    ],
+    "confidence": "high",
+    "verification_status": "verified",
+    "notes": null
+  },
+  {
+    "id": "EXP-000037",
+    "expression": "Elok-elok di jalan.",
+    "normalized_expression": "elok-elok di jalan.",
+    "meaning_id": "Hati-hati di jalan; semoga selamat dalam perjalanan.",
+    "literal_meaning_id": "Hati-hati di jalan; semoga selamat dalam perjalanan.",
+    "part_of_speech": "expression",
+    "category": "polite_formal",
+    "dialect": "melayu_deli",
+    "region": "deli",
+    "usage_context": "neutral",
+    "pronunciation": "[eloʔ eloʔ di dʒalan]",
+    "jawi": "ايلوق٢ دجالن.",
+    "variants": [
+      "Hati-hati di jalan."
+    ],
+    "example_dialogue": "Mak: Elok-elok di jalan ya Nak, jangan ngebut. — Anak: Baik, Mak.",
+    "example_translation": "Ibu: Hati-hati di jalan ya Nak, jangan mengebut. — Anak: Baik, Bu.",
+    "cultural_note": null,
+    "katara_legacy_id": null,
+    "source_ids": [
+      "SRC-0002",
+      "SRC-0005"
+    ],
+    "confidence": "high",
+    "verification_status": "verified",
+    "notes": null
+  },
+  {
+    "id": "EXP-000038",
+    "expression": "Tabik, Datuk / Tengku.",
+    "normalized_expression": "tabik, datuk / tengku.",
+    "meaning_id": "Permisi / salam hormat kepada tetua adat, Datuk, atau bangsawan Tengku (juga diucapkan saat melewati orang tua atau tempat keramat).",
+    "literal_meaning_id": "Permisi / salam hormat kepada tetua adat, Datuk, atau bangsawan Tengku (juga diucapkan saat melewati orang tua atau tempat keramat).",
+    "part_of_speech": "expression",
+    "category": "polite_formal",
+    "dialect": "melayu_deli",
+    "region": "deli",
+    "usage_context": "formal",
+    "pronunciation": "[tabeʔ datoʔ]",
+    "jawi": "تابيق، داتوق.",
+    "variants": [
+      "Minta tabik.",
+      "Ampun Tuanku."
+    ],
+    "example_dialogue": "Pemuda: Tabik Datuk, izinkan saye menyampaikan sepatah kata.",
+    "example_translation": "Pemuda: Mohon izin Datuk, izinkan saya menyampaikan sepatah kata.",
+    "cultural_note": "Etika kesopanan tradisional Melayu Deli ketika lewat di hadapan orang tua sambil membungkukkan badan sedikit.",
+    "katara_legacy_id": null,
+    "source_ids": [
+      "SRC-0005",
+      "SRC-0006",
+      "SRC-0010"
+    ],
+    "confidence": "high",
+    "verification_status": "verified",
+    "notes": null
+  },
+  {
+    "id": "EXP-000039",
+    "expression": "Sila santap, Tuanku.",
+    "normalized_expression": "sila santap, tuanku.",
+    "meaning_id": "Silakan makan, Tuanku (ragam bahasa istana Kesultanan Deli).",
+    "literal_meaning_id": "Silakan makan, Tuanku (ragam bahasa istana Kesultanan Deli).",
+    "part_of_speech": "expression",
+    "category": "polite_formal",
+    "dialect": "melayu_deli",
+    "region": "deli",
+    "usage_context": "formal",
+    "pronunciation": "[sila santap tuanku]",
+    "jawi": "سيلا سنتڤ، توانکو.",
+    "variants": [
+      "Jemput santap, Tengku."
+    ],
+    "example_dialogue": "Pelayan Istana: Hidangan nasi minyak telah terhidang, sila santap, Tuanku.",
+    "example_translation": "Pelayan Istana: Hidangan nasi minyak telah tersedia, silakan bersantap, Tuanku.",
+    "cultural_note": "Leksikon \"santap\" khusus dipakai dalam ragam halus istana.",
+    "katara_legacy_id": null,
+    "source_ids": [
+      "SRC-0006",
+      "SRC-0010"
+    ],
+    "confidence": "high",
+    "verification_status": "verified",
+    "notes": null
+  },
+  {
+    "id": "EXP-000040",
+    "expression": "Kurang asam!",
+    "normalized_expression": "kurang asam!",
+    "meaning_id": "Kurang ajar! (ungkapan kejengkelan yang diperhalus dengan eufemisme kuliner \"asam\" agar tidak terdengar kasar)",
+    "literal_meaning_id": "Kurang ajar! (ungkapan kejengkelan yang diperhalus dengan eufemisme kuliner \"asam\" agar tidak terdengar kasar)",
+    "part_of_speech": "expression",
+    "category": "informal_slang",
+    "dialect": "melayu_deli",
+    "region": "deli",
+    "usage_context": "informal",
+    "pronunciation": "[kuɾaŋ asam]",
+    "jawi": "کورڠ اسم!",
+    "variants": [
+      "Bertuah punya budak!"
+    ],
+    "example_dialogue": "A: Habis kue awak dimakan kucing! Kurang asam betul kucing tu.",
+    "example_translation": "A: Habis kue saya dimakan kucing! Nakal sekali kucing itu.",
+    "cultural_note": "Eufemisme khas Melayu yang mengganti kata \"ajar\" menjadi \"asam\".",
+    "katara_legacy_id": null,
+    "source_ids": [
+      "SRC-0005",
+      "SRC-0012"
+    ],
+    "confidence": "medium",
+    "verification_status": "needs_review",
+    "notes": "Perlu konfirmasi penutur asli apakah perlu dimasukkan ke materi belajar tingkat lanjut."
+  }
+]

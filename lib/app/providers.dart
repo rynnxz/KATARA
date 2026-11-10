@@ -9,6 +9,8 @@ import 'package:katara/domain/entities/user_progress.dart';
 import 'package:katara/domain/repositories/content_repository.dart';
 import 'package:katara/domain/repositories/progress_repository.dart';
 import 'package:katara/services/audio_service.dart';
+import 'package:katara/services/firebase_sync_service.dart';
+import 'package:katara/services/module_download_service.dart';
 import 'package:katara/services/notification_service.dart';
 import 'package:katara/services/settings_service.dart';
 
@@ -163,3 +165,44 @@ final lastLessonResultProvider =
     NotifierProvider<LastLessonResultNotifier, LessonResult?>(
   LastLessonResultNotifier.new,
 );
+
+final moduleDownloadServiceProvider = Provider<ModuleDownloadService>((ref) {
+  final db = ref.watch(appDatabaseProvider);
+  final seeder = ref.watch(contentSeederProvider);
+  return ModuleDownloadService(db: db, seeder: seeder);
+});
+
+final moduleCatalogProvider =
+    FutureProvider<List<ModuleCatalogItemModel>>((ref) {
+  return ref.watch(moduleDownloadServiceProvider).loadCatalog();
+});
+
+final installedModulesProvider =
+    FutureProvider<List<InstalledModuleModel>>((ref) {
+  return ref.watch(contentRepositoryProvider).getInstalledModules();
+});
+
+final dialectReferencesProvider =
+    FutureProvider.family<List<DialectReferenceModel>, String?>((ref, courseId) {
+  return ref.watch(contentRepositoryProvider).getDialectReferences(courseId);
+});
+
+final dialectComparisonProvider = FutureProvider.family<
+    List<DialectComparisonRowModel>, String?>((ref, category) async {
+  final rows = await ref
+      .watch(contentRepositoryProvider)
+      .getDialectComparisonRows();
+  if (category == null || category == 'semua' || category.isEmpty) {
+    return rows;
+  }
+  return rows.where((r) => r.category == category).toList();
+});
+
+final firebaseSyncServiceProvider = Provider<FirebaseSyncService>((ref) {
+  final db = ref.watch(appDatabaseProvider);
+  return FirebaseSyncService(db: db);
+});
+
+final cloudProfileProvider = FutureProvider<CloudProfile>((ref) {
+  return ref.watch(firebaseSyncServiceProvider).getCurrentProfile();
+});

@@ -410,3 +410,176 @@ class AchievementModel {
         unlockedAt: unlockedAt,
       );
 }
+
+enum SyncState {
+  synced,
+  syncing,
+  offline,
+  failed,
+  pending,
+}
+
+class SyncStatusSummary {
+  const SyncStatusSummary({
+    required this.state,
+    this.pendingCount = 0,
+    this.lastSyncedAt,
+    this.errorMessage,
+    this.userEmail,
+    this.displayName,
+    this.isAnonymous = true,
+  });
+
+  final SyncState state;
+  final int pendingCount;
+  final DateTime? lastSyncedAt;
+  final String? errorMessage;
+  final String? userEmail;
+  final String? displayName;
+  final bool isAnonymous;
+
+  bool get isSignedInWithGoogle => !isAnonymous && userEmail != null;
+}
+
+class XpEventModel {
+  const XpEventModel({
+    required this.eventId,
+    required this.courseId,
+    required this.amount,
+    required this.source,
+    required this.deviceId,
+    required this.createdAt,
+    this.isSynced = false,
+  });
+
+  final String eventId;
+  final String courseId;
+  final int amount;
+  final String source;
+  final String deviceId;
+  final DateTime createdAt;
+  final bool isSynced;
+
+  factory XpEventModel.fromJson(Map<String, dynamic> json) => XpEventModel(
+        eventId: json['event_id'] as String,
+        courseId: json['course_id'] as String? ?? 'ms-deli',
+        amount: (json['amount'] as num).toInt(),
+        source: json['source'] as String? ?? 'lesson',
+        deviceId: json['device_id'] as String? ?? 'local-device',
+        createdAt: DateTime.tryParse(json['created_at']?.toString() ?? '') ??
+            DateTime.now().toUtc(),
+        isSynced: json['is_synced'] == true || json['is_synced'] == 1,
+      );
+
+  Map<String, dynamic> toJson() => {
+        'event_id': eventId,
+        'course_id': courseId,
+        'amount': amount,
+        'source': source,
+        'device_id': deviceId,
+        'created_at': createdAt.toIso8601String(),
+        'is_synced': isSynced,
+      };
+}
+
+class StreakHistoryEntry {
+  const StreakHistoryEntry({
+    required this.date,
+    required this.courseId,
+    required this.xpEarned,
+    required this.lessonsCompleted,
+    required this.updatedAt,
+    this.freezeUsed = false,
+    this.deviceId = 'local-device',
+    this.isSynced = false,
+  });
+
+  final String date;
+  final String courseId;
+  final int xpEarned;
+  final int lessonsCompleted;
+  final bool freezeUsed;
+  final String deviceId;
+  final DateTime updatedAt;
+  final bool isSynced;
+
+  factory StreakHistoryEntry.fromJson(Map<String, dynamic> json) =>
+      StreakHistoryEntry(
+        date: json['date'] as String,
+        courseId: json['course_id'] as String? ?? 'ms-deli',
+        xpEarned: (json['xp_earned'] as num?)?.toInt() ?? 0,
+        lessonsCompleted: (json['lessons_completed'] as num?)?.toInt() ?? 0,
+        freezeUsed: json['freeze_used'] == true || json['freeze_used'] == 1,
+        deviceId: json['device_id'] as String? ?? 'local-device',
+        updatedAt: DateTime.tryParse(json['updated_at']?.toString() ?? '') ??
+            DateTime.now().toUtc(),
+        isSynced: json['is_synced'] == true || json['is_synced'] == 1,
+      );
+
+  Map<String, dynamic> toJson() => {
+        'date': date,
+        'course_id': courseId,
+        'xp_earned': xpEarned,
+        'lessons_completed': lessonsCompleted,
+        'freeze_used': freezeUsed,
+        'device_id': deviceId,
+        'updated_at': updatedAt.toIso8601String(),
+        'is_synced': isSynced,
+      };
+}
+
+class SyncQueueItemModel {
+  const SyncQueueItemModel({
+    required this.id,
+    required this.operationId,
+    required this.entityType,
+    required this.entityId,
+    required this.operation,
+    required this.payloadJson,
+    required this.createdAt,
+    this.retryCount = 0,
+    this.nextRetryAt,
+    this.lastError,
+  });
+
+  final int id;
+  final String operationId;
+  final String entityType;
+  final String entityId;
+  final String operation;
+  final String payloadJson;
+  final int retryCount;
+  final DateTime? nextRetryAt;
+  final String? lastError;
+  final DateTime createdAt;
+}
+
+class DialectMasterySummary {
+  const DialectMasterySummary({
+    required this.courseId,
+    required this.courseName,
+    required this.accentHex,
+    required this.isInstalled,
+    required this.totalWords,
+    required this.masteredWords,
+    required this.completedLessons,
+    required this.totalLessons,
+    required this.averageAccuracy,
+  });
+
+  final String courseId;
+  final String courseName;
+  final String accentHex;
+  final bool isInstalled;
+  final int totalWords;
+  final int masteredWords;
+  final int completedLessons;
+  final int totalLessons;
+  final double averageAccuracy;
+
+  double get lessonRatio =>
+      totalLessons <= 0 ? 0.0 : (completedLessons / totalLessons).clamp(0.0, 1.0);
+  double get wordRatio =>
+      totalWords <= 0 ? 0.0 : (masteredWords / totalWords).clamp(0.0, 1.0);
+}
+

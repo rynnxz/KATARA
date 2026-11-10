@@ -409,6 +409,102 @@ class _PracticeScreenState extends ConsumerState<PracticeScreen> {
                         ),
                       ],
                     ),
+                    const SizedBox(height: 12),
+                    Row(
+                      children: [
+                        Expanded(
+                          child: KCard(
+                            onTap: () => context.push('/practice/conversation'),
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Icon(Icons.forum_rounded,
+                                    color: palette.primary, size: 30),
+                                const SizedBox(height: 10),
+                                Text(
+                                  'Latihan Percakapan',
+                                  style: Theme.of(context)
+                                      .textTheme
+                                      .titleMedium
+                                      ?.copyWith(fontWeight: FontWeight.w800),
+                                ),
+                                const SizedBox(height: 4),
+                                Text(
+                                  'Simulasi dialog pasar, keluarga, dan adab.',
+                                  style: Theme.of(context)
+                                      .textTheme
+                                      .bodySmall
+                                      ?.copyWith(color: palette.inkMuted),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
+                        const SizedBox(width: 12),
+                        Expanded(
+                          child: KCard(
+                            onTap: () => context.push('/practice/pronunciation'),
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Icon(Icons.record_voice_over_rounded,
+                                    color: palette.secondary, size: 30),
+                                const SizedBox(height: 10),
+                                Text(
+                                  'Panduan Lafal & Fonologi',
+                                  style: Theme.of(context)
+                                      .textTheme
+                                      .titleMedium
+                                      ?.copyWith(fontWeight: FontWeight.w800),
+                                ),
+                                const SizedBox(height: 4),
+                                Text(
+                                  'Kaidah vokal akhir [-e] vs [-o] & glotal.',
+                                  style: Theme.of(context)
+                                      .textTheme
+                                      .bodySmall
+                                      ?.copyWith(color: palette.inkMuted),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                    const SizedBox(height: 12),
+                    KCard(
+                      onTap: () => context.push('/dialect-comparison'),
+                      child: Row(
+                        children: [
+                          Icon(Icons.compare_arrows_rounded,
+                              color: palette.primary, size: 30),
+                          const SizedBox(width: 14),
+                          Expanded(
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                  'Perbandingan Dialek Melayu',
+                                  style: Theme.of(context)
+                                      .textTheme
+                                      .titleMedium
+                                      ?.copyWith(fontWeight: FontWeight.w800),
+                                ),
+                                const SizedBox(height: 2),
+                                Text(
+                                  'Bandingkan kosakata & fonetik Melayu Deli, Langkat, dan Palembang secara berdampingan.',
+                                  style: Theme.of(context)
+                                      .textTheme
+                                      .bodySmall
+                                      ?.copyWith(color: palette.inkMuted),
+                                ),
+                              ],
+                            ),
+                          ),
+                          const Icon(Icons.chevron_right_rounded),
+                        ],
+                      ),
+                    ),
                     const SizedBox(height: 24),
                     Text(
                       'Latihan Acak per Kategori',

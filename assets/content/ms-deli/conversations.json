@@ -1,0 +1,322 @@
+[
+  {
+    "id": "DLG-MD-0001",
+    "title": "Menyapa Tetua di Serambi Masjid Raya",
+    "level": 1,
+    "region": "Medan Maimun",
+    "lines": [
+      {
+        "order": 1,
+        "speaker": "Wan Muda",
+        "deli": "Assalamualaikum, Atok. Ape kabar Atok pagi ni?",
+        "indonesia": "Assalamualaikum, Kakek. Apa kabar Kakek pagi ini?"
+      },
+      {
+        "order": 2,
+        "speaker": "Atok",
+        "deli": "Waalaikumsalam. Alhamdulillah sehat. Awak nak ke mane pagi-pagi begini?",
+        "indonesia": "Waalaikumsalam. Alhamdulillah sehat. Kamu mau ke mana pagi-pagi begini?"
+      },
+      {
+        "order": 3,
+        "speaker": "Wan Muda",
+        "deli": "Saye nak pergi ke Pajak Ikan sebentar membantu Mak membeli rempah gulai.",
+        "indonesia": "Saya mau pergi ke Pasar Ikan sebentar membantu Ibu membeli rempah gulai."
+      },
+      {
+        "order": 4,
+        "speaker": "Atok",
+        "deli": "Eloklah tu. Hati-hati di jalan ye, sampaikan salam Atok kepade Ayah dan Mak awak.",
+        "indonesia": "Baguslah itu. Hati-hati di jalan ya, sampaikan salam Kakek kepada Ayah dan Ibumu."
+      }
+    ]
+  },
+  {
+    "id": "DLG-MD-0002",
+    "title": "Membeli Ikan Senangin di Pajak Labuhan",
+    "level": 1,
+    "region": "Labuhan Deli",
+    "lines": [
+      {
+        "order": 1,
+        "speaker": "Mak Ngah",
+        "deli": "Bang, ikan senangin ni baru turun dari sampan ke?",
+        "indonesia": "Bang, ikan senangin ini baru turun dari sampan kah?"
+      },
+      {
+        "order": 2,
+        "speaker": "Pedagang",
+        "deli": "Betul, Kak. Baru berlabuh subuh tadi dari Belawan. Berape kilo Kakak nak beli?",
+        "indonesia": "Betul, Kak. Baru berlabuh subuh tadi dari Belawan. Berapa kilo Kakak mau beli?"
+      },
+      {
+        "order": 3,
+        "speaker": "Mak Ngah",
+        "deli": "Timbangkan due kilo ye. Jangan lupe tambahkan daun kesum dan bunga kantan.",
+        "indonesia": "Timbangkan dua kilo ya. Jangan lupa tambahkan daun kesum dan bunga kecombrang."
+      },
+      {
+        "order": 4,
+        "speaker": "Pedagang",
+        "deli": "Siap, Kak. Ini die ikannye, segar kali untuk dimasak asam pedas.",
+        "indonesia": "Siap, Kak. Ini dia ikannya, segar sekali untuk dimasak asam pedas."
+      }
+    ]
+  },
+  {
+    "id": "DLG-MD-0003",
+    "title": "Bertamu Membawa Tepak Sirih",
+    "level": 2,
+    "region": "Medan & Deli Serdang",
+    "lines": [
+      {
+        "order": 1,
+        "speaker": "Pak Long",
+        "deli": "Silakan naik ke serambi, jemput duduk di atas tikar pandan ni.",
+        "indonesia": "Silakan naik ke beranda, silakan duduk di atas tikar pandan ini."
+      },
+      {
+        "order": 2,
+        "speaker": "Telangkai",
+        "deli": "Terime kasih banyak, Datuk. Kedatangan kami ni membawa hajat baik beserta tepak sirih.",
+        "indonesia": "Terima kasih banyak, Datuk. Kedatangan kami ini membawa niat baik beserta tepak sirih."
+      },
+      {
+        "order": 3,
+        "speaker": "Pak Long",
+        "deli": "Makanlah sirih sekapur dulu, baru kite buka mufakat dengan pantun.",
+        "indonesia": "Makanlah sirih sekapur dulu, baru kita buka musyawarah dengan pantun."
+      },
+      {
+        "order": 4,
+        "speaker": "Telangkai",
+        "deli": "Baiklah Datuk, bulat air karena pembuluh, bulat kata karena mufakat.",
+        "indonesia": "Baiklah Datuk, bulat air karena pembuluh, bulat kata karena mufakat."
+      }
+    ]
+  },
+  {
+    "id": "DLG-MD-0004",
+    "title": "Memasak Bubur Pedas Ramadan",
+    "level": 2,
+    "region": "Medan Kota",
+    "lines": [
+      {
+        "order": 1,
+        "speaker": "Kak Long",
+        "deli": "Mak, beras sangrai dan kelapa parut untuk bubur pedas dah siap ditumbuk.",
+        "indonesia": "Bu, beras sangrai dan kelapa parut untuk bubur pedas sudah siap ditumbuk."
+      },
+      {
+        "order": 2,
+        "speaker": "Emak",
+        "deli": "Syukurlah. Sekarang tolong iris daun kesum, serai, dan pucuk pakis untuk anyang.",
+        "indonesia": "Syukurlah. Sekarang tolong iris daun kesum, serai, dan pucuk pakis untuk anyang."
+      },
+      {
+        "order": 3,
+        "speaker": "Kak Long",
+        "deli": "Harum kali bau rempahnye, Mak. Nanti petang kite antarkan semangkuk ke rumah Mak Cik ye.",
+        "indonesia": "Harum sekali bau rempahnya, Bu. Nanti sore kita antarkan semangkuk ke rumah Bibi ya."
+      },
+      {
+        "order": 4,
+        "speaker": "Emak",
+        "deli": "Betul tu, berbagi hidangan berbuka sudah jadi adat kampung kite.",
+        "indonesia": "Betul itu, berbagi hidangan berbuka sudah menjadi adat kampung kita."
+      }
+    ]
+  },
+  {
+    "id": "DLG-MD-0005",
+    "title": "Latihan Tari Serampang Dua Belas",
+    "level": 2,
+    "region": "Deli Serdang",
+    "lines": [
+      {
+        "order": 1,
+        "speaker": "Pelatih",
+        "deli": "Ingat ye, gerak pertame dimulai dengan langkah tari permulaan yang lembut.",
+        "indonesia": "Ingat ya, gerak pertama dimulai dengan langkah tari permulaan yang lembut."
+      },
+      {
+        "order": 2,
+        "speaker": "Siti",
+        "deli": "Kapan kami mulai memegang sapu tangan, Kak?",
+        "indonesia": "Kapan kami mulai memegang sapu tangan, Kak?"
+      },
+      {
+        "order": 3,
+        "speaker": "Pelatih",
+        "deli": "Pada ragam gerak kesedua belas, yaitu tari sapu tangan sebagai lambang ikatan janji.",
+        "indonesia": "Pada ragam gerak kedua belas, yaitu tari sapu tangan sebagai lambang ikatan janji."
+      },
+      {
+        "order": 4,
+        "speaker": "Siti",
+        "deli": "Baik Kak, kami ulang lagi bersama iringan biola dan gendang ronggeng.",
+        "indonesia": "Baik Kak, kami ulang lagi bersama iringan biola dan gendang ronggeng."
+      }
+    ]
+  },
+  {
+    "id": "DLG-MD-0006",
+    "title": "Menyeberang Sungai Deli di Pangkalan",
+    "level": 2,
+    "region": "Labuhan Deli",
+    "lines": [
+      {
+        "order": 1,
+        "speaker": "Penumpang",
+        "deli": "Bang Ngah, sampan nak menyeberang ke kampung seberang masih ade?",
+        "indonesia": "Bang Tengah, sampan mau menyeberang ke kampung seberang masih ada?"
+      },
+      {
+        "order": 2,
+        "speaker": "Pendayung",
+        "deli": "Masih ade, silakan turun ke pelantar. Pegang tepi sampan elok-elok.",
+        "indonesia": "Masih ada, silakan turun ke pelantar. Pegang tepi sampan baik-baik."
+      },
+      {
+        "order": 3,
+        "speaker": "Penumpang",
+        "deli": "Hari ni air sungai nampak tenang, tak sederas semalam.",
+        "indonesia": "Hari ini air sungai tampak tenang, tidak sederas kemarin."
+      },
+      {
+        "order": 4,
+        "speaker": "Pendayung",
+        "deli": "Iye, semalam hujan lebat di hulu, hari ni dah surut.",
+        "indonesia": "Iya, kemarin hujan lebat di hulu, hari ini sudah surut."
+      }
+    ]
+  },
+  {
+    "id": "DLG-MD-0007",
+    "title": "Menyiapkan Busana Adat Kenduri",
+    "level": 3,
+    "region": "Medan Maimun",
+    "lines": [
+      {
+        "order": 1,
+        "speaker": "Adik",
+        "deli": "Bang, macam mane care memakai kain samping songket ni?",
+        "indonesia": "Bang, bagaimana cara mengenakan kain samping songket ini?"
+      },
+      {
+        "order": 2,
+        "speaker": "Abang",
+        "deli": "Lilitkan rapi di pinggang di luar baju teluk belanga, lalu kencangkan dengan pending.",
+        "indonesia": "Lilitkan rapi di pinggang di luar baju teluk belanga, lalu kencangkan dengan pending."
+      },
+      {
+        "order": 3,
+        "speaker": "Adik",
+        "deli": "Tengkuluknye dah pas letaknye di kepale saye, Bang?",
+        "indonesia": "Tanjaknya sudah pas letaknya di kepala saya, Bang?"
+      },
+      {
+        "order": 4,
+        "speaker": "Abang",
+        "deli": "Dah gagah kali! Mari kite berangkat sebelum acara tepung tawar dimulai.",
+        "indonesia": "Sudah gagah sekali! Mari kita berangkat sebelum acara tepung tawar dimulai."
+      }
+    ]
+  },
+  {
+    "id": "DLG-MD-0008",
+    "title": "Belajar Membaca Aksara Jawi Bersama Atok",
+    "level": 3,
+    "region": "Hamparan Perak",
+    "lines": [
+      {
+        "order": 1,
+        "speaker": "Cucu",
+        "deli": "Atok, huruf Jawi yang ade titik tige di bawah ni huruf ape namanye?",
+        "indonesia": "Kakek, huruf Jawi yang ada titik tiga di bawah ini huruf apa namanya?"
+      },
+      {
+        "order": 2,
+        "speaker": "Atok",
+        "deli": "Itu huruf Ca, bunyinye seperti pade kate cakap dan cucu.",
+        "indonesia": "Itu huruf Ca, bunyinya seperti pada kata cakap dan cucu."
+      },
+      {
+        "order": 3,
+        "speaker": "Cucu",
+        "deli": "Kalau huruf Nga dan Nya banyak dipakai dalam kate Melayu Deli ye, Tok?",
+        "indonesia": "Kalau huruf Nga dan Nya banyak dipakai dalam kata Melayu Deli ya, Kek?"
+      },
+      {
+        "order": 4,
+        "speaker": "Atok",
+        "deli": "Betul kali, seperti kate bunga, pinggan, dan nyamuk.",
+        "indonesia": "Betul sekali, seperti kata bunga, piring, dan nyamuk."
+      }
+    ]
+  },
+  {
+    "id": "DLG-MD-0009",
+    "title": "Menjelang Malam Tujuh Likur Ramadan",
+    "level": 3,
+    "region": "Labuhan Deli",
+    "lines": [
+      {
+        "order": 1,
+        "speaker": "Uda",
+        "deli": "Pelita minyak tanah dah siap dipasang di sepanjang alaman rumah?",
+        "indonesia": "Pelita minyak tanah sudah siap dipasang di sepanjang halaman rumah?"
+      },
+      {
+        "order": 2,
+        "speaker": "Busu",
+        "deli": "Sudah, Bang Uda. Sumbunye pun dah diganti baru semua.",
+        "indonesia": "Sudah, Bang Uda. Sumbunya pun sudah diganti baru semua."
+      },
+      {
+        "order": 3,
+        "speaker": "Uda",
+        "deli": "Lepas salat Tarawih nanti kite makan kue rasidah dan minum teh hangat di beranda.",
+        "indonesia": "Setelah salat Tarawih nanti kita makan kue rasidah dan minum teh hangat di beranda."
+      },
+      {
+        "order": 4,
+        "speaker": "Busu",
+        "deli": "Lemak kali tu, Bang. Semoge berkah malam lailatulqadar untuk keluarga kite.",
+        "indonesia": "Lezat sekali itu, Bang. Semoga berkah malam lailatulqadar untuk keluarga kita."
+      }
+    ]
+  },
+  {
+    "id": "DLG-MD-0010",
+    "title": "Berpamitan Merantau ke Seberang",
+    "level": 3,
+    "region": "Medan & Belawan",
+    "lines": [
+      {
+        "order": 1,
+        "speaker": "Anak",
+        "deli": "Mak, Ayah, saye minta diri dan mohon doa restu nak berangkat menuntut ilmu.",
+        "indonesia": "Ibu, Ayah, saya mohon pamit dan mohon doa restu mau berangkat menuntut ilmu."
+      },
+      {
+        "order": 2,
+        "speaker": "Ayah",
+        "deli": "Pegang teguh tunjuk ajar orang tue. Di mane bumi dipijak, di situ langit dijunjung.",
+        "indonesia": "Pegang teguh petuah orang tua. Di mana bumi dipijak, di situ langit dijunjung."
+      },
+      {
+        "order": 3,
+        "speaker": "Emak",
+        "deli": "Jangan lupe berkabar kalau dah sampai di sane. Ini bekal serunding dan kue bangkit.",
+        "indonesia": "Jangan lupa memberi kabar kalau sudah sampai di sana. Ini bekal serundeng dan kue bangkit."
+      },
+      {
+        "order": 4,
+        "speaker": "Anak",
+        "deli": "Terime kasih banyak Ayah, Mak. Insyaallah saye jage nama baik keluarga kite.",
+        "indonesia": "Terima kasih banyak Ayah, Ibu. Insyaallah saya jaga nama baik keluarga kita."
+      }
+    ]
+  }
+]

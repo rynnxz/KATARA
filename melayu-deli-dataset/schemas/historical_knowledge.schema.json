@@ -1,0 +1,78 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Melayu Deli Historical Knowledge Schema",
+  "type": "object",
+  "required": [
+    "id",
+    "title",
+    "period",
+    "category",
+    "summary",
+    "description",
+    "key_figures",
+    "key_locations",
+    "source_ids",
+    "confidence",
+    "verification_status",
+    "notes"
+  ],
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^HIS-\\d{6}$"
+    },
+    "title": {
+      "type": "string"
+    },
+    "period": {
+      "type": "string"
+    },
+    "category": {
+      "type": "string"
+    },
+    "summary": {
+      "type": "string"
+    },
+    "description": {
+      "type": "string"
+    },
+    "key_figures": {
+      "type": "array"
+    },
+    "key_locations": {
+      "type": "array"
+    },
+    "katara_legacy_id": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "source_ids": {
+      "type": "array"
+    },
+    "confidence": {
+      "type": "string",
+      "enum": [
+        "high",
+        "medium",
+        "low"
+      ]
+    },
+    "verification_status": {
+      "type": "string",
+      "enum": [
+        "verified",
+        "needs_review",
+        "disputed",
+        "rejected"
+      ]
+    },
+    "notes": {
+      "type": [
+        "string",
+        "null"
+      ]
+    }
+  }
+}

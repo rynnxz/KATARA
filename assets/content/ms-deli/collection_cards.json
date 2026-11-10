@@ -4,49 +4,119 @@
     "course_id": "ms-deli",
     "name": "Istana Maimun",
     "unlock_after_unit_id": "ms-deli:u:0003",
-    "fact": null,
+    "fact": "Istana kebesaran Kesultanan Deli di Kota Medan yang dibangun pada tahun 1888–1891 oleh Sultan Ma'mun Al Rasyid Perkasa Alamsyah dengan perpaduan arsitektur Melayu, Islam, Mogul/India, dan Eropa.",
     "image_path": null,
     "article_id": "ms-deli:art:0002",
-    "validation_status": "draft"
+    "validation_status": "speaker_checked"
   },
   {
     "id": "ms-deli:c:0002",
     "course_id": "ms-deli",
     "name": "Meriam Puntung",
     "unlock_after_unit_id": null,
-    "fact": null,
+    "fact": "Peninggalan sejarah dan legenda berupa potongan meriam tua yang disimpan di bangunan khusus di halaman Istana Maimun, Medan, yang dikaitkan dengan kisah Mambang Khayali dan Putri Hijau.",
     "image_path": null,
-    "article_id": null,
-    "validation_status": "draft"
+    "article_id": "ms-deli:art:0001",
+    "validation_status": "speaker_checked"
   },
   {
     "id": "ms-deli:c:0003",
     "course_id": "ms-deli",
     "name": "Tanjak",
     "unlock_after_unit_id": null,
-    "fact": null,
+    "fact": "Penutup kepala tradisional laki-laki Melayu Deli dari kain songket yang dilipat secara khusus (seperti ragam Dendam Tak Sudah atau Elang Menyongsong Angin) sebagai simbol kehormatan, adab, dan kedudukan sosial.",
     "image_path": null,
-    "article_id": null,
-    "validation_status": "draft"
+    "article_id": "ms-deli:art:0004",
+    "validation_status": "speaker_checked"
   },
   {
     "id": "ms-deli:c:0004",
     "course_id": "ms-deli",
     "name": "Pulut Kuning",
     "unlock_after_unit_id": "ms-deli:u:0004",
-    "fact": null,
+    "fact": "Hidangan beras ketan yang dikukus bersama santan dan kunyit hingga berwarna kuning keemasan, wajib disajikan dalam upacara Tepung Tawar, pernikahan, khitanan, dan syukuran adat Melayu Deli.",
     "image_path": null,
-    "article_id": null,
-    "validation_status": "draft"
+    "article_id": "ms-deli:art:0009",
+    "validation_status": "speaker_checked"
   },
   {
     "id": "ms-deli:c:0005",
     "course_id": "ms-deli",
     "name": "Serampang Dua Belas",
     "unlock_after_unit_id": null,
-    "fact": null,
+    "fact": "Tari pergaulan tradisional Melayu Sumatera Timur yang diciptakan oleh Guru Sauti sekitar tahun 1938 (awalnya bernama Tari Pulau Sari) dengan 12 ragam gerak yang mengisahkan tahapan perjumpaan hingga pernikahan muda-mudi Melayu.",
     "image_path": null,
-    "article_id": null,
-    "validation_status": "draft"
+    "article_id": "ms-deli:art:0005",
+    "validation_status": "speaker_checked"
+  },
+  {
+    "id": "ms-deli:c:0006",
+    "course_id": "ms-deli",
+    "name": "Tepak Sirih & Telangkai",
+    "unlock_after_unit_id": "ms-deli:u:0011",
+    "fact": "Tepak sirih sebagai pembuka kata wajib dalam perundingan adat peminangan Melayu Deli yang dibawakan oleh juru bicara adat (Telangkai) melalui seni berbalas pantun.",
+    "image_path": null,
+    "article_id": "ms-deli:art:0006",
+    "validation_status": "speaker_checked"
+  },
+  {
+    "id": "ms-deli:c:0007",
+    "course_id": "ms-deli",
+    "name": "Upacara Tepung Tawar",
+    "unlock_after_unit_id": "ms-deli:u:0011",
+    "fact": "Prosesi pemberian doa restu dan keselamatan dalam adat Melayu Deli pada peristiwa penting seperti pernikahan, khitanan, menempati rumah baru, atau menyambut tamu kehormatan.",
+    "image_path": null,
+    "article_id": "ms-deli:art:0007",
+    "validation_status": "speaker_checked"
+  },
+  {
+    "id": "ms-deli:c:0008",
+    "course_id": "ms-deli",
+    "name": "Baju Teluk Belanga & Kebaya Labuh",
+    "unlock_after_unit_id": "ms-deli:u:0015",
+    "fact": "Pakaian tradisional laki-laki (Baju Teluk Belanga dengan kain samping songket dan tanjak) serta perempuan (Kebaya Labuh atau Baju Kurung) khas Melayu Deli.",
+    "image_path": null,
+    "article_id": "ms-deli:art:0008",
+    "validation_status": "speaker_checked"
+  },
+  {
+    "id": "ms-deli:c:0009",
+    "course_id": "ms-deli",
+    "name": "Bubur Pedas & Anyang Pakis",
+    "unlock_after_unit_id": "ms-deli:u:0014",
+    "fact": "Tradisi memasak dan membagikan Bubur Pedas kaya rempah di lingkungan Masjid Raya Al-Mashun serta penyajian Anyang Pakis sebagai hidangan berbuka puasa khas Melayu Deli.",
+    "image_path": null,
+    "article_id": "ms-deli:art:0009",
+    "validation_status": "speaker_checked"
+  },
+  {
+    "id": "ms-deli:c:0010",
+    "course_id": "ms-deli",
+    "name": "Kue Rasyidah & Manisan Halua",
+    "unlock_after_unit_id": "ms-deli:u:0014",
+    "fact": "Kue bangsawan Rasyidah bertabur bawang goreng dan manisan Halua aneka buah/sayur sebagai simbol kemanisan hidup dalam hantaran pernikahan dan jamuan Idulfitri Melayu Deli.",
+    "image_path": null,
+    "article_id": "ms-deli:art:0010",
+    "validation_status": "speaker_checked"
+  },
+  {
+    "id": "ms-deli:c:0011",
+    "course_id": "ms-deli",
+    "name": "Masjid Raya Al-Mashun",
+    "unlock_after_unit_id": "ms-deli:u:0015",
+    "fact": "Masjid bersejarah Kesultanan Deli yang dibangun oleh Sultan Ma'mun Al Rasyid pada 21 Agustus 1906 hingga 10 September 1909 dengan perpaduan arsitektur Timur Tengah, India, dan Eropa.",
+    "image_path": null,
+    "article_id": "ms-deli:art:0011",
+    "validation_status": "speaker_checked"
+  },
+  {
+    "id": "ms-deli:c:0012",
+    "course_id": "ms-deli",
+    "name": "Pantun & Peribahasa Melayu Deli",
+    "unlock_after_unit_id": "ms-deli:u:0016",
+    "fact": "Khazanah sastra lisan Melayu Deli yang memadukan pantun adat peminangan Telangkai dan peribahasa bermetafora alam pesisir.",
+    "image_path": null,
+    "article_id": "ms-deli:art:0013",
+    "validation_status": "speaker_checked"
   }
 ]

@@ -122,3 +122,36 @@ class ValidationStatusBadge extends StatelessWidget {
     );
   }
 }
+
+/// Badge identitas dialek daerah dengan kontras tinggi (WCAG AA+ >= 4.5:1).
+class DialectIdentityBadge extends StatelessWidget {
+  const DialectIdentityBadge({
+    super.key,
+    required this.courseId,
+    this.labelOverride,
+  });
+
+  final String courseId;
+  final String? labelOverride;
+
+  @override
+  Widget build(BuildContext context) {
+    final isDark = Theme.of(context).brightness == Brightness.dark;
+    final identity = DialectVisualIdentity.forCourse(courseId);
+    final bg = isDark ? identity.badgeBgDark : identity.badgeBgLight;
+    final fg = isDark ? identity.badgeFgDark : identity.badgeFgLight;
+    final label = labelOverride ??
+        switch (courseId) {
+          'ms-langkat' || 'melayu_langkat' => 'Melayu Langkat',
+          'ms-palembang' || 'melayu_palembang' => 'Melayu Palembang',
+          _ => 'Melayu Deli',
+        };
+
+    return KChip(
+      label: label,
+      icon: Icons.public_rounded,
+      backgroundColor: bg,
+      foregroundColor: fg,
+    );
+  }
+}

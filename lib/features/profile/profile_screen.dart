@@ -112,6 +112,8 @@ class ProfileScreen extends ConsumerWidget {
                       ),
                     ),
                     const SizedBox(height: 16),
+                    _CloudSyncAccountCard(ref: ref),
+                    const SizedBox(height: 16),
                     Row(
                       children: [
                         Expanded(
@@ -293,6 +295,141 @@ class ProfileScreen extends ConsumerWidget {
           },
         ),
       ),
+    );
+  }
+}
+
+class _CloudSyncAccountCard extends StatelessWidget {
+  const _CloudSyncAccountCard({required this.ref});
+
+  final WidgetRef ref;
+
+  @override
+  Widget build(BuildContext context) {
+    final palette = context.kataraPalette;
+    final profileAsync = ref.watch(cloudProfileProvider);
+
+    return profileAsync.when(
+      loading: () => const SizedBox.shrink(),
+      error: (_, _) => const SizedBox.shrink(),
+      data: (profile) {
+        return KCard(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: [
+              Row(
+                children: [
+                  Icon(
+                    profile.isGuest
+                        ? Icons.cloud_off_rounded
+                        : Icons.cloud_done_rounded,
+                    color: profile.isGuest ? palette.inkMuted : palette.primary,
+                    size: 26,
+                  ),
+                  const SizedBox(width: 12),
+                  Expanded(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          profile.isGuest
+                              ? 'Sinkronisasi Cloud (Mode Tamu)'
+                              : 'Terhubung: ${profile.email ?? profile.displayName}',
+                          style: Theme.of(context)
+                              .textTheme
+                              .titleMedium
+                              ?.copyWith(fontWeight: FontWeight.w800),
+                        ),
+                        const SizedBox(height: 2),
+                        Text(
+                          profile.isGuest
+                              ? 'Progres tersimpan aman di perangkat. Masuk dengan Google untuk mencadangkan lintas perangkat.'
+                              : 'Progres XP, streak, dan penguasaan kosakata tersinkronisasi ke Firebase Cloud.',
+                          style: Theme.of(context)
+                              .textTheme
+                              .bodySmall
+                              ?.copyWith(color: palette.inkMuted),
+                        ),
+                      ],
+                    ),
+                  ),
+                ],
+              ),
+              const SizedBox(height: 12),
+              Row(
+                children: [
+                  if (profile.isGuest)
+                    Expanded(
+                      child: KButton(
+                        label: 'Masuk dengan Google',
+                        icon: Icons.login_rounded,
+                        onPressed: () async {
+                          try {
+                            await ref
+                                .read(firebaseSyncServiceProvider)
+                                .signInWithGoogle();
+                            await ref
+                                .read(firebaseSyncServiceProvider)
+                                .syncNow();
+                            ref.invalidate(cloudProfileProvider);
+                            if (!context.mounted) return;
+                            ScaffoldMessenger.of(context).showSnackBar(
+                              const SnackBar(
+                                content: Text(
+                                  'Berhasil masuk & menyinkronkan progres ke Cloud!',
+                                ),
+                              ),
+                            );
+                          } catch (e) {
+                            if (!context.mounted) return;
+                            ScaffoldMessenger.of(context).showSnackBar(
+                              SnackBar(
+                                content: Text('Info login Google: $e'),
+                              ),
+                            );
+                          }
+                        },
+                      ),
+                    )
+                  else ...[
+                    Expanded(
+                      child: KButton(
+                        label: 'Sinkronkan Sekarang',
+                        icon: Icons.sync_rounded,
+                        onPressed: () async {
+                          final report = await ref
+                              .read(firebaseSyncServiceProvider)
+                              .syncNow();
+                          ref.invalidate(cloudProfileProvider);
+                          if (!context.mounted) return;
+                          ScaffoldMessenger.of(context).showSnackBar(
+                            SnackBar(
+                              content: Text(
+                                'Sinkronisasi selesai (${report.pushedItems} dikirim, ${report.pulledItems} diterima).',
+                              ),
+                            ),
+                          );
+                        },
+                      ),
+                    ),
+                    const SizedBox(width: 8),
+                    KButton(
+                      label: 'Keluar',
+                      variant: KButtonVariant.outline,
+                      onPressed: () async {
+                        await ref
+                            .read(firebaseSyncServiceProvider)
+                            .signOutToGuest();
+                        ref.invalidate(cloudProfileProvider);
+                      },
+                    ),
+                  ],
+                ],
+              ),
+            ],
+          ),
+        );
+      },
     );
   }
 }

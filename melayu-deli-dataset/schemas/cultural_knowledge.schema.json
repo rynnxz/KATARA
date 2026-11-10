@@ -1,0 +1,78 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Melayu Deli Cultural Knowledge Schema",
+  "type": "object",
+  "required": [
+    "id",
+    "title",
+    "category",
+    "summary",
+    "description",
+    "related_terms",
+    "dialect",
+    "region",
+    "source_ids",
+    "confidence",
+    "verification_status",
+    "notes"
+  ],
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^CUL-\\d{6}$"
+    },
+    "title": {
+      "type": "string"
+    },
+    "category": {
+      "type": "string"
+    },
+    "summary": {
+      "type": "string"
+    },
+    "description": {
+      "type": "string"
+    },
+    "related_terms": {
+      "type": "array"
+    },
+    "katara_legacy_id": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "dialect": {
+      "type": "string"
+    },
+    "region": {
+      "type": "string"
+    },
+    "source_ids": {
+      "type": "array"
+    },
+    "confidence": {
+      "type": "string",
+      "enum": [
+        "high",
+        "medium",
+        "low"
+      ]
+    },
+    "verification_status": {
+      "type": "string",
+      "enum": [
+        "verified",
+        "needs_review",
+        "disputed",
+        "rejected"
+      ]
+    },
+    "notes": {
+      "type": [
+        "string",
+        "null"
+      ]
+    }
+  }
+}
