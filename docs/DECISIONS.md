@@ -53,3 +53,10 @@ Dokumen ini mencatat keputusan arsitektur, klarifikasi developer, dan penyesuaia
 4. **Verifikasi Integritas Katalog Modul dengan Tanda Tangan Digital Ed25519**:
    - Selain verifikasi hash `SHA-256` per berkas ZIP dan daftar putih host HTTPS resmi GitHub, `module_catalog.json` diverifikasi menggunakan tanda tangan digital **Ed25519** dengan *public key* yang tertanam di dalam kode aplikasi sementara *private key* disimpan di luar repositori (`.keys/`, di-`.gitignore`).
 
+## 2026-11-11 — Pemisahan Repositori Web Landing Page (`web-vercel/` -> `rynnxz/katara-web`)
+
+1. **Isolasi Repositori Git Web (`web-vercel/`)**:
+   - Direktori `web-vercel/` diinisialisasi sebagai repositori Git mandiri dengan remote `origin` ke `https://github.com/rynnxz/katara-web.git` (cabang `main`) untuk dideploy ke Vercel Hobby.
+   - Agar repositori utama aplikasi Flutter (`https://github.com/rynnxz/KATARA.git`) tetap bersih dan tidak melacak pohon kerja bersarang (*nested git repository*), `/web-vercel/` ditambahkan ke `.gitignore` root.
+
+

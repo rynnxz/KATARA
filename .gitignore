@@ -59,4 +59,8 @@ dist/releases/**/*.apk
 .keys/
 build/symbols/
 
+# Standalone web landing page repository (https://github.com/rynnxz/katara-web.git)
+/web-vercel/
+
+
 
