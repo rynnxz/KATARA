@@ -12,6 +12,7 @@
 -keep class com.google.firebase.** { *; }
 -dontwarn com.google.errorprone.annotations.**
 -dontwarn javax.annotation.**
+-dontwarn com.google.android.play.core.**
 
 ## Keep native methods and annotations
 -keepattributes *Annotation*,Signature,InnerClasses,EnclosingMethod

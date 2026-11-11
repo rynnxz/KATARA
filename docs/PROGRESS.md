@@ -200,5 +200,24 @@
 - [x] Memperkeras `AndroidManifest.xml` (`android:allowBackup="false"`, `android:fullBackupContent="false"`, `android:usesCleartextTraffic="false"`, `network_security_config.xml`), membatasi rute `/dev/gallery` dengan `kDebugMode`, dan membersihkan tautan path lokal `file:///c:/lomba/...` di `docs/*.md`.
 - [x] Menulis dan menjalankan [`test/module_security_test.dart`](../test/module_security_test.dart) (`6/6` lulus).
 
+### Tahap 4 — Kesiapan Produksi Jangka Panjang (LTS Readiness) & Artefak Rilis `v1.1.1+3` [SELESAI]
+- [x] Menulis dan memverifikasi pengujian migrasi skema SQLite `v1 -> v2` di [`test/migrations/schema_migration_test.dart`](../test/migrations/schema_migration_test.dart) (`1/1` lulus, menjamin nol kehilangan progres pengguna dan idempotensi penuh).
+- [x] Membangun pipeline CI/CD keamanan & rilis di [`.github/workflows/ci_security_release.yml`](../.github/workflows/ci_security_release.yml) dengan commit SHA tersemat (*pinned SHA*), izin minimum (`contents: read`), pemindaian rahasia `gitleaks`, `flutter analyze`, `flutter test`, kompilasi APK terkabur, SBOM, dan `SHA256SUMS.txt`.
+- [x] Menyusun dokumentasi tata kelola keamanan dan dukungan jangka panjang:
+  - [`SECURITY.md`](../SECURITY.md)
+  - [`docs/THREAT_MODEL.md`](THREAT_MODEL.md)
+  - [`docs/SUPPORT_POLICY.md`](SUPPORT_POLICY.md)
+  - [`docs/RELEASE_CHECKLIST.md`](RELEASE_CHECKLIST.md)
+- [x] Menaikkan versi aplikasi pada `pubspec.yaml` menjadi `1.1.1+3`, memastikan `dart analyze` (`No issues found!`) dan seluruh **73 pengujian otomatis** (`flutter test`) lulus 100% hijau.
+- [x] Membangun APK rilis produksi dengan R8 minification, resource shrinking, dan pengaburan simbol Dart (`flutter build apk --release --obfuscate --split-debug-info=build/symbols`):
+
+| Artefak Rilis (`dist/releases/v1.1.1/`) | Ukuran (Byte) | SHA-256 Checksum |
+| --- | --- | --- |
+| `katara-v1.1.1-release.apk` | `65.242.431` (`62,2 MB`, hemat `10,5 MB` dibanding `v1.1.0`) | `4a177ff81a538ff1dfd6041cb3bac1746af539d7e94856d62e737155d58c6fd7` |
+| `module_langkat.zip` | `82.277` | `d36f24b2679ccc22b1326f58180f0c7b56e1c77ff7537c7030612950fc3bdb4b` |
+| `module_palembang.zip` | `84.247` | `1ab88a4fb291fd8d279a9432e7cb5284127fa2bdc052885b1131611ce56c6a25` |
+| `module_catalog.json` (Ed25519 Signed) | `2.302` | `30811bb625ec9b93fbdfcd6df374fd5d2fd9cb591e5d630678d211efca47bdb4` |
+
+
 
 
