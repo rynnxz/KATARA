@@ -145,7 +145,7 @@ Map<String, dynamic> _buildDialectModuleZip({
     wordsByUnit.putIfAbsent(uId, () => <String>[]).add(wId);
 
     final verif = v['verification_status']?.toString() ?? 'verified';
-    final valStatus = verif == 'verified' ? 'speaker_checked' : 'draft';
+    final valStatus = verif == 'verified' ? 'dictionary_verified' : 'draft';
     final usageCtx = v['usage_context']?.toString() ?? 'neutral';
 
     wordsOut.add({

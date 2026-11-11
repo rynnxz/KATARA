@@ -50,7 +50,7 @@ class HomeShellScreen extends StatelessWidget {
         child: NavigationBar(
           selectedIndex: currentIndex,
           backgroundColor: palette.surface,
-          indicatorColor: palette.primary.withValues(alpha: 0.16),
+          indicatorColor: palette.primaryContainer,
           onDestinationSelected: (idx) => _onTapIndex(context, idx),
           destinations: const [
             NavigationDestination(

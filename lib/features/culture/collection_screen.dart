@@ -54,7 +54,7 @@ class CollectionScreen extends ConsumerWidget {
                     selected: isUnlocked,
                     backgroundColor: isUnlocked
                         ? palette.surface
-                        : palette.surfaceAlt.withValues(alpha: 0.65),
+                        : palette.surfaceAlt,
                     child: Row(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
@@ -63,16 +63,17 @@ class CollectionScreen extends ConsumerWidget {
                           height: 56,
                           decoration: BoxDecoration(
                             color: isUnlocked
-                                ? palette.secondary.withValues(alpha: 0.25)
-                                : palette.outline,
+                                ? palette.secondaryContainer
+                                : palette.surfaceAlt,
                             borderRadius: BorderRadius.circular(14),
+                            border: Border.all(color: palette.outline),
                           ),
                           child: Icon(
                             isUnlocked
                                 ? Icons.auto_awesome_rounded
                                 : Icons.lock_rounded,
                             color: isUnlocked
-                                ? palette.primary
+                                ? palette.onSecondaryContainer
                                 : palette.inkMuted,
                           ),
                         ),

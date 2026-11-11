@@ -439,8 +439,11 @@ class _LessonScreenState extends ConsumerState<LessonScreen> {
                     ? 'Ulangan Penguat'
                     : _labelForExerciseType(current.type),
                 backgroundColor: current.isRetry
-                    ? palette.secondary.withValues(alpha: 0.22)
+                    ? palette.secondaryContainer
                     : palette.surfaceAlt,
+                foregroundColor: current.isRetry
+                    ? palette.onSecondaryContainer
+                    : palette.ink,
               ),
               ValidationStatusBadge(status: current.validationStatus),
             ],
@@ -493,7 +496,7 @@ class _LessonScreenState extends ConsumerState<LessonScreen> {
               JawiText(
                 current.subjectJawi!,
                 fontSize: 40,
-                color: palette.primary,
+                color: palette.onPrimaryContainer,
               ),
               const SizedBox(height: 10),
             ],
@@ -502,20 +505,23 @@ class _LessonScreenState extends ConsumerState<LessonScreen> {
                 current.subjectDeli!,
                 textAlign: TextAlign.center,
                 style: Theme.of(context).textTheme.displayMedium?.copyWith(
-                      color: palette.primary,
+                      color: palette.onPrimaryContainer,
+                      fontWeight: FontWeight.w800,
                     ),
               ),
             const SizedBox(height: 10),
             Container(
               padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
               decoration: BoxDecoration(
-                color: palette.surfaceAlt,
+                color: palette.surface,
                 borderRadius: BorderRadius.circular(12),
+                border: Border.all(color: palette.outline),
               ),
               child: Text(
                 'Arti: ${current.correctAnswer}',
                 textAlign: TextAlign.center,
                 style: Theme.of(context).textTheme.titleMedium?.copyWith(
+                      color: palette.ink,
                       fontWeight: FontWeight.w800,
                     ),
               ),
@@ -526,7 +532,7 @@ class _LessonScreenState extends ConsumerState<LessonScreen> {
                 current.explanation!,
                 textAlign: TextAlign.center,
                 style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                      color: palette.inkMuted,
+                      color: palette.onPrimaryContainer,
                     ),
               ),
             ],
@@ -564,7 +570,7 @@ class _LessonScreenState extends ConsumerState<LessonScreen> {
                       child: KCard(
                         selected: isSelected,
                         backgroundColor: isMatched
-                            ? palette.success.withValues(alpha: 0.15)
+                            ? palette.successContainer
                             : null,
                         onTap: isMatched ||
                                 _feedbackState != ExerciseFeedbackState.none
@@ -579,8 +585,10 @@ class _LessonScreenState extends ConsumerState<LessonScreen> {
                                 .titleMedium
                                 ?.copyWith(
                                   color: isMatched
-                                      ? palette.success
-                                      : palette.ink,
+                                      ? palette.onSuccessContainer
+                                      : (isSelected
+                                          ? palette.onPrimaryContainer
+                                          : palette.ink),
                                   fontWeight: FontWeight.w700,
                                 ),
                           ),
@@ -604,7 +612,7 @@ class _LessonScreenState extends ConsumerState<LessonScreen> {
                       child: KCard(
                         selected: isSelected,
                         backgroundColor: isMatched
-                            ? palette.success.withValues(alpha: 0.15)
+                            ? palette.successContainer
                             : null,
                         onTap: isMatched ||
                                 _feedbackState != ExerciseFeedbackState.none
@@ -619,8 +627,10 @@ class _LessonScreenState extends ConsumerState<LessonScreen> {
                                 .titleMedium
                                 ?.copyWith(
                                   color: isMatched
-                                      ? palette.success
-                                      : palette.ink,
+                                      ? palette.onSuccessContainer
+                                      : (isSelected
+                                          ? palette.onPrimaryContainer
+                                          : palette.ink),
                                   fontWeight: FontWeight.w700,
                                 ),
                           ),
@@ -686,9 +696,8 @@ class _LessonScreenState extends ConsumerState<LessonScreen> {
                       final word = _assembledTokens[idx];
                       return KChip(
                         label: word,
-                        backgroundColor:
-                            palette.primary.withValues(alpha: 0.15),
-                        textColor: palette.primary,
+                        backgroundColor: palette.primaryContainer,
+                        textColor: palette.onPrimaryContainer,
                         onTap: _feedbackState == ExerciseFeedbackState.none
                             ? () {
                                 setState(() {
@@ -787,13 +796,18 @@ class _LessonScreenState extends ConsumerState<LessonScreen> {
                     isSelected
                         ? Icons.check_circle_rounded
                         : Icons.circle_outlined,
-                    color: isSelected ? palette.primary : palette.inkMuted,
+                    color: isSelected
+                        ? palette.onPrimaryContainer
+                        : palette.inkMuted,
                   ),
                   const SizedBox(width: 12),
                   Expanded(
                     child: Text(
                       option,
                       style: Theme.of(context).textTheme.titleMedium?.copyWith(
+                            color: isSelected
+                                ? palette.onPrimaryContainer
+                                : palette.ink,
                             fontWeight:
                                 isSelected ? FontWeight.w800 : FontWeight.w600,
                           ),

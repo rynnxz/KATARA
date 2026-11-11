@@ -565,8 +565,8 @@ class _PracticeScreenState extends ConsumerState<PracticeScreen> {
                 child: KChip(
                   label: '$_secondsRemaining dtk',
                   icon: Icons.timer_rounded,
-                  backgroundColor: palette.streak.withValues(alpha: 0.2),
-                  textColor: palette.ink,
+                  backgroundColor: palette.secondaryContainer,
+                  textColor: palette.onSecondaryContainer,
                 ),
               ),
             ),
@@ -606,10 +606,14 @@ class _PracticeScreenState extends ConsumerState<PracticeScreen> {
                 children: current.options.map((opt) {
                   final isSelected = _selectedOption == opt;
                   Color? bg;
+                  Color? fg;
                   if (isSelected && _lastCorrect != null) {
                     bg = _lastCorrect!
-                        ? palette.success.withValues(alpha: 0.2)
-                        : palette.error.withValues(alpha: 0.2);
+                        ? palette.successContainer
+                        : palette.errorContainer;
+                    fg = _lastCorrect!
+                        ? palette.onSuccessContainer
+                        : palette.onErrorContainer;
                   }
                   return Padding(
                     padding: const EdgeInsets.only(bottom: 12),
@@ -624,7 +628,13 @@ class _PracticeScreenState extends ConsumerState<PracticeScreen> {
                         style: Theme.of(context)
                             .textTheme
                             .titleMedium
-                            ?.copyWith(fontWeight: FontWeight.w700),
+                            ?.copyWith(
+                              color: fg ??
+                                  (isSelected
+                                      ? palette.onPrimaryContainer
+                                      : palette.ink),
+                              fontWeight: FontWeight.w700,
+                            ),
                       ),
                     ),
                   );

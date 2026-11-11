@@ -102,7 +102,7 @@ class ExerciseGenerator {
             refItemType: 'word',
             explanation: exampleSentence != null
                 ? 'Contoh: "${exampleSentence.deli}" (${exampleSentence.indonesia})'
-                : (w.notes ?? 'Kategori: ${w.category} (${w.pos})'),
+                : (w.userFacingNotes ?? 'Kategori: ${w.category} (${w.pos})'),
             validationStatus: w.validationStatus,
           ),
         );

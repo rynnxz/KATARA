@@ -100,8 +100,7 @@ class JawiScreen extends ConsumerWidget {
                                 height: 64,
                                 alignment: Alignment.center,
                                 decoration: BoxDecoration(
-                                  color:
-                                      palette.primary.withValues(alpha: 0.12),
+                                  color: palette.primaryContainer,
                                   borderRadius: BorderRadius.circular(16),
                                   border: Border.all(
                                     color: palette.primary,
@@ -111,7 +110,7 @@ class JawiScreen extends ConsumerWidget {
                                 child: JawiText(
                                   letter.glyph,
                                   fontSize: 34,
-                                  color: palette.primary,
+                                  color: palette.onPrimaryContainer,
                                 ),
                               ),
                               const SizedBox(width: 14),

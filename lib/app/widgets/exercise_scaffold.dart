@@ -50,10 +50,15 @@ class ExerciseScaffold extends StatelessWidget {
     final hasFeedback = isCorrect || isWrong;
 
     final bannerBg = isCorrect
-        ? p.success.withValues(alpha: 0.16)
+        ? p.successContainer
         : isWrong
-            ? p.error.withValues(alpha: 0.16)
+            ? p.errorContainer
             : p.surface;
+    final bannerFg = isCorrect
+        ? p.onSuccessContainer
+        : isWrong
+            ? p.onErrorContainer
+            : p.ink;
     final bannerBorder = isCorrect
         ? p.success
         : isWrong
@@ -144,7 +149,7 @@ class ExerciseScaffold extends StatelessWidget {
                           isCorrect
                               ? Icons.check_circle_rounded
                               : Icons.cancel_rounded,
-                          color: isCorrect ? p.success : p.error,
+                          color: bannerFg,
                           size: 26,
                         ),
                         const SizedBox(width: 10),
@@ -155,7 +160,7 @@ class ExerciseScaffold extends StatelessWidget {
                             style: TextStyle(
                               fontWeight: FontWeight.w800,
                               fontSize: 18,
-                              color: p.ink,
+                              color: bannerFg,
                             ),
                           ),
                         ),
@@ -169,7 +174,7 @@ class ExerciseScaffold extends StatelessWidget {
                         style: TextStyle(
                           fontWeight: FontWeight.w600,
                           fontSize: 14,
-                          color: p.ink,
+                          color: bannerFg,
                         ),
                       ),
                     ],

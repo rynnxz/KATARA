@@ -184,7 +184,8 @@ class _DictionaryScreenState extends ConsumerState<DictionaryScreen> {
               ),
               const SizedBox(height: 12),
             ],
-            if (word.notes != null && word.notes!.trim().isNotEmpty) ...[
+            if (word.userFacingNotes != null &&
+                word.userFacingNotes!.trim().isNotEmpty) ...[
               Container(
                 padding: const EdgeInsets.all(12),
                 decoration: BoxDecoration(
@@ -193,7 +194,7 @@ class _DictionaryScreenState extends ConsumerState<DictionaryScreen> {
                   border: Border.all(color: palette.outline),
                 ),
                 child: Text(
-                  word.notes!,
+                  word.userFacingNotes!,
                   style: Theme.of(context).textTheme.bodyMedium?.copyWith(
                         height: 1.5,
                       ),

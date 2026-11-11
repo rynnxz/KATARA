@@ -79,14 +79,19 @@ class ProfileScreen extends ConsumerWidget {
                           const SizedBox(height: 12),
                           Text(
                             stats.displayName,
-                            style: Theme.of(context).textTheme.headlineMedium,
+                            style: Theme.of(context)
+                                .textTheme
+                                .headlineMedium
+                                ?.copyWith(
+                                  color: palette.onPrimaryContainer,
+                                  fontWeight: FontWeight.w800,
+                                ),
                           ),
                           const SizedBox(height: 4),
                           KChip(
                             label: 'Level ${stats.level} • Gelar $title',
-                            backgroundColor:
-                                palette.secondary.withValues(alpha: 0.25),
-                            textColor: palette.ink,
+                            backgroundColor: palette.secondaryContainer,
+                            textColor: palette.onSecondaryContainer,
                           ),
                           const SizedBox(height: 14),
                           Row(
@@ -94,14 +99,23 @@ class ProfileScreen extends ConsumerWidget {
                             children: [
                               Text(
                                 'Total XP: ${stats.xpTotal}',
-                                style: Theme.of(context).textTheme.labelMedium,
+                                style: Theme.of(context)
+                                    .textTheme
+                                    .labelMedium
+                                    ?.copyWith(
+                                      color: palette.onPrimaryContainer,
+                                      fontWeight: FontWeight.w800,
+                                    ),
                               ),
                               Text(
                                 'Target naik level: +$nextLevelReq XP per tingkat',
                                 style: Theme.of(context)
                                     .textTheme
                                     .labelSmall
-                                    ?.copyWith(color: palette.inkMuted),
+                                    ?.copyWith(
+                                      color: palette.onPrimaryContainer,
+                                      fontWeight: FontWeight.w700,
+                                    ),
                               ),
                             ],
                           ),

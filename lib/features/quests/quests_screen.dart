@@ -224,7 +224,7 @@ class _QuestsScreenState extends ConsumerState<QuestsScreen> {
                       selected: badge.unlocked,
                       backgroundColor: badge.unlocked
                           ? palette.surface
-                          : palette.surfaceAlt.withValues(alpha: 0.65),
+                          : palette.surfaceAlt,
                       child: Row(
                         children: [
                           Container(
@@ -232,16 +232,17 @@ class _QuestsScreenState extends ConsumerState<QuestsScreen> {
                             height: 52,
                             decoration: BoxDecoration(
                               color: badge.unlocked
-                                  ? palette.secondary.withValues(alpha: 0.25)
-                                  : palette.outline,
+                                  ? palette.secondaryContainer
+                                  : palette.surfaceAlt,
                               borderRadius: BorderRadius.circular(14),
+                              border: Border.all(color: palette.outline),
                             ),
                             child: Icon(
                               badge.unlocked
                                   ? Icons.workspace_premium_rounded
                                   : Icons.lock_outline_rounded,
                               color: badge.unlocked
-                                  ? palette.primary
+                                  ? palette.onSecondaryContainer
                                   : palette.inkMuted,
                               size: 28,
                             ),

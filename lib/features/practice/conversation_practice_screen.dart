@@ -129,7 +129,7 @@ class _ConversationPracticeScreenState
                           height: 46,
                           alignment: Alignment.center,
                           decoration: BoxDecoration(
-                            color: palette.primary.withValues(alpha: 0.14),
+                            color: palette.primaryContainer,
                             borderRadius: BorderRadius.circular(12),
                           ),
                           child: Text(
@@ -138,7 +138,7 @@ class _ConversationPracticeScreenState
                                 .textTheme
                                 .titleMedium
                                 ?.copyWith(
-                                  color: palette.primary,
+                                  color: palette.onPrimaryContainer,
                                   fontWeight: FontWeight.w800,
                                 ),
                           ),

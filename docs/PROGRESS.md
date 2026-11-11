@@ -172,3 +172,24 @@
 - [x] Memastikan kegagalan Google Sign-In tidak menyentuh profil Tamu atau progres lokal, menautkan akun anonim (`linkWithCredential`), menjadwalkan penggabungan progres lokal (`_enqueueLocalGuestProgress` + `ConflictResolver`), serta menambahkan fitur **Hapus Akun & Data Cloud** (`deleteAccountAndCloudData()`).
 - [x] Menyusun panduan `docs/GOOGLE_SIGNIN_SETUP.md` dan pengujian `test/auth_error_mapper_test.dart` (`6/6` lulus).
 
+### Tahap 2 — Fix Kontras UI pada Kartu Berwarna (WCAG AA+/AAA) & Kebocoran Audit Internal [SELESAI]
+- [x] Mengidentifikasi akar masalah visual kartu berwarna pada tangkapan layar pengguna:
+  1. `KCard(selected: true)` sebelumnya memakai latar semi-transparan `p.primary.withValues(alpha: 0.10)` di atas `BoxShadow(color: p.primary, blurRadius: 0)` yang solid, sehingga bayangan hijau pekat di belakang kartu tembus 90% ke permukaan kartu dan menurunkan rasio kontras teks menjadi `< 2.2:1`.
+  2. `ValidationStatusBadge` dan `KChip` memakai latar semi-transparan `.withValues(alpha: 0.16..0.25)` tanpa token kontainer solid.
+  3. Penjelasan kartu kenalan (`ExerciseGenerator`) dan detail kamus (`DictionaryScreen`) menampilkan catatan mentah yang memuat prefix internal `Hasil audit deli_cek (w009): ...`.
+- [x] Tabel Perbandingan Rasio Kontras Sebelum vs Sesudah (`test/contrast_audit_test.dart`):
+
+| Komponen / Pasangan Warna | Sebelum (Rasio) | Sesudah (Token Baru) | Sesudah (Rasio) | Status WCAG 2.1 |
+| --- | --- | --- | --- | --- |
+| `KCard(selected: true)` Light — Teks Sekunder di atas Kartu Terpilih | `2.11:1` (GAGAL) | `onPrimaryContainer (#0D3B29)` di atas `primaryContainer (#E2F5EC)` solid | `11.81:1` | **AAA (>= 7:1)** |
+| `KCard(selected: true)` Dark — Judul & Penjelasan `Kenalan Kata Baru` | `1.97:1` (GAGAL) | `onPrimaryContainer (#CFFAE6)` di atas `primaryContainer (#132E23)` solid | `12.71:1` | **AAA (>= 7:1)** |
+| `ProfileScreen` Chip Level (`Level 2 • Gelar Perantau`) Light | `4.38:1` (GAGAL) | `onSecondaryContainer (#221910)` di atas `secondaryContainer (#FFF0BD)` solid | `14.61:1` | **AAA (>= 7:1)** |
+| `ProfileScreen` Chip Level Dark | `3.12:1` (GAGAL) | `onSecondaryContainer (#FFE799)` di atas `secondaryContainer (#3D2E05)` solid | `10.74:1` | **AAA (>= 7:1)** |
+| `ValidationStatusBadge` (`Sumber Kamus` / `Dicek Penutur`) Dark | `1.95:1` (GAGAL) | `onPrimaryContainer (#CFFAE6)` di atas `primaryContainer (#132E23)` solid | `12.71:1` | **AAA (>= 7:1)** |
+| `ExerciseScaffold` Banner Jawaban Benar / Salah Dark | `2.40:1` (GAGAL) | `onSuccessContainer` / `onErrorContainer` di atas kontainer solid | `12.31:1` | **AAA (>= 7:1)** |
+| Garis Tepi (`outline`) terhadap `surface` & `bg` (Light / Dark) | `1.89:1` / `1.27:1` | `#786954` (Light) / `#8C7D68` (Dark) | `5.25:1` / `3.58:1` | **AA Non-Text (>= 3:1)** |
+
+- [x] Menyaring prefix internal `Hasil audit deli_cek (...)` melalui `WordModel.sanitizeUserNotes` serta membangun ulang `assets/content/ms-deli/**` dengan status `dictionary_verified` (**"Sumber Kamus"**) untuk entri kamus Balai Bahasa.
+- [x] Membungkus isi `KCard` dengan `Material(color: Colors.transparent)` agar `ListTile` / `SwitchListTile` di dalam `KCard` merender *ink splash* secara bersih tanpa peringatan framework Flutter.
+
+

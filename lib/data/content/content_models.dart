@@ -193,6 +193,20 @@ class WordModel {
 
   String get word => deli;
   String get meaning => indonesia;
+  String? get userFacingNotes => sanitizeUserNotes(notes);
+
+  static final RegExp _internalAuditPrefixRegex = RegExp(
+    r'Hasil\s+audit\s+[a-zA-Z0-9_-]+(?:\s*\([a-zA-Z0-9:_-]+\))?\s*:\s*',
+    caseSensitive: false,
+  );
+
+  /// Menyaring penanda audit internal (mis. `Hasil audit deli_cek (w009): `)
+  /// agar tidak pernah bocor ke layar pengguna.
+  static String? sanitizeUserNotes(String? raw) {
+    if (raw == null) return null;
+    final cleaned = raw.replaceAll(_internalAuditPrefixRegex, '').trim();
+    return cleaned.isEmpty ? null : cleaned;
+  }
 
   factory WordModel.fromJson(Map<String, dynamic> json) {
     List<String> parseStringList(Object? raw) {
@@ -232,7 +246,7 @@ class WordModel {
       pos: json['pos'] as String? ?? 'benda',
       register: json['register'] as String? ?? 'deli',
       rawRegister: json['raw_register'] as String? ?? 'deli',
-      notes: json['notes'] as String?,
+      notes: sanitizeUserNotes(json['notes'] as String?),
       pronunciation: json['pronunciation'] as String?,
       exampleSentence: json['example_sentence'] as String?,
       exampleTranslation:

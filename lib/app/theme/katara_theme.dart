@@ -68,10 +68,16 @@ class KataraTheme {
       brightness: brightness,
       primary: p.primary,
       onPrimary: p.onPrimary,
+      primaryContainer: p.primaryContainer,
+      onPrimaryContainer: p.onPrimaryContainer,
       secondary: p.secondary,
       onSecondary: p.onSecondary,
+      secondaryContainer: p.secondaryContainer,
+      onSecondaryContainer: p.onSecondaryContainer,
       error: p.error,
       onError: Colors.white,
+      errorContainer: p.errorContainer,
+      onErrorContainer: p.onErrorContainer,
       surface: p.surface,
       onSurface: p.ink,
       onSurfaceVariant: p.inkMuted,
@@ -112,16 +118,16 @@ class KataraTheme {
       ),
       navigationBarTheme: NavigationBarThemeData(
         backgroundColor: p.surface,
-        indicatorColor: p.primary.withValues(alpha: 0.16),
+        indicatorColor: p.primaryContainer,
         labelTextStyle: WidgetStateProperty.resolveWith((states) {
           if (states.contains(WidgetState.selected)) {
-            return KataraTypography.label(p.ink).copyWith(fontWeight: FontWeight.w800);
+            return KataraTypography.label(p.onPrimaryContainer).copyWith(fontWeight: FontWeight.w800);
           }
           return KataraTypography.label(p.inkMuted).copyWith(fontWeight: FontWeight.w700);
         }),
         iconTheme: WidgetStateProperty.resolveWith((states) {
           if (states.contains(WidgetState.selected)) {
-            return IconThemeData(color: p.primary, size: 24);
+            return IconThemeData(color: p.onPrimaryContainer, size: 24);
           }
           return IconThemeData(color: p.inkMuted, size: 22);
         }),

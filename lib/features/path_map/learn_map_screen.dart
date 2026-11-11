@@ -296,8 +296,7 @@ class _LearnMapBody extends ConsumerWidget {
                                   .textTheme
                                   .labelSmall
                                   ?.copyWith(
-                                    color: palette.onPrimary
-                                        .withValues(alpha: 0.85),
+                                    color: palette.onPrimary,
                                     fontWeight: FontWeight.w800,
                                     letterSpacing: 0.8,
                                   ),
@@ -319,8 +318,7 @@ class _LearnMapBody extends ConsumerWidget {
                                   .textTheme
                                   .bodySmall
                                   ?.copyWith(
-                                    color: palette.onPrimary
-                                        .withValues(alpha: 0.9),
+                                    color: palette.onPrimary,
                                   ),
                             ),
                           ],

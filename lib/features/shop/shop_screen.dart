@@ -136,13 +136,12 @@ class _ShopScreenState extends ConsumerState<ShopScreen> {
                                   width: 48,
                                   height: 48,
                                   decoration: BoxDecoration(
-                                    color: palette.secondary
-                                        .withValues(alpha: 0.2),
+                                    color: palette.secondaryContainer,
                                     borderRadius: BorderRadius.circular(14),
                                   ),
                                   child: Icon(
                                     _iconForItem(item.id),
-                                    color: palette.primary,
+                                    color: palette.onSecondaryContainer,
                                   ),
                                 ),
                                 const SizedBox(width: 14),

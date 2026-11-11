@@ -147,6 +147,7 @@ class _DevGalleryScreenState extends State<DevGalleryScreen> {
                           runSpacing: 8,
                           children: [
                             ValidationStatusBadge(status: 'draft'),
+                            ValidationStatusBadge(status: 'dictionary_verified'),
                             ValidationStatusBadge(status: 'speaker_checked'),
                             ValidationStatusBadge(status: 'expert_verified'),
                           ],

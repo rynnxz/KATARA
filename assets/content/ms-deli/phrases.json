@@ -9,7 +9,7 @@
     "unit_id": "ms-deli:u:0001",
     "audio_path": null,
     "cultural_note": "Sapaan akrab sehari-hari setelah mengucapkan salam.",
-    "validation_status": "speaker_checked"
+    "validation_status": "dictionary_verified"
   },
   {
     "id": "ms-deli:p:0002",
@@ -21,7 +21,7 @@
     "unit_id": "ms-deli:u:0001",
     "audio_path": null,
     "cultural_note": "Lazim disertai ucapan syukur \"Alhamdulillah\".",
-    "validation_status": "speaker_checked"
+    "validation_status": "dictionary_verified"
   },
   {
     "id": "ms-deli:p:0003",
@@ -33,7 +33,7 @@
     "unit_id": "ms-deli:u:0001",
     "audio_path": null,
     "cultural_note": "Ungkapan kesantunan khas Melayu Deli dalam memuliakan tamu yang datang ke rumah.",
-    "validation_status": "speaker_checked"
+    "validation_status": "dictionary_verified"
   },
   {
     "id": "ms-deli:p:0004",
@@ -45,7 +45,7 @@
     "unit_id": "ms-deli:u:0001",
     "audio_path": null,
     "cultural_note": null,
-    "validation_status": "speaker_checked"
+    "validation_status": "dictionary_verified"
   },
   {
     "id": "ms-deli:p:0005",
@@ -57,7 +57,7 @@
     "unit_id": "ms-deli:u:0001",
     "audio_path": null,
     "cultural_note": null,
-    "validation_status": "speaker_checked"
+    "validation_status": "dictionary_verified"
   },
   {
     "id": "ms-deli:p:0006",
@@ -69,7 +69,7 @@
     "unit_id": "ms-deli:u:0001",
     "audio_path": null,
     "cultural_note": null,
-    "validation_status": "speaker_checked"
+    "validation_status": "dictionary_verified"
   },
   {
     "id": "ms-deli:p:0007",
@@ -81,7 +81,7 @@
     "unit_id": "ms-deli:u:0001",
     "audio_path": null,
     "cultural_note": "Menggunakan kata \"petang\" sebagai padanan asli \"sore\".",
-    "validation_status": "speaker_checked"
+    "validation_status": "dictionary_verified"
   },
   {
     "id": "ms-deli:p:0008",
@@ -93,7 +93,7 @@
     "unit_id": "ms-deli:u:0001",
     "audio_path": null,
     "cultural_note": null,
-    "validation_status": "speaker_checked"
+    "validation_status": "dictionary_verified"
   },
   {
     "id": "ms-deli:p:0009",
@@ -105,7 +105,7 @@
     "unit_id": "ms-deli:u:0005",
     "audio_path": null,
     "cultural_note": "Selain bertanya tujuan, ungkapan ini berfungsi sebagai tegur sapa basa-basi ramah saat berpapasan dengan tetangga.",
-    "validation_status": "speaker_checked"
+    "validation_status": "dictionary_verified"
   },
   {
     "id": "ms-deli:p:0010",
@@ -117,7 +117,7 @@
     "unit_id": "ms-deli:u:0005",
     "audio_path": null,
     "cultural_note": "Kata \"awak\" di sini merujuk pada lawan bicara (\"kamu\") secara akrab dan sopan.",
-    "validation_status": "speaker_checked"
+    "validation_status": "dictionary_verified"
   },
   {
     "id": "ms-deli:p:0011",
@@ -129,7 +129,7 @@
     "unit_id": "ms-deli:u:0011",
     "audio_path": null,
     "cultural_note": "Ungkapan sopan tuan rumah saat mempersilakan tamu menyantap hidangan.",
-    "validation_status": "speaker_checked"
+    "validation_status": "dictionary_verified"
   },
   {
     "id": "ms-deli:p:0012",
@@ -141,7 +141,7 @@
     "unit_id": "ms-deli:u:0011",
     "audio_path": null,
     "cultural_note": null,
-    "validation_status": "speaker_checked"
+    "validation_status": "dictionary_verified"
   },
   {
     "id": "ms-deli:p:0013",
@@ -153,7 +153,7 @@
     "unit_id": "ms-deli:u:0014",
     "audio_path": null,
     "cultural_note": "Ciri keramahtamahan masyarakat Melayu Deli terhadap kenalan yang lewat di depan rumah.",
-    "validation_status": "speaker_checked"
+    "validation_status": "dictionary_verified"
   },
   {
     "id": "ms-deli:p:0014",
@@ -165,7 +165,7 @@
     "unit_id": "ms-deli:u:0011",
     "audio_path": null,
     "cultural_note": null,
-    "validation_status": "speaker_checked"
+    "validation_status": "dictionary_verified"
   },
   {
     "id": "ms-deli:p:0015",
@@ -177,7 +177,7 @@
     "unit_id": "ms-deli:u:0011",
     "audio_path": null,
     "cultural_note": null,
-    "validation_status": "speaker_checked"
+    "validation_status": "dictionary_verified"
   },
   {
     "id": "ms-deli:p:0016",
@@ -189,7 +189,7 @@
     "unit_id": "ms-deli:u:0011",
     "audio_path": null,
     "cultural_note": null,
-    "validation_status": "speaker_checked"
+    "validation_status": "dictionary_verified"
   },
   {
     "id": "ms-deli:p:0017",
@@ -201,7 +201,7 @@
     "unit_id": "ms-deli:u:0016",
     "audio_path": null,
     "cultural_note": null,
-    "validation_status": "speaker_checked"
+    "validation_status": "dictionary_verified"
   },
   {
     "id": "ms-deli:p:0018",
@@ -213,7 +213,7 @@
     "unit_id": "ms-deli:u:0016",
     "audio_path": null,
     "cultural_note": null,
-    "validation_status": "speaker_checked"
+    "validation_status": "dictionary_verified"
   },
   {
     "id": "ms-deli:p:0019",
@@ -225,7 +225,7 @@
     "unit_id": "ms-deli:u:0016",
     "audio_path": null,
     "cultural_note": "Bentuk kesantunan membuka pertanyaan kepada orang yang lebih tua atau belum dikenal.",
-    "validation_status": "speaker_checked"
+    "validation_status": "dictionary_verified"
   },
   {
     "id": "ms-deli:p:0020",
@@ -237,7 +237,7 @@
     "unit_id": "ms-deli:u:0016",
     "audio_path": null,
     "cultural_note": null,
-    "validation_status": "speaker_checked"
+    "validation_status": "dictionary_verified"
   },
   {
     "id": "ms-deli:p:0021",
@@ -249,7 +249,7 @@
     "unit_id": "ms-deli:u:0016",
     "audio_path": null,
     "cultural_note": null,
-    "validation_status": "speaker_checked"
+    "validation_status": "dictionary_verified"
   },
   {
     "id": "ms-deli:p:0022",
@@ -261,7 +261,7 @@
     "unit_id": "ms-deli:u:0016",
     "audio_path": null,
     "cultural_note": null,
-    "validation_status": "speaker_checked"
+    "validation_status": "dictionary_verified"
   },
   {
     "id": "ms-deli:p:0023",
@@ -273,7 +273,7 @@
     "unit_id": "ms-deli:u:0016",
     "audio_path": null,
     "cultural_note": null,
-    "validation_status": "speaker_checked"
+    "validation_status": "dictionary_verified"
   },
   {
     "id": "ms-deli:p:0024",
@@ -285,7 +285,7 @@
     "unit_id": "ms-deli:u:0012",
     "audio_path": null,
     "cultural_note": null,
-    "validation_status": "speaker_checked"
+    "validation_status": "dictionary_verified"
   },
   {
     "id": "ms-deli:p:0025",
@@ -297,7 +297,7 @@
     "unit_id": "ms-deli:u:0012",
     "audio_path": null,
     "cultural_note": null,
-    "validation_status": "speaker_checked"
+    "validation_status": "dictionary_verified"
   },
   {
     "id": "ms-deli:p:0026",
@@ -309,7 +309,7 @@
     "unit_id": "ms-deli:u:0012",
     "audio_path": null,
     "cultural_note": null,
-    "validation_status": "speaker_checked"
+    "validation_status": "dictionary_verified"
   },
   {
     "id": "ms-deli:p:0027",
@@ -321,7 +321,7 @@
     "unit_id": "ms-deli:u:0012",
     "audio_path": null,
     "cultural_note": null,
-    "validation_status": "speaker_checked"
+    "validation_status": "dictionary_verified"
   },
   {
     "id": "ms-deli:p:0028",
@@ -333,7 +333,7 @@
     "unit_id": "ms-deli:u:0013",
     "audio_path": null,
     "cultural_note": "Pujian tertinggi untuk masakan bersantan atau berbumbu rempah.",
-    "validation_status": "speaker_checked"
+    "validation_status": "dictionary_verified"
   },
   {
     "id": "ms-deli:p:0029",
@@ -345,7 +345,7 @@
     "unit_id": "ms-deli:u:0013",
     "audio_path": null,
     "cultural_note": null,
-    "validation_status": "speaker_checked"
+    "validation_status": "dictionary_verified"
   },
   {
     "id": "ms-deli:p:0030",
@@ -357,7 +357,7 @@
     "unit_id": "ms-deli:u:0013",
     "audio_path": null,
     "cultural_note": null,
-    "validation_status": "speaker_checked"
+    "validation_status": "dictionary_verified"
   },
   {
     "id": "ms-deli:p:0031",
@@ -369,7 +369,7 @@
     "unit_id": "ms-deli:u:0013",
     "audio_path": null,
     "cultural_note": null,
-    "validation_status": "speaker_checked"
+    "validation_status": "dictionary_verified"
   },
   {
     "id": "ms-deli:p:0032",
@@ -381,7 +381,7 @@
     "unit_id": "ms-deli:u:0015",
     "audio_path": null,
     "cultural_note": null,
-    "validation_status": "speaker_checked"
+    "validation_status": "dictionary_verified"
   },
   {
     "id": "ms-deli:p:0033",
@@ -393,7 +393,7 @@
     "unit_id": "ms-deli:u:0014",
     "audio_path": null,
     "cultural_note": "Kebiasaan adat Melayu: jika seseorang ditawari makanan tetapi sedang terburu-buru, ia tetap menyentuh atau mencicipi sedikit agar terhindar dari \"kempunan\".",
-    "validation_status": "speaker_checked"
+    "validation_status": "dictionary_verified"
   },
   {
     "id": "ms-deli:p:0034",
@@ -405,7 +405,7 @@
     "unit_id": "ms-deli:u:0015",
     "audio_path": null,
     "cultural_note": null,
-    "validation_status": "speaker_checked"
+    "validation_status": "dictionary_verified"
   },
   {
     "id": "ms-deli:p:0035",
@@ -417,7 +417,7 @@
     "unit_id": "ms-deli:u:0016",
     "audio_path": null,
     "cultural_note": null,
-    "validation_status": "speaker_checked"
+    "validation_status": "dictionary_verified"
   },
   {
     "id": "ms-deli:p:0036",
@@ -429,7 +429,7 @@
     "unit_id": "ms-deli:u:0016",
     "audio_path": null,
     "cultural_note": null,
-    "validation_status": "speaker_checked"
+    "validation_status": "dictionary_verified"
   },
   {
     "id": "ms-deli:p:0037",
@@ -441,7 +441,7 @@
     "unit_id": "ms-deli:u:0011",
     "audio_path": null,
     "cultural_note": null,
-    "validation_status": "speaker_checked"
+    "validation_status": "dictionary_verified"
   },
   {
     "id": "ms-deli:p:0038",
@@ -453,7 +453,7 @@
     "unit_id": "ms-deli:u:0011",
     "audio_path": null,
     "cultural_note": "Etika kesopanan tradisional Melayu Deli ketika lewat di hadapan orang tua sambil membungkukkan badan sedikit.",
-    "validation_status": "speaker_checked"
+    "validation_status": "dictionary_verified"
   },
   {
     "id": "ms-deli:p:0039",
@@ -465,7 +465,7 @@
     "unit_id": "ms-deli:u:0011",
     "audio_path": null,
     "cultural_note": "Leksikon \"santap\" khusus dipakai dalam ragam halus istana.",
-    "validation_status": "speaker_checked"
+    "validation_status": "dictionary_verified"
   },
   {
     "id": "ms-deli:p:0040",

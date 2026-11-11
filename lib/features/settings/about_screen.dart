@@ -332,7 +332,19 @@ class _AboutScreenState extends ConsumerState<AboutScreen> {
                           SizedBox(width: 10),
                           Expanded(
                             child: Text(
-                              'Draf: dihimpun dari literatur primer dan korpus kerja.',
+                              'Draf: dihimpun dari korpus kerja dan sedang menunggu verifikasi lanjutan.',
+                            ),
+                          ),
+                        ],
+                      ),
+                      const SizedBox(height: 10),
+                      const Row(
+                        children: [
+                          ValidationStatusBadge(status: 'dictionary_verified'),
+                          SizedBox(width: 10),
+                          Expanded(
+                            child: Text(
+                              'Sumber Kamus: terverifikasi dari kamus dan monograf resmi Balai Bahasa / Kemendikbud.',
                             ),
                           ),
                         ],
@@ -344,7 +356,7 @@ class _AboutScreenState extends ConsumerState<AboutScreen> {
                           SizedBox(width: 10),
                           Expanded(
                             child: Text(
-                              'Dicek Penutur: pemakaian harian dan lafal dikonfirmasi penutur asli.',
+                              'Dicek Penutur: pemakaian harian dan lafal dikonfirmasi langsung bersama penutur jati.',
                             ),
                           ),
                         ],

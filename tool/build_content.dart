@@ -175,6 +175,17 @@ void main() {
     }
   }
 
+  final auditPrefixRegex = RegExp(
+    r'Hasil\s+audit\s+[a-zA-Z0-9_-]+(?:\s*\([a-zA-Z0-9:_-]+\))?\s*:\s*',
+    caseSensitive: false,
+  );
+
+  String? sanitizeNote(String? rawNote) {
+    if (rawNote == null) return null;
+    final cleaned = rawNote.replaceAll(auditPrefixRegex, '').trim();
+    return cleaned.isEmpty ? null : cleaned;
+  }
+
   String buildEnrichedNotes(Map<String, dynamic> dsEntry, String? legacyNote) {
     final parts = <String>[];
     final pron = dsEntry['pronunciation'] as String?;
@@ -191,7 +202,7 @@ void main() {
     if (ex != null && ex.isNotEmpty) {
       parts.add('Contoh: "$ex"${exTr != null ? ' ($exTr)' : ''}');
     }
-    final note = dsEntry['notes'] as String? ?? legacyNote;
+    final note = sanitizeNote(dsEntry['notes'] as String? ?? legacyNote);
     if (note != null && note.isNotEmpty) {
       parts.add(note);
     }
@@ -224,12 +235,12 @@ void main() {
 
     String validationStatus = 'draft';
     if (dsMatch != null && dsMatch['verification_status'] == 'verified') {
-      validationStatus = 'speaker_checked';
+      validationStatus = 'dictionary_verified';
     }
 
     final enrichedNotes = dsMatch != null
         ? buildEnrichedNotes(dsMatch, w['catatan'] as String?)
-        : (w['catatan'] as String?);
+        : sanitizeNote(w['catatan'] as String?);
 
     wordsOut.add({
       'id': stableId,
@@ -343,7 +354,7 @@ void main() {
     wordsByRawUnit.putIfAbsent(rawUnitId, () => <String>[]).add(stableId);
 
     final verif = v['verification_status'] as String? ?? 'verified';
-    final valStatus = verif == 'verified' ? 'speaker_checked' : 'draft';
+    final valStatus = verif == 'verified' ? 'dictionary_verified' : 'draft';
 
     wordsOut.add({
       'id': stableId,
@@ -404,7 +415,7 @@ void main() {
 
     String valStatus = 'draft';
     if (dsMatch != null && dsMatch['verification_status'] == 'verified') {
-      valStatus = 'speaker_checked';
+      valStatus = 'dictionary_verified';
     }
 
     phrasesOut.add({
@@ -456,7 +467,7 @@ void main() {
     phrasesByRawUnit.putIfAbsent(rawUnitId, () => <String>[]).add(stableId);
 
     final verif = e['verification_status'] as String? ?? 'verified';
-    final valStatus = verif == 'verified' ? 'speaker_checked' : 'draft';
+    final valStatus = verif == 'verified' ? 'dictionary_verified' : 'draft';
     final lvl = ['u14', 'u15', 'u16'].contains(rawUnitId) ? 3 : 2;
 
     phrasesOut.add({

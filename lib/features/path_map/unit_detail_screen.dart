@@ -84,9 +84,8 @@ class UnitDetailScreen extends ConsumerWidget {
                         children: [
                           KChip(
                             label: 'Level ${unit.level}',
-                            backgroundColor:
-                                palette.primary.withValues(alpha: 0.14),
-                            textColor: palette.primary,
+                            backgroundColor: palette.secondaryContainer,
+                            textColor: palette.onSecondaryContainer,
                           ),
                           const SizedBox(width: 8),
                           KChip(
@@ -98,13 +97,16 @@ class UnitDetailScreen extends ConsumerWidget {
                       const SizedBox(height: 12),
                       Text(
                         unit.title,
-                        style: Theme.of(context).textTheme.headlineMedium,
+                        style: Theme.of(context)
+                            .textTheme
+                            .headlineMedium
+                            ?.copyWith(color: palette.onPrimaryContainer),
                       ),
                       const SizedBox(height: 4),
                       Text(
                         unit.theme,
                         style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                              color: palette.inkMuted,
+                              color: palette.onPrimaryContainer,
                             ),
                       ),
                       if (firstLesson != null) ...[
@@ -133,9 +135,8 @@ class UnitDetailScreen extends ConsumerWidget {
                       child: Row(
                         children: [
                           CircleAvatar(
-                            backgroundColor:
-                                palette.primary.withValues(alpha: 0.14),
-                            foregroundColor: palette.primary,
+                            backgroundColor: palette.primaryContainer,
+                            foregroundColor: palette.onPrimaryContainer,
                             child: Text(
                               '${lesson.order}',
                               style:

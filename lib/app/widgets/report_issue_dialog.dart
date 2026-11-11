@@ -146,7 +146,7 @@ class _ReportIssueSheetState extends ConsumerState<_ReportIssueSheet> {
                     ),
                     decoration: BoxDecoration(
                       color: isSelected
-                          ? palette.primary.withValues(alpha: 0.1)
+                          ? palette.primaryContainer
                           : palette.surfaceAlt,
                       borderRadius: BorderRadius.circular(12),
                       border: Border.all(

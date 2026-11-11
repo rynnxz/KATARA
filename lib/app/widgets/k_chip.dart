@@ -23,8 +23,10 @@ class KChip extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final p = KataraPalette.of(context);
-    final bg = backgroundColor ?? (selected ? p.primary : p.surfaceAlt);
-    final fg = foregroundColor ?? (selected ? p.onPrimary : p.ink);
+    final rawBg = backgroundColor ?? (selected ? p.primary : p.surfaceAlt);
+    final bg = rawBg.a < 1.0 ? Color.alphaBlend(rawBg, p.surface) : rawBg;
+    final rawFg = foregroundColor ?? (selected ? p.onPrimary : p.ink);
+    final fg = rawFg.a < 1.0 ? Color.alphaBlend(rawFg, bg) : rawFg;
 
     final chip = Container(
       padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 7),
@@ -81,7 +83,11 @@ class KChip extends StatelessWidget {
   }
 }
 
-/// Badge status validasi konten sesuai Bagian 14 (`draft` | `speaker_checked` | `expert_verified`).
+/// Badge status validasi konten sesuai Bagian 14 & keputusan transparansi ilmiah:
+/// - `expert_verified`     -> "Terverifikasi Ahli"
+/// - `speaker_checked`     -> "Dicek Penutur" (khusus yang telah dicek langsung bersama penutur jati)
+/// - `dictionary_verified` -> "Sumber Kamus" (terverifikasi dari kamus/literatur resmi Balai Bahasa)
+/// - `draft`               -> "Draf"
 class ValidationStatusBadge extends StatelessWidget {
   const ValidationStatusBadge({
     super.key,
@@ -97,20 +103,26 @@ class ValidationStatusBadge extends StatelessWidget {
       'expert_verified' => (
           'Terverifikasi Ahli',
           Icons.verified_rounded,
-          p.success.withValues(alpha: 0.16),
-          p.ink
+          p.successContainer,
+          p.onSuccessContainer,
         ),
       'speaker_checked' => (
           'Dicek Penutur',
           Icons.check_circle_outline_rounded,
-          p.primary.withValues(alpha: 0.16),
-          p.ink
+          p.primaryContainer,
+          p.onPrimaryContainer,
+        ),
+      'dictionary_verified' => (
+          'Sumber Kamus',
+          Icons.menu_book_rounded,
+          p.primaryContainer,
+          p.onPrimaryContainer,
         ),
       _ => (
           'Draf',
           Icons.edit_note_rounded,
-          p.secondary.withValues(alpha: 0.25),
-          p.ink
+          p.secondaryContainer,
+          p.onSecondaryContainer,
         ),
     };
 
