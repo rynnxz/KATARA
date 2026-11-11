@@ -48,10 +48,10 @@ KATARA dirancang **100% offline-first**: seluruh fitur belajar, kuis, kamus, lat
 - **Project Number:** `236754467620`
 - **Android Package Name:** `id.katara.app` (`1:236754467620:android:603644d507d0290562d1b1`)
 - **Berkas Konfigurasi:**
-  - [`android/app/google-services.json`](file:///c:/lomba/Budaya%20Go%202026/KATARA/android/app/google-services.json)
-  - [`lib/firebase_options.dart`](file:///c:/lomba/Budaya%20Go%202026/KATARA/lib/firebase_options.dart)
-  - [`firestore.rules`](file:///c:/lomba/Budaya%20Go%202026/KATARA/firestore.rules)
-  - [`firebase.json`](file:///c:/lomba/Budaya%20Go%202026/KATARA/firebase.json) & [`.firebaserc`](file:///c:/lomba/Budaya%20Go%202026/KATARA/.firebaserc)
+  - [`android/app/google-services.json`](../android/app/google-services.json)
+  - [`lib/firebase_options.dart`](../lib/firebase_options.dart)
+  - [`firestore.rules`](../firestore.rules)
+  - [`firebase.json`](../firebase.json) & [`.firebaserc`](../.firebaserc)
 
 ### Menerapkan Aturan Keamanan Firestore (`firestore.rules`)
 ```powershell

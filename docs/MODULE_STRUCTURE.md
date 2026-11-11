@@ -14,7 +14,7 @@ Agar ukuran unduhan awal aplikasi (`app-release.apk`) tetap ringan dan ramah kuo
 2. **Modul Unduhan Mandiri (`Downloadable` di luar APK):**
    - **Melayu Langkat (`ms-langkat` / `melayu_langkat`)** -> `dist/releases/v1.1.0/module_langkat.zip` (`82.273 byte`).
    - **Melayu Palembang (`ms-palembang` / `melayu_palembang`)** -> `dist/releases/v1.1.0/module_palembang.zip` (`84.219 byte`).
-   - Kedua arsip ZIP ini **tidak dimasukkan ke dalam `pubspec.yaml` `assets:`**, melainkan di-host pada GitHub Releases (`https://github.com/rynnxz/KATARA/releases/download/v1.1.0/...`) dan diunduh sesuai pilihan pengguna melalui [`ModuleDownloadService`](file:///c:/lomba/Budaya%20Go%202026/KATARA/lib/services/module_download_service.dart).
+   - Kedua arsip ZIP ini **tidak dimasukkan ke dalam `pubspec.yaml` `assets:`**, melainkan di-host pada GitHub Releases (`https://github.com/rynnxz/KATARA/releases/download/v1.1.1/...`) dan diunduh sesuai pilihan pengguna melalui [`ModuleDownloadService`](../lib/services/module_download_service.dart).
 
 ---
 
@@ -84,7 +84,7 @@ dart run tool/build_modules.dart
 
 ## 5. Keamanan & Siklus Hidup Pemasangan Modul
 
-[`ModuleDownloadService`](file:///c:/lomba/Budaya%20Go%202026/KATARA/lib/services/module_download_service.dart) dan [`ContentSeeder`](file:///c:/lomba/Budaya%20Go%202026/KATARA/lib/data/content/content_seeder.dart) menerapkan pengamanan berlapis:
+[`ModuleDownloadService`](../lib/services/module_download_service.dart) dan [`ContentSeeder`](../lib/data/content/content_seeder.dart) menerapkan pengamanan berlapis:
 1. **Verifikasi SHA-256:** Hash berkas ZIP yang diunduh dihitung di memori dan dicocokkan dengan `sha256` pada `module_catalog.json`. Jika berbeda, instalasi langsung dibatalkan sebelum menyentuh SQLite.
 2. **Proteksi Zip-Slip (Path Traversal):** Setiap nama berkas di dalam ZIP diperiksa terhadap pola `..`, `/`, atau `\`.
 3. **Pertukaran Direktori Atomik:** Ekstraksi dilakukan ke direktori sementara `.staging_<courseId>`, divalidasi kelengkapan berkas wajibnya, lalu dipindahkan ke direktori target.

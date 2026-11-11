@@ -59,7 +59,7 @@ void main() {
       final palembang = DialectVisualIdentity.forCourse('ms-palembang');
 
       expect(deli.accentColor, equals(const Color(0xFFF5B700)));
-      expect(langkat.accentColor, equals(const Color(0xFF1E7F5C)));
+      expect(langkat.accentColor, equals(const Color(0xFF186B4C)));
       expect(palembang.accentColor, equals(const Color(0xFF8B1E24)));
 
       expect(deli.motifName, contains('Pucuk Rebung'));

@@ -1,5 +1,7 @@
 {
   "projects": {
     "default": "katara-melayu"
-  }
+  },
+  "targets": {},
+  "etags": {}
 }

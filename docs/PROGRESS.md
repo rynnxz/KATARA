@@ -192,4 +192,13 @@
 - [x] Menyaring prefix internal `Hasil audit deli_cek (...)` melalui `WordModel.sanitizeUserNotes` serta membangun ulang `assets/content/ms-deli/**` dengan status `dictionary_verified` (**"Sumber Kamus"**) untuk entri kamus Balai Bahasa.
 - [x] Membungkus isi `KCard` dengan `Material(color: Colors.transparent)` agar `ListTile` / `SwitchListTile` di dalam `KCard` merender *ink splash* secara bersih tanpa peringatan framework Flutter.
 
+### Tahap 3 — Audit Keamanan Menyeluruh (`docs/SECURITY_AUDIT.md`) & Pengerasan Kode [SELESAI]
+- [x] Menyusun laporan [`docs/SECURITY_AUDIT.md`](SECURITY_AUDIT.md) yang mendokumentasikan 12 temuan keamanan (`SEC-001` s/d `SEC-012`), matriks tingkat keparahan, bukti PoC aman, risiko yang diterima (`SEC-009` SQLite tanpa SQLCipher dengan mitigasi PII minimization + `allowBackup="false"`), serta **10 Runbook Tanggap Insiden Operasional**.
+- [x] Memvalidasi `firestore.rules` dengan validator MCP Firebase (`OK: No errors detected`) dan menulis pengujian kontrak [`test/firestore_rules/firestore_rules_test.dart`](../test/firestore_rules/firestore_rules_test.dart) (`7/7` lulus).
+- [x] Mengimplementasikan verifikasi tanda tangan digital asimetris **Ed25519 (RFC 8032)** pada [`CatalogSignatureVerifier`](../lib/services/catalog_signature_verifier.dart) dengan kunci publik tertanam (`57ee50c3b50ecc5775b50a45e6c2d67e3cb03a4a977be93caf156b88cd145466`) dan kunci privat di luar bundel/repo (`.keys/catalog_ed25519.seed`).
+- [x] Memperketat [`ModuleDownloadService`](../lib/services/module_download_service.dart) dan [`ContentSeeder`](../lib/data/content/content_seeder.dart): daftar putih HTTPS GitHub Releases, batas ukuran unduhan (`25 MB`) & ekstraksi (`30 MB`) / rasio kompresi `30:1` (anti-*zip-bomb*), daftar putih nama berkas JSON, validasi skema JSON ketat, proteksi anti-penimpaan `ms-deli`, proteksi anti-downgrade, kill-switch `revoked_modules`, dan pembersihan `.tmp`/`.staging_*` saat startup.
+- [x] Memperkeras `AndroidManifest.xml` (`android:allowBackup="false"`, `android:fullBackupContent="false"`, `android:usesCleartextTraffic="false"`, `network_security_config.xml`), membatasi rute `/dev/gallery` dengan `kDebugMode`, dan membersihkan tautan path lokal `file:///c:/lomba/...` di `docs/*.md`.
+- [x] Menulis dan menjalankan [`test/module_security_test.dart`](../test/module_security_test.dart) (`6/6` lulus).
+
+
 

@@ -170,6 +170,15 @@ class ContentSeeder {
     required String sha256Hash,
     String version = '1.1.0',
   }) async {
+    if (courseId == 'ms-deli') {
+      throw const FormatException(
+        'Keamanan: Modul bawaan ms-deli tidak boleh ditimpa dari direktori eksternal.',
+      );
+    }
+    if (!RegExp(r'^ms-[a-z0-9-]+$').hasMatch(courseId)) {
+      throw FormatException('ID kursus modul tidak valid: $courseId');
+    }
+
     await db.ensureInitialized();
 
     Future<String> loadFromDir(String fileName) async {
@@ -177,7 +186,28 @@ class ContentSeeder {
       if (!file.existsSync()) {
         return '[]';
       }
-      return file.readAsStringSync();
+      final content = file.readAsStringSync();
+      // Validasi bahwa tidak ada entri yang mencoba menyuntikkan ID milik ms-deli atau kursus lain
+      final decoded = jsonDecode(content);
+      if (decoded is List) {
+        for (final item in decoded) {
+          if (item is Map<String, dynamic>) {
+            final itemCourse = item['course_id'] as String?;
+            final itemId = item['id'] as String? ?? '';
+            if (itemCourse != null && itemCourse != courseId) {
+              throw FormatException(
+                'Pelanggaran isolasi kursus pada $fileName: ditemukan course_id "$itemCourse" di dalam paket "$courseId".',
+              );
+            }
+            if (itemId.startsWith('ms-deli:')) {
+              throw FormatException(
+                'Pelanggaran isolasi ID pada $fileName: ID "$itemId" mencoba menimpa namespace ms-deli.',
+              );
+            }
+          }
+        }
+      }
+      return content;
     }
 
     int contentVersion = 1;

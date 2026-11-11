@@ -1,12 +1,30 @@
 import 'dart:convert';
 import 'dart:io';
+import 'dart:math';
+import 'dart:typed_data';
 import 'package:archive/archive.dart';
 import 'package:crypto/crypto.dart';
+import 'package:katara/services/catalog_signature_verifier.dart';
 
 const _prettyJson = JsonEncoder.withIndent('  ');
 
+Uint8List _loadOrCreatePrivateSeed() {
+  final seedFile = File('.keys/catalog_ed25519.seed');
+  if (seedFile.existsSync()) {
+    final hex = seedFile.readAsStringSync().trim();
+    if (hex.length == 64) {
+      return Ed25519Crypto.hexToBytes(hex);
+    }
+  }
+  seedFile.parent.createSync(recursive: true);
+  final rng = Random.secure();
+  final seed = Uint8List.fromList(List<int>.generate(32, (_) => rng.nextInt(256)));
+  seedFile.writeAsStringSync('${Ed25519Crypto.bytesToHex(seed)}\n');
+  return seed;
+}
+
 void main() {
-  stdout.writeln('=== KATARA Standalone Dialect Module ZIP Builder (v1.1.0) ===');
+  stdout.writeln('=== KATARA Standalone Dialect Module ZIP Builder (v1.1.1) ===');
 
   final langkatMeta = _buildDialectModuleZip(
     courseId: 'ms-langkat',
@@ -54,14 +72,28 @@ void main() {
     ],
   );
 
-  final catalog = {
-    'catalog_version': '1.1.0',
+  final seed = _loadOrCreatePrivateSeed();
+  final pubKeyHex = Ed25519Crypto.bytesToHex(Ed25519Crypto.publicKeyFromSeed(seed));
+  stdout.writeln('  [KEY] Public Key Ed25519: $pubKeyHex');
+
+  final catalog = <String, dynamic>{
+    'catalog_version': 2,
+    'min_app_version': '1.1.0',
+    'revoked_modules': <String>[],
     'generated_at': '2026-11-11T00:00:00Z',
-    'github_release_tag': 'v1.1.0',
+    'github_release_tag': 'v1.1.1',
     'repository_url': 'https://github.com/rynnxz/KATARA',
     'modules': [langkatMeta, palembangMeta],
   };
 
+  final canonicalPayload = CatalogSignatureVerifier.canonicalCatalogPayload(catalog);
+  final sigBytes = Ed25519Crypto.sign(canonicalPayload, seed);
+  catalog['signature_ed25519'] = Ed25519Crypto.bytesToHex(sigBytes);
+  catalog['public_key_ed25519'] = pubKeyHex;
+
+  Directory('dist/releases/v1.1.1').createSync(recursive: true);
+  File('dist/releases/v1.1.1/module_catalog.json')
+      .writeAsStringSync('${_prettyJson.convert(catalog)}\n');
   Directory('dist/releases/v1.1.0').createSync(recursive: true);
   File('dist/releases/v1.1.0/module_catalog.json')
       .writeAsStringSync('${_prettyJson.convert(catalog)}\n');
@@ -610,9 +642,13 @@ Map<String, dynamic> _buildDialectModuleZip({
   }
 
   final zipBytes = ZipEncoder().encode(archive);
-  final outFile = File('dist/releases/v1.1.0/$archiveFileName');
-  outFile.parent.createSync(recursive: true);
-  outFile.writeAsBytesSync(zipBytes);
+  final outFile111 = File('dist/releases/v1.1.1/$archiveFileName');
+  outFile111.parent.createSync(recursive: true);
+  outFile111.writeAsBytesSync(zipBytes);
+
+  final outFile110 = File('dist/releases/v1.1.0/$archiveFileName');
+  outFile110.parent.createSync(recursive: true);
+  outFile110.writeAsBytesSync(zipBytes);
 
   final zipSha256 = sha256.convert(zipBytes).toString();
   stdout.writeln(
@@ -627,11 +663,11 @@ Map<String, dynamic> _buildDialectModuleZip({
     'description': courseId == 'ms-langkat'
         ? 'Bahasa Melayu Kesultanan Langkat (Tanjung Pura, Stabat, Secanggang, Pangkalan Brandan) lengkap dengan kosakata pesisir-sungai, kuliner halua, dan sastra pantun.'
         : 'Bahasa Melayu Palembang dengan dua tingkat tutur (Baso Palembang Alus/Bebaso & Sari-sari), ekologi Sungai Musi, Rumah Limas, kuliner Pempek-Pindang, dan Songket.',
-    'version': '1.1.0',
+    'version': '1.1.1',
     'content_version': 1,
     'archive_filename': archiveFileName,
     'download_url':
-        'https://github.com/rynnxz/KATARA/releases/download/v1.1.0/$archiveFileName',
+        'https://github.com/rynnxz/KATARA/releases/download/v1.1.1/$archiveFileName',
     'size_bytes': zipBytes.length,
     'sha256': zipSha256,
     'word_count': wordsOut.length,

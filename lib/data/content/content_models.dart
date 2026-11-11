@@ -854,6 +854,8 @@ class ModuleCatalogItemModel {
   final String? archiveFilename;
   final String description;
 
+  String get moduleId => id;
+
   factory ModuleCatalogItemModel.fromJson(Map<String, dynamic> json) {
     final rawId =
         (json['id'] ?? json['dialect_id'] ?? json['course_id'] ?? 'ms-deli')

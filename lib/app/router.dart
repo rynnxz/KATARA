@@ -29,6 +29,12 @@ import 'package:katara/features/shop/shop_screen.dart';
 final appRouterProvider = Provider<GoRouter>((ref) {
   return GoRouter(
     initialLocation: '/splash',
+    redirect: (context, state) {
+      if (!kDebugMode && state.matchedLocation.startsWith('/dev')) {
+        return '/home/learn';
+      }
+      return null;
+    },
     routes: [
       GoRoute(
         path: '/splash',

@@ -1,3 +1,4 @@
+import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
@@ -32,6 +33,14 @@ class _SplashScreenState extends ConsumerState<SplashScreen> {
     });
 
     try {
+      if (!Platform.environment.containsKey('FLUTTER_TEST')) {
+        try {
+          await ref
+              .read(moduleDownloadServiceProvider)
+              .cleanupStaleStagingDirectories();
+        } catch (_) {}
+      }
+
       final seeder = ref.read(contentSeederProvider);
       await seeder.seedIfNeeded();
 
