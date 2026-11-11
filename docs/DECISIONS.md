@@ -40,3 +40,16 @@ Dokumen ini mencatat keputusan arsitektur, klarifikasi developer, dan penyesuaia
    - `KataraPalette.light.inkMuted` dipergelap dari `#6B5E4B` menjadi `#4A3E2D` (kontras `8,4:1` di atas `#FFF9EC` dan `9,0:1` di atas `#FFFFFF`), dan `ColorScheme.onSurfaceVariant` diikat langsung ke `inkMuted` agar seluruh widget Material 3 tampil tajam dan mudah dibaca.
 3. **Penyelesaian Konflik Sinkronisasi Cloud (`ConflictResolver`)**:
    - Menggabungkan progres antar-perangkat secara deterministik tanpa pernah menurunkan capaian pengguna (`max(stars)`, `max(best_score)`, `max(strength)`, serta union `xp_events` berbasis `event_id` unik).
+
+## 2026-11-11 — Keputusan Arsitektur & Keamanan v1.1.1 (Fix, Kontras, Audit & LTS)
+
+1. **Penanganan Galat Autentikasi (`AuthErrorMapper`) & Konfigurasi Signing Rilis**:
+   - Seluruh galat `PlatformException` dan `FirebaseAuthException` wajib melewati `AuthErrorMapper` sebelum ditampilkan di UI agar pengguna tidak pernah melihat string teknis ter-obfuscate (`t4: 10:`).
+   - `android/app/build.gradle.kts` membaca `android/key.properties` bila tersedia untuk penandatanganan rilis produksi, dengan fallback ke *debug keystore* hanya bila `key.properties` tidak ditemukan di lingkungan pengembangan lokal.
+2. **Pemisahan Status Validasi Ilmiah (`dictionary_verified` vs `speaker_checked`)**:
+   - Atas persetujuan developer, entri kosakata yang diverifikasi dari kamus/literatur resmi Balai Bahasa memakai status `dictionary_verified` dengan lencana **"Sumber Kamus"**, sedangkan status `speaker_checked` (**"Dicek Penutur"**) dikhususkan secara ketat untuk entri yang telah diverifikasi langsung bersama penutur jati.
+3. **Database Lokal SQLite Tanpa SQLCipher (Risiko Diterima + Minimisasi PII)**:
+   - Atas persetujuan developer, database SQLite lokal tidak dienkripsi dengan `SQLCipher` demi menjaga ukuran APK tetap ramping (menghemat ~5 MB pustaka native) karena isi database hanyalah kosakata bahasa daerah publik dan skor latihan. Sebagai mitigasi, aplikasi meminimalkan penyimpanan PII di SQLite, menonaktifkan `android:allowBackup="false"`, dan tidak pernah menyimpan token/kredensial di SQLite.
+4. **Verifikasi Integritas Katalog Modul dengan Tanda Tangan Digital Ed25519**:
+   - Selain verifikasi hash `SHA-256` per berkas ZIP dan daftar putih host HTTPS resmi GitHub, `module_catalog.json` diverifikasi menggunakan tanda tangan digital **Ed25519** dengan *public key* yang tertanam di dalam kode aplikasi sementara *private key* disimpan di luar repositori (`.keys/`, di-`.gitignore`).
+

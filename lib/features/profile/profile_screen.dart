@@ -10,6 +10,7 @@ import 'package:katara/app/widgets/k_progress_bar.dart';
 import 'package:katara/app/widgets/mascot_view.dart';
 import 'package:katara/app/widgets/pattern_background.dart';
 import 'package:katara/domain/rules/gamification_rules.dart';
+import 'package:katara/services/auth_error_mapper.dart';
 
 class ProfileScreen extends ConsumerWidget {
   const ProfileScreen({super.key});
@@ -42,7 +43,9 @@ class ProfileScreen extends ConsumerWidget {
           loading: () => Center(
             child: CircularProgressIndicator(color: palette.primary),
           ),
-          error: (err, _) => Center(child: Text('Gagal memuat profil: $err')),
+          error: (_, _) => const Center(
+            child: Text('Gagal memuat profil saat ini. Silakan muat ulang.'),
+          ),
           data: (stats) {
             final title = GamificationRules.titleForLevel(stats.level);
             final levelProgress =
@@ -380,11 +383,13 @@ class _CloudSyncAccountCard extends StatelessWidget {
                                 ),
                               ),
                             );
-                          } catch (e) {
+                          } catch (e, st) {
                             if (!context.mounted) return;
+                            final friendlyMsg =
+                                AuthErrorMapper.toUserMessage(e, st);
                             ScaffoldMessenger.of(context).showSnackBar(
                               SnackBar(
-                                content: Text('Info login Google: $e'),
+                                content: Text(friendlyMsg),
                               ),
                             );
                           }
@@ -426,6 +431,73 @@ class _CloudSyncAccountCard extends StatelessWidget {
                   ],
                 ],
               ),
+              if (!profile.isGuest) ...[
+                const SizedBox(height: 8),
+                Align(
+                  alignment: Alignment.centerRight,
+                  child: TextButton.icon(
+                    onPressed: () async {
+                      final confirmed = await showDialog<bool>(
+                        context: context,
+                        builder: (ctx) => AlertDialog(
+                          title: const Text('Hapus Akun & Data Cloud?'),
+                          content: const Text(
+                            'Seluruh data cadangan akunmu di server Cloud (profil, progres sinkronisasi, dan riwayat XP cloud) akan dihapus permanen sesuai hak privasi data. Progres belajar offline di perangkat ini tetap aman sebagai Mode Tamu.',
+                          ),
+                          actions: [
+                            TextButton(
+                              onPressed: () => Navigator.of(ctx).pop(false),
+                              child: const Text('Batal'),
+                            ),
+                            FilledButton(
+                              style: FilledButton.styleFrom(
+                                backgroundColor: palette.error,
+                                foregroundColor: palette.onPrimary,
+                              ),
+                              onPressed: () => Navigator.of(ctx).pop(true),
+                              child: const Text('Hapus Permanen'),
+                            ),
+                          ],
+                        ),
+                      );
+                      if (confirmed != true || !context.mounted) return;
+                      try {
+                        await ref
+                            .read(firebaseSyncServiceProvider)
+                            .deleteAccountAndCloudData();
+                        ref.invalidate(cloudProfileProvider);
+                        if (!context.mounted) return;
+                        ScaffoldMessenger.of(context).showSnackBar(
+                          const SnackBar(
+                            content: Text(
+                              'Akun & data Cloud berhasil dihapus. Beralih ke Mode Tamu.',
+                            ),
+                          ),
+                        );
+                      } catch (e, st) {
+                        if (!context.mounted) return;
+                        ScaffoldMessenger.of(context).showSnackBar(
+                          SnackBar(
+                            content: Text(AuthErrorMapper.toUserMessage(e, st)),
+                          ),
+                        );
+                      }
+                    },
+                    icon: Icon(
+                      Icons.delete_forever_rounded,
+                      size: 18,
+                      color: palette.error,
+                    ),
+                    label: Text(
+                      'Hapus Akun & Data Cloud',
+                      style: Theme.of(context).textTheme.labelMedium?.copyWith(
+                            color: palette.error,
+                            fontWeight: FontWeight.w700,
+                          ),
+                    ),
+                  ),
+                ),
+              ],
             ],
           ),
         );

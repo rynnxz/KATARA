@@ -9,6 +9,7 @@ import 'package:google_sign_in/google_sign_in.dart';
 import 'package:katara/data/db/app_database.dart';
 import 'package:katara/domain/entities/user_progress.dart';
 import 'package:katara/firebase_options.dart';
+import 'package:katara/services/auth_error_mapper.dart';
 
 class XpEventRecord {
   const XpEventRecord({
@@ -149,6 +150,7 @@ abstract class CloudSyncGateway {
   Future<CloudProfile?> getAuthenticatedUser();
   Future<CloudProfile> signInWithGoogle();
   Future<void> signOut();
+  Future<void> deleteAccountResources({required String uid});
   Future<void> pushEntity({
     required String uid,
     required String entityType,
@@ -185,6 +187,12 @@ class InMemoryCloudSyncGateway implements CloudSyncGateway {
   }
 
   @override
+  Future<void> deleteAccountResources({required String uid}) async {
+    _store.removeWhere((key, _) => key.startsWith('$uid/'));
+    _user = null;
+  }
+
+  @override
   Future<void> pushEntity({
     required String uid,
     required String entityType,
@@ -192,7 +200,8 @@ class InMemoryCloudSyncGateway implements CloudSyncGateway {
     required Map<String, dynamic> payload,
   }) async {
     final colKey = '$uid/$entityType';
-    _store.putIfAbsent(colKey, () => {})[entityId] = Map<String, dynamic>.from(payload);
+    _store.putIfAbsent(colKey, () => {})[entityId] =
+        Map<String, dynamic>.from(payload);
   }
 
   @override
@@ -248,11 +257,32 @@ class FirestoreCloudSyncGateway implements CloudSyncGateway {
       accessToken: googleAuth.accessToken,
       idToken: googleAuth.idToken,
     );
-    final userCredential = await FirebaseAuth.instance.signInWithCredential(credential);
+
+    UserCredential userCredential;
+    final currentUser = FirebaseAuth.instance.currentUser;
+    if (currentUser != null && currentUser.isAnonymous) {
+      try {
+        userCredential = await currentUser.linkWithCredential(credential);
+      } on FirebaseAuthException catch (e) {
+        if (e.code == 'credential-already-in-use' ||
+            e.code == 'provider-already-linked' ||
+            e.code == 'account-exists-with-different-credential') {
+          userCredential =
+              await FirebaseAuth.instance.signInWithCredential(credential);
+        } else {
+          rethrow;
+        }
+      }
+    } else {
+      userCredential =
+          await FirebaseAuth.instance.signInWithCredential(credential);
+    }
+
     final user = userCredential.user!;
     return CloudProfile(
       uid: user.uid,
-      displayName: user.displayName ?? googleUser.displayName ?? 'Pelajar Melayu',
+      displayName:
+          user.displayName ?? googleUser.displayName ?? 'Pelajar Melayu',
       email: user.email ?? googleUser.email,
       photoUrl: user.photoURL ?? googleUser.photoUrl,
       authProvider: 'google',
@@ -269,6 +299,40 @@ class FirestoreCloudSyncGateway implements CloudSyncGateway {
   }
 
   @override
+  Future<void> deleteAccountResources({required String uid}) async {
+    await _ensureInitialized();
+    final firestore = FirebaseFirestore.instance;
+    final userDoc = firestore.collection('users').doc(uid);
+
+    const subcollections = [
+      'dialect_progress',
+      'word_mastery',
+      'xp_events',
+    ];
+    for (final sub in subcollections) {
+      final snap = await userDoc.collection(sub).limit(400).get();
+      if (snap.docs.isNotEmpty) {
+        final batch = firestore.batch();
+        for (final doc in snap.docs) {
+          batch.delete(doc.reference);
+        }
+        await batch.commit();
+      }
+    }
+
+    await userDoc.delete();
+
+    final currentUser = FirebaseAuth.instance.currentUser;
+    if (currentUser != null && currentUser.uid == uid) {
+      await currentUser.delete();
+    }
+    try {
+      await GoogleSignIn().disconnect();
+    } catch (_) {}
+    await signOut();
+  }
+
+  @override
   Future<void> pushEntity({
     required String uid,
     required String entityType,
@@ -278,7 +342,10 @@ class FirestoreCloudSyncGateway implements CloudSyncGateway {
     await _ensureInitialized();
     final firestore = FirebaseFirestore.instance;
     if (entityType == 'user_profile') {
-      await firestore.collection('users').doc(uid).set(payload, SetOptions(merge: true));
+      await firestore
+          .collection('users')
+          .doc(uid)
+          .set(payload, SetOptions(merge: true));
       return;
     }
     await firestore
@@ -322,7 +389,8 @@ class FirebaseSyncService {
 
   Future<CloudProfile> getCurrentProfile() async {
     await db.ensureInitialized();
-    final rows = await db.customSelect('SELECT * FROM user_profiles LIMIT 1').get();
+    final rows =
+        await db.customSelect('SELECT * FROM user_profiles LIMIT 1').get();
     if (rows.isNotEmpty) {
       final r = rows.first;
       final isAnon = r.read<int>('is_anonymous') == 1;
@@ -333,7 +401,8 @@ class FirebaseSyncService {
         email: r.readNullable<String>('email'),
         photoUrl: r.readNullable<String>('photo_url'),
         authProvider: isAnon ? 'guest' : 'google',
-        lastSyncedAt: lastSyncRaw != null ? DateTime.tryParse(lastSyncRaw) : null,
+        lastSyncedAt:
+            lastSyncRaw != null ? DateTime.tryParse(lastSyncRaw) : null,
       );
     }
 
@@ -355,8 +424,13 @@ class FirebaseSyncService {
     );
   }
 
+  /// Masuk dengan Google. Bila gagal, profil Tamu dan progres lokal tidak disentuh.
+  /// Bila berhasil, progres lokal yang dibuat saat Mode Tamu otomatis dijadwalkan
+  /// untuk digabung (merge) ke Cloud pada `syncNow()`.
   Future<CloudProfile> signInWithGoogle() async {
     await db.ensureInitialized();
+    // Jika _gateway.signInWithGoogle() melempar exception, baris di bawah tidak
+    // dieksekusi sehingga profil Tamu lokal tetap utuh 100%.
     final profile = await _gateway.signInWithGoogle();
     final nowIso = _clock().toIso8601String();
 
@@ -381,14 +455,67 @@ class FirebaseSyncService {
       'UPDATE user_stats SET display_name = ?, updated_at = ? WHERE id = 1',
       [profile.displayName, nowIso],
     );
+
+    // Jadwalkan seluruh progres lokal yang belum tersinkron agar tergabung ke akun Google
+    await _enqueueLocalGuestProgress(nowIso);
+
     db.notifyTableChanged('user_stats');
     return profile;
+  }
+
+  Future<void> _enqueueLocalGuestProgress(String nowIso) async {
+    final progressRows = await db.customSelect(
+      'SELECT * FROM course_progress WHERE is_synced = 0',
+    ).get();
+    for (final row in progressRows) {
+      final courseId = row.read<String>('course_id');
+      final lessonId = row.read<String>('lesson_id');
+      final stars = row.read<int>('stars');
+      final bestScore = row.read<int>('best_score');
+      final completedAt = row.read<String>('completed_at');
+      final payload = jsonEncode({
+        'course_id': courseId,
+        'lesson_id': lessonId,
+        'stars': stars,
+        'best_score': bestScore,
+        'completed_at': completedAt,
+        'updated_at': nowIso,
+      });
+      final entityId = '${courseId}_$lessonId';
+      final opId = 'guest-merge-$entityId-${_shortRandomHex()}';
+      await db.customStatement(
+        '''
+        INSERT OR IGNORE INTO sync_queue (
+          operation_id, entity_type, entity_id, operation, payload_json, created_at
+        ) VALUES (?, 'dialect_progress', ?, 'upsert', ?, ?)
+        ''',
+        [opId, entityId, payload, nowIso],
+      );
+    }
   }
 
   Future<CloudProfile> signOutToGuest() async {
     await db.ensureInitialized();
     await _gateway.signOut();
     await db.customStatement('DELETE FROM user_profiles');
+    return getCurrentProfile();
+  }
+
+  /// Menghapus akun dan seluruh dokumen pengguna di Cloud Firestore (kepatuhan UU PDP & Google Play).
+  /// Progres belajar offline di perangkat tetap dipertahankan sebagai Mode Tamu.
+  Future<CloudProfile> deleteAccountAndCloudData() async {
+    await db.ensureInitialized();
+    final current = await getCurrentProfile();
+    if (!current.isGuest) {
+      await _gateway.deleteAccountResources(uid: current.uid);
+    }
+    await db.customStatement('DELETE FROM sync_queue');
+    await db.customStatement('DELETE FROM user_profiles');
+    await db.customStatement(
+      "UPDATE user_stats SET display_name = 'Pelajar', updated_at = ? WHERE id = 1",
+      [_clock().toIso8601String()],
+    );
+    db.notifyTableChanged('user_stats');
     return getCurrentProfile();
   }
 
@@ -437,18 +564,21 @@ class FirebaseSyncService {
         );
         await db.customStatement('DELETE FROM sync_queue WHERE id = ?', [id]);
         pushed++;
-      } catch (e) {
+      } catch (e, st) {
         failed++;
         final nextRetryCount = retryCount + 1;
-        final backoffSeconds = math.min(3600, math.pow(2, nextRetryCount).toInt() * 5);
-        final nextRetryAt = now.add(Duration(seconds: backoffSeconds)).toIso8601String();
+        final backoffSeconds =
+            math.min(3600, math.pow(2, nextRetryCount).toInt() * 5);
+        final nextRetryAt =
+            now.add(Duration(seconds: backoffSeconds)).toIso8601String();
+        final safeError = AuthErrorMapper.map(e, st).category.name;
         await db.customStatement(
           '''
           UPDATE sync_queue
           SET retry_count = ?, next_retry_at = ?, last_error = ?
           WHERE id = ?
           ''',
-          [nextRetryCount, nextRetryAt, e.toString(), id],
+          [nextRetryCount, nextRetryAt, safeError, id],
         );
       }
     }
@@ -469,12 +599,16 @@ class FirebaseSyncService {
             lessonId: lessonId,
             stars: (doc['stars'] as num?)?.toInt() ?? 0,
             bestScore: (doc['best_score'] as num?)?.toInt() ?? 0,
-            completedAt: DateTime.tryParse(doc['completed_at'] as String? ?? '') ?? now,
+            completedAt:
+                DateTime.tryParse(doc['completed_at'] as String? ?? '') ?? now,
           );
 
           final localRows = await db.customSelect(
             'SELECT * FROM course_progress WHERE course_id = ? AND lesson_id = ? LIMIT 1',
-            variables: [Variable.withString(courseId), Variable.withString(lessonId)],
+            variables: [
+              Variable.withString(courseId),
+              Variable.withString(lessonId),
+            ],
           ).get();
 
           final merged = localRows.isEmpty
@@ -522,7 +656,8 @@ class FirebaseSyncService {
       'UPDATE user_profiles SET last_synced_at = ?, updated_at = ? WHERE uid = ?',
       [nowIso, nowIso, profile.uid],
     );
-    await db.customStatement('UPDATE xp_events SET is_synced = 1 WHERE is_synced = 0');
+    await db
+        .customStatement('UPDATE xp_events SET is_synced = 1 WHERE is_synced = 0');
 
     return SyncReport(
       pushedItems: pushed,

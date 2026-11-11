@@ -159,3 +159,16 @@
 5. **Firebase Cloud Sync (`katara-melayu`) & Layar Belajar Baru**:
    - Implementasi `FirebaseSyncService` dan `ConflictResolver` (mode tamu lokal + login Google + antrean sinkronisasi offline dengan *exponential backoff*) serta aturan keamanan `firestore.rules`.
    - Menambahkan layar `DialectComparisonScreen`, `ConversationPracticeScreen`, `PronunciationGuideScreen`, serta memperbarui `RegionPickerScreen` dan `AboutScreen` (5 bagian akademik & referensi offline).
+
+---
+
+## Pemutakhiran v1.1.1 — Fix Google Sign-In, Kontras Kartu Berwarna WCAG AA+, Audit Keamanan & Kesiapan LTS
+
+### Tahap 1 — Fix Google Sign-In (`sign_in_failed` / `ApiException: 10`) & Ketahanan Mode Tamu [SELESAI]
+- [x] Mendiagnosis penyebab `PlatformException(sign_in_failed, t4: 10: , null, null)` (plugin `com.google.gms.google-services` belum dipasang di Gradle, `SHA-1`/`SHA-256` belum didaftarkan ke proyek Firebase `katara-melayu`, dan `ProfileScreen` menampilkan exception mentah).
+- [x] Mengekstrak sidik jari sertifikat (`SHA-1: FD:30:99:39:F8:49:0E:C3:E1:56:AC:61:57:46:7F:78:A1:0C:6D:6F`, `SHA-256: 4D:F0:66:AC:AE:88:2C:7A:75:63:DD:08:F1:B9:7E:42:69:01:CD:55:68:07:57:C1:D3:5A:8B:B4:02:F6:CF:F7`) dan mendaftarkannya secara langsung ke aplikasi Android `id.katara.app` (`1:236754467620:android:603644d507d0290562d1b1`) di proyek Firebase `katara-melayu`.
+- [x] Memperbarui `android/settings.gradle.kts`, `android/app/build.gradle.kts` (`com.google.gms.google-services`, dukungan `key.properties` dengan fallback lokal aman, R8 `isMinifyEnabled = true`, `isShrinkResources = true`), `android/app/proguard-rules.pro`, dan `.gitignore`.
+- [x] Membangun `AuthErrorMapper` (`lib/services/auth_error_mapper.dart`) agar tidak pernah membocorkan `PlatformException(...)` mentah ke UI dan hanya mencatat log teknis saat `kDebugMode`.
+- [x] Memastikan kegagalan Google Sign-In tidak menyentuh profil Tamu atau progres lokal, menautkan akun anonim (`linkWithCredential`), menjadwalkan penggabungan progres lokal (`_enqueueLocalGuestProgress` + `ConflictResolver`), serta menambahkan fitur **Hapus Akun & Data Cloud** (`deleteAccountAndCloudData()`).
+- [x] Menyusun panduan `docs/GOOGLE_SIGNIN_SETUP.md` dan pengujian `test/auth_error_mapper_test.dart` (`6/6` lulus).
+

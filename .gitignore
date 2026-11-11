@@ -48,3 +48,15 @@ app.*.map.json
 .widget_preview/
 dist/releases/**/*.apk
 
+# Keystores, signing configs, and cryptographic private keys (NEVER commit)
+*.jks
+*.keystore
+*.p12
+*.pfx
+*.pem
+*.key
+**/key.properties
+.keys/
+build/symbols/
+
+
