@@ -23,9 +23,11 @@ class PatternBackground extends StatelessWidget {
   Widget build(BuildContext context) {
     final palette = KataraPalette.of(context);
     final effectiveCourseId =
-        courseId ?? context.dependOnInheritedWidgetOfExactType<CourseTheme>()?.courseId;
+        courseId ??
+        context.dependOnInheritedWidgetOfExactType<CourseTheme>()?.courseId;
     final identity = DialectVisualIdentity.forCourse(effectiveCourseId);
-    final baseColor = patternColor ??
+    final baseColor =
+        patternColor ??
         (effectiveCourseId != null ? identity.accentColor : palette.primary);
     final color = baseColor.withValues(alpha: opacity);
 
@@ -40,10 +42,7 @@ class PatternBackground extends StatelessWidget {
 }
 
 class _DialectOrnamentPainter extends CustomPainter {
-  const _DialectOrnamentPainter({
-    required this.color,
-    required this.courseId,
-  });
+  const _DialectOrnamentPainter({required this.color, required this.courseId});
 
   final Color color;
   final String courseId;
@@ -78,7 +77,11 @@ class _DialectOrnamentPainter extends CustomPainter {
             ..close();
           canvas.drawPath(diamond, paint);
           canvas.drawRect(
-            Rect.fromCenter(center: Offset(cx, cy), width: rInner * 2, height: rInner * 2),
+            Rect.fromCenter(
+              center: Offset(cx, cy),
+              width: rInner * 2,
+              height: rInner * 2,
+            ),
             paint,
           );
           canvas.drawCircle(Offset(cx, cy), 2.0, Paint()..color = color);
@@ -92,8 +95,16 @@ class _DialectOrnamentPainter extends CustomPainter {
             ..lineTo(cx - r, cy)
             ..close();
           canvas.drawPath(outer, paint);
-          canvas.drawLine(Offset(cx - r * 0.55, cy), Offset(cx + r * 0.55, cy), paint);
-          canvas.drawLine(Offset(cx, cy - r * 0.55), Offset(cx, cy + r * 0.55), paint);
+          canvas.drawLine(
+            Offset(cx - r * 0.55, cy),
+            Offset(cx + r * 0.55, cy),
+            paint,
+          );
+          canvas.drawLine(
+            Offset(cx, cy - r * 0.55),
+            Offset(cx, cy + r * 0.55),
+            paint,
+          );
           canvas.drawCircle(Offset(cx, cy), 2.2, Paint()..color = color);
         } else {
           // Default (ms-deli): Segitiga luar Pucuk Rebung (tunas bambu menjulang ke atas).
@@ -111,11 +122,7 @@ class _DialectOrnamentPainter extends CustomPainter {
             ..close();
           canvas.drawPath(inner, paint);
 
-          canvas.drawCircle(
-            Offset(cx, topY + 4),
-            1.6,
-            Paint()..color = color,
-          );
+          canvas.drawCircle(Offset(cx, topY + 4), 1.6, Paint()..color = color);
         }
       }
     }

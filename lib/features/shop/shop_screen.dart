@@ -24,9 +24,9 @@ class _ShopScreenState extends ConsumerState<ShopScreen> {
     if (ok) {
       await ref.read(sfxServiceProvider).playCorrect();
       if (!mounted) return;
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text('Berhasil membeli ${item.name}!')),
-      );
+      ScaffoldMessenger.of(
+        context,
+      ).showSnackBar(SnackBar(content: Text('Berhasil membeli ${item.name}!')));
     } else {
       await ref.read(sfxServiceProvider).playWrong();
       if (!mounted) return;
@@ -55,22 +55,21 @@ class _ShopScreenState extends ConsumerState<ShopScreen> {
     final statsAsync = ref.watch(userStatsStreamProvider);
 
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Kedai Koin Si Rebung'),
-      ),
+      appBar: AppBar(title: const Text('Kedai Koin Si Rebung')),
       body: PatternBackground(
         opacity: 0.05,
         child: statsAsync.when(
-          loading: () => Center(
-            child: CircularProgressIndicator(color: palette.primary),
-          ),
+          loading: () =>
+              Center(child: CircularProgressIndicator(color: palette.primary)),
           error: (err, _) => Center(child: Text('Gagal memuat toko: $err')),
           data: (stats) => FutureBuilder<(GameConfig, Map<String, int>)>(
             future: () async {
-              final config =
-                  await ref.read(contentRepositoryProvider).getGameConfig();
-              final inv =
-                  await ref.read(progressRepositoryProvider).getInventory();
+              final config = await ref
+                  .read(contentRepositoryProvider)
+                  .getGameConfig();
+              final inv = await ref
+                  .read(progressRepositoryProvider)
+                  .getInventory();
               return (config, inv);
             }(),
             builder: (context, snapshot) {
@@ -104,9 +103,7 @@ class _ShopScreenState extends ConsumerState<ShopScreen> {
                               const SizedBox(height: 4),
                               Text(
                                 'Pelindung Streak aktif: ${stats.streakFreezes} • Nyawa: ${stats.hearts}/5',
-                                style: Theme.of(context)
-                                    .textTheme
-                                    .bodySmall
+                                style: Theme.of(context).textTheme.bodySmall
                                     ?.copyWith(color: palette.inkMuted),
                               ),
                             ],
@@ -121,8 +118,8 @@ class _ShopScreenState extends ConsumerState<ShopScreen> {
                         ? stats.streakFreezes
                         : (inv[item.id] ?? 0);
                     final canAfford = stats.coins >= item.priceCoins;
-                    final maxReached = item.maxOwned != null &&
-                        ownedQty >= item.maxOwned!;
+                    final maxReached =
+                        item.maxOwned != null && ownedQty >= item.maxOwned!;
 
                     return Padding(
                       padding: const EdgeInsets.only(bottom: 12),
@@ -156,7 +153,8 @@ class _ShopScreenState extends ConsumerState<ShopScreen> {
                                             .textTheme
                                             .titleMedium
                                             ?.copyWith(
-                                                fontWeight: FontWeight.w800),
+                                              fontWeight: FontWeight.w800,
+                                            ),
                                       ),
                                       const SizedBox(height: 2),
                                       Text(

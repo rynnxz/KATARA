@@ -27,13 +27,13 @@ class LearnMapScreen extends ConsumerWidget {
       loading: () => Scaffold(
         body: Center(child: CircularProgressIndicator(color: palette.primary)),
       ),
-      error: (err, _) => Scaffold(
-        body: Center(child: Text('Gagal memuat profil: $err')),
-      ),
+      error: (err, _) =>
+          Scaffold(body: Center(child: Text('Gagal memuat profil: $err'))),
       data: (stats) => activeCourseAsync.when(
         loading: () => Scaffold(
-          body:
-              Center(child: CircularProgressIndicator(color: palette.primary)),
+          body: Center(
+            child: CircularProgressIndicator(color: palette.primary),
+          ),
         ),
         error: (err, _) => Scaffold(
           body: Center(child: Text('Gagal memuat daerah aktif: $err')),
@@ -61,10 +61,7 @@ class LearnMapScreen extends ConsumerWidget {
 }
 
 class _LearnMapBody extends ConsumerWidget {
-  const _LearnMapBody({
-    required this.stats,
-    required this.course,
-  });
+  const _LearnMapBody({required this.stats, required this.course});
 
   final UserStats stats;
   final CourseModel course;
@@ -118,7 +115,7 @@ class _LearnMapBody extends ConsumerWidget {
               child: Row(
                 children: [
                   KChip(
-                    label: 'Kamus Deli',
+                    label: 'Kamus ${course.name.replaceFirst('Melayu ', '')}',
                     icon: Icons.search_rounded,
                     onTap: () => context.push('/dictionary'),
                   ),
@@ -155,22 +152,16 @@ class _LearnMapBody extends ConsumerWidget {
                 loading: () => Center(
                   child: CircularProgressIndicator(color: palette.primary),
                 ),
-                error: (err, _) => Center(
-                  child: Text('Gagal memuat unit: $err'),
-                ),
+                error: (err, _) =>
+                    Center(child: Text('Gagal memuat unit: $err')),
                 data: (units) => progressAsync.when(
                   loading: () => Center(
                     child: CircularProgressIndicator(color: palette.primary),
                   ),
-                  error: (err, _) => Center(
-                    child: Text('Gagal memuat progres: $err'),
-                  ),
-                  data: (progressMap) => _buildUnitsList(
-                    context,
-                    palette,
-                    units,
-                    progressMap,
-                  ),
+                  error: (err, _) =>
+                      Center(child: Text('Gagal memuat progres: $err')),
+                  data: (progressMap) =>
+                      _buildUnitsList(context, palette, units, progressMap),
                 ),
               ),
             ),
@@ -236,11 +227,11 @@ class _LearnMapBody extends ConsumerWidget {
                       children: [
                         Text(
                           'Langkah Berikutnya',
-                          style:
-                              Theme.of(context).textTheme.labelMedium?.copyWith(
-                                    color: palette.primary,
-                                    fontWeight: FontWeight.w800,
-                                  ),
+                          style: Theme.of(context).textTheme.labelMedium
+                              ?.copyWith(
+                                color: palette.primary,
+                                fontWeight: FontWeight.w800,
+                              ),
                         ),
                         const SizedBox(height: 2),
                         Text(
@@ -292,9 +283,7 @@ class _LearnMapBody extends ConsumerWidget {
                           children: [
                             Text(
                               'UNIT ${unit.order} • LEVEL ${unit.level}',
-                              style: Theme.of(context)
-                                  .textTheme
-                                  .labelSmall
+                              style: Theme.of(context).textTheme.labelSmall
                                   ?.copyWith(
                                     color: palette.onPrimary,
                                     fontWeight: FontWeight.w800,
@@ -304,22 +293,14 @@ class _LearnMapBody extends ConsumerWidget {
                             const SizedBox(height: 4),
                             Text(
                               unit.title,
-                              style: Theme.of(context)
-                                  .textTheme
-                                  .titleLarge
-                                  ?.copyWith(
-                                    color: palette.onPrimary,
-                                  ),
+                              style: Theme.of(context).textTheme.titleLarge
+                                  ?.copyWith(color: palette.onPrimary),
                             ),
                             const SizedBox(height: 2),
                             Text(
                               unit.theme,
-                              style: Theme.of(context)
-                                  .textTheme
-                                  .bodySmall
-                                  ?.copyWith(
-                                    color: palette.onPrimary,
-                                  ),
+                              style: Theme.of(context).textTheme.bodySmall
+                                  ?.copyWith(color: palette.onPrimary),
                             ),
                           ],
                         ),
@@ -344,9 +325,7 @@ class _LearnMapBody extends ConsumerWidget {
                             const SizedBox(width: 6),
                             Text(
                               'Ringkasan',
-                              style: Theme.of(context)
-                                  .textTheme
-                                  .labelMedium
+                              style: Theme.of(context).textTheme.labelMedium
                                   ?.copyWith(
                                     color: palette.onPrimary,
                                     fontWeight: FontWeight.w800,
@@ -371,8 +350,9 @@ class _LearnMapBody extends ConsumerWidget {
                 if (isCompleted) {
                   nodeState = PathNodeStatus.completed;
                 } else if (isUnlocked) {
-                  nodeState =
-                      isBoss ? PathNodeStatus.boss : PathNodeStatus.active;
+                  nodeState = isBoss
+                      ? PathNodeStatus.boss
+                      : PathNodeStatus.active;
                 } else {
                   nodeState = PathNodeStatus.locked;
                 }

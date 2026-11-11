@@ -57,10 +57,7 @@ class AchievementEngine {
     // a07: Pembaca Jawi
     check('a07', ctx.jawiWordsReadCount >= 6);
     // a08: Penjelajah Budaya / Istana
-    check(
-      'a08',
-      ctx.totalCardsCount > 0 && ctx.collectedCardsCount >= 1,
-    );
+    check('a08', ctx.totalCardsCount > 0 && ctx.collectedCardsCount >= 1);
     // a10: Sempurna (10x pelajaran tanpa salah)
     check('a10', ctx.perfectLessonsCount >= 10);
 

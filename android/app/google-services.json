@@ -12,7 +12,12 @@
           "package_name": "com.arrienty.katara"
         }
       },
-      "oauth_client": [],
+      "oauth_client": [
+        {
+          "client_id": "236754467620-r25cf47tinfg0q7m0u244dece33e3ag8.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
       "api_key": [
         {
           "current_key": "AIzaSyDiP5SoFyF-9ivwghm7wHgskBWKrHiGsrM"
@@ -20,7 +25,12 @@
       ],
       "services": {
         "appinvite_service": {
-          "other_platform_oauth_client": []
+          "other_platform_oauth_client": [
+            {
+              "client_id": "236754467620-r25cf47tinfg0q7m0u244dece33e3ag8.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
         }
       }
     },
@@ -31,7 +41,20 @@
           "package_name": "id.katara.app"
         }
       },
-      "oauth_client": [],
+      "oauth_client": [
+        {
+          "client_id": "236754467620-5c9cderkdrtq5p809nbp9mh5hk0r9a7i.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "id.katara.app",
+            "certificate_hash": "fd309939f8490ec3e156ac6157467f78a10c6d6f"
+          }
+        },
+        {
+          "client_id": "236754467620-r25cf47tinfg0q7m0u244dece33e3ag8.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
       "api_key": [
         {
           "current_key": "AIzaSyDiP5SoFyF-9ivwghm7wHgskBWKrHiGsrM"
@@ -39,7 +62,12 @@
       ],
       "services": {
         "appinvite_service": {
-          "other_platform_oauth_client": []
+          "other_platform_oauth_client": [
+            {
+              "client_id": "236754467620-r25cf47tinfg0q7m0u244dece33e3ag8.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
         }
       }
     }

@@ -38,7 +38,10 @@ void main() {
       expect(result.category, AuthErrorCategory.configuration);
       expect(result.isBenignCancel, isFalse);
       expect(result.userMessage, contains('Mode Tamu'));
-      expect(result.userMessage.toLowerCase(), isNot(contains('platformexception')));
+      expect(
+        result.userMessage.toLowerCase(),
+        isNot(contains('platformexception')),
+      );
       expect(result.userMessage.toLowerCase(), isNot(contains('t4: 10')));
       expect(result.userMessage.toLowerCase(), isNot(contains('apiexception')));
     });
@@ -59,31 +62,55 @@ void main() {
       expect(res2.isBenignCancel, isTrue);
     });
 
-    test('Maps network errors (network_error / 7 / network-request-failed)', () {
-      final netPlatform = PlatformException(
-        code: 'network_error',
-        message: '7: Network error',
-      );
-      expect(AuthErrorMapper.map(netPlatform).category, AuthErrorCategory.network);
+    test(
+      'Maps network errors (network_error / 7 / network-request-failed)',
+      () {
+        final netPlatform = PlatformException(
+          code: 'network_error',
+          message: '7: Network error',
+        );
+        expect(
+          AuthErrorMapper.map(netPlatform).category,
+          AuthErrorCategory.network,
+        );
 
-      final netFirebase = FirebaseAuthException(
-        code: 'network-request-failed',
-        message: 'A network error has occurred.',
-      );
-      expect(AuthErrorMapper.map(netFirebase).category, AuthErrorCategory.network);
-      expect(AuthErrorMapper.toUserMessage(netFirebase), contains('Koneksi internet'));
-    });
+        final netFirebase = FirebaseAuthException(
+          code: 'network-request-failed',
+          message: 'A network error has occurred.',
+        );
+        expect(
+          AuthErrorMapper.map(netFirebase).category,
+          AuthErrorCategory.network,
+        );
+        expect(
+          AuthErrorMapper.toUserMessage(netFirebase),
+          contains('Koneksi internet'),
+        );
+      },
+    );
 
     test('Maps FirebaseAuthException credential conflict, disabled user, and requires-recent-login', () {
       final conflict = FirebaseAuthException(code: 'credential-already-in-use');
-      expect(AuthErrorMapper.map(conflict).category, AuthErrorCategory.credentialConflict);
+      expect(
+        AuthErrorMapper.map(conflict).category,
+        AuthErrorCategory.credentialConflict,
+      );
 
       final disabled = FirebaseAuthException(code: 'user-disabled');
-      expect(AuthErrorMapper.map(disabled).category, AuthErrorCategory.userDisabled);
+      expect(
+        AuthErrorMapper.map(disabled).category,
+        AuthErrorCategory.userDisabled,
+      );
 
       final recentLogin = FirebaseAuthException(code: 'requires-recent-login');
-      expect(AuthErrorMapper.map(recentLogin).category, AuthErrorCategory.requiresRecentLogin);
-      expect(AuthErrorMapper.toUserMessage(recentLogin), contains('masuk kembali'));
+      expect(
+        AuthErrorMapper.map(recentLogin).category,
+        AuthErrorCategory.requiresRecentLogin,
+      );
+      expect(
+        AuthErrorMapper.toUserMessage(recentLogin),
+        contains('masuk kembali'),
+      );
     });
   });
 
@@ -109,12 +136,10 @@ void main() {
       expect(initialProfile.isGuest, isTrue);
 
       // Insert local guest lesson progress
-      await db.customStatement(
-        '''
+      await db.customStatement('''
         INSERT INTO course_progress (course_id, lesson_id, stars, best_score, completed_at, is_synced, updated_at)
         VALUES ('ms-deli', 'ms-deli-u1-l1', 3, 95, '2026-11-11T07:00:00Z', 0, '2026-11-11T07:00:00Z')
-        ''',
-      );
+        ''');
 
       // Attempt sign-in -> throws PlatformException(sign_in_failed)
       await expectLater(
@@ -127,7 +152,9 @@ void main() {
       expect(afterFailProfile.isGuest, isTrue);
       expect(afterFailProfile.uid, initialProfile.uid);
 
-      final localRows = await db.customSelect('SELECT * FROM course_progress').get();
+      final localRows = await db
+          .customSelect('SELECT * FROM course_progress')
+          .get();
       expect(localRows.length, 1);
       expect(localRows.first.read<int>('stars'), 3);
 
@@ -160,48 +187,50 @@ void main() {
   });
 
   group('ProfileScreen Google Sign-In error snackbar widget test', () {
-    testWidgets('Shows friendly Indonesian snackbar on PlatformException(sign_in_failed) without leaking raw exception', (tester) async {
-      final db = AppDatabase(NativeDatabase.memory());
-      await db.ensureInitialized();
-      addTearDown(() => db.close());
+    testWidgets(
+      'Shows friendly Indonesian snackbar on PlatformException(sign_in_failed) without leaking raw exception',
+      (tester) async {
+        final db = AppDatabase(NativeDatabase.memory());
+        await db.ensureInitialized();
+        addTearDown(() => db.close());
 
-      final gateway = _ThrowingCloudSyncGateway(
-        PlatformException(
-          code: 'sign_in_failed',
-          message: 't4: 10: ',
-        ),
-      );
-      final syncService = FirebaseSyncService(db: db, gateway: gateway);
+        final gateway = _ThrowingCloudSyncGateway(
+          PlatformException(code: 'sign_in_failed', message: 't4: 10: '),
+        );
+        final syncService = FirebaseSyncService(db: db, gateway: gateway);
 
-      await tester.pumpWidget(
-        ProviderScope(
-          overrides: [
-            appDatabaseProvider.overrideWithValue(db),
-            firebaseSyncServiceProvider.overrideWithValue(syncService),
-          ],
-          child: MaterialApp(
-            theme: KataraTheme.light(),
-            home: const ProfileScreen(),
+        await tester.pumpWidget(
+          ProviderScope(
+            overrides: [
+              appDatabaseProvider.overrideWithValue(db),
+              firebaseSyncServiceProvider.overrideWithValue(syncService),
+            ],
+            child: MaterialApp(
+              theme: KataraTheme.light(),
+              home: const ProfileScreen(),
+            ),
           ),
-        ),
-      );
+        );
 
-      await tester.pumpAndSettle();
+        await tester.pumpAndSettle();
 
-      final signInBtn = find.text('Masuk dengan Google');
-      expect(signInBtn, findsOneWidget);
+        final signInBtn = find.text('Masuk dengan Google');
+        expect(signInBtn, findsOneWidget);
 
-      await tester.tap(signInBtn);
-      await tester.pumpAndSettle();
+        await tester.tap(signInBtn);
+        await tester.pumpAndSettle();
 
-      // Friendly message is shown
-      expect(
-        find.textContaining('Progres belajarmu tetap tersimpan aman di perangkat (Mode Tamu)'),
-        findsOneWidget,
-      );
-      // Raw technical string is NEVER shown
-      expect(find.textContaining('PlatformException'), findsNothing);
-      expect(find.textContaining('t4: 10'), findsNothing);
-    });
+        // Friendly message is shown
+        expect(
+          find.textContaining(
+            'Progres belajarmu tetap tersimpan aman di perangkat (Mode Tamu)',
+          ),
+          findsOneWidget,
+        );
+        // Raw technical string is NEVER shown
+        expect(find.textContaining('PlatformException'), findsNothing);
+        expect(find.textContaining('t4: 10'), findsNothing);
+      },
+    );
   });
 }

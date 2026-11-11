@@ -71,11 +71,7 @@ class AppSettingsController extends Notifier<AppSettingsState> {
     await ref.read(settingsServiceProvider).save(next);
   }
 
-  Future<void> updateReminder({
-    bool? enabled,
-    int? hour,
-    int? minute,
-  }) async {
+  Future<void> updateReminder({bool? enabled, int? hour, int? minute}) async {
     final next = state.copyWith(
       reminderEnabled: enabled ?? state.reminderEnabled,
       reminderHour: hour ?? state.reminderHour,
@@ -94,12 +90,20 @@ class AppSettingsController extends Notifier<AppSettingsState> {
   void toggleDebugUnverified(bool enabled) {
     state = state.copyWith(debugIncludeUnverified: enabled);
   }
+
+  Future<void> setAuthMode(String? mode) async {
+    final next = mode == null
+        ? state.copyWith(clearAuthMode: true)
+        : state.copyWith(authMode: mode);
+    state = next;
+    await ref.read(settingsServiceProvider).save(next);
+  }
 }
 
 final appSettingsProvider =
     NotifierProvider<AppSettingsController, AppSettingsState>(
-  AppSettingsController.new,
-);
+      AppSettingsController.new,
+    );
 
 final audioServiceProvider = Provider<AudioService>((ref) {
   final service = NoopAudioService();
@@ -138,15 +142,19 @@ final activeCourseProvider = FutureProvider<CourseModel?>((ref) async {
   return ref.watch(contentRepositoryProvider).getCourse(courseId);
 });
 
-final courseUnitsProvider =
-    FutureProvider.family<List<UnitModel>, String>((ref, courseId) {
+final courseUnitsProvider = FutureProvider.family<List<UnitModel>, String>((
+  ref,
+  courseId,
+) {
   return ref.watch(contentRepositoryProvider).getUnits(courseId);
 });
 
 final courseProgressStreamProvider =
     StreamProvider.family<Map<String, CourseProgress>, String>((ref, courseId) {
-  return ref.watch(progressRepositoryProvider).watchCourseProgress(courseId);
-});
+      return ref
+          .watch(progressRepositoryProvider)
+          .watchCourseProgress(courseId);
+    });
 
 final gameConfigProvider = FutureProvider<GameConfig>((ref) {
   return ref.watch(contentRepositoryProvider).getGameConfig();
@@ -163,8 +171,8 @@ class LastLessonResultNotifier extends Notifier<LessonResult?> {
 
 final lastLessonResultProvider =
     NotifierProvider<LastLessonResultNotifier, LessonResult?>(
-  LastLessonResultNotifier.new,
-);
+      LastLessonResultNotifier.new,
+    );
 
 final moduleDownloadServiceProvider = Provider<ModuleDownloadService>((ref) {
   final db = ref.watch(appDatabaseProvider);
@@ -172,31 +180,41 @@ final moduleDownloadServiceProvider = Provider<ModuleDownloadService>((ref) {
   return ModuleDownloadService(db: db, seeder: seeder);
 });
 
-final moduleCatalogProvider =
-    FutureProvider<List<ModuleCatalogItemModel>>((ref) {
+final moduleCatalogProvider = FutureProvider<List<ModuleCatalogItemModel>>((
+  ref,
+) {
   return ref.watch(moduleDownloadServiceProvider).loadCatalog();
 });
 
-final installedModulesProvider =
-    FutureProvider<List<InstalledModuleModel>>((ref) {
+final installedModulesProvider = FutureProvider<List<InstalledModuleModel>>((
+  ref,
+) {
   return ref.watch(contentRepositoryProvider).getInstalledModules();
 });
 
 final dialectReferencesProvider =
-    FutureProvider.family<List<DialectReferenceModel>, String?>((ref, courseId) {
-  return ref.watch(contentRepositoryProvider).getDialectReferences(courseId);
-});
+    FutureProvider.family<List<DialectReferenceModel>, String?>((
+      ref,
+      courseId,
+    ) {
+      return ref
+          .watch(contentRepositoryProvider)
+          .getDialectReferences(courseId);
+    });
 
-final dialectComparisonProvider = FutureProvider.family<
-    List<DialectComparisonRowModel>, String?>((ref, category) async {
-  final rows = await ref
-      .watch(contentRepositoryProvider)
-      .getDialectComparisonRows();
-  if (category == null || category == 'semua' || category.isEmpty) {
-    return rows;
-  }
-  return rows.where((r) => r.category == category).toList();
-});
+final dialectComparisonProvider =
+    FutureProvider.family<List<DialectComparisonRowModel>, String?>((
+      ref,
+      category,
+    ) async {
+      final rows = await ref
+          .watch(contentRepositoryProvider)
+          .getDialectComparisonRows();
+      if (category == null || category == 'semua' || category.isEmpty) {
+        return rows;
+      }
+      return rows.where((r) => r.category == category).toList();
+    });
 
 final firebaseSyncServiceProvider = Provider<FirebaseSyncService>((ref) {
   final db = ref.watch(appDatabaseProvider);

@@ -1,4 +1,5 @@
 import 'dart:convert';
+
 import 'package:drift/drift.dart';
 import 'package:katara/data/content/content_models.dart';
 import 'package:katara/data/content/content_seeder.dart';
@@ -7,10 +8,8 @@ import 'package:katara/domain/entities/user_progress.dart';
 import 'package:katara/domain/repositories/content_repository.dart';
 
 class LocalContentRepository implements ContentRepository {
-  LocalContentRepository({
-    required this.db,
-    AssetStringLoader? loadAsset,
-  }) : _loadAsset = loadAsset ?? defaultAssetStringLoader;
+  LocalContentRepository({required this.db, AssetStringLoader? loadAsset})
+    : _loadAsset = loadAsset ?? defaultAssetStringLoader;
 
   final AppDatabase db;
   final AssetStringLoader _loadAsset;
@@ -24,12 +23,14 @@ class LocalContentRepository implements ContentRepository {
         .customSelect('SELECT * FROM languages ORDER BY sort_order ASC')
         .get();
     return rows
-        .map((r) => LanguageModel(
-              id: r.read<String>('id'),
-              name: r.read<String>('name'),
-              tagline: r.read<String>('tagline'),
-              order: r.read<int>('sort_order'),
-            ))
+        .map(
+          (r) => LanguageModel(
+            id: r.read<String>('id'),
+            name: r.read<String>('name'),
+            tagline: r.read<String>('tagline'),
+            order: r.read<int>('sort_order'),
+          ),
+        )
         .toList();
   }
 
@@ -37,23 +38,27 @@ class LocalContentRepository implements ContentRepository {
   Future<List<CourseModel>> getCourses({String? languageId}) async {
     await db.ensureInitialized();
     final rows = languageId != null
-        ? await db.customSelect(
-            'SELECT * FROM courses WHERE language_id = ? ORDER BY status ASC, id ASC',
-            variables: [Variable.withString(languageId)],
-          ).get()
+        ? await db
+              .customSelect(
+                'SELECT * FROM courses WHERE language_id = ? ORDER BY status ASC, id ASC',
+                variables: [Variable.withString(languageId)],
+              )
+              .get()
         : await db
-            .customSelect('SELECT * FROM courses ORDER BY status ASC, id ASC')
-            .get();
+              .customSelect('SELECT * FROM courses ORDER BY status ASC, id ASC')
+              .get();
     return rows.map(_mapCourse).toList();
   }
 
   @override
   Future<CourseModel?> getCourse(String courseId) async {
     await db.ensureInitialized();
-    final rows = await db.customSelect(
-      'SELECT * FROM courses WHERE id = ? LIMIT 1',
-      variables: [Variable.withString(courseId)],
-    ).get();
+    final rows = await db
+        .customSelect(
+          'SELECT * FROM courses WHERE id = ? LIMIT 1',
+          variables: [Variable.withString(courseId)],
+        )
+        .get();
     if (rows.isEmpty) return null;
     return _mapCourse(rows.first);
   }
@@ -63,32 +68,42 @@ class LocalContentRepository implements ContentRepository {
   @override
   Future<List<UnitModel>> getUnits(String courseId) async {
     await db.ensureInitialized();
-    final unitRows = await db.customSelect(
-      'SELECT * FROM units WHERE course_id = ? AND deprecated = 0 ORDER BY sort_order ASC',
-      variables: [Variable.withString(courseId)],
-    ).get();
+    final unitRows = await db
+        .customSelect(
+          'SELECT * FROM units WHERE course_id = ? AND deprecated = 0 ORDER BY sort_order ASC',
+          variables: [Variable.withString(courseId)],
+        )
+        .get();
 
-    final lessonRows = await db.customSelect(
-      'SELECT * FROM lessons WHERE course_id = ? AND deprecated = 0 ORDER BY sort_order ASC',
-      variables: [Variable.withString(courseId)],
-    ).get();
+    final lessonRows = await db
+        .customSelect(
+          'SELECT * FROM lessons WHERE course_id = ? AND deprecated = 0 ORDER BY sort_order ASC',
+          variables: [Variable.withString(courseId)],
+        )
+        .get();
 
-    final itemRows = await db.customSelect(
-      'SELECT * FROM lesson_items WHERE course_id = ? ORDER BY sort_order ASC',
-      variables: [Variable.withString(courseId)],
-    ).get();
+    final itemRows = await db
+        .customSelect(
+          'SELECT * FROM lesson_items WHERE course_id = ? ORDER BY sort_order ASC',
+          variables: [Variable.withString(courseId)],
+        )
+        .get();
 
     final itemsByLesson = <String, List<String>>{};
     for (final ir in itemRows) {
       final lid = ir.read<String>('lesson_id');
-      itemsByLesson.putIfAbsent(lid, () => <String>[]).add(ir.read<String>('item_id'));
+      itemsByLesson
+          .putIfAbsent(lid, () => <String>[])
+          .add(ir.read<String>('item_id'));
     }
 
     final lessonsByUnit = <String, List<LessonModel>>{};
     for (final lr in lessonRows) {
       final lid = lr.read<String>('id');
       final uid = lr.read<String>('unit_id');
-      lessonsByUnit.putIfAbsent(uid, () => <LessonModel>[]).add(
+      lessonsByUnit
+          .putIfAbsent(uid, () => <LessonModel>[])
+          .add(
             LessonModel(
               id: lid,
               courseId: lr.read<String>('course_id'),
@@ -118,10 +133,12 @@ class LocalContentRepository implements ContentRepository {
   @override
   Future<UnitModel?> getUnit(String unitId) async {
     await db.ensureInitialized();
-    final unitRows = await db.customSelect(
-      'SELECT * FROM units WHERE id = ? LIMIT 1',
-      variables: [Variable.withString(unitId)],
-    ).get();
+    final unitRows = await db
+        .customSelect(
+          'SELECT * FROM units WHERE id = ? LIMIT 1',
+          variables: [Variable.withString(unitId)],
+        )
+        .get();
     if (unitRows.isEmpty) return null;
     final courseId = unitRows.first.read<String>('course_id');
     final allUnits = await getUnits(courseId);
@@ -134,16 +151,20 @@ class LocalContentRepository implements ContentRepository {
   @override
   Future<LessonModel?> getLesson(String lessonId) async {
     await db.ensureInitialized();
-    final lr = await db.customSelect(
-      'SELECT * FROM lessons WHERE id = ? LIMIT 1',
-      variables: [Variable.withString(lessonId)],
-    ).get();
+    final lr = await db
+        .customSelect(
+          'SELECT * FROM lessons WHERE id = ? LIMIT 1',
+          variables: [Variable.withString(lessonId)],
+        )
+        .get();
     if (lr.isEmpty) return null;
     final row = lr.first;
-    final itemRows = await db.customSelect(
-      'SELECT item_id FROM lesson_items WHERE lesson_id = ? ORDER BY sort_order ASC',
-      variables: [Variable.withString(lessonId)],
-    ).get();
+    final itemRows = await db
+        .customSelect(
+          'SELECT item_id FROM lesson_items WHERE lesson_id = ? ORDER BY sort_order ASC',
+          variables: [Variable.withString(lessonId)],
+        )
+        .get();
 
     return LessonModel(
       id: row.read<String>('id'),
@@ -163,10 +184,12 @@ class LocalContentRepository implements ContentRepository {
     String? query,
   }) async {
     await db.ensureInitialized();
-    final rows = await db.customSelect(
-      'SELECT * FROM words WHERE course_id = ? AND deprecated = 0 ORDER BY id ASC',
-      variables: [Variable.withString(courseId)],
-    ).get();
+    final rows = await db
+        .customSelect(
+          'SELECT * FROM words WHERE course_id = ? AND deprecated = 0 ORDER BY id ASC',
+          variables: [Variable.withString(courseId)],
+        )
+        .get();
 
     var list = rows.map((r) => WordModel.fromJson(r.data)).toList();
 
@@ -176,9 +199,11 @@ class LocalContentRepository implements ContentRepository {
     if (query != null && query.trim().isNotEmpty) {
       final q = query.trim().toLowerCase();
       list = list
-          .where((w) =>
-              w.deli.toLowerCase().contains(q) ||
-              w.indonesia.toLowerCase().contains(q))
+          .where(
+            (w) =>
+                w.deli.toLowerCase().contains(q) ||
+                w.indonesia.toLowerCase().contains(q),
+          )
           .toList();
     }
     return list;
@@ -187,48 +212,58 @@ class LocalContentRepository implements ContentRepository {
   @override
   Future<List<PhraseModel>> getPhrases(String courseId) async {
     await db.ensureInitialized();
-    final rows = await db.customSelect(
-      'SELECT * FROM phrases WHERE course_id = ? AND deprecated = 0 ORDER BY id ASC',
-      variables: [Variable.withString(courseId)],
-    ).get();
+    final rows = await db
+        .customSelect(
+          'SELECT * FROM phrases WHERE course_id = ? AND deprecated = 0 ORDER BY id ASC',
+          variables: [Variable.withString(courseId)],
+        )
+        .get();
     return rows
-        .map((r) => PhraseModel(
-              id: r.read<String>('id'),
-              courseId: r.read<String>('course_id'),
-              deli: r.read<String>('deli'),
-              indonesia: r.read<String>('indonesia'),
-              jawi: r.readNullable<String>('jawi'),
-              level: r.read<int>('level'),
-              unitId: r.read<String>('unit_id'),
-              audioPath: r.readNullable<String>('audio_path'),
-              culturalNote: r.readNullable<String>('cultural_note'),
-              validationStatus: r.read<String>('validation_status'),
-              deprecated: r.read<int>('deprecated') == 1,
-            ))
+        .map(
+          (r) => PhraseModel(
+            id: r.read<String>('id'),
+            courseId: r.read<String>('course_id'),
+            deli: r.read<String>('deli'),
+            indonesia: r.read<String>('indonesia'),
+            jawi: r.readNullable<String>('jawi'),
+            level: r.read<int>('level'),
+            unitId: r.read<String>('unit_id'),
+            audioPath: r.readNullable<String>('audio_path'),
+            culturalNote: r.readNullable<String>('cultural_note'),
+            validationStatus: r.read<String>('validation_status'),
+            deprecated: r.read<int>('deprecated') == 1,
+          ),
+        )
         .toList();
   }
 
   @override
   Future<List<SentenceModel>> getSentences(String courseId) async {
     await db.ensureInitialized();
-    final rows = await db.customSelect(
-      'SELECT * FROM sentences WHERE course_id = ? AND deprecated = 0 ORDER BY id ASC',
-      variables: [Variable.withString(courseId)],
-    ).get();
+    final rows = await db
+        .customSelect(
+          'SELECT * FROM sentences WHERE course_id = ? AND deprecated = 0 ORDER BY id ASC',
+          variables: [Variable.withString(courseId)],
+        )
+        .get();
     return rows.map((r) => SentenceModel.fromJson(r.data)).toList();
   }
 
   @override
   Future<List<DialogueModel>> getDialogues(String courseId) async {
     await db.ensureInitialized();
-    final dRows = await db.customSelect(
-      'SELECT * FROM dialogues WHERE course_id = ? AND deprecated = 0 ORDER BY id ASC',
-      variables: [Variable.withString(courseId)],
-    ).get();
-    final lRows = await db.customSelect(
-      'SELECT * FROM dialogue_lines WHERE course_id = ? ORDER BY line_order ASC',
-      variables: [Variable.withString(courseId)],
-    ).get();
+    final dRows = await db
+        .customSelect(
+          'SELECT * FROM dialogues WHERE course_id = ? AND deprecated = 0 ORDER BY id ASC',
+          variables: [Variable.withString(courseId)],
+        )
+        .get();
+    final lRows = await db
+        .customSelect(
+          'SELECT * FROM dialogue_lines WHERE course_id = ? ORDER BY line_order ASC',
+          variables: [Variable.withString(courseId)],
+        )
+        .get();
 
     final linesByDialogue = <String, List<DialogueLineModel>>{};
     for (final lr in lRows) {
@@ -250,30 +285,36 @@ class LocalContentRepository implements ContentRepository {
   @override
   Future<List<JawiLetterModel>> getLetters(String courseId) async {
     await db.ensureInitialized();
-    final rows = await db.customSelect(
-      'SELECT * FROM letters WHERE course_id = ? AND deprecated = 0 ORDER BY id ASC',
-      variables: [Variable.withString(courseId)],
-    ).get();
+    final rows = await db
+        .customSelect(
+          'SELECT * FROM letters WHERE course_id = ? AND deprecated = 0 ORDER BY id ASC',
+          variables: [Variable.withString(courseId)],
+        )
+        .get();
     return rows.map((r) => JawiLetterModel.fromJson(r.data)).toList();
   }
 
   @override
   Future<List<ArticleModel>> getArticles(String courseId) async {
     await db.ensureInitialized();
-    final rows = await db.customSelect(
-      'SELECT * FROM articles WHERE course_id = ? AND deprecated = 0 ORDER BY id ASC',
-      variables: [Variable.withString(courseId)],
-    ).get();
+    final rows = await db
+        .customSelect(
+          'SELECT * FROM articles WHERE course_id = ? AND deprecated = 0 ORDER BY id ASC',
+          variables: [Variable.withString(courseId)],
+        )
+        .get();
     return rows.map((r) => ArticleModel.fromJson(r.data)).toList();
   }
 
   @override
   Future<ArticleModel?> getArticle(String articleId) async {
     await db.ensureInitialized();
-    final rows = await db.customSelect(
-      'SELECT * FROM articles WHERE id = ? LIMIT 1',
-      variables: [Variable.withString(articleId)],
-    ).get();
+    final rows = await db
+        .customSelect(
+          'SELECT * FROM articles WHERE id = ? LIMIT 1',
+          variables: [Variable.withString(articleId)],
+        )
+        .get();
     if (rows.isEmpty) return null;
     return ArticleModel.fromJson(rows.first.data);
   }
@@ -281,10 +322,12 @@ class LocalContentRepository implements ContentRepository {
   @override
   Future<List<CollectionCardModel>> getCollectionCards(String courseId) async {
     await db.ensureInitialized();
-    final rows = await db.customSelect(
-      'SELECT * FROM collection_cards WHERE course_id = ? AND deprecated = 0 ORDER BY id ASC',
-      variables: [Variable.withString(courseId)],
-    ).get();
+    final rows = await db
+        .customSelect(
+          'SELECT * FROM collection_cards WHERE course_id = ? AND deprecated = 0 ORDER BY id ASC',
+          variables: [Variable.withString(courseId)],
+        )
+        .get();
     return rows.map((r) => CollectionCardModel.fromJson(r.data)).toList();
   }
 
@@ -296,17 +339,21 @@ class LocalContentRepository implements ContentRepository {
   }) async {
     await db.ensureInitialized();
     final rows = lessonId != null
-        ? await db.customSelect(
-            'SELECT * FROM quiz_bank WHERE course_id = ? AND lesson_id = ? AND deprecated = 0 ORDER BY id ASC',
-            variables: [
-              Variable.withString(courseId),
-              Variable.withString(lessonId),
-            ],
-          ).get()
-        : await db.customSelect(
-            'SELECT * FROM quiz_bank WHERE course_id = ? AND deprecated = 0 ORDER BY id ASC',
-            variables: [Variable.withString(courseId)],
-          ).get();
+        ? await db
+              .customSelect(
+                'SELECT * FROM quiz_bank WHERE course_id = ? AND lesson_id = ? AND deprecated = 0 ORDER BY id ASC',
+                variables: [
+                  Variable.withString(courseId),
+                  Variable.withString(lessonId),
+                ],
+              )
+              .get()
+        : await db
+              .customSelect(
+                'SELECT * FROM quiz_bank WHERE course_id = ? AND deprecated = 0 ORDER BY id ASC',
+                variables: [Variable.withString(courseId)],
+              )
+              .get();
 
     final items = rows.map((r) => QuizBankItemModel.fromJson(r.data)).toList();
     if (includeUnverified) return items;
@@ -339,10 +386,12 @@ class LocalContentRepository implements ContentRepository {
           .cast<Map<String, dynamic>>();
       final now = DateTime.now();
       return list
-          .map((item) => AchievementModel.fromJson(
-                item,
-                unlockedAt: unlockedIds.contains(item['id']) ? now : null,
-              ))
+          .map(
+            (item) => AchievementModel.fromJson(
+              item,
+              unlockedAt: unlockedIds.contains(item['id']) ? now : null,
+            ),
+          )
           .toList();
     } catch (_) {
       return const [];
@@ -355,13 +404,17 @@ class LocalContentRepository implements ContentRepository {
   ]) async {
     await db.ensureInitialized();
     final rows = courseId != null
-        ? await db.customSelect(
-            'SELECT * FROM dialect_references WHERE course_id = ? ORDER BY id ASC',
-            variables: [Variable.withString(courseId)],
-          ).get()
+        ? await db
+              .customSelect(
+                'SELECT * FROM dialect_references WHERE course_id = ? ORDER BY id ASC',
+                variables: [Variable.withString(courseId)],
+              )
+              .get()
         : await db
-            .customSelect('SELECT * FROM dialect_references ORDER BY course_id ASC, id ASC')
-            .get();
+              .customSelect(
+                'SELECT * FROM dialect_references ORDER BY course_id ASC, id ASC',
+              )
+              .get();
     return rows.map((r) => DialectReferenceModel.fromJson(r.data)).toList();
   }
 
@@ -370,7 +423,8 @@ class LocalContentRepository implements ContentRepository {
     await db.ensureInitialized();
     final rows = await db
         .customSelect(
-            'SELECT * FROM installed_modules ORDER BY is_bundled DESC, course_id ASC')
+          'SELECT * FROM installed_modules ORDER BY is_bundled DESC, course_id ASC',
+        )
         .get();
     return rows.map((r) => InstalledModuleModel.fromJson(r.data)).toList();
   }
@@ -391,8 +445,7 @@ class LocalContentRepository implements ContentRepository {
         langkatPronunciation: '[apə]',
         palembangTerm: 'apo (Sari-sari) / napi (Bebaso)',
         palembangPronunciation: '[apɔ] / [napi]',
-        linguisticNote:
-            'Melayu Deli & Langkat melemahkan /-a/ akhir menjadi pepet [-ə], sedangkan Palembang membulatkannya menjadi [-ɔ].',
+        linguisticNote: 'Melayu Deli & Langkat melemahkan /-a/ akhir menjadi pepet [-ə], sedangkan Palembang membulatkannya menjadi [-ɔ].',
       ),
       DialectComparisonRowModel(
         conceptId: 'cmp_02',
@@ -404,8 +457,7 @@ class LocalContentRepository implements ContentRepository {
         langkatPronunciation: '[di manə]',
         palembangTerm: 'di mano (Sari-sari) / di pundi (Bebaso)',
         palembangPronunciation: '[di manɔ] / [di pundi]',
-        linguisticNote:
-            'Dalam ragam Bebaso Palembang, kata tanya tempat menggunakan leksikon khusus "pundi".',
+        linguisticNote: 'Dalam ragam Bebaso Palembang, kata tanya tempat menggunakan leksikon khusus "pundi".',
       ),
       DialectComparisonRowModel(
         conceptId: 'cmp_03',
@@ -417,8 +469,7 @@ class LocalContentRepository implements ContentRepository {
         langkatPronunciation: '[ŋapə]',
         palembangTerm: 'ngapo / mengapo',
         palembangPronunciation: '[ŋapɔ]',
-        linguisticNote:
-            'Peluluhan suku awal me- menghasilkan bentuk ringkas ngape (Deli/Langkat) dan ngapo (Palembang).',
+        linguisticNote: 'Peluluhan suku awal me- menghasilkan bentuk ringkas ngape (Deli/Langkat) dan ngapo (Palembang).',
       ),
       DialectComparisonRowModel(
         conceptId: 'cmp_04',
@@ -430,8 +481,7 @@ class LocalContentRepository implements ContentRepository {
         langkatPronunciation: '[tʃamnə]',
         palembangTerm: 'cakmano / makmano',
         palembangPronunciation: '[tʃaʔmanɔ]',
-        linguisticNote:
-            'Dibentuk dari gabungan kata "macam/cak" (seperti) + "mana" (mane/mano).',
+        linguisticNote: 'Dibentuk dari gabungan kata "macam/cak" (seperti) + "mana" (mane/mano).',
       ),
       DialectComparisonRowModel(
         conceptId: 'cmp_05',
@@ -443,8 +493,7 @@ class LocalContentRepository implements ContentRepository {
         langkatPronunciation: '[sayə] / [aku]',
         palembangTerm: 'kulo (Bebaso) / aku / kami (Sari-sari)',
         palembangPronunciation: '[kulɔ] / [aku]',
-        linguisticNote:
-            'Palembang membedakan pronomina secara tegas antara tingkat tutur Alus (kulo) dan Sari-sari (aku/kami).',
+        linguisticNote: 'Palembang membedakan pronomina secara tegas antara tingkat tutur Alus (kulo) dan Sari-sari (aku/kami).',
       ),
       DialectComparisonRowModel(
         conceptId: 'cmp_06',
@@ -456,8 +505,7 @@ class LocalContentRepository implements ContentRepository {
         langkatPronunciation: '[awaʔ]',
         palembangTerm: 'niko (Bebaso) / kau / awak (Sari-sari)',
         palembangPronunciation: '[nikɔ] / [kau]',
-        linguisticNote:
-            'Kata "awak" di Sumatera Timur dan Sumatera Selatan dipakai luas sebagai sapaan sebaya yang akrab.',
+        linguisticNote: 'Kata "awak" di Sumatera Timur dan Sumatera Selatan dipakai luas sebagai sapaan sebaya yang akrab.',
       ),
       DialectComparisonRowModel(
         conceptId: 'cmp_07',
@@ -469,8 +517,7 @@ class LocalContentRepository implements ContentRepository {
         langkatPronunciation: '[kitə səmuə]',
         palembangTerm: 'kito galo',
         palembangPronunciation: '[kitɔ galɔ]',
-        linguisticNote:
-            'Kuantor "galo" (semua) merupakan ciri leksikal khas Melayu Palembang ("Wong Kito Galo").',
+        linguisticNote: 'Kuantor "galo" (semua) merupakan ciri leksikal khas Melayu Palembang ("Wong Kito Galo").',
       ),
       DialectComparisonRowModel(
         conceptId: 'cmp_08',
@@ -482,8 +529,7 @@ class LocalContentRepository implements ContentRepository {
         langkatPronunciation: '[taʔ adə]',
         palembangTerm: 'dak / katek (Sari-sari), nedo (Bebaso)',
         palembangPronunciation: '[daʔ] / [kateʔ]',
-        linguisticNote:
-            'Kontraksi "katek" (tidak ada) di Palembang berpadanan dengan "tak ade / takde" di Deli dan Langkat.',
+        linguisticNote: 'Kontraksi "katek" (tidak ada) di Palembang berpadanan dengan "tak ade / takde" di Deli dan Langkat.',
       ),
       DialectComparisonRowModel(
         conceptId: 'cmp_09',
@@ -495,8 +541,7 @@ class LocalContentRepository implements ContentRepository {
         langkatPronunciation: '[kali] / [bətol]',
         palembangTerm: 'nian',
         palembangPronunciation: '[nian]',
-        linguisticNote:
-            '"Sedap kali" (Deli/Langkat) berpadanan langsung dengan "Lemak nian" (Palembang).',
+        linguisticNote: '"Sedap kali" (Deli/Langkat) berpadanan langsung dengan "Lemak nian" (Palembang).',
       ),
       DialectComparisonRowModel(
         conceptId: 'cmp_10',
@@ -508,8 +553,7 @@ class LocalContentRepository implements ContentRepository {
         langkatPronunciation: '[adʒə]',
         palembangTerm: 'bae (Sari-sari) / kemawon (Bebaso)',
         palembangPronunciation: '[bae] / [kəmawɔn]',
-        linguisticNote:
-            'Partikel pembatas "aje" di pesisir Sumatera Utara berkorespondensi dengan "bae" di Sumatera Selatan.',
+        linguisticNote: 'Partikel pembatas "aje" di pesisir Sumatera Utara berkorespondensi dengan "bae" di Sumatera Selatan.',
       ),
       DialectComparisonRowModel(
         conceptId: 'cmp_11',
@@ -521,8 +565,7 @@ class LocalContentRepository implements ContentRepository {
         langkatPronunciation: '[aye]',
         palembangTerm: 'banyu',
         palembangPronunciation: '[baɲu]',
-        linguisticNote:
-            'Melayu Palembang menyerap dan melestarikan leksikon "banyu" untuk segala jenis air.',
+        linguisticNote: 'Melayu Palembang menyerap dan melestarikan leksikon "banyu" untuk segala jenis air.',
       ),
       DialectComparisonRowModel(
         conceptId: 'cmp_12',
@@ -534,8 +577,7 @@ class LocalContentRepository implements ContentRepository {
         langkatPronunciation: '[pəkan]',
         palembangTerm: 'pasar / kalangan',
         palembangPronunciation: '[pasaɾ] / [kalaŋan]',
-        linguisticNote:
-            'Di Medan/Deli populer istilah "pajak" dan "pekan", di Langkat "pekan", sedangkan di Palembang "pasar" atau "kalangan".',
+        linguisticNote: 'Di Medan/Deli populer istilah "pajak" dan "pekan", di Langkat "pekan", sedangkan di Palembang "pasar" atau "kalangan".',
       ),
       DialectComparisonRowModel(
         conceptId: 'cmp_13',
@@ -547,8 +589,7 @@ class LocalContentRepository implements ContentRepository {
         langkatPronunciation: '[teŋoʔ]',
         palembangTerm: 'jingok / nyingok (Sari-sari), ningali (Bebaso)',
         palembangPronunciation: '[ɲiŋɔʔ] / [niŋali]',
-        linguisticNote:
-            'Bentuk verba persepsi visual "tengok" (Deli/Langkat) berkorespondensi dengan "jingok/nyingok" (Palembang).',
+        linguisticNote: 'Bentuk verba persepsi visual "tengok" (Deli/Langkat) berkorespondensi dengan "jingok/nyingok" (Palembang).',
       ),
       DialectComparisonRowModel(
         conceptId: 'cmp_14',
@@ -560,8 +601,7 @@ class LocalContentRepository implements ContentRepository {
         langkatPronunciation: '[bərbual]',
         palembangTerm: 'begesah / bekotek',
         palembangPronunciation: '[bəgəsah]',
-        linguisticNote:
-            '"Berbual" di Sumatera Timur berarti mengobrol santai; di Palembang digunakan "begesah" (berkisah).',
+        linguisticNote: '"Berbual" di Sumatera Timur berarti mengobrol santai; di Palembang digunakan "begesah" (berkisah).',
       ),
       DialectComparisonRowModel(
         conceptId: 'cmp_15',
@@ -573,8 +613,7 @@ class LocalContentRepository implements ContentRepository {
         langkatPronunciation: '[sədap]',
         palembangTerm: 'lemak',
         palembangPronunciation: '[ləmaʔ]',
-        linguisticNote:
-            'Kata "lemak" dalam rumpun Melayu berarti gurih/lezat; di Palembang menjadi kata sifat utama untuk "enak".',
+        linguisticNote: 'Kata "lemak" dalam rumpun Melayu berarti gurih/lezat; di Palembang menjadi kata sifat utama untuk "enak".',
       ),
       DialectComparisonRowModel(
         conceptId: 'cmp_16',
@@ -586,8 +625,7 @@ class LocalContentRepository implements ContentRepository {
         langkatPronunciation: '[eloʔ]',
         palembangTerm: 'cindo (cantik) / belagak (gagah)',
         palembangPronunciation: '[tʃindɔ] / [bəlagaʔ]',
-        linguisticNote:
-            'Hati-hati: "elok" di Deli/Langkat berarti bagus, sedangkan "melok" di Palembang berarti "ikut"!',
+        linguisticNote: 'Hati-hati: "elok" di Deli/Langkat berarti bagus, sedangkan "melok" di Palembang berarti "ikut"!',
       ),
       DialectComparisonRowModel(
         conceptId: 'cmp_17',
@@ -599,8 +637,7 @@ class LocalContentRepository implements ContentRepository {
         langkatPronunciation: '[atoʔ] & [andoŋ]',
         palembangTerm: 'Yayi & Nyai',
         palembangPronunciation: '[yayi] & [ɲai]',
-        linguisticNote:
-            'Sapaan Atok-Andung menjadi ciri khas Melayu Sumatera Timur, sedangkan Yayi-Nyai khas Palembang.',
+        linguisticNote: 'Sapaan Atok-Andung menjadi ciri khas Melayu Sumatera Timur, sedangkan Yayi-Nyai khas Palembang.',
       ),
       DialectComparisonRowModel(
         conceptId: 'cmp_18',
@@ -612,8 +649,7 @@ class LocalContentRepository implements ContentRepository {
         langkatPronunciation: '[təɾataʔ]',
         palembangTerm: 'rumah / bari (Sari-sari), rompok (Bebaso)',
         palembangPronunciation: '[ɾɔmpɔʔ]',
-        linguisticNote:
-            'Dalam bertutur santun, Melayu Deli/Langkat menyebut rumah sendiri "teratak", sedangkan Palembang menggunakan "rompok".',
+        linguisticNote: 'Dalam bertutur santun, Melayu Deli/Langkat menyebut rumah sendiri "teratak", sedangkan Palembang menggunakan "rompok".',
       ),
     ];
 
@@ -622,12 +658,14 @@ class LocalContentRepository implements ContentRepository {
     }
     final q = query.trim().toLowerCase();
     return curatedComparisons
-        .where((row) =>
-            row.indonesianTerm.toLowerCase().contains(q) ||
-            row.deliTerm.toLowerCase().contains(q) ||
-            row.langkatTerm.toLowerCase().contains(q) ||
-            row.palembangTerm.toLowerCase().contains(q) ||
-            row.category.toLowerCase().contains(q))
+        .where(
+          (row) =>
+              row.indonesianTerm.toLowerCase().contains(q) ||
+              row.deliTerm.toLowerCase().contains(q) ||
+              row.langkatTerm.toLowerCase().contains(q) ||
+              row.palembangTerm.toLowerCase().contains(q) ||
+              row.category.toLowerCase().contains(q),
+        )
         .toList();
   }
 }

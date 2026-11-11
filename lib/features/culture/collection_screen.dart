@@ -17,9 +17,7 @@ class CollectionScreen extends ConsumerWidget {
     final courseId = statsAsync.value?.activeCourseId ?? 'ms-deli';
 
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Kartu Koleksi Budaya'),
-      ),
+      appBar: AppBar(title: const Text('Kartu Koleksi Budaya')),
       body: PatternBackground(
         opacity: 0.05,
         child: FutureBuilder<(List<CollectionCardModel>, Set<String>)>(
@@ -98,20 +96,16 @@ class CollectionScreen extends ConsumerWidget {
                                           ),
                                     ),
                                   ),
-                                  KChip(
-                                    label: card.category,
-                                  ),
+                                  KChip(label: card.category),
                                 ],
                               ),
                               const SizedBox(height: 6),
                               Text(
                                 isUnlocked
                                     ? (card.fact ??
-                                        'Fakta ringkas sedang disusun bersama narasumber budaya (draf).')
+                                          'Fakta ringkas sedang disusun bersama narasumber budaya (draf).')
                                     : 'Terkunci • Baca artikel budaya atau selesaikan unit terkait untuk membuka kartu ini.',
-                                style: Theme.of(context)
-                                    .textTheme
-                                    .bodySmall
+                                style: Theme.of(context).textTheme.bodySmall
                                     ?.copyWith(color: palette.inkMuted),
                               ),
                               const SizedBox(height: 8),

@@ -31,15 +31,15 @@ class XpEventRecord {
   final String deviceId;
 
   Map<String, dynamic> toJson() => {
-        'event_id': eventId,
-        'course_id': courseId,
-        'source_type': sourceType,
-        'source': '$sourceType:$sourceRef',
-        'delta_xp': deltaXp,
-        'amount': deltaXp,
-        'created_at': createdAt.toIso8601String(),
-        'device_id': deviceId,
-      };
+    'event_id': eventId,
+    'course_id': courseId,
+    'source_type': sourceType,
+    'source': '$sourceType:$sourceRef',
+    'delta_xp': deltaXp,
+    'amount': deltaXp,
+    'created_at': createdAt.toIso8601String(),
+    'device_id': deviceId,
+  };
 }
 
 class CloudProfile {
@@ -97,10 +97,7 @@ class ConflictResolver {
   }
 
   /// Menggabungkan penguasaan kosakata SRS dari lokal dan cloud.
-  static WordMastery mergeWordMastery(
-    WordMastery local,
-    WordMastery remote,
-  ) {
+  static WordMastery mergeWordMastery(WordMastery local, WordMastery remote) {
     final latestSeen = local.lastSeenAt.isAfter(remote.lastSeenAt)
         ? local.lastSeenAt
         : remote.lastSeenAt;
@@ -200,8 +197,9 @@ class InMemoryCloudSyncGateway implements CloudSyncGateway {
     required Map<String, dynamic> payload,
   }) async {
     final colKey = '$uid/$entityType';
-    _store.putIfAbsent(colKey, () => {})[entityId] =
-        Map<String, dynamic>.from(payload);
+    _store.putIfAbsent(colKey, () => {})[entityId] = Map<String, dynamic>.from(
+      payload,
+    );
   }
 
   @override
@@ -216,6 +214,22 @@ class InMemoryCloudSyncGateway implements CloudSyncGateway {
 
 class FirestoreCloudSyncGateway implements CloudSyncGateway {
   bool _initialized = false;
+
+  /// Web Client ID (`client_type: 3`) dari `android/app/google-services.json` proyek `katara-melayu`.
+  /// Dapat ditimpa saat kompilasi melalui `--dart-define=GOOGLE_WEB_CLIENT_ID=...`.
+  static const String defaultWebClientId = String.fromEnvironment(
+    'GOOGLE_WEB_CLIENT_ID',
+    defaultValue: '236754467620-r25cf47tinfg0q7m0u244dece33e3ag8.apps.googleusercontent.com',
+  );
+
+  GoogleSignIn _createGoogleSignIn() {
+    return GoogleSignIn(
+      scopes: const ['email', 'profile'],
+      serverClientId: defaultWebClientId.trim().isNotEmpty
+          ? defaultWebClientId.trim()
+          : null,
+    );
+  }
 
   Future<void> _ensureInitialized() async {
     if (_initialized) return;
@@ -248,11 +262,18 @@ class FirestoreCloudSyncGateway implements CloudSyncGateway {
   @override
   Future<CloudProfile> signInWithGoogle() async {
     await _ensureInitialized();
-    final googleUser = await GoogleSignIn().signIn();
+    final googleSignIn = _createGoogleSignIn();
+    final googleUser = await googleSignIn.signIn();
     if (googleUser == null) {
       throw StateError('Login Google dibatalkan oleh pengguna.');
     }
     final googleAuth = await googleUser.authentication;
+    if ((googleAuth.idToken == null || googleAuth.idToken!.isEmpty) &&
+        (googleAuth.accessToken == null || googleAuth.accessToken!.isEmpty)) {
+      throw StateError(
+        'Token OAuth Google kosong (DEVELOPER_ERROR / client_type 3 belum aktif).',
+      );
+    }
     final credential = GoogleAuthProvider.credential(
       accessToken: googleAuth.accessToken,
       idToken: googleAuth.idToken,
@@ -267,15 +288,17 @@ class FirestoreCloudSyncGateway implements CloudSyncGateway {
         if (e.code == 'credential-already-in-use' ||
             e.code == 'provider-already-linked' ||
             e.code == 'account-exists-with-different-credential') {
-          userCredential =
-              await FirebaseAuth.instance.signInWithCredential(credential);
+          userCredential = await FirebaseAuth.instance.signInWithCredential(
+            credential,
+          );
         } else {
           rethrow;
         }
       }
     } else {
-      userCredential =
-          await FirebaseAuth.instance.signInWithCredential(credential);
+      userCredential = await FirebaseAuth.instance.signInWithCredential(
+        credential,
+      );
     }
 
     final user = userCredential.user!;
@@ -293,7 +316,7 @@ class FirestoreCloudSyncGateway implements CloudSyncGateway {
   Future<void> signOut() async {
     try {
       await _ensureInitialized();
-      await GoogleSignIn().signOut();
+      await _createGoogleSignIn().signOut();
       await FirebaseAuth.instance.signOut();
     } catch (_) {}
   }
@@ -304,11 +327,7 @@ class FirestoreCloudSyncGateway implements CloudSyncGateway {
     final firestore = FirebaseFirestore.instance;
     final userDoc = firestore.collection('users').doc(uid);
 
-    const subcollections = [
-      'dialect_progress',
-      'word_mastery',
-      'xp_events',
-    ];
+    const subcollections = ['dialect_progress', 'word_mastery', 'xp_events'];
     for (final sub in subcollections) {
       final snap = await userDoc.collection(sub).limit(400).get();
       if (snap.docs.isNotEmpty) {
@@ -327,7 +346,7 @@ class FirestoreCloudSyncGateway implements CloudSyncGateway {
       await currentUser.delete();
     }
     try {
-      await GoogleSignIn().disconnect();
+      await _createGoogleSignIn().disconnect();
     } catch (_) {}
     await signOut();
   }
@@ -376,8 +395,8 @@ class FirebaseSyncService {
     required this.db,
     CloudSyncGateway? gateway,
     DateTime Function()? clock,
-  })  : _gateway = gateway ?? FirestoreCloudSyncGateway(),
-        _clock = clock ?? DateTime.now;
+  }) : _gateway = gateway ?? FirestoreCloudSyncGateway(),
+       _clock = clock ?? DateTime.now;
 
   final AppDatabase db;
   final CloudSyncGateway _gateway;
@@ -389,8 +408,9 @@ class FirebaseSyncService {
 
   Future<CloudProfile> getCurrentProfile() async {
     await db.ensureInitialized();
-    final rows =
-        await db.customSelect('SELECT * FROM user_profiles LIMIT 1').get();
+    final rows = await db
+        .customSelect('SELECT * FROM user_profiles LIMIT 1')
+        .get();
     if (rows.isNotEmpty) {
       final r = rows.first;
       final isAnon = r.read<int>('is_anonymous') == 1;
@@ -401,8 +421,9 @@ class FirebaseSyncService {
         email: r.readNullable<String>('email'),
         photoUrl: r.readNullable<String>('photo_url'),
         authProvider: isAnon ? 'guest' : 'google',
-        lastSyncedAt:
-            lastSyncRaw != null ? DateTime.tryParse(lastSyncRaw) : null,
+        lastSyncedAt: lastSyncRaw != null
+            ? DateTime.tryParse(lastSyncRaw)
+            : null,
       );
     }
 
@@ -464,9 +485,9 @@ class FirebaseSyncService {
   }
 
   Future<void> _enqueueLocalGuestProgress(String nowIso) async {
-    final progressRows = await db.customSelect(
-      'SELECT * FROM course_progress WHERE is_synced = 0',
-    ).get();
+    final progressRows = await db
+        .customSelect('SELECT * FROM course_progress WHERE is_synced = 0')
+        .get();
     for (final row in progressRows) {
       final courseId = row.read<String>('course_id');
       final lessonId = row.read<String>('lesson_id');
@@ -537,15 +558,17 @@ class FirebaseSyncService {
     var pulled = 0;
     var failed = 0;
 
-    final queueRows = await db.customSelect(
-      '''
+    final queueRows = await db
+        .customSelect(
+          '''
       SELECT * FROM sync_queue
       WHERE next_retry_at IS NULL OR next_retry_at <= ?
       ORDER BY id ASC
       LIMIT 100
       ''',
-      variables: [Variable.withString(nowIso)],
-    ).get();
+          variables: [Variable.withString(nowIso)],
+        )
+        .get();
 
     for (final row in queueRows) {
       final id = row.read<int>('id');
@@ -567,10 +590,13 @@ class FirebaseSyncService {
       } catch (e, st) {
         failed++;
         final nextRetryCount = retryCount + 1;
-        final backoffSeconds =
-            math.min(3600, math.pow(2, nextRetryCount).toInt() * 5);
-        final nextRetryAt =
-            now.add(Duration(seconds: backoffSeconds)).toIso8601String();
+        final backoffSeconds = math.min(
+          3600,
+          math.pow(2, nextRetryCount).toInt() * 5,
+        );
+        final nextRetryAt = now
+            .add(Duration(seconds: backoffSeconds))
+            .toIso8601String();
         final safeError = AuthErrorMapper.map(e, st).category.name;
         await db.customStatement(
           '''
@@ -603,13 +629,15 @@ class FirebaseSyncService {
                 DateTime.tryParse(doc['completed_at'] as String? ?? '') ?? now,
           );
 
-          final localRows = await db.customSelect(
-            'SELECT * FROM course_progress WHERE course_id = ? AND lesson_id = ? LIMIT 1',
-            variables: [
-              Variable.withString(courseId),
-              Variable.withString(lessonId),
-            ],
-          ).get();
+          final localRows = await db
+              .customSelect(
+                'SELECT * FROM course_progress WHERE course_id = ? AND lesson_id = ? LIMIT 1',
+                variables: [
+                  Variable.withString(courseId),
+                  Variable.withString(lessonId),
+                ],
+              )
+              .get();
 
           final merged = localRows.isEmpty
               ? remoteItem
@@ -619,7 +647,8 @@ class FirebaseSyncService {
                     lessonId: lessonId,
                     stars: localRows.first.read<int>('stars'),
                     bestScore: localRows.first.read<int>('best_score'),
-                    completedAt: DateTime.tryParse(
+                    completedAt:
+                        DateTime.tryParse(
                           localRows.first.read<String>('completed_at'),
                         ) ??
                         now,
@@ -656,8 +685,9 @@ class FirebaseSyncService {
       'UPDATE user_profiles SET last_synced_at = ?, updated_at = ? WHERE uid = ?',
       [nowIso, nowIso, profile.uid],
     );
-    await db
-        .customStatement('UPDATE xp_events SET is_synced = 1 WHERE is_synced = 0');
+    await db.customStatement(
+      'UPDATE xp_events SET is_synced = 1 WHERE is_synced = 0',
+    );
 
     return SyncReport(
       pushedItems: pushed,

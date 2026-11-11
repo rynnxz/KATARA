@@ -51,8 +51,7 @@ class AuthErrorMapper {
       if (msg.contains('dibatalkan') || msg.contains('cancel')) {
         return const AuthErrorResult(
           category: AuthErrorCategory.canceled,
-          userMessage:
-              'Masuk dengan Google dibatalkan. Kamu tetap bisa belajar dalam Mode Tamu.',
+          userMessage: 'Masuk dengan Google dibatalkan. Kamu tetap bisa belajar dalam Mode Tamu.',
           isBenignCancel: true,
         );
       }
@@ -62,8 +61,7 @@ class AuthErrorMapper {
     if (raw.contains('sign_in_canceled') || raw.contains('12501')) {
       return const AuthErrorResult(
         category: AuthErrorCategory.canceled,
-        userMessage:
-            'Masuk dengan Google dibatalkan. Kamu tetap bisa belajar dalam Mode Tamu.',
+        userMessage: 'Masuk dengan Google dibatalkan. Kamu tetap bisa belajar dalam Mode Tamu.',
         isBenignCancel: true,
       );
     }
@@ -83,15 +81,13 @@ class AuthErrorMapper {
         raw.contains('developer_error')) {
       return const AuthErrorResult(
         category: AuthErrorCategory.configuration,
-        userMessage:
-            'Layanan masuk Google belum dapat dihubungi pada perangkat ini. Progres belajarmu tetap tersimpan aman di perangkat (Mode Tamu).',
+        userMessage: 'Layanan masuk Google belum dapat dihubungi pada perangkat ini. Progres belajarmu tetap tersimpan aman di perangkat (Mode Tamu).',
       );
     }
 
     return const AuthErrorResult(
       category: AuthErrorCategory.unknown,
-      userMessage:
-          'Belum dapat masuk dengan Google saat ini. Progres belajarmu tetap aman di perangkat.',
+      userMessage: 'Belum dapat masuk dengan Google saat ini. Progres belajarmu tetap aman di perangkat.',
     );
   }
 
@@ -108,8 +104,7 @@ class AuthErrorMapper {
     if (code == 'sign_in_canceled' || combined.contains('12501')) {
       return const AuthErrorResult(
         category: AuthErrorCategory.canceled,
-        userMessage:
-            'Masuk dengan Google dibatalkan. Kamu tetap bisa belajar dalam Mode Tamu.',
+        userMessage: 'Masuk dengan Google dibatalkan. Kamu tetap bisa belajar dalam Mode Tamu.',
         isBenignCancel: true,
       );
     }
@@ -130,15 +125,13 @@ class AuthErrorMapper {
         combined.contains('developer_error')) {
       return const AuthErrorResult(
         category: AuthErrorCategory.configuration,
-        userMessage:
-            'Layanan masuk Google belum dapat dihubungi pada perangkat ini. Progres belajarmu tetap tersimpan aman di perangkat (Mode Tamu).',
+        userMessage: 'Layanan masuk Google belum dapat dihubungi pada perangkat ini. Progres belajarmu tetap tersimpan aman di perangkat (Mode Tamu).',
       );
     }
 
     return const AuthErrorResult(
       category: AuthErrorCategory.unknown,
-      userMessage:
-          'Belum dapat masuk dengan Google saat ini. Progres belajarmu tetap aman di perangkat.',
+      userMessage: 'Belum dapat masuk dengan Google saat ini. Progres belajarmu tetap aman di perangkat.',
     );
   }
 
@@ -156,35 +149,30 @@ class AuthErrorMapper {
       case 'provider-already-linked':
         return const AuthErrorResult(
           category: AuthErrorCategory.credentialConflict,
-          userMessage:
-              'Akun Google ini sudah terdaftar. Menggabungkan progres belajarmu...',
+          userMessage: 'Akun Google ini sudah terdaftar. Menggabungkan progres belajarmu...',
         );
       case 'user-disabled':
         return const AuthErrorResult(
           category: AuthErrorCategory.userDisabled,
-          userMessage:
-              'Akun ini telah dinonaktifkan. Kamu tetap bisa belajar dalam Mode Tamu.',
+          userMessage: 'Akun ini telah dinonaktifkan. Kamu tetap bisa belajar dalam Mode Tamu.',
         );
       case 'requires-recent-login':
         return const AuthErrorResult(
           category: AuthErrorCategory.requiresRecentLogin,
-          userMessage:
-              'Demi keamanan, silakan keluar lalu masuk kembali dengan Google sebelum menghapus akun.',
+          userMessage: 'Demi keamanan, silakan keluar lalu masuk kembali dengan Google sebelum menghapus akun.',
         );
       case 'canceled':
       case 'user-cancelled':
       case 'popup-closed-by-user':
         return const AuthErrorResult(
           category: AuthErrorCategory.canceled,
-          userMessage:
-              'Masuk dengan Google dibatalkan. Kamu tetap bisa belajar dalam Mode Tamu.',
+          userMessage: 'Masuk dengan Google dibatalkan. Kamu tetap bisa belajar dalam Mode Tamu.',
           isBenignCancel: true,
         );
       default:
         return const AuthErrorResult(
           category: AuthErrorCategory.unknown,
-          userMessage:
-              'Belum dapat masuk dengan Google saat ini. Progres belajarmu tetap aman di perangkat.',
+          userMessage: 'Belum dapat masuk dengan Google saat ini. Progres belajarmu tetap aman di perangkat.',
         );
     }
   }

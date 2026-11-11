@@ -21,7 +21,8 @@ class KProgressBar extends StatelessWidget {
   Widget build(BuildContext context) {
     final p = KataraPalette.of(context);
     final clamped = value.clamp(0.0, 1.0);
-    final disableAnimations = MediaQuery.maybeDisableAnimationsOf(context) ?? false;
+    final disableAnimations =
+        MediaQuery.maybeDisableAnimationsOf(context) ?? false;
 
     return Semantics(
       label: semanticLabel ?? 'Progres',

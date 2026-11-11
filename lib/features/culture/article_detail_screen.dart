@@ -12,10 +12,7 @@ import 'package:katara/app/widgets/report_issue_dialog.dart';
 import 'package:katara/data/content/content_models.dart';
 
 class ArticleDetailScreen extends ConsumerStatefulWidget {
-  const ArticleDetailScreen({
-    super.key,
-    required this.articleId,
-  });
+  const ArticleDetailScreen({super.key, required this.articleId});
 
   final String articleId;
 
@@ -31,7 +28,9 @@ class _ArticleDetailScreenState extends ConsumerState<ArticleDetailScreen> {
   Future<void> _unlockCardAndQuest(ArticleModel article) async {
     setState(() => _claiming = true);
     try {
-      await ref.read(progressRepositoryProvider).unlockArticleAndCard(
+      await ref
+          .read(progressRepositoryProvider)
+          .unlockArticleAndCard(
             courseId: article.courseId,
             articleId: article.id,
             cardId: article.cardId,
@@ -77,7 +76,8 @@ class _ArticleDetailScreenState extends ConsumerState<ArticleDetailScreen> {
           );
         }
 
-        final hasBody = article.bodyMarkdown != null &&
+        final hasBody =
+            article.bodyMarkdown != null &&
             article.bodyMarkdown!.trim().isNotEmpty;
 
         return Scaffold(
@@ -120,9 +120,8 @@ class _ArticleDetailScreenState extends ConsumerState<ArticleDetailScreen> {
                   KCard(
                     child: Text(
                       article.bodyMarkdown!,
-                      style: Theme.of(context).textTheme.bodyLarge?.copyWith(
-                            height: 1.6,
-                          ),
+                      style: Theme.of(context).textTheme.bodyLarge
+                          ?.copyWith(height: 1.6),
                     ),
                   )
                 else
@@ -133,17 +132,12 @@ class _ArticleDetailScreenState extends ConsumerState<ArticleDetailScreen> {
                       children: [
                         Row(
                           children: [
-                            const MascotView(
-                              state: MascotState.idle,
-                              size: 56,
-                            ),
+                            const MascotView(state: MascotState.idle, size: 56),
                             const SizedBox(width: 12),
                             Expanded(
                               child: Text(
                                 'Naskah Lengkap Sedang Disusun',
-                                style: Theme.of(context)
-                                    .textTheme
-                                    .titleMedium
+                                style: Theme.of(context).textTheme.titleMedium
                                     ?.copyWith(fontWeight: FontWeight.w800),
                               ),
                             ),
@@ -152,11 +146,8 @@ class _ArticleDetailScreenState extends ConsumerState<ArticleDetailScreen> {
                         const SizedBox(height: 12),
                         Text(
                           'Sesuai prinsip keaslian konten KATARA, artikel budaya tidak dikarang otomatis. Naskah lengkap untuk topik ini sedang disusun dan diverifikasi bersama rujukan sejarah serta narasumber budaya Melayu Deli.',
-                          style:
-                              Theme.of(context).textTheme.bodyMedium?.copyWith(
-                                    color: palette.inkMuted,
-                                    height: 1.5,
-                                  ),
+                          style: Theme.of(context).textTheme.bodyMedium
+                              ?.copyWith(color: palette.inkMuted, height: 1.5),
                         ),
                         if (article.verificationNotes != null) ...[
                           const SizedBox(height: 12),
@@ -169,9 +160,7 @@ class _ArticleDetailScreenState extends ConsumerState<ArticleDetailScreen> {
                             ),
                             child: Text(
                               'Poin verifikasi sumber: ${article.verificationNotes}',
-                              style: Theme.of(context)
-                                  .textTheme
-                                  .bodySmall
+                              style: Theme.of(context).textTheme.bodySmall
                                   ?.copyWith(fontWeight: FontWeight.w600),
                             ),
                           ),
@@ -191,9 +180,8 @@ class _ArticleDetailScreenState extends ConsumerState<ArticleDetailScreen> {
                       padding: const EdgeInsets.only(bottom: 6),
                       child: Text(
                         '• $s',
-                        style: Theme.of(context).textTheme.bodySmall?.copyWith(
-                              color: palette.inkMuted,
-                            ),
+                        style: Theme.of(context).textTheme.bodySmall
+                            ?.copyWith(color: palette.inkMuted),
                       ),
                     ),
                   ),

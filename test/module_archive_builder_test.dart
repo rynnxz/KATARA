@@ -1,5 +1,6 @@
 import 'dart:convert';
 import 'dart:io';
+
 import 'package:archive/archive.dart';
 import 'package:crypto/crypto.dart';
 import 'package:flutter_test/flutter_test.dart';
@@ -10,7 +11,8 @@ void main() {
       final coursesFile = File('assets/content/courses.json');
       expect(coursesFile.existsSync(), isTrue);
 
-      final decoded = jsonDecode(coursesFile.readAsStringSync()) as Map<String, dynamic>;
+      final decoded =
+          jsonDecode(coursesFile.readAsStringSync()) as Map<String, dynamic>;
       final courses = (decoded['courses'] as List<dynamic>)
           .cast<Map<String, dynamic>>();
       final ids = courses.map((c) => c['id']).toSet();
@@ -38,8 +40,9 @@ void main() {
 
       final words = (jsonDecode(wordsFile.readAsStringSync()) as List<dynamic>)
           .cast<Map<String, dynamic>>();
-      final lessons = (jsonDecode(lessonsFile.readAsStringSync()) as List<dynamic>)
-          .cast<Map<String, dynamic>>();
+      final lessons = (jsonDecode(
+        lessonsFile.readAsStringSync(),
+      ) as List<dynamic>).cast<Map<String, dynamic>>();
       final convs = (jsonDecode(convFile.readAsStringSync()) as List<dynamic>)
           .cast<Map<String, dynamic>>();
       final refs = (jsonDecode(refsFile.readAsStringSync()) as List<dynamic>)
@@ -59,10 +62,16 @@ void main() {
 
     test('Standalone module_langkat.zip and module_palembang.zip match module_catalog.json SHA-256 and structure', () {
       final catalogFile = File('dist/releases/v1.1.0/module_catalog.json');
-      expect(catalogFile.existsSync(), isTrue, reason: 'Missing dist/releases/v1.1.0/module_catalog.json');
+      expect(
+        catalogFile.existsSync(),
+        isTrue,
+        reason: 'Missing dist/releases/v1.1.0/module_catalog.json',
+      );
 
-      final catalog = jsonDecode(catalogFile.readAsStringSync()) as Map<String, dynamic>;
-      final modules = (catalog['modules'] as List<dynamic>).cast<Map<String, dynamic>>();
+      final catalog =
+          jsonDecode(catalogFile.readAsStringSync()) as Map<String, dynamic>;
+      final modules = (catalog['modules'] as List<dynamic>)
+          .cast<Map<String, dynamic>>();
       expect(modules.length, greaterThanOrEqualTo(2));
 
       for (final courseId in ['ms-langkat', 'ms-palembang']) {
@@ -73,8 +82,16 @@ void main() {
 
         final bytes = zipFile.readAsBytesSync();
         final actualSha256 = sha256.convert(bytes).toString();
-        expect(item['sha256'], equals(actualSha256), reason: 'SHA-256 mismatch for $archiveName');
-        expect(item['size_bytes'], equals(bytes.length), reason: 'Size mismatch for $archiveName');
+        expect(
+          item['sha256'],
+          equals(actualSha256),
+          reason: 'SHA-256 mismatch for $archiveName',
+        );
+        expect(
+          item['size_bytes'],
+          equals(bytes.length),
+          reason: 'Size mismatch for $archiveName',
+        );
         expect(
           (item['download_url'] as String).startsWith(
             'https://github.com/rynnxz/KATARA/releases/download/',
@@ -86,8 +103,16 @@ void main() {
         final fileNames = archive.files.map((f) => f.name).toSet();
 
         for (final name in fileNames) {
-          expect(name.contains('..'), isFalse, reason: 'Path traversal in archive entry $name');
-          expect(name.startsWith('/'), isFalse, reason: 'Leading slash in archive entry $name');
+          expect(
+            name.contains('..'),
+            isFalse,
+            reason: 'Path traversal in archive entry $name',
+          );
+          expect(
+            name.startsWith('/'),
+            isFalse,
+            reason: 'Leading slash in archive entry $name',
+          );
         }
 
         expect(
@@ -106,12 +131,16 @@ void main() {
           ]),
         );
 
-        final wordsEntry = archive.files.firstWhere((f) => f.name == 'words.json');
+        final wordsEntry = archive.files.firstWhere(
+          (f) => f.name == 'words.json',
+        );
         final wordsJson = utf8.decode(wordsEntry.content as List<int>);
         final wordsList = jsonDecode(wordsJson) as List<dynamic>;
         expect(wordsList.length, greaterThanOrEqualTo(300));
 
-        final lessonsEntry = archive.files.firstWhere((f) => f.name == 'lessons.json');
+        final lessonsEntry = archive.files.firstWhere(
+          (f) => f.name == 'lessons.json',
+        );
         final lessonsJson = utf8.decode(lessonsEntry.content as List<int>);
         final lessonsList = jsonDecode(lessonsJson) as List<dynamic>;
         expect(lessonsList.length, greaterThanOrEqualTo(15));

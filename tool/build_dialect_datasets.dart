@@ -76,10 +76,11 @@ List<Map<String, dynamic>> _generateQuizzesFromVocab({
     final d2 = vocab[(i + 19) % vocab.length];
     final d3 = vocab[(i + 37) % vocab.length];
     final quizId = '$quizPrefix-${(i + 1).toString().padLeft(4, '0')}';
-    final isSentenceBlank = i % 3 == 2 &&
+    final isSentenceBlank =
+        i % 3 == 2 &&
         (target['example_sentence']?.toString().toLowerCase().contains(
-                  target['term'].toString().toLowerCase(),
-                ) ??
+              target['term'].toString().toLowerCase(),
+            ) ??
             false);
 
     if (isSentenceBlank) {
@@ -97,7 +98,8 @@ List<Map<String, dynamic>> _generateQuizzesFromVocab({
         'translation_hint': target['example_translation'],
         'correct_answer': term,
         'options': [term, d1['term'], d2['term'], d3['term']],
-        'explanation': '${target['term']} berarti "${target['meaning_id']}". ${target['notes']}',
+        'explanation':
+            '${target['term']} berarti "${target['meaning_id']}". ${target['notes']}',
         'source_entry_id': target['id'],
         'sources': target['sources'],
         'verification_status': 'verified',
@@ -107,7 +109,8 @@ List<Map<String, dynamic>> _generateQuizzesFromVocab({
         'id': quizId,
         'dialect_id': dialectId,
         'type': 'multiple_choice_meaning',
-        'prompt': 'Apa arti kata "${target['term']}" (${target['pronunciation']})?',
+        'prompt':
+            'Apa arti kata "${target['term']}" (${target['pronunciation']})?',
         'correct_answer': target['meaning_id'],
         'options': [
           target['meaning_id'],
@@ -115,7 +118,8 @@ List<Map<String, dynamic>> _generateQuizzesFromVocab({
           d2['meaning_id'],
           d3['meaning_id'],
         ],
-        'explanation': 'Dalam wilayah ${target['region']}, "${target['term']}" bermakna ${target['meaning_id']}.',
+        'explanation':
+            'Dalam wilayah ${target['region']}, "${target['term']}" bermakna ${target['meaning_id']}.',
         'source_entry_id': target['id'],
         'sources': target['sources'],
         'verification_status': 'verified',
@@ -128,7 +132,8 @@ List<Map<String, dynamic>> _generateQuizzesFromVocab({
         'prompt': 'Manakah kosakata untuk makna: "${target['meaning_id']}"?',
         'correct_answer': target['term'],
         'options': [target['term'], d1['term'], d2['term'], d3['term']],
-        'explanation': 'Lafal: ${target['pronunciation']}. Contoh: "${target['example_sentence']}"',
+        'explanation':
+            'Lafal: ${target['pronunciation']}. Contoh: "${target['example_sentence']}"',
         'source_entry_id': target['id'],
         'sources': target['sources'],
         'verification_status': 'verified',
@@ -139,13 +144,17 @@ List<Map<String, dynamic>> _generateQuizzesFromVocab({
 }
 
 void _buildMelayuDeliDataset() {
-  final masterFile = File('melayu-deli-dataset/curated/melayu_deli_master.json');
+  final masterFile = File(
+    'melayu-deli-dataset/curated/melayu_deli_master.json',
+  );
   final rawVocabFile = File('melayu-deli-dataset/raw/vocabulary.json');
   final sourcesFile = File('melayu-deli-dataset/references/sources.json');
 
-  final master = jsonDecode(masterFile.readAsStringSync()) as Map<String, dynamic>;
-  final rawVocab = (jsonDecode(rawVocabFile.readAsStringSync()) as List<dynamic>)
-      .cast<Map<String, dynamic>>();
+  final master =
+      jsonDecode(masterFile.readAsStringSync()) as Map<String, dynamic>;
+  final rawVocab = (jsonDecode(
+    rawVocabFile.readAsStringSync(),
+  ) as List<dynamic>).cast<Map<String, dynamic>>();
   final sources = (jsonDecode(sourcesFile.readAsStringSync()) as List<dynamic>)
       .cast<Map<String, dynamic>>();
 
@@ -168,9 +177,10 @@ void _buildMelayuDeliDataset() {
 
   for (final v in existingVocab) {
     final id = v['id'].toString();
-    final srcs = ((v['sources'] ?? v['source_ids']) as List<dynamic>? ?? ['SRC-0002'])
-        .map((e) => e.toString())
-        .toList();
+    final srcs =
+        ((v['sources'] ?? v['source_ids']) as List<dynamic>? ?? ['SRC-0002'])
+            .map((e) => e.toString())
+            .toList();
     v['dialect_id'] = 'melayu_deli';
     v['dialect'] = 'melayu_deli';
     v['sources'] = srcs;
@@ -180,10 +190,13 @@ void _buildMelayuDeliDataset() {
 
   for (var i = 0; i < deliAdditionalVocab.length; i++) {
     final ext = deliAdditionalVocab[i];
-    final id = (ext['id'] ?? 'MD-${(216 + i).toString().padLeft(6, '0')}').toString();
-    final srcs = ((ext['sources'] ?? ext['source_ids']) as List<dynamic>? ?? ['SRC-0002'])
-        .map((e) => e.toString())
-        .toList();
+    final id = (ext['id'] ?? 'MD-${(216 + i).toString().padLeft(6, '0')}')
+        .toString();
+    final srcs =
+        ((ext['sources'] ?? ext['source_ids']) as List<dynamic>? ??
+                ['SRC-0002'])
+            .map((e) => e.toString())
+            .toList();
     final term = ext['term'].toString();
     vocabById[id] = {
       'id': id,
@@ -205,7 +218,9 @@ void _buildMelayuDeliDataset() {
       'source_ids': srcs,
       'confidence': ext['confidence'] ?? 'high',
       'verification_status': ext['verification_status'] ?? 'verified',
-      'notes': ext['notes'] ?? 'Terdokumentasi dalam rujukan leksikografis Bahasa Melayu Deli.',
+      'notes':
+          ext['notes'] ??
+          'Terdokumentasi dalam rujukan leksikografis Bahasa Melayu Deli.',
     };
   }
 
@@ -216,9 +231,10 @@ void _buildMelayuDeliDataset() {
   final rawById = <String, Map<String, dynamic>>{};
   for (final rv in rawVocab) {
     final id = rv['id'].toString();
-    final srcs = ((rv['sources'] ?? rv['source_ids']) as List<dynamic>? ?? ['SRC-0002'])
-        .map((e) => e.toString())
-        .toList();
+    final srcs =
+        ((rv['sources'] ?? rv['source_ids']) as List<dynamic>? ?? ['SRC-0002'])
+            .map((e) => e.toString())
+            .toList();
     rv['dialect_id'] = 'melayu_deli';
     rv['dialect'] = 'melayu_deli';
     rv['sources'] = srcs;
@@ -280,7 +296,11 @@ void _buildMelayuLangkatDataset() {
   ];
 
   final expressions = curatedVocab
-      .where((e) => e['part_of_speech'] == 'phrase' || e['category'] == 'greetings_and_address')
+      .where(
+        (e) =>
+            e['part_of_speech'] == 'phrase' ||
+            e['category'] == 'greetings_and_address',
+      )
       .take(40)
       .toList()
       .asMap()
@@ -303,26 +323,20 @@ void _buildMelayuLangkatDataset() {
       })
       .toList();
 
-  final sentences = curatedVocab
-      .take(45)
-      .toList()
-      .asMap()
-      .entries
-      .map((entry) {
-        final v = entry.value;
-        return {
-          'id': 'SNT-LK-${(entry.key + 1).toString().padLeft(4, '0')}',
-          'dialect_id': 'melayu_langkat',
-          'pattern': v['category'],
-          'text_local': v['example_sentence'],
-          'text_id': v['example_translation'],
-          'region': v['region'],
-          'notes': v['notes'],
-          'sources': v['sources'],
-          'verification_status': 'verified',
-        };
-      })
-      .toList();
+  final sentences = curatedVocab.take(45).toList().asMap().entries.map((entry) {
+    final v = entry.value;
+    return {
+      'id': 'SNT-LK-${(entry.key + 1).toString().padLeft(4, '0')}',
+      'dialect_id': 'melayu_langkat',
+      'pattern': v['category'],
+      'text_local': v['example_sentence'],
+      'text_id': v['example_translation'],
+      'region': v['region'],
+      'notes': v['notes'],
+      'sources': v['sources'],
+      'verification_status': 'verified',
+    };
+  }).toList();
 
   final quizzes = _generateQuizzesFromVocab(
     quizPrefix: 'QZ-LK',
@@ -387,10 +401,18 @@ void _buildMelayuLangkatDataset() {
     'statistics_summary': {
       'total_raw_entries': rawCorpus.length,
       'total_curated_vocabulary': curatedVocab.length,
-      'total_verified_entries': curatedVocab.where((e) => e['verification_status'] == 'verified').length,
-      'total_needs_review_entries': curatedVocab.where((e) => e['verification_status'] == 'needs_review').length,
-      'total_disputed_entries': langkatRawExcludedEntries.where((e) => e['verification_status'] == 'disputed').length,
-      'total_rejected_entries': langkatRawExcludedEntries.where((e) => e['verification_status'] == 'rejected').length,
+      'total_verified_entries': curatedVocab
+          .where((e) => e['verification_status'] == 'verified')
+          .length,
+      'total_needs_review_entries': curatedVocab
+          .where((e) => e['verification_status'] == 'needs_review')
+          .length,
+      'total_disputed_entries': langkatRawExcludedEntries
+          .where((e) => e['verification_status'] == 'disputed')
+          .length,
+      'total_rejected_entries': langkatRawExcludedEntries
+          .where((e) => e['verification_status'] == 'rejected')
+          .length,
       'total_expressions': expressions.length,
       'total_sentences': sentences.length,
       'total_conversations': langkatConversations.length,
@@ -415,7 +437,10 @@ void _buildMelayuLangkatDataset() {
 }
 
 void _buildMelayuPalembangDataset() {
-  final allTuples = <List<dynamic>>[...palembangVocabPart1, ...palembangVocabPart2];
+  final allTuples = <List<dynamic>>[
+    ...palembangVocabPart1,
+    ...palembangVocabPart2,
+  ];
   final curatedVocab = <Map<String, dynamic>>[];
 
   for (var i = 0; i < allTuples.length; i++) {
@@ -435,7 +460,11 @@ void _buildMelayuPalembangDataset() {
   ];
 
   final expressions = curatedVocab
-      .where((e) => e['part_of_speech'] == 'phrase' || e['category'] == 'greetings_and_address')
+      .where(
+        (e) =>
+            e['part_of_speech'] == 'phrase' ||
+            e['category'] == 'greetings_and_address',
+      )
       .take(40)
       .toList()
       .asMap()
@@ -458,26 +487,20 @@ void _buildMelayuPalembangDataset() {
       })
       .toList();
 
-  final sentences = curatedVocab
-      .take(45)
-      .toList()
-      .asMap()
-      .entries
-      .map((entry) {
-        final v = entry.value;
-        return {
-          'id': 'SNT-PLG-${(entry.key + 1).toString().padLeft(4, '0')}',
-          'dialect_id': 'melayu_palembang',
-          'pattern': v['category'],
-          'text_local': v['example_sentence'],
-          'text_id': v['example_translation'],
-          'region': v['region'],
-          'notes': v['notes'],
-          'sources': v['sources'],
-          'verification_status': 'verified',
-        };
-      })
-      .toList();
+  final sentences = curatedVocab.take(45).toList().asMap().entries.map((entry) {
+    final v = entry.value;
+    return {
+      'id': 'SNT-PLG-${(entry.key + 1).toString().padLeft(4, '0')}',
+      'dialect_id': 'melayu_palembang',
+      'pattern': v['category'],
+      'text_local': v['example_sentence'],
+      'text_id': v['example_translation'],
+      'region': v['region'],
+      'notes': v['notes'],
+      'sources': v['sources'],
+      'verification_status': 'verified',
+    };
+  }).toList();
 
   final quizzes = _generateQuizzesFromVocab(
     quizPrefix: 'QZ-PLG',
@@ -488,7 +511,8 @@ void _buildMelayuPalembangDataset() {
   final culturalNotes = [
     {
       'id': 'CUL-PLG-0001',
-      'title': 'Diglosia Bahasa Palembang: Baso Palembang Alus (Bebaso) & Sari-sari',
+      'title':
+          'Diglosia Bahasa Palembang: Baso Palembang Alus (Bebaso) & Sari-sari',
       'category': 'Sosiolinguistik & Adab',
       'summary': 'Keunikan dua tingkat tutur dalam Bahasa Melayu Palembang yang memadukan akar Melayu Sriwijaya dan peradaban Kesultanan Palembang Darussalam.',
       'body': 'Bahasa Melayu Palembang memiliki dua tingkat tutur utama. Pertama, Baso Palembang Alus (Bebaso) yang digunakan untuk menghormati orang tua, ulama, sesepuh, serta dalam majelis adat seperti lamaran (menggunakan kosakata seperti kulo, niko, pundi, sinten, nedo, rompok, tedoh, sare). Kedua, Baso Palembang Sari-sari yang digunakan dalam pergaulan sehari-hari dengan ciri khas vokal akhir /a/ menjadi /o/ (apo, mano, ngapo, kito, galo).',
@@ -530,7 +554,8 @@ void _buildMelayuPalembangDataset() {
       .writeAsStringSync('${_prettyJson.convert(rawCorpus)}\n');
 
   final master = {
-    'dataset_name': 'Bahasa Melayu Palembang Knowledge Base & Linguistic Dataset',
+    'dataset_name':
+        'Bahasa Melayu Palembang Knowledge Base & Linguistic Dataset',
     'version': '1.1.0',
     'generated_at': '2026-11-11',
     'target_application': 'KATARA',
@@ -542,10 +567,18 @@ void _buildMelayuPalembangDataset() {
     'statistics_summary': {
       'total_raw_entries': rawCorpus.length,
       'total_curated_vocabulary': curatedVocab.length,
-      'total_verified_entries': curatedVocab.where((e) => e['verification_status'] == 'verified').length,
-      'total_needs_review_entries': curatedVocab.where((e) => e['verification_status'] == 'needs_review').length,
-      'total_disputed_entries': palembangRawExcludedEntries.where((e) => e['verification_status'] == 'disputed').length,
-      'total_rejected_entries': palembangRawExcludedEntries.where((e) => e['verification_status'] == 'rejected').length,
+      'total_verified_entries': curatedVocab
+          .where((e) => e['verification_status'] == 'verified')
+          .length,
+      'total_needs_review_entries': curatedVocab
+          .where((e) => e['verification_status'] == 'needs_review')
+          .length,
+      'total_disputed_entries': palembangRawExcludedEntries
+          .where((e) => e['verification_status'] == 'disputed')
+          .length,
+      'total_rejected_entries': palembangRawExcludedEntries
+          .where((e) => e['verification_status'] == 'rejected')
+          .length,
       'total_expressions': expressions.length,
       'total_sentences': sentences.length,
       'total_conversations': palembangConversations.length,
@@ -728,5 +761,7 @@ void _writeResearchReports() {
 - **Keterbatasan Data:** Kosakata *Bebaso* yang terdokumentasi difokuskan pada kosakata aktif yang masih dikenali dalam silaturahmi keluarga dan upacara adat di Seberang Ilir serta Seberang Ulu; leksikon arkais naskah keraton abad ke-18 masih memerlukan digitasi filologis terpisah.
 ''');
 
-  stdout.writeln('  [OK] Laporan riset Deli, Langkat, dan Palembang berhasil ditulis.');
+  stdout.writeln(
+    '  [OK] Laporan riset Deli, Langkat, dan Palembang berhasil ditulis.',
+  );
 }

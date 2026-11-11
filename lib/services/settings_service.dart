@@ -11,6 +11,7 @@ class AppSettingsState {
     this.reminderMinute = 30,
     this.showJawiScript = true,
     this.debugIncludeUnverified = false,
+    this.authMode,
   });
 
   final ThemeMode themeMode;
@@ -21,6 +22,7 @@ class AppSettingsState {
   final int reminderMinute;
   final bool showJawiScript;
   final bool debugIncludeUnverified;
+  final String? authMode; // 'google' | 'guest' | null
 
   AppSettingsState copyWith({
     ThemeMode? themeMode,
@@ -31,6 +33,8 @@ class AppSettingsState {
     int? reminderMinute,
     bool? showJawiScript,
     bool? debugIncludeUnverified,
+    String? authMode,
+    bool clearAuthMode = false,
   }) {
     return AppSettingsState(
       themeMode: themeMode ?? this.themeMode,
@@ -42,6 +46,7 @@ class AppSettingsState {
       showJawiScript: showJawiScript ?? this.showJawiScript,
       debugIncludeUnverified:
           debugIncludeUnverified ?? this.debugIncludeUnverified,
+      authMode: clearAuthMode ? null : (authMode ?? this.authMode),
     );
   }
 }
@@ -54,6 +59,7 @@ class SettingsService {
   static const _kReminderHour = 'katara.reminder_hour';
   static const _kReminderMinute = 'katara.reminder_minute';
   static const _kShowJawi = 'katara.show_jawi';
+  static const _kAuthMode = 'katara.auth_mode';
 
   Future<AppSettingsState> load() async {
     final prefs = await SharedPreferences.getInstance();
@@ -72,6 +78,7 @@ class SettingsService {
       reminderHour: prefs.getInt(_kReminderHour) ?? 19,
       reminderMinute: prefs.getInt(_kReminderMinute) ?? 30,
       showJawiScript: prefs.getBool(_kShowJawi) ?? true,
+      authMode: prefs.getString(_kAuthMode),
     );
   }
 
@@ -89,5 +96,10 @@ class SettingsService {
     await prefs.setInt(_kReminderHour, state.reminderHour);
     await prefs.setInt(_kReminderMinute, state.reminderMinute);
     await prefs.setBool(_kShowJawi, state.showJawiScript);
+    if (state.authMode != null && state.authMode!.isNotEmpty) {
+      await prefs.setString(_kAuthMode, state.authMode!);
+    } else {
+      await prefs.remove(_kAuthMode);
+    }
   }
 }

@@ -18,10 +18,7 @@ import 'package:katara/engine/exercise_models.dart';
 import 'package:katara/engine/lesson_session_engine.dart';
 
 class LessonScreen extends ConsumerStatefulWidget {
-  const LessonScreen({
-    super.key,
-    required this.lessonId,
-  });
+  const LessonScreen({super.key, required this.lessonId});
 
   final String lessonId;
 
@@ -267,8 +264,9 @@ class _LessonScreenState extends ConsumerState<LessonScreen> {
     final contentRepo = ref.read(contentRepositoryProvider);
     final stats = await progressRepo.getStats();
     final config = await contentRepo.getGameConfig();
-    final refillItem =
-        config.shopItems.where((i) => i.id == 'heart_refill').firstOrNull;
+    final refillItem = config.shopItems
+        .where((i) => i.id == 'heart_refill')
+        .firstOrNull;
     final price = refillItem?.priceCoins ?? 40;
 
     if (!mounted) return;
@@ -298,9 +296,8 @@ class _LessonScreenState extends ConsumerState<LessonScreen> {
             Text(
               'Nyawa pulih otomatis 1 hati setiap 30 menit. Kamu juga bisa mengisi penuh dengan koin atau berlatih di menu Latihan.',
               textAlign: TextAlign.center,
-              style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                    color: palette.inkMuted,
-                  ),
+              style: Theme.of(context).textTheme.bodyMedium
+                  ?.copyWith(color: palette.inkMuted),
             ),
             const SizedBox(height: 20),
             if (refillItem != null && stats.coins >= price) ...[
@@ -382,10 +379,7 @@ class _LessonScreenState extends ConsumerState<LessonScreen> {
               children: [
                 Text(_error ?? 'Gagal memuat latihan.'),
                 const SizedBox(height: 16),
-                KButton(
-                  label: 'Coba Lagi',
-                  onPressed: _initSession,
-                ),
+                KButton(label: 'Coba Lagi', onPressed: _initSession),
               ],
             ),
           ),
@@ -423,7 +417,7 @@ class _LessonScreenState extends ConsumerState<LessonScreen> {
       onReportIssue: () => showReportIssueSheet(
         context,
         ref,
-        courseId: 'ms-deli',
+        courseId: _lesson?.courseId ?? 'ms-deli',
         itemId: current.refItemId ?? current.id,
         itemType: current.refItemType,
         itemTitle: current.subjectDeli ?? current.prompt,
@@ -464,7 +458,7 @@ class _LessonScreenState extends ConsumerState<LessonScreen> {
     return switch (type) {
       ExerciseType.introCard => 'Kenalan Kata Baru',
       ExerciseType.mcqTranslate => 'Terjemahkan ke Indonesia',
-      ExerciseType.mcqReverse => 'Pilih Bahasa Melayu Deli',
+      ExerciseType.mcqReverse => 'Pilih Bahasa Melayu',
       ExerciseType.matchPairs => 'Pasangkan Kata',
       ExerciseType.fillBlank => 'Lengkapi Kalimat',
       ExerciseType.buildSentence => 'Susun Ungkapan',
@@ -505,9 +499,9 @@ class _LessonScreenState extends ConsumerState<LessonScreen> {
                 current.subjectDeli!,
                 textAlign: TextAlign.center,
                 style: Theme.of(context).textTheme.displayMedium?.copyWith(
-                      color: palette.onPrimaryContainer,
-                      fontWeight: FontWeight.w800,
-                    ),
+                  color: palette.onPrimaryContainer,
+                  fontWeight: FontWeight.w800,
+                ),
               ),
             const SizedBox(height: 10),
             Container(
@@ -520,10 +514,8 @@ class _LessonScreenState extends ConsumerState<LessonScreen> {
               child: Text(
                 'Arti: ${current.correctAnswer}',
                 textAlign: TextAlign.center,
-                style: Theme.of(context).textTheme.titleMedium?.copyWith(
-                      color: palette.ink,
-                      fontWeight: FontWeight.w800,
-                    ),
+                style: Theme.of(context).textTheme.titleMedium
+                    ?.copyWith(color: palette.ink, fontWeight: FontWeight.w800),
               ),
             ),
             if (current.explanation != null) ...[
@@ -531,9 +523,8 @@ class _LessonScreenState extends ConsumerState<LessonScreen> {
               Text(
                 current.explanation!,
                 textAlign: TextAlign.center,
-                style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                      color: palette.onPrimaryContainer,
-                    ),
+                style: Theme.of(context).textTheme.bodyMedium
+                    ?.copyWith(color: palette.onPrimaryContainer),
               ),
             ],
             const SizedBox(height: 12),
@@ -552,9 +543,8 @@ class _LessonScreenState extends ConsumerState<LessonScreen> {
         children: [
           Text(
             'Ketuk kata di kiri lalu ketuk pasangannya di kanan.',
-            style: Theme.of(context).textTheme.bodySmall?.copyWith(
-                  color: palette.inkMuted,
-                ),
+            style: Theme.of(context).textTheme.bodySmall
+                ?.copyWith(color: palette.inkMuted),
           ),
           const SizedBox(height: 14),
           Row(
@@ -572,7 +562,8 @@ class _LessonScreenState extends ConsumerState<LessonScreen> {
                         backgroundColor: isMatched
                             ? palette.successContainer
                             : null,
-                        onTap: isMatched ||
+                        onTap:
+                            isMatched ||
                                 _feedbackState != ExerciseFeedbackState.none
                             ? null
                             : () => _onTapPair(left, '', isLeft: true),
@@ -580,15 +571,13 @@ class _LessonScreenState extends ConsumerState<LessonScreen> {
                           child: Text(
                             left,
                             textAlign: TextAlign.center,
-                            style: Theme.of(context)
-                                .textTheme
-                                .titleMedium
+                            style: Theme.of(context).textTheme.titleMedium
                                 ?.copyWith(
                                   color: isMatched
                                       ? palette.onSuccessContainer
                                       : (isSelected
-                                          ? palette.onPrimaryContainer
-                                          : palette.ink),
+                                            ? palette.onPrimaryContainer
+                                            : palette.ink),
                                   fontWeight: FontWeight.w700,
                                 ),
                           ),
@@ -614,7 +603,8 @@ class _LessonScreenState extends ConsumerState<LessonScreen> {
                         backgroundColor: isMatched
                             ? palette.successContainer
                             : null,
-                        onTap: isMatched ||
+                        onTap:
+                            isMatched ||
                                 _feedbackState != ExerciseFeedbackState.none
                             ? null
                             : () => _onTapPair('', right, isLeft: false),
@@ -622,15 +612,13 @@ class _LessonScreenState extends ConsumerState<LessonScreen> {
                           child: Text(
                             right,
                             textAlign: TextAlign.center,
-                            style: Theme.of(context)
-                                .textTheme
-                                .titleMedium
+                            style: Theme.of(context).textTheme.titleMedium
                                 ?.copyWith(
                                   color: isMatched
                                       ? palette.onSuccessContainer
                                       : (isSelected
-                                          ? palette.onPrimaryContainer
-                                          : palette.ink),
+                                            ? palette.onPrimaryContainer
+                                            : palette.ink),
                                   fontWeight: FontWeight.w700,
                                 ),
                           ),
@@ -663,9 +651,8 @@ class _LessonScreenState extends ConsumerState<LessonScreen> {
                   Expanded(
                     child: Text(
                       current.subjectIndonesia!,
-                      style: Theme.of(context).textTheme.titleMedium?.copyWith(
-                            fontWeight: FontWeight.w800,
-                          ),
+                      style: Theme.of(context).textTheme.titleMedium
+                          ?.copyWith(fontWeight: FontWeight.w800),
                     ),
                   ),
                 ],
@@ -684,9 +671,8 @@ class _LessonScreenState extends ConsumerState<LessonScreen> {
                 ? Center(
                     child: Text(
                       'Ketuk potongan kata di bawah untuk menyusun kalimat',
-                      style: Theme.of(context).textTheme.bodySmall?.copyWith(
-                            color: palette.inkMuted,
-                          ),
+                      style: Theme.of(context).textTheme.bodySmall
+                          ?.copyWith(color: palette.inkMuted),
                     ),
                   )
                 : Wrap(
@@ -760,9 +746,8 @@ class _LessonScreenState extends ConsumerState<LessonScreen> {
                   Text(
                     current.subjectDeli!,
                     textAlign: TextAlign.center,
-                    style: Theme.of(context).textTheme.headlineMedium?.copyWith(
-                          color: palette.primary,
-                        ),
+                    style: Theme.of(context).textTheme.headlineMedium
+                        ?.copyWith(color: palette.primary),
                   ),
                 ],
                 if (current.subjectIndonesia != null &&
@@ -771,9 +756,8 @@ class _LessonScreenState extends ConsumerState<LessonScreen> {
                   Text(
                     'Arti: "${current.subjectIndonesia!}"',
                     textAlign: TextAlign.center,
-                    style: Theme.of(context).textTheme.bodySmall?.copyWith(
-                          color: palette.inkMuted,
-                        ),
+                    style: Theme.of(context).textTheme.bodySmall
+                        ?.copyWith(color: palette.inkMuted),
                   ),
                 ],
               ],
@@ -805,12 +789,13 @@ class _LessonScreenState extends ConsumerState<LessonScreen> {
                     child: Text(
                       option,
                       style: Theme.of(context).textTheme.titleMedium?.copyWith(
-                            color: isSelected
-                                ? palette.onPrimaryContainer
-                                : palette.ink,
-                            fontWeight:
-                                isSelected ? FontWeight.w800 : FontWeight.w600,
-                          ),
+                        color: isSelected
+                            ? palette.onPrimaryContainer
+                            : palette.ink,
+                        fontWeight: isSelected
+                            ? FontWeight.w800
+                            : FontWeight.w600,
+                      ),
                     ),
                   ),
                 ],

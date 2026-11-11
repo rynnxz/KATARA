@@ -18,19 +18,14 @@ class CultureScreen extends ConsumerWidget {
     final palette = context.kataraPalette;
     final statsAsync = ref.watch(userStatsStreamProvider);
     final courseId = statsAsync.value?.activeCourseId ?? 'ms-deli';
+    final activeCourseName =
+        ref.watch(activeCourseProvider).value?.name ?? 'Melayu Deli';
 
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Ruang Budaya Melayu'),
-      ),
+      appBar: AppBar(title: const Text('Ruang Budaya Melayu')),
       body: PatternBackground(
         opacity: 0.05,
-        child: FutureBuilder<
-            (
-              List<ArticleModel>,
-              List<CollectionCardModel>,
-              Set<String>,
-            )>(
+        child: FutureBuilder<(List<ArticleModel>, List<CollectionCardModel>, Set<String>)>(
           future: () async {
             final contentRepo = ref.read(contentRepositoryProvider);
             final progressRepo = ref.read(progressRepositoryProvider);
@@ -64,15 +59,13 @@ class CultureScreen extends ConsumerWidget {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Text(
-                              'Jejak Sejarah & Adat Deli',
+                              'Jejak Sejarah & Adat ${activeCourseName.replaceFirst('Melayu ', '')}',
                               style: Theme.of(context).textTheme.titleLarge,
                             ),
                             const SizedBox(height: 4),
                             Text(
                               'Kenali bangunan bersejarah, busana adat, kuliner, dan sastra pantun sambil mengumpulkan kartu koleksi.',
-                              style: Theme.of(context)
-                                  .textTheme
-                                  .bodySmall
+                              style: Theme.of(context).textTheme.bodySmall
                                   ?.copyWith(color: palette.inkMuted),
                             ),
                           ],
@@ -139,18 +132,14 @@ class CultureScreen extends ConsumerWidget {
                           const SizedBox(height: 10),
                           Text(
                             article.title,
-                            style: Theme.of(context)
-                                .textTheme
-                                .titleMedium
+                            style: Theme.of(context).textTheme.titleMedium
                                 ?.copyWith(fontWeight: FontWeight.w800),
                           ),
                           if (article.verificationNotes != null) ...[
                             const SizedBox(height: 6),
                             Text(
                               'Catatan verifikasi: ${article.verificationNotes}',
-                              style: Theme.of(context)
-                                  .textTheme
-                                  .bodySmall
+                              style: Theme.of(context).textTheme.bodySmall
                                   ?.copyWith(color: palette.inkMuted),
                             ),
                           ],

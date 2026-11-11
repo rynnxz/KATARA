@@ -8,7 +8,7 @@ void main() {
       final executor = NativeDatabase.memory(
         setup: (rawDb) {
           // 1. Construct exact v1 schema (prior to v2 multi-dialect & cloud sync columns)
-      rawDb.execute('''
+          rawDb.execute('''
         CREATE TABLE courses (
           id TEXT PRIMARY KEY NOT NULL,
           language_id TEXT NOT NULL,
@@ -21,7 +21,7 @@ void main() {
         );
       ''');
 
-      rawDb.execute('''
+          rawDb.execute('''
         CREATE TABLE words (
           id TEXT PRIMARY KEY NOT NULL,
           course_id TEXT NOT NULL,
@@ -42,7 +42,7 @@ void main() {
         );
       ''');
 
-      rawDb.execute('''
+          rawDb.execute('''
         CREATE TABLE phrases (
           id TEXT PRIMARY KEY NOT NULL,
           course_id TEXT NOT NULL,
@@ -58,7 +58,7 @@ void main() {
         );
       ''');
 
-      rawDb.execute('''
+          rawDb.execute('''
         CREATE TABLE sentences (
           id TEXT PRIMARY KEY NOT NULL,
           course_id TEXT NOT NULL,
@@ -71,7 +71,7 @@ void main() {
         );
       ''');
 
-      rawDb.execute('''
+          rawDb.execute('''
         CREATE TABLE user_stats (
           id INTEGER PRIMARY KEY NOT NULL CHECK (id = 1),
           xp_total INTEGER NOT NULL DEFAULT 0,
@@ -93,7 +93,7 @@ void main() {
         );
       ''');
 
-      rawDb.execute('''
+          rawDb.execute('''
         CREATE TABLE course_progress (
           course_id TEXT NOT NULL,
           lesson_id TEXT NOT NULL,
@@ -104,7 +104,7 @@ void main() {
         );
       ''');
 
-      rawDb.execute('''
+          rawDb.execute('''
         CREATE TABLE word_mastery (
           course_id TEXT NOT NULL,
           item_id TEXT NOT NULL,
@@ -118,25 +118,25 @@ void main() {
         );
       ''');
 
-      rawDb.execute('''
+          rawDb.execute('''
         CREATE TABLE achievements_unlocked (
           achievement_id TEXT PRIMARY KEY NOT NULL,
           unlocked_at TEXT NOT NULL
         );
       ''');
 
-      // Seed v1 user progress & content rows
-      rawDb.execute('''
+          // Seed v1 user progress & content rows
+          rawDb.execute('''
         INSERT INTO courses (id, language_id, name, region_label, status, accent_hex, content_version, has_jawi)
         VALUES ('ms-deli', 'ms', 'Melayu Deli', 'Medan & Deli Serdang', 'active', '#F5B700', 1, 1);
       ''');
 
-      rawDb.execute('''
+          rawDb.execute('''
         INSERT INTO words (id, course_id, deli, indonesia, category, level, unit_id, pos, register)
         VALUES ('ms-deli:w:0001', 'ms-deli', 'encik', 'tuan/puan', 'sapaan', 1, 'ms-deli:u:0001', 'nomina', 'halus');
       ''');
 
-      rawDb.execute('''
+          rawDb.execute('''
         INSERT INTO user_stats (
           id, xp_total, level, coins, hearts, hearts_updated_at,
           streak_current, streak_best, last_active_date, streak_freezes,
@@ -150,12 +150,12 @@ void main() {
         );
       ''');
 
-      rawDb.execute('''
+          rawDb.execute('''
         INSERT INTO course_progress (course_id, lesson_id, stars, best_score, completed_at)
         VALUES ('ms-deli', 'ms-deli:l:0001', 3, 100, '2026-11-10T08:05:00Z');
       ''');
 
-      rawDb.execute('''
+          rawDb.execute('''
         INSERT INTO word_mastery (
           course_id, item_id, item_type, strength, correct_count, wrong_count, last_seen_at, next_review_at
         ) VALUES (
@@ -163,7 +163,7 @@ void main() {
         );
       ''');
 
-      rawDb.execute('PRAGMA user_version = 1;');
+          rawDb.execute('PRAGMA user_version = 1;');
         },
       );
 
@@ -176,7 +176,9 @@ void main() {
       await appDb.runV2UpgradeSafely();
 
       // 3. Verify v1 user progress is 100% intact and v2 columns have expected defaults
-      final statsRows = await appDb.customSelect('SELECT * FROM user_stats WHERE id = 1').get();
+      final statsRows = await appDb
+          .customSelect('SELECT * FROM user_stats WHERE id = 1')
+          .get();
       expect(statsRows, hasLength(1));
       final stats = statsRows.first;
       expect(stats.read<int>('xp_total'), equals(450));
@@ -189,22 +191,29 @@ void main() {
       expect(stats.read<int>('revision'), equals(1));
       expect(stats.read<int>('is_synced'), equals(0));
 
-      final progRows = await appDb.customSelect(
-        "SELECT * FROM course_progress WHERE course_id = 'ms-deli' AND lesson_id = 'ms-deli:l:0001'",
-      ).get();
+      final progRows = await appDb
+          .customSelect(
+            "SELECT * FROM course_progress WHERE course_id = 'ms-deli' AND lesson_id = 'ms-deli:l:0001'",
+          )
+          .get();
       expect(progRows, hasLength(1));
       expect(progRows.first.read<int>('stars'), equals(3));
       expect(progRows.first.read<int>('best_score'), equals(100));
       expect(progRows.first.read<String>('device_id'), equals('local-device'));
       expect(progRows.first.read<int>('revision'), equals(1));
 
-      final masteryRows = await appDb.customSelect(
-        "SELECT * FROM word_mastery WHERE course_id = 'ms-deli' AND item_id = 'ms-deli:w:0001'",
-      ).get();
+      final masteryRows = await appDb
+          .customSelect(
+            "SELECT * FROM word_mastery WHERE course_id = 'ms-deli' AND item_id = 'ms-deli:w:0001'",
+          )
+          .get();
       expect(masteryRows, hasLength(1));
       expect(masteryRows.first.read<int>('strength'), equals(4));
       expect(masteryRows.first.read<int>('correct_count'), equals(8));
-      expect(masteryRows.first.read<String>('device_id'), equals('local-device'));
+      expect(
+        masteryRows.first.read<String>('device_id'),
+        equals('local-device'),
+      );
 
       // 4. Verify v2 tables exist and are operational
       for (final table in const [
@@ -215,7 +224,9 @@ void main() {
         'sync_queue',
         'user_profiles',
       ]) {
-        final countRow = await appDb.customSelect('SELECT COUNT(*) AS c FROM $table').getSingle();
+        final countRow = await appDb
+            .customSelect('SELECT COUNT(*) AS c FROM $table')
+            .getSingle();
         expect(countRow.read<int>('c'), equals(0));
       }
     });

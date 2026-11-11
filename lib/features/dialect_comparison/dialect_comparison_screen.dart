@@ -1,9 +1,13 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:katara/app/providers.dart';
 import 'package:katara/app/theme/katara_colors.dart';
+import 'package:katara/app/widgets/k_button.dart';
 import 'package:katara/app/widgets/k_card.dart';
 import 'package:katara/app/widgets/k_chip.dart';
+import 'package:katara/app/widgets/k_filter_bar.dart';
 import 'package:katara/app/widgets/pattern_background.dart';
 import 'package:katara/data/content/content_models.dart';
 
@@ -17,8 +21,10 @@ class DialectComparisonScreen extends ConsumerStatefulWidget {
 
 class _DialectComparisonScreenState
     extends ConsumerState<DialectComparisonScreen> {
-  String _selectedCategory = 'semua';
+  Set<String> _selectedCategories = const <String>{};
   final TextEditingController _searchController = TextEditingController();
+  String _debouncedQuery = '';
+  Timer? _debounceTimer;
 
   static const List<(String, String)> _categories = [
     ('semua', 'Semua'),
@@ -36,133 +42,191 @@ class _DialectComparisonScreenState
 
   @override
   void dispose() {
+    _debounceTimer?.cancel();
     _searchController.dispose();
     super.dispose();
+  }
+
+  void _onSearchChanged(String value) {
+    _debounceTimer?.cancel();
+    _debounceTimer = Timer(const Duration(milliseconds: 180), () {
+      if (!mounted) return;
+      setState(() {
+        _debouncedQuery = value.trim().toLowerCase();
+      });
+    });
+  }
+
+  void _resetAllFilters() {
+    _debounceTimer?.cancel();
+    _searchController.clear();
+    setState(() {
+      _selectedCategories = const <String>{};
+      _debouncedQuery = '';
+    });
   }
 
   @override
   Widget build(BuildContext context) {
     final palette = context.kataraPalette;
-    final rowsAsync = ref.watch(dialectComparisonProvider(_selectedCategory));
+    final rowsAsync = ref.watch(dialectComparisonProvider('semua'));
 
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Perbandingan Dialek Melayu'),
-      ),
+      appBar: AppBar(title: const Text('Perbandingan Dialek Melayu')),
       body: PatternBackground(
         opacity: 0.04,
-        child: Column(
-          children: [
-            Padding(
-              padding: const EdgeInsets.fromLTRB(16, 12, 16, 8),
-              child: KCard(
-                backgroundColor: palette.surfaceAlt,
-                padding: const EdgeInsets.all(14),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      'Komparasi Lintas Dialek Nusantara',
-                      style: Theme.of(context).textTheme.titleMedium?.copyWith(
-                            fontWeight: FontWeight.w800,
-                          ),
-                    ),
-                    const SizedBox(height: 4),
-                    Text(
-                      'Bandingkan pergeseran vokal akhir Melayu Deli dan Langkat (pelemahan [-a] menjadi [-e] pepet/taling) dengan Melayu Palembang (pergeseran [-a] menjadi [-o]).',
-                      style: Theme.of(context).textTheme.bodySmall?.copyWith(
-                            color: palette.inkMuted,
-                          ),
-                    ),
-                  ],
-                ),
-              ),
+        child: rowsAsync.when(
+          loading: () =>
+              Center(child: CircularProgressIndicator(color: palette.primary)),
+          error: (err, _) => Center(
+            child: Padding(
+              padding: const EdgeInsets.all(24),
+              child: Text('Gagal memuat komparasi dialek: $err'),
             ),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 6),
-              child: TextField(
-                controller: _searchController,
-                onChanged: (_) => setState(() {}),
-                decoration: InputDecoration(
-                  hintText: 'Cari arti Indonesia, kata Deli, Langkat, atau Palembang...',
-                  prefixIcon: const Icon(Icons.search_rounded),
-                  suffixIcon: _searchController.text.isNotEmpty
-                      ? IconButton(
-                          tooltip: 'Hapus pencarian',
-                          onPressed: () {
-                            _searchController.clear();
-                            setState(() {});
-                          },
-                          icon: const Icon(Icons.clear_rounded),
-                        )
-                      : null,
-                ),
-              ),
-            ),
-            SingleChildScrollView(
-              scrollDirection: Axis.horizontal,
-              padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 6),
-              child: Row(
-                children: _categories.map((cat) {
-                  final selected = _selectedCategory == cat.$1;
-                  return Padding(
-                    padding: const EdgeInsets.only(right: 8),
-                    child: KChip(
-                      label: cat.$2,
-                      selected: selected,
-                      onTap: () => setState(() => _selectedCategory = cat.$1),
-                    ),
-                  );
-                }).toList(),
-              ),
-            ),
-            Expanded(
-              child: rowsAsync.when(
-                loading: () => Center(
-                  child: CircularProgressIndicator(color: palette.primary),
-                ),
-                error: (err, _) => Center(
-                  child: Padding(
-                    padding: const EdgeInsets.all(24),
-                    child: Text('Gagal memuat komparasi dialek: $err'),
-                  ),
-                ),
-                data: (rows) {
-                  final q = _searchController.text.trim().toLowerCase();
-                  final filtered = q.isEmpty
-                      ? rows
-                      : rows.where((r) {
-                          return r.indonesia.toLowerCase().contains(q) ||
-                              r.deliTerm.toLowerCase().contains(q) ||
-                              r.langkatTerm.toLowerCase().contains(q) ||
-                              r.palembangTerm.toLowerCase().contains(q);
-                        }).toList();
+          ),
+          data: (allRows) {
+            final countsByCategory = <String, int>{};
+            for (final r in allRows) {
+              countsByCategory[r.category] =
+                  (countsByCategory[r.category] ?? 0) + 1;
+            }
 
-                  if (filtered.isEmpty) {
-                    return Center(
-                      child: Padding(
-                        padding: const EdgeInsets.all(24),
-                        child: Text(
-                          'Tidak ada entri perbandingan yang cocok dengan pencarianmu.',
-                          style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                                color: palette.inkMuted,
+            final filterCategories = _categories.map((cat) {
+              final count = cat.$1 == 'semua'
+                  ? allRows.length
+                  : (countsByCategory[cat.$1] ?? 0);
+              return KFilterCategory(id: cat.$1, label: cat.$2, count: count);
+            }).toList();
+
+            final q = _debouncedQuery;
+            final filtered = allRows.where((r) {
+              final matchesCategory =
+                  _selectedCategories.isEmpty ||
+                  _selectedCategories.contains('semua') ||
+                  _selectedCategories.contains(r.category);
+              if (!matchesCategory) return false;
+              if (q.isEmpty) return true;
+              return r.indonesia.toLowerCase().contains(q) ||
+                  r.deliTerm.toLowerCase().contains(q) ||
+                  r.langkatTerm.toLowerCase().contains(q) ||
+                  r.palembangTerm.toLowerCase().contains(q);
+            }).toList();
+
+            return CustomScrollView(
+              slivers: [
+                SliverToBoxAdapter(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.stretch,
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.fromLTRB(16, 12, 16, 6),
+                        child: KCard(
+                          backgroundColor: palette.surfaceAlt,
+                          padding: const EdgeInsets.all(14),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                'Komparasi Lintas Dialek Nusantara',
+                                style: Theme.of(context).textTheme.titleMedium
+                                    ?.copyWith(fontWeight: FontWeight.w800),
                               ),
+                              const SizedBox(height: 4),
+                              Text(
+                                'Bandingkan pergeseran vokal akhir Melayu Deli dan Langkat (pelemahan [-a] menjadi [-e] pepet/taling) dengan Melayu Palembang (pergeseran [-a] menjadi [-o]).',
+                                style: Theme.of(context).textTheme.bodySmall
+                                    ?.copyWith(color: palette.inkMuted),
+                              ),
+                            ],
+                          ),
                         ),
                       ),
-                    );
-                  }
-
-                  return ListView.builder(
-                    padding: const EdgeInsets.all(16),
-                    itemCount: filtered.length,
-                    itemBuilder: (context, index) {
-                      return _ComparisonCard(row: filtered[index]);
-                    },
-                  );
-                },
-              ),
-            ),
-          ],
+                      Padding(
+                        padding: const EdgeInsets.symmetric(
+                          horizontal: 16,
+                          vertical: 6,
+                        ),
+                        child: TextField(
+                          controller: _searchController,
+                          onChanged: _onSearchChanged,
+                          decoration: InputDecoration(
+                            hintText: 'Cari kata atau arti',
+                            prefixIcon: const Icon(Icons.search_rounded),
+                            suffixIcon: _searchController.text.isNotEmpty
+                                ? IconButton(
+                                    tooltip: 'Hapus pencarian',
+                                    onPressed: () {
+                                      _debounceTimer?.cancel();
+                                      _searchController.clear();
+                                      setState(() => _debouncedQuery = '');
+                                    },
+                                    icon: const Icon(Icons.clear_rounded),
+                                  )
+                                : null,
+                          ),
+                        ),
+                      ),
+                      KFilterBar(
+                        categories: filterCategories,
+                        selectedIds: _selectedCategories,
+                        totalCount: allRows.length,
+                        filteredCount: filtered.length,
+                        hasActiveSearch: q.isNotEmpty,
+                        itemUnitLabel: 'entri',
+                        onSelectionChanged: (next) {
+                          setState(() => _selectedCategories = next);
+                        },
+                        onResetAll: _resetAllFilters,
+                      ),
+                    ],
+                  ),
+                ),
+                if (filtered.isEmpty)
+                  SliverFillRemaining(
+                    hasScrollBody: false,
+                    child: Center(
+                      child: Padding(
+                        padding: const EdgeInsets.all(24),
+                        child: Column(
+                          mainAxisSize: MainAxisSize.min,
+                          children: [
+                            Icon(
+                              Icons.search_off_rounded,
+                              size: 44,
+                              color: palette.inkMuted,
+                            ),
+                            const SizedBox(height: 10),
+                            Text(
+                              'Tidak ada entri perbandingan yang cocok dengan filter atau pencarianmu.',
+                              textAlign: TextAlign.center,
+                              style: Theme.of(context).textTheme.bodyMedium
+                                  ?.copyWith(color: palette.inkMuted),
+                            ),
+                            const SizedBox(height: 14),
+                            KButton(
+                              label: 'Atur Ulang Filter',
+                              variant: KButtonVariant.outline,
+                              icon: Icons.restart_alt_rounded,
+                              onPressed: _resetAllFilters,
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                  )
+                else
+                  SliverPadding(
+                    padding: const EdgeInsets.fromLTRB(16, 8, 16, 24),
+                    sliver: SliverList.builder(
+                      itemCount: filtered.length,
+                      itemBuilder: (context, index) {
+                        return _ComparisonCard(row: filtered[index]);
+                      },
+                    ),
+                  ),
+              ],
+            );
+          },
         ),
       ),
     );
@@ -184,15 +248,16 @@ class _ComparisonCard extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            Row(
+            Wrap(
+              alignment: WrapAlignment.spaceBetween,
+              crossAxisAlignment: WrapCrossAlignment.center,
+              spacing: 8,
+              runSpacing: 6,
               children: [
-                Expanded(
-                  child: Text(
-                    'Arti Indonesia: "${row.indonesia}"',
-                    style: Theme.of(context).textTheme.titleMedium?.copyWith(
-                          fontWeight: FontWeight.w800,
-                        ),
-                  ),
+                Text(
+                  'Arti Indonesia: "${row.indonesia}"',
+                  style: Theme.of(context).textTheme.titleMedium
+                      ?.copyWith(fontWeight: FontWeight.w800),
                 ),
                 KChip(label: row.category),
               ],
@@ -226,18 +291,33 @@ class _ComparisonCard extends StatelessWidget {
                 borderRadius: BorderRadius.circular(10),
                 border: Border.all(color: palette.outline),
               ),
-              child: Row(
+              child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Icon(Icons.lightbulb_outline_rounded,
-                      size: 18, color: palette.primary),
-                  const SizedBox(width: 8),
-                  Expanded(
-                    child: Text(
-                      row.linguisticNote,
-                      style: Theme.of(context).textTheme.bodySmall?.copyWith(
-                            color: palette.ink,
-                          ),
+                  Row(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Icon(
+                        Icons.lightbulb_outline_rounded,
+                        size: 18,
+                        color: palette.primary,
+                      ),
+                      const SizedBox(width: 8),
+                      Expanded(
+                        child: Text(
+                          row.linguisticNote,
+                          style: Theme.of(context).textTheme.bodySmall
+                              ?.copyWith(color: palette.ink),
+                        ),
+                      ),
+                    ],
+                  ),
+                  const SizedBox(height: 6),
+                  Text(
+                    'Rujukan: Balai Bahasa Sumatera Utara & Balai Bahasa Sumatera Selatan',
+                    style: Theme.of(context).textTheme.labelSmall?.copyWith(
+                      color: palette.inkMuted,
+                      fontWeight: FontWeight.w700,
                     ),
                   ),
                 ],
@@ -278,41 +358,50 @@ class _DialectVariantTile extends StatelessWidget {
         borderRadius: BorderRadius.circular(12),
         border: Border.all(color: palette.outline, width: 1.2),
       ),
-      child: Row(
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Container(
-            padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
-            decoration: BoxDecoration(
-              color: badgeBg,
-              borderRadius: BorderRadius.circular(8),
-            ),
-            child: Text(
-              dialectTitle,
-              style: TextStyle(
-                fontFamily: 'Nunito',
-                fontSize: 12,
-                fontWeight: FontWeight.w800,
-                color: badgeFg,
+          Wrap(
+            spacing: 10,
+            runSpacing: 6,
+            crossAxisAlignment: WrapCrossAlignment.center,
+            children: [
+              Container(
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 10,
+                  vertical: 5,
+                ),
+                decoration: BoxDecoration(
+                  color: badgeBg,
+                  borderRadius: BorderRadius.circular(8),
+                ),
+                child: Text(
+                  dialectTitle,
+                  style: TextStyle(
+                    fontFamily: 'Nunito',
+                    fontSize: 12,
+                    fontWeight: FontWeight.w800,
+                    color: badgeFg,
+                  ),
+                ),
+              ),
+              Text(
+                word,
+                style: Theme.of(context).textTheme.titleMedium
+                    ?.copyWith(fontWeight: FontWeight.w800, color: palette.ink),
+              ),
+            ],
+          ),
+          if (pronunciation.trim().isNotEmpty) ...[
+            const SizedBox(height: 4),
+            Text(
+              'Lafal: $pronunciation',
+              style: Theme.of(context).textTheme.labelMedium?.copyWith(
+                color: palette.inkMuted,
+                fontWeight: FontWeight.w700,
               ),
             ),
-          ),
-          const SizedBox(width: 12),
-          Expanded(
-            child: Text(
-              word,
-              style: Theme.of(context).textTheme.titleMedium?.copyWith(
-                    fontWeight: FontWeight.w800,
-                    color: palette.ink,
-                  ),
-            ),
-          ),
-          Text(
-            pronunciation,
-            style: Theme.of(context).textTheme.labelMedium?.copyWith(
-                  color: palette.inkMuted,
-                  fontWeight: FontWeight.w700,
-                ),
-          ),
+          ],
         ],
       ),
     );

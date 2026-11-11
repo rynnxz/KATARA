@@ -1,4 +1,5 @@
 import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
@@ -114,9 +115,11 @@ class _PracticeScreenState extends ConsumerState<PracticeScreen> {
           quizBank: const [],
           knownItemIds: allWords.map((w) => w.id).toSet(),
         )
-        .where((e) =>
-            e.type == ExerciseType.mcqTranslate ||
-            e.type == ExerciseType.mcqReverse)
+        .where(
+          (e) =>
+              e.type == ExerciseType.mcqTranslate ||
+              e.type == ExerciseType.mcqReverse,
+        )
         .toList();
 
     _beginDrill(
@@ -247,7 +250,9 @@ class _PracticeScreenState extends ConsumerState<PracticeScreen> {
     final stats = await ref.read(progressRepositoryProvider).getStats();
     final courseId = stats.activeCourseId ?? 'ms-deli';
 
-    await ref.read(progressRepositoryProvider).recordPracticeReview(
+    await ref
+        .read(progressRepositoryProvider)
+        .recordPracticeReview(
           courseId: courseId,
           outcomes: _outcomes,
           xpEarned: xp,
@@ -277,15 +282,12 @@ class _PracticeScreenState extends ConsumerState<PracticeScreen> {
     }
 
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Ruang Latihan & Penguatan'),
-      ),
+      appBar: AppBar(title: const Text('Ruang Latihan & Penguatan')),
       body: PatternBackground(
         opacity: 0.05,
         child: statsAsync.when(
-          loading: () => Center(
-            child: CircularProgressIndicator(color: palette.primary),
-          ),
+          loading: () =>
+              Center(child: CircularProgressIndicator(color: palette.primary)),
           error: (err, _) => Center(child: Text('Gagal memuat latihan: $err')),
           data: (stats) {
             final courseId = stats.activeCourseId ?? 'ms-deli';
@@ -348,162 +350,150 @@ class _PracticeScreenState extends ConsumerState<PracticeScreen> {
                       ),
                     ),
                     const SizedBox(height: 16),
-                    Row(
-                      children: [
-                        Expanded(
-                          child: KCard(
+                    LayoutBuilder(
+                      builder: (context, constraints) {
+                        final textScale = MediaQuery.textScalerOf(context)
+                            .scale(1.0);
+                        final isCompact =
+                            constraints.maxWidth < 340 || textScale > 1.3;
+
+                        final cards = <Widget>[
+                          KCard(
                             onTap: () => _startSpeedQuiz(courseId),
                             child: Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
-                                Icon(Icons.timer_rounded,
-                                    color: palette.streak, size: 32),
+                                Icon(
+                                  Icons.timer_rounded,
+                                  color: palette.streak,
+                                  size: 32,
+                                ),
                                 const SizedBox(height: 10),
                                 Text(
                                   'Kuis Cepat 30 Detik',
-                                  style: Theme.of(context)
-                                      .textTheme
-                                      .titleMedium
+                                  style: Theme.of(context).textTheme.titleMedium
                                       ?.copyWith(fontWeight: FontWeight.w800),
                                 ),
                                 const SizedBox(height: 4),
                                 Text(
                                   'Jawab sebanyak mungkin sebelum waktu habis.',
-                                  style: Theme.of(context)
-                                      .textTheme
-                                      .bodySmall
+                                  style: Theme.of(context).textTheme.bodySmall
                                       ?.copyWith(color: palette.inkMuted),
                                 ),
                               ],
                             ),
                           ),
-                        ),
-                        const SizedBox(width: 12),
-                        Expanded(
-                          child: KCard(
+                          KCard(
                             onTap: () => context.push('/jawi'),
                             child: Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
-                                Icon(Icons.auto_stories_rounded,
-                                    color: palette.primary, size: 32),
+                                Icon(
+                                  Icons.auto_stories_rounded,
+                                  color: palette.primary,
+                                  size: 32,
+                                ),
                                 const SizedBox(height: 10),
                                 Text(
                                   'Latihan Aksara Jawi',
-                                  style: Theme.of(context)
-                                      .textTheme
-                                      .titleMedium
+                                  style: Theme.of(context).textTheme.titleMedium
                                       ?.copyWith(fontWeight: FontWeight.w800),
                                 ),
                                 const SizedBox(height: 4),
                                 Text(
                                   'Kenali 6 huruf Jawi khas Melayu & bentuknya.',
-                                  style: Theme.of(context)
-                                      .textTheme
-                                      .bodySmall
+                                  style: Theme.of(context).textTheme.bodySmall
                                       ?.copyWith(color: palette.inkMuted),
                                 ),
                               ],
                             ),
                           ),
-                        ),
-                      ],
-                    ),
-                    const SizedBox(height: 12),
-                    Row(
-                      children: [
-                        Expanded(
-                          child: KCard(
+                          KCard(
                             onTap: () => context.push('/practice/conversation'),
                             child: Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
-                                Icon(Icons.forum_rounded,
-                                    color: palette.primary, size: 30),
+                                Icon(
+                                  Icons.forum_rounded,
+                                  color: palette.primary,
+                                  size: 30,
+                                ),
                                 const SizedBox(height: 10),
                                 Text(
                                   'Latihan Percakapan',
-                                  style: Theme.of(context)
-                                      .textTheme
-                                      .titleMedium
+                                  style: Theme.of(context).textTheme.titleMedium
                                       ?.copyWith(fontWeight: FontWeight.w800),
                                 ),
                                 const SizedBox(height: 4),
                                 Text(
                                   'Simulasi dialog pasar, keluarga, dan adab.',
-                                  style: Theme.of(context)
-                                      .textTheme
-                                      .bodySmall
+                                  style: Theme.of(context).textTheme.bodySmall
                                       ?.copyWith(color: palette.inkMuted),
                                 ),
                               ],
                             ),
                           ),
-                        ),
-                        const SizedBox(width: 12),
-                        Expanded(
-                          child: KCard(
-                            onTap: () => context.push('/practice/pronunciation'),
+                          KCard(
+                            onTap: () => context.push('/dialect-comparison'),
                             child: Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
-                                Icon(Icons.record_voice_over_rounded,
-                                    color: palette.secondary, size: 30),
+                                Icon(
+                                  Icons.compare_arrows_rounded,
+                                  color: palette.primary,
+                                  size: 30,
+                                ),
                                 const SizedBox(height: 10),
                                 Text(
-                                  'Panduan Lafal & Fonologi',
-                                  style: Theme.of(context)
-                                      .textTheme
-                                      .titleMedium
+                                  'Perbandingan Dialek',
+                                  style: Theme.of(context).textTheme.titleMedium
                                       ?.copyWith(fontWeight: FontWeight.w800),
                                 ),
                                 const SizedBox(height: 4),
                                 Text(
-                                  'Kaidah vokal akhir [-e] vs [-o] & glotal.',
-                                  style: Theme.of(context)
-                                      .textTheme
-                                      .bodySmall
+                                  'Bandingkan kosakata Deli, Langkat, dan Palembang.',
+                                  style: Theme.of(context).textTheme.bodySmall
                                       ?.copyWith(color: palette.inkMuted),
                                 ),
                               ],
                             ),
                           ),
-                        ),
-                      ],
-                    ),
-                    const SizedBox(height: 12),
-                    KCard(
-                      onTap: () => context.push('/dialect-comparison'),
-                      child: Row(
-                        children: [
-                          Icon(Icons.compare_arrows_rounded,
-                              color: palette.primary, size: 30),
-                          const SizedBox(width: 14),
-                          Expanded(
-                            child: Column(
+                        ];
+
+                        if (isCompact) {
+                          return Column(
+                            crossAxisAlignment: CrossAxisAlignment.stretch,
+                            children: [
+                              for (var i = 0; i < cards.length; i++) ...[
+                                if (i > 0) const SizedBox(height: 12),
+                                cards[i],
+                              ],
+                            ],
+                          );
+                        }
+
+                        return Column(
+                          children: [
+                            Row(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
-                                Text(
-                                  'Perbandingan Dialek Melayu',
-                                  style: Theme.of(context)
-                                      .textTheme
-                                      .titleMedium
-                                      ?.copyWith(fontWeight: FontWeight.w800),
-                                ),
-                                const SizedBox(height: 2),
-                                Text(
-                                  'Bandingkan kosakata & fonetik Melayu Deli, Langkat, dan Palembang secara berdampingan.',
-                                  style: Theme.of(context)
-                                      .textTheme
-                                      .bodySmall
-                                      ?.copyWith(color: palette.inkMuted),
-                                ),
+                                Expanded(child: cards[0]),
+                                const SizedBox(width: 12),
+                                Expanded(child: cards[1]),
                               ],
                             ),
-                          ),
-                          const Icon(Icons.chevron_right_rounded),
-                        ],
-                      ),
+                            const SizedBox(height: 12),
+                            Row(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Expanded(child: cards[2]),
+                                const SizedBox(width: 12),
+                                Expanded(child: cards[3]),
+                              ],
+                            ),
+                          ],
+                        );
+                      },
                     ),
                     const SizedBox(height: 24),
                     Text(
@@ -594,9 +584,8 @@ class _PracticeScreenState extends ConsumerState<PracticeScreen> {
                 child: Text(
                   current.subjectDeli!,
                   textAlign: TextAlign.center,
-                  style: Theme.of(context).textTheme.displayMedium?.copyWith(
-                        color: palette.primary,
-                      ),
+                  style: Theme.of(context).textTheme.displayMedium
+                      ?.copyWith(color: palette.primary),
                 ),
               ),
             ],
@@ -625,11 +614,10 @@ class _PracticeScreenState extends ConsumerState<PracticeScreen> {
                           : null,
                       child: Text(
                         opt,
-                        style: Theme.of(context)
-                            .textTheme
-                            .titleMedium
+                        style: Theme.of(context).textTheme.titleMedium
                             ?.copyWith(
-                              color: fg ??
+                              color:
+                                  fg ??
                                   (isSelected
                                       ? palette.onPrimaryContainer
                                       : palette.ink),

@@ -2,12 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:katara/app/theme/katara_colors.dart';
 
-enum KButtonVariant {
-  primary,
-  secondary,
-  outline,
-  danger,
-}
+enum KButtonVariant { primary, secondary, outline, danger }
 
 /// Tombol bergaya 3D taktil dengan tepi bawah (`bottomLip`), memenuhi ukuran tap >= 48px (R-03)
 /// serta indikator fokus & kursor aksesibel (R-32, R-39).
@@ -43,21 +38,26 @@ class _KButtonState extends State<KButton> {
   Widget build(BuildContext context) {
     final p = KataraPalette.of(context);
 
-    final (Color face, Color lip, Color fg, Color? border) = switch (widget.variant) {
+    final (
+      Color face,
+      Color lip,
+      Color fg,
+      Color? border,
+    ) = switch (widget.variant) {
       KButtonVariant.primary => (p.primary, p.primaryDark, p.onPrimary, null),
       KButtonVariant.secondary => (
-          p.secondary,
-          const Color(0xFFC28E00),
-          p.onSecondary,
-          null
-        ),
+        p.secondary,
+        const Color(0xFFC28E00),
+        p.onSecondary,
+        null,
+      ),
       KButtonVariant.outline => (p.surface, p.outline, p.ink, p.outline),
       KButtonVariant.danger => (
-          p.error,
-          const Color(0xFF9C2920),
-          Colors.white,
-          null
-        ),
+        p.error,
+        const Color(0xFF9C2920),
+        Colors.white,
+        null,
+      ),
     };
 
     final effectiveFace = _enabled ? face : p.surfaceAlt;
@@ -151,7 +151,9 @@ class _KButtonState extends State<KButton> {
           behavior: HitTestBehavior.opaque,
           onTapDown: _enabled ? (_) => setState(() => _isPressed = true) : null,
           onTapUp: _enabled ? (_) => setState(() => _isPressed = false) : null,
-          onTapCancel: _enabled ? () => setState(() => _isPressed = false) : null,
+          onTapCancel: _enabled
+              ? () => setState(() => _isPressed = false)
+              : null,
           onTap: _enabled ? widget.onPressed : null,
           child: widget.expand
               ? SizedBox(width: double.infinity, child: buttonContent)

@@ -23,13 +23,15 @@ class KCard extends StatelessWidget {
   Widget build(BuildContext context) {
     final p = KataraPalette.of(context);
     final rawBorder = borderColor ?? (selected ? p.primary : p.outline);
-    final effectiveBorder =
-        rawBorder.a < 1.0 ? Color.alphaBlend(rawBorder, p.surface) : rawBorder;
+    final effectiveBorder = rawBorder.a < 1.0
+        ? Color.alphaBlend(rawBorder, p.surface)
+        : rawBorder;
     final rawBg =
         backgroundColor ?? (selected ? p.primaryContainer : p.surface);
     // Wajib 100% solid (alpha == 1.0) agar BoxShadow 3D di bawah kartu tidak pernah tembus ke permukaan kartu.
-    final effectiveBg =
-        rawBg.a < 1.0 ? Color.alphaBlend(rawBg, p.surface) : rawBg;
+    final effectiveBg = rawBg.a < 1.0
+        ? Color.alphaBlend(rawBg, p.surface)
+        : rawBg;
     final defaultFg = selected ? p.onPrimaryContainer : p.ink;
 
     final cardBody = Container(
@@ -37,10 +39,7 @@ class KCard extends StatelessWidget {
       decoration: BoxDecoration(
         color: effectiveBg,
         borderRadius: BorderRadius.circular(16),
-        border: Border.all(
-          color: effectiveBorder,
-          width: selected ? 2.2 : 1.5,
-        ),
+        border: Border.all(color: effectiveBorder, width: selected ? 2.2 : 1.5),
         boxShadow: [
           BoxShadow(
             color: effectiveBorder,

@@ -1,4 +1,5 @@
 import 'dart:math' as math;
+
 import 'package:katara/data/content/content_models.dart';
 import 'package:katara/engine/exercise_models.dart';
 
@@ -63,9 +64,7 @@ class ExerciseGenerator {
     }
 
     if (lessonWords.isEmpty && words.isNotEmpty) {
-      lessonWords.addAll(
-        words.where((w) => w.unitId == lesson.unitId).take(6),
-      );
+      lessonWords.addAll(words.where((w) => w.unitId == lesson.unitId).take(6));
       if (lessonWords.isEmpty) {
         lessonWords.addAll(words.take(6));
       }
@@ -142,7 +141,8 @@ class ExerciseGenerator {
           correctAnswer: w.indonesia,
           refItemId: w.id,
           refItemType: 'word',
-          explanation: '"${w.deli}" dalam bahasa Indonesia berarti "${w.indonesia}".',
+          explanation:
+              '"${w.deli}" dalam bahasa Indonesia berarti "${w.indonesia}".',
           validationStatus: w.validationStatus,
         ),
       );
@@ -166,7 +166,8 @@ class ExerciseGenerator {
           correctAnswer: w.deli,
           refItemId: w.id,
           refItemType: 'word',
-          explanation: '"${w.indonesia}" dalam Melayu Deli disebut "${w.deli}".',
+          explanation:
+              '"${w.indonesia}" dalam Melayu Deli disebut "${w.deli}".',
           validationStatus: w.validationStatus,
         ),
       );
@@ -183,11 +184,13 @@ class ExerciseGenerator {
           prompt: 'Pasangkan kosakata Melayu Deli dengan artinya',
           correctAnswer: 'matched',
           pairs: selected
-              .map((w) => MatchPairItem(
-                    left: w.deli,
-                    right: w.indonesia,
-                    itemId: w.id,
-                  ))
+              .map(
+                (w) => MatchPairItem(
+                  left: w.deli,
+                  right: w.indonesia,
+                  itemId: w.id,
+                ),
+              )
               .toList(),
           refItemId: selected.first.id,
           refItemType: 'word',
@@ -203,11 +206,13 @@ class ExerciseGenerator {
             prompt: 'Pasangkan kosakata berikut dengan tepat',
             correctAnswer: 'matched',
             pairs: selected2
-                .map((w) => MatchPairItem(
-                      left: w.deli,
-                      right: w.indonesia,
-                      itemId: w.id,
-                    ))
+                .map(
+                  (w) => MatchPairItem(
+                    left: w.deli,
+                    right: w.indonesia,
+                    itemId: w.id,
+                  ),
+                )
                 .toList(),
             refItemId: selected2.first.id,
             refItemType: 'word',
@@ -269,9 +274,11 @@ class ExerciseGenerator {
       if (cleanWords.length < 2) continue;
 
       final distractors = words
-          .where((w) => !cleanWords
-              .map((c) => c.toLowerCase())
-              .contains(w.deli.toLowerCase()))
+          .where(
+            (w) => !cleanWords
+                .map((c) => c.toLowerCase())
+                .contains(w.deli.toLowerCase()),
+          )
           .map((w) => w.deli)
           .take(2)
           .toList();
@@ -358,7 +365,8 @@ class ExerciseGenerator {
     for (final q in filteredQuiz) {
       if (q.exerciseType == 'mcq_translate' || q.exerciseType == 'fill_blank') {
         if (q.options.isEmpty) continue;
-        final correct = q.options[q.correctIndex.clamp(0, q.options.length - 1)];
+        final correct =
+            q.options[q.correctIndex.clamp(0, q.options.length - 1)];
         final shuffledOpts = List<String>.from(q.options)..shuffle(rng);
         addCandidate(
           ExerciseItem(
@@ -368,7 +376,9 @@ class ExerciseGenerator {
             options: shuffledOpts,
             correctAnswer: correct,
             refItemId: q.refItemId ?? lessonWords.firstOrNull?.id,
-            refItemType: letterById.containsKey(q.refItemId) ? 'letter' : 'word',
+            refItemType: letterById.containsKey(q.refItemId)
+                ? 'letter'
+                : 'word',
             explanation: 'Jawaban yang tepat adalah "$correct".',
             validationStatus: q.validationStatus,
           ),
@@ -409,7 +419,8 @@ class ExerciseGenerator {
       ExerciseType? chosenType;
       for (final t in nonEmptyTypes) {
         final len = scoredResult.length;
-        final wouldRepeatThree = len >= 2 &&
+        final wouldRepeatThree =
+            len >= 2 &&
             scoredResult[len - 1].type == t &&
             scoredResult[len - 2].type == t;
         if (!wouldRepeatThree) {
@@ -429,10 +440,7 @@ class ExerciseGenerator {
     // Rapikan urutan jika ada 3 tipe sama berturut-turut di akhir
     _enforceMaxTwoConsecutive(scoredResult);
 
-    return <ExerciseItem>[
-      ...introItems,
-      ...scoredResult,
-    ];
+    return <ExerciseItem>[...introItems, ...scoredResult];
   }
 
   List<String> _pickWordDistractors({
@@ -441,11 +449,11 @@ class ExerciseGenerator {
     required bool useIndonesia,
     required math.Random rng,
   }) {
-    final targetVal =
-        (useIndonesia ? target.indonesia : target.deli).toLowerCase().trim();
+    final targetVal = (useIndonesia ? target.indonesia : target.deli)
+        .toLowerCase()
+        .trim();
 
-    String valueOf(WordModel w) =>
-        useIndonesia ? w.indonesia : w.deli;
+    String valueOf(WordModel w) => useIndonesia ? w.indonesia : w.deli;
 
     bool isValidCandidate(WordModel w) {
       if (w.id == target.id) return false;
@@ -460,19 +468,23 @@ class ExerciseGenerator {
     }
 
     // Prioritas 1: kategori & kelas kata (pos) yang sama
-    final tier1 = allWords
-        .where((w) =>
-            isValidCandidate(w) &&
-            w.category == target.category &&
-            w.pos == target.pos)
-        .toList()
-      ..shuffle(rng);
+    final tier1 =
+        allWords
+            .where(
+              (w) =>
+                  isValidCandidate(w) &&
+                  w.category == target.category &&
+                  w.pos == target.pos,
+            )
+            .toList()
+          ..shuffle(rng);
 
     // Prioritas 2: kategori yang sama
-    final tier2 = allWords
-        .where((w) => isValidCandidate(w) && w.category == target.category)
-        .toList()
-      ..shuffle(rng);
+    final tier2 =
+        allWords
+            .where((w) => isValidCandidate(w) && w.category == target.category)
+            .toList()
+          ..shuffle(rng);
 
     // Prioritas 3: kata lain dalam course
     final tier3 = allWords.where(isValidCandidate).toList()..shuffle(rng);

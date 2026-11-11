@@ -10,6 +10,7 @@ import 'package:katara/app/widgets/k_progress_bar.dart';
 import 'package:katara/app/widgets/mascot_view.dart';
 import 'package:katara/app/widgets/pattern_background.dart';
 import 'package:katara/data/content/content_models.dart';
+import 'package:katara/services/module_download_service.dart';
 
 class RegionPickerScreen extends ConsumerWidget {
   const RegionPickerScreen({
@@ -65,9 +66,8 @@ class RegionPickerScreen extends ConsumerWidget {
       body: PatternBackground(
         opacity: 0.05,
         child: languagesAsync.when(
-          loading: () => Center(
-            child: CircularProgressIndicator(color: palette.primary),
-          ),
+          loading: () =>
+              Center(child: CircularProgressIndicator(color: palette.primary)),
           error: (err, _) => Center(
             child: Padding(
               padding: const EdgeInsets.all(24),
@@ -117,9 +117,8 @@ class _RegionPickerLoaderState extends ConsumerState<_RegionPickerLoader> {
   double _downloadProgress = 0.0;
 
   Future<void> _handleDownload(CourseModel course) async {
-    final catalogItem = widget.catalog
-            .where((m) => m.courseId == course.id)
-            .firstOrNull ??
+    final catalogItem =
+        widget.catalog.where((m) => m.courseId == course.id).firstOrNull ??
         ModuleCatalogItemModel(
           id: course.dialectId,
           courseId: course.id,
@@ -145,14 +144,16 @@ class _RegionPickerLoaderState extends ConsumerState<_RegionPickerLoader> {
     });
 
     try {
-      await ref.read(moduleDownloadServiceProvider).installModule(
-        catalogItem,
-        onProgress: (p) {
-          if (mounted) {
-            setState(() => _downloadProgress = p);
-          }
-        },
-      );
+      await ref
+          .read(moduleDownloadServiceProvider)
+          .installModule(
+            catalogItem,
+            onProgress: (p) {
+              if (mounted) {
+                setState(() => _downloadProgress = p);
+              }
+            },
+          );
       ref.invalidate(coursesProvider);
       ref.invalidate(installedModulesProvider);
       if (!mounted) return;
@@ -165,9 +166,17 @@ class _RegionPickerLoaderState extends ConsumerState<_RegionPickerLoader> {
       );
     } catch (e) {
       if (!mounted) return;
+      final friendlyMessage = ModuleDownloadErrorMapper.toUserMessage(
+        e,
+        courseName: course.name,
+      );
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
-          content: Text('Gagal mengunduh modul ${course.name}: $e'),
+          content: Text(friendlyMessage),
+          action: SnackBarAction(
+            label: 'Coba Lagi',
+            onPressed: () => _handleDownload(course),
+          ),
         ),
       );
     } finally {
@@ -195,11 +204,12 @@ class _RegionPickerLoaderState extends ConsumerState<_RegionPickerLoader> {
       );
     } catch (e) {
       if (!mounted) return;
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(
-          content: Text('Gagal menghapus modul: $e'),
-        ),
+      final friendlyMessage = ModuleDownloadErrorMapper.toUserMessage(
+        e,
+        courseName: course.name,
       );
+      ScaffoldMessenger.of(context)
+          .showSnackBar(SnackBar(content: Text(friendlyMessage)));
     }
   }
 
@@ -210,8 +220,10 @@ class _RegionPickerLoaderState extends ConsumerState<_RegionPickerLoader> {
       final unitsAsync = ref.watch(courseUnitsProvider(c.id));
       final progressAsync = ref.watch(courseProgressStreamProvider(c.id));
       if (unitsAsync.hasValue && progressAsync.hasValue) {
-        final totalLessons = unitsAsync.value!
-            .fold<int>(0, (sum, u) => sum + u.lessons.length);
+        final totalLessons = unitsAsync.value!.fold<int>(
+          0,
+          (sum, u) => sum + u.lessons.length,
+        );
         final completedLessons = progressAsync.value!.length;
         ratios[c.id] = totalLessons > 0
             ? (completedLessons / totalLessons).clamp(0.0, 1.0)
@@ -229,7 +241,9 @@ class _RegionPickerLoaderState extends ConsumerState<_RegionPickerLoader> {
       onDownloadModule: _handleDownload,
       onUninstallModule: _handleUninstall,
       onSelectActiveCourse: (course) async {
-        await ref.read(progressRepositoryProvider).updateProfile(
+        await ref
+            .read(progressRepositoryProvider)
+            .updateProfile(
               activeCourseId: course.id,
               onboardingCompleted: true,
             );
@@ -287,9 +301,8 @@ class _RegionPickerContent extends StatelessWidget {
             const SizedBox(height: 8),
             Text(
               'Kurikulum daerah ini sedang disusun bersama penutur asli dan pemerhati budaya agar setiap kosakata terjamin keasliannya.',
-              style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                    color: palette.inkMuted,
-                  ),
+              style: Theme.of(context).textTheme.bodyMedium
+                  ?.copyWith(color: palette.inkMuted),
               textAlign: TextAlign.center,
             ),
             const SizedBox(height: 20),
@@ -325,9 +338,8 @@ class _RegionPickerContent extends StatelessWidget {
                   const SizedBox(height: 4),
                   Text(
                     'Melayu Deli sudah terpasang bawaan. Modul Melayu Langkat & Palembang dapat diunduh terpisah agar ukuran aplikasi tetap hemat.',
-                    style: Theme.of(context).textTheme.bodySmall?.copyWith(
-                          color: palette.inkMuted,
-                        ),
+                    style: Theme.of(context).textTheme.bodySmall
+                        ?.copyWith(color: palette.inkMuted),
                   ),
                 ],
               ),
@@ -336,16 +348,19 @@ class _RegionPickerContent extends StatelessWidget {
         ),
         const SizedBox(height: 24),
         ...languages.map((lang) {
-          final langCourses =
-              courses.where((c) => c.languageId == lang.id).toList();
+          final langCourses = courses
+              .where((c) => c.languageId == lang.id)
+              .toList();
           return Padding(
             padding: const EdgeInsets.only(bottom: 24),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Container(
-                  padding:
-                      const EdgeInsets.symmetric(horizontal: 14, vertical: 10),
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 14,
+                    vertical: 10,
+                  ),
                   decoration: BoxDecoration(
                     color: palette.surfaceAlt,
                     borderRadius: BorderRadius.circular(12),
@@ -361,16 +376,12 @@ class _RegionPickerContent extends StatelessWidget {
                           children: [
                             Text(
                               'Rumpun Bahasa: ${lang.name}',
-                              style: Theme.of(context)
-                                  .textTheme
-                                  .titleMedium
+                              style: Theme.of(context).textTheme.titleMedium
                                   ?.copyWith(fontWeight: FontWeight.w800),
                             ),
                             Text(
                               lang.tagline,
-                              style: Theme.of(context)
-                                  .textTheme
-                                  .labelMedium
+                              style: Theme.of(context).textTheme.labelMedium
                                   ?.copyWith(color: palette.inkMuted),
                             ),
                           ],
@@ -383,7 +394,8 @@ class _RegionPickerContent extends StatelessWidget {
                 ...langCourses.map((course) {
                   final ratio = completionRatios[course.id] ?? 0.0;
                   final percent = (ratio * 100).round();
-                  final isDownloadable = course.isDownloadable && !course.isActive;
+                  final isDownloadable =
+                      course.isDownloadable && !course.isActive;
                   final isComingSoon =
                       course.status == 'coming_soon' && !course.isDownloadable;
                   final identity = DialectVisualIdentity.forCourse(course.id);
@@ -465,14 +477,17 @@ class _RegionPickerContent extends StatelessWidget {
                                 crossAxisAlignment: CrossAxisAlignment.stretch,
                                 children: [
                                   Row(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
                                     children: [
                                       Container(
                                         width: 52,
                                         height: 52,
                                         decoration: BoxDecoration(
                                           color: identity.badgeBgLight,
-                                          borderRadius:
-                                              BorderRadius.circular(14),
+                                          borderRadius: BorderRadius.circular(
+                                            14,
+                                          ),
                                           border: Border.all(
                                             color: identity.accentColor,
                                             width: 1.5,
@@ -510,10 +525,6 @@ class _RegionPickerContent extends StatelessWidget {
                                           ],
                                         ),
                                       ),
-                                      KChip(
-                                        label: '$sizeKb KB',
-                                        icon: Icons.folder_zip_rounded,
-                                      ),
                                     ],
                                   ),
                                   const SizedBox(height: 10),
@@ -535,9 +546,13 @@ class _RegionPickerContent extends StatelessWidget {
                                         courseId: course.id,
                                         labelOverride: identity.motifName,
                                       ),
+                                      KChip(
+                                        label: 'Ukuran ~$sizeKb KB',
+                                        icon: Icons.folder_zip_rounded,
+                                      ),
                                       const KChip(
-                                        label: 'SHA-256 Terverifikasi',
-                                        icon: Icons.verified_user_rounded,
+                                        label: 'Cek SHA-256 saat pasang',
+                                        icon: Icons.shield_outlined,
                                       ),
                                     ],
                                   ),
@@ -551,7 +566,9 @@ class _RegionPickerContent extends StatelessWidget {
                                     ),
                                     const SizedBox(height: 8),
                                     Text(
-                                      'Memverifikasi SHA-256 & memasang modul...',
+                                      downloadProgress < 0.65
+                                          ? 'Mengunduh paket modul (${(downloadProgress * 100).round()}%)...'
+                                          : 'Memverifikasi SHA-256 & memasang modul...',
                                       style: Theme.of(courseCtx)
                                           .textTheme
                                           .labelSmall,
@@ -647,6 +664,12 @@ class _RegionPickerContent extends StatelessWidget {
                                       courseId: course.id,
                                       labelOverride: identity.motifName,
                                     ),
+                                    if (!course.isBundled)
+                                      const KChip(
+                                        label:
+                                            'Terpasang • SHA-256 Terverifikasi',
+                                        icon: Icons.verified_user_rounded,
+                                      ),
                                     if (course.hasJawi)
                                       const KChip(
                                         label: 'Jawi + Rumi',
@@ -665,7 +688,8 @@ class _RegionPickerContent extends StatelessWidget {
                                           .textTheme
                                           .labelMedium
                                           ?.copyWith(
-                                              color: coursePalette.inkMuted),
+                                            color: coursePalette.inkMuted,
+                                          ),
                                     ),
                                     Text(
                                       '$percent% selesai',

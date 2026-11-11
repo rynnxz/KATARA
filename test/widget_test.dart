@@ -13,8 +13,9 @@ import 'package:shared_preferences/shared_preferences.dart';
 void main() {
   TestWidgetsFlutterBinding.ensureInitialized();
 
-  testWidgets('KATARA app boots through Splash into Onboarding offline',
-      (tester) async {
+  testWidgets('KATARA app boots through Splash into Onboarding offline', (
+    tester,
+  ) async {
     SharedPreferences.setMockInitialValues({});
     final db = AppDatabase.memory();
     addTearDown(db.close);
@@ -23,8 +24,9 @@ void main() {
       ProviderScope(
         overrides: [
           appDatabaseProvider.overrideWithValue(db),
-          notificationServiceProvider
-              .overrideWithValue(NoopNotificationService()),
+          notificationServiceProvider.overrideWithValue(
+            NoopNotificationService(),
+          ),
         ],
         child: const KataraApp(),
       ),
@@ -34,87 +36,98 @@ void main() {
     expect(find.text('KATARA'), findsOneWidget);
     await tester.pumpAndSettle();
 
-    // Setelah ContentSeeder selesai untuk pengguna baru, diarahkan ke Onboarding.
+    // Setelah ContentSeeder selesai untuk pengguna baru, diarahkan ke /welcome.
+    expect(find.text('Selamat Datang di KATARA'), findsOneWidget);
+    expect(find.text('Masuk dengan Google'), findsOneWidget);
+    expect(find.text('Lanjut sebagai Tamu'), findsOneWidget);
+
+    await tester.ensureVisible(find.text('Lanjut sebagai Tamu'));
+    await tester.pumpAndSettle();
+    await tester.tap(find.text('Lanjut sebagai Tamu'));
+    await tester.pumpAndSettle();
+
+    // Setelah memilih mode Tamu, masuk ke Onboarding.
     expect(find.text('Kenali Bahasa Melayu Serumpun'), findsOneWidget);
   });
 
   testWidgets(
-      'RegionPickerScreen displays active Melayu Deli and locked coming_soon card (Bagian 11.2 & 16)',
-      (tester) async {
-    CourseModel? selectedCourse;
+    'RegionPickerScreen displays active Melayu Deli and locked coming_soon card (Bagian 11.2 & 16)',
+    (tester) async {
+      CourseModel? selectedCourse;
 
-    const languages = [
-      LanguageModel(
-        id: 'ms',
-        name: 'Melayu',
-        tagline: 'Bahasa serumpun Nusantara',
-        order: 1,
-      ),
-    ];
+      const languages = [
+        LanguageModel(
+          id: 'ms',
+          name: 'Melayu',
+          tagline: 'Bahasa serumpun Nusantara',
+          order: 1,
+        ),
+      ];
 
-    const courses = [
-      CourseModel(
-        id: 'ms-deli',
-        languageId: 'ms',
-        name: 'Melayu Deli',
-        regionLabel: 'Medan & Sumatera Utara',
-        status: 'active',
-        accentHex: '#F5B700',
-        contentVersion: 1,
-        hasJawi: true,
-      ),
-      CourseModel(
-        id: 'ms-other',
-        languageId: 'ms',
-        name: 'Melayu lainnya',
-        regionLabel: 'Segera hadir',
-        status: 'coming_soon',
-        accentHex: '#9AA0A6',
-        contentVersion: 0,
-        hasJawi: false,
-      ),
-    ];
+      const courses = [
+        CourseModel(
+          id: 'ms-deli',
+          languageId: 'ms',
+          name: 'Melayu Deli',
+          regionLabel: 'Medan & Sumatera Utara',
+          status: 'active',
+          accentHex: '#F5B700',
+          contentVersion: 1,
+          hasJawi: true,
+        ),
+        CourseModel(
+          id: 'ms-other',
+          languageId: 'ms',
+          name: 'Melayu lainnya',
+          regionLabel: 'Segera hadir',
+          status: 'coming_soon',
+          accentHex: '#9AA0A6',
+          contentVersion: 0,
+          hasJawi: false,
+        ),
+      ];
 
-    await tester.pumpWidget(
-      ProviderScope(
-        child: MaterialApp(
-          theme: KataraTheme.light(),
-          home: Scaffold(
-            body: RegionPickerScreen(
-              overrideLanguages: languages,
-              overrideCourses: courses,
-              overrideCourseCompletionRatio: const {'ms-deli': 0.25},
-              onCourseSelected: (course) => selectedCourse = course,
+      await tester.pumpWidget(
+        ProviderScope(
+          child: MaterialApp(
+            theme: KataraTheme.light(),
+            home: Scaffold(
+              body: RegionPickerScreen(
+                overrideLanguages: languages,
+                overrideCourses: courses,
+                overrideCourseCompletionRatio: const {'ms-deli': 0.25},
+                onCourseSelected: (course) => selectedCourse = course,
+              ),
             ),
           ),
         ),
-      ),
-    );
-    await tester.pumpAndSettle();
+      );
+      await tester.pumpAndSettle();
 
-    expect(find.text('Rumpun Bahasa: Melayu'), findsOneWidget);
-    expect(find.text('Melayu Deli'), findsOneWidget);
-    expect(find.text('25% selesai'), findsOneWidget);
-    expect(find.text('Melayu lainnya'), findsOneWidget);
-    expect(find.text('Segera hadir'), findsWidgets);
+      expect(find.text('Rumpun Bahasa: Melayu'), findsOneWidget);
+      expect(find.text('Melayu Deli'), findsOneWidget);
+      expect(find.text('25% selesai'), findsOneWidget);
+      expect(find.text('Melayu lainnya'), findsOneWidget);
+      expect(find.text('Segera hadir'), findsWidgets);
 
-    // Ketuk kartu coming_soon -> muncul bottom sheet "Melayu lainnya Segera Hadir", tidak memilih course.
-    await tester.ensureVisible(find.text('Melayu lainnya'));
-    await tester.pumpAndSettle();
-    await tester.tap(find.text('Melayu lainnya'));
-    await tester.pumpAndSettle();
-    expect(find.text('Melayu lainnya Segera Hadir'), findsOneWidget);
-    expect(selectedCourse, isNull);
+      // Ketuk kartu coming_soon -> muncul bottom sheet "Melayu lainnya Segera Hadir", tidak memilih course.
+      await tester.ensureVisible(find.text('Melayu lainnya'));
+      await tester.pumpAndSettle();
+      await tester.tap(find.text('Melayu lainnya'));
+      await tester.pumpAndSettle();
+      expect(find.text('Melayu lainnya Segera Hadir'), findsOneWidget);
+      expect(selectedCourse, isNull);
 
-    await tester.ensureVisible(find.text('Mengerti'));
-    await tester.tap(find.text('Mengerti'));
-    await tester.pumpAndSettle();
+      await tester.ensureVisible(find.text('Mengerti'));
+      await tester.tap(find.text('Mengerti'));
+      await tester.pumpAndSettle();
 
-    // Ketuk tombol Lanjut pada Melayu Deli -> memilih course aktif.
-    await tester.ensureVisible(find.text('Lanjut'));
-    await tester.pumpAndSettle();
-    await tester.tap(find.text('Lanjut'));
-    await tester.pumpAndSettle();
-    expect(selectedCourse?.id, equals('ms-deli'));
-  });
+      // Ketuk tombol Lanjut pada Melayu Deli -> memilih course aktif.
+      await tester.ensureVisible(find.text('Lanjut'));
+      await tester.pumpAndSettle();
+      await tester.tap(find.text('Lanjut'));
+      await tester.pumpAndSettle();
+      expect(selectedCourse?.id, equals('ms-deli'));
+    },
+  );
 }

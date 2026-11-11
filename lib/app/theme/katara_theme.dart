@@ -8,49 +8,48 @@ class KataraTypography {
   static const String jawiFont = 'Noto Naskh Arabic';
 
   static TextStyle display(Color color) => TextStyle(
-        fontFamily: uiFont,
-        fontSize: 30,
-        fontWeight: FontWeight.w800,
-        height: 1.2,
-        color: color,
-      );
+    fontFamily: uiFont,
+    fontSize: 30,
+    fontWeight: FontWeight.w800,
+    height: 1.2,
+    color: color,
+  );
 
   static TextStyle title(Color color) => TextStyle(
-        fontFamily: uiFont,
-        fontSize: 21,
-        fontWeight: FontWeight.w700,
-        height: 1.3,
-        color: color,
-      );
+    fontFamily: uiFont,
+    fontSize: 21,
+    fontWeight: FontWeight.w700,
+    height: 1.3,
+    color: color,
+  );
 
   static TextStyle body(Color color) => TextStyle(
-        fontFamily: uiFont,
-        fontSize: 16,
-        fontWeight: FontWeight.w500,
-        height: 1.45,
-        color: color,
-      );
+    fontFamily: uiFont,
+    fontSize: 16,
+    fontWeight: FontWeight.w500,
+    height: 1.45,
+    color: color,
+  );
 
   static TextStyle label(Color color) => TextStyle(
-        fontFamily: uiFont,
-        fontSize: 13,
-        fontWeight: FontWeight.w600,
-        height: 1.3,
-        color: color,
-      );
+    fontFamily: uiFont,
+    fontSize: 13,
+    fontWeight: FontWeight.w600,
+    height: 1.3,
+    color: color,
+  );
 
   static TextStyle jawi({
     required Color color,
     double fontSize = 32,
     FontWeight fontWeight = FontWeight.w700,
-  }) =>
-      TextStyle(
-        fontFamily: jawiFont,
-        fontSize: fontSize,
-        fontWeight: fontWeight,
-        height: 1.6,
-        color: color,
-      );
+  }) => TextStyle(
+    fontFamily: jawiFont,
+    fontSize: fontSize,
+    fontWeight: fontWeight,
+    height: 1.6,
+    color: color,
+  );
 }
 
 class KataraTheme {
@@ -61,8 +60,12 @@ class KataraTheme {
 
   static ThemeData _build(Brightness brightness, KataraPalette p) {
     final isDark = brightness == Brightness.dark;
-    final inverseSurface = isDark ? const Color(0xFFFFF9EC) : const Color(0xFF221910);
-    final onInverseSurface = isDark ? const Color(0xFF221910) : const Color(0xFFFFF9EC);
+    final inverseSurface = isDark
+        ? const Color(0xFFFFF9EC)
+        : const Color(0xFF221910);
+    final onInverseSurface = isDark
+        ? const Color(0xFF221910)
+        : const Color(0xFFFFF9EC);
 
     final colorScheme = ColorScheme(
       brightness: brightness,
@@ -112,18 +115,17 @@ class KataraTheme {
           side: BorderSide(color: p.outline, width: 1.5),
         ),
       ),
-      dividerTheme: DividerThemeData(
-        color: p.outline,
-        thickness: 1.2,
-      ),
+      dividerTheme: DividerThemeData(color: p.outline, thickness: 1.2),
       navigationBarTheme: NavigationBarThemeData(
         backgroundColor: p.surface,
         indicatorColor: p.primaryContainer,
         labelTextStyle: WidgetStateProperty.resolveWith((states) {
           if (states.contains(WidgetState.selected)) {
-            return KataraTypography.label(p.onPrimaryContainer).copyWith(fontWeight: FontWeight.w800);
+            return KataraTypography.label(p.onPrimaryContainer)
+                .copyWith(fontWeight: FontWeight.w800);
           }
-          return KataraTypography.label(p.inkMuted).copyWith(fontWeight: FontWeight.w700);
+          return KataraTypography.label(p.inkMuted)
+              .copyWith(fontWeight: FontWeight.w700);
         }),
         iconTheme: WidgetStateProperty.resolveWith((states) {
           if (states.contains(WidgetState.selected)) {
@@ -134,10 +136,8 @@ class KataraTheme {
       ),
       snackBarTheme: SnackBarThemeData(
         backgroundColor: inverseSurface,
-        contentTextStyle: KataraTypography.body(onInverseSurface).copyWith(
-          fontSize: 14,
-          fontWeight: FontWeight.w700,
-        ),
+        contentTextStyle: KataraTypography.body(onInverseSurface)
+            .copyWith(fontSize: 14, fontWeight: FontWeight.w700),
         actionTextColor: p.secondary,
         behavior: SnackBarBehavior.floating,
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
@@ -150,7 +150,10 @@ class KataraTheme {
         helperStyle: KataraTypography.label(p.inkMuted),
         prefixIconColor: p.inkMuted,
         suffixIconColor: p.inkMuted,
-        contentPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 14),
+        contentPadding: const EdgeInsets.symmetric(
+          horizontal: 16,
+          vertical: 14,
+        ),
         border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(14),
           borderSide: BorderSide(color: p.outline, width: 1.5),
@@ -183,8 +186,10 @@ class KataraTheme {
       chipTheme: ChipThemeData(
         backgroundColor: p.surfaceAlt,
         selectedColor: p.primary,
-        labelStyle: KataraTypography.label(p.ink).copyWith(fontWeight: FontWeight.w700),
-        secondaryLabelStyle: KataraTypography.label(p.onPrimary).copyWith(fontWeight: FontWeight.w700),
+        labelStyle: KataraTypography.label(p.ink)
+            .copyWith(fontWeight: FontWeight.w700),
+        secondaryLabelStyle: KataraTypography.label(p.onPrimary)
+            .copyWith(fontWeight: FontWeight.w700),
         side: BorderSide(color: p.outline, width: 1.2),
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
       ),
@@ -197,10 +202,8 @@ class KataraTheme {
         bodyLarge: KataraTypography.body(p.ink),
         bodyMedium: KataraTypography.body(p.ink).copyWith(fontSize: 15),
         bodySmall: KataraTypography.label(p.inkMuted),
-        labelLarge: KataraTypography.label(p.ink).copyWith(
-          fontSize: 15,
-          fontWeight: FontWeight.w700,
-        ),
+        labelLarge: KataraTypography.label(p.ink)
+            .copyWith(fontSize: 15, fontWeight: FontWeight.w700),
         labelMedium: KataraTypography.label(p.inkMuted),
         labelSmall: KataraTypography.label(p.inkMuted).copyWith(fontSize: 12),
       ),

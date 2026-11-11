@@ -239,10 +239,7 @@ void main() {
         run1.any((e) => e.prompt.contains('Istana Maimun [verifikasi]')),
         isFalse,
       );
-      expect(
-        run1.any((e) => e.type == ExerciseType.listenChoose),
-        isFalse,
-      );
+      expect(run1.any((e) => e.type == ExerciseType.listenChoose), isFalse);
 
       final scored = run1.where((e) => !e.isIntro).toList();
       expect(scored.length, inInclusiveRange(8, 12));
@@ -252,67 +249,72 @@ void main() {
 
       // Pastikan tidak ada tipe soal yang sama lebih dari 2 kali berturut-turut
       for (var i = 2; i < scored.length; i++) {
-        final sameThree = scored[i].type == scored[i - 1].type &&
+        final sameThree =
+            scored[i].type == scored[i - 1].type &&
             scored[i].type == scored[i - 2].type;
         expect(
           sameThree,
           isFalse,
-          reason: 'Tipe ${scored[i].type} muncul > 2 kali berturut-turut pada indeks $i',
+          reason:
+              'Tipe ${scored[i].type} muncul > 2 kali berturut-turut pada indeks $i',
         );
       }
     });
 
-    test('LessonSessionEngine queues wrong answers at the end at most once', () {
-      final exercises = <ExerciseItem>[
-        const ExerciseItem(
-          id: 'ex1',
-          type: ExerciseType.mcqTranslate,
-          prompt: 'Apa arti "kabar"?',
-          options: ['kabar', 'masuk', 'terima', 'maaf'],
-          correctAnswer: 'kabar',
-          refItemId: 'ms-deli:w:0001',
-          refItemType: 'word',
-          explanation: 'kabar = kabar',
-        ),
-        const ExerciseItem(
-          id: 'ex2',
-          type: ExerciseType.mcqTranslate,
-          prompt: 'Apa arti "masuk"?',
-          options: ['masuk', 'kabar', 'terima', 'maaf'],
-          correctAnswer: 'masuk',
-          refItemId: 'ms-deli:w:0003',
-          refItemType: 'word',
-          explanation: 'masuk = masuk',
-        ),
-      ];
+    test(
+      'LessonSessionEngine queues wrong answers at the end at most once',
+      () {
+        final exercises = <ExerciseItem>[
+          const ExerciseItem(
+            id: 'ex1',
+            type: ExerciseType.mcqTranslate,
+            prompt: 'Apa arti "kabar"?',
+            options: ['kabar', 'masuk', 'terima', 'maaf'],
+            correctAnswer: 'kabar',
+            refItemId: 'ms-deli:w:0001',
+            refItemType: 'word',
+            explanation: 'kabar = kabar',
+          ),
+          const ExerciseItem(
+            id: 'ex2',
+            type: ExerciseType.mcqTranslate,
+            prompt: 'Apa arti "masuk"?',
+            options: ['masuk', 'kabar', 'terima', 'maaf'],
+            correctAnswer: 'masuk',
+            refItemId: 'ms-deli:w:0003',
+            refItemType: 'word',
+            explanation: 'masuk = masuk',
+          ),
+        ];
 
-      final engine = LessonSessionEngine(
-        exercises: exercises,
-        initialHearts: 5,
-        heartsEnabled: true,
-      );
+        final engine = LessonSessionEngine(
+          exercises: exercises,
+          initialHearts: 5,
+          heartsEnabled: true,
+        );
 
-      // Jawab ex1 SALAH pada percobaan pertama -> harus masuk antrean ulang di akhir
-      final firstOutcome = engine.submitAnswer('masuk');
-      expect(firstOutcome, isFalse);
-      expect(engine.hearts, 4);
-      expect(engine.wrongCount, 1);
-      engine.nextStep();
+        // Jawab ex1 SALAH pada percobaan pertama -> harus masuk antrean ulang di akhir
+        final firstOutcome = engine.submitAnswer('masuk');
+        expect(firstOutcome, isFalse);
+        expect(engine.hearts, 4);
+        expect(engine.wrongCount, 1);
+        engine.nextStep();
 
-      // Jawab ex2 BENAR
-      expect(engine.currentExercise.id, 'ex2');
-      expect(engine.submitAnswer('masuk'), isTrue);
-      engine.nextStep();
+        // Jawab ex2 BENAR
+        expect(engine.currentExercise.id, 'ex2');
+        expect(engine.submitAnswer('masuk'), isTrue);
+        engine.nextStep();
 
-      // Sekarang ex1 muncul kembali sebagai soal antrean ulang (retry)
-      expect(engine.isFinished, isFalse);
-      expect(engine.currentExercise.id, 'ex1');
-      expect(engine.currentExercise.isRetry, isTrue);
+        // Sekarang ex1 muncul kembali sebagai soal antrean ulang (retry)
+        expect(engine.isFinished, isFalse);
+        expect(engine.currentExercise.id, 'ex1');
+        expect(engine.currentExercise.isRetry, isTrue);
 
-      // Jika dijawab salah lagi saat retry, TIDAK boleh diantrekan ulang untuk kedua kalinya (maks 1x ulang)
-      expect(engine.submitAnswer('maaf'), isFalse);
-      engine.nextStep();
-      expect(engine.isFinished, isTrue);
-    });
+        // Jika dijawab salah lagi saat retry, TIDAK boleh diantrekan ulang untuk kedua kalinya (maks 1x ulang)
+        expect(engine.submitAnswer('maaf'), isFalse);
+        engine.nextStep();
+        expect(engine.isFinished, isTrue);
+      },
+    );
   });
 }

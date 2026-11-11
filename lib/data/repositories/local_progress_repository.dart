@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'dart:convert';
 import 'dart:math' as math;
+
 import 'package:drift/drift.dart';
 import 'package:katara/data/db/app_database.dart';
 import 'package:katara/domain/entities/user_progress.dart';
@@ -171,10 +172,12 @@ class LocalProgressRepository implements ProgressRepository {
   @override
   Future<Map<String, CourseProgress>> getCourseProgress(String courseId) async {
     await db.ensureInitialized();
-    final rows = await db.customSelect(
-      'SELECT * FROM course_progress WHERE course_id = ?',
-      variables: [Variable.withString(courseId)],
-    ).get();
+    final rows = await db
+        .customSelect(
+          'SELECT * FROM course_progress WHERE course_id = ?',
+          variables: [Variable.withString(courseId)],
+        )
+        .get();
 
     final map = <String, CourseProgress>{};
     for (final r in rows) {
@@ -251,13 +254,15 @@ class LocalProgressRepository implements ProgressRepository {
 
     await db.transaction(() async {
       // 1. Update course_progress (stars & best_score ambil nilai terbesar)
-      final existingProg = await db.customSelect(
-        'SELECT stars, best_score FROM course_progress WHERE course_id = ? AND lesson_id = ? LIMIT 1',
-        variables: [
-          Variable.withString(attempt.courseId),
-          Variable.withString(attempt.lessonId),
-        ],
-      ).get();
+      final existingProg = await db
+          .customSelect(
+            'SELECT stars, best_score FROM course_progress WHERE course_id = ? AND lesson_id = ? LIMIT 1',
+            variables: [
+              Variable.withString(attempt.courseId),
+              Variable.withString(attempt.lessonId),
+            ],
+          )
+          .get();
 
       final bestStars = existingProg.isEmpty
           ? starsEarned
@@ -289,13 +294,15 @@ class LocalProgressRepository implements ProgressRepository {
 
       // 2. Update word_mastery (SRS Bagian 12.7)
       for (final outcome in attempt.itemOutcomes) {
-        final existingMastery = await db.customSelect(
-          'SELECT strength, correct_count, wrong_count FROM word_mastery WHERE course_id = ? AND item_id = ? LIMIT 1',
-          variables: [
-            Variable.withString(attempt.courseId),
-            Variable.withString(outcome.itemId),
-          ],
-        ).get();
+        final existingMastery = await db
+            .customSelect(
+              'SELECT strength, correct_count, wrong_count FROM word_mastery WHERE course_id = ? AND item_id = ? LIMIT 1',
+              variables: [
+                Variable.withString(attempt.courseId),
+                Variable.withString(outcome.itemId),
+              ],
+            )
+            .get();
 
         if (existingMastery.isEmpty) {
           newWordsCount++;
@@ -347,18 +354,23 @@ class LocalProgressRepository implements ProgressRepository {
       // 3. Cek kartu budaya yang terbuka saat unit selesai
       final unit = await contentRepository.getUnit(attempt.unitId);
       if (unit != null) {
-        final progRows = await db.customSelect(
-          'SELECT lesson_id FROM course_progress WHERE course_id = ? AND stars > 0',
-          variables: [Variable.withString(attempt.courseId)],
-        ).get();
-        final completedLessonIds =
-            progRows.map((r) => r.read<String>('lesson_id')).toSet();
-        final allUnitLessonsDone =
-            unit.lessons.every((l) => completedLessonIds.contains(l.id));
+        final progRows = await db
+            .customSelect(
+              'SELECT lesson_id FROM course_progress WHERE course_id = ? AND stars > 0',
+              variables: [Variable.withString(attempt.courseId)],
+            )
+            .get();
+        final completedLessonIds = progRows
+            .map((r) => r.read<String>('lesson_id'))
+            .toSet();
+        final allUnitLessonsDone = unit.lessons.every(
+          (l) => completedLessonIds.contains(l.id),
+        );
 
         if (allUnitLessonsDone) {
-          final cards =
-              await contentRepository.getCollectionCards(attempt.courseId);
+          final cards = await contentRepository.getCollectionCards(
+            attempt.courseId,
+          );
           for (final card in cards) {
             if (card.unlockAfterUnitId == attempt.unitId) {
               await db.customStatement(
@@ -415,7 +427,13 @@ class LocalProgressRepository implements ProgressRepository {
         INSERT INTO xp_events (event_id, course_id, amount, source, device_id, created_at, is_synced)
         VALUES (?, ?, ?, ?, 'local-device', ?, 0)
         ''',
-        [eventId, attempt.courseId, xpEarned, 'lesson:${attempt.lessonId}', nowIso],
+        [
+          eventId,
+          attempt.courseId,
+          xpEarned,
+          'lesson:${attempt.lessonId}',
+          nowIso,
+        ],
       );
 
       await db.customStatement(
@@ -482,15 +500,19 @@ class LocalProgressRepository implements ProgressRepository {
       final unlockedRows = await db
           .customSelect('SELECT achievement_id FROM achievements_unlocked')
           .get();
-      final alreadyUnlocked =
-          unlockedRows.map((r) => r.read<String>('achievement_id')).toSet();
+      final alreadyUnlocked = unlockedRows
+          .map((r) => r.read<String>('achievement_id'))
+          .toSet();
 
-      final masteredRows = await db.customSelect(
-        'SELECT item_id FROM word_mastery WHERE course_id = ? AND strength >= 1',
-        variables: [Variable.withString(attempt.courseId)],
-      ).get();
-      final masteredIds =
-          masteredRows.map((r) => r.read<String>('item_id')).toSet();
+      final masteredRows = await db
+          .customSelect(
+            'SELECT item_id FROM word_mastery WHERE course_id = ? AND strength >= 1',
+            variables: [Variable.withString(attempt.courseId)],
+          )
+          .get();
+      final masteredIds = masteredRows
+          .map((r) => r.read<String>('item_id'))
+          .toSet();
 
       final allWords = await contentRepository.getWords(attempt.courseId);
       final allPhrases = await contentRepository.getPhrases(attempt.courseId);
@@ -498,16 +520,20 @@ class LocalProgressRepository implements ProgressRepository {
         ...allWords.where((w) => w.category == 'sapaan').map((w) => w.id),
         ...allPhrases.where((p) => p.unitId.endsWith('0001')).map((p) => p.id),
       };
-      final questionWordIds =
-          allWords.where((w) => w.category == 'tanya').map((w) => w.id).toSet();
+      final questionWordIds = allWords
+          .where((w) => w.category == 'tanya')
+          .map((w) => w.id)
+          .toSet();
 
       final cardsUnlockedRow = await db
           .customSelect('SELECT COUNT(*) AS cnt FROM collection_unlocked')
           .getSingle();
-      final allCards =
-          await contentRepository.getCollectionCards(attempt.courseId);
+      final allCards = await contentRepository.getCollectionCards(
+        attempt.courseId,
+      );
 
-      final foodPerfect = attempt.unitId.endsWith('0004') &&
+      final foodPerfect =
+          attempt.unitId.endsWith('0004') &&
           attempt.wrongCount == 0 &&
           attempt.lessonKind == 'boss';
 
@@ -515,10 +541,12 @@ class LocalProgressRepository implements ProgressRepository {
         AchievementContext(
           completedLessonsCount: completedCountRow.read<int>('cnt'),
           streakCurrent: streakUpdate.streakCurrent,
-          masteredGreetingCount:
-              greetingItems.where(masteredIds.contains).length,
-          masteredQuestionWordsCount:
-              questionWordIds.where(masteredIds.contains).length,
+          masteredGreetingCount: greetingItems
+              .where(masteredIds.contains)
+              .length,
+          masteredQuestionWordsCount: questionWordIds
+              .where(masteredIds.contains)
+              .length,
           totalQuestionWordsCount: questionWordIds.length,
           foodUnitCompletedPerfectly: foodPerfect,
           jawiWordsReadCount: attempt.jawiPracticedCount,
@@ -565,14 +593,17 @@ class LocalProgressRepository implements ProgressRepository {
     String todayStr,
     GameConfig config,
   ) async {
-    final existing = await db.customSelect(
-      'SELECT quest_id FROM daily_quests WHERE date = ?',
-      variables: [Variable.withString(todayStr)],
-    ).get();
+    final existing = await db
+        .customSelect(
+          'SELECT quest_id FROM daily_quests WHERE date = ?',
+          variables: [Variable.withString(todayStr)],
+        )
+        .get();
     if (existing.isNotEmpty) return;
 
-    final dailyPool =
-        config.questsPool.where((q) => q.type == 'daily').toList();
+    final dailyPool = config.questsPool
+        .where((q) => q.type == 'daily')
+        .toList();
     if (dailyPool.isEmpty) return;
 
     // Pilih 3 misi harian secara deterministik berdasarkan tanggal hari ini.
@@ -621,19 +652,21 @@ class LocalProgressRepository implements ProgressRepository {
   }) async {
     await db.ensureInitialized();
     final nowIso = _clock().toIso8601String();
-    final rows = await db.customSelect(
-      '''
+    final rows = await db
+        .customSelect(
+          '''
       SELECT * FROM word_mastery
       WHERE course_id = ? AND next_review_at <= ?
       ORDER BY next_review_at ASC, strength ASC
       LIMIT ?
       ''',
-      variables: [
-        Variable.withString(courseId),
-        Variable.withString(nowIso),
-        Variable.withInt(limit),
-      ],
-    ).get();
+          variables: [
+            Variable.withString(courseId),
+            Variable.withString(nowIso),
+            Variable.withInt(limit),
+          ],
+        )
+        .get();
 
     return rows.map(_mapMastery).toList();
   }
@@ -641,25 +674,26 @@ class LocalProgressRepository implements ProgressRepository {
   @override
   Future<List<WordMastery>> getCourseMastery(String courseId) async {
     await db.ensureInitialized();
-    final rows = await db.customSelect(
-      'SELECT * FROM word_mastery WHERE course_id = ? ORDER BY last_seen_at DESC',
-      variables: [Variable.withString(courseId)],
-    ).get();
+    final rows = await db
+        .customSelect(
+          'SELECT * FROM word_mastery WHERE course_id = ? ORDER BY last_seen_at DESC',
+          variables: [Variable.withString(courseId)],
+        )
+        .get();
     return rows.map(_mapMastery).toList();
   }
 
   WordMastery _mapMastery(QueryRow r) => WordMastery(
-        courseId: r.read<String>('course_id'),
-        itemId: r.read<String>('item_id'),
-        itemType: r.read<String>('item_type'),
-        strength: r.read<int>('strength'),
-        correctCount: r.read<int>('correct_count'),
-        wrongCount: r.read<int>('wrong_count'),
-        lastSeenAt:
-            DateTime.tryParse(r.read<String>('last_seen_at')) ?? _clock(),
-        nextReviewAt:
-            DateTime.tryParse(r.read<String>('next_review_at')) ?? _clock(),
-      );
+    courseId: r.read<String>('course_id'),
+    itemId: r.read<String>('item_id'),
+    itemType: r.read<String>('item_type'),
+    strength: r.read<int>('strength'),
+    correctCount: r.read<int>('correct_count'),
+    wrongCount: r.read<int>('wrong_count'),
+    lastSeenAt: DateTime.tryParse(r.read<String>('last_seen_at')) ?? _clock(),
+    nextReviewAt:
+        DateTime.tryParse(r.read<String>('next_review_at')) ?? _clock(),
+  );
 
   @override
   Future<void> recordPracticeReview({
@@ -680,20 +714,25 @@ class LocalProgressRepository implements ProgressRepository {
 
     await db.transaction(() async {
       for (final outcome in outcomes) {
-        final existing = await db.customSelect(
-          'SELECT strength, correct_count, wrong_count FROM word_mastery WHERE course_id = ? AND item_id = ? LIMIT 1',
-          variables: [
-            Variable.withString(courseId),
-            Variable.withString(outcome.itemId),
-          ],
-        ).get();
+        final existing = await db
+            .customSelect(
+              'SELECT strength, correct_count, wrong_count FROM word_mastery WHERE course_id = ? AND item_id = ? LIMIT 1',
+              variables: [
+                Variable.withString(courseId),
+                Variable.withString(outcome.itemId),
+              ],
+            )
+            .get();
 
-        final prevStrength =
-            existing.isEmpty ? 0 : existing.first.read<int>('strength');
-        final prevCorrect =
-            existing.isEmpty ? 0 : existing.first.read<int>('correct_count');
-        final prevWrong =
-            existing.isEmpty ? 0 : existing.first.read<int>('wrong_count');
+        final prevStrength = existing.isEmpty
+            ? 0
+            : existing.first.read<int>('strength');
+        final prevCorrect = existing.isEmpty
+            ? 0
+            : existing.first.read<int>('correct_count');
+        final prevWrong = existing.isEmpty
+            ? 0
+            : existing.first.read<int>('wrong_count');
 
         final srs = GamificationRules.updateWordMasterySrs(
           currentStrength: prevStrength,
@@ -784,10 +823,12 @@ class LocalProgressRepository implements ProgressRepository {
       await _ensureDailyQuestsExistInTx(todayStr, config);
     });
 
-    final rows = await db.customSelect(
-      'SELECT * FROM daily_quests WHERE date = ?',
-      variables: [Variable.withString(todayStr)],
-    ).get();
+    final rows = await db
+        .customSelect(
+          'SELECT * FROM daily_quests WHERE date = ?',
+          variables: [Variable.withString(todayStr)],
+        )
+        .get();
 
     final defById = {for (final q in config.questsPool) q.id: q};
     return rows.map((r) {
@@ -814,13 +855,15 @@ class LocalProgressRepository implements ProgressRepository {
     final def = config.questsPool.where((q) => q.id == questId).firstOrNull;
     if (def == null) return 0;
 
-    final rows = await db.customSelect(
-      'SELECT progress, target, claimed FROM daily_quests WHERE date = ? AND quest_id = ? LIMIT 1',
-      variables: [
-        Variable.withString(todayStr),
-        Variable.withString(questId),
-      ],
-    ).get();
+    final rows = await db
+        .customSelect(
+          'SELECT progress, target, claimed FROM daily_quests WHERE date = ? AND quest_id = ? LIMIT 1',
+          variables: [
+            Variable.withString(todayStr),
+            Variable.withString(questId),
+          ],
+        )
+        .get();
     if (rows.isEmpty) return 0;
     final row = rows.first;
     if (row.read<int>('claimed') == 1 ||
@@ -845,10 +888,12 @@ class LocalProgressRepository implements ProgressRepository {
   @override
   Future<bool> isDailyChestClaimedToday() async {
     final todayStr = GamificationRules.formatLocalDate(_clock());
-    final rows = await db.customSelect(
-      'SELECT qty FROM inventory WHERE item_id = ? LIMIT 1',
-      variables: [Variable.withString('chest:$todayStr')],
-    ).get();
+    final rows = await db
+        .customSelect(
+          'SELECT qty FROM inventory WHERE item_id = ? LIMIT 1',
+          variables: [Variable.withString('chest:$todayStr')],
+        )
+        .get();
     return rows.isNotEmpty && rows.first.read<int>('qty') > 0;
   }
 
@@ -862,9 +907,13 @@ class LocalProgressRepository implements ProgressRepository {
     final todayStr = GamificationRules.formatLocalDate(_clock());
     final seed = todayStr.codeUnits.fold<int>(17, (a, b) => a * 31 + b);
     final rng = math.Random(seed);
-    final coinsReward = config.dailyChestCoinsMin +
+    final coinsReward =
+        config.dailyChestCoinsMin +
         rng.nextInt(
-          math.max(1, config.dailyChestCoinsMax - config.dailyChestCoinsMin + 1),
+          math.max(
+            1,
+            config.dailyChestCoinsMax - config.dailyChestCoinsMin + 1,
+          ),
         );
 
     final stats = await getStats();
@@ -900,10 +949,12 @@ class LocalProgressRepository implements ProgressRepository {
   @override
   Future<Set<String>> getUnlockedCards(String courseId) async {
     await db.ensureInitialized();
-    final rows = await db.customSelect(
-      'SELECT card_id FROM collection_unlocked WHERE course_id = ?',
-      variables: [Variable.withString(courseId)],
-    ).get();
+    final rows = await db
+        .customSelect(
+          'SELECT card_id FROM collection_unlocked WHERE course_id = ?',
+          variables: [Variable.withString(courseId)],
+        )
+        .get();
     return rows.map((r) => r.read<String>('card_id')).toSet();
   }
 
@@ -1059,14 +1110,7 @@ class LocalProgressRepository implements ProgressRepository {
       INSERT INTO reports (course_id, item_id, item_type, reason, note, created_at)
       VALUES (?, ?, ?, ?, ?, ?)
       ''',
-      [
-        courseId,
-        itemId,
-        itemType,
-        reason,
-        note,
-        _clock().toIso8601String(),
-      ],
+      [courseId, itemId, itemType, reason, note, _clock().toIso8601String()],
     );
   }
 

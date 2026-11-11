@@ -1,4 +1,5 @@
 import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
@@ -19,6 +20,7 @@ class SplashScreen extends ConsumerStatefulWidget {
 class _SplashScreenState extends ConsumerState<SplashScreen> {
   String? _errorMessage;
   bool _isLoading = true;
+  MascotState _mascotState = MascotState.idle;
 
   @override
   void initState() {
@@ -30,6 +32,7 @@ class _SplashScreenState extends ConsumerState<SplashScreen> {
     setState(() {
       _isLoading = true;
       _errorMessage = null;
+      _mascotState = MascotState.idle;
     });
 
     try {
@@ -43,6 +46,10 @@ class _SplashScreenState extends ConsumerState<SplashScreen> {
 
       final seeder = ref.read(contentSeederProvider);
       await seeder.seedIfNeeded();
+
+      if (mounted) {
+        setState(() => _mascotState = MascotState.happy);
+      }
 
       final progressRepo = ref.read(progressRepositoryProvider);
       final stats = await progressRepo.getStats();
@@ -65,8 +72,15 @@ class _SplashScreenState extends ConsumerState<SplashScreen> {
       if (!mounted) return;
 
       if (!stats.onboardingCompleted) {
-        context.go('/onboarding');
-      } else if (stats.activeCourseId == null || stats.activeCourseId!.isEmpty) {
+        final hasAuthChoice =
+            settings.authMode != null && settings.authMode!.trim().isNotEmpty;
+        if (!hasAuthChoice) {
+          context.go('/welcome');
+        } else {
+          context.go('/onboarding');
+        }
+      } else if (stats.activeCourseId == null ||
+          stats.activeCourseId!.isEmpty) {
         context.go('/region');
       } else {
         context.go('/home/learn');
@@ -94,23 +108,30 @@ class _SplashScreenState extends ConsumerState<SplashScreen> {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  const MascotView(state: MascotState.cheer, size: 120),
+                  AnimatedSwitcher(
+                    duration: MediaQuery.disableAnimationsOf(context)
+                        ? Duration.zero
+                        : const Duration(milliseconds: 280),
+                    child: MascotView(
+                      key: ValueKey<MascotState>(_mascotState),
+                      state: _mascotState,
+                      size: 120,
+                    ),
+                  ),
                   const SizedBox(height: 20),
                   Text(
                     'KATARA',
-                    style: Theme.of(context).textTheme.displayMedium?.copyWith(
-                          color: palette.primary,
-                          letterSpacing: 1.2,
-                        ),
+                    style: Theme.of(context).textTheme.displayMedium
+                        ?.copyWith(color: palette.primary, letterSpacing: 1.2),
                   ),
                   const SizedBox(height: 6),
                   Text(
                     'Bahasa & Budaya Melayu Nusantara',
                     textAlign: TextAlign.center,
                     style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                          color: palette.inkMuted,
-                          fontWeight: FontWeight.w600,
-                        ),
+                      color: palette.inkMuted,
+                      fontWeight: FontWeight.w600,
+                    ),
                   ),
                   const SizedBox(height: 32),
                   if (_isLoading) ...[
@@ -118,20 +139,21 @@ class _SplashScreenState extends ConsumerState<SplashScreen> {
                     const SizedBox(height: 12),
                     Text(
                       'Menyiapkan kamus & pelajaran luring...',
-                      style: Theme.of(context).textTheme.labelMedium?.copyWith(
-                            color: palette.inkMuted,
-                          ),
+                      style: Theme.of(context).textTheme.labelMedium
+                          ?.copyWith(color: palette.inkMuted),
                     ),
                   ] else if (_errorMessage != null) ...[
-                    Icon(Icons.error_outline_rounded,
-                        color: palette.error, size: 40),
+                    Icon(
+                      Icons.error_outline_rounded,
+                      color: palette.error,
+                      size: 40,
+                    ),
                     const SizedBox(height: 12),
                     Text(
                       _errorMessage!,
                       textAlign: TextAlign.center,
-                      style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                            color: palette.error,
-                          ),
+                      style: Theme.of(context).textTheme.bodyMedium
+                          ?.copyWith(color: palette.error),
                     ),
                     const SizedBox(height: 16),
                     KButton(

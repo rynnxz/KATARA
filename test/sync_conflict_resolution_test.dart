@@ -48,7 +48,10 @@ void main() {
         completedAt: DateTime.utc(2026, 11, 09, 12, 0),
       );
 
-      final mergedProg = ConflictResolver.mergeCourseProgress(localProg, remoteProg);
+      final mergedProg = ConflictResolver.mergeCourseProgress(
+        localProg,
+        remoteProg,
+      );
       expect(mergedProg.stars, equals(3));
       expect(mergedProg.bestScore, equals(95));
       expect(mergedProg.completedAt, equals(DateTime.utc(2026, 11, 10, 12, 0)));
@@ -74,11 +77,17 @@ void main() {
         nextReviewAt: DateTime.utc(2026, 11, 12, 8, 0),
       );
 
-      final mergedMastery = ConflictResolver.mergeWordMastery(localMastery, remoteMastery);
+      final mergedMastery = ConflictResolver.mergeWordMastery(
+        localMastery,
+        remoteMastery,
+      );
       expect(mergedMastery.strength, equals(4));
       expect(mergedMastery.correctCount, equals(5));
       expect(mergedMastery.wrongCount, equals(2));
-      expect(mergedMastery.nextReviewAt, equals(DateTime.utc(2026, 11, 18, 8, 0)));
+      expect(
+        mergedMastery.nextReviewAt,
+        equals(DateTime.utc(2026, 11, 18, 8, 0)),
+      );
 
       final localEvents = [
         XpEventRecord(
@@ -121,7 +130,10 @@ void main() {
         ),
       ];
 
-      final unionEvents = ConflictResolver.mergeXpEvents(localEvents, remoteEvents);
+      final unionEvents = ConflictResolver.mergeXpEvents(
+        localEvents,
+        remoteEvents,
+      );
       expect(unionEvents.length, equals(3));
       final totalXp = ConflictResolver.calculateMergedXp(
         localXp: 55,
@@ -154,10 +166,14 @@ void main() {
 
       expect(result.xpEarned, greaterThan(0));
 
-      final xpEventRows = await db.customSelect('SELECT * FROM xp_events').get();
+      final xpEventRows = await db
+          .customSelect('SELECT * FROM xp_events')
+          .get();
       expect(xpEventRows, isNotEmpty);
 
-      final streakRows = await db.customSelect('SELECT * FROM streak_history').get();
+      final streakRows = await db
+          .customSelect('SELECT * FROM streak_history')
+          .get();
       expect(streakRows, isNotEmpty);
 
       final queueRows = await db.customSelect('SELECT * FROM sync_queue').get();
@@ -166,10 +182,7 @@ void main() {
 
     test('FirebaseSyncService flushes offline sync_queue via CloudSyncGateway and supports Guest-to-Google upgrade', () async {
       final gateway = InMemoryCloudSyncGateway();
-      final syncService = FirebaseSyncService(
-        db: db,
-        gateway: gateway,
-      );
+      final syncService = FirebaseSyncService(db: db, gateway: gateway);
 
       // Start in guest mode
       final initialUser = await syncService.getCurrentProfile();

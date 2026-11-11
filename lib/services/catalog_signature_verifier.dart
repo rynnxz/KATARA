@@ -1,5 +1,6 @@
 import 'dart:convert';
 import 'dart:typed_data';
+
 import 'package:crypto/crypto.dart';
 
 /// Implementasi murni Dart untuk tanda tangan digital asimetris **Ed25519 (RFC 8032)**
@@ -12,13 +13,16 @@ class Ed25519Crypto {
 
   static final BigInt _b = BigInt.from(256);
   static final BigInt _q = (BigInt.one << 255) - BigInt.from(19);
-  static final BigInt _l = (BigInt.one << 252) +
+  static final BigInt _l =
+      (BigInt.one << 252) +
       BigInt.parse('27742317777372353535851937790883648493');
 
   static final BigInt _d =
       (_q - BigInt.from(121665)) * _inv(BigInt.from(121666)) % _q;
-  static final BigInt _i =
-      BigInt.two.modPow((_q - BigInt.one) ~/ BigInt.from(4), _q);
+  static final BigInt _i = BigInt.two.modPow(
+    (_q - BigInt.one) ~/ BigInt.from(4),
+    _q,
+  );
 
   static final List<BigInt> _by = () {
     final y = BigInt.from(4) * _inv(BigInt.from(5)) % _q;
@@ -50,12 +54,7 @@ class Ed25519Crypto {
     final f = (d - c) % _q;
     final g = (d + c) % _q;
     final h = (b + a) % _q;
-    return <BigInt>[
-      (e * f) % _q,
-      (g * h) % _q,
-      (f * g) % _q,
-      (e * h) % _q,
-    ];
+    return <BigInt>[(e * f) % _q, (g * h) % _q, (f * g) % _q, (e * h) % _q];
   }
 
   static List<BigInt> _edwardsDouble(List<BigInt> p) {
@@ -67,12 +66,7 @@ class Ed25519Crypto {
     final e = (h - (sumXY * sumXY) % _q) % _q;
     final g = (a - b) % _q;
     final f = (c + g) % _q;
-    return <BigInt>[
-      (e * f) % _q,
-      (g * h) % _q,
-      (f * g) % _q,
-      (e * h) % _q,
-    ];
+    return <BigInt>[(e * f) % _q, (g * h) % _q, (f * g) % _q, (e * h) % _q];
   }
 
   static List<BigInt> _scalarMult(List<BigInt> p, BigInt e) {
@@ -166,8 +160,11 @@ class Ed25519Crypto {
     final r = _decodeInt(Uint8List.fromList(rDigest)) % _l;
     final rEncoded = _encodePoint(_scalarMult(_by, r));
 
-    final kDigest =
-        sha512.convert(<int>[...rEncoded, ...pubKey, ...message]).bytes;
+    final kDigest = sha512.convert(<int>[
+      ...rEncoded,
+      ...pubKey,
+      ...message,
+    ]).bytes;
     final k = _decodeInt(Uint8List.fromList(kDigest)) % _l;
     final s = (r + k * a) % _l;
     final sEncoded = _encodeInt(s, 32);
@@ -193,8 +190,11 @@ class Ed25519Crypto {
     final s = _decodeInt(sBytes);
     if (s >= _l || _b.sign == 0) return false;
 
-    final kDigest =
-        sha512.convert(<int>[...rBytes, ...publicKey, ...message]).bytes;
+    final kDigest = sha512.convert(<int>[
+      ...rBytes,
+      ...publicKey,
+      ...message,
+    ]).bytes;
     final k = _decodeInt(Uint8List.fromList(kDigest)) % _l;
 
     final lhs = _scalarMult(_by, s);
@@ -219,7 +219,10 @@ class Ed25519Crypto {
     }
     final out = Uint8List(cleaned.length ~/ 2);
     for (var i = 0; i < out.length; i++) {
-      final byteVal = int.tryParse(cleaned.substring(i * 2, i * 2 + 2), radix: 16);
+      final byteVal = int.tryParse(
+        cleaned.substring(i * 2, i * 2 + 2),
+        radix: 16,
+      );
       if (byteVal == null) {
         throw const FormatException('Invalid hex character');
       }
@@ -264,10 +267,11 @@ class CatalogSignatureVerifier {
       };
     }).toList();
 
-    final revokedRaw = (catalogJson['revoked_modules'] as List<dynamic>? ?? const [])
-        .map((e) => e.toString())
-        .toList()
-      ..sort();
+    final revokedRaw =
+        (catalogJson['revoked_modules'] as List<dynamic>? ?? const [])
+            .map((e) => e.toString())
+            .toList()
+          ..sort();
 
     final canonicalRoot = <String, dynamic>{
       'catalog_version': (catalogJson['catalog_version'] ?? '1.0.0').toString(),

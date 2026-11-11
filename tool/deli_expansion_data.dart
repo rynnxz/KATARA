@@ -133,7 +133,8 @@ final List<Map<String, dynamic>> deliAdditionalVocab = [
     'category': 'kinship',
     'pronunciation': '[maʔ ŋah]',
     'example_sentence': 'Mak Ngah pandai kali memasak gulai asam pedas.',
-    'example_translation': 'Bibi tengah pandai sekali memasak gulai asam pedas.',
+    'example_translation':
+        'Bibi tengah pandai sekali memasak gulai asam pedas.',
     'region': 'Medan & Deli Serdang',
     'variants': ['cik ngah'],
     'sources': ['SRC-0006'],
@@ -146,7 +147,8 @@ final List<Map<String, dynamic>> deliAdditionalVocab = [
     'category': 'kinship',
     'pronunciation': '[paʔ alaŋ]',
     'example_sentence': 'Kebun rambutan Pak Alang lebat buahnye tahun ini.',
-    'example_translation': 'Kebun rambutan Paman Alang lebat buahnya tahun ini.',
+    'example_translation':
+        'Kebun rambutan Paman Alang lebat buahnya tahun ini.',
     'region': 'Medan & Deli Serdang',
     'variants': ['bang alang'],
     'sources': ['SRC-0005', 'SRC-0006'],
@@ -172,7 +174,8 @@ final List<Map<String, dynamic>> deliAdditionalVocab = [
     'category': 'kinship',
     'pronunciation': '[paʔ usu]',
     'example_sentence': 'Pak Usu mengajak kami jalan-jalan ke Istana Maimun.',
-    'example_translation': 'Paman bungsu mengajak kami jalan-jalan ke Istana Maimun.',
+    'example_translation':
+        'Paman bungsu mengajak kami jalan-jalan ke Istana Maimun.',
     'region': 'Medan & Deli Serdang',
     'variants': ['pak busu', 'pak cu'],
     'sources': ['SRC-0006'],
@@ -198,7 +201,8 @@ final List<Map<String, dynamic>> deliAdditionalVocab = [
     'category': 'kinship',
     'pronunciation': '[ipar duaj]',
     'example_sentence': 'Semue ipar duai berkumpul waktu kenduri turun tanah.',
-    'example_translation': 'Semua kerabat ipar berkumpul saat kenduri turun tanah.',
+    'example_translation':
+        'Semua kerabat ipar berkumpul saat kenduri turun tanah.',
     'region': 'Medan & Deli Serdang',
     'variants': ['ipar'],
     'sources': ['SRC-0002', 'SRC-0006'],
@@ -252,7 +256,8 @@ final List<Map<String, dynamic>> deliAdditionalVocab = [
     'category': 'daily_activities',
     'pronunciation': '[mərantaw]',
     'example_sentence': 'Abang Long merantau ke seberang sejak tahun lepas.',
-    'example_translation': 'Kakak sulung merantau ke seberang sejak tahun lalu.',
+    'example_translation':
+        'Kakak sulung merantau ke seberang sejak tahun lalu.',
     'region': 'Medan & Deli Serdang',
     'variants': [],
     'sources': ['SRC-0002'],
@@ -264,8 +269,10 @@ final List<Map<String, dynamic>> deliAdditionalVocab = [
     'pos': 'verb',
     'category': 'daily_activities',
     'pronunciation': '[məndʒəmur]',
-    'example_sentence': 'Nelayan Bagan Deli sedang menjemur ikan asin di pelataran.',
-    'example_translation': 'Nelayan Bagan Deli sedang menjemur ikan asin di pelataran.',
+    'example_sentence':
+        'Nelayan Bagan Deli sedang menjemur ikan asin di pelataran.',
+    'example_translation':
+        'Nelayan Bagan Deli sedang menjemur ikan asin di pelataran.',
     'region': 'Belawan & Labuhan Deli',
     'variants': ['jemur'],
     'sources': ['SRC-0002', 'SRC-0005'],
@@ -278,7 +285,8 @@ final List<Map<String, dynamic>> deliAdditionalVocab = [
     'category': 'daily_activities',
     'pronunciation': '[mənaŋguʔ]',
     'example_sentence': 'Budak-budak suke menangguk udang di tepi Sungai Deli.',
-    'example_translation': 'Anak-anak suka menangguk udang di tepi Sungai Deli.',
+    'example_translation':
+        'Anak-anak suka menangguk udang di tepi Sungai Deli.',
     'region': 'Sungai Deli & Hamparan Perak',
     'variants': ['tangguk'],
     'sources': ['SRC-0002', 'SRC-0005'],
@@ -304,7 +312,8 @@ final List<Map<String, dynamic>> deliAdditionalVocab = [
     'category': 'daily_activities',
     'pronunciation': '[mənimba]',
     'example_sentence': 'Pagi-pagi kakak dah menimba air di perigi belakang.',
-    'example_translation': 'Pagi-pagi kakak sudah menimba air di sumur belakang.',
+    'example_translation':
+        'Pagi-pagi kakak sudah menimba air di sumur belakang.',
     'region': 'Deli Serdang & Marelan',
     'variants': ['nimba'],
     'sources': ['SRC-0002'],
@@ -330,7 +339,8 @@ final List<Map<String, dynamic>> deliAdditionalVocab = [
     'category': 'daily_activities',
     'pronunciation': '[məŋukus]',
     'example_sentence': 'Mak mengukus pulut kuning di dalam dandang tembage.',
-    'example_translation': 'Ibu mengukus ketan kuning di dalam dandang tembaga.',
+    'example_translation':
+        'Ibu mengukus ketan kuning di dalam dandang tembaga.',
     'region': 'Medan & Deli Serdang',
     'variants': ['kukus'],
     'sources': ['SRC-0002', 'SRC-0009'],
@@ -343,7 +353,8 @@ final List<Map<String, dynamic>> deliAdditionalVocab = [
     'category': 'daily_activities',
     'pronunciation': '[mənumis]',
     'example_sentence': 'Harum kali bau bawang yang sedang Mak tumis di dapur.',
-    'example_translation': 'Harum sekali bau bawang yang sedang Ibu tumis di dapur.',
+    'example_translation':
+        'Harum sekali bau bawang yang sedang Ibu tumis di dapur.',
     'region': 'Medan & Deli Serdang',
     'variants': ['tumis'],
     'sources': ['SRC-0002'],
@@ -356,7 +367,8 @@ final List<Map<String, dynamic>> deliAdditionalVocab = [
     'category': 'daily_activities',
     'pronunciation': '[məɲulam]',
     'example_sentence': 'Gadis Melayu Deli belajar menyulam kain tudung saji.',
-    'example_translation': 'Gadis Melayu Deli belajar menyulam kain tudung saji.',
+    'example_translation':
+        'Gadis Melayu Deli belajar menyulam kain tudung saji.',
     'region': 'Medan & Deli Serdang',
     'variants': ['sulam'],
     'sources': ['SRC-0004', 'SRC-0009'],
@@ -369,7 +381,8 @@ final List<Map<String, dynamic>> deliAdditionalVocab = [
     'category': 'daily_activities',
     'pronunciation': '[məŋaɲam]',
     'example_sentence': 'Wan menganyam tikar mengkuang untuk alas duduk tamu.',
-    'example_translation': 'Nenek menganyam tikar mengkuang untuk alas duduk tamu.',
+    'example_translation':
+        'Nenek menganyam tikar mengkuang untuk alas duduk tamu.',
     'region': 'Hamparan Perak & Percut',
     'variants': ['anyam'],
     'sources': ['SRC-0002', 'SRC-0005'],
@@ -395,7 +408,8 @@ final List<Map<String, dynamic>> deliAdditionalVocab = [
     'category': 'daily_activities',
     'pronunciation': '[bərlabuh]',
     'example_sentence': 'Perahu nelayan berlabuh di pangkalan saat air pasang.',
-    'example_translation': 'Perahu nelayan berlabuh di pangkalan saat air pasang.',
+    'example_translation':
+        'Perahu nelayan berlabuh di pangkalan saat air pasang.',
     'region': 'Labuhan Deli & Belawan',
     'variants': [],
     'sources': ['SRC-0002', 'SRC-0010'],
@@ -407,8 +421,10 @@ final List<Map<String, dynamic>> deliAdditionalVocab = [
     'pos': 'verb',
     'category': 'daily_activities',
     'pronunciation': '[bərkəbun]',
-    'example_sentence': 'Orang kampung banyak yang berkebun jambu dan rambutan.',
-    'example_translation': 'Orang kampung banyak yang berkebun jambu dan rambutan.',
+    'example_sentence':
+        'Orang kampung banyak yang berkebun jambu dan rambutan.',
+    'example_translation':
+        'Orang kampung banyak yang berkebun jambu dan rambutan.',
     'region': 'Deli Tua & Pancur Batu',
     'variants': [],
     'sources': ['SRC-0002'],
@@ -421,7 +437,8 @@ final List<Map<String, dynamic>> deliAdditionalVocab = [
     'category': 'daily_activities',
     'pronunciation': '[məɲapu]',
     'example_sentence': 'Adik menyapu daun kering di halaman rumah panggung.',
-    'example_translation': 'Adik menyapu daun kering di halaman rumah panggung.',
+    'example_translation':
+        'Adik menyapu daun kering di halaman rumah panggung.',
     'region': 'Medan & Deli Serdang',
     'variants': ['sapu'],
     'sources': ['SRC-0002'],
@@ -433,8 +450,10 @@ final List<Map<String, dynamic>> deliAdditionalVocab = [
     'pos': 'verb',
     'category': 'daily_activities',
     'pronunciation': '[məmbasuh]',
-    'example_sentence': 'Jangan lupe membasuh tangan pakai air kobokan sebelum makan.',
-    'example_translation': 'Jangan lupa mencuci tangan memakai air kobokan sebelum makan.',
+    'example_sentence':
+        'Jangan lupe membasuh tangan pakai air kobokan sebelum makan.',
+    'example_translation':
+        'Jangan lupa mencuci tangan memakai air kobokan sebelum makan.',
     'region': 'Medan & Deli Serdang',
     'variants': ['basuh'],
     'sources': ['SRC-0002', 'SRC-0005'],
@@ -446,8 +465,10 @@ final List<Map<String, dynamic>> deliAdditionalVocab = [
     'pos': 'verb',
     'category': 'daily_activities',
     'pronunciation': '[məndʒəmput]',
-    'example_sentence': 'Kami datang menjemput keluarga Pak Long ke kenduri akad nikah.',
-    'example_translation': 'Kami datang mengundang keluarga Pak Long ke kenduri akad nikah.',
+    'example_sentence':
+        'Kami datang menjemput keluarga Pak Long ke kenduri akad nikah.',
+    'example_translation':
+        'Kami datang mengundang keluarga Pak Long ke kenduri akad nikah.',
     'region': 'Medan & Deli Serdang',
     'variants': ['jemput'],
     'sources': ['SRC-0006', 'SRC-0008'],
@@ -462,7 +483,8 @@ final List<Map<String, dynamic>> deliAdditionalVocab = [
     'category': 'qualities_and_emotions',
     'pronunciation': '[ramah]',
     'example_sentence': 'Penjual kue di pajak tu ramah kali kepade pembeli.',
-    'example_translation': 'Penjual kue di pasar itu ramah sekali kepada pembeli.',
+    'example_translation':
+        'Penjual kue di pasar itu ramah sekali kepada pembeli.',
     'region': 'Medan & Deli Serdang',
     'variants': ['peramah'],
     'sources': ['SRC-0004'],
@@ -475,7 +497,8 @@ final List<Map<String, dynamic>> deliAdditionalVocab = [
     'category': 'qualities_and_emotions',
     'pronunciation': '[santun]',
     'example_sentence': 'Anak mude Melayu diajarkan bercakap dengan santun.',
-    'example_translation': 'Anak muda Melayu diajarkan berbicara dengan santun.',
+    'example_translation':
+        'Anak muda Melayu diajarkan berbicara dengan santun.',
     'region': 'Medan & Deli Serdang',
     'variants': ['sopan santun'],
     'sources': ['SRC-0004', 'SRC-0006'],
@@ -487,8 +510,10 @@ final List<Map<String, dynamic>> deliAdditionalVocab = [
     'pos': 'adjective',
     'category': 'qualities_and_emotions',
     'pronunciation': '[gagah]',
-    'example_sentence': 'Gagah nampak pengantin laki-laki memakai tengkuluk songket.',
-    'example_translation': 'Gagah tampak pengantin pria mengenakan tengkuluk songket.',
+    'example_sentence':
+        'Gagah nampak pengantin laki-laki memakai tengkuluk songket.',
+    'example_translation':
+        'Gagah tampak pengantin pria mengenakan tengkuluk songket.',
     'region': 'Medan & Deli Serdang',
     'variants': [],
     'sources': ['SRC-0004', 'SRC-0009'],
@@ -500,7 +525,8 @@ final List<Map<String, dynamic>> deliAdditionalVocab = [
     'pos': 'adjective',
     'category': 'qualities_and_emotions',
     'pronunciation': '[aŋgun]',
-    'example_sentence': 'Penari Serampang Dua Belas tu nampak anggun memakai kebaya panjang.',
+    'example_sentence':
+        'Penari Serampang Dua Belas tu nampak anggun memakai kebaya panjang.',
     'example_translation': 'Penari Serampang Dua Belas itu tampak anggun mengenakan kebaya panjang.',
     'region': 'Medan & Deli Serdang',
     'variants': [],
@@ -514,7 +540,8 @@ final List<Map<String, dynamic>> deliAdditionalVocab = [
     'category': 'qualities_and_emotions',
     'pronunciation': '[rədup]',
     'example_sentence': 'Hari dah redup, angkatlah jemuran kain di halaman.',
-    'example_translation': 'Hari sudah mendung/redup, angkatlah jemuran kain di halaman.',
+    'example_translation':
+        'Hari sudah mendung/redup, angkatlah jemuran kain di halaman.',
     'region': 'Medan & Deli Serdang',
     'variants': [],
     'sources': ['SRC-0002', 'SRC-0004'],
@@ -527,7 +554,8 @@ final List<Map<String, dynamic>> deliAdditionalVocab = [
     'category': 'qualities_and_emotions',
     'pronunciation': '[təriʔ]',
     'example_sentence': 'Terik kali panas matahari tengah hari di Belawan.',
-    'example_translation': 'Terik sekali panas matahari tengah hari di Belawan.',
+    'example_translation':
+        'Terik sekali panas matahari tengah hari di Belawan.',
     'region': 'Medan & Belawan',
     'variants': [],
     'sources': ['SRC-0002', 'SRC-0004'],
@@ -539,8 +567,10 @@ final List<Map<String, dynamic>> deliAdditionalVocab = [
     'pos': 'adjective',
     'category': 'qualities_and_emotions',
     'pronunciation': '[dəras]',
-    'example_sentence': 'Arus Sungai Deli deras kali lepas hujan lebat di hulu.',
-    'example_translation': 'Arus Sungai Deli deras sekali setelah hujan lebat di hulu.',
+    'example_sentence':
+        'Arus Sungai Deli deras kali lepas hujan lebat di hulu.',
+    'example_translation':
+        'Arus Sungai Deli deras sekali setelah hujan lebat di hulu.',
     'region': 'Medan & Deli Tua',
     'variants': [],
     'sources': ['SRC-0002', 'SRC-0004'],
@@ -552,8 +582,10 @@ final List<Map<String, dynamic>> deliAdditionalVocab = [
     'pos': 'adjective',
     'category': 'qualities_and_emotions',
     'pronunciation': '[tʃeteʔ]',
-    'example_sentence': 'Air sungai di tepi tu cetek, bolehlah budak-budak menyeberang.',
-    'example_translation': 'Air sungai di tepi itu dangkal, bolehlah anak-anak menyeberang.',
+    'example_sentence':
+        'Air sungai di tepi tu cetek, bolehlah budak-budak menyeberang.',
+    'example_translation':
+        'Air sungai di tepi itu dangkal, bolehlah anak-anak menyeberang.',
     'region': 'Labuhan Deli & Hamparan Perak',
     'variants': ['dangkal'],
     'sources': ['SRC-0002', 'SRC-0005'],
@@ -565,8 +597,10 @@ final List<Map<String, dynamic>> deliAdditionalVocab = [
     'pos': 'adjective',
     'category': 'qualities_and_emotions',
     'pronunciation': '[ləbat]',
-    'example_sentence': 'Turun hujan lebat waktu kami baru sampai di rumah Atok.',
-    'example_translation': 'Turun hujan deras saat kami baru tiba di rumah Kakek.',
+    'example_sentence':
+        'Turun hujan lebat waktu kami baru sampai di rumah Atok.',
+    'example_translation':
+        'Turun hujan deras saat kami baru tiba di rumah Kakek.',
     'region': 'Medan & Deli Serdang',
     'variants': [],
     'sources': ['SRC-0002', 'SRC-0004'],
@@ -579,20 +613,24 @@ final List<Map<String, dynamic>> deliAdditionalVocab = [
     'category': 'qualities_and_emotions',
     'pronunciation': '[əmpuʔ]',
     'example_sentence': 'Ubi rebus ni empuk kali dimakan pakai sambal belacan.',
-    'example_translation': 'Singkong rebus ini empuk sekali dimakan dengan sambal terasi.',
+    'example_translation':
+        'Singkong rebus ini empuk sekali dimakan dengan sambal terasi.',
     'region': 'Medan & Deli Serdang',
     'variants': [],
     'sources': ['SRC-0004'],
   },
   {
     'term': 'renyah',
-    'meaning_id': 'garing dan rapuh saat digigit (tentang kerupuk atau kue kering)',
+    'meaning_id':
+        'garing dan rapuh saat digigit (tentang kerupuk atau kue kering)',
     'jawi': 'رڽه',
     'pos': 'adjective',
     'category': 'qualities_and_emotions',
     'pronunciation': '[rəɲah]',
-    'example_sentence': 'Kue bangkit buatan Mak Ngah renyah dan harum santannye.',
-    'example_translation': 'Kue bangkit buatan Bibi Tengah renyah dan harum santannya.',
+    'example_sentence':
+        'Kue bangkit buatan Mak Ngah renyah dan harum santannye.',
+    'example_translation':
+        'Kue bangkit buatan Bibi Tengah renyah dan harum santannya.',
     'region': 'Medan & Deli Serdang',
     'variants': ['rangup'],
     'sources': ['SRC-0004', 'SRC-0009'],
@@ -604,8 +642,10 @@ final List<Map<String, dynamic>> deliAdditionalVocab = [
     'pos': 'adjective',
     'category': 'qualities_and_emotions',
     'pronunciation': '[pəkat]',
-    'example_sentence': 'Kuah kari kambing tu pekat karena memakai santan perahan pertame.',
-    'example_translation': 'Kuah kari kambing itu kental karena memakai santan perasan pertama.',
+    'example_sentence':
+        'Kuah kari kambing tu pekat karena memakai santan perahan pertame.',
+    'example_translation':
+        'Kuah kari kambing itu kental karena memakai santan perasan pertama.',
     'region': 'Medan & Deli Serdang',
     'variants': ['kental'],
     'sources': ['SRC-0002', 'SRC-0004'],
@@ -618,33 +658,39 @@ final List<Map<String, dynamic>> deliAdditionalVocab = [
     'category': 'qualities_and_emotions',
     'pronunciation': '[tʃair]',
     'example_sentence': 'Jangan terlalu cair membancuh tepung kue jala tu.',
-    'example_translation': 'Jangan terlalu encer mengaduk adonan tepung roti jala itu.',
+    'example_translation':
+        'Jangan terlalu encer mengaduk adonan tepung roti jala itu.',
     'region': 'Medan & Deli Serdang',
     'variants': ['encer'],
     'sources': ['SRC-0002', 'SRC-0004'],
   },
   {
     'term': 'nyaring',
-    'meaning_id': 'keras dan jelas terdengar (tentang suara atau bunyi gendang)',
+    'meaning_id':
+        'keras dan jelas terdengar (tentang suara atau bunyi gendang)',
     'jawi': 'ڽاريڠ',
     'pos': 'adjective',
     'category': 'qualities_and_emotions',
     'pronunciation': '[ɲariŋ]',
     'example_sentence': 'Nyaring kali bunyi biola dan akordeon lagu Melayu tu.',
-    'example_translation': 'Nyaring sekali bunyi biola dan akordeon lagu Melayu itu.',
+    'example_translation':
+        'Nyaring sekali bunyi biola dan akordeon lagu Melayu itu.',
     'region': 'Medan & Deli Serdang',
     'variants': ['lantang'],
     'sources': ['SRC-0004'],
   },
   {
     'term': 'merdu',
-    'meaning_id': 'indah dan sedap didengar (tentang suara senandung atau mengaji)',
+    'meaning_id':
+        'indah dan sedap didengar (tentang suara senandung atau mengaji)',
     'jawi': 'مردو',
     'pos': 'adjective',
     'category': 'qualities_and_emotions',
     'pronunciation': '[mərdu]',
-    'example_sentence': 'Merdu kali suare qari membaca Al-Quran di Masjid Raya.',
-    'example_translation': 'Merdu sekali suara qari membaca Al-Quran di Masjid Raya.',
+    'example_sentence':
+        'Merdu kali suare qari membaca Al-Quran di Masjid Raya.',
+    'example_translation':
+        'Merdu sekali suara qari membaca Al-Quran di Masjid Raya.',
     'region': 'Medan & Deli Serdang',
     'variants': [],
     'sources': ['SRC-0004'],
@@ -653,39 +699,48 @@ final List<Map<String, dynamic>> deliAdditionalVocab = [
   // 5. Culinary & Ingredients (food_and_drink)
   {
     'term': 'roti jala',
-    'meaning_id': 'kue dadar berbentuk jaring khas Melayu yang disantap dengan kari',
+    'meaning_id':
+        'kue dadar berbentuk jaring khas Melayu yang disantap dengan kari',
     'jawi': 'روتي جالا',
     'pos': 'noun',
     'category': 'food_and_drink',
     'pronunciation': '[roti dʒala]',
-    'example_sentence': 'Roti jala cicah kuah kari kambing selalu hadir waktu lebaran.',
-    'example_translation': 'Roti jala cocol kuah kari kambing selalu hadir saat lebaran.',
+    'example_sentence':
+        'Roti jala cicah kuah kari kambing selalu hadir waktu lebaran.',
+    'example_translation':
+        'Roti jala cocol kuah kari kambing selalu hadir saat lebaran.',
     'region': 'Medan & Deli Serdang',
     'variants': ['kue jala'],
     'sources': ['SRC-0005', 'SRC-0009'],
   },
   {
     'term': 'kue bangkit',
-    'meaning_id': 'kue kering tradisional Melayu dari tepung sagu, santan, dan gula',
+    'meaning_id':
+        'kue kering tradisional Melayu dari tepung sagu, santan, dan gula',
     'jawi': 'كوي بڠكيت',
     'pos': 'noun',
     'category': 'food_and_drink',
     'pronunciation': '[kue baŋkit]',
-    'example_sentence': 'Setoples kue bangkit disajikan di meja tamu saat Hari Raya.',
-    'example_translation': 'Setoples kue bangkit disajikan di meja tamu saat Hari Raya.',
+    'example_sentence':
+        'Setoples kue bangkit disajikan di meja tamu saat Hari Raya.',
+    'example_translation':
+        'Setoples kue bangkit disajikan di meja tamu saat Hari Raya.',
     'region': 'Medan & Deli Serdang',
     'variants': ['bangkit'],
     'sources': ['SRC-0005', 'SRC-0009'],
   },
   {
     'term': 'dodol',
-    'meaning_id': 'penganan manis kenyal dari tepung ketan, santan, dan gula merah',
+    'meaning_id':
+        'penganan manis kenyal dari tepung ketan, santan, dan gula merah',
     'jawi': 'دودول',
     'pos': 'noun',
     'category': 'food_and_drink',
     'pronunciation': '[dodol]',
-    'example_sentence': 'Mengacau dodol di kawah besar dikerjakan bergotong-royong.',
-    'example_translation': 'Mengaduk dodol di kuali besar dikerjakan secara bergotong-royong.',
+    'example_sentence':
+        'Mengacau dodol di kawah besar dikerjakan bergotong-royong.',
+    'example_translation':
+        'Mengaduk dodol di kuali besar dikerjakan secara bergotong-royong.',
     'region': 'Deli Serdang & Serdang Bedagai',
     'variants': ['dodol melayu'],
     'sources': ['SRC-0005', 'SRC-0009'],
@@ -697,8 +752,10 @@ final List<Map<String, dynamic>> deliAdditionalVocab = [
     'pos': 'noun',
     'category': 'food_and_drink',
     'pronunciation': '[wadʒiʔ]',
-    'example_sentence': 'Wajik manis dipotong berbentuk belah ketupat di atas talam.',
-    'example_translation': 'Wajik manis dipotong berbentuk belah ketupat di atas nampan.',
+    'example_sentence':
+        'Wajik manis dipotong berbentuk belah ketupat di atas talam.',
+    'example_translation':
+        'Wajik manis dipotong berbentuk belah ketupat di atas nampan.',
     'region': 'Medan & Deli Serdang',
     'variants': ['pulut wajik'],
     'sources': ['SRC-0002', 'SRC-0009'],
@@ -710,8 +767,10 @@ final List<Map<String, dynamic>> deliAdditionalVocab = [
     'pos': 'noun',
     'category': 'food_and_drink',
     'pronunciation': '[ləpat]',
-    'example_sentence': 'Hangat-hangat makan lepat pisang sambil minum teh sore.',
-    'example_translation': 'Hangat-hangat makan lepat pisang sambil minum teh sore.',
+    'example_sentence':
+        'Hangat-hangat makan lepat pisang sambil minum teh sore.',
+    'example_translation':
+        'Hangat-hangat makan lepat pisang sambil minum teh sore.',
     'region': 'Medan & Deli Serdang',
     'variants': ['lepat pisang', 'lepat ubi'],
     'sources': ['SRC-0002', 'SRC-0005'],
@@ -723,8 +782,10 @@ final List<Map<String, dynamic>> deliAdditionalVocab = [
     'pos': 'noun',
     'category': 'food_and_drink',
     'pronunciation': '[sərikajə]',
-    'example_sentence': 'Pulut kukus dimakan dengan serikaya pandan memang lemak kali.',
-    'example_translation': 'Ketan kukus dimakan dengan selai srikaya pandan memang lezat sekali.',
+    'example_sentence':
+        'Pulut kukus dimakan dengan serikaya pandan memang lemak kali.',
+    'example_translation':
+        'Ketan kukus dimakan dengan selai srikaya pandan memang lezat sekali.',
     'region': 'Medan & Deli Serdang',
     'variants': ['sekaya'],
     'sources': ['SRC-0002', 'SRC-0009'],
@@ -736,8 +797,10 @@ final List<Map<String, dynamic>> deliAdditionalVocab = [
     'pos': 'noun',
     'category': 'food_and_drink',
     'pronunciation': '[padʒri nanas]',
-    'example_sentence': 'Pajri nanas menjadi pelengkap wajib nasi minyak di kenduri Melayu.',
-    'example_translation': 'Pajri nanas menjadi pelengkap wajib nasi minyak di kenduri Melayu.',
+    'example_sentence':
+        'Pajri nanas menjadi pelengkap wajib nasi minyak di kenduri Melayu.',
+    'example_translation':
+        'Pajri nanas menjadi pelengkap wajib nasi minyak di kenduri Melayu.',
     'region': 'Medan & Deli Serdang',
     'variants': ['pacri nanas'],
     'sources': ['SRC-0009'],
@@ -749,8 +812,10 @@ final List<Map<String, dynamic>> deliAdditionalVocab = [
     'pos': 'noun',
     'category': 'food_and_drink',
     'pronunciation': '[nasi miɲaʔ]',
-    'example_sentence': 'Tamu kenduri dijamu nasi minyak dengan gulai kambing dan acar.',
-    'example_translation': 'Tamu kenduri dijamu nasi minyak dengan gulai kambing dan acar.',
+    'example_sentence':
+        'Tamu kenduri dijamu nasi minyak dengan gulai kambing dan acar.',
+    'example_translation':
+        'Tamu kenduri dijamu nasi minyak dengan gulai kambing dan acar.',
     'region': 'Medan & Labuhan Deli',
     'variants': [],
     'sources': ['SRC-0009'],
@@ -762,8 +827,10 @@ final List<Map<String, dynamic>> deliAdditionalVocab = [
     'pos': 'noun',
     'category': 'food_and_drink',
     'pronunciation': '[air matə pəŋantin]',
-    'example_sentence': 'Segar kali minum es air mata pengantin waktu berbuka puasa.',
-    'example_translation': 'Segar sekali minum es air mata pengantin saat berbuka puasa.',
+    'example_sentence':
+        'Segar kali minum es air mata pengantin waktu berbuka puasa.',
+    'example_translation':
+        'Segar sekali minum es air mata pengantin saat berbuka puasa.',
     'region': 'Medan & Deli Serdang',
     'variants': [],
     'sources': ['SRC-0009'],
@@ -783,13 +850,16 @@ final List<Map<String, dynamic>> deliAdditionalVocab = [
   },
   {
     'term': 'bunga kantan',
-    'meaning_id': 'bunga kecombrang / honje untuk bumbu gulai asam pedas dan anyang',
+    'meaning_id':
+        'bunga kecombrang / honje untuk bumbu gulai asam pedas dan anyang',
     'jawi': 'بوڠا كنتن',
     'pos': 'noun',
     'category': 'food_and_drink',
     'pronunciation': '[buŋə kantan]',
-    'example_sentence': 'Irisan bunga kantan membuat aroma gulai ikan makin wangi.',
-    'example_translation': 'Irisan bunga kecombrang membuat aroma gulai ikan semakin wangi.',
+    'example_sentence':
+        'Irisan bunga kantan membuat aroma gulai ikan makin wangi.',
+    'example_translation':
+        'Irisan bunga kecombrang membuat aroma gulai ikan semakin wangi.',
     'region': 'Medan & Deli Serdang',
     'variants': ['kantan', 'kecombrang'],
     'sources': ['SRC-0005', 'SRC-0009'],
@@ -802,7 +872,8 @@ final List<Map<String, dynamic>> deliAdditionalVocab = [
     'category': 'food_and_drink',
     'pronunciation': '[asam gəlugur]',
     'example_sentence': 'Masukkan dua keping asam gelugur ke dalam kuah gulai.',
-    'example_translation': 'Masukkan dua keping asam gelugur ke dalam kuah gulai.',
+    'example_translation':
+        'Masukkan dua keping asam gelugur ke dalam kuah gulai.',
     'region': 'Medan & Deli Serdang',
     'variants': ['asam potong'],
     'sources': ['SRC-0002', 'SRC-0005'],
@@ -816,8 +887,10 @@ final List<Map<String, dynamic>> deliAdditionalVocab = [
     'pos': 'noun',
     'category': 'household',
     'pronunciation': '[sərambi]',
-    'example_sentence': 'Tamu laki-laki dipersilakan duduk bersila di serambi depan.',
-    'example_translation': 'Tamu laki-laki dipersilakan duduk bersila di beranda depan.',
+    'example_sentence':
+        'Tamu laki-laki dipersilakan duduk bersila di serambi depan.',
+    'example_translation':
+        'Tamu laki-laki dipersilakan duduk bersila di beranda depan.',
     'region': 'Medan & Labuhan Deli',
     'variants': ['beranda'],
     'sources': ['SRC-0002', 'SRC-0009'],
@@ -829,34 +902,42 @@ final List<Map<String, dynamic>> deliAdditionalVocab = [
     'pos': 'noun',
     'category': 'household',
     'pronunciation': '[andʒuŋ]',
-    'example_sentence': 'Rumah besar Datuk memakai anjung berukir pucuk rebung.',
-    'example_translation': 'Rumah besar Datuk memakai anjung berukir pucuk rebung.',
+    'example_sentence':
+        'Rumah besar Datuk memakai anjung berukir pucuk rebung.',
+    'example_translation':
+        'Rumah besar Datuk memakai anjung berukir pucuk rebung.',
     'region': 'Medan & Labuhan Deli',
     'variants': [],
     'sources': ['SRC-0002', 'SRC-0009'],
   },
   {
     'term': 'selembayung',
-    'meaning_id': 'hiasan kayu bersilang di ujung perabung atap rumah tradisional Melayu',
+    'meaning_id':
+        'hiasan kayu bersilang di ujung perabung atap rumah tradisional Melayu',
     'jawi': 'سلمبايوڠ',
     'pos': 'noun',
     'category': 'household',
     'pronunciation': '[sələmbajuŋ]',
-    'example_sentence': 'Ukiran selembayung di puncak atap menjadi penanda rumah adat Melayu.',
-    'example_translation': 'Ukiran selembayung di puncak atap menjadi penanda rumah adat Melayu.',
+    'example_sentence':
+        'Ukiran selembayung di puncak atap menjadi penanda rumah adat Melayu.',
+    'example_translation':
+        'Ukiran selembayung di puncak atap menjadi penanda rumah adat Melayu.',
     'region': 'Medan & Deli Serdang',
     'variants': ['tanduk buang'],
     'sources': ['SRC-0009'],
   },
   {
     'term': 'lebah bergantung',
-    'meaning_id': 'ragam ukiran kayu di bawah cucuran atap (lesplang) rumah Melayu',
+    'meaning_id':
+        'ragam ukiran kayu di bawah cucuran atap (lesplang) rumah Melayu',
     'jawi': 'لبه برݢنتوڠ',
     'pos': 'noun',
     'category': 'household',
     'pronunciation': '[ləbah bərgantuŋ]',
-    'example_sentence': 'Ornamen lebah bergantung menghiasi tepi atap Istana Maimun.',
-    'example_translation': 'Ornamen lebah bergantung menghiasi tepi atap Istana Maimun.',
+    'example_sentence':
+        'Ornamen lebah bergantung menghiasi tepi atap Istana Maimun.',
+    'example_translation':
+        'Ornamen lebah bergantung menghiasi tepi atap Istana Maimun.',
     'region': 'Medan & Deli Serdang',
     'variants': [],
     'sources': ['SRC-0009', 'SRC-0010'],
@@ -868,8 +949,10 @@ final List<Map<String, dynamic>> deliAdditionalVocab = [
     'pos': 'noun',
     'category': 'household',
     'pronunciation': '[talam]',
-    'example_sentence': 'Empat orang makan bersama mengelilingi satu talam lauk.',
-    'example_translation': 'Empat orang makan bersama mengelilingi satu nampan lauk.',
+    'example_sentence':
+        'Empat orang makan bersama mengelilingi satu talam lauk.',
+    'example_translation':
+        'Empat orang makan bersama mengelilingi satu nampan lauk.',
     'region': 'Medan & Deli Serdang',
     'variants': ['dulang'],
     'sources': ['SRC-0002', 'SRC-0009'],
@@ -882,7 +965,8 @@ final List<Map<String, dynamic>> deliAdditionalVocab = [
     'category': 'household',
     'pronunciation': '[tuduŋ sadʒi]',
     'example_sentence': 'Tutuplah lauk di meja makan tu dengan tudung saji.',
-    'example_translation': 'Tutuplah lauk di meja makan itu dengan tudung saji.',
+    'example_translation':
+        'Tutuplah lauk di meja makan itu dengan tudung saji.',
     'region': 'Medan & Deli Serdang',
     'variants': [],
     'sources': ['SRC-0002', 'SRC-0009'],
@@ -895,7 +979,8 @@ final List<Map<String, dynamic>> deliAdditionalVocab = [
     'category': 'household',
     'pronunciation': '[kəndi]',
     'example_sentence': 'Air di dalam kendi tanah liat tu terasa sejuk sekali.',
-    'example_translation': 'Air di dalam kendi tanah liat itu terasa sejuk sekali.',
+    'example_translation':
+        'Air di dalam kendi tanah liat itu terasa sejuk sekali.',
     'region': 'Medan & Deli Serdang',
     'variants': [],
     'sources': ['SRC-0002'],
@@ -907,8 +992,10 @@ final List<Map<String, dynamic>> deliAdditionalVocab = [
     'pos': 'noun',
     'category': 'household',
     'pronunciation': '[ləsuŋ]',
-    'example_sentence': 'Mak menumbuk tepung beras di dalam lesung memakai alu.',
-    'example_translation': 'Ibu menumbuk tepung beras di dalam lesung memakai alu.',
+    'example_sentence':
+        'Mak menumbuk tepung beras di dalam lesung memakai alu.',
+    'example_translation':
+        'Ibu menumbuk tepung beras di dalam lesung memakai alu.',
     'region': 'Deli Serdang & Marelan',
     'variants': [],
     'sources': ['SRC-0002', 'SRC-0004'],
@@ -933,8 +1020,10 @@ final List<Map<String, dynamic>> deliAdditionalVocab = [
     'pos': 'noun',
     'category': 'household',
     'pronunciation': '[kukur kəlapə]',
-    'example_sentence': 'Kakak mengukur dua butir kelapa tua dengan kukur kelapa.',
-    'example_translation': 'Kakak memarut dua butir kelapa tua dengan kukur kelapa.',
+    'example_sentence':
+        'Kakak mengukur dua butir kelapa tua dengan kukur kelapa.',
+    'example_translation':
+        'Kakak memarut dua butir kelapa tua dengan kukur kelapa.',
     'region': 'Medan & Deli Serdang',
     'variants': ['kukuran'],
     'sources': ['SRC-0002', 'SRC-0005'],
@@ -946,8 +1035,10 @@ final List<Map<String, dynamic>> deliAdditionalVocab = [
     'pos': 'noun',
     'category': 'household',
     'pronunciation': '[dandaŋ]',
-    'example_sentence': 'Air di dalam dandang dah mendidih untuk mengukus pulut.',
-    'example_translation': 'Air di dalam dandang sudah mendidih untuk mengukus ketan.',
+    'example_sentence':
+        'Air di dalam dandang dah mendidih untuk mengukus pulut.',
+    'example_translation':
+        'Air di dalam dandang sudah mendidih untuk mengukus ketan.',
     'region': 'Medan & Deli Serdang',
     'variants': ['kukusan'],
     'sources': ['SRC-0002'],
@@ -959,8 +1050,10 @@ final List<Map<String, dynamic>> deliAdditionalVocab = [
     'pos': 'noun',
     'category': 'household',
     'pronunciation': '[pəlitə]',
-    'example_sentence': 'Malam dua puluh tujuh puasa, halaman rumah terang oleh cahaya pelita.',
-    'example_translation': 'Malam dua puluh tujuh puasa, halaman rumah terang oleh cahaya pelita.',
+    'example_sentence':
+        'Malam dua puluh tujuh puasa, halaman rumah terang oleh cahaya pelita.',
+    'example_translation':
+        'Malam dua puluh tujuh puasa, halaman rumah terang oleh cahaya pelita.',
     'region': 'Medan & Labuhan Deli',
     'variants': ['lampu colok'],
     'sources': ['SRC-0002', 'SRC-0009'],
@@ -974,8 +1067,10 @@ final List<Map<String, dynamic>> deliAdditionalVocab = [
     'pos': 'noun',
     'category': 'culture_and_customs',
     'pronunciation': '[badʒu kuruŋ]',
-    'example_sentence': 'Kak Long memakai baju kurung kuning dipadu kain songket.',
-    'example_translation': 'Kakak sulung mengenakan baju kurung kuning dipadu kain songket.',
+    'example_sentence':
+        'Kak Long memakai baju kurung kuning dipadu kain songket.',
+    'example_translation':
+        'Kakak sulung mengenakan baju kurung kuning dipadu kain songket.',
     'region': 'Medan & Deli Serdang',
     'variants': [],
     'sources': ['SRC-0009'],
@@ -987,8 +1082,10 @@ final List<Map<String, dynamic>> deliAdditionalVocab = [
     'pos': 'noun',
     'category': 'culture_and_customs',
     'pronunciation': '[kain sampiŋ]',
-    'example_sentence': 'Cara mengikat kain samping menunjukkan status pemakainya.',
-    'example_translation': 'Cara mengikat kain samping menunjukkan status pemakainya.',
+    'example_sentence':
+        'Cara mengikat kain samping menunjukkan status pemakainya.',
+    'example_translation':
+        'Cara mengikat kain samping menunjukkan status pemakainya.',
     'region': 'Medan & Deli Serdang',
     'variants': ['samping'],
     'sources': ['SRC-0009'],
@@ -1000,8 +1097,10 @@ final List<Map<String, dynamic>> deliAdditionalVocab = [
     'pos': 'noun',
     'category': 'culture_and_customs',
     'pronunciation': '[pəndiŋ]',
-    'example_sentence': 'Pengantin Melayu memakai pending berukir bunga di pinggangnye.',
-    'example_translation': 'Pengantin Melayu mengenakan pending berukir bunga di pinggangnya.',
+    'example_sentence':
+        'Pengantin Melayu memakai pending berukir bunga di pinggangnye.',
+    'example_translation':
+        'Pengantin Melayu mengenakan pending berukir bunga di pinggangnya.',
     'region': 'Medan & Deli Serdang',
     'variants': [],
     'sources': ['SRC-0002', 'SRC-0009'],
@@ -1013,21 +1112,26 @@ final List<Map<String, dynamic>> deliAdditionalVocab = [
     'pos': 'verb',
     'category': 'culture_and_customs',
     'pronunciation': '[mərisiʔ]',
-    'example_sentence': 'Keluarga pihak laki-laki mengutus telangkai untuk merisik.',
-    'example_translation': 'Keluarga pihak pria mengutus telangkai untuk merisik.',
+    'example_sentence':
+        'Keluarga pihak laki-laki mengutus telangkai untuk merisik.',
+    'example_translation':
+        'Keluarga pihak pria mengutus telangkai untuk merisik.',
     'region': 'Medan & Deli Serdang',
     'variants': [],
     'sources': ['SRC-0008', 'SRC-0009'],
   },
   {
     'term': 'meminang',
-    'meaning_id': 'melamar secara resmi dengan membawa tepak sirih dan berbalas pantun',
+    'meaning_id':
+        'melamar secara resmi dengan membawa tepak sirih dan berbalas pantun',
     'jawi': 'ممينڠ',
     'pos': 'verb',
     'category': 'culture_and_customs',
     'pronunciation': '[məminaŋ]',
-    'example_sentence': 'Rombongan datang meminang dengan membawa lima tepak sirih.',
-    'example_translation': 'Rombongan datang melamar dengan membawa lima tepak sirih.',
+    'example_sentence':
+        'Rombongan datang meminang dengan membawa lima tepak sirih.',
+    'example_translation':
+        'Rombongan datang melamar dengan membawa lima tepak sirih.',
     'region': 'Medan & Deli Serdang',
     'variants': ['melamar'],
     'sources': ['SRC-0008', 'SRC-0009'],
@@ -1039,8 +1143,10 @@ final List<Map<String, dynamic>> deliAdditionalVocab = [
     'pos': 'verb',
     'category': 'culture_and_customs',
     'pronunciation': '[bərsandiŋ]',
-    'example_sentence': 'Kedua mempelai bersanding di pelaminan bernuansa kuning diraja.',
-    'example_translation': 'Kedua mempelai bersanding di pelaminan bernuansa kuning diraja.',
+    'example_sentence':
+        'Kedua mempelai bersanding di pelaminan bernuansa kuning diraja.',
+    'example_translation':
+        'Kedua mempelai bersanding di pelaminan bernuansa kuning diraja.',
     'region': 'Medan & Deli Serdang',
     'variants': ['sanding'],
     'sources': ['SRC-0008', 'SRC-0009'],
@@ -1060,13 +1166,16 @@ final List<Map<String, dynamic>> deliAdditionalVocab = [
   },
   {
     'term': 'mandi berdimbar',
-    'meaning_id': 'upacara adat mandi bersiram air bunga bagi kedua pengantin Melayu',
+    'meaning_id':
+        'upacara adat mandi bersiram air bunga bagi kedua pengantin Melayu',
     'jawi': 'مندي برديمبر',
     'pos': 'noun',
     'category': 'culture_and_customs',
     'pronunciation': '[mandi bərdimbar]',
-    'example_sentence': 'Upacara mandi berdimbar ditutup dengan doa keselamatan rumah tangga.',
-    'example_translation': 'Upacara mandi berdimbar ditutup dengan doa keselamatan rumah tangga.',
+    'example_sentence':
+        'Upacara mandi berdimbar ditutup dengan doa keselamatan rumah tangga.',
+    'example_translation':
+        'Upacara mandi berdimbar ditutup dengan doa keselamatan rumah tangga.',
     'region': 'Medan & Labuhan Deli',
     'variants': ['berdimbar'],
     'sources': ['SRC-0009'],
@@ -1078,8 +1187,10 @@ final List<Map<String, dynamic>> deliAdditionalVocab = [
     'pos': 'noun',
     'category': 'culture_and_customs',
     'pronunciation': '[marhaban]',
-    'example_sentence': 'Ibu-ibu perwiridan melantunkan marhaban waktu acara mengayun anak.',
-    'example_translation': 'Ibu-ibu pengajian melantunkan marhaban saat acara mengayun anak.',
+    'example_sentence':
+        'Ibu-ibu perwiridan melantunkan marhaban waktu acara mengayun anak.',
+    'example_translation':
+        'Ibu-ibu pengajian melantunkan marhaban saat acara mengayun anak.',
     'region': 'Medan & Deli Serdang',
     'variants': ['berzanji'],
     'sources': ['SRC-0009'],
@@ -1091,8 +1202,10 @@ final List<Map<String, dynamic>> deliAdditionalVocab = [
     'pos': 'noun',
     'category': 'culture_and_customs',
     'pronunciation': '[rəbanə]',
-    'example_sentence': 'Tabuhan rebana mengiringi arak-arakan pengantin laki-laki.',
-    'example_translation': 'Tabuhan rebana mengiringi arak-arakan pengantin pria.',
+    'example_sentence':
+        'Tabuhan rebana mengiringi arak-arakan pengantin laki-laki.',
+    'example_translation':
+        'Tabuhan rebana mengiringi arak-arakan pengantin pria.',
     'region': 'Medan & Deli Serdang',
     'variants': ['kompang'],
     'sources': ['SRC-0009'],
@@ -1104,8 +1217,10 @@ final List<Map<String, dynamic>> deliAdditionalVocab = [
     'pos': 'noun',
     'category': 'culture_and_customs',
     'pronunciation': '[gəndaŋ roŋgeŋ]',
-    'example_sentence': 'Malam hiburan kenduri dimeriahkan dengan alunan gendang ronggeng.',
-    'example_translation': 'Malam hiburan kenduri dimeriahkan dengan alunan gendang ronggeng.',
+    'example_sentence':
+        'Malam hiburan kenduri dimeriahkan dengan alunan gendang ronggeng.',
+    'example_translation':
+        'Malam hiburan kenduri dimeriahkan dengan alunan gendang ronggeng.',
     'region': 'Medan, Labuhan Deli & Percut',
     'variants': ['ronggeng melayu'],
     'sources': ['SRC-0009'],
@@ -1117,8 +1232,10 @@ final List<Map<String, dynamic>> deliAdditionalVocab = [
     'pos': 'noun',
     'category': 'culture_and_customs',
     'pronunciation': '[pəntʃaʔ silat]',
-    'example_sentence': 'Pesilat membuka jalan di depan pelaminan dengan gerak silat pelintau.',
-    'example_translation': 'Pesilat membuka jalan di depan pelaminan dengan gerak silat pelintau.',
+    'example_sentence':
+        'Pesilat membuka jalan di depan pelaminan dengan gerak silat pelintau.',
+    'example_translation':
+        'Pesilat membuka jalan di depan pelaminan dengan gerak silat pelintau.',
     'region': 'Medan & Deli Serdang',
     'variants': ['silat melayu'],
     'sources': ['SRC-0009'],
@@ -1132,8 +1249,10 @@ final List<Map<String, dynamic>> deliAdditionalVocab = [
     'pos': 'noun',
     'category': 'environment_and_livelihood',
     'pronunciation': '[muarə]',
-    'example_sentence': 'Muare Sungai Deli menjadi jalur perahu sejak zaman Kesultanan.',
-    'example_translation': 'Muara Sungai Deli menjadi jalur perahu sejak zaman Kesultanan.',
+    'example_sentence':
+        'Muare Sungai Deli menjadi jalur perahu sejak zaman Kesultanan.',
+    'example_translation':
+        'Muara Sungai Deli menjadi jalur perahu sejak zaman Kesultanan.',
     'region': 'Belawan & Labuhan Deli',
     'variants': ['muara', 'kuala'],
     'sources': ['SRC-0002', 'SRC-0010'],
@@ -1145,8 +1264,10 @@ final List<Map<String, dynamic>> deliAdditionalVocab = [
     'pos': 'noun',
     'category': 'environment_and_livelihood',
     'pronunciation': '[kualə]',
-    'example_sentence': 'Perahu nelayan keluar dari kuala saat fajar menyingsing.',
-    'example_translation': 'Perahu nelayan keluar dari kuala saat fajar menyingsing.',
+    'example_sentence':
+        'Perahu nelayan keluar dari kuala saat fajar menyingsing.',
+    'example_translation':
+        'Perahu nelayan keluar dari kuala saat fajar menyingsing.',
     'region': 'Belawan & Percut',
     'variants': ['kuale'],
     'sources': ['SRC-0002', 'SRC-0005'],
@@ -1158,8 +1279,10 @@ final List<Map<String, dynamic>> deliAdditionalVocab = [
     'pos': 'noun',
     'category': 'environment_and_livelihood',
     'pronunciation': '[bətiŋ]',
-    'example_sentence': 'Hati-hati mengemudikan sampan agar tidak kandas di atas beting.',
-    'example_translation': 'Hati-hati mengemudikan sampan agar tidak kandas di atas beting pasir.',
+    'example_sentence':
+        'Hati-hati mengemudikan sampan agar tidak kandas di atas beting.',
+    'example_translation':
+        'Hati-hati mengemudikan sampan agar tidak kandas di atas beting pasir.',
     'region': 'Belawan & Pantai Labu',
     'variants': [],
     'sources': ['SRC-0002', 'SRC-0005'],
@@ -1171,8 +1294,10 @@ final List<Map<String, dynamic>> deliAdditionalVocab = [
     'pos': 'noun',
     'category': 'environment_and_livelihood',
     'pronunciation': '[hutan bakaw]',
-    'example_sentence': 'Hutan bakau di pesisir Percut menahan abrasi ombak laut.',
-    'example_translation': 'Hutan bakau di pesisir Percut menahan abrasi ombak laut.',
+    'example_sentence':
+        'Hutan bakau di pesisir Percut menahan abrasi ombak laut.',
+    'example_translation':
+        'Hutan bakau di pesisir Percut menahan abrasi ombak laut.',
     'region': 'Percut, Belawan & Hamparan Perak',
     'variants': ['bakau'],
     'sources': ['SRC-0005'],
@@ -1184,8 +1309,10 @@ final List<Map<String, dynamic>> deliAdditionalVocab = [
     'pos': 'noun',
     'category': 'environment_and_livelihood',
     'pronunciation': '[nipah]',
-    'example_sentence': 'Daun nipah tua dijalin menjadi atap pondok yang sejuk.',
-    'example_translation': 'Daun nipah tua dijalin menjadi atap pondok yang sejuk.',
+    'example_sentence':
+        'Daun nipah tua dijalin menjadi atap pondok yang sejuk.',
+    'example_translation':
+        'Daun nipah tua dijalin menjadi atap pondok yang sejuk.',
     'region': 'Hamparan Perak & Labuhan Deli',
     'variants': ['daun nipah'],
     'sources': ['SRC-0002', 'SRC-0005'],
@@ -1197,21 +1324,25 @@ final List<Map<String, dynamic>> deliAdditionalVocab = [
     'pos': 'noun',
     'category': 'environment_and_livelihood',
     'pronunciation': '[məŋkuaŋ]',
-    'example_sentence': 'Daun mengkuang dijemur kering sebelum diwarnai dan dianyam.',
-    'example_translation': 'Daun mengkuang dijemur kering sebelum diwarnai dan dianyam.',
+    'example_sentence':
+        'Daun mengkuang dijemur kering sebelum diwarnai dan dianyam.',
+    'example_translation':
+        'Daun mengkuang dijemur kering sebelum diwarnai dan dianyam.',
     'region': 'Deli Serdang & Langkat',
     'variants': ['pandan mengkuang'],
     'sources': ['SRC-0002', 'SRC-0005'],
   },
   {
     'term': 'lukah',
-    'meaning_id': 'bubu perangkap ikan berbentuk silinder dari bilah bambu dan rotan',
+    'meaning_id':
+        'bubu perangkap ikan berbentuk silinder dari bilah bambu dan rotan',
     'jawi': 'لوكه',
     'pos': 'noun',
     'category': 'environment_and_livelihood',
     'pronunciation': '[lukah]',
     'example_sentence': 'Pak Long memasang lukah di alur parit dekat sawah.',
-    'example_translation': 'Pak Long memasang bubu lukah di alur parit dekat sawah.',
+    'example_translation':
+        'Pak Long memasang bubu lukah di alur parit dekat sawah.',
     'region': 'Hamparan Perak & Percut',
     'variants': ['bubu'],
     'sources': ['SRC-0002', 'SRC-0005'],
@@ -1224,7 +1355,8 @@ final List<Map<String, dynamic>> deliAdditionalVocab = [
     'category': 'environment_and_livelihood',
     'pronunciation': '[dʒalə]',
     'example_sentence': 'Sekali menebar jala, dapat sepuluh ekor ikan belanak.',
-    'example_translation': 'Sekali menebar jala, dapat sepuluh ekor ikan belanak.',
+    'example_translation':
+        'Sekali menebar jala, dapat sepuluh ekor ikan belanak.',
     'region': 'Sungai Deli & Labuhan Deli',
     'variants': [],
     'sources': ['SRC-0002'],
@@ -1236,8 +1368,10 @@ final List<Map<String, dynamic>> deliAdditionalVocab = [
     'pos': 'noun',
     'category': 'environment_and_livelihood',
     'pronunciation': '[pəŋajuh]',
-    'example_sentence': 'Pegang kuat-kuat pengayuh tu waktu melewati arus deras.',
-    'example_translation': 'Pegang kuat-kuat dayung itu saat melewati arus deras.',
+    'example_sentence':
+        'Pegang kuat-kuat pengayuh tu waktu melewati arus deras.',
+    'example_translation':
+        'Pegang kuat-kuat dayung itu saat melewati arus deras.',
     'region': 'Labuhan Deli & Belawan',
     'variants': ['dayung', 'kayuh'],
     'sources': ['SRC-0002', 'SRC-0008'],
@@ -1250,7 +1384,8 @@ final List<Map<String, dynamic>> deliAdditionalVocab = [
     'category': 'environment_and_livelihood',
     'pronunciation': '[paŋkalan]',
     'example_sentence': 'Ikan segar baru diturunkan dari sampan di pangkalan.',
-    'example_translation': 'Ikan segar baru diturunkan dari sampan di dermaga sungai.',
+    'example_translation':
+        'Ikan segar baru diturunkan dari sampan di dermaga sungai.',
     'region': 'Labuhan Deli & Medan',
     'variants': ['tangkahan'],
     'sources': ['SRC-0002', 'SRC-0010'],
@@ -1263,7 +1398,8 @@ final List<Map<String, dynamic>> deliAdditionalVocab = [
     'category': 'environment_and_livelihood',
     'pronunciation': '[ikan sənaŋin]',
     'example_sentence': 'Ikan senangin segar banyak dijual di Pajak Ikan Lama.',
-    'example_translation': 'Ikan senangin segar banyak dijual di Pasar Ikan Lama.',
+    'example_translation':
+        'Ikan senangin segar banyak dijual di Pasar Ikan Lama.',
     'region': 'Medan & Belawan',
     'variants': ['senangin'],
     'sources': ['SRC-0005', 'SRC-0009'],
@@ -1275,21 +1411,26 @@ final List<Map<String, dynamic>> deliAdditionalVocab = [
     'pos': 'noun',
     'category': 'environment_and_livelihood',
     'pronunciation': '[ikan gəmbuŋ]',
-    'example_sentence': 'Mak membeli sekilo ikan gembung untuk dimasak tauco cabai hijau.',
-    'example_translation': 'Ibu membeli sekilo ikan kembung untuk dimasak tauco cabai hijau.',
+    'example_sentence':
+        'Mak membeli sekilo ikan gembung untuk dimasak tauco cabai hijau.',
+    'example_translation':
+        'Ibu membeli sekilo ikan kembung untuk dimasak tauco cabai hijau.',
     'region': 'Medan & Deli Serdang',
     'variants': ['gembung'],
     'sources': ['SRC-0005'],
   },
   {
     'term': 'kepah',
-    'meaning_id': 'kerang putih bercangkang licin yang hidup di lumpur muara sungai',
+    'meaning_id':
+        'kerang putih bercangkang licin yang hidup di lumpur muara sungai',
     'jawi': 'كڤه',
     'pos': 'noun',
     'category': 'environment_and_livelihood',
     'pronunciation': '[kəpah]',
-    'example_sentence': 'Tumis kepah pedas manis enak dimakan dengan nasi hangat.',
-    'example_translation': 'Tumis kerang kepah pedas manis enak dimakan dengan nasi hangat.',
+    'example_sentence':
+        'Tumis kepah pedas manis enak dimakan dengan nasi hangat.',
+    'example_translation':
+        'Tumis kerang kepah pedas manis enak dimakan dengan nasi hangat.',
     'region': 'Belawan & Percut',
     'variants': [],
     'sources': ['SRC-0002', 'SRC-0005'],
@@ -1303,8 +1444,10 @@ final List<Map<String, dynamic>> deliAdditionalVocab = [
     'pos': 'noun',
     'category': 'time_and_aspect',
     'pronunciation': '[təŋah hari]',
-    'example_sentence': 'Tengah hari nanti kite makan siang bersama di rumah Wak Long.',
-    'example_translation': 'Siang hari nanti kita makan siang bersama di rumah Wak Long.',
+    'example_sentence':
+        'Tengah hari nanti kite makan siang bersama di rumah Wak Long.',
+    'example_translation':
+        'Siang hari nanti kita makan siang bersama di rumah Wak Long.',
     'region': 'Medan & Deli Serdang',
     'variants': [],
     'sources': ['SRC-0002', 'SRC-0003'],
@@ -1329,8 +1472,10 @@ final List<Map<String, dynamic>> deliAdditionalVocab = [
     'pos': 'noun',
     'category': 'time_and_aspect',
     'pronunciation': '[səndʒakalə]',
-    'example_sentence': 'Waktu senjakala, anak-anak sudah harus masuk ke rumah.',
-    'example_translation': 'Saat senjakala, anak-anak sudah harus masuk ke rumah.',
+    'example_sentence':
+        'Waktu senjakala, anak-anak sudah harus masuk ke rumah.',
+    'example_translation':
+        'Saat senjakala, anak-anak sudah harus masuk ke rumah.',
     'region': 'Medan & Deli Serdang',
     'variants': ['senja', 'magrib'],
     'sources': ['SRC-0002'],
@@ -1343,7 +1488,8 @@ final List<Map<String, dynamic>> deliAdditionalVocab = [
     'category': 'time_and_aspect',
     'pronunciation': '[tulat]',
     'example_sentence': 'Kalau bukan lusa, hari tulath kami sampai di Medan.',
-    'example_translation': 'Kalau bukan lusa, tiga hari lagi kami tiba di Medan.',
+    'example_translation':
+        'Kalau bukan lusa, tiga hari lagi kami tiba di Medan.',
     'region': 'Medan & Deli Serdang',
     'variants': ['tulat'],
     'sources': ['SRC-0002', 'SRC-0005'],
@@ -1382,7 +1528,8 @@ final List<Map<String, dynamic>> deliAdditionalVocab = [
     'category': 'time_and_aspect',
     'pronunciation': '[hilir]',
     'example_sentence': 'Labuhan Deli terletak di kawasan hilir Sungai Deli.',
-    'example_translation': 'Labuhan Deli terletak di kawasan hilir Sungai Deli.',
+    'example_translation':
+        'Labuhan Deli terletak di kawasan hilir Sungai Deli.',
     'region': 'Labuhan Deli & Belawan',
     'variants': [],
     'sources': ['SRC-0002', 'SRC-0010'],
@@ -1408,7 +1555,8 @@ final List<Map<String, dynamic>> deliAdditionalVocab = [
     'category': 'numbers',
     'pronunciation': '[səbəlas]',
     'example_sentence': 'Ada sebelas peserta lomba berbalas pantun hari ini.',
-    'example_translation': 'Ada sebelas peserta lomba berbalas pantun hari ini.',
+    'example_translation':
+        'Ada sebelas peserta lomba berbalas pantun hari ini.',
     'region': 'Medan & Deli Serdang',
     'variants': [],
     'sources': ['SRC-0002'],
@@ -1420,8 +1568,10 @@ final List<Map<String, dynamic>> deliAdditionalVocab = [
     'pos': 'numeral',
     'category': 'numbers',
     'pronunciation': '[duə bəlas]',
-    'example_sentence': 'Tari Serampang Due Belas memiliki due belas ragam gerak.',
-    'example_translation': 'Tari Serampang Dua Belas memiliki dua belas ragam gerak.',
+    'example_sentence':
+        'Tari Serampang Due Belas memiliki due belas ragam gerak.',
+    'example_translation':
+        'Tari Serampang Dua Belas memiliki dua belas ragam gerak.',
     'region': 'Medan & Deli Serdang',
     'variants': ['dua belas'],
     'sources': ['SRC-0003', 'SRC-0009'],
@@ -1433,8 +1583,10 @@ final List<Map<String, dynamic>> deliAdditionalVocab = [
     'pos': 'numeral',
     'category': 'numbers',
     'pronunciation': '[duə puluh]',
-    'example_sentence': 'Jarak dari Medan ke Labuhan sekitar due puluh kilometer.',
-    'example_translation': 'Jarak dari Medan ke Labuhan sekitar dua puluh kilometer.',
+    'example_sentence':
+        'Jarak dari Medan ke Labuhan sekitar due puluh kilometer.',
+    'example_translation':
+        'Jarak dari Medan ke Labuhan sekitar dua puluh kilometer.',
     'region': 'Medan & Labuhan Deli',
     'variants': ['dua puluh'],
     'sources': ['SRC-0003'],
@@ -1446,8 +1598,10 @@ final List<Map<String, dynamic>> deliAdditionalVocab = [
     'pos': 'numeral',
     'category': 'numbers',
     'pronunciation': '[səratus]',
-    'example_sentence': 'Masjid Raya Al-Mashun dah berusia lebih dari seratus tahun.',
-    'example_translation': 'Masjid Raya Al-Mashun sudah berusia lebih dari seratus tahun.',
+    'example_sentence':
+        'Masjid Raya Al-Mashun dah berusia lebih dari seratus tahun.',
+    'example_translation':
+        'Masjid Raya Al-Mashun sudah berusia lebih dari seratus tahun.',
     'region': 'Medan & Deli Serdang',
     'variants': [],
     'sources': ['SRC-0002', 'SRC-0010'],
@@ -1501,14 +1655,16 @@ final List<Map<String, dynamic>> deliAdditionalVocab = [
     'category': 'grammar_and_particles',
     'pronunciation': '[usah]',
     'example_sentence': 'Usah segan-segan, makanlah kue yang di atas meja tu.',
-    'example_translation': 'Jangan sungkan-sungkan, makanlah kue yang di atas meja itu.',
+    'example_translation':
+        'Jangan sungkan-sungkan, makanlah kue yang di atas meja itu.',
     'region': 'Medan & Deli Serdang',
     'variants': ['tak usah'],
     'sources': ['SRC-0002', 'SRC-0008'],
   },
   {
     'term': 'hendaklah',
-    'meaning_id': 'sebaiknya / seharusnya (nasihat santun dalam petuah atau pantun)',
+    'meaning_id':
+        'sebaiknya / seharusnya (nasihat santun dalam petuah atau pantun)',
     'jawi': 'هندقله',
     'pos': 'particle',
     'category': 'grammar_and_particles',
@@ -1521,13 +1677,15 @@ final List<Map<String, dynamic>> deliAdditionalVocab = [
   },
   {
     'term': 'jemput makan',
-    'meaning_id': 'silakan makan (ungkapan santun mempersilakan tamu menyantap hidangan)',
+    'meaning_id':
+        'silakan makan (ungkapan santun mempersilakan tamu menyantap hidangan)',
     'jawi': 'جمڤوت ماكن',
     'pos': 'interjection',
     'category': 'greetings_and_address',
     'pronunciation': '[dʒəmput makan]',
     'example_sentence': 'Jemput makan semue, hidangan dah siap di atas talam.',
-    'example_translation': 'Silakan makan semuanya, hidangan sudah siap di atas nampan.',
+    'example_translation':
+        'Silakan makan semuanya, hidangan sudah siap di atas nampan.',
     'region': 'Medan & Deli Serdang',
     'variants': ['silakan makan'],
     'sources': ['SRC-0006', 'SRC-0009'],
@@ -1540,20 +1698,23 @@ final List<Map<String, dynamic>> deliAdditionalVocab = [
     'category': 'greetings_and_address',
     'pronunciation': '[minta diri]',
     'example_sentence': 'Hari dah malam, kami minta diri dulu ye Wak.',
-    'example_translation': 'Hari sudah malam, kami mohon pamit pulang dulu ya Wak.',
+    'example_translation':
+        'Hari sudah malam, kami mohon pamit pulang dulu ya Wak.',
     'region': 'Medan & Deli Serdang',
     'variants': ['mohon diri'],
     'sources': ['SRC-0006'],
   },
   {
     'term': 'tunjuk ajar',
-    'meaning_id': 'petuah, nasihat, dan bimbingan hidup dari orang tua atau guru',
+    'meaning_id':
+        'petuah, nasihat, dan bimbingan hidup dari orang tua atau guru',
     'jawi': 'تونجوق اجر',
     'pos': 'noun',
     'category': 'greetings_and_address',
     'pronunciation': '[tundʒuʔ adʒar]',
     'example_sentence': 'Kami memohon tunjuk ajar dari Datuk dan tetua adat.',
-    'example_translation': 'Kami memohon nasihat dan bimbingan dari Datuk dan tetua adat.',
+    'example_translation':
+        'Kami memohon nasihat dan bimbingan dari Datuk dan tetua adat.',
     'region': 'Medan & Deli Serdang',
     'variants': [],
     'sources': ['SRC-0008', 'SRC-0009'],
@@ -1566,20 +1727,24 @@ final List<Map<String, dynamic>> deliAdditionalVocab = [
     'category': 'greetings_and_address',
     'pronunciation': '[səlamat dʒalan]',
     'example_sentence': 'Selamat jalan Cik, semoge selamat sampai di tujuan.',
-    'example_translation': 'Selamat jalan Cik, semoga selamat sampai di tujuan.',
+    'example_translation':
+        'Selamat jalan Cik, semoga selamat sampai di tujuan.',
     'region': 'Medan & Deli Serdang',
     'variants': [],
     'sources': ['SRC-0002', 'SRC-0006'],
   },
   {
     'term': 'selamat tinggal',
-    'meaning_id': 'ucapan perpisahan dari orang yang berangkat kepada yang tinggal',
+    'meaning_id':
+        'ucapan perpisahan dari orang yang berangkat kepada yang tinggal',
     'jawi': 'سلامت تيڠݢل',
     'pos': 'interjection',
     'category': 'greetings_and_address',
     'pronunciation': '[səlamat tiŋgal]',
-    'example_sentence': 'Selamat tinggal kampung halaman, tahun depan saye balik lagi.',
-    'example_translation': 'Selamat tinggal kampung halaman, tahun depan saya pulang lagi.',
+    'example_sentence':
+        'Selamat tinggal kampung halaman, tahun depan saye balik lagi.',
+    'example_translation':
+        'Selamat tinggal kampung halaman, tahun depan saya pulang lagi.',
     'region': 'Medan & Deli Serdang',
     'variants': [],
     'sources': ['SRC-0002'],
@@ -1591,8 +1756,10 @@ final List<Map<String, dynamic>> deliAdditionalVocab = [
     'pos': 'interjection',
     'category': 'greetings_and_address',
     'pronunciation': '[minta maaf]',
-    'example_sentence': 'Saye minta maaf lahir dan batin kalau ade salah cakap.',
-    'example_translation': 'Saya mohon maaf lahir dan batin kalau ada salah bicara.',
+    'example_sentence':
+        'Saye minta maaf lahir dan batin kalau ade salah cakap.',
+    'example_translation':
+        'Saya mohon maaf lahir dan batin kalau ada salah bicara.',
     'region': 'Medan & Deli Serdang',
     'variants': ['mohon maaf'],
     'sources': ['SRC-0006'],
@@ -1605,7 +1772,8 @@ final List<Map<String, dynamic>> deliAdditionalVocab = [
     'category': 'greetings_and_address',
     'pronunciation': '[tərimə kasih baɲaʔ]',
     'example_sentence': 'Terime kasih banyak dah sudi singgah ke teratak kami.',
-    'example_translation': 'Terima kasih banyak sudah sudi singgah ke rumah kami.',
+    'example_translation':
+        'Terima kasih banyak sudah sudi singgah ke rumah kami.',
     'region': 'Medan & Deli Serdang',
     'variants': ['terima kasih banyak'],
     'sources': ['SRC-0003', 'SRC-0006'],
@@ -1631,7 +1799,8 @@ final List<Map<String, dynamic>> deliAdditionalVocab = [
     'category': 'household',
     'pronunciation': '[alaman]',
     'example_sentence': 'Pokok mangga di alaman rumah Atok rindang daunnye.',
-    'example_translation': 'Pohon mangga di halaman rumah Kakek rindang daunnya.',
+    'example_translation':
+        'Pohon mangga di halaman rumah Kakek rindang daunnya.',
     'region': 'Deli Serdang & Labuhan Deli',
     'variants': ['halaman', 'laman'],
     'sources': ['SRC-0002', 'SRC-0005'],
@@ -1643,8 +1812,10 @@ final List<Map<String, dynamic>> deliAdditionalVocab = [
     'pos': 'noun',
     'category': 'household',
     'pronunciation': '[taŋgə]',
-    'example_sentence': 'Di dekat kaki tangga disediakan tempayan air pencuci kaki.',
-    'example_translation': 'Di dekat kaki tangga disediakan tempayan air pencuci kaki.',
+    'example_sentence':
+        'Di dekat kaki tangga disediakan tempayan air pencuci kaki.',
+    'example_translation':
+        'Di dekat kaki tangga disediakan tempayan air pencuci kaki.',
     'region': 'Medan & Labuhan Deli',
     'variants': ['tangge'],
     'sources': ['SRC-0002', 'SRC-0009'],
@@ -1657,7 +1828,8 @@ final List<Map<String, dynamic>> deliAdditionalVocab = [
     'category': 'household',
     'pronunciation': '[təmpajan]',
     'example_sentence': 'Isilah tempayan tu sampai penuh sebelum hari gelap.',
-    'example_translation': 'Isilah tempayan itu sampai penuh sebelum hari gelap.',
+    'example_translation':
+        'Isilah tempayan itu sampai penuh sebelum hari gelap.',
     'region': 'Medan & Deli Serdang',
     'variants': [],
     'sources': ['SRC-0002', 'SRC-0004'],
@@ -1670,7 +1842,8 @@ final List<Map<String, dynamic>> deliAdditionalVocab = [
     'category': 'household',
     'pronunciation': '[gajuŋ]',
     'example_sentence': 'Ambilkan air di tempayan pakai gayung tempurung tu.',
-    'example_translation': 'Ambilkan air di tempayan menggunakan gayung tempurung itu.',
+    'example_translation':
+        'Ambilkan air di tempayan menggunakan gayung tempurung itu.',
     'region': 'Medan & Deli Serdang',
     'variants': ['sibur'],
     'sources': ['SRC-0002', 'SRC-0005'],
@@ -1682,8 +1855,10 @@ final List<Map<String, dynamic>> deliAdditionalVocab = [
     'pos': 'noun',
     'category': 'household',
     'pronunciation': '[tikar pandan]',
-    'example_sentence': 'Bentangkan tikar pandan di ruang tengah untuk tamu kenduri.',
-    'example_translation': 'Bentangkan tikar pandan di ruang tengah untuk tamu kenduri.',
+    'example_sentence':
+        'Bentangkan tikar pandan di ruang tengah untuk tamu kenduri.',
+    'example_translation':
+        'Bentangkan tikar pandan di ruang tengah untuk tamu kenduri.',
     'region': 'Medan & Deli Serdang',
     'variants': ['tikar mengkuang'],
     'sources': ['SRC-0002', 'SRC-0009'],
@@ -1696,7 +1871,8 @@ final List<Map<String, dynamic>> deliAdditionalVocab = [
     'category': 'household',
     'pronunciation': '[bantal pəluʔ]',
     'example_sentence': 'Sarung bantal peluk tu disulam motif bunga melur.',
-    'example_translation': 'Sarung bantal guling itu disulam motif bunga melati.',
+    'example_translation':
+        'Sarung bantal guling itu disulam motif bunga melati.',
     'region': 'Medan & Deli Serdang',
     'variants': ['guling'],
     'sources': ['SRC-0002', 'SRC-0005'],
@@ -1708,8 +1884,10 @@ final List<Map<String, dynamic>> deliAdditionalVocab = [
     'pos': 'noun',
     'category': 'household',
     'pronunciation': '[kəlambu]',
-    'example_sentence': 'Pasanglah kelambu sebelum tidur agar tak digigit nyamuk.',
-    'example_translation': 'Pasanglah kelambu sebelum tidur agar tidak digigit nyamuk.',
+    'example_sentence':
+        'Pasanglah kelambu sebelum tidur agar tak digigit nyamuk.',
+    'example_translation':
+        'Pasanglah kelambu sebelum tidur agar tidak digigit nyamuk.',
     'region': 'Medan & Deli Serdang',
     'variants': [],
     'sources': ['SRC-0002'],
@@ -1721,8 +1899,10 @@ final List<Map<String, dynamic>> deliAdditionalVocab = [
     'pos': 'noun',
     'category': 'culture_and_customs',
     'pronunciation': '[buŋə məlur]',
-    'example_sentence': 'Harum bunga melur menghiasi sanggul pengantin perempuan.',
-    'example_translation': 'Harum bunga melati menghiasi sanggul pengantin perempuan.',
+    'example_sentence':
+        'Harum bunga melur menghiasi sanggul pengantin perempuan.',
+    'example_translation':
+        'Harum bunga melati menghiasi sanggul pengantin perempuan.',
     'region': 'Medan & Deli Serdang',
     'variants': ['melur', 'melati'],
     'sources': ['SRC-0002', 'SRC-0009'],
@@ -1735,7 +1915,8 @@ final List<Map<String, dynamic>> deliAdditionalVocab = [
     'category': 'culture_and_customs',
     'pronunciation': '[buŋə rampaj]',
     'example_sentence': 'Bunga rampai ditebarkan mengharumkan bilik pengantin.',
-    'example_translation': 'Bunga rampai ditebarkan mengharumkan kamar pengantin.',
+    'example_translation':
+        'Bunga rampai ditebarkan mengharumkan kamar pengantin.',
     'region': 'Medan & Deli Serdang',
     'variants': [],
     'sources': ['SRC-0009'],
@@ -1747,8 +1928,10 @@ final List<Map<String, dynamic>> deliAdditionalVocab = [
     'pos': 'noun',
     'category': 'culture_and_customs',
     'pronunciation': '[air mawar]',
-    'example_sentence': 'Tetua adat memercikkan air mawar saat prosesi tepung tawar.',
-    'example_translation': 'Tetua adat memercikkan air mawar saat prosesi tepung tawar.',
+    'example_sentence':
+        'Tetua adat memercikkan air mawar saat prosesi tepung tawar.',
+    'example_translation':
+        'Tetua adat memercikkan air mawar saat prosesi tepung tawar.',
     'region': 'Medan & Deli Serdang',
     'variants': [],
     'sources': ['SRC-0009'],
@@ -1760,8 +1943,10 @@ final List<Map<String, dynamic>> deliAdditionalVocab = [
     'pos': 'noun',
     'category': 'culture_and_customs',
     'pronunciation': '[bəras kuɲit]',
-    'example_sentence': 'Beras kunyit dan bertih ditaburkan sambil mengucap syukur.',
-    'example_translation': 'Beras kunyit dan bertih ditaburkan sambil mengucap syukur.',
+    'example_sentence':
+        'Beras kunyit dan bertih ditaburkan sambil mengucap syukur.',
+    'example_translation':
+        'Beras kunyit dan bertih ditaburkan sambil mengucap syukur.',
     'region': 'Medan & Deli Serdang',
     'variants': [],
     'sources': ['SRC-0009'],
@@ -1773,21 +1958,26 @@ final List<Map<String, dynamic>> deliAdditionalVocab = [
     'pos': 'noun',
     'category': 'culture_and_customs',
     'pronunciation': '[bərtih]',
-    'example_sentence': 'Bertih melambangkan harapan agar rezeki mekar dan berkah.',
-    'example_translation': 'Bertih melambangkan harapan agar rezeki mekar dan berkah.',
+    'example_sentence':
+        'Bertih melambangkan harapan agar rezeki mekar dan berkah.',
+    'example_translation':
+        'Bertih melambangkan harapan agar rezeki mekar dan berkah.',
     'region': 'Medan & Deli Serdang',
     'variants': ['beras bertih'],
     'sources': ['SRC-0002', 'SRC-0009'],
   },
   {
     'term': 'balai',
-    'meaning_id': 'bangunan atau ruang pertemuan umum tempat bermusyawarah adat',
+    'meaning_id':
+        'bangunan atau ruang pertemuan umum tempat bermusyawarah adat',
     'jawi': 'بالاي',
     'pos': 'noun',
     'category': 'culture_and_customs',
     'pronunciation': '[balaj]',
-    'example_sentence': 'Tetua kampung berkumpul di balai membahas persiapan kenduri.',
-    'example_translation': 'Tetua kampung berkumpul di balai membahas persiapan kenduri.',
+    'example_sentence':
+        'Tetua kampung berkumpul di balai membahas persiapan kenduri.',
+    'example_translation':
+        'Tetua kampung berkumpul di balai membahas persiapan kenduri.',
     'region': 'Medan & Deli Serdang',
     'variants': ['balairung'],
     'sources': ['SRC-0002', 'SRC-0010'],
@@ -1800,7 +1990,8 @@ final List<Map<String, dynamic>> deliAdditionalVocab = [
     'category': 'culture_and_customs',
     'pronunciation': '[mufakat]',
     'example_sentence': 'Bulat air karena pembuluh, bulat kata karena mufakat.',
-    'example_translation': 'Bulat air karena pembuluh, bulat kata karena mufakat.',
+    'example_translation':
+        'Bulat air karena pembuluh, bulat kata karena mufakat.',
     'region': 'Medan & Deli Serdang',
     'variants': ['sepakat'],
     'sources': ['SRC-0007', 'SRC-0008'],
@@ -1813,7 +2004,8 @@ final List<Map<String, dynamic>> deliAdditionalVocab = [
     'category': 'qualities_and_emotions',
     'pronunciation': '[amanah]',
     'example_sentence': 'Orang yang amanah selalu dipercaye dalam berniage.',
-    'example_translation': 'Orang yang amanah selalu dipercaya dalam berdagang.',
+    'example_translation':
+        'Orang yang amanah selalu dipercaya dalam berdagang.',
     'region': 'Medan & Deli Serdang',
     'variants': [],
     'sources': ['SRC-0004', 'SRC-0008'],
@@ -1825,21 +2017,26 @@ final List<Map<String, dynamic>> deliAdditionalVocab = [
     'pos': 'verb',
     'category': 'daily_activities',
     'pronunciation': '[bərniagə]',
-    'example_sentence': 'Sejak mude Wak Ngah berniage kain songket di Pajak Ikan.',
-    'example_translation': 'Sejak muda Paman Tengah berdagang kain songket di Pasar Ikan.',
+    'example_sentence':
+        'Sejak mude Wak Ngah berniage kain songket di Pajak Ikan.',
+    'example_translation':
+        'Sejak muda Paman Tengah berdagang kain songket di Pasar Ikan.',
     'region': 'Medan & Labuhan Deli',
     'variants': ['berniaga', 'berdagang'],
     'sources': ['SRC-0002', 'SRC-0003'],
   },
   {
     'term': 'menawar',
-    'meaning_id': 'mengajukan harga yang lebih rendah saat membeli barang di pasar',
+    'meaning_id':
+        'mengajukan harga yang lebih rendah saat membeli barang di pasar',
     'jawi': 'مناور',
     'pos': 'verb',
     'category': 'daily_activities',
     'pronunciation': '[mənawar]',
-    'example_sentence': 'Kalau menawar harga ikan di pajak, bercakaplah dengan sopan.',
-    'example_translation': 'Kalau menawar harga ikan di pasar, berbicaralah dengan sopan.',
+    'example_sentence':
+        'Kalau menawar harga ikan di pajak, bercakaplah dengan sopan.',
+    'example_translation':
+        'Kalau menawar harga ikan di pasar, berbicaralah dengan sopan.',
     'region': 'Medan & Deli Serdang',
     'variants': ['tawar'],
     'sources': ['SRC-0002'],
@@ -1851,21 +2048,25 @@ final List<Map<String, dynamic>> deliAdditionalVocab = [
     'pos': 'noun',
     'category': 'household',
     'pronunciation': '[timbaŋan]',
-    'example_sentence': 'Pedagang yang jujur tidak pernah mengurangi timbangan.',
-    'example_translation': 'Pedagang yang jujur tidak pernah mengurangi timbangan.',
+    'example_sentence':
+        'Pedagang yang jujur tidak pernah mengurangi timbangan.',
+    'example_translation':
+        'Pedagang yang jujur tidak pernah mengurangi timbangan.',
     'region': 'Medan & Deli Serdang',
     'variants': ['dacing'],
     'sources': ['SRC-0002'],
   },
   {
     'term': 'bakul',
-    'meaning_id': 'wadah anyaman bambu atau rotan tempat membawa belanjaan atau beras',
+    'meaning_id':
+        'wadah anyaman bambu atau rotan tempat membawa belanjaan atau beras',
     'jawi': 'باكول',
     'pos': 'noun',
     'category': 'household',
     'pronunciation': '[bakul]',
     'example_sentence': 'Mak membawa bakul berisi sayur dan ikan dari pajak.',
-    'example_translation': 'Ibu membawa bakul berisi sayur dan ikan dari pasar.',
+    'example_translation':
+        'Ibu membawa bakul berisi sayur dan ikan dari pasar.',
     'region': 'Medan & Deli Serdang',
     'variants': ['keranjang'],
     'sources': ['SRC-0002', 'SRC-0005'],
@@ -1877,8 +2078,10 @@ final List<Map<String, dynamic>> deliAdditionalVocab = [
     'pos': 'noun',
     'category': 'household',
     'pronunciation': '[pərigi]',
-    'example_sentence': 'Air perigi di kampung kami jernih walaupun musim kemarau.',
-    'example_translation': 'Air sumur di kampung kami jernih walaupun musim kemarau.',
+    'example_sentence':
+        'Air perigi di kampung kami jernih walaupun musim kemarau.',
+    'example_translation':
+        'Air sumur di kampung kami jernih walaupun musim kemarau.',
     'region': 'Labuhan Deli & Deli Serdang',
     'variants': ['sumur'],
     'sources': ['SRC-0002', 'SRC-0005'],
@@ -1890,8 +2093,10 @@ final List<Map<String, dynamic>> deliAdditionalVocab = [
     'pos': 'noun',
     'category': 'household',
     'pronunciation': '[pəlantar]',
-    'example_sentence': 'Kami duduk mengambil angin sore di atas pelantar kayu.',
-    'example_translation': 'Kami duduk mencari angin sore di atas pelantar kayu.',
+    'example_sentence':
+        'Kami duduk mengambil angin sore di atas pelantar kayu.',
+    'example_translation':
+        'Kami duduk mencari angin sore di atas pelantar kayu.',
     'region': 'Labuhan Deli & Belawan',
     'variants': ['pelantaran'],
     'sources': ['SRC-0002', 'SRC-0005'],
@@ -1904,7 +2109,8 @@ final List<Map<String, dynamic>> deliAdditionalVocab = [
     'category': 'household',
     'pronunciation': '[səlasar]',
     'example_sentence': 'Anak-anak belajar mengaji duduk berbaris di selasar.',
-    'example_translation': 'Anak-anak belajar mengaji duduk berbaris di selasar.',
+    'example_translation':
+        'Anak-anak belajar mengaji duduk berbaris di selasar.',
     'region': 'Medan & Labuhan Deli',
     'variants': [],
     'sources': ['SRC-0002', 'SRC-0009'],
@@ -1916,8 +2122,10 @@ final List<Map<String, dynamic>> deliAdditionalVocab = [
     'pos': 'noun',
     'category': 'household',
     'pronunciation': '[pərabuŋ]',
-    'example_sentence': 'Perabung rumah adat tu dihiasi ukiran kayu selembayung.',
-    'example_translation': 'Bubungan atap rumah adat itu dihiasi ukiran kayu selembayung.',
+    'example_sentence':
+        'Perabung rumah adat tu dihiasi ukiran kayu selembayung.',
+    'example_translation':
+        'Bubungan atap rumah adat itu dihiasi ukiran kayu selembayung.',
     'region': 'Medan & Deli Serdang',
     'variants': ['bubungan'],
     'sources': ['SRC-0002', 'SRC-0009'],
@@ -1930,7 +2138,8 @@ final List<Map<String, dynamic>> deliAdditionalVocab = [
     'category': 'culture_and_customs',
     'pronunciation': '[kisah]',
     'example_sentence': 'Atok menceritakan kisah Putri Hijau dari Deli Tua.',
-    'example_translation': 'Kakek menceritakan kisah Putri Hijau dari Deli Tua.',
+    'example_translation':
+        'Kakek menceritakan kisah Putri Hijau dari Deli Tua.',
     'region': 'Medan & Deli Tua',
     'variants': ['cerite'],
     'sources': ['SRC-0009', 'SRC-0010'],
@@ -1942,15 +2151,18 @@ final List<Map<String, dynamic>> deliAdditionalVocab = [
     'pos': 'noun',
     'category': 'culture_and_customs',
     'pronunciation': '[hikajat]',
-    'example_sentence': 'Hikayat Deli mencatat sejarah berdirinye Kesultanan Deli.',
-    'example_translation': 'Hikayat Deli mencatat sejarah berdirinya Kesultanan Deli.',
+    'example_sentence':
+        'Hikayat Deli mencatat sejarah berdirinye Kesultanan Deli.',
+    'example_translation':
+        'Hikayat Deli mencatat sejarah berdirinya Kesultanan Deli.',
     'region': 'Medan & Labuhan Deli',
     'variants': [],
     'sources': ['SRC-0010'],
   },
   {
     'term': 'syair',
-    'meaning_id': 'puisi lama Melayu bersajak a-a-a-a yang dilagukan dengan irama khas',
+    'meaning_id':
+        'puisi lama Melayu bersajak a-a-a-a yang dilagukan dengan irama khas',
     'jawi': 'شعير',
     'pos': 'noun',
     'category': 'culture_and_customs',
@@ -1963,13 +2175,16 @@ final List<Map<String, dynamic>> deliAdditionalVocab = [
   },
   {
     'term': 'gurindam',
-    'meaning_id': 'puisi Melayu dua baris seuntai yang berisi nasihat sebab-akibat',
+    'meaning_id':
+        'puisi Melayu dua baris seuntai yang berisi nasihat sebab-akibat',
     'jawi': 'ݢوريندم',
     'pos': 'noun',
     'category': 'culture_and_customs',
     'pronunciation': '[gurindam]',
-    'example_sentence': 'Bait gurindam mengajarkan budi pekerti dan kesantunan.',
-    'example_translation': 'Bait gurindam mengajarkan budi pekerti dan kesantunan.',
+    'example_sentence':
+        'Bait gurindam mengajarkan budi pekerti dan kesantunan.',
+    'example_translation':
+        'Bait gurindam mengajarkan budi pekerti dan kesantunan.',
     'region': 'Medan & Deli Serdang',
     'variants': [],
     'sources': ['SRC-0008'],
@@ -1981,8 +2196,10 @@ final List<Map<String, dynamic>> deliAdditionalVocab = [
     'pos': 'verb',
     'category': 'daily_activities',
     'pronunciation': '[bərsənanduŋ]',
-    'example_sentence': 'Mak bersenandung lagu Makan Sirih sambil menidurkan adik.',
-    'example_translation': 'Ibu bersenandung lagu Makan Sirih sambil menidurkan adik.',
+    'example_sentence':
+        'Mak bersenandung lagu Makan Sirih sambil menidurkan adik.',
+    'example_translation':
+        'Ibu bersenandung lagu Makan Sirih sambil menidurkan adik.',
     'region': 'Medan & Labuhan Deli',
     'variants': ['senandung'],
     'sources': ['SRC-0009'],
@@ -2007,8 +2224,10 @@ final List<Map<String, dynamic>> deliAdditionalVocab = [
     'pos': 'noun',
     'category': 'culture_and_customs',
     'pronunciation': '[muhibah]',
-    'example_sentence': 'Kunjungan muhibah antar-kampung mempererat persaudaraan.',
-    'example_translation': 'Kunjungan persahabatan antar-kampung mempererat persaudaraan.',
+    'example_sentence':
+        'Kunjungan muhibah antar-kampung mempererat persaudaraan.',
+    'example_translation':
+        'Kunjungan persahabatan antar-kampung mempererat persaudaraan.',
     'region': 'Medan & Deli Serdang',
     'variants': [],
     'sources': ['SRC-0006', 'SRC-0009'],
@@ -2020,8 +2239,10 @@ final List<Map<String, dynamic>> deliAdditionalVocab = [
     'pos': 'noun',
     'category': 'kinship',
     'pronunciation': '[taulan]',
-    'example_sentence': 'Handai taulan datang memberi selamat kepada kedua mempelai.',
-    'example_translation': 'Sahabat dan kerabat datang memberi selamat kepada kedua mempelai.',
+    'example_sentence':
+        'Handai taulan datang memberi selamat kepada kedua mempelai.',
+    'example_translation':
+        'Sahabat dan kerabat datang memberi selamat kepada kedua mempelai.',
     'region': 'Medan & Deli Serdang',
     'variants': ['handai taulan'],
     'sources': ['SRC-0006', 'SRC-0008'],
@@ -2035,10 +2256,30 @@ final List<Map<String, dynamic>> deliAdditionalConversations = [
     'level': 1,
     'region': 'Medan Maimun',
     'lines': [
-      {'order': 1, 'speaker': 'Wan Muda', 'deli': 'Assalamualaikum, Atok. Ape kabar Atok pagi ni?', 'indonesia': 'Assalamualaikum, Kakek. Apa kabar Kakek pagi ini?'},
-      {'order': 2, 'speaker': 'Atok', 'deli': 'Waalaikumsalam. Alhamdulillah sehat. Awak nak ke mane pagi-pagi begini?', 'indonesia': 'Waalaikumsalam. Alhamdulillah sehat. Kamu mau ke mana pagi-pagi begini?'},
-      {'order': 3, 'speaker': 'Wan Muda', 'deli': 'Saye nak pergi ke Pajak Ikan sebentar membantu Mak membeli rempah gulai.', 'indonesia': 'Saya mau pergi ke Pasar Ikan sebentar membantu Ibu membeli rempah gulai.'},
-      {'order': 4, 'speaker': 'Atok', 'deli': 'Eloklah tu. Hati-hati di jalan ye, sampaikan salam Atok kepade Ayah dan Mak awak.', 'indonesia': 'Baguslah itu. Hati-hati di jalan ya, sampaikan salam Kakek kepada Ayah dan Ibumu.'},
+      {
+        'order': 1,
+        'speaker': 'Wan Muda',
+        'deli': 'Assalamualaikum, Atok. Ape kabar Atok pagi ni?',
+        'indonesia': 'Assalamualaikum, Kakek. Apa kabar Kakek pagi ini?',
+      },
+      {
+        'order': 2,
+        'speaker': 'Atok',
+        'deli': 'Waalaikumsalam. Alhamdulillah sehat. Awak nak ke mane pagi-pagi begini?',
+        'indonesia': 'Waalaikumsalam. Alhamdulillah sehat. Kamu mau ke mana pagi-pagi begini?',
+      },
+      {
+        'order': 3,
+        'speaker': 'Wan Muda',
+        'deli': 'Saye nak pergi ke Pajak Ikan sebentar membantu Mak membeli rempah gulai.',
+        'indonesia': 'Saya mau pergi ke Pasar Ikan sebentar membantu Ibu membeli rempah gulai.',
+      },
+      {
+        'order': 4,
+        'speaker': 'Atok',
+        'deli': 'Eloklah tu. Hati-hati di jalan ye, sampaikan salam Atok kepade Ayah dan Mak awak.',
+        'indonesia': 'Baguslah itu. Hati-hati di jalan ya, sampaikan salam Kakek kepada Ayah dan Ibumu.',
+      },
     ],
   },
   {
@@ -2047,10 +2288,31 @@ final List<Map<String, dynamic>> deliAdditionalConversations = [
     'level': 1,
     'region': 'Labuhan Deli',
     'lines': [
-      {'order': 1, 'speaker': 'Mak Ngah', 'deli': 'Bang, ikan senangin ni baru turun dari sampan ke?', 'indonesia': 'Bang, ikan senangin ini baru turun dari sampan kah?'},
-      {'order': 2, 'speaker': 'Pedagang', 'deli': 'Betul, Kak. Baru berlabuh subuh tadi dari Belawan. Berape kilo Kakak nak beli?', 'indonesia': 'Betul, Kak. Baru berlabuh subuh tadi dari Belawan. Berapa kilo Kakak mau beli?'},
-      {'order': 3, 'speaker': 'Mak Ngah', 'deli': 'Timbangkan due kilo ye. Jangan lupe tambahkan daun kesum dan bunga kantan.', 'indonesia': 'Timbangkan dua kilo ya. Jangan lupa tambahkan daun kesum dan bunga kecombrang.'},
-      {'order': 4, 'speaker': 'Pedagang', 'deli': 'Siap, Kak. Ini die ikannye, segar kali untuk dimasak asam pedas.', 'indonesia': 'Siap, Kak. Ini dia ikannya, segar sekali untuk dimasak asam pedas.'},
+      {
+        'order': 1,
+        'speaker': 'Mak Ngah',
+        'deli': 'Bang, ikan senangin ni baru turun dari sampan ke?',
+        'indonesia': 'Bang, ikan senangin ini baru turun dari sampan kah?',
+      },
+      {
+        'order': 2,
+        'speaker': 'Pedagang',
+        'deli': 'Betul, Kak. Baru berlabuh subuh tadi dari Belawan. Berape kilo Kakak nak beli?',
+        'indonesia': 'Betul, Kak. Baru berlabuh subuh tadi dari Belawan. Berapa kilo Kakak mau beli?',
+      },
+      {
+        'order': 3,
+        'speaker': 'Mak Ngah',
+        'deli': 'Timbangkan due kilo ye. Jangan lupe tambahkan daun kesum dan bunga kantan.',
+        'indonesia': 'Timbangkan dua kilo ya. Jangan lupa tambahkan daun kesum dan bunga kecombrang.',
+      },
+      {
+        'order': 4,
+        'speaker': 'Pedagang',
+        'deli':
+            'Siap, Kak. Ini die ikannye, segar kali untuk dimasak asam pedas.',
+        'indonesia': 'Siap, Kak. Ini dia ikannya, segar sekali untuk dimasak asam pedas.',
+      },
     ],
   },
   {
@@ -2059,10 +2321,32 @@ final List<Map<String, dynamic>> deliAdditionalConversations = [
     'level': 2,
     'region': 'Medan & Deli Serdang',
     'lines': [
-      {'order': 1, 'speaker': 'Pak Long', 'deli': 'Silakan naik ke serambi, jemput duduk di atas tikar pandan ni.', 'indonesia': 'Silakan naik ke beranda, silakan duduk di atas tikar pandan ini.'},
-      {'order': 2, 'speaker': 'Telangkai', 'deli': 'Terime kasih banyak, Datuk. Kedatangan kami ni membawa hajat baik beserta tepak sirih.', 'indonesia': 'Terima kasih banyak, Datuk. Kedatangan kami ini membawa niat baik beserta tepak sirih.'},
-      {'order': 3, 'speaker': 'Pak Long', 'deli': 'Makanlah sirih sekapur dulu, baru kite buka mufakat dengan pantun.', 'indonesia': 'Makanlah sirih sekapur dulu, baru kita buka musyawarah dengan pantun.'},
-      {'order': 4, 'speaker': 'Telangkai', 'deli': 'Baiklah Datuk, bulat air karena pembuluh, bulat kata karena mufakat.', 'indonesia': 'Baiklah Datuk, bulat air karena pembuluh, bulat kata karena mufakat.'},
+      {
+        'order': 1,
+        'speaker': 'Pak Long',
+        'deli':
+            'Silakan naik ke serambi, jemput duduk di atas tikar pandan ni.',
+        'indonesia':
+            'Silakan naik ke beranda, silakan duduk di atas tikar pandan ini.',
+      },
+      {
+        'order': 2,
+        'speaker': 'Telangkai',
+        'deli': 'Terime kasih banyak, Datuk. Kedatangan kami ni membawa hajat baik beserta tepak sirih.',
+        'indonesia': 'Terima kasih banyak, Datuk. Kedatangan kami ini membawa niat baik beserta tepak sirih.',
+      },
+      {
+        'order': 3,
+        'speaker': 'Pak Long',
+        'deli': 'Makanlah sirih sekapur dulu, baru kite buka mufakat dengan pantun.',
+        'indonesia': 'Makanlah sirih sekapur dulu, baru kita buka musyawarah dengan pantun.',
+      },
+      {
+        'order': 4,
+        'speaker': 'Telangkai',
+        'deli': 'Baiklah Datuk, bulat air karena pembuluh, bulat kata karena mufakat.',
+        'indonesia': 'Baiklah Datuk, bulat air karena pembuluh, bulat kata karena mufakat.',
+      },
     ],
   },
   {
@@ -2071,10 +2355,31 @@ final List<Map<String, dynamic>> deliAdditionalConversations = [
     'level': 2,
     'region': 'Medan Kota',
     'lines': [
-      {'order': 1, 'speaker': 'Kak Long', 'deli': 'Mak, beras sangrai dan kelapa parut untuk bubur pedas dah siap ditumbuk.', 'indonesia': 'Bu, beras sangrai dan kelapa parut untuk bubur pedas sudah siap ditumbuk.'},
-      {'order': 2, 'speaker': 'Emak', 'deli': 'Syukurlah. Sekarang tolong iris daun kesum, serai, dan pucuk pakis untuk anyang.', 'indonesia': 'Syukurlah. Sekarang tolong iris daun kesum, serai, dan pucuk pakis untuk anyang.'},
-      {'order': 3, 'speaker': 'Kak Long', 'deli': 'Harum kali bau rempahnye, Mak. Nanti petang kite antarkan semangkuk ke rumah Mak Cik ye.', 'indonesia': 'Harum sekali bau rempahnya, Bu. Nanti sore kita antarkan semangkuk ke rumah Bibi ya.'},
-      {'order': 4, 'speaker': 'Emak', 'deli': 'Betul tu, berbagi hidangan berbuka sudah jadi adat kampung kite.', 'indonesia': 'Betul itu, berbagi hidangan berbuka sudah menjadi adat kampung kita.'},
+      {
+        'order': 1,
+        'speaker': 'Kak Long',
+        'deli': 'Mak, beras sangrai dan kelapa parut untuk bubur pedas dah siap ditumbuk.',
+        'indonesia': 'Bu, beras sangrai dan kelapa parut untuk bubur pedas sudah siap ditumbuk.',
+      },
+      {
+        'order': 2,
+        'speaker': 'Emak',
+        'deli': 'Syukurlah. Sekarang tolong iris daun kesum, serai, dan pucuk pakis untuk anyang.',
+        'indonesia': 'Syukurlah. Sekarang tolong iris daun kesum, serai, dan pucuk pakis untuk anyang.',
+      },
+      {
+        'order': 3,
+        'speaker': 'Kak Long',
+        'deli': 'Harum kali bau rempahnye, Mak. Nanti petang kite antarkan semangkuk ke rumah Mak Cik ye.',
+        'indonesia': 'Harum sekali bau rempahnya, Bu. Nanti sore kita antarkan semangkuk ke rumah Bibi ya.',
+      },
+      {
+        'order': 4,
+        'speaker': 'Emak',
+        'deli':
+            'Betul tu, berbagi hidangan berbuka sudah jadi adat kampung kite.',
+        'indonesia': 'Betul itu, berbagi hidangan berbuka sudah menjadi adat kampung kita.',
+      },
     ],
   },
   {
@@ -2083,10 +2388,30 @@ final List<Map<String, dynamic>> deliAdditionalConversations = [
     'level': 2,
     'region': 'Deli Serdang',
     'lines': [
-      {'order': 1, 'speaker': 'Pelatih', 'deli': 'Ingat ye, gerak pertame dimulai dengan langkah tari permulaan yang lembut.', 'indonesia': 'Ingat ya, gerak pertama dimulai dengan langkah tari permulaan yang lembut.'},
-      {'order': 2, 'speaker': 'Siti', 'deli': 'Kapan kami mulai memegang sapu tangan, Kak?', 'indonesia': 'Kapan kami mulai memegang sapu tangan, Kak?'},
-      {'order': 3, 'speaker': 'Pelatih', 'deli': 'Pada ragam gerak kesedua belas, yaitu tari sapu tangan sebagai lambang ikatan janji.', 'indonesia': 'Pada ragam gerak kedua belas, yaitu tari sapu tangan sebagai lambang ikatan janji.'},
-      {'order': 4, 'speaker': 'Siti', 'deli': 'Baik Kak, kami ulang lagi bersama iringan biola dan gendang ronggeng.', 'indonesia': 'Baik Kak, kami ulang lagi bersama iringan biola dan gendang ronggeng.'},
+      {
+        'order': 1,
+        'speaker': 'Pelatih',
+        'deli': 'Ingat ye, gerak pertame dimulai dengan langkah tari permulaan yang lembut.',
+        'indonesia': 'Ingat ya, gerak pertama dimulai dengan langkah tari permulaan yang lembut.',
+      },
+      {
+        'order': 2,
+        'speaker': 'Siti',
+        'deli': 'Kapan kami mulai memegang sapu tangan, Kak?',
+        'indonesia': 'Kapan kami mulai memegang sapu tangan, Kak?',
+      },
+      {
+        'order': 3,
+        'speaker': 'Pelatih',
+        'deli': 'Pada ragam gerak kesedua belas, yaitu tari sapu tangan sebagai lambang ikatan janji.',
+        'indonesia': 'Pada ragam gerak kedua belas, yaitu tari sapu tangan sebagai lambang ikatan janji.',
+      },
+      {
+        'order': 4,
+        'speaker': 'Siti',
+        'deli': 'Baik Kak, kami ulang lagi bersama iringan biola dan gendang ronggeng.',
+        'indonesia': 'Baik Kak, kami ulang lagi bersama iringan biola dan gendang ronggeng.',
+      },
     ],
   },
   {
@@ -2095,10 +2420,32 @@ final List<Map<String, dynamic>> deliAdditionalConversations = [
     'level': 2,
     'region': 'Labuhan Deli',
     'lines': [
-      {'order': 1, 'speaker': 'Penumpang', 'deli': 'Bang Ngah, sampan nak menyeberang ke kampung seberang masih ade?', 'indonesia': 'Bang Tengah, sampan mau menyeberang ke kampung seberang masih ada?'},
-      {'order': 2, 'speaker': 'Pendayung', 'deli': 'Masih ade, silakan turun ke pelantar. Pegang tepi sampan elok-elok.', 'indonesia': 'Masih ada, silakan turun ke pelantar. Pegang tepi sampan baik-baik.'},
-      {'order': 3, 'speaker': 'Penumpang', 'deli': 'Hari ni air sungai nampak tenang, tak sederas semalam.', 'indonesia': 'Hari ini air sungai tampak tenang, tidak sederas kemarin.'},
-      {'order': 4, 'speaker': 'Pendayung', 'deli': 'Iye, semalam hujan lebat di hulu, hari ni dah surut.', 'indonesia': 'Iya, kemarin hujan lebat di hulu, hari ini sudah surut.'},
+      {
+        'order': 1,
+        'speaker': 'Penumpang',
+        'deli':
+            'Bang Ngah, sampan nak menyeberang ke kampung seberang masih ade?',
+        'indonesia': 'Bang Tengah, sampan mau menyeberang ke kampung seberang masih ada?',
+      },
+      {
+        'order': 2,
+        'speaker': 'Pendayung',
+        'deli': 'Masih ade, silakan turun ke pelantar. Pegang tepi sampan elok-elok.',
+        'indonesia': 'Masih ada, silakan turun ke pelantar. Pegang tepi sampan baik-baik.',
+      },
+      {
+        'order': 3,
+        'speaker': 'Penumpang',
+        'deli': 'Hari ni air sungai nampak tenang, tak sederas semalam.',
+        'indonesia':
+            'Hari ini air sungai tampak tenang, tidak sederas kemarin.',
+      },
+      {
+        'order': 4,
+        'speaker': 'Pendayung',
+        'deli': 'Iye, semalam hujan lebat di hulu, hari ni dah surut.',
+        'indonesia': 'Iya, kemarin hujan lebat di hulu, hari ini sudah surut.',
+      },
     ],
   },
   {
@@ -2107,10 +2454,31 @@ final List<Map<String, dynamic>> deliAdditionalConversations = [
     'level': 3,
     'region': 'Medan Maimun',
     'lines': [
-      {'order': 1, 'speaker': 'Adik', 'deli': 'Bang, macam mane care memakai kain samping songket ni?', 'indonesia': 'Bang, bagaimana cara mengenakan kain samping songket ini?'},
-      {'order': 2, 'speaker': 'Abang', 'deli': 'Lilitkan rapi di pinggang di luar baju teluk belanga, lalu kencangkan dengan pending.', 'indonesia': 'Lilitkan rapi di pinggang di luar baju teluk belanga, lalu kencangkan dengan pending.'},
-      {'order': 3, 'speaker': 'Adik', 'deli': 'Tengkuluknye dah pas letaknye di kepale saye, Bang?', 'indonesia': 'Tanjaknya sudah pas letaknya di kepala saya, Bang?'},
-      {'order': 4, 'speaker': 'Abang', 'deli': 'Dah gagah kali! Mari kite berangkat sebelum acara tepung tawar dimulai.', 'indonesia': 'Sudah gagah sekali! Mari kita berangkat sebelum acara tepung tawar dimulai.'},
+      {
+        'order': 1,
+        'speaker': 'Adik',
+        'deli': 'Bang, macam mane care memakai kain samping songket ni?',
+        'indonesia':
+            'Bang, bagaimana cara mengenakan kain samping songket ini?',
+      },
+      {
+        'order': 2,
+        'speaker': 'Abang',
+        'deli': 'Lilitkan rapi di pinggang di luar baju teluk belanga, lalu kencangkan dengan pending.',
+        'indonesia': 'Lilitkan rapi di pinggang di luar baju teluk belanga, lalu kencangkan dengan pending.',
+      },
+      {
+        'order': 3,
+        'speaker': 'Adik',
+        'deli': 'Tengkuluknye dah pas letaknye di kepale saye, Bang?',
+        'indonesia': 'Tanjaknya sudah pas letaknya di kepala saya, Bang?',
+      },
+      {
+        'order': 4,
+        'speaker': 'Abang',
+        'deli': 'Dah gagah kali! Mari kite berangkat sebelum acara tepung tawar dimulai.',
+        'indonesia': 'Sudah gagah sekali! Mari kita berangkat sebelum acara tepung tawar dimulai.',
+      },
     ],
   },
   {
@@ -2119,10 +2487,30 @@ final List<Map<String, dynamic>> deliAdditionalConversations = [
     'level': 3,
     'region': 'Hamparan Perak',
     'lines': [
-      {'order': 1, 'speaker': 'Cucu', 'deli': 'Atok, huruf Jawi yang ade titik tige di bawah ni huruf ape namanye?', 'indonesia': 'Kakek, huruf Jawi yang ada titik tiga di bawah ini huruf apa namanya?'},
-      {'order': 2, 'speaker': 'Atok', 'deli': 'Itu huruf Ca, bunyinye seperti pade kate cakap dan cucu.', 'indonesia': 'Itu huruf Ca, bunyinya seperti pada kata cakap dan cucu.'},
-      {'order': 3, 'speaker': 'Cucu', 'deli': 'Kalau huruf Nga dan Nya banyak dipakai dalam kate Melayu Deli ye, Tok?', 'indonesia': 'Kalau huruf Nga dan Nya banyak dipakai dalam kata Melayu Deli ya, Kek?'},
-      {'order': 4, 'speaker': 'Atok', 'deli': 'Betul kali, seperti kate bunga, pinggan, dan nyamuk.', 'indonesia': 'Betul sekali, seperti kata bunga, piring, dan nyamuk.'},
+      {
+        'order': 1,
+        'speaker': 'Cucu',
+        'deli': 'Atok, huruf Jawi yang ade titik tige di bawah ni huruf ape namanye?',
+        'indonesia': 'Kakek, huruf Jawi yang ada titik tiga di bawah ini huruf apa namanya?',
+      },
+      {
+        'order': 2,
+        'speaker': 'Atok',
+        'deli': 'Itu huruf Ca, bunyinye seperti pade kate cakap dan cucu.',
+        'indonesia': 'Itu huruf Ca, bunyinya seperti pada kata cakap dan cucu.',
+      },
+      {
+        'order': 3,
+        'speaker': 'Cucu',
+        'deli': 'Kalau huruf Nga dan Nya banyak dipakai dalam kate Melayu Deli ye, Tok?',
+        'indonesia': 'Kalau huruf Nga dan Nya banyak dipakai dalam kata Melayu Deli ya, Kek?',
+      },
+      {
+        'order': 4,
+        'speaker': 'Atok',
+        'deli': 'Betul kali, seperti kate bunga, pinggan, dan nyamuk.',
+        'indonesia': 'Betul sekali, seperti kata bunga, piring, dan nyamuk.',
+      },
     ],
   },
   {
@@ -2131,10 +2519,31 @@ final List<Map<String, dynamic>> deliAdditionalConversations = [
     'level': 3,
     'region': 'Labuhan Deli',
     'lines': [
-      {'order': 1, 'speaker': 'Uda', 'deli': 'Pelita minyak tanah dah siap dipasang di sepanjang alaman rumah?', 'indonesia': 'Pelita minyak tanah sudah siap dipasang di sepanjang halaman rumah?'},
-      {'order': 2, 'speaker': 'Busu', 'deli': 'Sudah, Bang Uda. Sumbunye pun dah diganti baru semua.', 'indonesia': 'Sudah, Bang Uda. Sumbunya pun sudah diganti baru semua.'},
-      {'order': 3, 'speaker': 'Uda', 'deli': 'Lepas salat Tarawih nanti kite makan kue rasidah dan minum teh hangat di beranda.', 'indonesia': 'Setelah salat Tarawih nanti kita makan kue rasidah dan minum teh hangat di beranda.'},
-      {'order': 4, 'speaker': 'Busu', 'deli': 'Lemak kali tu, Bang. Semoge berkah malam lailatulqadar untuk keluarga kite.', 'indonesia': 'Lezat sekali itu, Bang. Semoga berkah malam lailatulqadar untuk keluarga kita.'},
+      {
+        'order': 1,
+        'speaker': 'Uda',
+        'deli':
+            'Pelita minyak tanah dah siap dipasang di sepanjang alaman rumah?',
+        'indonesia': 'Pelita minyak tanah sudah siap dipasang di sepanjang halaman rumah?',
+      },
+      {
+        'order': 2,
+        'speaker': 'Busu',
+        'deli': 'Sudah, Bang Uda. Sumbunye pun dah diganti baru semua.',
+        'indonesia': 'Sudah, Bang Uda. Sumbunya pun sudah diganti baru semua.',
+      },
+      {
+        'order': 3,
+        'speaker': 'Uda',
+        'deli': 'Lepas salat Tarawih nanti kite makan kue rasidah dan minum teh hangat di beranda.',
+        'indonesia': 'Setelah salat Tarawih nanti kita makan kue rasidah dan minum teh hangat di beranda.',
+      },
+      {
+        'order': 4,
+        'speaker': 'Busu',
+        'deli': 'Lemak kali tu, Bang. Semoge berkah malam lailatulqadar untuk keluarga kite.',
+        'indonesia': 'Lezat sekali itu, Bang. Semoga berkah malam lailatulqadar untuk keluarga kita.',
+      },
     ],
   },
   {
@@ -2143,10 +2552,30 @@ final List<Map<String, dynamic>> deliAdditionalConversations = [
     'level': 3,
     'region': 'Medan & Belawan',
     'lines': [
-      {'order': 1, 'speaker': 'Anak', 'deli': 'Mak, Ayah, saye minta diri dan mohon doa restu nak berangkat menuntut ilmu.', 'indonesia': 'Ibu, Ayah, saya mohon pamit dan mohon doa restu mau berangkat menuntut ilmu.'},
-      {'order': 2, 'speaker': 'Ayah', 'deli': 'Pegang teguh tunjuk ajar orang tue. Di mane bumi dipijak, di situ langit dijunjung.', 'indonesia': 'Pegang teguh petuah orang tua. Di mana bumi dipijak, di situ langit dijunjung.'},
-      {'order': 3, 'speaker': 'Emak', 'deli': 'Jangan lupe berkabar kalau dah sampai di sane. Ini bekal serunding dan kue bangkit.', 'indonesia': 'Jangan lupa memberi kabar kalau sudah sampai di sana. Ini bekal serundeng dan kue bangkit.'},
-      {'order': 4, 'speaker': 'Anak', 'deli': 'Terime kasih banyak Ayah, Mak. Insyaallah saye jage nama baik keluarga kite.', 'indonesia': 'Terima kasih banyak Ayah, Ibu. Insyaallah saya jaga nama baik keluarga kita.'},
+      {
+        'order': 1,
+        'speaker': 'Anak',
+        'deli': 'Mak, Ayah, saye minta diri dan mohon doa restu nak berangkat menuntut ilmu.',
+        'indonesia': 'Ibu, Ayah, saya mohon pamit dan mohon doa restu mau berangkat menuntut ilmu.',
+      },
+      {
+        'order': 2,
+        'speaker': 'Ayah',
+        'deli': 'Pegang teguh tunjuk ajar orang tue. Di mane bumi dipijak, di situ langit dijunjung.',
+        'indonesia': 'Pegang teguh petuah orang tua. Di mana bumi dipijak, di situ langit dijunjung.',
+      },
+      {
+        'order': 3,
+        'speaker': 'Emak',
+        'deli': 'Jangan lupe berkabar kalau dah sampai di sane. Ini bekal serunding dan kue bangkit.',
+        'indonesia': 'Jangan lupa memberi kabar kalau sudah sampai di sana. Ini bekal serundeng dan kue bangkit.',
+      },
+      {
+        'order': 4,
+        'speaker': 'Anak',
+        'deli': 'Terime kasih banyak Ayah, Mak. Insyaallah saye jage nama baik keluarga kite.',
+        'indonesia': 'Terima kasih banyak Ayah, Ibu. Insyaallah saya jaga nama baik keluarga kita.',
+      },
     ],
   },
 ];

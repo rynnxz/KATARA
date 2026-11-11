@@ -13,12 +13,12 @@ import 'package:katara/features/lesson/lesson_screen.dart';
 import 'package:katara/features/lesson/level_up_screen.dart';
 import 'package:katara/features/onboarding/onboarding_screen.dart';
 import 'package:katara/features/onboarding/splash_screen.dart';
+import 'package:katara/features/onboarding/welcome_screen.dart';
 import 'package:katara/features/path_map/home_shell_screen.dart';
 import 'package:katara/features/path_map/learn_map_screen.dart';
 import 'package:katara/features/path_map/unit_detail_screen.dart';
 import 'package:katara/features/practice/conversation_practice_screen.dart';
 import 'package:katara/features/practice/practice_screen.dart';
-import 'package:katara/features/practice/pronunciation_guide_screen.dart';
 import 'package:katara/features/profile/profile_screen.dart';
 import 'package:katara/features/quests/quests_screen.dart';
 import 'package:katara/features/region_picker/region_picker_screen.dart';
@@ -39,6 +39,10 @@ final appRouterProvider = Provider<GoRouter>((ref) {
       GoRoute(
         path: '/splash',
         builder: (context, state) => const SplashScreen(),
+      ),
+      GoRoute(
+        path: '/welcome',
+        builder: (context, state) => const WelcomeScreen(),
       ),
       GoRoute(
         path: '/onboarding',
@@ -78,21 +82,18 @@ final appRouterProvider = Provider<GoRouter>((ref) {
       ),
       GoRoute(
         path: '/unit/:id',
-        builder: (context, state) => UnitDetailScreen(
-          unitId: state.pathParameters['id'] ?? '',
-        ),
+        builder: (context, state) =>
+            UnitDetailScreen(unitId: state.pathParameters['id'] ?? ''),
       ),
       GoRoute(
         path: '/lesson/:id',
-        builder: (context, state) => LessonScreen(
-          lessonId: state.pathParameters['id'] ?? '',
-        ),
+        builder: (context, state) =>
+            LessonScreen(lessonId: state.pathParameters['id'] ?? ''),
       ),
       GoRoute(
         path: '/lesson/:id/result',
-        builder: (context, state) => LessonResultScreen(
-          lessonId: state.pathParameters['id'] ?? '',
-        ),
+        builder: (context, state) =>
+            LessonResultScreen(lessonId: state.pathParameters['id'] ?? ''),
       ),
       GoRoute(
         path: '/levelup',
@@ -102,32 +103,22 @@ final appRouterProvider = Provider<GoRouter>((ref) {
         path: '/dictionary',
         builder: (context, state) => const DictionaryScreen(),
       ),
-      GoRoute(
-        path: '/jawi',
-        builder: (context, state) => const JawiScreen(),
-      ),
+      GoRoute(path: '/jawi', builder: (context, state) => const JawiScreen()),
       GoRoute(
         path: '/article/:id',
-        builder: (context, state) => ArticleDetailScreen(
-          articleId: state.pathParameters['id'] ?? '',
-        ),
+        builder: (context, state) =>
+            ArticleDetailScreen(articleId: state.pathParameters['id'] ?? ''),
       ),
       GoRoute(
         path: '/collection',
         builder: (context, state) => const CollectionScreen(),
       ),
-      GoRoute(
-        path: '/shop',
-        builder: (context, state) => const ShopScreen(),
-      ),
+      GoRoute(path: '/shop', builder: (context, state) => const ShopScreen()),
       GoRoute(
         path: '/settings',
         builder: (context, state) => const SettingsScreen(),
       ),
-      GoRoute(
-        path: '/about',
-        builder: (context, state) => const AboutScreen(),
-      ),
+      GoRoute(path: '/about', builder: (context, state) => const AboutScreen()),
       GoRoute(
         path: '/dialect-comparison',
         builder: (context, state) => const DialectComparisonScreen(),
@@ -135,10 +126,6 @@ final appRouterProvider = Provider<GoRouter>((ref) {
       GoRoute(
         path: '/practice/conversation',
         builder: (context, state) => const ConversationPracticeScreen(),
-      ),
-      GoRoute(
-        path: '/practice/pronunciation',
-        builder: (context, state) => const PronunciationGuideScreen(),
       ),
       if (kDebugMode)
         GoRoute(

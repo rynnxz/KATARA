@@ -57,7 +57,7 @@ class GameConfig {
     final srs = json['srs'] as Map<String, dynamic>? ?? const {};
     final rawIntervals =
         (srs['intervals_days_by_strength'] as List<dynamic>?) ??
-            const [1, 1, 3, 7, 14, 30];
+        const [1, 1, 3, 7, 14, 30];
     final rawShop = (json['shop_items'] as List<dynamic>?) ?? const [];
     final rawQuests = (json['quests_pool'] as List<dynamic>?) ?? const [];
 
@@ -115,14 +115,15 @@ class ShopItemConfig {
   final int? maxOwned;
 
   factory ShopItemConfig.fromJson(Map<String, dynamic> json) => ShopItemConfig(
-        id: json['id'] as String,
-        name: json['name'] as String,
-        category: json['category'] as String? ?? 'umum',
-        priceCoins: (json['price_coins'] as num?)?.toInt() ?? 50,
-        description: json['description'] as String? ??
-            'Item pendukung belajar di Kedai Si Rebung.',
-        maxOwned: (json['max_owned'] as num?)?.toInt(),
-      );
+    id: json['id'] as String,
+    name: json['name'] as String,
+    category: json['category'] as String? ?? 'umum',
+    priceCoins: (json['price_coins'] as num?)?.toInt() ?? 50,
+    description:
+        json['description'] as String? ??
+        'Item pendukung belajar di Kedai Si Rebung.',
+    maxOwned: (json['max_owned'] as num?)?.toInt(),
+  );
 }
 
 class QuestDefinition {
@@ -401,23 +402,16 @@ class AchievementModel {
   factory AchievementModel.fromJson(
     Map<String, dynamic> json, {
     DateTime? unlockedAt,
-  }) =>
-      AchievementModel(
-        id: json['id'] as String,
-        name: json['name'] as String,
-        description: json['description'] as String? ?? '',
-        activeMvp: json['active_mvp'] == true || json['active_mvp'] == 1,
-        unlockedAt: unlockedAt,
-      );
+  }) => AchievementModel(
+    id: json['id'] as String,
+    name: json['name'] as String,
+    description: json['description'] as String? ?? '',
+    activeMvp: json['active_mvp'] == true || json['active_mvp'] == 1,
+    unlockedAt: unlockedAt,
+  );
 }
 
-enum SyncState {
-  synced,
-  syncing,
-  offline,
-  failed,
-  pending,
-}
+enum SyncState { synced, syncing, offline, failed, pending }
 
 class SyncStatusSummary {
   const SyncStatusSummary({
@@ -461,25 +455,26 @@ class XpEventModel {
   final bool isSynced;
 
   factory XpEventModel.fromJson(Map<String, dynamic> json) => XpEventModel(
-        eventId: json['event_id'] as String,
-        courseId: json['course_id'] as String? ?? 'ms-deli',
-        amount: (json['amount'] as num).toInt(),
-        source: json['source'] as String? ?? 'lesson',
-        deviceId: json['device_id'] as String? ?? 'local-device',
-        createdAt: DateTime.tryParse(json['created_at']?.toString() ?? '') ??
-            DateTime.now().toUtc(),
-        isSynced: json['is_synced'] == true || json['is_synced'] == 1,
-      );
+    eventId: json['event_id'] as String,
+    courseId: json['course_id'] as String? ?? 'ms-deli',
+    amount: (json['amount'] as num).toInt(),
+    source: json['source'] as String? ?? 'lesson',
+    deviceId: json['device_id'] as String? ?? 'local-device',
+    createdAt:
+        DateTime.tryParse(json['created_at']?.toString() ?? '') ??
+        DateTime.now().toUtc(),
+    isSynced: json['is_synced'] == true || json['is_synced'] == 1,
+  );
 
   Map<String, dynamic> toJson() => {
-        'event_id': eventId,
-        'course_id': courseId,
-        'amount': amount,
-        'source': source,
-        'device_id': deviceId,
-        'created_at': createdAt.toIso8601String(),
-        'is_synced': isSynced,
-      };
+    'event_id': eventId,
+    'course_id': courseId,
+    'amount': amount,
+    'source': source,
+    'device_id': deviceId,
+    'created_at': createdAt.toIso8601String(),
+    'is_synced': isSynced,
+  };
 }
 
 class StreakHistoryEntry {
@@ -511,21 +506,22 @@ class StreakHistoryEntry {
         lessonsCompleted: (json['lessons_completed'] as num?)?.toInt() ?? 0,
         freezeUsed: json['freeze_used'] == true || json['freeze_used'] == 1,
         deviceId: json['device_id'] as String? ?? 'local-device',
-        updatedAt: DateTime.tryParse(json['updated_at']?.toString() ?? '') ??
+        updatedAt:
+            DateTime.tryParse(json['updated_at']?.toString() ?? '') ??
             DateTime.now().toUtc(),
         isSynced: json['is_synced'] == true || json['is_synced'] == 1,
       );
 
   Map<String, dynamic> toJson() => {
-        'date': date,
-        'course_id': courseId,
-        'xp_earned': xpEarned,
-        'lessons_completed': lessonsCompleted,
-        'freeze_used': freezeUsed,
-        'device_id': deviceId,
-        'updated_at': updatedAt.toIso8601String(),
-        'is_synced': isSynced,
-      };
+    'date': date,
+    'course_id': courseId,
+    'xp_earned': xpEarned,
+    'lessons_completed': lessonsCompleted,
+    'freeze_used': freezeUsed,
+    'device_id': deviceId,
+    'updated_at': updatedAt.toIso8601String(),
+    'is_synced': isSynced,
+  };
 }
 
 class SyncQueueItemModel {
@@ -577,9 +573,9 @@ class DialectMasterySummary {
   final int totalLessons;
   final double averageAccuracy;
 
-  double get lessonRatio =>
-      totalLessons <= 0 ? 0.0 : (completedLessons / totalLessons).clamp(0.0, 1.0);
+  double get lessonRatio => totalLessons <= 0
+      ? 0.0
+      : (completedLessons / totalLessons).clamp(0.0, 1.0);
   double get wordRatio =>
       totalWords <= 0 ? 0.0 : (masteredWords / totalWords).clamp(0.0, 1.0);
 }
-

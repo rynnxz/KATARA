@@ -1,13 +1,9 @@
 import 'dart:math' as math;
+
 import 'package:flutter/material.dart';
 import 'package:katara/app/theme/katara_colors.dart';
 
-enum MascotState {
-  idle,
-  happy,
-  sad,
-  cheer,
-}
+enum MascotState { idle, happy, sad, cheer }
 
 /// Maskot resmi KATARA: **Si Rebung** (tunas rebung memakai tanjak Melayu).
 /// Digambar dengan `CustomPainter` agar tajam di semua ukuran tanpa aset eksternal (Bagian 10.4).
@@ -53,10 +49,7 @@ class MascotView extends StatelessWidget {
           ),
           if (showLabel) ...[
             const SizedBox(height: 6),
-            Text(
-              'Si Rebung',
-              style: Theme.of(context).textTheme.labelMedium,
-            ),
+            Text('Si Rebung', style: Theme.of(context).textTheme.labelMedium),
           ],
         ],
       ),
@@ -154,14 +147,22 @@ class _SiRebungPainter extends CustomPainter {
     if (state == MascotState.happy || state == MascotState.cheer) {
       // Mata melengkung gembira.
       canvas.drawArc(
-        Rect.fromCenter(center: Offset(leftEyeX, eyeY), width: w * 0.07, height: w * 0.06),
+        Rect.fromCenter(
+          center: Offset(leftEyeX, eyeY),
+          width: w * 0.07,
+          height: w * 0.06,
+        ),
         math.pi,
         math.pi,
         false,
         eyePaint,
       );
       canvas.drawArc(
-        Rect.fromCenter(center: Offset(rightEyeX, eyeY), width: w * 0.07, height: w * 0.06),
+        Rect.fromCenter(
+          center: Offset(rightEyeX, eyeY),
+          width: w * 0.07,
+          height: w * 0.06,
+        ),
         math.pi,
         math.pi,
         false,
@@ -176,7 +177,11 @@ class _SiRebungPainter extends CustomPainter {
     final mouthY = h * 0.60;
     if (state == MascotState.sad) {
       canvas.drawArc(
-        Rect.fromCenter(center: Offset(cx, mouthY + h * 0.03), width: w * 0.10, height: w * 0.06),
+        Rect.fromCenter(
+          center: Offset(cx, mouthY + h * 0.03),
+          width: w * 0.10,
+          height: w * 0.06,
+        ),
         math.pi * 1.15,
         math.pi * 0.7,
         false,
@@ -184,7 +189,11 @@ class _SiRebungPainter extends CustomPainter {
       );
     } else {
       canvas.drawArc(
-        Rect.fromCenter(center: Offset(cx, mouthY - h * 0.01), width: w * 0.12, height: w * 0.08),
+        Rect.fromCenter(
+          center: Offset(cx, mouthY - h * 0.01),
+          width: w * 0.12,
+          height: w * 0.08,
+        ),
         0.15,
         math.pi - 0.3,
         false,

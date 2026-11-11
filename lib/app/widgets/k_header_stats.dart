@@ -39,7 +39,10 @@ class KHeaderStats extends StatelessWidget {
               onTap: onRegionTap,
               child: Container(
                 constraints: const BoxConstraints(minHeight: 44),
-                padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 6),
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 10,
+                  vertical: 6,
+                ),
                 decoration: BoxDecoration(
                   color: p.surfaceAlt,
                   borderRadius: BorderRadius.circular(10),
@@ -60,7 +63,11 @@ class KHeaderStats extends StatelessWidget {
                     ),
                     if (onRegionTap != null) ...[
                       const SizedBox(width: 2),
-                      Icon(Icons.expand_more_rounded, size: 16, color: p.inkMuted),
+                      Icon(
+                        Icons.expand_more_rounded,
+                        size: 16,
+                        color: p.inkMuted,
+                      ),
                     ],
                   ],
                 ),
@@ -83,7 +90,9 @@ class KHeaderStats extends StatelessWidget {
           icon: heartsEnabled ? Icons.favorite_rounded : Icons.spa_rounded,
           iconColor: heartsEnabled ? p.heart : p.primary,
           value: heartsEnabled ? '$hearts' : 'Bebas',
-          semanticLabel: heartsEnabled ? '$hearts nyawa' : 'Mode tanpa pengurangan nyawa',
+          semanticLabel: heartsEnabled
+              ? '$hearts nyawa'
+              : 'Mode tanpa pengurangan nyawa',
         ),
         _StatPill(
           icon: Icons.bolt_rounded,

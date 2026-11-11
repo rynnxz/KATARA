@@ -4,9 +4,5 @@ import 'package:katara/app/app.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
-  runApp(
-    const ProviderScope(
-      child: KataraApp(),
-    ),
-  );
+  runApp(const ProviderScope(child: KataraApp()));
 }

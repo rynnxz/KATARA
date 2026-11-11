@@ -11,6 +11,7 @@ class KChip extends StatelessWidget {
     this.backgroundColor,
     Color? foregroundColor,
     Color? textColor,
+    this.semanticLabel,
   }) : foregroundColor = foregroundColor ?? textColor;
 
   final String label;
@@ -19,6 +20,7 @@ class KChip extends StatelessWidget {
   final VoidCallback? onTap;
   final Color? backgroundColor;
   final Color? foregroundColor;
+  final String? semanticLabel;
 
   @override
   Widget build(BuildContext context) {
@@ -63,19 +65,15 @@ class KChip extends StatelessWidget {
     return Semantics(
       button: true,
       selected: selected,
-      label: label,
+      label: semanticLabel ?? label,
       child: MouseRegion(
         cursor: SystemMouseCursors.click,
         child: GestureDetector(
           behavior: HitTestBehavior.opaque,
           onTap: onTap,
           child: ConstrainedBox(
-            constraints: const BoxConstraints(minHeight: 44),
-            child: Align(
-              widthFactor: 1,
-              heightFactor: 1,
-              child: chip,
-            ),
+            constraints: const BoxConstraints(minHeight: 48, minWidth: 48),
+            child: Align(widthFactor: 1, heightFactor: 1, child: chip),
           ),
         ),
       ),
@@ -89,10 +87,7 @@ class KChip extends StatelessWidget {
 /// - `dictionary_verified` -> "Sumber Kamus" (terverifikasi dari kamus/literatur resmi Balai Bahasa)
 /// - `draft`               -> "Draf"
 class ValidationStatusBadge extends StatelessWidget {
-  const ValidationStatusBadge({
-    super.key,
-    required this.status,
-  });
+  const ValidationStatusBadge({super.key, required this.status});
 
   final String status;
 
@@ -101,29 +96,29 @@ class ValidationStatusBadge extends StatelessWidget {
     final p = KataraPalette.of(context);
     final (String text, IconData icon, Color bg, Color fg) = switch (status) {
       'expert_verified' => (
-          'Terverifikasi Ahli',
-          Icons.verified_rounded,
-          p.successContainer,
-          p.onSuccessContainer,
-        ),
+        'Terverifikasi Ahli',
+        Icons.verified_rounded,
+        p.successContainer,
+        p.onSuccessContainer,
+      ),
       'speaker_checked' => (
-          'Dicek Penutur',
-          Icons.check_circle_outline_rounded,
-          p.primaryContainer,
-          p.onPrimaryContainer,
-        ),
+        'Dicek Penutur',
+        Icons.check_circle_outline_rounded,
+        p.primaryContainer,
+        p.onPrimaryContainer,
+      ),
       'dictionary_verified' => (
-          'Sumber Kamus',
-          Icons.menu_book_rounded,
-          p.primaryContainer,
-          p.onPrimaryContainer,
-        ),
+        'Sumber Kamus',
+        Icons.menu_book_rounded,
+        p.primaryContainer,
+        p.onPrimaryContainer,
+      ),
       _ => (
-          'Draf',
-          Icons.edit_note_rounded,
-          p.secondaryContainer,
-          p.onSecondaryContainer,
-        ),
+        'Draf',
+        Icons.edit_note_rounded,
+        p.secondaryContainer,
+        p.onSecondaryContainer,
+      ),
     };
 
     return KChip(
@@ -152,7 +147,8 @@ class DialectIdentityBadge extends StatelessWidget {
     final identity = DialectVisualIdentity.forCourse(courseId);
     final bg = isDark ? identity.badgeBgDark : identity.badgeBgLight;
     final fg = isDark ? identity.badgeFgDark : identity.badgeFgLight;
-    final label = labelOverride ??
+    final label =
+        labelOverride ??
         switch (courseId) {
           'ms-langkat' || 'melayu_langkat' => 'Melayu Langkat',
           'ms-palembang' || 'melayu_palembang' => 'Melayu Palembang',

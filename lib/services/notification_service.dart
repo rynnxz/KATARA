@@ -19,21 +19,20 @@ abstract class NotificationService {
     required int minute,
     required bool alreadyStudiedToday,
     int currentStreak = 1,
-  }) =>
-      rescheduleStreakReminder(
-        enabled: true,
-        hour: hour,
-        minute: minute,
-        alreadyStudiedToday: alreadyStudiedToday,
-        currentStreak: currentStreak,
-      );
+  }) => rescheduleStreakReminder(
+    enabled: true,
+    hour: hour,
+    minute: minute,
+    alreadyStudiedToday: alreadyStudiedToday,
+    currentStreak: currentStreak,
+  );
   Future<void> cancelAll() => rescheduleStreakReminder(
-        enabled: false,
-        hour: 19,
-        minute: 30,
-        alreadyStudiedToday: false,
-        currentStreak: 0,
-      );
+    enabled: false,
+    hour: 19,
+    minute: 30,
+    alreadyStudiedToday: false,
+    currentStreak: 0,
+  );
   DateTime computeNextReminderTime({
     required DateTime now,
     required int hour,
@@ -54,8 +53,9 @@ class LocalNotificationService implements NotificationService {
     if (_initialized) return;
     try {
       tz.initializeTimeZones();
-      const androidSettings =
-          AndroidInitializationSettings('@mipmap/ic_launcher');
+      const androidSettings = AndroidInitializationSettings(
+        '@drawable/ic_stat_katara',
+      );
       const settings = InitializationSettings(android: androidSettings);
       await _plugin.initialize(settings: settings);
       _initialized = true;
@@ -67,8 +67,10 @@ class LocalNotificationService implements NotificationService {
   @override
   Future<bool> requestPermissionWithContext() async {
     try {
-      final androidImpl = _plugin.resolvePlatformSpecificImplementation<
-          AndroidFlutterLocalNotificationsPlugin>();
+      final androidImpl = _plugin
+          .resolvePlatformSpecificImplementation<
+            AndroidFlutterLocalNotificationsPlugin
+          >();
       if (androidImpl != null) {
         final granted = await androidImpl.requestNotificationsPermission();
         return granted ?? false;
@@ -121,7 +123,8 @@ class LocalNotificationService implements NotificationService {
       const androidDetails = AndroidNotificationDetails(
         'katara_streak_channel',
         'Pengingat Streak Belajar',
-        channelDescription: 'Pengingat harian untuk menjaga streak belajar bahasa Melayu',
+        channelDescription:
+            'Pengingat harian untuk menjaga streak belajar bahasa Melayu',
         importance: Importance.defaultImportance,
         priority: Priority.defaultPriority,
       );
@@ -131,8 +134,7 @@ class LocalNotificationService implements NotificationService {
         title: 'Waktunya Belajar di KATARA',
         body: bodyText,
         scheduledDate: scheduledTz,
-        notificationDetails:
-            const NotificationDetails(android: androidDetails),
+        notificationDetails: const NotificationDetails(android: androidDetails),
         androidScheduleMode: AndroidScheduleMode.inexactAllowWhileIdle,
         matchDateTimeComponents: DateTimeComponents.time,
       );
@@ -147,23 +149,22 @@ class LocalNotificationService implements NotificationService {
     required int minute,
     required bool alreadyStudiedToday,
     int currentStreak = 1,
-  }) =>
-      rescheduleStreakReminder(
-        enabled: true,
-        hour: hour,
-        minute: minute,
-        alreadyStudiedToday: alreadyStudiedToday,
-        currentStreak: currentStreak,
-      );
+  }) => rescheduleStreakReminder(
+    enabled: true,
+    hour: hour,
+    minute: minute,
+    alreadyStudiedToday: alreadyStudiedToday,
+    currentStreak: currentStreak,
+  );
 
   @override
   Future<void> cancelAll() => rescheduleStreakReminder(
-        enabled: false,
-        hour: 19,
-        minute: 30,
-        alreadyStudiedToday: false,
-        currentStreak: 0,
-      );
+    enabled: false,
+    hour: 19,
+    minute: 30,
+    alreadyStudiedToday: false,
+    currentStreak: 0,
+  );
 }
 
 class NoopNotificationService implements NotificationService {
@@ -217,21 +218,20 @@ class NoopNotificationService implements NotificationService {
     required int minute,
     required bool alreadyStudiedToday,
     int currentStreak = 1,
-  }) =>
-      rescheduleStreakReminder(
-        enabled: true,
-        hour: hour,
-        minute: minute,
-        alreadyStudiedToday: alreadyStudiedToday,
-        currentStreak: currentStreak,
-      );
+  }) => rescheduleStreakReminder(
+    enabled: true,
+    hour: hour,
+    minute: minute,
+    alreadyStudiedToday: alreadyStudiedToday,
+    currentStreak: currentStreak,
+  );
 
   @override
   Future<void> cancelAll() => rescheduleStreakReminder(
-        enabled: false,
-        hour: 19,
-        minute: 30,
-        alreadyStudiedToday: false,
-        currentStreak: 0,
-      );
+    enabled: false,
+    hour: 19,
+    minute: 30,
+    alreadyStudiedToday: false,
+    currentStreak: 0,
+  );
 }

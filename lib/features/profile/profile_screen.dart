@@ -40,18 +40,24 @@ class ProfileScreen extends ConsumerWidget {
       body: PatternBackground(
         opacity: 0.05,
         child: statsAsync.when(
-          loading: () => Center(
-            child: CircularProgressIndicator(color: palette.primary),
-          ),
+          loading: () =>
+              Center(child: CircularProgressIndicator(color: palette.primary)),
           error: (_, _) => const Center(
             child: Text('Gagal memuat profil saat ini. Silakan muat ulang.'),
           ),
           data: (stats) {
             final title = GamificationRules.titleForLevel(stats.level);
-            final levelProgress =
-                GamificationRules.progressWithinCurrentLevel(stats.xpTotal);
-            final nextLevelReq =
-                GamificationRules.xpRequiredForNextLevel(stats.level);
+            final displayLabel =
+                (stats.displayName.trim().isEmpty ||
+                    (stats.displayName == 'Perantau' && title == 'Perantau'))
+                ? 'Pelajar Melayu'
+                : stats.displayName;
+            final levelProgress = GamificationRules.progressWithinCurrentLevel(
+              stats.xpTotal,
+            );
+            final nextLevelReq = GamificationRules.xpRequiredForNextLevel(
+              stats.level,
+            );
             final activeCourseName =
                 activeCourseAsync.value?.name ?? 'Melayu Deli';
 
@@ -78,10 +84,8 @@ class ProfileScreen extends ConsumerWidget {
                           const MascotView(state: MascotState.cheer, size: 96),
                           const SizedBox(height: 12),
                           Text(
-                            stats.displayName,
-                            style: Theme.of(context)
-                                .textTheme
-                                .headlineMedium
+                            displayLabel,
+                            style: Theme.of(context).textTheme.headlineMedium
                                 ?.copyWith(
                                   color: palette.onPrimaryContainer,
                                   fontWeight: FontWeight.w800,
@@ -94,30 +98,32 @@ class ProfileScreen extends ConsumerWidget {
                             textColor: palette.onSecondaryContainer,
                           ),
                           const SizedBox(height: 14),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              Text(
-                                'Total XP: ${stats.xpTotal}',
-                                style: Theme.of(context)
-                                    .textTheme
-                                    .labelMedium
-                                    ?.copyWith(
-                                      color: palette.onPrimaryContainer,
-                                      fontWeight: FontWeight.w800,
-                                    ),
-                              ),
-                              Text(
-                                'Target naik level: +$nextLevelReq XP per tingkat',
-                                style: Theme.of(context)
-                                    .textTheme
-                                    .labelSmall
-                                    ?.copyWith(
-                                      color: palette.onPrimaryContainer,
-                                      fontWeight: FontWeight.w700,
-                                    ),
-                              ),
-                            ],
+                          SizedBox(
+                            width: double.infinity,
+                            child: Wrap(
+                              alignment: WrapAlignment.spaceBetween,
+                              crossAxisAlignment: WrapCrossAlignment.center,
+                              spacing: 12,
+                              runSpacing: 4,
+                              children: [
+                                Text(
+                                  'Total XP: ${stats.xpTotal}',
+                                  style: Theme.of(context).textTheme.labelMedium
+                                      ?.copyWith(
+                                        color: palette.onPrimaryContainer,
+                                        fontWeight: FontWeight.w800,
+                                      ),
+                                ),
+                                Text(
+                                  'Target naik level: +$nextLevelReq XP per tingkat',
+                                  style: Theme.of(context).textTheme.labelSmall
+                                      ?.copyWith(
+                                        color: palette.onPrimaryContainer,
+                                        fontWeight: FontWeight.w700,
+                                      ),
+                                ),
+                              ],
+                            ),
                           ),
                           const SizedBox(height: 6),
                           KProgressBar(
@@ -129,7 +135,7 @@ class ProfileScreen extends ConsumerWidget {
                       ),
                     ),
                     const SizedBox(height: 16),
-                    _CloudSyncAccountCard(ref: ref),
+                    const _CloudSyncAccountCard(),
                     const SizedBox(height: 16),
                     Row(
                       children: [
@@ -137,8 +143,11 @@ class ProfileScreen extends ConsumerWidget {
                           child: KCard(
                             child: Column(
                               children: [
-                                Icon(Icons.local_fire_department_rounded,
-                                    color: palette.streak, size: 28),
+                                Icon(
+                                  Icons.local_fire_department_rounded,
+                                  color: palette.streak,
+                                  size: 28,
+                                ),
                                 const SizedBox(height: 6),
                                 Text(
                                   '${stats.streakCurrent} Hari',
@@ -147,9 +156,7 @@ class ProfileScreen extends ConsumerWidget {
                                 Text(
                                   'Streak Saat Ini (Rekor: ${stats.streakBest})',
                                   textAlign: TextAlign.center,
-                                  style: Theme.of(context)
-                                      .textTheme
-                                      .labelSmall
+                                  style: Theme.of(context).textTheme.labelSmall
                                       ?.copyWith(color: palette.inkMuted),
                                 ),
                               ],
@@ -161,8 +168,11 @@ class ProfileScreen extends ConsumerWidget {
                           child: KCard(
                             child: Column(
                               children: [
-                                Icon(Icons.workspace_premium_rounded,
-                                    color: palette.secondary, size: 28),
+                                Icon(
+                                  Icons.workspace_premium_rounded,
+                                  color: palette.secondary,
+                                  size: 28,
+                                ),
                                 const SizedBox(height: 6),
                                 Text(
                                   '${unlockedBadges.length}',
@@ -171,9 +181,7 @@ class ProfileScreen extends ConsumerWidget {
                                 Text(
                                   'Lencana Terbuka',
                                   textAlign: TextAlign.center,
-                                  style: Theme.of(context)
-                                      .textTheme
-                                      .labelSmall
+                                  style: Theme.of(context).textTheme.labelSmall
                                       ?.copyWith(color: palette.inkMuted),
                                 ),
                               ],
@@ -189,9 +197,7 @@ class ProfileScreen extends ConsumerWidget {
                         children: [
                           Text(
                             'Kalender Streak & XP 7 Hari Terakhir',
-                            style: Theme.of(context)
-                                .textTheme
-                                .titleMedium
+                            style: Theme.of(context).textTheme.titleMedium
                                 ?.copyWith(fontWeight: FontWeight.w800),
                           ),
                           const SizedBox(height: 14),
@@ -232,9 +238,7 @@ class ProfileScreen extends ConsumerWidget {
                                     style: Theme.of(context)
                                         .textTheme
                                         .labelSmall
-                                        ?.copyWith(
-                                          fontWeight: FontWeight.w700,
-                                        ),
+                                        ?.copyWith(fontWeight: FontWeight.w700),
                                   ),
                                   Text(
                                     '+$xp',
@@ -263,23 +267,21 @@ class ProfileScreen extends ConsumerWidget {
                               children: [
                                 Text(
                                   'Daerah Aktif: $activeCourseName',
-                                  style: Theme.of(context)
-                                      .textTheme
-                                      .titleMedium
+                                  style: Theme.of(context).textTheme.titleMedium
                                       ?.copyWith(fontWeight: FontWeight.w800),
                                 ),
                                 Text(
                                   'Ketuk untuk mengganti atau melihat daerah Melayu lainnya',
-                                  style: Theme.of(context)
-                                      .textTheme
-                                      .bodySmall
+                                  style: Theme.of(context).textTheme.bodySmall
                                       ?.copyWith(color: palette.inkMuted),
                                 ),
                               ],
                             ),
                           ),
-                          Icon(Icons.chevron_right_rounded,
-                              color: palette.inkMuted),
+                          Icon(
+                            Icons.chevron_right_rounded,
+                            color: palette.inkMuted,
+                          ),
                         ],
                       ),
                     ),
@@ -316,10 +318,16 @@ class ProfileScreen extends ConsumerWidget {
   }
 }
 
-class _CloudSyncAccountCard extends StatelessWidget {
-  const _CloudSyncAccountCard({required this.ref});
+class _CloudSyncAccountCard extends ConsumerStatefulWidget {
+  const _CloudSyncAccountCard();
 
-  final WidgetRef ref;
+  @override
+  ConsumerState<_CloudSyncAccountCard> createState() =>
+      _CloudSyncAccountCardState();
+}
+
+class _CloudSyncAccountCardState extends ConsumerState<_CloudSyncAccountCard> {
+  bool _isBusy = false;
 
   @override
   Widget build(BuildContext context) {
@@ -352,9 +360,7 @@ class _CloudSyncAccountCard extends StatelessWidget {
                           profile.isGuest
                               ? 'Sinkronisasi Cloud (Mode Tamu)'
                               : 'Terhubung: ${profile.email ?? profile.displayName}',
-                          style: Theme.of(context)
-                              .textTheme
-                              .titleMedium
+                          style: Theme.of(context).textTheme.titleMedium
                               ?.copyWith(fontWeight: FontWeight.w800),
                         ),
                         const SizedBox(height: 2),
@@ -362,9 +368,7 @@ class _CloudSyncAccountCard extends StatelessWidget {
                           profile.isGuest
                               ? 'Progres tersimpan aman di perangkat. Masuk dengan Google untuk mencadangkan lintas perangkat.'
                               : 'Progres XP, streak, dan penguasaan kosakata tersinkronisasi ke Firebase Cloud.',
-                          style: Theme.of(context)
-                              .textTheme
-                              .bodySmall
+                          style: Theme.of(context).textTheme.bodySmall
                               ?.copyWith(color: palette.inkMuted),
                         ),
                       ],
@@ -380,34 +384,43 @@ class _CloudSyncAccountCard extends StatelessWidget {
                       child: KButton(
                         label: 'Masuk dengan Google',
                         icon: Icons.login_rounded,
-                        onPressed: () async {
-                          try {
-                            await ref
-                                .read(firebaseSyncServiceProvider)
-                                .signInWithGoogle();
-                            await ref
-                                .read(firebaseSyncServiceProvider)
-                                .syncNow();
-                            ref.invalidate(cloudProfileProvider);
-                            if (!context.mounted) return;
-                            ScaffoldMessenger.of(context).showSnackBar(
-                              const SnackBar(
-                                content: Text(
-                                  'Berhasil masuk & menyinkronkan progres ke Cloud!',
-                                ),
-                              ),
-                            );
-                          } catch (e, st) {
-                            if (!context.mounted) return;
-                            final friendlyMsg =
-                                AuthErrorMapper.toUserMessage(e, st);
-                            ScaffoldMessenger.of(context).showSnackBar(
-                              SnackBar(
-                                content: Text(friendlyMsg),
-                              ),
-                            );
-                          }
-                        },
+                        isLoading: _isBusy,
+                        onPressed: _isBusy
+                            ? null
+                            : () async {
+                                setState(() => _isBusy = true);
+                                try {
+                                  await ref
+                                      .read(firebaseSyncServiceProvider)
+                                      .signInWithGoogle();
+                                  await ref
+                                      .read(firebaseSyncServiceProvider)
+                                      .syncNow();
+                                  await ref
+                                      .read(appSettingsProvider.notifier)
+                                      .setAuthMode('google');
+                                  ref.invalidate(cloudProfileProvider);
+                                  if (!context.mounted) return;
+                                  ScaffoldMessenger.of(context).showSnackBar(
+                                    const SnackBar(
+                                      content: Text(
+                                        'Berhasil masuk & menyinkronkan progres ke Cloud!',
+                                      ),
+                                    ),
+                                  );
+                                } catch (e, st) {
+                                  if (!context.mounted) return;
+                                  final friendlyMsg =
+                                      AuthErrorMapper.toUserMessage(e, st);
+                                  ScaffoldMessenger.of(context).showSnackBar(
+                                    SnackBar(content: Text(friendlyMsg)),
+                                  );
+                                } finally {
+                                  if (mounted) {
+                                    setState(() => _isBusy = false);
+                                  }
+                                }
+                              },
                       ),
                     )
                   else ...[
@@ -415,32 +428,63 @@ class _CloudSyncAccountCard extends StatelessWidget {
                       child: KButton(
                         label: 'Sinkronkan Sekarang',
                         icon: Icons.sync_rounded,
-                        onPressed: () async {
-                          final report = await ref
-                              .read(firebaseSyncServiceProvider)
-                              .syncNow();
-                          ref.invalidate(cloudProfileProvider);
-                          if (!context.mounted) return;
-                          ScaffoldMessenger.of(context).showSnackBar(
-                            SnackBar(
-                              content: Text(
-                                'Sinkronisasi selesai (${report.pushedItems} dikirim, ${report.pulledItems} diterima).',
-                              ),
-                            ),
-                          );
-                        },
+                        isLoading: _isBusy,
+                        onPressed: _isBusy
+                            ? null
+                            : () async {
+                                setState(() => _isBusy = true);
+                                try {
+                                  final report = await ref
+                                      .read(firebaseSyncServiceProvider)
+                                      .syncNow();
+                                  ref.invalidate(cloudProfileProvider);
+                                  if (!context.mounted) return;
+                                  ScaffoldMessenger.of(context).showSnackBar(
+                                    SnackBar(
+                                      content: Text(
+                                        'Sinkronisasi selesai (${report.pushedItems} dikirim, ${report.pulledItems} diterima).',
+                                      ),
+                                    ),
+                                  );
+                                } catch (e, st) {
+                                  if (!context.mounted) return;
+                                  ScaffoldMessenger.of(context).showSnackBar(
+                                    SnackBar(
+                                      content: Text(
+                                        AuthErrorMapper.toUserMessage(e, st),
+                                      ),
+                                    ),
+                                  );
+                                } finally {
+                                  if (mounted) {
+                                    setState(() => _isBusy = false);
+                                  }
+                                }
+                              },
                       ),
                     ),
                     const SizedBox(width: 8),
                     KButton(
                       label: 'Keluar',
                       variant: KButtonVariant.outline,
-                      onPressed: () async {
-                        await ref
-                            .read(firebaseSyncServiceProvider)
-                            .signOutToGuest();
-                        ref.invalidate(cloudProfileProvider);
-                      },
+                      onPressed: _isBusy
+                          ? null
+                          : () async {
+                              setState(() => _isBusy = true);
+                              try {
+                                await ref
+                                    .read(firebaseSyncServiceProvider)
+                                    .signOutToGuest();
+                                await ref
+                                    .read(appSettingsProvider.notifier)
+                                    .setAuthMode('guest');
+                                ref.invalidate(cloudProfileProvider);
+                              } finally {
+                                if (mounted) {
+                                  setState(() => _isBusy = false);
+                                }
+                              }
+                            },
                     ),
                   ],
                 ],
@@ -450,53 +494,67 @@ class _CloudSyncAccountCard extends StatelessWidget {
                 Align(
                   alignment: Alignment.centerRight,
                   child: TextButton.icon(
-                    onPressed: () async {
-                      final confirmed = await showDialog<bool>(
-                        context: context,
-                        builder: (ctx) => AlertDialog(
-                          title: const Text('Hapus Akun & Data Cloud?'),
-                          content: const Text(
-                            'Seluruh data cadangan akunmu di server Cloud (profil, progres sinkronisasi, dan riwayat XP cloud) akan dihapus permanen sesuai hak privasi data. Progres belajar offline di perangkat ini tetap aman sebagai Mode Tamu.',
-                          ),
-                          actions: [
-                            TextButton(
-                              onPressed: () => Navigator.of(ctx).pop(false),
-                              child: const Text('Batal'),
-                            ),
-                            FilledButton(
-                              style: FilledButton.styleFrom(
-                                backgroundColor: palette.error,
-                                foregroundColor: palette.onPrimary,
+                    onPressed: _isBusy
+                        ? null
+                        : () async {
+                            final confirmed = await showDialog<bool>(
+                              context: context,
+                              builder: (ctx) => AlertDialog(
+                                title: const Text('Hapus Akun & Data Cloud?'),
+                                content: const Text(
+                                  'Seluruh data cadangan akunmu di server Cloud (profil, progres sinkronisasi, dan riwayat XP cloud) akan dihapus permanen sesuai hak privasi data. Progres belajar offline di perangkat ini tetap aman sebagai Mode Tamu.',
+                                ),
+                                actions: [
+                                  TextButton(
+                                    onPressed: () =>
+                                        Navigator.of(ctx).pop(false),
+                                    child: const Text('Batal'),
+                                  ),
+                                  FilledButton(
+                                    style: FilledButton.styleFrom(
+                                      backgroundColor: palette.error,
+                                      foregroundColor: palette.onPrimary,
+                                    ),
+                                    onPressed: () =>
+                                        Navigator.of(ctx).pop(true),
+                                    child: const Text('Hapus Permanen'),
+                                  ),
+                                ],
                               ),
-                              onPressed: () => Navigator.of(ctx).pop(true),
-                              child: const Text('Hapus Permanen'),
-                            ),
-                          ],
-                        ),
-                      );
-                      if (confirmed != true || !context.mounted) return;
-                      try {
-                        await ref
-                            .read(firebaseSyncServiceProvider)
-                            .deleteAccountAndCloudData();
-                        ref.invalidate(cloudProfileProvider);
-                        if (!context.mounted) return;
-                        ScaffoldMessenger.of(context).showSnackBar(
-                          const SnackBar(
-                            content: Text(
-                              'Akun & data Cloud berhasil dihapus. Beralih ke Mode Tamu.',
-                            ),
-                          ),
-                        );
-                      } catch (e, st) {
-                        if (!context.mounted) return;
-                        ScaffoldMessenger.of(context).showSnackBar(
-                          SnackBar(
-                            content: Text(AuthErrorMapper.toUserMessage(e, st)),
-                          ),
-                        );
-                      }
-                    },
+                            );
+                            if (confirmed != true || !context.mounted) return;
+                            setState(() => _isBusy = true);
+                            try {
+                              await ref
+                                  .read(firebaseSyncServiceProvider)
+                                  .deleteAccountAndCloudData();
+                              await ref
+                                  .read(appSettingsProvider.notifier)
+                                  .setAuthMode('guest');
+                              ref.invalidate(cloudProfileProvider);
+                              if (!context.mounted) return;
+                              ScaffoldMessenger.of(context).showSnackBar(
+                                const SnackBar(
+                                  content: Text(
+                                    'Akun & data Cloud berhasil dihapus. Beralih ke Mode Tamu.',
+                                  ),
+                                ),
+                              );
+                            } catch (e, st) {
+                              if (!context.mounted) return;
+                              ScaffoldMessenger.of(context).showSnackBar(
+                                SnackBar(
+                                  content: Text(
+                                    AuthErrorMapper.toUserMessage(e, st),
+                                  ),
+                                ),
+                              );
+                            } finally {
+                              if (mounted) {
+                                setState(() => _isBusy = false);
+                              }
+                            }
+                          },
                     icon: Icon(
                       Icons.delete_forever_rounded,
                       size: 18,
@@ -505,9 +563,9 @@ class _CloudSyncAccountCard extends StatelessWidget {
                     label: Text(
                       'Hapus Akun & Data Cloud',
                       style: Theme.of(context).textTheme.labelMedium?.copyWith(
-                            color: palette.error,
-                            fontWeight: FontWeight.w700,
-                          ),
+                        color: palette.error,
+                        fontWeight: FontWeight.w700,
+                      ),
                     ),
                   ),
                 ),

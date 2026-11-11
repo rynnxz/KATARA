@@ -24,23 +24,20 @@ class _OnboardingScreenState extends ConsumerState<OnboardingScreen> {
   bool _saving = false;
 
   static const List<({String title, String subtitle, MascotState mascot})>
-      _slides = [
+  _slides = [
     (
       title: 'Kenali Bahasa Melayu Serumpun',
-      subtitle:
-          'Belajar sapaan, kosakata harian, hingga pantun Melayu Deli langkah demi langkah bersama Si Rebung.',
+      subtitle: 'Belajar sapaan, kosakata harian, hingga pantun Melayu Deli langkah demi langkah bersama Si Rebung.',
       mascot: MascotState.happy,
     ),
     (
       title: '100% Bisa Tanpa Internet',
-      subtitle:
-          'Seluruh pelajaran, kamus, aksara Jawi, dan catatan budaya tersimpan langsung di ponselmu.',
+      subtitle: 'Seluruh pelajaran, kamus, aksara Jawi, dan catatan budaya tersimpan langsung di ponselmu.',
       mascot: MascotState.idle,
     ),
     (
       title: 'Jujur pada Sumber & Penutur',
-      subtitle:
-          'Setiap kosakata dan artikel budaya ditandai status validasinya agar kamu belajar dari rujukan yang jelas.',
+      subtitle: 'Setiap kosakata dan artikel budaya ditandai status validasinya agar kamu belajar dari rujukan yang jelas.',
       mascot: MascotState.cheer,
     ),
   ];
@@ -63,23 +60,20 @@ class _OnboardingScreenState extends ConsumerState<OnboardingScreen> {
     ),
     (
       title: 'Sekadar ingin tahu',
-      desc: 'Belajar santai 5 menit sehari untuk menambah wawasan bahasa daerah.',
+      desc:
+          'Belajar santai 5 menit sehari untuk menambah wawasan bahasa daerah.',
       icon: Icons.lightbulb_rounded,
     ),
   ];
 
-  static const List<({int minutes, String label, String desc})> _dailyTargets =
-      [
+  static const List<({int minutes, String label, String desc})>
+  _dailyTargets = [
     (minutes: 5, label: '5 menit / hari', desc: 'Santai • 1 pelajaran singkat'),
-    (
-      minutes: 10,
-      label: '10 menit / hari',
-      desc: 'Rutin • 2 pelajaran sehari'
-    ),
+    (minutes: 10, label: '10 menit / hari', desc: 'Rutin • 2 pelajaran sehari'),
     (
       minutes: 20,
       label: '20 menit / hari',
-      desc: 'Tekun • 3–4 pelajaran sehari'
+      desc: 'Tekun • 3–4 pelajaran sehari',
     ),
   ];
 
@@ -93,8 +87,10 @@ class _OnboardingScreenState extends ConsumerState<OnboardingScreen> {
     setState(() => _saving = true);
     try {
       final rawName = _nameController.text.trim();
-      final displayName = rawName.isEmpty ? 'Perantau' : rawName;
-      await ref.read(progressRepositoryProvider).updateProfile(
+      final displayName = rawName.isEmpty ? 'Pelajar Melayu' : rawName;
+      await ref
+          .read(progressRepositoryProvider)
+          .updateProfile(
             displayName: displayName,
             learningGoal: _selectedGoal,
             dailyGoalMinutes: _selectedDailyMinutes,
@@ -208,10 +204,8 @@ class _OnboardingScreenState extends ConsumerState<OnboardingScreen> {
             Text(
               slide.subtitle,
               textAlign: TextAlign.center,
-              style: Theme.of(context).textTheme.bodyLarge?.copyWith(
-                    color: palette.inkMuted,
-                    height: 1.5,
-                  ),
+              style: Theme.of(context).textTheme.bodyLarge
+                  ?.copyWith(color: palette.inkMuted, height: 1.5),
             ),
           ],
         ),
@@ -229,9 +223,8 @@ class _OnboardingScreenState extends ConsumerState<OnboardingScreen> {
           const SizedBox(height: 6),
           Text(
             'Pilihan ini membantu Si Rebung menyiapkan sapaan penyemangatmu.',
-            style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                  color: palette.inkMuted,
-                ),
+            style: Theme.of(context).textTheme.bodyMedium
+                ?.copyWith(color: palette.inkMuted),
           ),
           const SizedBox(height: 20),
           ..._goals.map((g) {
@@ -264,18 +257,14 @@ class _OnboardingScreenState extends ConsumerState<OnboardingScreen> {
                         children: [
                           Text(
                             g.title,
-                            style: Theme.of(context)
-                                .textTheme
-                                .titleMedium
+                            style: Theme.of(context).textTheme.titleMedium
                                 ?.copyWith(fontWeight: FontWeight.w800),
                           ),
                           const SizedBox(height: 2),
                           Text(
                             g.desc,
-                            style:
-                                Theme.of(context).textTheme.bodySmall?.copyWith(
-                                      color: palette.inkMuted,
-                                    ),
+                            style: Theme.of(context).textTheme.bodySmall
+                                ?.copyWith(color: palette.inkMuted),
                           ),
                         ],
                       ),
@@ -300,9 +289,8 @@ class _OnboardingScreenState extends ConsumerState<OnboardingScreen> {
           const SizedBox(height: 6),
           Text(
             'Kamu bisa mengubah target harian kapan saja di menu Pengaturan.',
-            style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                  color: palette.inkMuted,
-                ),
+            style: Theme.of(context).textTheme.bodyMedium
+                ?.copyWith(color: palette.inkMuted),
           ),
           const SizedBox(height: 20),
           ..._dailyTargets.map((t) {
@@ -326,18 +314,14 @@ class _OnboardingScreenState extends ConsumerState<OnboardingScreen> {
                         children: [
                           Text(
                             t.label,
-                            style: Theme.of(context)
-                                .textTheme
-                                .titleMedium
+                            style: Theme.of(context).textTheme.titleMedium
                                 ?.copyWith(fontWeight: FontWeight.w800),
                           ),
                           const SizedBox(height: 2),
                           Text(
                             t.desc,
-                            style:
-                                Theme.of(context).textTheme.bodySmall?.copyWith(
-                                      color: palette.inkMuted,
-                                    ),
+                            style: Theme.of(context).textTheme.bodySmall
+                                ?.copyWith(color: palette.inkMuted),
                           ),
                         ],
                       ),
@@ -354,9 +338,7 @@ class _OnboardingScreenState extends ConsumerState<OnboardingScreen> {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        const Center(
-          child: MascotView(state: MascotState.happy, size: 100),
-        ),
+        const Center(child: MascotView(state: MascotState.happy, size: 100)),
         const SizedBox(height: 20),
         Text(
           'Siapa nama panggilanmu?',
@@ -365,9 +347,8 @@ class _OnboardingScreenState extends ConsumerState<OnboardingScreen> {
         const SizedBox(height: 6),
         Text(
           'Opsional, tanpa perlu membuat akun. Progresmu langsung tersimpan di perangkat ini.',
-          style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                color: palette.inkMuted,
-              ),
+          style: Theme.of(context).textTheme.bodyMedium
+              ?.copyWith(color: palette.inkMuted),
         ),
         const SizedBox(height: 20),
         TextField(
@@ -375,7 +356,7 @@ class _OnboardingScreenState extends ConsumerState<OnboardingScreen> {
           textCapitalization: TextCapitalization.words,
           decoration: InputDecoration(
             labelText: 'Nama panggilan',
-            hintText: 'Mis. Budi / Siti (kosongkan untuk "Perantau")',
+            hintText: 'Mis. Budi / Siti (kosongkan untuk "Pelajar Melayu")',
             filled: true,
             fillColor: palette.surface,
             border: OutlineInputBorder(

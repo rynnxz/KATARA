@@ -38,17 +38,15 @@ class LevelUpScreen extends ConsumerWidget {
                 Text(
                   'Naik ke Level $newLevel!',
                   textAlign: TextAlign.center,
-                  style: Theme.of(context).textTheme.displayLarge?.copyWith(
-                        color: palette.primary,
-                      ),
+                  style: Theme.of(context).textTheme.displayLarge
+                      ?.copyWith(color: palette.primary),
                 ),
                 const SizedBox(height: 8),
                 Text(
                   'Gelar Melayu: $newTitle',
                   textAlign: TextAlign.center,
-                  style: Theme.of(context).textTheme.headlineMedium?.copyWith(
-                        color: palette.inkMuted,
-                      ),
+                  style: Theme.of(context).textTheme.headlineMedium
+                      ?.copyWith(color: palette.inkMuted),
                 ),
                 const SizedBox(height: 24),
                 KCard(
@@ -64,10 +62,8 @@ class LevelUpScreen extends ConsumerWidget {
                       const SizedBox(width: 12),
                       Text(
                         'Hadiah Naik Level: +$bonusCoins Koin',
-                        style:
-                            Theme.of(context).textTheme.titleMedium?.copyWith(
-                                  fontWeight: FontWeight.w800,
-                                ),
+                        style: Theme.of(context).textTheme.titleMedium
+                            ?.copyWith(fontWeight: FontWeight.w800),
                       ),
                     ],
                   ),

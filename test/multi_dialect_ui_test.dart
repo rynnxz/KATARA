@@ -8,7 +8,7 @@ import 'package:katara/data/content/content_seeder.dart';
 import 'package:katara/data/db/app_database.dart';
 import 'package:katara/features/dialect_comparison/dialect_comparison_screen.dart';
 import 'package:katara/features/practice/conversation_practice_screen.dart';
-import 'package:katara/features/practice/pronunciation_guide_screen.dart';
+import 'package:katara/features/practice/practice_screen.dart';
 import 'package:katara/features/region_picker/region_picker_screen.dart';
 import 'package:katara/features/settings/about_screen.dart';
 
@@ -30,9 +30,7 @@ void main() {
 
   Widget wrapWithApp(Widget child) {
     return ProviderScope(
-      overrides: [
-        appDatabaseProvider.overrideWithValue(db),
-      ],
+      overrides: [appDatabaseProvider.overrideWithValue(db)],
       child: MaterialApp(
         theme: KataraTheme.light(),
         darkTheme: KataraTheme.dark(),
@@ -42,71 +40,97 @@ void main() {
   }
 
   group('Multi-Dialect UI, Comparison, Practice & References Tests', () {
-    testWidgets('DialectComparisonScreen renders Deli vs Langkat vs Palembang comparison rows and phonetic notes', (tester) async {
-      await tester.pumpWidget(wrapWithApp(const DialectComparisonScreen()));
-      await tester.pumpAndSettle();
+    testWidgets(
+      'DialectComparisonScreen renders Deli vs Langkat vs Palembang comparison rows and phonetic notes',
+      (tester) async {
+        await tester.pumpWidget(wrapWithApp(const DialectComparisonScreen()));
+        await tester.pumpAndSettle();
 
-      expect(find.textContaining('Perbandingan Dialek Melayu'), findsWidgets);
-      expect(find.textContaining('Melayu Deli'), findsWidgets);
-      expect(find.textContaining('Melayu Langkat'), findsWidgets);
-      expect(find.textContaining('Melayu Palembang'), findsWidgets);
-      expect(find.textContaining('apo'), findsWidgets);
-    });
+        expect(find.textContaining('Perbandingan Dialek Melayu'), findsWidgets);
+        expect(find.textContaining('Melayu Deli'), findsWidgets);
+        expect(find.textContaining('Melayu Langkat'), findsWidgets);
+        expect(find.textContaining('Melayu Palembang'), findsWidgets);
+        expect(find.textContaining('apo'), findsWidgets);
+      },
+    );
 
-    testWidgets('ConversationPracticeScreen and PronunciationGuideScreen render interactive dialogues and phonetic guides', (tester) async {
-      await tester.pumpWidget(wrapWithApp(const ConversationPracticeScreen()));
-      await tester.pumpAndSettle();
+    testWidgets(
+      'ConversationPracticeScreen and PracticeScreen render 4 practice cards without PronunciationGuideScreen',
+      (tester) async {
+        await tester.pumpWidget(
+          wrapWithApp(const ConversationPracticeScreen()),
+        );
+        await tester.pumpAndSettle();
 
-      expect(find.textContaining('Latihan Percakapan'), findsWidgets);
+        expect(find.textContaining('Latihan Percakapan'), findsWidgets);
 
-      await tester.pumpWidget(wrapWithApp(const PronunciationGuideScreen()));
-      await tester.pumpAndSettle();
+        await tester.pumpWidget(wrapWithApp(const PracticeScreen()));
+        await tester.pumpAndSettle();
 
-      expect(find.textContaining('Panduan Lafal & Fonologi'), findsWidgets);
-      expect(find.textContaining('Pelemahan Vokal Akhir'), findsWidgets);
-    });
+        expect(find.textContaining('Kuis Cepat 30 Detik'), findsOneWidget);
+        expect(find.textContaining('Latihan Aksara Jawi'), findsOneWidget);
+        expect(find.textContaining('Latihan Percakapan'), findsOneWidget);
+        expect(find.textContaining('Perbandingan Dialek'), findsOneWidget);
+        expect(find.textContaining('Panduan Lafal'), findsNothing);
+      },
+    );
 
-    testWidgets('AboutScreen renders all 5 mandatory academic & reference sections offline', (tester) async {
-      await tester.pumpWidget(wrapWithApp(const AboutScreen()));
-      await tester.pumpAndSettle();
+    testWidgets(
+      'AboutScreen renders all 5 mandatory academic & reference sections offline',
+      (tester) async {
+        await tester.pumpWidget(wrapWithApp(const AboutScreen()));
+        await tester.pumpAndSettle();
 
-      expect(find.textContaining('Tentang KATARA'), findsWidgets);
-      expect(find.textContaining('Sumber Data Bahasa & Referensi'), findsWidgets);
+        expect(find.textContaining('Tentang KATARA'), findsWidgets);
+        expect(
+          find.textContaining('Sumber Data Bahasa & Referensi'),
+          findsWidgets,
+        );
 
-      final verticalList = find.byWidgetPredicate(
-        (w) => w is Scrollable && w.axisDirection == AxisDirection.down,
-      );
+        final verticalList = find.byWidgetPredicate(
+          (w) => w is Scrollable && w.axisDirection == AxisDirection.down,
+        );
 
-      await tester.scrollUntilVisible(
-        find.textContaining('Metodologi Riset Linguistik'),
-        200,
-        scrollable: verticalList,
-      );
-      expect(find.textContaining('Metodologi Riset Linguistik'), findsWidgets);
+        await tester.scrollUntilVisible(
+          find.textContaining('Metodologi Riset Linguistik'),
+          200,
+          scrollable: verticalList,
+        );
+        expect(
+          find.textContaining('Metodologi Riset Linguistik'),
+          findsWidgets,
+        );
 
-      await tester.scrollUntilVisible(
-        find.textContaining('Atribusi & Kontributor'),
-        200,
-        scrollable: verticalList,
-      );
-      expect(find.textContaining('Atribusi & Kontributor'), findsWidgets);
+        await tester.scrollUntilVisible(
+          find.textContaining('Atribusi & Kontributor'),
+          200,
+          scrollable: verticalList,
+        );
+        expect(find.textContaining('Atribusi & Kontributor'), findsWidgets);
 
-      await tester.scrollUntilVisible(
-        find.textContaining('Keterbatasan Data & Catatan Dialek'),
-        200,
-        scrollable: verticalList,
-      );
-      expect(find.textContaining('Keterbatasan Data & Catatan Dialek'), findsWidgets);
-    });
+        await tester.scrollUntilVisible(
+          find.textContaining('Keterbatasan Data & Catatan Dialek'),
+          200,
+          scrollable: verticalList,
+        );
+        expect(
+          find.textContaining('Keterbatasan Data & Catatan Dialek'),
+          findsWidgets,
+        );
+      },
+    );
 
-    testWidgets('RegionPickerScreen displays bundled Deli and downloadable Langkat & Palembang modules with SHA-256 info', (tester) async {
-      await tester.pumpWidget(wrapWithApp(const RegionPickerScreen()));
-      await tester.pumpAndSettle();
+    testWidgets(
+      'RegionPickerScreen displays bundled Deli and downloadable Langkat & Palembang modules with SHA-256 info',
+      (tester) async {
+        await tester.pumpWidget(wrapWithApp(const RegionPickerScreen()));
+        await tester.pumpAndSettle();
 
-      expect(find.textContaining('Melayu Deli'), findsWidgets);
-      expect(find.textContaining('Melayu Langkat'), findsWidgets);
-      expect(find.textContaining('Melayu Palembang'), findsWidgets);
-      expect(find.textContaining('Unduh Modul'), findsWidgets);
-    });
+        expect(find.textContaining('Melayu Deli'), findsWidgets);
+        expect(find.textContaining('Melayu Langkat'), findsWidgets);
+        expect(find.textContaining('Melayu Palembang'), findsWidgets);
+        expect(find.textContaining('Unduh Modul'), findsWidgets);
+      },
+    );
   });
 }

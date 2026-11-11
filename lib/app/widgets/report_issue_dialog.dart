@@ -67,7 +67,9 @@ class _ReportIssueSheetState extends ConsumerState<_ReportIssueSheet> {
   Future<void> _submit() async {
     setState(() => _submitting = true);
     try {
-      await ref.read(progressRepositoryProvider).submitReport(
+      await ref
+          .read(progressRepositoryProvider)
+          .submitReport(
             courseId: widget.courseId,
             itemId: widget.itemId,
             itemType: widget.itemType,
@@ -111,9 +113,8 @@ class _ReportIssueSheetState extends ConsumerState<_ReportIssueSheet> {
                 Expanded(
                   child: Text(
                     'Laporkan Kesalahan Konten',
-                    style: Theme.of(context).textTheme.titleMedium?.copyWith(
-                          fontWeight: FontWeight.w800,
-                        ),
+                    style: Theme.of(context).textTheme.titleMedium
+                        ?.copyWith(fontWeight: FontWeight.w800),
                   ),
                 ),
                 IconButton(
@@ -127,9 +128,9 @@ class _ReportIssueSheetState extends ConsumerState<_ReportIssueSheet> {
             Text(
               'Item: ${widget.itemTitle}',
               style: Theme.of(context).textTheme.bodySmall?.copyWith(
-                    color: palette.inkMuted,
-                    fontWeight: FontWeight.w600,
-                  ),
+                color: palette.inkMuted,
+                fontWeight: FontWeight.w600,
+              ),
             ),
             const SizedBox(height: 14),
             ..._reasons.map((reason) {
@@ -160,20 +161,21 @@ class _ReportIssueSheetState extends ConsumerState<_ReportIssueSheet> {
                           isSelected
                               ? Icons.radio_button_checked_rounded
                               : Icons.radio_button_off_rounded,
-                          color:
-                              isSelected ? palette.primary : palette.inkMuted,
+                          color: isSelected
+                              ? palette.primary
+                              : palette.inkMuted,
                           size: 20,
                         ),
                         const SizedBox(width: 10),
                         Expanded(
                           child: Text(
                             reason,
-                            style:
-                                Theme.of(context).textTheme.bodyMedium?.copyWith(
-                                      fontWeight: isSelected
-                                          ? FontWeight.w700
-                                          : FontWeight.w500,
-                                    ),
+                            style: Theme.of(context).textTheme.bodyMedium
+                                ?.copyWith(
+                                  fontWeight: isSelected
+                                      ? FontWeight.w700
+                                      : FontWeight.w500,
+                                ),
                           ),
                         ),
                       ],

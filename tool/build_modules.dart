@@ -2,6 +2,7 @@ import 'dart:convert';
 import 'dart:io';
 import 'dart:math';
 import 'dart:typed_data';
+
 import 'package:archive/archive.dart';
 import 'package:crypto/crypto.dart';
 import 'package:katara/services/catalog_signature_verifier.dart';
@@ -18,13 +19,17 @@ Uint8List _loadOrCreatePrivateSeed() {
   }
   seedFile.parent.createSync(recursive: true);
   final rng = Random.secure();
-  final seed = Uint8List.fromList(List<int>.generate(32, (_) => rng.nextInt(256)));
+  final seed = Uint8List.fromList(
+    List<int>.generate(32, (_) => rng.nextInt(256)),
+  );
   seedFile.writeAsStringSync('${Ed25519Crypto.bytesToHex(seed)}\n');
   return seed;
 }
 
 void main() {
-  stdout.writeln('=== KATARA Standalone Dialect Module ZIP Builder (v1.1.1) ===');
+  stdout.writeln(
+    '=== KATARA Standalone Dialect Module ZIP Builder (v1.1.1) ===',
+  );
 
   final langkatMeta = _buildDialectModuleZip(
     courseId: 'ms-langkat',
@@ -73,7 +78,9 @@ void main() {
   );
 
   final seed = _loadOrCreatePrivateSeed();
-  final pubKeyHex = Ed25519Crypto.bytesToHex(Ed25519Crypto.publicKeyFromSeed(seed));
+  final pubKeyHex = Ed25519Crypto.bytesToHex(
+    Ed25519Crypto.publicKeyFromSeed(seed),
+  );
   stdout.writeln('  [KEY] Public Key Ed25519: $pubKeyHex');
 
   final catalog = <String, dynamic>{
@@ -86,7 +93,9 @@ void main() {
     'modules': [langkatMeta, palembangMeta],
   };
 
-  final canonicalPayload = CatalogSignatureVerifier.canonicalCatalogPayload(catalog);
+  final canonicalPayload = CatalogSignatureVerifier.canonicalCatalogPayload(
+    catalog,
+  );
   final sigBytes = Ed25519Crypto.sign(canonicalPayload, seed);
   catalog['signature_ed25519'] = Ed25519Crypto.bytesToHex(sigBytes);
   catalog['public_key_ed25519'] = pubKeyHex;
@@ -104,8 +113,8 @@ void main() {
   final coursesFile = File('assets/content/courses.json');
   final coursesRoot =
       jsonDecode(coursesFile.readAsStringSync()) as Map<String, dynamic>;
-  final coursesList =
-      (coursesRoot['courses'] as List<dynamic>).cast<Map<String, dynamic>>();
+  final coursesList = (coursesRoot['courses'] as List<dynamic>)
+      .cast<Map<String, dynamic>>();
 
   for (final c in coursesList) {
     final cid = c['id'] as String;
@@ -125,7 +134,9 @@ void main() {
   }
   coursesFile.writeAsStringSync('${_prettyJson.convert(coursesRoot)}\n');
 
-  stdout.writeln('=== Selesai membangun paket ZIP modul & module_catalog.json ===');
+  stdout.writeln(
+    '=== Selesai membangun paket ZIP modul & module_catalog.json ===',
+  );
 }
 
 Map<String, dynamic> _buildDialectModuleZip({
@@ -138,22 +149,22 @@ Map<String, dynamic> _buildDialectModuleZip({
   required String masterPath,
   required String archiveFileName,
   required List<(String title, String theme, String categoryKey, int level)>
-      unitDefinitions,
+  unitDefinitions,
 }) {
   final master =
       jsonDecode(File(masterPath).readAsStringSync()) as Map<String, dynamic>;
-  final vocab =
-      (master['vocabulary'] as List<dynamic>).cast<Map<String, dynamic>>();
-  final expressions =
-      (master['expressions'] as List<dynamic>).cast<Map<String, dynamic>>();
-  final rawSentences =
-      (master['sentences'] as List<dynamic>).cast<Map<String, dynamic>>();
-  final rawConversations =
-      (master['conversations'] as List<dynamic>).cast<Map<String, dynamic>>();
-  final culturalNotes =
-      (master['cultural_notes'] as List<dynamic>).cast<Map<String, dynamic>>();
-  final sources =
-      (master['sources'] as List<dynamic>).cast<Map<String, dynamic>>();
+  final vocab = (master['vocabulary'] as List<dynamic>)
+      .cast<Map<String, dynamic>>();
+  final expressions = (master['expressions'] as List<dynamic>)
+      .cast<Map<String, dynamic>>();
+  final rawSentences = (master['sentences'] as List<dynamic>)
+      .cast<Map<String, dynamic>>();
+  final rawConversations = (master['conversations'] as List<dynamic>)
+      .cast<Map<String, dynamic>>();
+  final culturalNotes = (master['cultural_notes'] as List<dynamic>)
+      .cast<Map<String, dynamic>>();
+  final sources = (master['sources'] as List<dynamic>)
+      .cast<Map<String, dynamic>>();
 
   // Map categoryKey -> unitId & level
   final unitIdByCategory = <String, String>{};
@@ -267,8 +278,8 @@ Map<String, dynamic> _buildDialectModuleZip({
     final dId = '$courseId:d:${(i + 1).toString().padLeft(4, '0')}';
     final uIdx = (i % unitDefinitions.length) + 1;
     final uId = '$courseId:u:${uIdx.toString().padLeft(4, '0')}';
-    final turns =
-        (c['turns'] as List<dynamic>? ?? const []).cast<Map<String, dynamic>>();
+    final turns = (c['turns'] as List<dynamic>? ?? const [])
+        .cast<Map<String, dynamic>>();
     final lines = <Map<String, dynamic>>[];
     for (var t = 0; t < turns.length; t++) {
       lines.add({
@@ -303,8 +314,7 @@ Map<String, dynamic> _buildDialectModuleZip({
     final uId = '$courseId:u:${(i + 1).toString().padLeft(4, '0')}';
     final unitWords = wordsByUnit[uId] ?? <String>[];
     final unitPhrases = phrasesByUnit[uId] ?? <String>[];
-    final dialogueId =
-        dialoguesOut[i % dialoguesOut.length]['id'] as String;
+    final dialogueId = dialoguesOut[i % dialoguesOut.length]['id'] as String;
 
     final l1Id = '$courseId:l:${(++lessonCounter).toString().padLeft(4, '0')}';
     final l2Id = '$courseId:l:${(++lessonCounter).toString().padLeft(4, '0')}';
@@ -315,10 +325,7 @@ Map<String, dynamic> _buildDialectModuleZip({
       ...unitWords.skip(12).take(10),
       ...unitPhrases.take(4),
     ];
-    final l3Refs = <String>[
-      dialogueId,
-      ...unitWords.skip(22).take(8),
-    ];
+    final l3Refs = <String>[dialogueId, ...unitWords.skip(22).take(8)];
 
     final unitLessons = [
       {
@@ -370,8 +377,7 @@ Map<String, dynamic> _buildDialectModuleZip({
         final d1 = wordsOut[(wIdx + 5) % wordsOut.length];
         final d2 = wordsOut[(wIdx + 13) % wordsOut.length];
         final d3 = wordsOut[(wIdx + 27) % wordsOut.length];
-        final qId =
-            '$courseId:q:${(++quizCounter).toString().padLeft(4, '0')}';
+        final qId = '$courseId:q:${(++quizCounter).toString().padLeft(4, '0')}';
 
         if (q.isEven) {
           quizBankOut.add({
@@ -379,7 +385,8 @@ Map<String, dynamic> _buildDialectModuleZip({
             'course_id': courseId,
             'lesson_id': lid,
             'exercise_type': 'mcq_word',
-            'prompt': 'Apa arti kata "${target['deli']}" (${target['pronunciation']})?',
+            'prompt':
+                'Apa arti kata "${target['deli']}" (${target['pronunciation']})?',
             'options': [
               target['indonesia'],
               d1['indonesia'],
@@ -399,13 +406,9 @@ Map<String, dynamic> _buildDialectModuleZip({
             'course_id': courseId,
             'lesson_id': lid,
             'exercise_type': 'mcq_word',
-            'prompt': 'Manakah kosakata $courseName untuk "${target['indonesia']}"?',
-            'options': [
-              target['deli'],
-              d1['deli'],
-              d2['deli'],
-              d3['deli'],
-            ],
+            'prompt':
+                'Manakah kosakata $courseName untuk "${target['indonesia']}"?',
+            'options': [target['deli'], d1['deli'], d2['deli'], d3['deli']],
             'correct_index': 0,
             'correct_sentence': null,
             'ref_item_id': target['id'],
@@ -429,13 +432,12 @@ Map<String, dynamic> _buildDialectModuleZip({
       'title': c['title'],
       'category': c['category'] ?? 'budaya',
       'summary': c['summary'] ?? '',
-      'body_markdown': '## ${c['title']}\n\n${c['summary'] ?? ''}\n\n${c['body'] ?? ''}',
-      'body_paragraphs': [
-        c['summary'] ?? '',
-        c['body'] ?? '',
-      ],
+      'body_markdown':
+          '## ${c['title']}\n\n${c['summary'] ?? ''}\n\n${c['body'] ?? ''}',
+      'body_paragraphs': [c['summary'] ?? '', c['body'] ?? ''],
       'sources': c['sources'] ?? const <String>[],
-      'verification_notes': 'Terverifikasi dari rujukan budaya & linguistik $courseName.',
+      'verification_notes':
+          'Terverifikasi dari rujukan budaya & linguistik $courseName.',
       'status': 'speaker_checked',
       'card_id': cid,
       'unlock_after_unit_id': uid,
@@ -496,7 +498,12 @@ Map<String, dynamic> _buildDialectModuleZip({
       'example_word_latin': 'cakap',
       'example_deli': 'cakap',
       'example_jawi': 'چاکڤ',
-      'forms': {'isolated': 'چ', 'initial': 'چـ', 'medial': 'ـچـ', 'final': 'ـچ'},
+      'forms': {
+        'isolated': 'چ',
+        'initial': 'چـ',
+        'medial': 'ـچـ',
+        'final': 'ـچ',
+      },
       'connects_to_next': true,
       'level': 1,
       'notes': 'Huruf tambahan khas Jawi Melayu dengan tiga titik di bawah.',
@@ -514,7 +521,12 @@ Map<String, dynamic> _buildDialectModuleZip({
       'example_word_latin': 'kampung',
       'example_deli': 'kampung',
       'example_jawi': 'کمڤوڠ',
-      'forms': {'isolated': 'ڠ', 'initial': 'ڠـ', 'medial': 'ـڠـ', 'final': 'ـڠ'},
+      'forms': {
+        'isolated': 'ڠ',
+        'initial': 'ڠـ',
+        'medial': 'ـڠـ',
+        'final': 'ـڠ',
+      },
       'connects_to_next': true,
       'level': 1,
       'notes': 'Huruf tambahan khas Jawi Melayu dengan tiga titik di atas.',
@@ -532,7 +544,12 @@ Map<String, dynamic> _buildDialectModuleZip({
       'example_word_latin': 'pantun',
       'example_deli': 'pantun',
       'example_jawi': 'ڤنتون',
-      'forms': {'isolated': 'ڤ', 'initial': 'ڤـ', 'medial': 'ـڤـ', 'final': 'ـڤ'},
+      'forms': {
+        'isolated': 'ڤ',
+        'initial': 'ڤـ',
+        'medial': 'ـڤـ',
+        'final': 'ـڤ',
+      },
       'connects_to_next': true,
       'level': 1,
       'notes': 'Huruf Fa dengan tiga titik di atas untuk bunyi /p/.',
@@ -550,7 +567,12 @@ Map<String, dynamic> _buildDialectModuleZip({
       'example_word_latin': 'gulai',
       'example_deli': 'gulai',
       'example_jawi': 'ݢولاي',
-      'forms': {'isolated': 'ݢ', 'initial': 'ݢـ', 'medial': 'ـݢـ', 'final': 'ـݢ'},
+      'forms': {
+        'isolated': 'ݢ',
+        'initial': 'ݢـ',
+        'medial': 'ـݢـ',
+        'final': 'ـݢ',
+      },
       'connects_to_next': true,
       'level': 1,
       'notes': 'Huruf Kaf bertitik untuk melambangkan bunyi /g/.',
@@ -568,7 +590,12 @@ Map<String, dynamic> _buildDialectModuleZip({
       'example_word_latin': 'nyiur',
       'example_deli': 'nyiur',
       'example_jawi': 'ڽيور',
-      'forms': {'isolated': 'ڽ', 'initial': 'ڽـ', 'medial': 'ـڽـ', 'final': 'ـڽ'},
+      'forms': {
+        'isolated': 'ڽ',
+        'initial': 'ڽـ',
+        'medial': 'ـڽـ',
+        'final': 'ـڽ',
+      },
       'connects_to_next': true,
       'level': 1,
       'notes': 'Huruf khas Jawi Melayu untuk konsonan nasal palatal /ɲ/.',

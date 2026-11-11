@@ -26,7 +26,9 @@ class SettingsScreen extends ConsumerWidget {
     );
     if (picked == null) return;
 
-    await ref.read(appSettingsProvider.notifier).updateReminder(
+    await ref
+        .read(appSettingsProvider.notifier)
+        .updateReminder(
           enabled: true,
           hour: picked.hour,
           minute: picked.minute,
@@ -72,6 +74,7 @@ class SettingsScreen extends ConsumerWidget {
 
     if (confirmed != true) return;
     await ref.read(progressRepositoryProvider).resetAllUserData();
+    await ref.read(appSettingsProvider.notifier).setAuthMode(null);
     if (!context.mounted) return;
     context.go('/splash');
   }
@@ -86,9 +89,7 @@ class SettingsScreen extends ConsumerWidget {
         '${settings.reminderHour.toString().padLeft(2, '0')}:${settings.reminderMinute.toString().padLeft(2, '0')}';
 
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Pengaturan'),
-      ),
+      appBar: AppBar(title: const Text('Pengaturan')),
       body: PatternBackground(
         opacity: 0.04,
         child: ListView(
@@ -105,9 +106,7 @@ class SettingsScreen extends ConsumerWidget {
                 children: [
                   Text(
                     'Mode Tema',
-                    style: Theme.of(context)
-                        .textTheme
-                        .titleMedium
+                    style: Theme.of(context).textTheme.titleMedium
                         ?.copyWith(fontWeight: FontWeight.w800),
                   ),
                   const SizedBox(height: 10),
@@ -168,9 +167,7 @@ class SettingsScreen extends ConsumerWidget {
                 children: [
                   Text(
                     'Target Belajar Harian',
-                    style: Theme.of(context)
-                        .textTheme
-                        .titleMedium
+                    style: Theme.of(context).textTheme.titleMedium
                         ?.copyWith(fontWeight: FontWeight.w800),
                   ),
                   const SizedBox(height: 10),
@@ -226,8 +223,9 @@ class SettingsScreen extends ConsumerWidget {
                       final notif = ref.read(notificationServiceProvider);
                       if (val) {
                         await notif.requestPermissionWithContext();
-                        final todayStr =
-                            GamificationRules.formatLocalDate(DateTime.now());
+                        final todayStr = GamificationRules.formatLocalDate(
+                          DateTime.now(),
+                        );
                         await notif.rescheduleDailyReminder(
                           hour: settings.reminderHour,
                           minute: settings.reminderMinute,

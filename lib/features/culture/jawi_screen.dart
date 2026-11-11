@@ -21,9 +21,7 @@ class JawiScreen extends ConsumerWidget {
     final courseId = statsAsync.value?.activeCourseId ?? 'ms-deli';
 
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Aksara Jawi Melayu'),
-      ),
+      appBar: AppBar(title: const Text('Aksara Jawi Melayu')),
       body: PatternBackground(
         opacity: 0.05,
         child: FutureBuilder<List<JawiLetterModel>>(
@@ -60,9 +58,7 @@ class JawiScreen extends ConsumerWidget {
                                 const SizedBox(height: 4),
                                 Text(
                                   'Aksara Jawi ditulis dari kanan ke kiri (RTL) dan memiliki 6 huruf khusus untuk bunyi bahasa Melayu yang tidak ada dalam abjad Arab standar.',
-                                  style: Theme.of(context)
-                                      .textTheme
-                                      .bodySmall
+                                  style: Theme.of(context).textTheme.bodySmall
                                       ?.copyWith(color: palette.inkMuted),
                                 ),
                               ],
@@ -74,8 +70,22 @@ class JawiScreen extends ConsumerWidget {
                       KButton(
                         label: 'Latihan Pelajaran Jawi',
                         icon: Icons.play_arrow_rounded,
-                        onPressed: () =>
-                            context.push('/lesson/ms-deli:l:0011'),
+                        onPressed: () async {
+                          final units = await ref
+                              .read(contentRepositoryProvider)
+                              .getUnits(courseId);
+                          var targetLessonId = 'ms-deli:l:0011';
+                          for (final u in units) {
+                            for (final l in u.lessons) {
+                              if (l.kind == 'jawi') {
+                                targetLessonId = l.id;
+                                break;
+                              }
+                            }
+                          }
+                          if (!context.mounted) return;
+                          context.push('/lesson/$targetLessonId');
+                        },
                       ),
                     ],
                   ),
@@ -167,11 +177,13 @@ class JawiScreen extends ConsumerWidget {
                               children: [
                                 _FormCell(
                                   label: 'Tunggal',
-                                  glyph: letter.forms['isolated'] ?? letter.glyph,
+                                  glyph:
+                                      letter.forms['isolated'] ?? letter.glyph,
                                 ),
                                 _FormCell(
                                   label: 'Awal',
-                                  glyph: letter.forms['initial'] ?? letter.glyph,
+                                  glyph:
+                                      letter.forms['initial'] ?? letter.glyph,
                                 ),
                                 _FormCell(
                                   label: 'Tengah',
@@ -226,10 +238,7 @@ class JawiScreen extends ConsumerWidget {
 }
 
 class _FormCell extends StatelessWidget {
-  const _FormCell({
-    required this.label,
-    required this.glyph,
-  });
+  const _FormCell({required this.label, required this.glyph});
 
   final String label;
   final String glyph;
@@ -243,9 +252,8 @@ class _FormCell extends StatelessWidget {
         const SizedBox(height: 4),
         Text(
           label,
-          style: Theme.of(context).textTheme.labelSmall?.copyWith(
-                color: palette.inkMuted,
-              ),
+          style: Theme.of(context).textTheme.labelSmall
+              ?.copyWith(color: palette.inkMuted),
         ),
       ],
     );

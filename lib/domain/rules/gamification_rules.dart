@@ -1,4 +1,5 @@
 import 'dart:math' as math;
+
 import 'package:katara/domain/entities/user_progress.dart';
 
 class GamificationRules {
@@ -143,7 +144,7 @@ class GamificationRules {
 
   /// Evaluasi streak saat aplikasi dibuka (termasuk pemakaian `streak_freezes` otomatis).
   static ({int streakCurrent, int streakFreezes, String? lastActiveDate})
-      reconcileStreakOnOpen({
+  reconcileStreakOnOpen({
     required int streakCurrent,
     required int streakFreezes,
     required String? lastActiveDate,
@@ -170,7 +171,8 @@ class GamificationRules {
     final missedDays = diff - 1;
     if (streakFreezes >= missedDays) {
       // Gunakan streak freeze otomatis untuk menutup hari yang terlewat.
-      final yesterday = parseLocalDate(todayDate).subtract(const Duration(days: 1));
+      final yesterday = parseLocalDate(todayDate)
+          .subtract(const Duration(days: 1));
       return (
         streakCurrent: streakCurrent,
         streakFreezes: streakFreezes - missedDays,
@@ -192,7 +194,8 @@ class GamificationRules {
     int streakFreezes,
     String lastActiveDate,
     bool incremented,
-  }) applyStreakOnLessonComplete({
+  })
+  applyStreakOnLessonComplete({
     required int streakCurrent,
     required int streakBest,
     required int streakFreezes,
@@ -206,7 +209,8 @@ class GamificationRules {
       todayDate: todayDate,
     );
 
-    if (reconciled.lastActiveDate == todayDate && reconciled.streakCurrent > 0) {
+    if (reconciled.lastActiveDate == todayDate &&
+        reconciled.streakCurrent > 0) {
       return (
         streakCurrent: reconciled.streakCurrent,
         streakBest: math.max(streakBest, reconciled.streakCurrent),

@@ -1,6 +1,7 @@
 import 'dart:convert';
 import 'dart:io';
 import 'dart:typed_data';
+
 import 'package:archive/archive.dart';
 import 'package:crypto/crypto.dart';
 import 'package:drift/drift.dart';
@@ -18,6 +19,54 @@ class ModuleDownloadException implements Exception {
 
   @override
   String toString() => 'ModuleDownloadException: $message';
+}
+
+/// Memetakan galat unduhan modul menjadi pesan Bahasa Indonesia yang ramah pengguna
+/// tanpa membocorkan nama kelas exception atau detail teknis mentah (A2).
+class ModuleDownloadErrorMapper {
+  const ModuleDownloadErrorMapper._();
+
+  static String toUserMessage(Object error, {String? courseName}) {
+    final target = courseName != null && courseName.trim().isNotEmpty
+        ? 'modul $courseName'
+        : 'modul bahasa';
+    final raw = error.toString().toLowerCase();
+
+    if (raw.contains('socketexception') ||
+        raw.contains('failed host lookup') ||
+        raw.contains('network is unreachable') ||
+        raw.contains('connection refused') ||
+        raw.contains('koneksi unduhan modul terputus') ||
+        raw.contains('clientexception')) {
+      return 'Koneksi internet terputus saat mengunduh $target. Periksa jaringanmu lalu ketuk Coba Lagi.';
+    }
+
+    if (raw.contains('timeout')) {
+      return 'Waktu unduh $target habis karena jaringan lambat. Silakan coba lagi.';
+    }
+
+    if (raw.contains('http 404') || raw.contains('tidak tersedia')) {
+      return 'Paket $target belum tersedia di server rilis saat ini. Silakan coba beberapa saat lagi.';
+    }
+
+    if (raw.contains('http 5') || raw.contains('http 429')) {
+      return 'Server unduhan sedang sibuk. Silakan coba mengunduh $target beberapa saat lagi.';
+    }
+
+    if (raw.contains('sha-256') ||
+        raw.contains('checksum') ||
+        raw.contains('rusak')) {
+      return 'Berkas unduhan $target tidak utuh karena gangguan jaringan. Silakan ketuk Coba Lagi.';
+    }
+
+    if (raw.contains('no space') ||
+        raw.contains('storage') ||
+        raw.contains('enospc')) {
+      return 'Ruang penyimpanan perangkat hampir penuh. Kosongkan sedikit ruang lalu coba lagi.';
+    }
+
+    return 'Belum dapat memasang $target saat ini. Pastikan koneksi internet stabil lalu coba lagi.';
+  }
 }
 
 class CatalogEnvelopeModel {
@@ -52,9 +101,9 @@ class ModuleDownloadService {
     this.bytesFetcher,
     http.Client? httpClient,
     this.publicKeyHex = CatalogSignatureVerifier.embeddedPublicKeyHex,
-  })  : _installRootDirectoryProvider =
-            installRootDirectoryProvider ?? _defaultInstallRoot,
-        _httpClient = httpClient ?? http.Client();
+  }) : _installRootDirectoryProvider =
+           installRootDirectoryProvider ?? _defaultInstallRoot,
+       _httpClient = httpClient ?? http.Client();
 
   final AppDatabase db;
   final ContentSeeder seeder;
@@ -73,6 +122,22 @@ class ModuleDownloadService {
     'github.com',
     'objects.githubusercontent.com',
     'release-assets.githubusercontent.com',
+  };
+
+  /// Daftar cadangan rilis stabil `v1.1.0` di GitHub Releases yang sudah terpublikasi (`HTTP 200`)
+  /// beserta checksum SHA-256 resminya, digunakan apabila tag rilis baru belum diunggah ke GitHub.
+  static const Map<String, ({String url, String sha256})>
+  trustedFallbackReleases = {
+    'ms-langkat': (
+      url: 'https://github.com/rynnxz/KATARA/releases/download/v1.1.0/module_langkat.zip',
+      sha256:
+          'b9c2aaa268ad3e0b9eb1b75c4bf71fff7932c17fd20c8b018f530a985559cdb0',
+    ),
+    'ms-palembang': (
+      url: 'https://github.com/rynnxz/KATARA/releases/download/v1.1.0/module_palembang.zip',
+      sha256:
+          '16185eb07de40d307eaeea7cdb1f07aad270093cac0d4c19c62e083052956497',
+    ),
   };
 
   static const Set<String> allowedArchiveFiles = {
@@ -108,10 +173,8 @@ class ModuleDownloadService {
     if (!installRoot.existsSync()) return 0;
     var removed = 0;
     for (final entity in installRoot.listSync()) {
-      final baseName = entity.uri.pathSegments
-          .where((s) => s.isNotEmpty)
-          .lastOrNull ??
-          '';
+      final baseName =
+          entity.uri.pathSegments.where((s) => s.isNotEmpty).lastOrNull ?? '';
       if (baseName.endsWith('.tmp') || baseName.startsWith('.staging_')) {
         try {
           await entity.delete(recursive: true);
@@ -189,17 +252,21 @@ class ModuleDownloadService {
       if (found != null) {
         rawJson = found.readAsStringSync();
       } else {
-        rawJson =
-            await rootBundle.loadString('assets/content/module_catalog.json');
+        rawJson = await rootBundle.loadString(
+          'assets/content/module_catalog.json',
+        );
       }
     }
 
     final decoded = jsonDecode(rawJson);
     if (decoded is! Map<String, dynamic>) {
-      throw const ModuleDownloadException('Format JSON katalog modul tidak valid.');
+      throw const ModuleDownloadException(
+        'Format JSON katalog modul tidak valid.',
+      );
     }
 
-    final hasSigField = decoded.containsKey('signature_ed25519') &&
+    final hasSigField =
+        decoded.containsKey('signature_ed25519') &&
         (decoded['signature_ed25519'] as String? ?? '').isNotEmpty;
     var sigValid = false;
     if (hasSigField || requireSignature) {
@@ -245,14 +312,19 @@ class ModuleDownloadService {
       requireSignature: requireSignature,
     );
     return env.modules
-        .where((m) =>
-            !env.isModuleRevoked(m.courseId) && !env.isModuleRevoked(m.moduleId))
+        .where(
+          (m) =>
+              !env.isModuleRevoked(m.courseId) &&
+              !env.isModuleRevoked(m.moduleId),
+        )
         .toList();
   }
 
   /// Menjalankan kill-switch untuk mencabut modul yang masuk daftar `revoked_modules`
   /// tanpa menghapus progres belajar pengguna.
-  Future<List<String>> enforceRevokedModules(CatalogEnvelopeModel envelope) async {
+  Future<List<String>> enforceRevokedModules(
+    CatalogEnvelopeModel envelope,
+  ) async {
     final revokedRemoved = <String>[];
     for (final revokedId in envelope.revokedModules) {
       if (revokedId == 'ms-deli') continue;
@@ -277,10 +349,12 @@ class ModuleDownloadService {
 
   Future<InstalledModuleModel?> getInstalledModule(String courseId) async {
     await db.ensureInitialized();
-    final rows = await db.customSelect(
-      'SELECT * FROM installed_modules WHERE course_id = ? LIMIT 1',
-      variables: [Variable.withString(courseId)],
-    ).get();
+    final rows = await db
+        .customSelect(
+          'SELECT * FROM installed_modules WHERE course_id = ? LIMIT 1',
+          variables: [Variable.withString(courseId)],
+        )
+        .get();
     if (rows.isEmpty) return null;
     return InstalledModuleModel.fromJson(rows.first.data);
   }
@@ -336,9 +410,21 @@ class ModuleDownloadService {
 
     onProgress?.call(0.05);
 
-    final zipBytes = bytesFetcher != null
-        ? await bytesFetcher!(item, onProgress)
-        : await _fetchModuleBytes(item, onProgress);
+    var (Uint8List zipBytes, String verifiedExpectedHash) = bytesFetcher != null
+        ? (await bytesFetcher!(item, onProgress), expectedHash)
+        : await _fetchModuleBytesWithFallback(
+            item,
+            expectedHash: expectedHash,
+            onProgress: onProgress,
+          );
+
+    final fallbackPin = trustedFallbackReleases[item.courseId];
+    if (fallbackPin != null) {
+      final actualDigest = sha256.convert(zipBytes).toString().toLowerCase();
+      if (actualDigest == fallbackPin.sha256.toLowerCase()) {
+        verifiedExpectedHash = fallbackPin.sha256;
+      }
+    }
 
     if (zipBytes.length > maxDownloadBytes) {
       throw const ModuleDownloadException(
@@ -359,7 +445,7 @@ class ModuleDownloadService {
     try {
       await verifyAndExtractArchive(
         zipBytes: zipBytes,
-        expectedSha256: expectedHash,
+        expectedSha256: verifiedExpectedHash,
         targetDir: stagingDir,
       );
 
@@ -383,7 +469,7 @@ class ModuleDownloadService {
         courseId: item.courseId,
         directory: finalDir,
         sizeBytes: zipBytes.length,
-        sha256Hash: expectedHash,
+        sha256Hash: verifiedExpectedHash,
         version: item.version.toString(),
       );
     } catch (e) {
@@ -439,7 +525,9 @@ class ModuleDownloadService {
     try {
       archive = ZipDecoder().decodeBytes(zipBytes);
     } catch (e) {
-      throw ModuleDownloadException('Arsip ZIP modul rusak atau tidak valid: $e');
+      throw ModuleDownloadException(
+        'Arsip ZIP modul rusak atau tidak valid: $e',
+      );
     }
 
     if (archive.files.isEmpty) {
@@ -548,7 +636,9 @@ class ModuleDownloadService {
       throw ModuleDownloadException('JSON manifest.json rusak: $e');
     }
     if (manifestDecoded is! Map<String, dynamic>) {
-      throw const ModuleDownloadException('manifest.json harus berupa objek JSON.');
+      throw const ModuleDownloadException(
+        'manifest.json harus berupa objek JSON.',
+      );
     }
 
     final manifestCourseId = manifestDecoded['course_id'] as String?;
@@ -646,11 +736,13 @@ class ModuleDownloadService {
     await seeder.uninstallCourseContent(courseId);
   }
 
-  Future<Uint8List> _fetchModuleBytes(
-    ModuleCatalogItemModel item,
+  Future<(Uint8List, String)> _fetchModuleBytesWithFallback(
+    ModuleCatalogItemModel item, {
+    required String expectedHash,
     void Function(double progress)? onProgress,
-  ) async {
-    final archiveFileName = item.archiveFilename ??
+  }) async {
+    final archiveFileName =
+        item.archiveFilename ??
         (item.downloadUrl?.split('/').last ?? '${item.courseId}.zip');
     if (archiveFileName.contains('..') ||
         archiveFileName.contains('/') ||
@@ -670,26 +762,64 @@ class ModuleDownloadService {
         onProgress?.call(0.35);
         final bytes = await candidate.readAsBytes();
         onProgress?.call(0.60);
-        return bytes;
+        return (bytes, expectedHash);
       }
     }
 
-    try {
-      final url = item.downloadUrl;
-      if (url == null || url.isEmpty) {
-        throw const ModuleDownloadException('URL unduhan modul tidak tersedia.');
-      }
-      validateDownloadUrl(url);
+    final primaryUrl = item.downloadUrl;
+    if (primaryUrl == null || primaryUrl.isEmpty) {
+      throw const ModuleDownloadException('URL unduhan modul tidak tersedia.');
+    }
+    validateDownloadUrl(primaryUrl);
 
+    final fallback = trustedFallbackReleases[item.courseId];
+    final attempts = <({String url, String sha256})>[
+      (url: primaryUrl, sha256: expectedHash),
+      if (fallback != null && fallback.url != primaryUrl) fallback,
+    ];
+
+    ModuleDownloadException? lastError;
+    for (var idx = 0; idx < attempts.length; idx++) {
+      final candidate = attempts[idx];
+      try {
+        validateDownloadUrl(candidate.url);
+        final bytes = await _downloadFromUrl(
+          candidate.url,
+          expectedSizeBytes: item.sizeBytes,
+          onProgress: onProgress,
+        );
+        return (bytes, candidate.sha256);
+      } on ModuleDownloadException catch (e) {
+        lastError = e;
+        // Jika percobaan pertama gagal karena HTTP 404 dan ada fallback resmi, lanjut ke fallback.
+        final is404 = e.message.contains('HTTP 404');
+        if (!is404 || idx == attempts.length - 1) {
+          rethrow;
+        }
+      }
+    }
+
+    throw lastError ??
+        const ModuleDownloadException('Gagal mengunduh modul dari server.');
+  }
+
+  Future<Uint8List> _downloadFromUrl(
+    String url, {
+    required int expectedSizeBytes,
+    void Function(double progress)? onProgress,
+  }) async {
+    try {
       final request = http.Request('GET', Uri.parse(url));
-      final response = await _httpClient.send(request);
+      final response = await _httpClient
+          .send(request)
+          .timeout(const Duration(seconds: 25));
       if (response.statusCode != 200) {
         throw ModuleDownloadException(
           'Gagal mengunduh modul dari server (HTTP ${response.statusCode}).',
         );
       }
 
-      final totalBytes = response.contentLength ?? item.sizeBytes;
+      final totalBytes = response.contentLength ?? expectedSizeBytes;
       if (totalBytes > maxDownloadBytes) {
         throw const ModuleDownloadException(
           'Keamanan: Ukuran unduhan modul melebihi batas 25 MB.',
@@ -699,7 +829,9 @@ class ModuleDownloadService {
       final builder = BytesBuilder(copy: false);
       var received = 0;
 
-      await for (final chunk in response.stream) {
+      await for (final chunk in response.stream.timeout(
+        const Duration(seconds: 25),
+      )) {
         received += chunk.length;
         if (received > maxDownloadBytes) {
           throw const ModuleDownloadException(

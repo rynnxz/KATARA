@@ -1,4 +1,5 @@
 import 'dart:async';
+
 import 'package:drift/drift.dart';
 import 'package:drift_flutter/drift_flutter.dart';
 import 'package:katara/data/db/connection_stub.dart'
@@ -10,16 +11,16 @@ import 'package:katara/data/db/connection_stub.dart'
 /// progres lokal, event ledger XP idempoten, dan antrean sinkronisasi cloud.
 class AppDatabase extends GeneratedDatabase {
   AppDatabase([QueryExecutor? executor])
-      : super(
-          executor ??
-              driftDatabase(
-                name: 'katara_db',
-                web: DriftWebOptions(
-                  sqlite3Wasm: Uri.parse('sqlite3.wasm'),
-                  driftWorker: Uri.parse('drift_worker.js'),
-                ),
+    : super(
+        executor ??
+            driftDatabase(
+              name: 'katara_db',
+              web: DriftWebOptions(
+                sqlite3Wasm: Uri.parse('sqlite3.wasm'),
+                driftWorker: Uri.parse('drift_worker.js'),
               ),
-        );
+            ),
+      );
 
   factory AppDatabase.memory() => AppDatabase(openMemoryConnection());
 
@@ -42,16 +43,16 @@ class AppDatabase extends GeneratedDatabase {
 
   @override
   MigrationStrategy get migration => MigrationStrategy(
-        onCreate: (m) async {
-          await _createAllTables();
-          await runV2UpgradeSafely();
-        },
-        onUpgrade: (m, from, to) async {
-          if (from < 2) {
-            await runV2UpgradeSafely();
-          }
-        },
-      );
+    onCreate: (m) async {
+      await _createAllTables();
+      await runV2UpgradeSafely();
+    },
+    onUpgrade: (m, from, to) async {
+      if (from < 2) {
+        await runV2UpgradeSafely();
+      }
+    },
+  );
 
   Future<void> ensureInitialized() async {
     await customSelect('SELECT 1').get();
@@ -65,7 +66,9 @@ class AppDatabase extends GeneratedDatabase {
     final info = await customSelect('PRAGMA table_info($table)').get();
     final exists = info.any((row) => row.read<String>('name') == column);
     if (!exists) {
-      await customStatement('ALTER TABLE $table ADD COLUMN $column $definition');
+      await customStatement(
+        'ALTER TABLE $table ADD COLUMN $column $definition',
+      );
     }
   }
 
@@ -100,8 +103,16 @@ class AppDatabase extends GeneratedDatabase {
       'INTEGER NOT NULL DEFAULT 0',
     );
     await _addColumnIfMissing('courses', 'color_identity_json', 'TEXT');
-    await _addColumnIfMissing('courses', 'theme_key', "TEXT NOT NULL DEFAULT 'deli'");
-    await _addColumnIfMissing('courses', 'description', "TEXT NOT NULL DEFAULT ''");
+    await _addColumnIfMissing(
+      'courses',
+      'theme_key',
+      "TEXT NOT NULL DEFAULT 'deli'",
+    );
+    await _addColumnIfMissing(
+      'courses',
+      'description',
+      "TEXT NOT NULL DEFAULT ''",
+    );
 
     // 2. Kolom tambahan pada words (provenance, fonologi, contoh kalimat, wilayah)
     await _addColumnIfMissing('words', 'pronunciation', 'TEXT');

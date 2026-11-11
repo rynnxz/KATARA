@@ -1,5 +1,6 @@
 import 'dart:convert';
 import 'dart:io';
+
 import 'package:drift/drift.dart';
 import 'package:flutter/services.dart';
 import 'package:katara/core/app_logger.dart';
@@ -15,10 +16,8 @@ Future<String> defaultAssetStringLoader(String assetPath) async {
 }
 
 class ContentSeeder {
-  ContentSeeder({
-    required this.db,
-    AssetStringLoader? loadAsset,
-  }) : _loadAsset = loadAsset ?? defaultAssetStringLoader;
+  ContentSeeder({required this.db, AssetStringLoader? loadAsset})
+    : _loadAsset = loadAsset ?? defaultAssetStringLoader;
 
   final AppDatabase db;
   final AssetStringLoader _loadAsset;
@@ -33,19 +32,18 @@ class ContentSeeder {
 
     final coursesStr = await _loadAsset('assets/content/courses.json');
     final coursesJson = jsonDecode(coursesStr) as Map<String, dynamic>;
-    final languages =
-        (coursesJson['languages'] as List<dynamic>? ?? const [])
-            .cast<Map<String, dynamic>>();
-    final courses =
-        (coursesJson['courses'] as List<dynamic>? ?? const [])
-            .cast<Map<String, dynamic>>();
+    final languages = (coursesJson['languages'] as List<dynamic>? ?? const [])
+        .cast<Map<String, dynamic>>();
+    final courses = (coursesJson['courses'] as List<dynamic>? ?? const [])
+        .cast<Map<String, dynamic>>();
 
     // Check which downloadable modules are already installed in SQLite so we don't overwrite their 'active' status
     final installedRows = await db
         .customSelect('SELECT course_id FROM installed_modules')
         .get();
-    final installedCourseIds =
-        installedRows.map((r) => r.read<String>('course_id')).toSet();
+    final installedCourseIds = installedRows
+        .map((r) => r.read<String>('course_id'))
+        .toSet();
 
     await db.transaction(() async {
       for (final lang in languages) {
@@ -58,12 +56,19 @@ class ContentSeeder {
             tagline = excluded.tagline,
             sort_order = excluded.sort_order
           ''',
-          [
-            lang['id'],
-            lang['name'],
-            lang['tagline'] ?? '',
-            lang['order'] ?? 1,
-          ],
+          [lang['id'], lang['name'], lang['tagline'] ?? '', lang['order'] ?? 1],
+        );
+      }
+
+      final validCourseIds = courses
+          .map((c) => c['id'] as String?)
+          .whereType<String>()
+          .toList();
+      if (validCourseIds.isNotEmpty) {
+        final placeholders = List.filled(validCourseIds.length, '?').join(', ');
+        await db.customStatement(
+          'DELETE FROM courses WHERE id NOT IN ($placeholders)',
+          validCourseIds,
         );
       }
 
@@ -71,10 +76,9 @@ class ContentSeeder {
         final cid = c['id'] as String;
         final isBundled = c['is_bundled'] != false;
         final defaultStatus = c['status'] as String? ?? 'coming_soon';
-        final effectiveStatus =
-            (!isBundled && installedCourseIds.contains(cid))
-                ? 'active'
-                : defaultStatus;
+        final effectiveStatus = (!isBundled && installedCourseIds.contains(cid))
+            ? 'active'
+            : defaultStatus;
 
         await db.customStatement(
           '''
@@ -129,21 +133,25 @@ class ContentSeeder {
           coursesManifest[courseId] as Map<String, dynamic>? ?? const {};
       final manifestVersion =
           (courseManifest['content_version'] as num?)?.toInt() ??
-              (c['content_version'] as num?)?.toInt() ??
-              1;
+          (c['content_version'] as num?)?.toInt() ??
+          1;
       final manifestChecksum =
           courseManifest['checksum'] as String? ?? 'v$manifestVersion';
 
-      final existingMetaRows = await db.customSelect(
-        'SELECT content_version, checksum FROM content_meta WHERE course_id = ?',
-        variables: [Variable.withString(courseId)],
-      ).get();
+      final existingMetaRows = await db
+          .customSelect(
+            'SELECT content_version, checksum FROM content_meta WHERE course_id = ?',
+            variables: [Variable.withString(courseId)],
+          )
+          .get();
 
       if (!force && existingMetaRows.isNotEmpty) {
-        final existingVersion =
-            existingMetaRows.first.read<int>('content_version');
-        final existingChecksum =
-            existingMetaRows.first.read<String>('checksum');
+        final existingVersion = existingMetaRows.first.read<int>(
+          'content_version',
+        );
+        final existingChecksum = existingMetaRows.first.read<String>(
+          'checksum',
+        );
         if (manifestVersion <= existingVersion &&
             existingChecksum == manifestChecksum) {
           continue;
@@ -157,7 +165,8 @@ class ContentSeeder {
         isBundled: true,
         sizeBytes: 0,
         installPath: 'assets/content/$courseId',
-        loadFile: (fileName) => _loadAsset('assets/content/$courseId/$fileName'),
+        loadFile: (fileName) =>
+            _loadAsset('assets/content/$courseId/$fileName'),
       );
     }
   }
@@ -259,10 +268,9 @@ class ContentSeeder {
         'content_meta',
         'installed_modules',
       ]) {
-        await db.customStatement(
-          'DELETE FROM $table WHERE course_id = ?',
-          [courseId],
-        );
+        await db.customStatement('DELETE FROM $table WHERE course_id = ?', [
+          courseId,
+        ]);
       }
 
       await db.customStatement(
@@ -361,8 +369,7 @@ class ContentSeeder {
             jsonEncode(w['sources'] ?? const <String>[]),
           ]);
         }
-        await db.customStatement(
-          '''
+        await db.customStatement('''
           INSERT INTO words (
             id, course_id, deli, indonesia, jawi, category, level,
             unit_id, pos, register, raw_register, notes,
@@ -393,9 +400,7 @@ class ContentSeeder {
             variants_json = excluded.variants_json,
             confidence = excluded.confidence,
             sources_json = excluded.sources_json
-          ''',
-          args,
-        );
+          ''', args);
       }
 
       for (var i = 0; i < phrases.length; i += 25) {
@@ -423,8 +428,7 @@ class ContentSeeder {
             jsonEncode(p['sources'] ?? const <String>[]),
           ]);
         }
-        await db.customStatement(
-          '''
+        await db.customStatement('''
           INSERT INTO phrases (
             id, course_id, deli, indonesia, jawi, level,
             unit_id, audio_path, cultural_note, validation_status, deprecated,
@@ -445,9 +449,7 @@ class ContentSeeder {
             region = excluded.region,
             confidence = excluded.confidence,
             sources_json = excluded.sources_json
-          ''',
-          args,
-        );
+          ''', args);
       }
 
       for (var i = 0; i < sentences.length; i += 25) {
@@ -471,8 +473,7 @@ class ContentSeeder {
             jsonEncode(s['sources'] ?? const <String>[]),
           ]);
         }
-        await db.customStatement(
-          '''
+        await db.customStatement('''
           INSERT INTO sentences (
             id, course_id, deli, indonesia, word_ids_json,
             level, validation_status, deprecated,
@@ -489,9 +490,7 @@ class ContentSeeder {
             region = excluded.region,
             confidence = excluded.confidence,
             sources_json = excluded.sources_json
-          ''',
-          args,
-        );
+          ''', args);
       }
 
       for (final d in dialogues) {
@@ -672,20 +671,19 @@ class ContentSeeder {
           );
           final refs = (les['item_refs'] as List<dynamic>? ?? const []);
           if (refs.isNotEmpty) {
-            final placeholders =
-                List.filled(refs.length, '(?, ?, ?, ?)').join(', ');
+            final placeholders = List.filled(
+              refs.length,
+              '(?, ?, ?, ?)',
+            ).join(', ');
             final args = <Object?>[];
             for (var idx = 0; idx < refs.length; idx++) {
               args.addAll([courseId, lessonId, refs[idx].toString(), idx + 1]);
             }
-            await db.customStatement(
-              '''
+            await db.customStatement('''
               INSERT OR REPLACE INTO lesson_items (
                 course_id, lesson_id, item_id, sort_order
               ) VALUES $placeholders
-              ''',
-              args,
-            );
+              ''', args);
           }
         }
       }
@@ -714,8 +712,7 @@ class ContentSeeder {
             (q['needs_verification'] == true) ? 1 : 0,
           ]);
         }
-        await db.customStatement(
-          '''
+        await db.customStatement('''
           INSERT INTO quiz_bank (
             id, course_id, lesson_id, exercise_type, prompt,
             options_json, correct_index, pairs_json, correct_sentence,
@@ -735,9 +732,7 @@ class ContentSeeder {
             validation_status = excluded.validation_status,
             needs_verification = excluded.needs_verification,
             deprecated = 0
-          ''',
-          args,
-        );
+          ''', args);
       }
 
       for (final card in cards) {

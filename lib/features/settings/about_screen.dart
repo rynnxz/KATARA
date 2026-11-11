@@ -1,4 +1,5 @@
 import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -27,7 +28,8 @@ class _AboutScreenState extends ConsumerState<AboutScreen> {
       id: 'SRC-MD-0001',
       courseId: 'ms-deli',
       dialectId: 'melayu_deli',
-      title: 'Kamus Bahasa Melayu Deli - Indonesia (Balai Bahasa Sumatera Utara)',
+      title:
+          'Kamus Bahasa Melayu Deli - Indonesia (Balai Bahasa Sumatera Utara)',
       author: 'Tim Peneliti Balai Bahasa Provinsi Sumatera Utara',
       publicationYear: 2018,
       publisher: 'Balai Bahasa Sumatera Utara, Kemendikbud',
@@ -66,7 +68,8 @@ class _AboutScreenState extends ConsumerState<AboutScreen> {
       id: 'SRC-PLG-0001',
       courseId: 'ms-palembang',
       dialectId: 'melayu_palembang',
-      title: 'Kamus Bahasa Palembang - Indonesia (Balai Bahasa Sumatera Selatan)',
+      title:
+          'Kamus Bahasa Palembang - Indonesia (Balai Bahasa Sumatera Selatan)',
       author: 'Tim Penyusun Balai Bahasa Sumatera Selatan',
       publicationYear: 2017,
       publisher: 'Balai Bahasa Provinsi Sumatera Selatan',
@@ -106,9 +109,8 @@ class _AboutScreenState extends ConsumerState<AboutScreen> {
       await launchUrl(uri, mode: LaunchMode.externalApplication);
     } catch (_) {
       if (!context.mounted) return;
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text('Tautan rujukan: $url')),
-      );
+      ScaffoldMessenger.of(context)
+          .showSnackBar(SnackBar(content: Text('Tautan rujukan: $url')));
     }
   }
 
@@ -122,9 +124,7 @@ class _AboutScreenState extends ConsumerState<AboutScreen> {
     );
 
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Tentang, Riset & Referensi'),
-      ),
+      appBar: AppBar(title: const Text('Tentang, Riset & Referensi')),
       body: PatternBackground(
         opacity: 0.05,
         child: FutureBuilder<Map<String, dynamic>>(
@@ -161,15 +161,13 @@ class _AboutScreenState extends ConsumerState<AboutScreen> {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Text(
-                              'KATARA v1.1.0 Multi-Dialek',
+                              'KATARA v1.1.1 Multi-Dialek',
                               style: Theme.of(context).textTheme.titleLarge,
                             ),
                             const SizedBox(height: 4),
                             Text(
                               'Platform pembelajaran bahasa dan budaya Melayu Nusantara berbasis riset linguistik, bekerja 100% luring (offline-first) dengan arsitektur modul unduhan mandiri serta sinkronisasi cloud opsional.',
-                              style: Theme.of(context)
-                                  .textTheme
-                                  .bodySmall
+                              style: Theme.of(context).textTheme.bodySmall
                                   ?.copyWith(color: palette.inkMuted),
                             ),
                           ],
@@ -202,66 +200,64 @@ class _AboutScreenState extends ConsumerState<AboutScreen> {
                           child: KChip(
                             label: tab.$2,
                             selected: _selectedDialectFilter == tab.$1,
-                            onTap: () => setState(
-                                () => _selectedDialectFilter = tab.$1),
+                            onTap: () =>
+                                setState(() => _selectedDialectFilter = tab.$1),
                           ),
                         ),
                     ],
                   ),
                 ),
                 const SizedBox(height: 12),
-                ...(_showAllReferences
-                        ? effectiveRefs
-                        : effectiveRefs.take(2))
+                ...(_showAllReferences ? effectiveRefs : effectiveRefs.take(2))
                     .map((refItem) {
-                  return Padding(
-                    padding: const EdgeInsets.only(bottom: 10),
-                    child: KCard(
-                      padding: const EdgeInsets.all(14),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Row(
+                      return Padding(
+                        padding: const EdgeInsets.only(bottom: 10),
+                        child: KCard(
+                          padding: const EdgeInsets.all(14),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              DialectIdentityBadge(courseId: refItem.courseId),
-                              const SizedBox(width: 8),
-                              KChip(label: refItem.id),
+                              Row(
+                                children: [
+                                  DialectIdentityBadge(
+                                    courseId: refItem.courseId,
+                                  ),
+                                  const SizedBox(width: 8),
+                                  KChip(label: refItem.id),
+                                ],
+                              ),
+                              const SizedBox(height: 8),
+                              Text(
+                                refItem.title,
+                                style: Theme.of(context).textTheme.titleMedium
+                                    ?.copyWith(fontWeight: FontWeight.w800),
+                              ),
+                              const SizedBox(height: 4),
+                              Text(
+                                '${refItem.author} (${refItem.publicationYear ?? 2020}) • ${refItem.publisher ?? 'Balai Bahasa'}',
+                                style: Theme.of(context).textTheme.bodySmall
+                                    ?.copyWith(color: palette.inkMuted),
+                              ),
+                              if (refItem.url != null &&
+                                  refItem.url!.trim().isNotEmpty) ...[
+                                const SizedBox(height: 8),
+                                Align(
+                                  alignment: Alignment.centerLeft,
+                                  child: KChip(
+                                    label: 'Buka Tautan Rujukan',
+                                    icon: Icons.open_in_new_rounded,
+                                    onTap: () => _openReferenceUrl(
+                                      context,
+                                      refItem.url!,
+                                    ),
+                                  ),
+                                ),
+                              ],
                             ],
                           ),
-                          const SizedBox(height: 8),
-                          Text(
-                            refItem.title,
-                            style: Theme.of(context)
-                                .textTheme
-                                .titleMedium
-                                ?.copyWith(fontWeight: FontWeight.w800),
-                          ),
-                          const SizedBox(height: 4),
-                          Text(
-                            '${refItem.author} (${refItem.publicationYear ?? 2020}) • ${refItem.publisher ?? 'Balai Bahasa'}',
-                            style: Theme.of(context)
-                                .textTheme
-                                .bodySmall
-                                ?.copyWith(color: palette.inkMuted),
-                          ),
-                          if (refItem.url != null &&
-                              refItem.url!.trim().isNotEmpty) ...[
-                            const SizedBox(height: 8),
-                            Align(
-                              alignment: Alignment.centerLeft,
-                              child: KChip(
-                                label: 'Buka Tautan Rujukan',
-                                icon: Icons.open_in_new_rounded,
-                                onTap: () => _openReferenceUrl(
-                                    context, refItem.url!),
-                              ),
-                            ),
-                          ],
-                        ],
-                      ),
-                    ),
-                  );
-                }),
+                        ),
+                      );
+                    }),
                 if (effectiveRefs.length > 2)
                   Align(
                     alignment: Alignment.centerLeft,
@@ -273,7 +269,8 @@ class _AboutScreenState extends ConsumerState<AboutScreen> {
                           ? Icons.expand_less_rounded
                           : Icons.expand_more_rounded,
                       onTap: () => setState(
-                          () => _showAllReferences = !_showAllReferences),
+                        () => _showAllReferences = !_showAllReferences,
+                      ),
                     ),
                   ),
 
@@ -291,18 +288,14 @@ class _AboutScreenState extends ConsumerState<AboutScreen> {
                     children: [
                       Text(
                         'Kurasi Korpus & Pelacakan Provenans',
-                        style: Theme.of(context)
-                            .textTheme
-                            .titleMedium
+                        style: Theme.of(context).textTheme.titleMedium
                             ?.copyWith(fontWeight: FontWeight.w800),
                       ),
                       const SizedBox(height: 6),
                       Text(
                         'Setiap entri kosakata pada Melayu Deli (364 kata), Melayu Langkat (308 kata), dan Melayu Palembang (308 kata) melalui tahapan: (1) ekstraksi leksikon dari monograf Balai Bahasa dan kamus dwibahasa, (2) pencatatan transkripsi fonetik suku kata, (3) pemetaan tingkat tutur (halus/Bebaso, harian/Sari-sari, akrab), serta (4) penautan kode sumber (SRC-MD, SRC-LK, SRC-PLG).',
-                        style: Theme.of(context).textTheme.bodySmall?.copyWith(
-                              color: palette.ink,
-                              height: 1.5,
-                            ),
+                        style: Theme.of(context).textTheme.bodySmall
+                            ?.copyWith(color: palette.ink, height: 1.5),
                       ),
                     ],
                   ),
@@ -321,8 +314,7 @@ class _AboutScreenState extends ConsumerState<AboutScreen> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        credits['validation_notice'] as String? ??
-                            'Setiap entri dilengkapi lencana status validasi agar pengguna mengetahui tingkat verifikasi akademik dan komunitas penutur.',
+                        credits['validation_notice'] as String? ?? 'Setiap entri dilengkapi lencana status validasi agar pengguna mengetahui tingkat verifikasi akademik dan komunitas penutur.',
                         style: Theme.of(context).textTheme.bodyMedium,
                       ),
                       const SizedBox(height: 14),
@@ -391,18 +383,14 @@ class _AboutScreenState extends ConsumerState<AboutScreen> {
                     children: [
                       Text(
                         'Variasi Sub-Daerah & Ortografi Lisan',
-                        style: Theme.of(context)
-                            .textTheme
-                            .titleMedium
+                        style: Theme.of(context).textTheme.titleMedium
                             ?.copyWith(fontWeight: FontWeight.w800),
                       ),
                       const SizedBox(height: 6),
                       Text(
                         'Bahasa daerah hidup secara lisan sehingga memiliki variasi antar-kecamatan (misalnya Medan Labuhan vs Deli Tua di Deli, Tanjung Pura vs Stabat di Langkat, serta Seberang Ulu vs Seberang Ilir di Palembang). Ejaan Latin yang ditampilkan menggunakan konvensi fonemik ramah pelajar dan mencantumkan varian ejaan alternatif pada detail kamus.',
-                        style: Theme.of(context).textTheme.bodySmall?.copyWith(
-                              color: palette.inkMuted,
-                              height: 1.5,
-                            ),
+                        style: Theme.of(context).textTheme.bodySmall
+                            ?.copyWith(color: palette.inkMuted, height: 1.5),
                       ),
                     ],
                   ),

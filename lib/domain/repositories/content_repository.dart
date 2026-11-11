@@ -8,7 +8,11 @@ abstract class ContentRepository {
   Future<List<UnitModel>> getUnits(String courseId);
   Future<UnitModel?> getUnit(String unitId);
   Future<LessonModel?> getLesson(String lessonId);
-  Future<List<WordModel>> getWords(String courseId, {String? category, String? query});
+  Future<List<WordModel>> getWords(
+    String courseId, {
+    String? category,
+    String? query,
+  });
   Future<List<PhraseModel>> getPhrases(String courseId);
   Future<List<SentenceModel>> getSentences(String courseId);
   Future<List<DialogueModel>> getDialogues(String courseId);
@@ -22,8 +26,12 @@ abstract class ContentRepository {
     bool includeUnverified = false,
   });
   Future<GameConfig> getGameConfig();
-  Future<List<AchievementModel>> getAchievements({Set<String> unlockedIds = const {}});
+  Future<List<AchievementModel>> getAchievements({
+    Set<String> unlockedIds = const {},
+  });
   Future<List<DialectReferenceModel>> getDialectReferences([String? courseId]);
   Future<List<InstalledModuleModel>> getInstalledModules();
-  Future<List<DialectComparisonRowModel>> getDialectComparisonRows({String? query});
+  Future<List<DialectComparisonRowModel>> getDialectComparisonRows({
+    String? query,
+  });
 }

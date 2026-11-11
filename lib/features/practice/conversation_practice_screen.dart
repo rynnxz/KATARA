@@ -29,13 +29,16 @@ class _ConversationPracticeScreenState
     final courseId = statsAsync.value?.activeCourseId ?? 'ms-deli';
 
     if (_selectedDialogue != null) {
-      return _buildDialogueSession(context, palette, _selectedDialogue!, courseId);
+      return _buildDialogueSession(
+        context,
+        palette,
+        _selectedDialogue!,
+        courseId,
+      );
     }
 
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Latihan Percakapan Kontekstual'),
-      ),
+      appBar: AppBar(title: const Text('Latihan Percakapan Kontekstual')),
       body: PatternBackground(
         opacity: 0.05,
         courseId: courseId,
@@ -62,9 +65,8 @@ class _ConversationPracticeScreenState
                   padding: const EdgeInsets.all(24),
                   child: Text(
                     'Belum ada percakapan untuk dialek ini.',
-                    style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                          color: palette.inkMuted,
-                        ),
+                    style: Theme.of(context).textTheme.bodyMedium
+                        ?.copyWith(color: palette.inkMuted),
                   ),
                 ),
               );
@@ -81,8 +83,11 @@ class _ConversationPracticeScreenState
                       backgroundColor: palette.surfaceAlt,
                       child: Row(
                         children: [
-                          Icon(Icons.forum_rounded,
-                              color: palette.primary, size: 32),
+                          Icon(
+                            Icons.forum_rounded,
+                            color: palette.primary,
+                            size: 32,
+                          ),
                           const SizedBox(width: 14),
                           Expanded(
                             child: Column(
@@ -90,17 +95,13 @@ class _ConversationPracticeScreenState
                               children: [
                                 Text(
                                   'Simulasi Dialog Sehari-hari',
-                                  style: Theme.of(context)
-                                      .textTheme
-                                      .titleMedium
+                                  style: Theme.of(context).textTheme.titleMedium
                                       ?.copyWith(fontWeight: FontWeight.w800),
                                 ),
                                 const SizedBox(height: 4),
                                 Text(
                                   'Pelajari alur sapaan, intonasi, dan adab bertutur dalam situasi nyata masyarakat Melayu.',
-                                  style: Theme.of(context)
-                                      .textTheme
-                                      .bodySmall
+                                  style: Theme.of(context).textTheme.bodySmall
                                       ?.copyWith(color: palette.inkMuted),
                                 ),
                               ],
@@ -134,9 +135,7 @@ class _ConversationPracticeScreenState
                           ),
                           child: Text(
                             '$index',
-                            style: Theme.of(context)
-                                .textTheme
-                                .titleMedium
+                            style: Theme.of(context).textTheme.titleMedium
                                 ?.copyWith(
                                   color: palette.onPrimaryContainer,
                                   fontWeight: FontWeight.w800,
@@ -150,17 +149,13 @@ class _ConversationPracticeScreenState
                             children: [
                               Text(
                                 d.title,
-                                style: Theme.of(context)
-                                    .textTheme
-                                    .titleMedium
+                                style: Theme.of(context).textTheme.titleMedium
                                     ?.copyWith(fontWeight: FontWeight.w800),
                               ),
                               const SizedBox(height: 4),
                               Text(
                                 '${d.lines.length} giliran tutur • Level ${d.level}',
-                                style: Theme.of(context)
-                                    .textTheme
-                                    .bodySmall
+                                style: Theme.of(context).textTheme.bodySmall
                                     ?.copyWith(color: palette.inkMuted),
                               ),
                             ],
@@ -201,7 +196,9 @@ class _ConversationPracticeScreenState
             padding: const EdgeInsets.only(right: 12),
             child: Center(
               child: KChip(
-                label: _showTranslations ? 'Sembunyikan Arti' : 'Tampilkan Arti',
+                label: _showTranslations
+                    ? 'Sembunyikan Arti'
+                    : 'Tampilkan Arti',
                 icon: Icons.translate_rounded,
                 onTap: () =>
                     setState(() => _showTranslations = !_showTranslations),
@@ -223,15 +220,17 @@ class _ConversationPracticeScreenState
                   final line = visibleLines[idx];
                   final isLeft = idx.isEven;
                   return Align(
-                    alignment:
-                        isLeft ? Alignment.centerLeft : Alignment.centerRight,
+                    alignment: isLeft
+                        ? Alignment.centerLeft
+                        : Alignment.centerRight,
                     child: ConstrainedBox(
                       constraints: const BoxConstraints(maxWidth: 340),
                       child: Padding(
                         padding: const EdgeInsets.only(bottom: 14),
                         child: KCard(
-                          backgroundColor:
-                              isLeft ? palette.surface : palette.surfaceAlt,
+                          backgroundColor: isLeft
+                              ? palette.surface
+                              : palette.surfaceAlt,
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
@@ -261,18 +260,14 @@ class _ConversationPracticeScreenState
                               const SizedBox(height: 6),
                               Text(
                                 line.deli,
-                                style: Theme.of(context)
-                                    .textTheme
-                                    .titleMedium
+                                style: Theme.of(context).textTheme.titleMedium
                                     ?.copyWith(fontWeight: FontWeight.w800),
                               ),
                               if (_showTranslations) ...[
                                 const SizedBox(height: 6),
                                 Text(
                                   line.indonesia,
-                                  style: Theme.of(context)
-                                      .textTheme
-                                      .bodySmall
+                                  style: Theme.of(context).textTheme.bodySmall
                                       ?.copyWith(color: palette.inkMuted),
                                 ),
                               ],

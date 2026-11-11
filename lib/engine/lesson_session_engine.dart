@@ -1,4 +1,5 @@
 import 'dart:math' as math;
+
 import 'package:katara/domain/entities/user_progress.dart';
 import 'package:katara/engine/answer_normalizer.dart';
 import 'package:katara/engine/exercise_models.dart';
@@ -10,10 +11,9 @@ class LessonSessionEngine {
     required List<ExerciseItem> exercises,
     required int initialHearts,
     required this.heartsEnabled,
-  })  : _queue = List<ExerciseItem>.from(exercises),
-        _hearts = initialHearts,
-        _initialScoredCount =
-            exercises.where((e) => !e.isIntro).length;
+  }) : _queue = List<ExerciseItem>.from(exercises),
+       _hearts = initialHearts,
+       _initialScoredCount = exercises.where((e) => !e.isIntro).length;
 
   final List<ExerciseItem> _queue;
   final int _initialScoredCount;

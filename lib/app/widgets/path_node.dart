@@ -1,12 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:katara/app/theme/katara_colors.dart';
 
-enum PathNodeStatus {
-  locked,
-  active,
-  completed,
-  boss,
-}
+enum PathNodeStatus { locked, active, completed, boss }
 
 class PathNode extends StatelessWidget {
   const PathNode({
@@ -32,31 +27,36 @@ class PathNode extends StatelessWidget {
     final isLocked = status == PathNodeStatus.locked;
     final isBoss = status == PathNodeStatus.boss;
 
-    final (Color faceColor, Color lipColor, Color fgColor, IconData defaultIcon) = switch (status) {
+    final (
+      Color faceColor,
+      Color lipColor,
+      Color fgColor,
+      IconData defaultIcon,
+    ) = switch (status) {
       PathNodeStatus.locked => (
-          p.surfaceAlt,
-          p.outline,
-          p.inkMuted,
-          Icons.lock_rounded
-        ),
+        p.surfaceAlt,
+        p.outline,
+        p.inkMuted,
+        Icons.lock_rounded,
+      ),
       PathNodeStatus.active => (
-          p.primary,
-          p.primaryDark,
-          p.onPrimary,
-          Icons.play_arrow_rounded
-        ),
+        p.primary,
+        p.primaryDark,
+        p.onPrimary,
+        Icons.play_arrow_rounded,
+      ),
       PathNodeStatus.completed => (
-          p.secondary,
-          const Color(0xFFC28E00),
-          p.onSecondary,
-          Icons.check_rounded
-        ),
+        p.secondary,
+        const Color(0xFFC28E00),
+        p.onSecondary,
+        Icons.check_rounded,
+      ),
       PathNodeStatus.boss => (
-          p.accent,
-          const Color(0xFF751D1D),
-          Colors.white,
-          Icons.workspace_premium_rounded
-        ),
+        p.accent,
+        const Color(0xFF751D1D),
+        Colors.white,
+        Icons.workspace_premium_rounded,
+      ),
     };
 
     return Semantics(

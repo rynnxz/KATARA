@@ -1,5 +1,6 @@
 import 'dart:convert';
 import 'dart:io';
+
 import 'package:flutter_test/flutter_test.dart';
 import 'package:katara/data/content/content_seeder.dart';
 import 'package:katara/data/db/app_database.dart';
@@ -113,7 +114,9 @@ void main() {
           final original = await diskAssetLoader(path);
           if (path == 'assets/content/manifest.json') {
             final map = jsonDecode(original) as Map<String, dynamic>;
-            (map['courses'] as Map<String, dynamic>)['ms-deli']['content_version'] = 3;
+            (map['courses']
+                    as Map<String, dynamic>)['ms-deli']['content_version'] =
+                3;
             return jsonEncode(map);
           }
           if (path == 'assets/content/ms-deli/words.json') {
@@ -138,7 +141,10 @@ void main() {
       expect(courseProg[firstLesson.id]?.stars, 3);
 
       final mastery = await progressRepo.getCourseMastery('ms-deli');
-      expect(mastery.any((m) => m.itemId == 'ms-deli:w:0001' && m.strength == 1), isTrue);
+      expect(
+        mastery.any((m) => m.itemId == 'ms-deli:w:0001' && m.strength == 1),
+        isTrue,
+      );
 
       // Kata aktif berkurang 1 (jadi 363), kata pertama ter-update, dan kata yang dihapus ditandai deprecated=1 di DB.
       final activeWords = await contentRepo.getWords('ms-deli');
@@ -146,7 +152,9 @@ void main() {
       expect(activeWords.first.indonesia, 'kabar / berita');
 
       final deprecatedRow = await db
-          .customSelect('SELECT COUNT(*) AS cnt FROM words WHERE deprecated = 1')
+          .customSelect(
+            'SELECT COUNT(*) AS cnt FROM words WHERE deprecated = 1',
+          )
           .getSingle();
       expect(deprecatedRow.read<int>('cnt'), 1);
     });

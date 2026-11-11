@@ -121,10 +121,7 @@ class _DevGalleryScreenState extends State<DevGalleryScreen> {
                           spacing: 10,
                           runSpacing: 10,
                           children: [
-                            KButton(
-                              label: 'Primer',
-                              onPressed: () {},
-                            ),
+                            KButton(label: 'Primer', onPressed: () {}),
                             KButton(
                               label: 'Sekunder',
                               variant: KButtonVariant.secondary,
@@ -135,10 +132,7 @@ class _DevGalleryScreenState extends State<DevGalleryScreen> {
                               variant: KButtonVariant.outline,
                               onPressed: () {},
                             ),
-                            const KButton(
-                              label: 'Nonaktif',
-                              onPressed: null,
-                            ),
+                            const KButton(label: 'Nonaktif', onPressed: null),
                           ],
                         ),
                         const SizedBox(height: 14),
@@ -147,7 +141,9 @@ class _DevGalleryScreenState extends State<DevGalleryScreen> {
                           runSpacing: 8,
                           children: [
                             ValidationStatusBadge(status: 'draft'),
-                            ValidationStatusBadge(status: 'dictionary_verified'),
+                            ValidationStatusBadge(
+                              status: 'dictionary_verified',
+                            ),
                             ValidationStatusBadge(status: 'speaker_checked'),
                             ValidationStatusBadge(status: 'expert_verified'),
                           ],

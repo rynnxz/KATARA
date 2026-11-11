@@ -17,11 +17,7 @@ enum ExerciseType {
 }
 
 class MatchPairItem {
-  const MatchPairItem({
-    required this.left,
-    required this.right,
-    this.itemId,
-  });
+  const MatchPairItem({required this.left, required this.right, this.itemId});
 
   final String left;
   final String right;
@@ -71,21 +67,21 @@ class ExerciseItem {
   String? get subjectJawi => jawiText;
 
   ExerciseItem asRetry() => ExerciseItem(
-        id: id,
-        type: type,
-        prompt: prompt,
-        subtitle: subtitle,
-        jawiText: jawiText,
-        correctAnswer: correctAnswer,
-        options: options,
-        pairs: pairs,
-        wordBank: wordBank,
-        refItemId: refItemId,
-        refItemType: refItemType,
-        explanation: explanation,
-        validationStatus: validationStatus,
-        audioPath: audioPath,
-        imagePath: imagePath,
-        isRetry: true,
-      );
+    id: id,
+    type: type,
+    prompt: prompt,
+    subtitle: subtitle,
+    jawiText: jawiText,
+    correctAnswer: correctAnswer,
+    options: options,
+    pairs: pairs,
+    wordBank: wordBank,
+    refItemId: refItemId,
+    refItemType: refItemType,
+    explanation: explanation,
+    validationStatus: validationStatus,
+    audioPath: audioPath,
+    imagePath: imagePath,
+    isRetry: true,
+  );
 }

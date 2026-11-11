@@ -10,10 +10,7 @@ import 'package:katara/app/widgets/pattern_background.dart';
 import 'package:katara/app/widgets/result_burst.dart';
 
 class LessonResultScreen extends ConsumerWidget {
-  const LessonResultScreen({
-    super.key,
-    required this.lessonId,
-  });
+  const LessonResultScreen({super.key, required this.lessonId});
 
   final String lessonId;
 
@@ -21,6 +18,8 @@ class LessonResultScreen extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final palette = context.kataraPalette;
     final result = ref.watch(lastLessonResultProvider);
+    final activeCourseName =
+        ref.watch(activeCourseProvider).value?.name ?? 'Melayu Deli';
 
     final xpEarned = result?.xpEarned ?? 10;
     final stars = result?.stars ?? 3;
@@ -53,12 +52,10 @@ class LessonResultScreen extends ConsumerWidget {
                         ),
                         const SizedBox(height: 6),
                         Text(
-                          'Selangkah lebih dekat menjadi penutur Melayu Deli.',
+                          'Selangkah lebih dekat menjadi penutur $activeCourseName.',
                           textAlign: TextAlign.center,
-                          style:
-                              Theme.of(context).textTheme.bodyMedium?.copyWith(
-                                    color: palette.inkMuted,
-                                  ),
+                          style: Theme.of(context).textTheme.bodyMedium
+                              ?.copyWith(color: palette.inkMuted),
                         ),
                         const SizedBox(height: 20),
                         ResultBurst(
@@ -73,8 +70,10 @@ class LessonResultScreen extends ConsumerWidget {
                               child: KCard(
                                 child: Column(
                                   children: [
-                                    Icon(Icons.track_changes_rounded,
-                                        color: palette.success),
+                                    Icon(
+                                      Icons.track_changes_rounded,
+                                      color: palette.success,
+                                    ),
                                     const SizedBox(height: 6),
                                     Text(
                                       '$accuracyPercent%',
@@ -98,8 +97,10 @@ class LessonResultScreen extends ConsumerWidget {
                               child: KCard(
                                 child: Column(
                                   children: [
-                                    Icon(Icons.monetization_on_rounded,
-                                        color: palette.coin),
+                                    Icon(
+                                      Icons.monetization_on_rounded,
+                                      color: palette.coin,
+                                    ),
                                     const SizedBox(height: 6),
                                     Text(
                                       '+$coinsEarned',
@@ -123,8 +124,10 @@ class LessonResultScreen extends ConsumerWidget {
                               child: KCard(
                                 child: Column(
                                   children: [
-                                    Icon(Icons.local_fire_department_rounded,
-                                        color: palette.streak),
+                                    Icon(
+                                      Icons.local_fire_department_rounded,
+                                      color: palette.streak,
+                                    ),
                                     const SizedBox(height: 6),
                                     Text(
                                       '$newStreak hr',
@@ -151,8 +154,11 @@ class LessonResultScreen extends ConsumerWidget {
                             selected: true,
                             child: Row(
                               children: [
-                                Icon(Icons.workspace_premium_rounded,
-                                    color: palette.secondary, size: 32),
+                                Icon(
+                                  Icons.workspace_premium_rounded,
+                                  color: palette.secondary,
+                                  size: 32,
+                                ),
                                 const SizedBox(width: 12),
                                 Expanded(
                                   child: Text(
@@ -188,8 +194,7 @@ class LessonResultScreen extends ConsumerWidget {
                   label: 'Ulangi Pelajaran',
                   variant: KButtonVariant.outline,
                   icon: Icons.replay_rounded,
-                  onPressed: () =>
-                      context.pushReplacement('/lesson/$lessonId'),
+                  onPressed: () => context.pushReplacement('/lesson/$lessonId'),
                 ),
               ],
             ),

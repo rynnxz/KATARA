@@ -46,33 +46,153 @@ void main() {
 
       final pairs = <_ColorPairSpec>[
         // Body text AAA (>= 7.0:1)
-        _ColorPairSpec(name: 'light: ink on bg', fg: p.ink, bg: p.bg, minRatio: 7.0),
-        _ColorPairSpec(name: 'light: ink on surface', fg: p.ink, bg: p.surface, minRatio: 7.0),
-        _ColorPairSpec(name: 'light: ink on surfaceAlt', fg: p.ink, bg: p.surfaceAlt, minRatio: 7.0),
-        _ColorPairSpec(name: 'light: inkMuted on bg', fg: p.inkMuted, bg: p.bg, minRatio: 7.0),
-        _ColorPairSpec(name: 'light: inkMuted on surface', fg: p.inkMuted, bg: p.surface, minRatio: 7.0),
-        _ColorPairSpec(name: 'light: inkMuted on surfaceAlt', fg: p.inkMuted, bg: p.surfaceAlt, minRatio: 7.0),
+        _ColorPairSpec(
+          name: 'light: ink on bg',
+          fg: p.ink,
+          bg: p.bg,
+          minRatio: 7.0,
+        ),
+        _ColorPairSpec(
+          name: 'light: ink on surface',
+          fg: p.ink,
+          bg: p.surface,
+          minRatio: 7.0,
+        ),
+        _ColorPairSpec(
+          name: 'light: ink on surfaceAlt',
+          fg: p.ink,
+          bg: p.surfaceAlt,
+          minRatio: 7.0,
+        ),
+        _ColorPairSpec(
+          name: 'light: inkMuted on bg',
+          fg: p.inkMuted,
+          bg: p.bg,
+          minRatio: 7.0,
+        ),
+        _ColorPairSpec(
+          name: 'light: inkMuted on surface',
+          fg: p.inkMuted,
+          bg: p.surface,
+          minRatio: 7.0,
+        ),
+        _ColorPairSpec(
+          name: 'light: inkMuted on surfaceAlt',
+          fg: p.inkMuted,
+          bg: p.surfaceAlt,
+          minRatio: 7.0,
+        ),
         // Colored cards & containers (>= 7.0:1 AAA)
-        _ColorPairSpec(name: 'light: onPrimaryContainer on primaryContainer', fg: p.onPrimaryContainer, bg: p.primaryContainer, minRatio: 7.0),
-        _ColorPairSpec(name: 'light: ink on primaryContainer', fg: p.ink, bg: p.primaryContainer, minRatio: 7.0),
-        _ColorPairSpec(name: 'light: inkMuted on primaryContainer', fg: p.inkMuted, bg: p.primaryContainer, minRatio: 7.0),
-        _ColorPairSpec(name: 'light: onSecondaryContainer on secondaryContainer', fg: p.onSecondaryContainer, bg: p.secondaryContainer, minRatio: 7.0),
-        _ColorPairSpec(name: 'light: onSuccessContainer on successContainer', fg: p.onSuccessContainer, bg: p.successContainer, minRatio: 7.0),
-        _ColorPairSpec(name: 'light: onErrorContainer on errorContainer', fg: p.onErrorContainer, bg: p.errorContainer, minRatio: 7.0),
+        _ColorPairSpec(
+          name: 'light: onPrimaryContainer on primaryContainer',
+          fg: p.onPrimaryContainer,
+          bg: p.primaryContainer,
+          minRatio: 7.0,
+        ),
+        _ColorPairSpec(
+          name: 'light: ink on primaryContainer',
+          fg: p.ink,
+          bg: p.primaryContainer,
+          minRatio: 7.0,
+        ),
+        _ColorPairSpec(
+          name: 'light: inkMuted on primaryContainer',
+          fg: p.inkMuted,
+          bg: p.primaryContainer,
+          minRatio: 7.0,
+        ),
+        _ColorPairSpec(
+          name: 'light: onSecondaryContainer on secondaryContainer',
+          fg: p.onSecondaryContainer,
+          bg: p.secondaryContainer,
+          minRatio: 7.0,
+        ),
+        _ColorPairSpec(
+          name: 'light: onSuccessContainer on successContainer',
+          fg: p.onSuccessContainer,
+          bg: p.successContainer,
+          minRatio: 7.0,
+        ),
+        _ColorPairSpec(
+          name: 'light: onErrorContainer on errorContainer',
+          fg: p.onErrorContainer,
+          bg: p.errorContainer,
+          minRatio: 7.0,
+        ),
         // Buttons & accents (>= 4.5:1 AA)
-        _ColorPairSpec(name: 'light: onPrimary on primary', fg: p.onPrimary, bg: p.primary, minRatio: 4.5),
-        _ColorPairSpec(name: 'light: onSecondary on secondary', fg: p.onSecondary, bg: p.secondary, minRatio: 7.0),
-        _ColorPairSpec(name: 'light: primary on surface', fg: p.primary, bg: p.surface, minRatio: 4.5),
-        _ColorPairSpec(name: 'light: primary on bg', fg: p.primary, bg: p.bg, minRatio: 4.5),
-        _ColorPairSpec(name: 'light: success on surface', fg: p.success, bg: p.surface, minRatio: 4.5),
-        _ColorPairSpec(name: 'light: error on surface', fg: p.error, bg: p.surface, minRatio: 4.5),
+        _ColorPairSpec(
+          name: 'light: onPrimary on primary',
+          fg: p.onPrimary,
+          bg: p.primary,
+          minRatio: 4.5,
+        ),
+        _ColorPairSpec(
+          name: 'light: onSecondary on secondary',
+          fg: p.onSecondary,
+          bg: p.secondary,
+          minRatio: 7.0,
+        ),
+        _ColorPairSpec(
+          name: 'light: primary on surface',
+          fg: p.primary,
+          bg: p.surface,
+          minRatio: 4.5,
+        ),
+        _ColorPairSpec(
+          name: 'light: primary on bg',
+          fg: p.primary,
+          bg: p.bg,
+          minRatio: 4.5,
+        ),
+        _ColorPairSpec(
+          name: 'light: success on surface',
+          fg: p.success,
+          bg: p.surface,
+          minRatio: 4.5,
+        ),
+        _ColorPairSpec(
+          name: 'light: error on surface',
+          fg: p.error,
+          bg: p.surface,
+          minRatio: 4.5,
+        ),
         // Non-text borders & icons (>= 3.0:1)
-        _ColorPairSpec(name: 'light: outline on surface', fg: p.outline, bg: p.surface, minRatio: 3.0),
-        _ColorPairSpec(name: 'light: outline on bg', fg: p.outline, bg: p.bg, minRatio: 3.0),
-        _ColorPairSpec(name: 'light: outline on surfaceAlt', fg: p.outline, bg: p.surfaceAlt, minRatio: 3.0),
-        _ColorPairSpec(name: 'light: streak on surface', fg: p.streak, bg: p.surface, minRatio: 3.0),
-        _ColorPairSpec(name: 'light: heart on surface', fg: p.heart, bg: p.surface, minRatio: 3.0),
-        _ColorPairSpec(name: 'light: coin on surface', fg: p.coin, bg: p.surface, minRatio: 3.0),
+        _ColorPairSpec(
+          name: 'light: outline on surface',
+          fg: p.outline,
+          bg: p.surface,
+          minRatio: 3.0,
+        ),
+        _ColorPairSpec(
+          name: 'light: outline on bg',
+          fg: p.outline,
+          bg: p.bg,
+          minRatio: 3.0,
+        ),
+        _ColorPairSpec(
+          name: 'light: outline on surfaceAlt',
+          fg: p.outline,
+          bg: p.surfaceAlt,
+          minRatio: 3.0,
+        ),
+        _ColorPairSpec(
+          name: 'light: streak on surface',
+          fg: p.streak,
+          bg: p.surface,
+          minRatio: 3.0,
+        ),
+        _ColorPairSpec(
+          name: 'light: heart on surface',
+          fg: p.heart,
+          bg: p.surface,
+          minRatio: 3.0,
+        ),
+        _ColorPairSpec(
+          name: 'light: coin on surface',
+          fg: p.coin,
+          bg: p.surface,
+          minRatio: 3.0,
+        ),
       ];
 
       for (final spec in pairs) {
@@ -80,7 +200,8 @@ void main() {
         expect(
           ratio,
           greaterThanOrEqualTo(spec.minRatio),
-          reason: '${spec.name} contrast ratio ${ratio.toStringAsFixed(2)}:1 is below ${spec.minRatio}:1',
+          reason:
+              '${spec.name} contrast ratio ${ratio.toStringAsFixed(2)}:1 is below ${spec.minRatio}:1',
         );
       }
     });
@@ -98,33 +219,153 @@ void main() {
 
       final pairs = <_ColorPairSpec>[
         // Body text AAA (>= 7.0:1)
-        _ColorPairSpec(name: 'dark: ink on bg', fg: p.ink, bg: p.bg, minRatio: 7.0),
-        _ColorPairSpec(name: 'dark: ink on surface', fg: p.ink, bg: p.surface, minRatio: 7.0),
-        _ColorPairSpec(name: 'dark: ink on surfaceAlt', fg: p.ink, bg: p.surfaceAlt, minRatio: 7.0),
-        _ColorPairSpec(name: 'dark: inkMuted on bg', fg: p.inkMuted, bg: p.bg, minRatio: 7.0),
-        _ColorPairSpec(name: 'dark: inkMuted on surface', fg: p.inkMuted, bg: p.surface, minRatio: 7.0),
-        _ColorPairSpec(name: 'dark: inkMuted on surfaceAlt', fg: p.inkMuted, bg: p.surfaceAlt, minRatio: 7.0),
+        _ColorPairSpec(
+          name: 'dark: ink on bg',
+          fg: p.ink,
+          bg: p.bg,
+          minRatio: 7.0,
+        ),
+        _ColorPairSpec(
+          name: 'dark: ink on surface',
+          fg: p.ink,
+          bg: p.surface,
+          minRatio: 7.0,
+        ),
+        _ColorPairSpec(
+          name: 'dark: ink on surfaceAlt',
+          fg: p.ink,
+          bg: p.surfaceAlt,
+          minRatio: 7.0,
+        ),
+        _ColorPairSpec(
+          name: 'dark: inkMuted on bg',
+          fg: p.inkMuted,
+          bg: p.bg,
+          minRatio: 7.0,
+        ),
+        _ColorPairSpec(
+          name: 'dark: inkMuted on surface',
+          fg: p.inkMuted,
+          bg: p.surface,
+          minRatio: 7.0,
+        ),
+        _ColorPairSpec(
+          name: 'dark: inkMuted on surfaceAlt',
+          fg: p.inkMuted,
+          bg: p.surfaceAlt,
+          minRatio: 7.0,
+        ),
         // Colored cards & containers (>= 7.0:1 AAA)
-        _ColorPairSpec(name: 'dark: onPrimaryContainer on primaryContainer', fg: p.onPrimaryContainer, bg: p.primaryContainer, minRatio: 7.0),
-        _ColorPairSpec(name: 'dark: ink on primaryContainer', fg: p.ink, bg: p.primaryContainer, minRatio: 7.0),
-        _ColorPairSpec(name: 'dark: inkMuted on primaryContainer', fg: p.inkMuted, bg: p.primaryContainer, minRatio: 7.0),
-        _ColorPairSpec(name: 'dark: onSecondaryContainer on secondaryContainer', fg: p.onSecondaryContainer, bg: p.secondaryContainer, minRatio: 7.0),
-        _ColorPairSpec(name: 'dark: onSuccessContainer on successContainer', fg: p.onSuccessContainer, bg: p.successContainer, minRatio: 7.0),
-        _ColorPairSpec(name: 'dark: onErrorContainer on errorContainer', fg: p.onErrorContainer, bg: p.errorContainer, minRatio: 7.0),
+        _ColorPairSpec(
+          name: 'dark: onPrimaryContainer on primaryContainer',
+          fg: p.onPrimaryContainer,
+          bg: p.primaryContainer,
+          minRatio: 7.0,
+        ),
+        _ColorPairSpec(
+          name: 'dark: ink on primaryContainer',
+          fg: p.ink,
+          bg: p.primaryContainer,
+          minRatio: 7.0,
+        ),
+        _ColorPairSpec(
+          name: 'dark: inkMuted on primaryContainer',
+          fg: p.inkMuted,
+          bg: p.primaryContainer,
+          minRatio: 7.0,
+        ),
+        _ColorPairSpec(
+          name: 'dark: onSecondaryContainer on secondaryContainer',
+          fg: p.onSecondaryContainer,
+          bg: p.secondaryContainer,
+          minRatio: 7.0,
+        ),
+        _ColorPairSpec(
+          name: 'dark: onSuccessContainer on successContainer',
+          fg: p.onSuccessContainer,
+          bg: p.successContainer,
+          minRatio: 7.0,
+        ),
+        _ColorPairSpec(
+          name: 'dark: onErrorContainer on errorContainer',
+          fg: p.onErrorContainer,
+          bg: p.errorContainer,
+          minRatio: 7.0,
+        ),
         // Buttons & accents (>= 4.5:1 AA)
-        _ColorPairSpec(name: 'dark: onPrimary on primary', fg: p.onPrimary, bg: p.primary, minRatio: 4.5),
-        _ColorPairSpec(name: 'dark: onSecondary on secondary', fg: p.onSecondary, bg: p.secondary, minRatio: 7.0),
-        _ColorPairSpec(name: 'dark: primary on surface', fg: p.primary, bg: p.surface, minRatio: 4.5),
-        _ColorPairSpec(name: 'dark: primary on bg', fg: p.primary, bg: p.bg, minRatio: 4.5),
-        _ColorPairSpec(name: 'dark: success on surface', fg: p.success, bg: p.surface, minRatio: 4.5),
-        _ColorPairSpec(name: 'dark: error on surface', fg: p.error, bg: p.surface, minRatio: 4.5),
+        _ColorPairSpec(
+          name: 'dark: onPrimary on primary',
+          fg: p.onPrimary,
+          bg: p.primary,
+          minRatio: 4.5,
+        ),
+        _ColorPairSpec(
+          name: 'dark: onSecondary on secondary',
+          fg: p.onSecondary,
+          bg: p.secondary,
+          minRatio: 7.0,
+        ),
+        _ColorPairSpec(
+          name: 'dark: primary on surface',
+          fg: p.primary,
+          bg: p.surface,
+          minRatio: 4.5,
+        ),
+        _ColorPairSpec(
+          name: 'dark: primary on bg',
+          fg: p.primary,
+          bg: p.bg,
+          minRatio: 4.5,
+        ),
+        _ColorPairSpec(
+          name: 'dark: success on surface',
+          fg: p.success,
+          bg: p.surface,
+          minRatio: 4.5,
+        ),
+        _ColorPairSpec(
+          name: 'dark: error on surface',
+          fg: p.error,
+          bg: p.surface,
+          minRatio: 4.5,
+        ),
         // Non-text borders & icons (>= 3.0:1)
-        _ColorPairSpec(name: 'dark: outline on surface', fg: p.outline, bg: p.surface, minRatio: 3.0),
-        _ColorPairSpec(name: 'dark: outline on bg', fg: p.outline, bg: p.bg, minRatio: 3.0),
-        _ColorPairSpec(name: 'dark: outline on surfaceAlt', fg: p.outline, bg: p.surfaceAlt, minRatio: 3.0),
-        _ColorPairSpec(name: 'dark: streak on surface', fg: p.streak, bg: p.surface, minRatio: 3.0),
-        _ColorPairSpec(name: 'dark: heart on surface', fg: p.heart, bg: p.surface, minRatio: 3.0),
-        _ColorPairSpec(name: 'dark: coin on surface', fg: p.coin, bg: p.surface, minRatio: 3.0),
+        _ColorPairSpec(
+          name: 'dark: outline on surface',
+          fg: p.outline,
+          bg: p.surface,
+          minRatio: 3.0,
+        ),
+        _ColorPairSpec(
+          name: 'dark: outline on bg',
+          fg: p.outline,
+          bg: p.bg,
+          minRatio: 3.0,
+        ),
+        _ColorPairSpec(
+          name: 'dark: outline on surfaceAlt',
+          fg: p.outline,
+          bg: p.surfaceAlt,
+          minRatio: 3.0,
+        ),
+        _ColorPairSpec(
+          name: 'dark: streak on surface',
+          fg: p.streak,
+          bg: p.surface,
+          minRatio: 3.0,
+        ),
+        _ColorPairSpec(
+          name: 'dark: heart on surface',
+          fg: p.heart,
+          bg: p.surface,
+          minRatio: 3.0,
+        ),
+        _ColorPairSpec(
+          name: 'dark: coin on surface',
+          fg: p.coin,
+          bg: p.surface,
+          minRatio: 3.0,
+        ),
       ];
 
       for (final spec in pairs) {
@@ -132,7 +373,8 @@ void main() {
         expect(
           ratio,
           greaterThanOrEqualTo(spec.minRatio),
-          reason: '${spec.name} contrast ratio ${ratio.toStringAsFixed(2)}:1 is below ${spec.minRatio}:1',
+          reason:
+              '${spec.name} contrast ratio ${ratio.toStringAsFixed(2)}:1 is below ${spec.minRatio}:1',
         );
       }
     });
@@ -145,13 +387,34 @@ void main() {
       ];
 
       for (final id in identities) {
-        final lightRatio = KataraColors.contrastRatio(id.badgeFgLight, id.badgeBgLight);
-        final darkRatio = KataraColors.contrastRatio(id.badgeFgDark, id.badgeBgDark);
-        final accentRatio = KataraColors.contrastRatio(id.onAccentColor, id.accentColor);
+        final lightRatio = KataraColors.contrastRatio(
+          id.badgeFgLight,
+          id.badgeBgLight,
+        );
+        final darkRatio = KataraColors.contrastRatio(
+          id.badgeFgDark,
+          id.badgeBgDark,
+        );
+        final accentRatio = KataraColors.contrastRatio(
+          id.onAccentColor,
+          id.accentColor,
+        );
 
-        expect(lightRatio, greaterThanOrEqualTo(7.0), reason: '${id.courseId} light badge contrast < 7:1');
-        expect(darkRatio, greaterThanOrEqualTo(7.0), reason: '${id.courseId} dark badge contrast < 7:1');
-        expect(accentRatio, greaterThanOrEqualTo(4.5), reason: '${id.courseId} accent button contrast < 4.5:1');
+        expect(
+          lightRatio,
+          greaterThanOrEqualTo(7.0),
+          reason: '${id.courseId} light badge contrast < 7:1',
+        );
+        expect(
+          darkRatio,
+          greaterThanOrEqualTo(7.0),
+          reason: '${id.courseId} dark badge contrast < 7:1',
+        );
+        expect(
+          accentRatio,
+          greaterThanOrEqualTo(4.5),
+          reason: '${id.courseId} accent button contrast < 4.5:1',
+        );
       }
     });
   });
@@ -207,28 +470,31 @@ void main() {
       expect(intro.validationStatus, 'dictionary_verified');
     });
 
-    testWidgets('ValidationStatusBadge renders Sumber Kamus for dictionary_verified and Dicek Penutur for speaker_checked', (tester) async {
-      await tester.pumpWidget(
-        MaterialApp(
-          theme: KataraTheme.dark(),
-          home: const Scaffold(
-            body: Column(
-              children: [
-                ValidationStatusBadge(status: 'dictionary_verified'),
-                ValidationStatusBadge(status: 'speaker_checked'),
-                ValidationStatusBadge(status: 'expert_verified'),
-                ValidationStatusBadge(status: 'draft'),
-              ],
+    testWidgets(
+      'ValidationStatusBadge renders Sumber Kamus for dictionary_verified and Dicek Penutur for speaker_checked',
+      (tester) async {
+        await tester.pumpWidget(
+          MaterialApp(
+            theme: KataraTheme.dark(),
+            home: const Scaffold(
+              body: Column(
+                children: [
+                  ValidationStatusBadge(status: 'dictionary_verified'),
+                  ValidationStatusBadge(status: 'speaker_checked'),
+                  ValidationStatusBadge(status: 'expert_verified'),
+                  ValidationStatusBadge(status: 'draft'),
+                ],
+              ),
             ),
           ),
-        ),
-      );
+        );
 
-      expect(find.text('Sumber Kamus'), findsOneWidget);
-      expect(find.text('Dicek Penutur'), findsOneWidget);
-      expect(find.text('Terverifikasi Ahli'), findsOneWidget);
-      expect(find.text('Draf'), findsOneWidget);
-    });
+        expect(find.text('Sumber Kamus'), findsOneWidget);
+        expect(find.text('Dicek Penutur'), findsOneWidget);
+        expect(find.text('Terverifikasi Ahli'), findsOneWidget);
+        expect(find.text('Draf'), findsOneWidget);
+      },
+    );
   });
 
   group('Multi-Theme Widget Contrast & Rendering Tests (Light & Dark)', () {
@@ -236,73 +502,70 @@ void main() {
       final modeName = isDark ? 'Dark' : 'Light';
       final theme = isDark ? KataraTheme.dark() : KataraTheme.light();
 
-      testWidgets('ProfileScreen, RegionPickerScreen, SettingsScreen, and Lesson IntroCard render with opaque high-contrast KCard in $modeName mode', (tester) async {
-        final db = AppDatabase(NativeDatabase.memory());
-        await db.ensureInitialized();
-        await ContentSeeder(db: db).seedIfNeeded();
-        addTearDown(() => db.close());
+      testWidgets(
+        'ProfileScreen, RegionPickerScreen, SettingsScreen, and Lesson IntroCard render with opaque high-contrast KCard in $modeName mode',
+        (tester) async {
+          final db = AppDatabase(NativeDatabase.memory());
+          await db.ensureInitialized();
+          await ContentSeeder(db: db).seedIfNeeded();
+          addTearDown(() => db.close());
 
-        // 1. ProfileScreen
-        await tester.pumpWidget(
-          ProviderScope(
-            overrides: [appDatabaseProvider.overrideWithValue(db)],
-            child: MaterialApp(
-              theme: theme,
-              home: const ProfileScreen(),
+          // 1. ProfileScreen
+          await tester.pumpWidget(
+            ProviderScope(
+              overrides: [appDatabaseProvider.overrideWithValue(db)],
+              child: MaterialApp(theme: theme, home: const ProfileScreen()),
             ),
-          ),
-        );
-        await tester.pumpAndSettle();
+          );
+          await tester.pumpAndSettle();
 
-        expect(find.textContaining('Total XP:'), findsOneWidget);
-        expect(find.textContaining('Target naik level:'), findsOneWidget);
+          expect(find.textContaining('Total XP:'), findsOneWidget);
+          expect(find.textContaining('Target naik level:'), findsOneWidget);
 
-        // Verify selected KCard container decoration has alpha == 1.0
-        final kCardFinder = find.byWidgetPredicate(
-          (w) => w is KCard && w.selected,
-        );
-        expect(kCardFinder, findsWidgets);
+          // Verify selected KCard container decoration has alpha == 1.0
+          final kCardFinder = find.byWidgetPredicate(
+            (w) => w is KCard && w.selected,
+          );
+          expect(kCardFinder, findsWidgets);
 
-        // 2. SettingsScreen
-        await tester.pumpWidget(
-          ProviderScope(
-            overrides: [appDatabaseProvider.overrideWithValue(db)],
-            child: MaterialApp(
-              theme: theme,
-              home: const SettingsScreen(),
+          // 2. SettingsScreen
+          await tester.pumpWidget(
+            ProviderScope(
+              overrides: [appDatabaseProvider.overrideWithValue(db)],
+              child: MaterialApp(theme: theme, home: const SettingsScreen()),
             ),
-          ),
-        );
-        await tester.pumpAndSettle();
-        expect(find.text('Pengaturan'), findsWidgets);
+          );
+          await tester.pumpAndSettle();
+          expect(find.text('Pengaturan'), findsWidgets);
 
-        // 3. RegionPickerScreen
-        await tester.pumpWidget(
-          ProviderScope(
-            overrides: [appDatabaseProvider.overrideWithValue(db)],
-            child: MaterialApp(
-              theme: theme,
-              home: const RegionPickerScreen(),
+          // 3. RegionPickerScreen
+          await tester.pumpWidget(
+            ProviderScope(
+              overrides: [appDatabaseProvider.overrideWithValue(db)],
+              child: MaterialApp(
+                theme: theme,
+                home: const RegionPickerScreen(),
+              ),
             ),
-          ),
-        );
-        await tester.pumpAndSettle();
-        expect(find.text('Melayu Deli'), findsWidgets);
+          );
+          await tester.pumpAndSettle();
+          expect(find.text('Melayu Deli'), findsWidgets);
 
-        // 4. LessonScreen (IntroCard)
-        await tester.pumpWidget(
-          ProviderScope(
-            overrides: [appDatabaseProvider.overrideWithValue(db)],
-            child: MaterialApp(
-              theme: theme,
-              home: const LessonScreen(lessonId: 'ms-deli:l:0001'),
+          // 4. LessonScreen (IntroCard)
+          await tester.pumpWidget(
+            ProviderScope(
+              overrides: [appDatabaseProvider.overrideWithValue(db)],
+              child: MaterialApp(
+                theme: theme,
+                home: const LessonScreen(lessonId: 'ms-deli:l:0001'),
+              ),
             ),
-          ),
-        );
-        await tester.pumpAndSettle();
-        expect(find.textContaining('Hasil audit'), findsNothing);
-        expect(find.textContaining('deli_cek'), findsNothing);
-      });
+          );
+          await tester.pumpAndSettle();
+          expect(find.textContaining('Hasil audit'), findsNothing);
+          expect(find.textContaining('deli_cek'), findsNothing);
+        },
+      );
     }
   });
 }

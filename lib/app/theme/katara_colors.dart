@@ -1,4 +1,5 @@
 import 'dart:math' as math;
+
 import 'package:flutter/material.dart';
 
 @immutable
@@ -120,7 +121,8 @@ class KataraPalette extends ThemeExtension<KataraPalette> {
 
   static KataraPalette of(BuildContext context) {
     final courseAccent = CourseTheme.maybeAccentOf(context);
-    final base = Theme.of(context).extension<KataraPalette>() ??
+    final base =
+        Theme.of(context).extension<KataraPalette>() ??
         (Theme.of(context).brightness == Brightness.dark ? dark : light);
     if (courseAccent != null) {
       return base.copyWith(secondary: courseAccent);
@@ -192,15 +194,28 @@ class KataraPalette extends ThemeExtension<KataraPalette> {
       primary: Color.lerp(primary, other.primary, t)!,
       primaryDark: Color.lerp(primaryDark, other.primaryDark, t)!,
       onPrimary: Color.lerp(onPrimary, other.onPrimary, t)!,
-      primaryContainer: Color.lerp(primaryContainer, other.primaryContainer, t)!,
-      onPrimaryContainer:
-          Color.lerp(onPrimaryContainer, other.onPrimaryContainer, t)!,
+      primaryContainer: Color.lerp(
+        primaryContainer,
+        other.primaryContainer,
+        t,
+      )!,
+      onPrimaryContainer: Color.lerp(
+        onPrimaryContainer,
+        other.onPrimaryContainer,
+        t,
+      )!,
       secondary: Color.lerp(secondary, other.secondary, t)!,
       onSecondary: Color.lerp(onSecondary, other.onSecondary, t)!,
-      secondaryContainer:
-          Color.lerp(secondaryContainer, other.secondaryContainer, t)!,
-      onSecondaryContainer:
-          Color.lerp(onSecondaryContainer, other.onSecondaryContainer, t)!,
+      secondaryContainer: Color.lerp(
+        secondaryContainer,
+        other.secondaryContainer,
+        t,
+      )!,
+      onSecondaryContainer: Color.lerp(
+        onSecondaryContainer,
+        other.onSecondaryContainer,
+        t,
+      )!,
       accent: Color.lerp(accent, other.accent, t)!,
       bg: Color.lerp(bg, other.bg, t)!,
       surface: Color.lerp(surface, other.surface, t)!,
@@ -209,12 +224,23 @@ class KataraPalette extends ThemeExtension<KataraPalette> {
       ink: Color.lerp(ink, other.ink, t)!,
       inkMuted: Color.lerp(inkMuted, other.inkMuted, t)!,
       success: Color.lerp(success, other.success, t)!,
-      successContainer: Color.lerp(successContainer, other.successContainer, t)!,
-      onSuccessContainer:
-          Color.lerp(onSuccessContainer, other.onSuccessContainer, t)!,
+      successContainer: Color.lerp(
+        successContainer,
+        other.successContainer,
+        t,
+      )!,
+      onSuccessContainer: Color.lerp(
+        onSuccessContainer,
+        other.onSuccessContainer,
+        t,
+      )!,
       error: Color.lerp(error, other.error, t)!,
       errorContainer: Color.lerp(errorContainer, other.errorContainer, t)!,
-      onErrorContainer: Color.lerp(onErrorContainer, other.onErrorContainer, t)!,
+      onErrorContainer: Color.lerp(
+        onErrorContainer,
+        other.onErrorContainer,
+        t,
+      )!,
       streak: Color.lerp(streak, other.streak, t)!,
       heart: Color.lerp(heart, other.heart, t)!,
       coin: Color.lerp(coin, other.coin, t)!,
@@ -247,7 +273,10 @@ class KataraColors {
     return (lighter + 0.05) / (darker + 0.05);
   }
 
-  static Color parseHex(String hex, {Color fallback = const Color(0xFFF5B700)}) {
+  static Color parseHex(
+    String hex, {
+    Color fallback = const Color(0xFFF5B700),
+  }) {
     final cleaned = hex.replaceAll('#', '').trim();
     if (cleaned.length == 6) {
       final value = int.tryParse('FF$cleaned', radix: 16);
@@ -350,11 +379,11 @@ class CourseTheme extends InheritedWidget {
     this.isComingSoon = false,
     required super.child,
   }) : accentColor = isComingSoon
-            ? const Color(0xFF4A3E2D)
-            : (accentColor ??
-                (accentHex != null
-                    ? KataraColors.parseHex(accentHex)
-                    : DialectVisualIdentity.forCourse(courseId).accentColor));
+           ? const Color(0xFF4A3E2D)
+           : (accentColor ??
+                 (accentHex != null
+                     ? KataraColors.parseHex(accentHex)
+                     : DialectVisualIdentity.forCourse(courseId).accentColor));
 
   final Color accentColor;
   final String? courseId;

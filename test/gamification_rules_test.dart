@@ -29,27 +29,30 @@ void main() {
       expect(GamificationRules.titleForLevel(30), 'Datuk Bahasa');
     });
 
-    test('calculateLessonXp awards base + perfect bonus + combo bonus up to max', () {
-      const config = GameConfig();
-      expect(
-        GamificationRules.calculateLessonXp(
-          lessonKind: 'vocab',
-          wrongCount: 0,
-          maxCombo: 10,
-          config: config,
-        ),
-        10 + 5 + 2,
-      );
-      expect(
-        GamificationRules.calculateLessonXp(
-          lessonKind: 'boss',
-          wrongCount: 1,
-          maxCombo: 30,
-          config: config,
-        ),
-        25 + 0 + 5,
-      );
-    });
+    test(
+      'calculateLessonXp awards base + perfect bonus + combo bonus up to max',
+      () {
+        const config = GameConfig();
+        expect(
+          GamificationRules.calculateLessonXp(
+            lessonKind: 'vocab',
+            wrongCount: 0,
+            maxCombo: 10,
+            config: config,
+          ),
+          10 + 5 + 2,
+        );
+        expect(
+          GamificationRules.calculateLessonXp(
+            lessonKind: 'boss',
+            wrongCount: 1,
+            maxCombo: 30,
+            config: config,
+          ),
+          25 + 0 + 5,
+        );
+      },
+    );
   });
 
   group('Streak Rules (Bagian 12.2)', () {
@@ -146,12 +149,15 @@ void main() {
   });
 
   group('Stars, SRS & AchievementEngine (Bagian 12.5 - 12.7)', () {
-    test('calculateStars awards 3 stars for >=95%, 2 for >=80%, 1 otherwise', () {
-      expect(GamificationRules.calculateStars(1.0), 3);
-      expect(GamificationRules.calculateStars(0.95), 3);
-      expect(GamificationRules.calculateStars(0.85), 2);
-      expect(GamificationRules.calculateStars(0.60), 1);
-    });
+    test(
+      'calculateStars awards 3 stars for >=95%, 2 for >=80%, 1 otherwise',
+      () {
+        expect(GamificationRules.calculateStars(1.0), 3);
+        expect(GamificationRules.calculateStars(0.95), 3);
+        expect(GamificationRules.calculateStars(0.85), 2);
+        expect(GamificationRules.calculateStars(0.60), 1);
+      },
+    );
 
     test('updateWordMasterySrs follows [1, 1, 3, 7, 14, 30] day intervals and resets to 1 day on wrong', () {
       final now = DateTime(2026, 11, 1, 8, 0);

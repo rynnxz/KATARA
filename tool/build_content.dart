@@ -1,5 +1,6 @@
 import 'dart:convert';
 import 'dart:io';
+
 import 'package:crypto/crypto.dart';
 
 void main() {
@@ -9,11 +10,13 @@ void main() {
     exit(1);
   }
 
-  final datasetFile =
-      File('melayu-deli-dataset/curated/melayu_deli_master.json');
+  final datasetFile = File(
+    'melayu-deli-dataset/curated/melayu_deli_master.json',
+  );
   if (!datasetFile.existsSync()) {
     stderr.writeln(
-        'File dataset terkurasi tidak ditemukan: ${datasetFile.path}');
+      'File dataset terkurasi tidak ditemukan: ${datasetFile.path}',
+    );
     exit(1);
   }
 
@@ -28,8 +31,9 @@ void main() {
 
   final idMapFile = File('tool/id_map.json');
   final Map<String, String> idMap = idMapFile.existsSync()
-      ? (jsonDecode(idMapFile.readAsStringSync()) as Map<String, dynamic>)
-          .map((k, v) => MapEntry(k, v.toString()))
+      ? (jsonDecode(idMapFile.readAsStringSync()) as Map<String, dynamic>).map(
+          (k, v) => MapEntry(k, v.toString()),
+        )
       : <String, String>{};
 
   String mapId(String prefix, String rawId, int index) {
@@ -43,8 +47,8 @@ void main() {
   }
 
   // Indeks sumber referensi ilmiah dari dataset (SRC-0001 s/d SRC-0012)
-  final dsSources =
-      (dataset['sources'] as List<dynamic>).cast<Map<String, dynamic>>();
+  final dsSources = (dataset['sources'] as List<dynamic>)
+      .cast<Map<String, dynamic>>();
   final sourceCitationById = <String, String>{};
   for (final s in dsSources) {
     final sid = s['source_id'] as String;
@@ -63,8 +67,7 @@ void main() {
   }
 
   // 1. Pre-map Unit IDs (u01..u05 dari konten/ + u06..u10 Level 2 + u11..u16 dari ekspansi dataset)
-  final rawUnits =
-      (raw['units'] as List<dynamic>).cast<Map<String, dynamic>>();
+  final rawUnits = (raw['units'] as List<dynamic>).cast<Map<String, dynamic>>();
   final inferredLevel2Units = <Map<String, dynamic>>[
     {
       'id': 'u06',
@@ -161,8 +164,8 @@ void main() {
   }
 
   // Indeks kosakata terkurasi dari dataset
-  final dsVocab =
-      (dataset['vocabulary'] as List<dynamic>).cast<Map<String, dynamic>>();
+  final dsVocab = (dataset['vocabulary'] as List<dynamic>)
+      .cast<Map<String, dynamic>>();
   final dsVocabByLegacyId = <String, Map<String, dynamic>>{};
   final dsNewVocab = <Map<String, dynamic>>[];
 
@@ -192,8 +195,8 @@ void main() {
     if (pron != null && pron.isNotEmpty) {
       parts.add('Lafal: $pron');
     }
-    final variants =
-        (dsEntry['variants'] as List<dynamic>? ?? const []).cast<String>();
+    final variants = (dsEntry['variants'] as List<dynamic>? ?? const [])
+        .cast<String>();
     if (variants.isNotEmpty) {
       parts.add('Varian: ${variants.join(', ')}');
     }
@@ -266,7 +269,8 @@ void main() {
       'region': dsMatch?['region'] ?? 'Medan & Deli Serdang',
       'variants': dsMatch?['variants'] ?? const <String>[],
       'confidence': dsMatch?['confidence'] ?? 'high',
-      'sources': dsMatch?['sources'] ?? dsMatch?['source_ids'] ?? const ['SRC-0001'],
+      'sources':
+          dsMatch?['sources'] ?? dsMatch?['source_ids'] ?? const ['SRC-0001'],
     });
   }
 
@@ -383,10 +387,10 @@ void main() {
   }
 
   // 3. Phrases (10 legacy phrases enriched + 30 new curated expressions = 40 phrases)
-  final rawPhrases =
-      (raw['phrases'] as List<dynamic>).cast<Map<String, dynamic>>();
-  final dsExpressions =
-      (dataset['expressions'] as List<dynamic>).cast<Map<String, dynamic>>();
+  final rawPhrases = (raw['phrases'] as List<dynamic>)
+      .cast<Map<String, dynamic>>();
+  final dsExpressions = (dataset['expressions'] as List<dynamic>)
+      .cast<Map<String, dynamic>>();
   final dsExpByLegacyId = <String, Map<String, dynamic>>{};
   final dsNewExpressions = <Map<String, dynamic>>[];
 
@@ -485,12 +489,12 @@ void main() {
   }
 
   // 4. Sentences & 5. Dialogues
-  final rawSentences =
-      (raw['sentences'] as List<dynamic>).cast<Map<String, dynamic>>();
-  final rawDialogues =
-      (raw['dialogues'] as List<dynamic>).cast<Map<String, dynamic>>();
-  final dsSentences =
-      (dataset['sentences'] as List<dynamic>).cast<Map<String, dynamic>>();
+  final rawSentences = (raw['sentences'] as List<dynamic>)
+      .cast<Map<String, dynamic>>();
+  final rawDialogues = (raw['dialogues'] as List<dynamic>)
+      .cast<Map<String, dynamic>>();
+  final dsSentences = (dataset['sentences'] as List<dynamic>)
+      .cast<Map<String, dynamic>>();
 
   final dsNewSingleSentences = <Map<String, dynamic>>[];
   final dsNewDialogues = <Map<String, dynamic>>[];
@@ -516,8 +520,8 @@ void main() {
     final stableId = mapId('s', rawId, i + 1);
     sentenceIdLookup[rawId] = stableId;
 
-    final rawWordIds =
-        (s['word_ids'] as List<dynamic>? ?? const []).cast<String>();
+    final rawWordIds = (s['word_ids'] as List<dynamic>? ?? const [])
+        .cast<String>();
     final mappedWordIds = rawWordIds
         .map((wid) => wordIdLookup[wid])
         .whereType<String>()
@@ -541,8 +545,8 @@ void main() {
     final stableId = mapId('s', rawKey, seqIndex);
     sentenceIdLookup[rawKey] = stableId;
 
-    final relMdIds =
-        (s['related_vocab_ids'] as List<dynamic>? ?? const []).cast<String>();
+    final relMdIds = (s['related_vocab_ids'] as List<dynamic>? ?? const [])
+        .cast<String>();
     final mappedWordIds = relMdIds
         .map((mdId) => mdVocabIdLookup[mdId])
         .whereType<String>()
@@ -572,15 +576,17 @@ void main() {
     final rawUnitId = d['unit_id'] as String? ?? 'u01';
     dialoguesByRawUnit.putIfAbsent(rawUnitId, () => <String>[]).add(stableId);
 
-    final rawLines =
-        (d['lines'] as List<dynamic>? ?? const []).cast<Map<String, dynamic>>();
+    final rawLines = (d['lines'] as List<dynamic>? ?? const [])
+        .cast<Map<String, dynamic>>();
     final linesOut = rawLines
-        .map((l) => {
-              'order': l['urutan'] ?? 1,
-              'speaker': l['speaker'] ?? 'Penutur',
-              'deli': l['deli'] ?? '',
-              'indonesia': l['indonesia'] ?? '',
-            })
+        .map(
+          (l) => {
+            'order': l['urutan'] ?? 1,
+            'speaker': l['speaker'] ?? 'Penutur',
+            'deli': l['deli'] ?? '',
+            'indonesia': l['indonesia'] ?? '',
+          },
+        )
         .toList();
 
     dialoguesOut.add({
@@ -638,8 +644,8 @@ void main() {
   }
 
   // 6. Letters (Jawi) — enriched with example_word_jawi
-  final rawLetters =
-      (raw['letters'] as List<dynamic>).cast<Map<String, dynamic>>();
+  final rawLetters = (raw['letters'] as List<dynamic>)
+      .cast<Map<String, dynamic>>();
   final letterIdLookup = <String, String>{};
   final lettersOut = <Map<String, dynamic>>[];
   const jawiExamplesByRawId = <String, String>{
@@ -679,18 +685,18 @@ void main() {
   }
 
   // 7. Collection Cards & Articles (Enriched from Cultural, Historical, Grammar & Idiom Knowledge Base)
-  final rawCards =
-      (raw['collection_cards'] as List<dynamic>).cast<Map<String, dynamic>>();
-  final rawArticles =
-      (raw['articles'] as List<dynamic>).cast<Map<String, dynamic>>();
+  final rawCards = (raw['collection_cards'] as List<dynamic>)
+      .cast<Map<String, dynamic>>();
+  final rawArticles = (raw['articles'] as List<dynamic>)
+      .cast<Map<String, dynamic>>();
   final dsCulture = (dataset['cultural_knowledge'] as List<dynamic>)
       .cast<Map<String, dynamic>>();
   final dsHistory = (dataset['historical_knowledge'] as List<dynamic>)
       .cast<Map<String, dynamic>>();
-  final dsGrammar =
-      (dataset['grammar'] as List<dynamic>).cast<Map<String, dynamic>>();
-  final dsIdioms =
-      (dataset['idioms'] as List<dynamic>).cast<Map<String, dynamic>>();
+  final dsGrammar = (dataset['grammar'] as List<dynamic>)
+      .cast<Map<String, dynamic>>();
+  final dsIdioms = (dataset['idioms'] as List<dynamic>)
+      .cast<Map<String, dynamic>>();
 
   Map<String, dynamic>? findCultureById(String id) {
     for (final c in dsCulture) {
@@ -746,8 +752,7 @@ void main() {
       'nama': 'Masjid Raya Al-Mashun',
       'unit_pembuka': 'u15',
       'artikel_id': 'art11',
-      'fakta':
-          'Masjid bersejarah Kesultanan Deli yang dibangun oleh Sultan Ma\'mun Al Rasyid pada 21 Agustus 1906 hingga 10 September 1909 dengan perpaduan arsitektur Timur Tengah, India, dan Eropa.',
+      'fakta': 'Masjid bersejarah Kesultanan Deli yang dibangun oleh Sultan Ma\'mun Al Rasyid pada 21 Agustus 1906 hingga 10 September 1909 dengan perpaduan arsitektur Timur Tengah, India, dan Eropa.',
       'gambar': null,
     },
     {
@@ -755,8 +760,7 @@ void main() {
       'nama': 'Pantun & Peribahasa Melayu Deli',
       'unit_pembuka': 'u16',
       'artikel_id': 'art13',
-      'fakta':
-          'Khazanah sastra lisan Melayu Deli yang memadukan pantun adat peminangan Telangkai dan peribahasa bermetafora alam pesisir.',
+      'fakta': 'Khazanah sastra lisan Melayu Deli yang memadukan pantun adat peminangan Telangkai dan peribahasa bermetafora alam pesisir.',
       'gambar': null,
     },
   ];
@@ -769,8 +773,10 @@ void main() {
   }
 
   // Susun daftar 14 artikel budaya, sejarah, tata bahasa & peribahasa (art01..art14)
-  String buildCultureArticleBody(Map<String, dynamic> cul,
-      {Map<String, dynamic>? his}) {
+  String buildCultureArticleBody(
+    Map<String, dynamic> cul, {
+    Map<String, dynamic>? his,
+  }) {
     final sb = StringBuffer();
     sb.writeln(cul['summary']);
     sb.writeln();
@@ -780,8 +786,8 @@ void main() {
       sb.writeln('### Konteks Sejarah (${his['period']})');
       sb.writeln(his['description']);
     }
-    final rel =
-        (cul['related_terms'] as List<dynamic>? ?? const []).cast<String>();
+    final rel = (cul['related_terms'] as List<dynamic>? ?? const [])
+        .cast<String>();
     if (rel.isNotEmpty) {
       sb.writeln();
       sb.writeln('**Istilah Terkait:** ${rel.join(', ')}');
@@ -792,18 +798,22 @@ void main() {
   String buildGrammarCompendiumBody() {
     final sb = StringBuffer();
     sb.writeln(
-        'Ringkasan 15 kaidah fonologi, morfologi, sintaksis, sosiolinguistik, dan ortografi Bahasa Melayu Deli berdasarkan penelitian Pusat Pembinaan dan Pengembangan Bahasa serta akademisi Universitas Sumatera Utara:');
+      'Ringkasan 15 kaidah fonologi, morfologi, sintaksis, sosiolinguistik, dan ortografi Bahasa Melayu Deli berdasarkan penelitian Pusat Pembinaan dan Pengembangan Bahasa serta akademisi Universitas Sumatera Utara:',
+    );
     sb.writeln();
     for (final g in dsGrammar) {
       sb.writeln('### ${g['title']}');
       sb.writeln('- **Pola:** `${g['pattern_formula']}`');
       sb.writeln('- **Penjelasan:** ${g['rule_summary']}');
-      sb.writeln('- **Perbandingan Bahasa Indonesia:** ${g['comparison_indonesian']}');
-      final exs =
-          (g['examples'] as List<dynamic>? ?? const []).cast<Map<String, dynamic>>();
+      sb.writeln(
+        '- **Perbandingan Bahasa Indonesia:** ${g['comparison_indonesian']}',
+      );
+      final exs = (g['examples'] as List<dynamic>? ?? const [])
+          .cast<Map<String, dynamic>>();
       if (exs.isNotEmpty) {
-        final exStr =
-            exs.map((e) => '"${e['deli']}" (${e['indonesian']})').join('; ');
+        final exStr = exs
+            .map((e) => '"${e['deli']}" (${e['indonesian']})')
+            .join('; ');
         sb.writeln('- **Contoh:** $exStr');
       }
       sb.writeln();
@@ -814,13 +824,16 @@ void main() {
   String buildIdiomsCompendiumBody() {
     final sb = StringBuffer();
     sb.writeln(
-        'Kumpulan 20 peribahasa, idiom, dan pantun adat yang hidup dalam masyarakat Melayu Deli:');
+      'Kumpulan 20 peribahasa, idiom, dan pantun adat yang hidup dalam masyarakat Melayu Deli:',
+    );
     sb.writeln();
     for (final idm in dsIdioms) {
       sb.writeln('### "${idm['text_deli']}"');
       sb.writeln('- **Jenis:** ${idm['type']}');
       sb.writeln('- **Makna Harfiah:** ${idm['translation_literal_id']}');
-      sb.writeln('- **Makna Kiasan / Filosofis:** ${idm['meaning_figurative_id']}');
+      sb.writeln(
+        '- **Makna Kiasan / Filosofis:** ${idm['meaning_figurative_id']}',
+      );
       sb.writeln('- **Konteks Budaya:** ${idm['cultural_context']}');
       sb.writeln();
     }
@@ -830,7 +843,8 @@ void main() {
   String buildHistoryCompendiumBody() {
     final sb = StringBuffer();
     sb.writeln(
-        'Kronologi perkembangan sejarah Kesultanan Deli, Kota Medan, dan dokumentasi Bahasa Melayu Deli dari abad ke-13 hingga abad ke-21:');
+      'Kronologi perkembangan sejarah Kesultanan Deli, Kota Medan, dan dokumentasi Bahasa Melayu Deli dari abad ke-13 hingga abad ke-21:',
+    );
     sb.writeln();
     for (final h in dsHistory) {
       sb.writeln('### ${h['period']} — ${h['title']}');
@@ -912,7 +926,8 @@ void main() {
       'title': cul09['title'],
       'body': buildCultureArticleBody(cul09),
       'sources': resolveCitations(cul09['source_ids'] as List<dynamic>?),
-      'notes': 'Upacara doa restu dan keselamatan dalam daur hidup Melayu Deli.',
+      'notes':
+          'Upacara doa restu dan keselamatan dalam daur hidup Melayu Deli.',
       'card_raw_id': 'c07',
       'unit_raw_id': 'u11',
     },
@@ -956,8 +971,13 @@ void main() {
       'id': 'art12',
       'title': 'Kaidah Tata Bahasa & Ciri Khas Bahasa Melayu Deli',
       'body': buildGrammarCompendiumBody(),
-      'sources': resolveCitations(
-          ['SRC-0002', 'SRC-0003', 'SRC-0004', 'SRC-0005', 'SRC-0006']),
+      'sources': resolveCitations([
+        'SRC-0002',
+        'SRC-0003',
+        'SRC-0004',
+        'SRC-0005',
+        'SRC-0006',
+      ]),
       'notes': 'Disusun dari 15 kaidah fonologi, morfologi, sintaksis, dan ortografi Jawi.',
       'card_raw_id': null,
       'unit_raw_id': 'u12',
@@ -967,7 +987,8 @@ void main() {
       'title': 'Khazanah Peribahasa, Idiom & Pantun Adat Melayu Deli',
       'body': buildIdiomsCompendiumBody(),
       'sources': resolveCitations(['SRC-0005', 'SRC-0007', 'SRC-0008']),
-      'notes': 'Mencakup peribahasa bermetafora fauna/alam dan pantun Telangkai.',
+      'notes':
+          'Mencakup peribahasa bermetafora fauna/alam dan pantun Telangkai.',
       'card_raw_id': 'c12',
       'unit_raw_id': 'u16',
     },
@@ -975,8 +996,13 @@ void main() {
       'id': 'art14',
       'title': 'Sejarah Kesultanan Deli & Perkembangan Bahasa Melayu Deli',
       'body': buildHistoryCompendiumBody(),
-      'sources': resolveCitations(
-          ['SRC-0003', 'SRC-0006', 'SRC-0009', 'SRC-0010', 'SRC-0011']),
+      'sources': resolveCitations([
+        'SRC-0003',
+        'SRC-0006',
+        'SRC-0009',
+        'SRC-0010',
+        'SRC-0011',
+      ]),
       'notes': 'Kronologi sejarah dari Kerajaan Haru, Kesultanan Deli (1632), hingga era modern.',
       'card_raw_id': null,
       'unit_raw_id': 'u16',
@@ -1012,8 +1038,7 @@ void main() {
     final rawUnit = c['unit_pembuka'] as String?;
     final rawArtId =
         (c['artikel_id'] as String?) ?? verifiedCardArticleByRawId[rawId];
-    final factText =
-        (c['fakta'] as String?) ?? verifiedCardFactsByRawId[rawId];
+    final factText = (c['fakta'] as String?) ?? verifiedCardFactsByRawId[rawId];
 
     cardsOut.add({
       'id': cardIdLookup[rawId]!,
@@ -1047,8 +1072,8 @@ void main() {
   }
 
   // 8. Units & Lessons
-  final rawLessons =
-      (raw['lessons'] as List<dynamic>).cast<Map<String, dynamic>>();
+  final rawLessons = (raw['lessons'] as List<dynamic>)
+      .cast<Map<String, dynamic>>();
   final allRawLessons = <Map<String, dynamic>>[...rawLessons];
 
   for (final u in inferredLevel2Units) {
@@ -1144,8 +1169,8 @@ void main() {
     return rawRef;
   }
 
-  final rawExercises =
-      (raw['exercises'] as List<dynamic>).cast<Map<String, dynamic>>();
+  final rawExercises = (raw['exercises'] as List<dynamic>)
+      .cast<Map<String, dynamic>>();
   final refsByRawLesson = <String, Set<String>>{};
   for (final ex in rawExercises) {
     final lid = ex['lesson_id'] as String?;
@@ -1170,20 +1195,19 @@ void main() {
     final unitPhrases = phrasesByRawUnit[rawUnitId] ?? const <String>[];
     final unitDialogues = dialoguesByRawUnit[rawUnitId] ?? const <String>[];
 
-    final unitRawLessons = allRawLessons
-        .where((l) => l['unit_id'] == rawUnitId)
-        .toList()
-      ..sort((a, b) =>
-          ((a['urutan'] as int?) ?? 1).compareTo((b['urutan'] as int?) ?? 1));
+    final unitRawLessons =
+        allRawLessons.where((l) => l['unit_id'] == rawUnitId).toList()..sort(
+          (a, b) => ((a['urutan'] as int?) ?? 1).compareTo(
+            (b['urutan'] as int?) ?? 1,
+          ),
+        );
 
     final lessonsOut = <Map<String, dynamic>>[];
     for (final l in unitRawLessons) {
       final rawLid = l['id'] as String;
       final stableLid = lessonIdLookup[rawLid]!;
       final kind = mapLessonKind(l['tipe'] as String? ?? 'kosakata');
-      final itemRefs = <String>{
-        ...?refsByRawLesson[rawLid],
-      };
+      final itemRefs = <String>{...?refsByRawLesson[rawLid]};
 
       if (kind == 'vocab') {
         itemRefs.addAll(unitWords);
@@ -1198,7 +1222,8 @@ void main() {
       } else if (kind == 'dialogue') {
         itemRefs.addAll(unitDialogues);
         itemRefs.addAll(
-            unitPhrases.isNotEmpty ? unitPhrases : unitWords.take(6));
+          unitPhrases.isNotEmpty ? unitPhrases : unitWords.take(6),
+        );
       } else if (kind == 'culture') {
         itemRefs.addAll(unitWords.take(6));
         itemRefs.addAll(lettersOut.take(3).map((e) => e['id'] as String));
@@ -1245,8 +1270,8 @@ void main() {
 
     if (tipe == 'pilihan_ganda' || tipe == 'isi_kosong') {
       final correct = ex['jawaban_benar'] as String;
-      final distractors =
-          (ex['pengecoh'] as List<dynamic>? ?? const []).cast<String>();
+      final distractors = (ex['pengecoh'] as List<dynamic>? ?? const [])
+          .cast<String>();
       final options = <String>[correct, ...distractors];
       final refRaw = ex['ref_item'] as String?;
 
@@ -1266,8 +1291,7 @@ void main() {
     } else if (tipe == 'pasangkan') {
       final rawPairs = (ex['jawaban_benar'] as List<dynamic>? ?? const []);
       final pairs = rawPairs.map((pair) {
-        final list =
-            (pair as List<dynamic>).map((e) => e.toString()).toList();
+        final list = (pair as List<dynamic>).map((e) => e.toString()).toList();
         return {'left': list[0], 'right': list[1]};
       }).toList();
       final refList = (ex['ref_item'] as List<dynamic>? ?? const [])
@@ -1290,8 +1314,8 @@ void main() {
       });
     } else if (tipe == 'susun_kalimat') {
       final correct = ex['jawaban_benar'] as String;
-      final tokens =
-          (ex['potongan'] as List<dynamic>? ?? const []).cast<String>();
+      final tokens = (ex['potongan'] as List<dynamic>? ?? const [])
+          .cast<String>();
       final refRaw = ex['ref_item'] as String?;
 
       quizBankOut.add({
@@ -1333,8 +1357,7 @@ void main() {
         'has_jawi': true,
         'is_bundled': true,
         'theme_key': 'deli',
-        'description':
-            'Bahasa Melayu pesisir timur Sumatera Utara di Medan, Labuhan Deli, dan Deli Serdang dengan ciri vokal akhir -e serta sistem sapaan kekerabatan khas.',
+        'description': 'Bahasa Melayu pesisir timur Sumatera Utara di Medan, Labuhan Deli, dan Deli Serdang dengan ciri vokal akhir -e serta sistem sapaan kekerabatan khas.',
       },
       {
         'id': 'ms-langkat',
@@ -1347,8 +1370,7 @@ void main() {
         'has_jawi': true,
         'is_bundled': false,
         'theme_key': 'langkat',
-        'description':
-            'Bahasa Melayu Kesultanan Langkat di Tanjung Pura, Stabat, Secanggang, dan Pangkalan Brandan yang kaya sastra pantun, kuliner halua, dan ekologi muara.',
+        'description': 'Bahasa Melayu Kesultanan Langkat di Tanjung Pura, Stabat, Secanggang, dan Pangkalan Brandan yang kaya sastra pantun, kuliner halua, dan ekologi muara.',
       },
       {
         'id': 'ms-palembang',
@@ -1361,16 +1383,15 @@ void main() {
         'has_jawi': false,
         'is_bundled': false,
         'theme_key': 'palembang',
-        'description':
-            'Bahasa Melayu Palembang dengan dua tingkat tutur (Baso Palembang Alus/Bebaso dan Sari-sari), budaya Sungai Musi, Rumah Limas, serta wastra Songket.',
+        'description': 'Bahasa Melayu Palembang dengan dua tingkat tutur (Baso Palembang Alus/Bebaso dan Sari-sari), budaya Sungai Musi, Rumah Limas, serta wastra Songket.',
       },
     ],
   };
 
-  final rawQuests =
-      (raw['quests'] as List<dynamic>).cast<Map<String, dynamic>>();
-  final rawShop =
-      (raw['shop_items'] as List<dynamic>).cast<Map<String, dynamic>>();
+  final rawQuests = (raw['quests'] as List<dynamic>)
+      .cast<Map<String, dynamic>>();
+  final rawShop = (raw['shop_items'] as List<dynamic>)
+      .cast<Map<String, dynamic>>();
   final defaultShopPrices = <String, int>{
     'i01': 50,
     'i02': 30,
@@ -1401,71 +1422,70 @@ void main() {
       {'min_level': 30, 'max_level': 999, 'title': 'Datuk Bahasa'},
     ],
     'level_up_reward_coins_per_level': 5,
-    'hearts': {
-      'max': 5,
-      'regen_minutes': 30,
-      'hearts_enabled_from_level': 2,
-    },
+    'hearts': {'max': 5, 'regen_minutes': 30, 'hearts_enabled_from_level': 2},
     'coins': {
       'lesson_min': 3,
       'lesson_max': 5,
       'daily_chest_min': 15,
       'daily_chest_max': 30,
     },
-    'stars': {
-      'three_stars_min_accuracy': 0.95,
-      'two_stars_min_accuracy': 0.80,
-    },
+    'stars': {'three_stars_min_accuracy': 0.95, 'two_stars_min_accuracy': 0.80},
     'srs': {
       'intervals_days_by_strength': [1, 1, 3, 7, 14, 30],
       'wrong_reset_days': 1,
     },
     'quests_pool': rawQuests
-        .map((q) => {
-              'id': q['id'],
-              'type': q['tipe'] == 'mingguan' ? 'weekly' : 'daily',
-              'title': q['teks'],
-              'target': q['target'],
-              'metric': q['metrik'],
-              'reward_coins': q['hadiah_koin'],
-            })
+        .map(
+          (q) => {
+            'id': q['id'],
+            'type': q['tipe'] == 'mingguan' ? 'weekly' : 'daily',
+            'title': q['teks'],
+            'target': q['target'],
+            'metric': q['metrik'],
+            'reward_coins': q['hadiah_koin'],
+          },
+        )
         .toList(),
     'shop_items': rawShop
-        .map((item) => {
-              'id': item['id'],
-              'name': item['nama'],
-              'category': item['jenis'],
-              'price_coins': item['harga_koin'] ??
-                  defaultShopPrices[item['id']] ??
-                  50,
-            })
+        .map(
+          (item) => {
+            'id': item['id'],
+            'name': item['nama'],
+            'category': item['jenis'],
+            'price_coins':
+                item['harga_koin'] ?? defaultShopPrices[item['id']] ?? 50,
+          },
+        )
         .toList(),
   };
 
-  final rawAchievements =
-      (raw['achievements'] as List<dynamic>).cast<Map<String, dynamic>>();
+  final rawAchievements = (raw['achievements'] as List<dynamic>)
+      .cast<Map<String, dynamic>>();
   final achievementsJson = {
     'achievements': rawAchievements
-        .map((a) => {
-              'id': a['id'],
-              'name': a['nama'],
-              'description': a['syarat'],
-              'active_mvp': a['aktif_mvp'] ?? true,
-            })
+        .map(
+          (a) => {
+            'id': a['id'],
+            'name': a['nama'],
+            'description': a['syarat'],
+            'active_mvp': a['aktif_mvp'] ?? true,
+          },
+        )
         .toList(),
   };
 
   final creditsJson = {
-    'validation_notice':
-        'Konten Bahasa Melayu Deli telah diperkaya dan diverifikasi silang dengan 12 rujukan ilmiah (Kamus Melayu Deli-Indonesia 1985, Kamus Melayu Sumatera Utara 2018, monograf Pusat Bahasa, penelitian USU, dan WBTb Kemendikbud). Empat entri ragam baku tetap ditandai Draf untuk peninjauan penutur.',
+    'validation_notice': 'Konten Bahasa Melayu Deli telah diperkaya dan diverifikasi silang dengan 12 rujukan ilmiah (Kamus Melayu Deli-Indonesia 1985, Kamus Melayu Sumatera Utara 2018, monograf Pusat Bahasa, penelitian USU, dan WBTb Kemendikbud). Empat entri ragam baku tetap ditandai Draf untuk peninjauan penutur.',
     'contributors': dsSources
-        .map((s) => {
-              'source_id': s['source_id'],
-              'title': s['title'],
-              'author': s['author'],
-              'year': s['publication_year'],
-              'publisher': s['publisher'],
-            })
+        .map(
+          (s) => {
+            'source_id': s['source_id'],
+            'title': s['title'],
+            'author': s['author'],
+            'year': s['publication_year'],
+            'publisher': s['publisher'],
+          },
+        )
         .toList(),
   };
 
@@ -1496,7 +1516,10 @@ void main() {
   writePrettyJson('assets/content/$courseId/phrases.json', phrasesOut);
   writePrettyJson('assets/content/$courseId/sentences.json', sentencesOut);
   writePrettyJson('assets/content/$courseId/dialogues.json', dialoguesOut);
-  writePrettyJson('assets/content/$courseId/conversations.json', dsConversations);
+  writePrettyJson(
+    'assets/content/$courseId/conversations.json',
+    dsConversations,
+  );
   writePrettyJson('assets/content/$courseId/letters.json', lettersOut);
   writePrettyJson('assets/content/$courseId/articles.json', articlesOut);
   writePrettyJson('assets/content/$courseId/units.json', unitsOut);

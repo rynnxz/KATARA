@@ -3,11 +3,7 @@ import 'package:katara/app/theme/katara_colors.dart';
 import 'package:katara/app/widgets/k_button.dart';
 import 'package:katara/app/widgets/k_progress_bar.dart';
 
-enum ExerciseFeedbackState {
-  none,
-  correct,
-  wrong,
-}
+enum ExerciseFeedbackState { none, correct, wrong }
 
 /// Kerangka layar latihan: progress bar atas, indikator nyawa, tombol lapor, area soal,
 /// serta bar umpan balik bawah yang tidak mengandalkan warna saja (ikon ✓ / ✗ + teks penjelasan).
@@ -52,18 +48,18 @@ class ExerciseScaffold extends StatelessWidget {
     final bannerBg = isCorrect
         ? p.successContainer
         : isWrong
-            ? p.errorContainer
-            : p.surface;
+        ? p.errorContainer
+        : p.surface;
     final bannerFg = isCorrect
         ? p.onSuccessContainer
         : isWrong
-            ? p.onErrorContainer
-            : p.ink;
+        ? p.onErrorContainer
+        : p.ink;
     final bannerBorder = isCorrect
         ? p.success
         : isWrong
-            ? p.error
-            : p.outline;
+        ? p.error
+        : p.outline;
 
     return Scaffold(
       backgroundColor: p.bg,
@@ -125,7 +121,10 @@ class ExerciseScaffold extends StatelessWidget {
             ),
             Expanded(
               child: SingleChildScrollView(
-                padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 12),
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 20,
+                  vertical: 12,
+                ),
                 child: child,
               ),
             ),
@@ -134,9 +133,7 @@ class ExerciseScaffold extends StatelessWidget {
               padding: const EdgeInsets.fromLTRB(20, 14, 20, 18),
               decoration: BoxDecoration(
                 color: bannerBg,
-                border: Border(
-                  top: BorderSide(color: bannerBorder, width: 2),
-                ),
+                border: Border(top: BorderSide(color: bannerBorder, width: 2)),
               ),
               child: Column(
                 mainAxisSize: MainAxisSize.min,
