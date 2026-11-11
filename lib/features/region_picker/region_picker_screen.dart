@@ -115,6 +115,7 @@ class _RegionPickerLoader extends ConsumerStatefulWidget {
 class _RegionPickerLoaderState extends ConsumerState<_RegionPickerLoader> {
   String? _downloadingCourseId;
   double _downloadProgress = 0.0;
+  final Map<String, int> _hashFailureCountByCourse = <String, int>{};
 
   Future<void> _handleDownload(CourseModel course) async {
     final catalogItem =
@@ -132,7 +133,7 @@ class _RegionPickerLoaderState extends ConsumerState<_RegionPickerLoader> {
               : 'module_palembang.zip',
           downloadUrl: course.downloadUrl,
           sha256: course.sha256,
-          sizeBytes: course.sizeBytes > 0 ? course.sizeBytes : 82000,
+          sizeBytes: course.sizeBytes > 0 ? course.sizeBytes : 71391,
           vocabularyCount: 308,
           lessonCount: 64,
           quizCount: 110,
@@ -154,6 +155,7 @@ class _RegionPickerLoaderState extends ConsumerState<_RegionPickerLoader> {
               }
             },
           );
+      _hashFailureCountByCourse.remove(course.id);
       ref.invalidate(coursesProvider);
       ref.invalidate(installedModulesProvider);
       if (!mounted) return;
@@ -165,18 +167,37 @@ class _RegionPickerLoaderState extends ConsumerState<_RegionPickerLoader> {
         ),
       );
     } catch (e) {
+      ModuleDownloadErrorMapper.logDebug(
+        e,
+        context: 'RegionPicker:${course.id}',
+      );
       if (!mounted) return;
+      final isHashError = ModuleDownloadErrorMapper.isSecurityHashFailure(e);
+      final attemptCount = isHashError
+          ? ((_hashFailureCountByCourse[course.id] ?? 0) + 1)
+          : 1;
+      if (isHashError) {
+        _hashFailureCountByCourse[course.id] = attemptCount;
+      }
       final friendlyMessage = ModuleDownloadErrorMapper.toUserMessage(
         e,
         courseName: course.name,
+        attemptCount: attemptCount,
       );
+      final allowRetry = ModuleDownloadErrorMapper.canRetry(
+        e,
+        attemptCount: attemptCount,
+      );
+      ScaffoldMessenger.of(context).hideCurrentSnackBar();
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
           content: Text(friendlyMessage),
-          action: SnackBarAction(
-            label: 'Coba Lagi',
-            onPressed: () => _handleDownload(course),
-          ),
+          action: allowRetry
+              ? SnackBarAction(
+                  label: 'Coba Lagi',
+                  onPressed: () => _handleDownload(course),
+                )
+              : null,
         ),
       );
     } finally {

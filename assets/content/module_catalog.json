@@ -3,7 +3,7 @@
   "min_app_version": "1.1.0",
   "revoked_modules": [],
   "generated_at": "2026-11-11T00:00:00Z",
-  "github_release_tag": "v1.1.1",
+  "github_release_tag": "v1.1.0",
   "repository_url": "https://github.com/rynnxz/KATARA",
   "modules": [
     {
@@ -15,9 +15,9 @@
       "version": "1.1.1",
       "content_version": 1,
       "archive_filename": "module_langkat.zip",
-      "download_url": "https://github.com/rynnxz/KATARA/releases/download/v1.1.1/module_langkat.zip",
-      "size_bytes": 82277,
-      "sha256": "d36f24b2679ccc22b1326f58180f0c7b56e1c77ff7537c7030612950fc3bdb4b",
+      "download_url": "https://github.com/rynnxz/KATARA/releases/download/v1.1.0/module_langkat.zip",
+      "size_bytes": 71391,
+      "sha256": "3ed866afaeb72c1354d4927e651ca9c7fd1e4adf21d6810e462dacbb58562f6f",
       "word_count": 308,
       "lesson_count": 30,
       "conversation_count": 10,
@@ -36,9 +36,9 @@
       "version": "1.1.1",
       "content_version": 1,
       "archive_filename": "module_palembang.zip",
-      "download_url": "https://github.com/rynnxz/KATARA/releases/download/v1.1.1/module_palembang.zip",
-      "size_bytes": 84247,
-      "sha256": "1ab88a4fb291fd8d279a9432e7cb5284127fa2bdc052885b1131611ce56c6a25",
+      "download_url": "https://github.com/rynnxz/KATARA/releases/download/v1.1.0/module_palembang.zip",
+      "size_bytes": 74307,
+      "sha256": "f75c27e1f28c06bece0cfe5a6deea6f40d40457b614a986d431dde22cabc2095",
       "word_count": 308,
       "lesson_count": 30,
       "conversation_count": 10,
@@ -49,6 +49,6 @@
       "accent_hex": "#8B1E24"
     }
   ],
-  "signature_ed25519": "33e94a51aa318e0d5bc888126458dbaf6a8a5f76d59bf9bb8a5025fb0464af0bbe5334698ee76049059f99549087063ab1c2b8857a62db09140719d67c07ef03",
+  "signature_ed25519": "d91b28dcb532161727be4457cd13cf8fea6ae26805c35b879a4f30f603a64f3c3e4c4d8c93c6bcfc7fba3799f1aafa29375b821f498323192d78b707f3c6d500",
   "public_key_ed25519": "57ee50c3b50ecc5775b50a45e6c2d67e3cb03a4a977be93caf156b88cd145466"
 }

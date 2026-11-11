@@ -12,9 +12,9 @@ Agar ukuran unduhan awal aplikasi (`app-release.apk`) tetap ringan dan ramah kuo
    - **Melayu Deli (`ms-deli` / `melayu_deli`)** disertakan langsung di dalam `assets/content/ms-deli/`.
    - Pengguna dapat langsung belajar begitu aplikasi dipasang pertama kali **100% tanpa koneksi internet**.
 2. **Modul Unduhan Mandiri (`Downloadable` di luar APK):**
-   - **Melayu Langkat (`ms-langkat` / `melayu_langkat`)** -> `dist/releases/v1.1.0/module_langkat.zip` (`82.273 byte`).
-   - **Melayu Palembang (`ms-palembang` / `melayu_palembang`)** -> `dist/releases/v1.1.0/module_palembang.zip` (`84.219 byte`).
-   - Kedua arsip ZIP ini **tidak dimasukkan ke dalam `pubspec.yaml` `assets:`**, melainkan di-host pada GitHub Releases (`https://github.com/rynnxz/KATARA/releases/download/v1.1.1/...`) dan diunduh sesuai pilihan pengguna melalui [`ModuleDownloadService`](../lib/services/module_download_service.dart).
+   - **Melayu Langkat (`ms-langkat` / `melayu_langkat`)** -> `dist/releases/v1.1.0/module_langkat.zip` (`71.391 byte`, SHA-256: `3ed866afaeb72c1354d4927e651ca9c7fd1e4adf21d6810e462dacbb58562f6f`).
+   - **Melayu Palembang (`ms-palembang` / `melayu_palembang`)** -> `dist/releases/v1.1.0/module_palembang.zip` (`74.307 byte`, SHA-256: `f75c27e1f28c06bece0cfe5a6deea6f40d40457b614a986d431dde22cabc2095`).
+   - Kedua arsip ZIP ini **tidak dimasukkan ke dalam `pubspec.yaml` `assets:`**, melainkan di-host pada GitHub Releases (`https://github.com/rynnxz/KATARA/releases/download/v1.1.0/...`) dan diunduh sesuai pilihan pengguna melalui [`ModuleDownloadService`](../lib/services/module_download_service.dart).
 
 ---
 

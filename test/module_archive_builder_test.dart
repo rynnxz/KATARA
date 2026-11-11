@@ -5,6 +5,9 @@ import 'package:archive/archive.dart';
 import 'package:crypto/crypto.dart';
 import 'package:flutter_test/flutter_test.dart';
 
+import '../tool/build_modules.dart' as module_builder;
+import '../tool/verify_release.dart';
+
 void main() {
   group('Bundled Content & Standalone ZIP Module Archive Builder Tests', () {
     test('assets/content/courses.json defines ms-deli (bundled), ms-langkat, and ms-palembang (downloadable)', () {
@@ -145,6 +148,49 @@ void main() {
         final lessonsList = jsonDecode(lessonsJson) as List<dynamic>;
         expect(lessonsList.length, greaterThanOrEqualTo(15));
       }
+    });
+
+    test('Running build_modules.dart twice produces bit-for-bit identical ZIP SHA-256 hashes and passes verifyReleaseParity', () {
+      module_builder.main();
+      final langkatHash1 = sha256
+          .convert(
+            File('dist/releases/v1.1.0/module_langkat.zip').readAsBytesSync(),
+          )
+          .toString();
+      final palembangHash1 = sha256
+          .convert(
+            File('dist/releases/v1.1.0/module_palembang.zip').readAsBytesSync(),
+          )
+          .toString();
+      final catalogHash1 = sha256
+          .convert(
+            File('dist/releases/v1.1.0/module_catalog.json').readAsBytesSync(),
+          )
+          .toString();
+
+      module_builder.main();
+      final langkatHash2 = sha256
+          .convert(
+            File('dist/releases/v1.1.0/module_langkat.zip').readAsBytesSync(),
+          )
+          .toString();
+      final palembangHash2 = sha256
+          .convert(
+            File('dist/releases/v1.1.0/module_palembang.zip').readAsBytesSync(),
+          )
+          .toString();
+      final catalogHash2 = sha256
+          .convert(
+            File('dist/releases/v1.1.0/module_catalog.json').readAsBytesSync(),
+          )
+          .toString();
+
+      expect(langkatHash2, equals(langkatHash1));
+      expect(palembangHash2, equals(palembangHash1));
+      expect(catalogHash2, equals(catalogHash1));
+
+      final parity = verifyReleaseParity();
+      expect(parity.isValid, isTrue, reason: parity.errors.join('; '));
     });
   });
 }

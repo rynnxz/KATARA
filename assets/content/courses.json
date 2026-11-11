@@ -34,9 +34,9 @@
       "is_bundled": false,
       "theme_key": "langkat",
       "description": "Bahasa Melayu Kesultanan Langkat di Tanjung Pura, Stabat, Secanggang, dan Pangkalan Brandan yang kaya sastra pantun, kuliner halua, dan ekologi muara.",
-      "size_bytes": 82277,
-      "sha256": "d36f24b2679ccc22b1326f58180f0c7b56e1c77ff7537c7030612950fc3bdb4b",
-      "download_url": "https://github.com/rynnxz/KATARA/releases/download/v1.1.1/module_langkat.zip",
+      "size_bytes": 71391,
+      "sha256": "3ed866afaeb72c1354d4927e651ca9c7fd1e4adf21d6810e462dacbb58562f6f",
+      "download_url": "https://github.com/rynnxz/KATARA/releases/download/v1.1.0/module_langkat.zip",
       "version": "1.1.1"
     },
     {
@@ -51,9 +51,9 @@
       "is_bundled": false,
       "theme_key": "palembang",
       "description": "Bahasa Melayu Palembang dengan dua tingkat tutur (Baso Palembang Alus/Bebaso dan Sari-sari), budaya Sungai Musi, Rumah Limas, serta wastra Songket.",
-      "size_bytes": 84247,
-      "sha256": "1ab88a4fb291fd8d279a9432e7cb5284127fa2bdc052885b1131611ce56c6a25",
-      "download_url": "https://github.com/rynnxz/KATARA/releases/download/v1.1.1/module_palembang.zip",
+      "size_bytes": 74307,
+      "sha256": "f75c27e1f28c06bece0cfe5a6deea6f40d40457b614a986d431dde22cabc2095",
+      "download_url": "https://github.com/rynnxz/KATARA/releases/download/v1.1.0/module_palembang.zip",
       "version": "1.1.1"
     }
   ]

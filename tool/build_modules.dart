@@ -9,6 +9,25 @@ import 'package:katara/services/catalog_signature_verifier.dart';
 
 const _prettyJson = JsonEncoder.withIndent('  ');
 
+/// Fixed UTC epoch (`2026-01-01T00:00:00Z`) for deterministic ZIP headers.
+const int kDeterministicZipTimestamp = 1767225600;
+
+/// Active GitHub Release tag hosting the downloadable dialect module ZIPs.
+const String kActiveModuleReleaseTag = 'v1.1.0';
+
+dynamic _canonicalizeJson(dynamic value) {
+  if (value is Map) {
+    final sortedKeys = value.keys.map((k) => k.toString()).toList()..sort();
+    return <String, dynamic>{
+      for (final k in sortedKeys) k: _canonicalizeJson(value[k]),
+    };
+  }
+  if (value is List) {
+    return value.map(_canonicalizeJson).toList();
+  }
+  return value;
+}
+
 Uint8List _loadOrCreatePrivateSeed() {
   final seedFile = File('.keys/catalog_ed25519.seed');
   if (seedFile.existsSync()) {
@@ -88,7 +107,7 @@ void main() {
     'min_app_version': '1.1.0',
     'revoked_modules': <String>[],
     'generated_at': '2026-11-11T00:00:00Z',
-    'github_release_tag': 'v1.1.1',
+    'github_release_tag': kActiveModuleReleaseTag,
     'repository_url': 'https://github.com/rynnxz/KATARA',
     'modules': [langkatMeta, palembangMeta],
   };
@@ -662,24 +681,43 @@ Map<String, dynamic> _buildDialectModuleZip({
   };
 
   final archive = Archive();
-  for (final entry in filesToPack.entries) {
-    final jsonBytes = utf8.encode('${_prettyJson.convert(entry.value)}\n');
-    final archiveFile = ArchiveFile(entry.key, jsonBytes.length, jsonBytes);
+  final sortedFileNames = filesToPack.keys.toList()..sort();
+  for (final fileName in sortedFileNames) {
+    final canonicalValue = _canonicalizeJson(filesToPack[fileName]);
+    final jsonText = '${_prettyJson.convert(canonicalValue)}\n'.replaceAll(
+      '\r\n',
+      '\n',
+    );
+    final jsonBytes = utf8.encode(jsonText);
+    final archiveFile = ArchiveFile(fileName, jsonBytes.length, jsonBytes)
+      ..creationTime = kDeterministicZipTimestamp
+      ..lastModTime = kDeterministicZipTimestamp
+      ..mode = 0x1a4
+      ..ownerId = 0
+      ..groupId = 0
+      ..compression = CompressionType.deflate
+      ..compressionLevel = DeflateLevel.defaultCompression;
     archive.addFile(archiveFile);
   }
 
-  final zipBytes = ZipEncoder().encode(archive);
-  final outFile111 = File('dist/releases/v1.1.1/$archiveFileName');
-  outFile111.parent.createSync(recursive: true);
-  outFile111.writeAsBytesSync(zipBytes);
+  final encodedBytes = ZipEncoder().encode(
+    archive,
+    level: DeflateLevel.defaultCompression,
+  );
 
   final outFile110 = File('dist/releases/v1.1.0/$archiveFileName');
   outFile110.parent.createSync(recursive: true);
-  outFile110.writeAsBytesSync(zipBytes);
+  outFile110.writeAsBytesSync(encodedBytes, flush: true);
 
-  final zipSha256 = sha256.convert(zipBytes).toString();
+  final outFile111 = File('dist/releases/v1.1.1/$archiveFileName');
+  outFile111.parent.createSync(recursive: true);
+  outFile111.writeAsBytesSync(encodedBytes, flush: true);
+
+  // Single source of truth: compute size_bytes and sha256 directly from final ZIP on disk
+  final finalZipBytes = outFile110.readAsBytesSync();
+  final zipSha256 = sha256.convert(finalZipBytes).toString();
   stdout.writeln(
-    '  [OK] $archiveFileName (${zipBytes.length} bytes, SHA-256: $zipSha256)',
+    '  [OK] $archiveFileName (${finalZipBytes.length} bytes, SHA-256: $zipSha256)',
   );
 
   return {
@@ -694,8 +732,8 @@ Map<String, dynamic> _buildDialectModuleZip({
     'content_version': 1,
     'archive_filename': archiveFileName,
     'download_url':
-        'https://github.com/rynnxz/KATARA/releases/download/v1.1.1/$archiveFileName',
-    'size_bytes': zipBytes.length,
+        'https://github.com/rynnxz/KATARA/releases/download/$kActiveModuleReleaseTag/$archiveFileName',
+    'size_bytes': finalZipBytes.length,
     'sha256': zipSha256,
     'word_count': wordsOut.length,
     'lesson_count': flatLessonsOut.length,

@@ -9,16 +9,17 @@ Dokumen ini menjelaskan cara membangun berkas APK rilis produksi serta mengungga
 Jalankan perintah berikut dari direktori akar repositori:
 
 ```powershell
-# 1. Pastikan korpus, aset bawaan ms-deli, dan ZIP modul unduhan mutakhir
+# 1. Pastikan korpus, aset bawaan ms-deli, dan ZIP modul unduhan deterministik mutakhir
 dart run tool/build_dialect_datasets.dart
 dart run tool/build_content.dart
 dart run tool/build_modules.dart
+dart run tool/verify_release.dart
 
 # 2. Bangun APK rilis produksi
-flutter build apk --release
+flutter build apk --release --obfuscate --split-debug-info=build/symbols
 
-# 3. Salin APK ke direktori distribusi rilis v1.1.0
-Copy-Item build/app/outputs/flutter-apk/app-release.apk dist/releases/v1.1.0/katara-v1.1.0-release.apk -Force
+# 3. Salin APK ke direktori distribusi rilis v1.1.1
+Copy-Item build/app/outputs/flutter-apk/app-release.apk dist/releases/v1.1.1/katara-v1.1.1-release.apk -Force
 ```
 
 ---
@@ -29,10 +30,10 @@ Setiap rilis pada GitHub (`tag: v1.1.0`) menyertakan 4 aset utama di dalam folde
 
 | Nama Berkas | Fungsi | Ukuran | SHA-256 |
 |---|---|---|---|
-| `katara-v1.1.0-release.apk` | Pemasang aplikasi Android utama (`id.katara.app`) dengan modul bawaan Melayu Deli. | ~54 MB | Dihasilkan saat build rilis |
-| `module_langkat.zip` | Paket modul unduhan mandiri Bahasa Melayu Langkat (308 kata, 10 dialog, 110 kuis). | `82.273 byte` | `b9c2aaa268ad3e0b9eb1b75c4bf71fff7932c17fd20c8b018f530a985559cdb0` |
-| `module_palembang.zip` | Paket modul unduhan mandiri Bahasa Melayu Palembang (308 kata, 10 dialog, 110 kuis). | `84.219 byte` | `16185eb07de40d307eaeea7cdb1f07aad270093cac0d4c19c62e083052956497` |
-| `module_catalog.json` | Manifest katalog modul beserta URL unduhan dan hash SHA-256. | `1.816 byte` | - |
+| `katara-v1.1.1-release.apk` | Pemasang aplikasi Android utama (`id.katara.app`) dengan modul bawaan Melayu Deli. | ~68 MB | Dihasilkan saat build rilis |
+| `module_langkat.zip` | Paket modul unduhan mandiri Bahasa Melayu Langkat (308 kata, 10 dialog, 110 kuis). | `71.391 byte` | `3ed866afaeb72c1354d4927e651ca9c7fd1e4adf21d6810e462dacbb58562f6f` |
+| `module_palembang.zip` | Paket modul unduhan mandiri Bahasa Melayu Palembang (308 kata, 10 dialog, 110 kuis). | `74.307 byte` | `f75c27e1f28c06bece0cfe5a6deea6f40d40457b614a986d431dde22cabc2095` |
+| `module_catalog.json` | Manifest katalog modul bertanda tangan Ed25519 beserta URL unduhan dan hash SHA-256. | `2.302 byte` | `12e574ae6e244916562a4ec93105fa048cabdf9607abc7a4d1e849352cf2389b` |
 
 ---
 
